@@ -29,14 +29,12 @@ export default function PagaOraria() {
       if (t) setTariffa(parseFloat(t) || 15);
     }
     if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
+    if (isInitialMount.current) return;
     const url = new URL(window.location.href);
     if (modalita === 'da-ral') {
       url.searchParams.set('ral', String(ral));

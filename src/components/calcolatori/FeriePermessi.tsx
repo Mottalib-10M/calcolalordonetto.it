@@ -28,14 +28,12 @@ export default function FeriePermessi() {
     const m = params.get('mensilita');
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
     if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
+    if (isInitialMount.current) return;
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     if (giorniFerie !== 10) url.searchParams.set('ferie', String(giorniFerie));

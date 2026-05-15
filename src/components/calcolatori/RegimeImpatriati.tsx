@@ -21,14 +21,12 @@ export default function RegimeImpatriati() {
     const pct = params.get('esenzione');
     if (pct) setPercentualeEsenzione(parseInt(pct, 10) || 50);
     if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
+    if (isInitialMount.current) return;
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     url.searchParams.set('regione', regione);

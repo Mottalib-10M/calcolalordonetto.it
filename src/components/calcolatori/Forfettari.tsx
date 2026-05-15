@@ -36,14 +36,12 @@ export default function Forfettari() {
     }
     if (params.get('startup') === '1') setPrimiCinqueAnni(true);
     if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
+    if (isInitialMount.current) return;
     const url = new URL(window.location.href);
     url.searchParams.set('ricavi', String(ricavi));
     url.searchParams.set('coeff', String(COEFFICIENTI[coefficienteIndex].value));

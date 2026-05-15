@@ -40,6 +40,7 @@ export default function StipendioNetto() {
       if (c) setAliquotaComunale(c.aliquota);
     }
     if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
   // ---- Recalculate whenever inputs change ----------------------------------
@@ -60,9 +61,7 @@ export default function StipendioNetto() {
     setRisultato(res);
 
     // Sync URL (only after first user interaction)
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
+    if (!isInitialMount.current) {
       pushState({
         ral,
         regione,
