@@ -1,0 +1,185 @@
+---
+import { SITE } from '../../config';
+
+const calcolatoriLavoro = [
+  { name: 'Stipendio Netto', href: '/' },
+  { name: 'Da Netto a Lordo', href: '/calcolo-stipendio-lordo' },
+  { name: 'Calcolo IRPEF', href: '/calcolo-irpef' },
+  { name: 'Busta Paga', href: '/calcolo-busta-paga' },
+  { name: 'Confronto Regioni', href: '/comparatore-regioni' },
+  { name: 'Tredicesima e Quattordicesima', href: '/calcolo-tredicesima' },
+  { name: 'TFR', href: '/calcolo-tfr' },
+  { name: 'Paga Oraria', href: '/calcolo-paga-oraria' },
+  { name: 'Costo Aziendale', href: '/costo-aziendale' },
+  { name: 'Ferie e Permessi', href: '/calcolo-ferie-permessi' },
+  { name: 'Buonuscita', href: '/calcolo-buonuscita' },
+  { name: 'Detrazioni Familiari', href: '/calcolo-detrazioni-familiari' },
+];
+
+const calcolatoriFinanza = [
+  { name: 'Forfettari', href: '/calcolo-forfettari' },
+  { name: 'Regime Impatriati', href: '/regime-impatriati-calcolatore' },
+  { name: 'Dipendente vs P.IVA', href: '/confronto-dipendente-piva' },
+  { name: 'ISEE', href: '/calcolo-isee' },
+  { name: 'Mutuo', href: '/calcolo-mutuo' },
+  { name: 'Interesse Composto', href: '/calcolo-interesse-composto' },
+  { name: 'Pensione', href: '/calcolo-pensione' },
+  { name: 'FIRE', href: '/calcolo-fire' },
+  { name: 'Tassazione Investimenti', href: '/calcolo-tassazione-investimenti' },
+  { name: 'Affitto vs Acquisto', href: '/confronto-affitto-acquisto' },
+  { name: 'Bonus Ristrutturazione', href: '/calcolo-bonus-ristrutturazione' },
+  { name: 'Plusvalenza Immobiliare', href: '/calcolo-plusvalenza-immobiliare' },
+  { name: 'Budget 50/30/20', href: '/calcolo-budget' },
+];
+
+const navLinks = [
+  { name: 'Guide', href: '/guide' },
+  { name: 'Chi Siamo', href: '/chi-siamo' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-1.5 text-xl font-bold tracking-tight">
+        <span class="text-brand" aria-hidden="true">&euro;</span>
+        <span class="text-charcoal dark:text-white">Calcola Lordo</span>
+        <span class="text-brand">Netto</span>
+      </a>
+
+      <!-- Desktop navigation -->
+      <div class="hidden md:flex md:items-center md:gap-1">
+        <!-- Calcolatori dropdown -->
+        <div class="relative group">
+          <button
+            type="button"
+            class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            Calcolatori
+            <svg class="h-4 w-4 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <!-- Dropdown panel -->
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute right-0 top-full z-50 mt-1 w-[560px] rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <p class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Lavoro & Tasse</p>
+                {calcolatoriLavoro.map((calc) => (
+                  <a
+                    href={calc.href}
+                    class="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-brand transition-colors"
+                  >
+                    {calc.name}
+                  </a>
+                ))}
+              </div>
+              <div>
+                <p class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Finanza & Investimenti</p>
+                {calcolatoriFinanza.map((calc) => (
+                  <a
+                    href={calc.href}
+                    class="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-brand transition-colors"
+                  >
+                    {calc.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-lg px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-brand transition-colors"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        type="button"
+        class="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        aria-label="Apri menu"
+        data-mobile-menu-toggle
+      >
+        <svg class="h-6 w-6 block" data-icon-menu fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <svg class="h-6 w-6 hidden" data-icon-close fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div class="hidden md:hidden pb-4" data-mobile-menu>
+      <!-- Lavoro & Tasse section -->
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-3 mt-1">
+        <p class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Lavoro & Tasse</p>
+        {calcolatoriLavoro.map((calc) => (
+          <a
+            href={calc.href}
+            class="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-brand transition-colors"
+          >
+            {calc.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Finanza & Investimenti section -->
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-3 mt-3">
+        <p class="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Finanza & Investimenti</p>
+        {calcolatoriFinanza.map((calc) => (
+          <a
+            href={calc.href}
+            class="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-brand transition-colors"
+          >
+            {calc.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Other links -->
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-3 mt-3">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-brand transition-colors"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  (function () {
+    const toggle = document.querySelector('[data-mobile-menu-toggle]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    const iconMenu = document.querySelector('[data-icon-menu]');
+    const iconClose = document.querySelector('[data-icon-close]');
+
+    if (toggle && menu && iconMenu && iconClose) {
+      toggle.addEventListener('click', function () {
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', isOpen);
+        iconMenu.classList.toggle('hidden', !isOpen);
+        iconMenu.classList.toggle('block', isOpen);
+        iconClose.classList.toggle('hidden', isOpen);
+        iconClose.classList.toggle('block', !isOpen);
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Apri menu' : 'Chiudi menu');
+      });
+    }
+  })();
+</script>

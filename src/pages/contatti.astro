@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+
+const title = 'Contatti e Segnalazioni | Calcola Lordo Netto Supporto';
+const description =
+  'Contattaci per segnalazioni, suggerimenti o problemi con i calcolatori. Non forniamo consulenza fiscale individuale. Consulta il tuo commercialista.';
+---
+
+<Layout title={title} description={description}>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Contatti e Segnalazioni
+      </h1>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        Hai trovato un errore? Vuoi suggerire un miglioramento? Scrivici.
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>Come Contattarci</h2>
+      <p>
+        Puoi raggiungerci scrivendo a
+        <a href="mailto:info@calcolalordonetto.it">info@calcolalordonetto.it</a>.
+        Cerchiamo di rispondere a tutti i messaggi entro qualche giorno lavorativo.
+      </p>
+
+      <h2>Cosa Puoi Segnalarci</h2>
+      <p>
+        Apprezziamo ogni tipo di feedback e in particolare:
+      </p>
+      <ul>
+        <li>
+          <strong>Errori nei calcoli:</strong> se noti una discrepanza tra il
+          risultato del calcolatore e il tuo cedolino reale, segnalacelo con il
+          maggior numero di dettagli possibile (RAL, regione, tipo di contratto).
+          Ci aiutera' a migliorare la precisione degli algoritmi
+        </li>
+        <li>
+          <strong>Suggerimenti per nuovi calcolatori:</strong> se hai bisogno di
+          uno strumento che non offriamo ancora, faccelo sapere. Le richieste
+          della community guidano le nostre priorita' di sviluppo
+        </li>
+        <li>
+          <strong>Problemi tecnici:</strong> se il sito non funziona
+          correttamente sul tuo dispositivo o browser, comunicaci quale
+          dispositivo e browser stai utilizzando
+        </li>
+        <li>
+          <strong>Aggiornamenti normativi:</strong> se sei a conoscenza di
+          modifiche alla normativa fiscale che non abbiamo ancora recepito,
+          segnalacelo e provvederemo all'aggiornamento
+        </li>
+      </ul>
+
+      <h2>Cosa Non Possiamo Fare</h2>
+      <div class="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/30 p-5 not-prose">
+        <div class="flex items-start gap-3">
+          <svg class="h-6 w-6 flex-shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.168-.168 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.457-1.515-2.625L8.485 2.495ZM10 6a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 6Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+          </svg>
+          <div>
+            <p class="font-semibold text-amber-800 dark:text-amber-300">
+              Non forniamo consulenza fiscale individuale
+            </p>
+            <p class="mt-1 text-sm text-amber-700 dark:text-amber-400">
+              Non possiamo rispondere a domande specifiche sulla tua situazione
+              fiscale personale, come "quanto paghero' di IRPEF con il mio
+              reddito?" o "quale regime fiscale mi conviene?". Per queste
+              domande ti consigliamo di rivolgerti a un
+              <strong>commercialista</strong>, un <strong>consulente del
+              lavoro</strong> o un <strong>CAF</strong> (Centro di Assistenza
+              Fiscale) nella tua zona.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Tempi di Risposta</h2>
+      <p>
+        {SITE.name} e' un progetto gestito da un team ristretto. Facciamo del
+        nostro meglio per rispondere a tutte le segnalazioni, ma i tempi
+        possono variare. Le segnalazioni di errori nei calcoli hanno la
+        priorita' piu' alta.
+      </p>
+
+      <h2>Contribuire al Progetto</h2>
+      <p>
+        Se sei uno sviluppatore, un fiscalista o semplicemente un appassionato
+        che vuole contribuire a migliorare gli strumenti che offriamo, scrivici.
+        Siamo sempre aperti a collaborazioni per rendere i nostri calcolatori
+        piu' precisi e completi.
+      </p>
+
+      <h2>Risorse Utili Prima di Contattarci</h2>
+      <p>
+        Prima di scriverci, ti consigliamo di verificare se la risposta alla tua domanda e' gia' disponibile nelle risorse del nostro sito. Abbiamo dedicato molto tempo alla creazione di contenuti informativi che coprono le domande piu' comuni.
+      </p>
+      <p>
+        La nostra <a href="/guide">sezione Guide</a> contiene approfondimenti dettagliati sui principali argomenti fiscali: dal funzionamento degli scaglioni IRPEF al calcolo dello stipendio netto, dal regime forfettario al TFR. Ogni guida include esempi pratici, tabelle riepilogative e riferimenti normativi che possono chiarire molti dubbi senza necessita' di contattarci direttamente.
+      </p>
+      <p>
+        Ogni pagina di calcolatore include inoltre una <strong>sezione FAQ dedicata</strong> che risponde alle domande piu' frequenti relative a quello specifico strumento. Ad esempio, nella pagina del calcolo stipendio netto troverai spiegazioni su come funzionano le detrazioni, cosa sono le addizionali e come si applica il cuneo fiscale 2026. Ti invitiamo a leggere queste FAQ prima di scriverci, poiche' la tua domanda potrebbe gia' trovare risposta li'.
+      </p>
+      <p>
+        Se hai dubbi su quale calcolatore utilizzare per la tua specifica esigenza, consulta la <a href="/">pagina principale</a> dove trovi tutti i calcolatori disponibili con una breve descrizione di ciascuno. Abbiamo strumenti dedicati per il calcolo da lordo a netto, da netto a lordo, per il regime forfettario, per gli impatriati, per il TFR e molto altro. Nella maggior parte dei casi, selezionare il calcolatore corretto e inserire i parametri richiesti ti dara' la risposta che cerchi in pochi secondi.
+      </p>
+
+      <h2>Domande Frequenti sull'Utilizzo del Sito</h2>
+
+      <p>
+        <strong>Come trovo il calcolatore giusto per me?</strong><br />
+        Sul nostro sito sono disponibili diversi calcolatori, ciascuno pensato per un'esigenza specifica. Se sei un lavoratore dipendente e vuoi sapere quanto guadagnerai al netto, il <a href="/">Calcolo Stipendio Netto</a> e' lo strumento da utilizzare: inserisci la tua RAL e ottieni immediatamente il netto mensile e annuo. Se invece conosci lo stipendio netto che desideri e vuoi scoprire quale RAL chiedere in sede di trattativa, usa il <a href="/calcolo-stipendio-lordo">Calcolo da Netto a Lordo</a>. Per chi lavora con Partita IVA in regime agevolato, c'e' il <a href="/calcolo-forfettari">Calcolatore Regime Forfettario</a>. Per i lavoratori che rientrano dall'estero, il <a href="/regime-impatriati-calcolatore">Calcolatore Regime Impatriati</a> permette di stimare il vantaggio fiscale. Offriamo anche strumenti per il <a href="/calcolo-tfr">calcolo del TFR</a>, per la <a href="/calcolo-busta-paga">simulazione della busta paga</a> e per il <a href="/comparatore-regioni">confronto tra regioni</a>.
+      </p>
+
+      <p>
+        <strong>Perche' il risultato e' diverso dalla mia busta paga reale?</strong><br />
+        Esistono diverse ragioni per cui il risultato del calcolatore puo' differire dal netto effettivo che trovi nel tuo cedolino. Il motivo piu' comune riguarda le <strong>voci retributive specifiche del tuo CCNL</strong> (Contratto Collettivo Nazionale di Lavoro): superminimi individuali, indennita' di turno, indennita' di mensa, premi di produzione e altri elementi variabili che non sono inclusi nella RAL base e che il calcolatore non puo' considerare senza informazioni aggiuntive. Un'altra causa frequente e' la presenza di <strong>benefit aziendali tassati in busta paga</strong>, come l'auto aziendale ad uso promiscuo, i buoni pasto oltre la soglia esente o le polizze sanitarie integrative. Anche <strong>trattenute volontarie</strong>, come la cessione del quinto dello stipendio, le trattenute sindacali, i versamenti a fondi pensione complementari o i prestiti aziendali riducono il netto effettivo rispetto al calcolo teorico. Infine, nei mesi in cui la busta paga include conguagli fiscali, arretrati o elementi una tantum, il confronto mensile puo' risultare non significativo: in questi casi e' piu' utile confrontare il netto su base annua.
+      </p>
+
+      <p>
+        <strong>I calcolatori vengono aggiornati ogni anno?</strong><br />
+        Si', aggiorniamo tutti i calcolatori ogni anno in concomitanza con la pubblicazione della Legge di Bilancio in Gazzetta Ufficiale, che avviene tipicamente tra la fine di dicembre e l'inizio di gennaio. L'aggiornamento comprende la revisione di tutti i parametri fiscali: scaglioni IRPEF, aliquote contributive INPS, soglie delle detrazioni per lavoro dipendente, importi del trattamento integrativo, parametri del cuneo fiscale e aliquote delle addizionali regionali e comunali. In caso di modifiche normative che intervengono nel corso dell'anno (decreti legge, circolari interpretative dell'Agenzia delle Entrate), effettuiamo aggiornamenti straordinari. L'anno fiscale di riferimento e' sempre indicato chiaramente in ogni pagina di calcolatore, cosi' puoi verificare che i parametri utilizzati siano quelli correnti.
+      </p>
+
+      <p>
+        <strong>Posso usare i calcolatori per la dichiarazione dei redditi?</strong><br />
+        I nostri calcolatori forniscono <strong>stime indicative</strong> e non sostituiscono in alcun modo la compilazione ufficiale della dichiarazione dei redditi (Modello 730 o Modello Redditi PF). Le informazioni prodotte dai calcolatori possono essere utili per avere un'idea di massima dell'imposta dovuta o del rimborso atteso, ma la dichiarazione dei redditi richiede la considerazione di tutti i redditi percepiti, di tutte le detrazioni e deduzioni spettanti, e di eventuali elementi specifici della situazione personale (redditi fondiari, redditi di capitale, redditi esteri, crediti d'imposta, ecc.). Per la compilazione della dichiarazione ti consigliamo di rivolgerti a un commercialista, a un consulente del lavoro o a un CAF, che potranno valutare la tua situazione nel suo complesso e garantirti un risultato conforme alla normativa.
+      </p>
+
+      <p>
+        <strong>Come segnalo un errore nel calcolo?</strong><br />
+        Se ritieni che il calcolatore produca un risultato errato, ti invitiamo a scriverci a <a href="mailto:info@calcolalordonetto.it">info@calcolalordonetto.it</a> includendo il maggior numero di dettagli possibile. Le informazioni piu' utili per diagnosticare il problema sono: la <strong>RAL inserita</strong>, la <strong>regione e il comune</strong> selezionati, il <strong>CCNL applicato</strong> e il numero di mensilita', il <strong>risultato ottenuto</strong> dal calcolatore e il <strong>risultato atteso</strong> (ad esempio il netto della tua busta paga reale). Se puoi, allega anche una copia anonimizzata del cedolino per facilitare il confronto. Ogni segnalazione viene presa in carico con la massima priorita' e ci aiuta a migliorare continuamente la precisione degli algoritmi.
+      </p>
+
+      <h2>Altre Modalita' di Supporto</h2>
+      <p>
+        Oltre a contattarci direttamente, ci sono altri modi in cui puoi supportare il progetto {SITE.name} e contribuire al suo miglioramento continuo.
+      </p>
+      <p>
+        Il modo piu' semplice e' <strong>condividere il sito</strong> con colleghi, amici e familiari che potrebbero trovarlo utile. Molti lavoratori non conoscono la propria situazione fiscale nel dettaglio e uno strumento gratuito per calcolare il netto dal lordo puo' fare una grande differenza, soprattutto in fase di trattativa salariale o di cambio lavoro. Se il nostro calcolatore ti ha aiutato a capire meglio la tua busta paga, parla di noi: il passaparola e' il modo migliore per far crescere una risorsa gratuita.
+      </p>
+      <p>
+        Puoi anche condividere il link specifico del calcolatore che hai trovato piu' utile sui social network, nei gruppi di discussione sul lavoro, nei forum dedicati alla finanza personale o nelle chat di colleghi. Ogni condivisione aiuta un altro lavoratore a comprendere meglio quanto guadagna realmente e a prendere decisioni piu' consapevoli sulla propria carriera e sul proprio stipendio.
+      </p>
+      <p>
+        Ogni <strong>feedback e' prezioso</strong> e ci aiuta a migliorare. Non e' necessario aver trovato un errore per scriverci: anche i suggerimenti su come rendere l'interfaccia piu' intuitiva, le richieste di nuove funzionalita' e le osservazioni sulla chiarezza dei contenuti sono estremamente utili. Leggiamo e consideriamo ogni messaggio, e molte delle funzionalita' attualmente disponibili sui nostri calcolatori sono nate proprio dal feedback degli utenti.
+      </p>
+      <p>
+        Se sei un professionista del settore fiscale o del lavoro e desideri collaborare in modo piu' strutturato, ad esempio contribuendo alla revisione dei contenuti delle guide, alla verifica dei parametri di calcolo o alla redazione di approfondimenti tematici, siamo aperti a forme di collaborazione. Scrivici a <a href="mailto:info@calcolalordonetto.it">info@calcolalordonetto.it</a> presentandoti brevemente e spiegando come vorresti contribuire.
+      </p>
+
+      <h2>Informazioni sulla Privacy nelle Comunicazioni</h2>
+      <p>
+        Le email inviate al nostro indirizzo di contatto vengono trattate nel rispetto della normativa sulla privacy (GDPR, Regolamento UE 2016/679). Le utilizziamo esclusivamente per rispondere alla tua richiesta e non vengono condivise con terze parti, inserite in mailing list o utilizzate per finalita' commerciali. Non inviamo newsletter, email promozionali o comunicazioni non richieste. Per maggiori dettagli sul trattamento dei dati personali, consulta la nostra <a href="/privacy">Informativa sulla Privacy</a>.
+      </p>
+      <p>
+        Ti ricordiamo che tutti i calcoli effettuati sul nostro sito avvengono direttamente nel tuo browser e nessun dato inserito nei calcolatori viene trasmesso ai nostri server o registrato in alcun modo. Le uniche informazioni che riceviamo sono quelle che decidi volontariamente di comunicarci tramite email.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Vedi anche: <a href="/chi-siamo">Chi Siamo</a> | <a href="/privacy">Informativa sulla Privacy</a> | <a href="/termini">Termini e Condizioni</a>
+      </p>
+    </div>
+  </div>
+</Layout>

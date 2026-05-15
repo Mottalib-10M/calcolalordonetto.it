@@ -1,0 +1,593 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import Pensione from '../components/calcolatori/Pensione';
+
+const title = 'Calcolo Pensione INPS 2026: Simulatore Contributivo';
+const description = 'Simula la tua pensione INPS con il sistema contributivo: inserisci eta\', RAL e contributi per stimare montante, pensione netta mensile e tasso di sostituzione.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Pensione INPS', url: `${SITE.url}/calcolo-pensione` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Pensione INPS - Simulatore Contributivo"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Pensione INPS: Simulatore Contributivo
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Stima la tua futura pensione INPS in base a eta', RAL e anni di contributi versati.
+  </p>
+
+  <Pensione client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come funziona il sistema pensionistico contributivo italiano
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il sistema pensionistico italiano si basa, per chi ha iniziato a lavorare dopo il 1 gennaio 1996,
+        interamente sul <strong>metodo contributivo</strong>, introdotto dalla Riforma Dini (Legge 335/1995)
+        e consolidato dalle successive riforme Maroni (2004), Prodi (2007) e Fornero (2011). In questo
+        sistema, la pensione non dipende dall'ultimo stipendio percepito (come nel vecchio metodo
+        retributivo), ma dall'ammontare totale dei contributi versati durante l'intera vita lavorativa,
+        rivalutati nel tempo e convertiti in rendita attraverso coefficienti attuariali.
+      </p>
+      <p>
+        Per i lavoratori che hanno iniziato a contribuire prima del 1996, il calcolo e' "misto": una
+        parte retributiva (per i contributi fino al 1995 o 2011) e una parte contributiva. Il nostro
+        simulatore utilizza il metodo contributivo puro, che e' quello che si applica integralmente
+        alla maggior parte dei lavoratori giovani e di mezza eta'.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        L'aliquota IVS: 33% per i dipendenti
+      </h3>
+      <p>
+        L'aliquota contributiva IVS (Invalidita', Vecchiaia e Superstiti) per i lavoratori dipendenti
+        e' pari al <strong>33% della retribuzione lorda</strong>. Questa aliquota e' suddivisa tra
+        datore di lavoro e dipendente:
+      </p>
+      <ul>
+        <li><strong>23,81%</strong> a carico del datore di lavoro</li>
+        <li><strong>9,19%</strong> a carico del dipendente (trattenuto in busta paga)</li>
+      </ul>
+      <p>
+        Ai fini del calcolo della pensione, conta l'aliquota complessiva del 33%: ogni anno,
+        il montante contributivo aumenta di un importo pari al 33% della retribuzione annua lorda.
+        Questo significa che su una RAL di 35.000 &euro;, ogni anno vengono "accantonati" virtualmente
+        11.550 &euro; nel montante contributivo individuale.
+      </p>
+      <p>
+        Per gli iscritti alla Gestione Separata INPS (collaboratori e professionisti senza cassa),
+        l'aliquota e' diversa: 26,07% per chi ha gia' un'altra copertura previdenziale, 33,72% per
+        chi non ne ha. Per gli artigiani e commercianti l'aliquota e' del 24%.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Il montante contributivo e la rivalutazione
+      </h3>
+      <p>
+        Il <strong>montante contributivo</strong> e' il "salvadanaio virtuale" che cresce durante la vita
+        lavorativa. Ogni anno, il montante esistente viene rivalutato in base alla media mobile quinquennale
+        del tasso di crescita nominale del PIL italiano, calcolata dall'ISTAT. Il montante non e' investito
+        nei mercati finanziari: e' un importo puramente contabile, gestito dall'INPS secondo il principio
+        della ripartizione (i contributi dei lavoratori attuali finanziano le pensioni dei pensionati attuali).
+      </p>
+      <p>
+        Il tasso di rivalutazione e' fondamentale per la crescita del montante. Negli ultimi 20 anni, il
+        tasso medio di rivalutazione e' stato di circa l'1,5% annuo, riflettendo la debole crescita economica
+        italiana. Il nostro simulatore utilizza un tasso conservativo dell'1,5%. In periodi di recessione
+        (come il 2009 o il 2020), il tasso di rivalutazione puo' scendere a zero o quasi, poiche' la legge
+        impedisce che il montante si riduca (floor a 1%).
+      </p>
+      <p>
+        La formula annuale del montante e':
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        M<sub>t</sub> = M<sub>t-1</sub> &times; (1 + tasso PIL) + RAL<sub>t</sub> &times; 33%
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        I coefficienti di trasformazione
+      </h3>
+      <p>
+        Al momento del pensionamento, il montante accumulato viene convertito in rendita annua attraverso
+        i <strong>coefficienti di trasformazione</strong>, che dipendono dall'eta' al pensionamento.
+        Piu' alta e' l'eta', piu' alto e' il coefficiente (perche' la rendita attesa e' piu' breve).
+      </p>
+      <p>
+        I coefficienti vengono aggiornati ogni due anni dal MEF (Ministero dell'Economia e delle Finanze)
+        in base all'aspettativa di vita calcolata dall'ISTAT. L'ultimo aggiornamento, valido per il
+        biennio 2024-2025, e' stato emanato con il Decreto MEF del 20 novembre 2023.
+      </p>
+    </div>
+
+    <!-- Tabella coefficienti completa -->
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Eta' pensionamento</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Coefficiente</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Pensione su 100.000 &euro; montante</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">57 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,270%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.270 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">58 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,382%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.382 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">59 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,504%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.504 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,636%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.636 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">61 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,781%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.781 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">62 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,940%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.940 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">63 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,115%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.115 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">64 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,308%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.308 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">65 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,523%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.523 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">66 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,723%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.723 &euro;/anno</td>
+          </tr>
+          <tr class="bg-brand/5 dark:bg-brand/10">
+            <td class="px-4 py-3 font-semibold text-brand">67 anni (vecchiaia)</td>
+            <td class="px-4 py-3 font-semibold text-brand">5,931%</td>
+            <td class="px-4 py-3 font-semibold text-brand">5.931 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">68 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,154%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.154 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">69 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,395%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.395 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">70 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,655%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.655 &euro;/anno</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">71 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,938%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.938 &euro;/anno</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Requisiti per la pensione di vecchiaia
+      </h3>
+      <p>
+        La <strong>pensione di vecchiaia</strong> ordinaria richiede il raggiungimento di due requisiti
+        concomitanti:
+      </p>
+      <ul>
+        <li><strong>Eta' anagrafica</strong>: 67 anni (requisito fissato fino al 2026, soggetto ad
+          adeguamento all'aspettativa di vita a partire dal 2027)</li>
+        <li><strong>Anzianita' contributiva</strong>: almeno 20 anni di contributi versati</li>
+      </ul>
+      <p>
+        Per chi e' nel sistema contributivo puro (primo contributo dal 1 gennaio 1996), c'e' un requisito
+        aggiuntivo: l'importo della pensione deve essere almeno pari a 1,5 volte l'assegno sociale
+        (circa 534 &euro;/mese nel 2026, quindi la soglia e' circa 801 &euro;/mese). Se la pensione
+        calcolata e' inferiore a questa soglia, il lavoratore deve attendere i 71 anni per il
+        pensionamento, con il solo requisito di 5 anni di contributi.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Pensione anticipata
+      </h3>
+      <p>
+        La <strong>pensione anticipata</strong> prescinde dall'eta' anagrafica e si basa esclusivamente
+        sull'anzianita' contributiva:
+      </p>
+      <ul>
+        <li><strong>Uomini</strong>: 42 anni e 10 mesi di contributi</li>
+        <li><strong>Donne</strong>: 41 anni e 10 mesi di contributi</li>
+      </ul>
+      <p>
+        E' prevista inoltre una finestra di attesa di 3 mesi dalla maturazione del requisito
+        all'effettiva decorrenza della pensione. Esistono anche canali speciali come Quota 103
+        (62 anni di eta' + 41 anni di contributi, ma con penalizzazioni nel contributivo) e APE
+        Sociale per categorie specifiche di lavoratori in difficolta'.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: lavoratore di 30 anni con RAL di 32.000 &euro;
+      </h3>
+      <p>
+        Prendiamo il caso di Luca, 30 anni, che ha iniziato a lavorare a 25 anni con uno stipendio
+        lordo di circa 27.000 &euro; e oggi guadagna 32.000 &euro; lordi annui. Ha 5 anni di contributi
+        versati. Ipotizziamo una crescita della RAL del 2% annuo e un tasso di rivalutazione del
+        montante dell'1,5%.
+      </p>
+      <p>
+        Ogni anno, il suo montante cresce di 32.000 &euro; &times; 33% = 10.560 &euro; di nuovi contributi
+        (crescenti nel tempo con la RAL), piu' la rivalutazione del montante esistente. A 67 anni, dopo
+        42 anni di contribuzione totale, il montante stimato e' di circa 480.000-520.000 &euro;.
+      </p>
+      <p>
+        Applicando il coefficiente di trasformazione a 67 anni (5,931%), la pensione lorda annua e' di
+        circa 28.500-30.800 &euro;, corrispondenti a circa 2.190-2.370 &euro;/mese lordi su 13 mensilita'.
+        Al netto dell'IRPEF e delle addizionali, la pensione netta mensile si aggira sui 1.680-1.820 &euro;.
+      </p>
+      <p>
+        Il <strong>tasso di sostituzione</strong> (rapporto tra pensione netta e ultimo stipendio netto)
+        e' di circa il 55-65% per un lavoratore dipendente con sistema contributivo puro. Questo
+        significa che la pensione coprira' poco piu' della meta' del tenore di vita da lavoratore,
+        rendendo essenziale la previdenza complementare.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Il tasso di sostituzione: la verita' sulla pensione contributiva
+      </h3>
+      <p>
+        Il <strong>tasso di sostituzione</strong> e' il rapporto tra la prima rata di pensione netta e
+        l'ultimo stipendio netto percepito. E' l'indicatore piu' importante per capire quanto cambiera'
+        il tenore di vita al momento del pensionamento. Nel sistema retributivo, il tasso di sostituzione
+        poteva arrivare all'80% dell'ultimo stipendio. Nel sistema contributivo, i valori sono
+        significativamente piu' bassi:
+      </p>
+      <ul>
+        <li><strong>55-65%</strong> per un lavoratore dipendente con carriera continua e RAL media</li>
+        <li><strong>45-55%</strong> per un lavoratore con carriera frammentata o periodi di disoccupazione</li>
+        <li><strong>35-45%</strong> per lavoratori autonomi (aliquota contributiva inferiore al 33%)</li>
+      </ul>
+      <p>
+        La Ragioneria Generale dello Stato stima che il tasso di sostituzione per un lavoratore dipendente
+        "tipo" (carriera continua, RAL media crescente) si stabilizzera' intorno al 60% nei prossimi decenni.
+        Questo gap rispetto allo stipendio da lavoratore rende indispensabile pianificare forme di
+        risparmio integrativo.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Fondi pensione complementari: perche' sono importanti
+      </h3>
+      <p>
+        I <strong>fondi pensione complementari</strong> sono lo strumento principale per integrare la
+        pensione pubblica. In Italia esistono diverse tipologie:
+      </p>
+      <ul>
+        <li><strong>Fondi negoziali</strong> (o chiusi): riservati a specifiche categorie di lavoratori
+          (es. Cometa per i metalmeccanici, Fonte per il commercio). Hanno costi molto bassi e
+          spesso prevedono un contributo aggiuntivo del datore di lavoro.</li>
+        <li><strong>Fondi aperti</strong>: accessibili a tutti, gestiti da banche, assicurazioni e SGR.
+          Costi leggermente superiori ai fondi negoziali.</li>
+        <li><strong>PIP (Piani Individuali Pensionistici)</strong>: prodotti assicurativi con costi
+          generalmente piu' elevati. Sconsigliati dalla maggior parte dei consulenti indipendenti.</li>
+      </ul>
+      <p>
+        I vantaggi fiscali dei fondi pensione sono significativi:
+      </p>
+      <ul>
+        <li><strong>Deducibilita' dei contributi</strong>: fino a 5.164,57 &euro;/anno dal reddito
+          imponibile, con un risparmio fiscale che va dal 23% al 43% a seconda dello scaglione IRPEF.</li>
+        <li><strong>Tassazione agevolata dei rendimenti</strong>: 20% (vs 26% degli investimenti ordinari)
+          e 12,5% sulla quota di titoli di Stato.</li>
+        <li><strong>Tassazione ridotta delle prestazioni</strong>: aliquota massima del 15%, che si
+          riduce fino al 9% per chi ha piu' di 15 anni di iscrizione al fondo.</li>
+        <li><strong>Contributo del datore di lavoro</strong>: per i fondi negoziali, il datore versa
+          un contributo aggiuntivo (tipicamente l'1-2% della RAL) che si attiva solo se il dipendente
+          aderisce e versa la propria quota. Non aderire significa rinunciare a retribuzione.</li>
+        <li><strong>TFR al fondo pensione</strong>: destinare il TFR al fondo pensione permette di
+          beneficiare dei rendimenti di mercato (storicamente superiori alla rivalutazione del TFR
+          in azienda) e della tassazione agevolata sulle prestazioni.</li>
+      </ul>
+      <p>
+        Per un lavoratore dipendente con RAL di 35.000 &euro; e aliquota marginale del 35%, versare
+        5.164 &euro;/anno in un fondo pensione genera un risparmio fiscale immediato di circa 1.807 &euro;.
+        Su 30 anni, considerando i rendimenti del fondo, questo si traduce in una rendita complementare
+        che puo' aumentare il tasso di sostituzione dal 60% al 75-80%.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Parametri previdenziali di riferimento (2026)
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il simulatore utilizza i seguenti parametri ufficiali e ipotesi per il calcolo della pensione:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Parametro</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Valore</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Fonte</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Aliquota IVS dipendenti</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">33% (9,19% + 23,81%)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">INPS</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Tasso rivalutazione montante</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">1,5% (ipotesi)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Media storica PIL nominale</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Coefficiente a 67 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,931%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Decreto MEF 20/11/2023</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Eta' pensione vecchiaia</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">67 anni + 20 anni contributi</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Legge 214/2011 (Fornero)</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Pensione anticipata uomini</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">42 anni e 10 mesi contributi</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Legge 214/2011</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Pensione anticipata donne</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">41 anni e 10 mesi contributi</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Legge 214/2011</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Massimale contributivo 2026</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~120.607 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">INPS (adeguato ISTAT)</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Deducibilita' fondo pensione</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Fino a 5.164,57 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">D.Lgs. 252/2005</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti sulla pensione INPS
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come si calcola la pensione con il sistema contributivo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il calcolo si basa su tre elementi: (1) il montante contributivo, dato dalla somma dei
+          contributi versati (33% della RAL per i dipendenti) rivalutati annualmente in base alla
+          crescita del PIL; (2) il coefficiente di trasformazione, che dipende dall'eta' al
+          pensionamento; (3) la pensione lorda annua = montante &times; coefficiente. La pensione
+          netta si ottiene sottraendo IRPEF e addizionali, tenendo conto delle detrazioni per
+          pensionati.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto prendero' di pensione rispetto allo stipendio?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il tasso di sostituzione (pensione netta / ultimo stipendio netto) per un lavoratore
+          dipendente nel sistema contributivo puro si aggira intorno al 55-65% con una carriera
+          continua. Questo significa che la pensione coprira' circa il 60% del tenore di vita da
+          lavoratore. Per i lavoratori autonomi il tasso e' ancora piu' basso (35-45%) a causa
+          dell'aliquota contributiva inferiore. Per questo e' fondamentale integrare con un fondo
+          pensione complementare.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa sono i coefficienti di trasformazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          I coefficienti di trasformazione convertono il montante contributivo accumulato in una
+          rendita annua. Sono calcolati dal MEF in base all'aspettativa di vita e vengono aggiornati
+          ogni due anni. Piu' alta e' l'eta' al pensionamento, piu' alto e' il coefficiente: a 57
+          anni e' il 4,270%, a 67 anni il 5,931%, a 71 anni il 6,938%. Questo perche' chi va in
+          pensione piu' tardi percepira' la rendita per meno anni, quindi ogni rata e' piu' alta.
+          I coefficienti tendono a diminuire nel tempo con l'aumento dell'aspettativa di vita.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Conviene aderire a un fondo pensione complementare?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Nella grande maggioranza dei casi, si'. I vantaggi sono molteplici: deducibilita' fino
+          a 5.164 &euro;/anno (risparmio IRPEF dal 23% al 43%), contributo aggiuntivo del datore
+          di lavoro (per i fondi negoziali), tassazione agevolata sui rendimenti (20% vs 26%) e
+          sulle prestazioni (dal 9% al 15% vs aliquote IRPEF ordinarie). Non aderire al fondo
+          negoziale di categoria significa rinunciare al contributo del datore, che e' di fatto
+          retribuzione perduta. Il fondo pensione e' particolarmente importante per chi e' nel
+          sistema contributivo puro, dove il tasso di sostituzione della pensione pubblica e' basso.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Dove posso trovare il mio montante contributivo reale?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Puoi consultare il tuo estratto conto contributivo e il montante accumulato attraverso
+          il servizio "La mia pensione futura" sul portale INPS (inps.it), accessibile con SPID,
+          CIE o CNS. Il servizio mostra i contributi versati, il montante rivalutato, e fornisce
+          una stima della pensione futura basata su diverse ipotesi di carriera. E' il dato piu'
+          affidabile per verificare la tua situazione previdenziale reale.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quando posso andare in pensione anticipata?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La pensione anticipata ordinaria richiede 42 anni e 10 mesi di contributi per gli uomini
+          e 41 anni e 10 mesi per le donne, indipendentemente dall'eta'. Chi ha iniziato a lavorare
+          a 20 anni puo' teoricamente andare in pensione anticipata intorno ai 63 anni. Esistono
+          anche canali specifici come Quota 103 (62+41 anni), Opzione Donna (per lavoratrici con
+          requisiti specifici) e APE Sociale (per lavoratori in condizioni di difficolta'). Ogni
+          canale ha requisiti e penalizzazioni diversi, quindi e' consigliabile consultare un
+          patronato o il sito INPS per valutare la propria situazione specifica.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come vengono tassate le pensioni?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Le pensioni INPS sono soggette a IRPEF con le stesse aliquote dei redditi da lavoro
+          dipendente (23% fino a 28.000 &euro;, 35% da 28.001 a 50.000 &euro;, 43% oltre 50.000 &euro;).
+          I pensionati beneficiano di detrazioni specifiche (diverse da quelle per lavoratori
+          dipendenti) che riducono l'imposta effettiva. Si applicano anche le addizionali regionali
+          e comunali. Le pensioni sono erogate su 13 mensilita' (la tredicesima arriva a dicembre).
+          Le pensioni basse (sotto circa 8.500 &euro;/anno) non pagano IRPEF grazie alle detrazioni.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto e' accurata la stima di questo simulatore?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Questo simulatore fornisce una stima indicativa basata su ipotesi semplificative: crescita
+          costante della RAL, tasso di rivalutazione PIL fisso all'1,5%, coefficienti di trasformazione
+          attuali (che verranno aggiornati in futuro). La realta' sara' diversa perche' la RAL non
+          cresce linearmente, il PIL varia di anno in anno, i coefficienti cambiano con l'aspettativa
+          di vita, e le regole previdenziali possono essere modificate. Per una stima ufficiale,
+          utilizza il servizio "La mia pensione futura" su inps.it, che si basa sui dati reali del
+          tuo estratto conto contributivo.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-fire" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo FIRE
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola il patrimonio per l'indipendenza finanziaria
+        </p>
+      </a>
+      <a href="/calcolo-tfr" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo TFR
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola il TFR maturato e la tassazione
+        </p>
+      </a>
+      <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'IRPEF e le detrazioni fiscali
+        </p>
+      </a>
+      <a href="/calcolo-piano-accumulo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Piano di Accumulo (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula il rendimento di un investimento periodico
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

@@ -1,0 +1,464 @@
+---
+import GuidaLayout from '../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../config';
+
+const title = "Addizionali Regionali e Comunali IRPEF: Guida Completa 2026";
+const description = "Guida completa alle addizionali regionali e comunali IRPEF 2026: come si calcolano, le aliquote regione per regione, le differenze tra comuni e un esempio pratico di confronto.";
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Guide', url: `${SITE.url}/guide` },
+  { name: 'Addizionali Regionali e Comunali', url: `${SITE.url}/guide/addizionali-regionali-comunali` },
+];
+
+const faqs = [
+  {
+    question: 'Le addizionali regionali e comunali si pagano anche sotto la no tax area?',
+    answer: 'Dipende dalla regione e dal comune di residenza. L\'IRPEF nazionale prevede una no tax area di 8.500 euro, ma le addizionali locali seguono regole proprie. Alcune regioni e comuni prevedono soglie di esenzione (ad esempio, il Lazio esenta i redditi fino a 12.000 euro dall\'addizionale regionale), mentre altre applicano l\'addizionale anche su redditi molto bassi. E\' quindi fondamentale verificare le delibere del proprio comune e della propria regione per sapere se si e\' soggetti al pagamento.',
+  },
+  {
+    question: 'Come vengono trattenute le addizionali in busta paga?',
+    answer: 'Le addizionali regionali e comunali vengono trattenute in busta paga con modalita\' diverse. L\'addizionale regionale, calcolata sul reddito dell\'anno precedente, viene trattenuta in rate mensili da marzo a gennaio dell\'anno successivo (11 rate). L\'addizionale comunale si divide in due componenti: il saldo dell\'anno precedente (trattenuto in 11 rate da marzo a gennaio dell\'anno successivo) e l\'acconto per l\'anno in corso (trattenuto in 9 rate da marzo a novembre, pari al 30% dell\'addizionale dell\'anno precedente). Questo spiega perche\' le trattenute per addizionali compaiono in busta paga anche nei mesi in cui non si percepiscono redditi particolarmente elevati.',
+  },
+  {
+    question: 'Posso ridurre le addizionali trasferendo la residenza?',
+    answer: 'Si, in linea di principio. Le addizionali si calcolano in base alla regione e al comune di residenza al 1 gennaio dell\'anno di riferimento. Se trasferisci la residenza in una regione o in un comune con aliquote piu\' basse prima del 1 gennaio, le addizionali dell\'anno successivo saranno calcolate con le nuove aliquote. Tuttavia, il trasferimento di residenza deve essere reale e effettivo: non e\' sufficiente un cambio formale senza un effettivo spostamento del domicilio abituale. Le differenze tra regioni possono essere significative, come illustrato negli esempi di questa guida.',
+  },
+  {
+    question: 'Le addizionali si applicano anche sulla tredicesima?',
+    answer: 'No. Le addizionali regionali e comunali non vengono calcolate separatamente sulla tredicesima mensilita\'. Esse si calcolano sull\'imponibile fiscale annuo complessivo, che include gia\' tutte le mensilita\' (compresa la tredicesima e l\'eventuale quattordicesima). La tredicesima, quando viene erogata a dicembre, subisce le trattenute per contributi INPS e IRPEF, ma non le addizionali in modo diretto. Le addizionali vengono poi distribuite in rate mensili nell\'anno successivo.',
+  },
+  {
+    question: 'Dove trovo le aliquote aggiornate del mio comune?',
+    answer: 'Le aliquote delle addizionali comunali IRPEF vengono deliberate dai singoli comuni e pubblicate sul portale del Dipartimento delle Finanze del Ministero dell\'Economia (<a href="https://www.finanze.gov.it" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">finanze.gov.it</a>), nella sezione dedicata alla fiscalita\' locale. In alternativa, puoi consultare il sito istituzionale del tuo comune o utilizzare il nostro <a href="/comparatore-regioni" class="text-brand hover:underline">comparatore regionale</a> per un confronto immediato tra diverse aree geografiche. Le aliquote vengono aggiornate solitamente entro marzo di ogni anno.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-05-15"
+  dateModified="2026-05-15"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#cosa-sono-le-addizionali-irpef" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Cosa Sono le Addizionali IRPEF</a></li>
+      <li><a href="#base-normativa" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Base Normativa</a></li>
+      <li><a href="#addizionale-regionale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Regionale</a></li>
+      <li><a href="#aliquote-regionali-a-confronto" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Aliquote Regionali a Confronto</a></li>
+      <li><a href="#addizionale-comunale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Comunale</a></li>
+      <li><a href="#aliquote-comunali-principali-citta" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Aliquote Comunali: Principali Citta'</a></li>
+      <li><a href="#esempio-pratico-confronto" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esempio Pratico di Confronto</a></li>
+      <li><a href="#come-vengono-trattenute" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Come Vengono Trattenute</a></li>
+      <li><a href="#esenzioni-e-soglie" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esenzioni e Soglie</a></li>
+      <li><a href="#strumenti-utili" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Strumenti Utili</a></li>
+      <li><a href="#domande-frequenti" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Domande Frequenti</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="cosa-sono-le-addizionali-irpef">Cosa Sono le Addizionali IRPEF</h2>
+
+  <p>
+    Le addizionali regionali e comunali IRPEF sono imposte locali che si aggiungono all'IRPEF nazionale. Ogni lavoratore dipendente o pensionato residente in Italia e' tenuto a versarle in proporzione al proprio reddito imponibile. A differenza dell'IRPEF statale, che e' uguale su tutto il territorio nazionale, le addizionali variano in modo significativo da regione a regione e da comune a comune. Questo significa che, a parita' di RAL, due lavoratori residenti in localita' diverse possono ritrovarsi con uno stipendio netto anche sensibilmente diverso.
+  </p>
+  <p>
+    Le addizionali si calcolano sullo stesso imponibile fiscale utilizzato per l'IRPEF, cioe' la RAL al netto dei contributi INPS a carico del lavoratore. Tuttavia, a differenza dell'IRPEF nazionale, le addizionali <strong>non beneficiano delle detrazioni per lavoro dipendente</strong>: vengono calcolate direttamente sull'imponibile, senza alcuna riduzione. Questo le rende un prelievo proporzionale (o progressivo, nel caso di regioni e comuni con scaglioni) che incide in modo diretto sul netto finale.
+  </p>
+  <p>
+    Per avere un'idea dell'impatto, consideriamo che su un reddito imponibile di 30.000 euro le addizionali possono pesare da circa 400 euro annui nelle aree piu' favorevoli fino a oltre 1.200 euro nelle aree con le aliquote piu' elevate. Una differenza che, su base mensile, puo' tradursi in 50 o 60 euro in piu' o in meno nella busta paga.
+  </p>
+
+  <h2 id="base-normativa">Base Normativa</h2>
+
+  <p>
+    Le addizionali IRPEF trovano il loro fondamento in due provvedimenti legislativi principali:
+  </p>
+  <ul>
+    <li><strong>D.Lgs. 28 settembre 1998, n. 360</strong>: istituisce l'addizionale comunale all'IRPEF, attribuendo ai comuni la facolta' di deliberare un'aliquota entro il limite massimo dello 0,8% (successivamente elevato allo 0,9%). Il decreto stabilisce le modalita' di calcolo, i termini per le delibere comunali e le regole per l'applicazione in busta paga.</li>
+    <li><strong>D.Lgs. 15 dicembre 1997, n. 446</strong>: nell'ambito dell'istituzione dell'IRAP, ha introdotto anche l'addizionale regionale all'IRPEF, attribuendo alle regioni la potesta' di fissare l'aliquota entro determinati limiti. L'aliquota base e' stata fissata inizialmente all'1,23%, con la possibilita' per le regioni di incrementarla fino a un massimo del 3,33%.</li>
+  </ul>
+  <p>
+    La <strong>Legge di Bilancio 2026</strong> non ha introdotto modifiche sostanziali alla disciplina delle addizionali locali, confermando il quadro normativo esistente. Le singole regioni e i singoli comuni hanno poi provveduto, con delibere proprie, a fissare le aliquote applicabili per il 2026. E' importante sottolineare che le addizionali sono imposte autonome rispetto all'IRPEF statale: ogni ente locale ha la facolta' di definire scaglioni e aliquote proprie, che non coincidono necessariamente con quelli nazionali.
+  </p>
+
+  <h2 id="addizionale-regionale">Addizionale Regionale</h2>
+
+  <p>
+    L'addizionale regionale IRPEF e' la componente piu' rilevante tra le imposte locali sul reddito. Ogni regione italiana puo' applicare un'aliquota che va da un minimo dell'1,23% (l'aliquota base fissata dalla legge statale) fino a un massimo del 3,33%. Alcune regioni applicano un'aliquota fissa uguale per tutti i livelli di reddito, mentre altre adottano un sistema progressivo per scaglioni, con aliquote crescenti al crescere del reddito imponibile.
+  </p>
+  <p>
+    Le regioni a statuto speciale (Sicilia, Sardegna, Valle d'Aosta, Trentino-Alto Adige e Friuli Venezia Giulia) godono di maggiore autonomia in materia fiscale e tendono generalmente ad applicare aliquote piu' contenute. Le regioni del Centro e del Sud, spesso gravate da deficit sanitari, tendono invece ad avere aliquote piu' elevate, perche' parte del gettito dell'addizionale regionale e' destinata a coprire i disavanzi del servizio sanitario regionale.
+  </p>
+
+  <h2 id="aliquote-regionali-a-confronto">Aliquote Regionali a Confronto</h2>
+
+  <p>
+    Vediamo nel dettaglio le aliquote di alcune regioni rappresentative per il 2026:
+  </p>
+
+  <h3>Lombardia (progressiva, 4 scaglioni)</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Scaglione di reddito</th>
+          <th class="py-3 pl-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 15.000 &euro;</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">1,23%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 15.001 a 28.000 &euro;</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">1,58%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 28.001 a 50.000 &euro;</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">1,72%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 50.000 &euro;</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">1,73%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Lazio (progressiva, 2 scaglioni)</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Scaglione di reddito</th>
+          <th class="py-3 pl-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 28.000 &euro;</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">1,73%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 28.000 &euro;</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">3,33%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Il Lazio e' storicamente una delle regioni con le addizionali piu' elevate d'Italia, a causa dei piani di rientro dal deficit sanitario che hanno imposto l'applicazione delle aliquote massime. Questo si traduce in un prelievo significativamente superiore rispetto alla media nazionale.
+  </p>
+
+  <h3>Campania (progressiva)</h3>
+
+  <p>
+    La Campania applica un sistema progressivo con aliquote che partono dall'1,73% per i redditi fino a 15.000 euro e salgono gradualmente fino al 2,03% per i redditi superiori a 75.000 euro. Anche in questo caso, le aliquote elevate sono collegate ai piani di rientro dal deficit sanitario regionale. Per i redditi medi (intorno ai 30.000 euro di imponibile), l'aliquota effettiva si attesta intorno al 2,03%.
+  </p>
+
+  <h3>Friuli Venezia Giulia (progressiva, 2 scaglioni)</h3>
+
+  <p>
+    Il Friuli Venezia Giulia rappresenta uno degli esempi piu' virtuosi in Italia. In quanto regione a statuto speciale, applica un'aliquota dello <strong>0,70%</strong> per i redditi fino a 15.000 euro e dell'<strong>1,23%</strong> per la parte eccedente. Si tratta di aliquote tra le piu' basse tra tutte le regioni italiane. Questa differenza si traduce in un risparmio sostanziale rispetto alle regioni con aliquote elevate, come vedremo nell'esempio pratico.
+  </p>
+
+  <h3>Riepilogo aliquote regionali selezionate</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Regione</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Tipo</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota minima</th>
+          <th class="py-3 pl-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota massima</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Lombardia</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,23%</td>
+          <td class="py-3 pl-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,73%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Lazio</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,73%</td>
+          <td class="py-3 pl-4 text-center tabular-nums text-gray-900 dark:text-gray-100">3,33%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Campania</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,73%</td>
+          <td class="py-3 pl-4 text-center tabular-nums text-gray-900 dark:text-gray-100">2,03%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Friuli Venezia Giulia</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">0,70%</td>
+          <td class="py-3 pl-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,23%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Piemonte</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,62%</td>
+          <td class="py-3 pl-4 text-center tabular-nums text-gray-900 dark:text-gray-100">3,33%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Emilia Romagna</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,33%</td>
+          <td class="py-3 pl-4 text-center tabular-nums text-gray-900 dark:text-gray-100">2,03%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Trentino Alto Adige</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Fissa</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,23%</td>
+          <td class="py-3 pl-4 text-center tabular-nums text-gray-900 dark:text-gray-100">1,23%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Come si puo' osservare dalla tabella, la forbice tra la regione piu' economica (Friuli Venezia Giulia, con aliquote dallo 0,70% all'1,23%) e quella piu' costosa per i redditi elevati (Lazio, fino al 3,33%) e' molto ampia. Per un reddito imponibile di 40.000 euro, la differenza puo' superare i 700 euro all'anno.
+  </p>
+
+  <h2 id="addizionale-comunale">Addizionale Comunale</h2>
+
+  <p>
+    L'addizionale comunale IRPEF e' un'imposta deliberata da ciascun comune italiano, con un'aliquota che puo' variare dallo 0% fino a un massimo dello <strong>0,9%</strong> del reddito imponibile. Alcuni comuni scelgono di applicare un'aliquota fissa, mentre altri adottano un sistema progressivo per scaglioni. Esistono anche comuni che hanno deliberato l'azzeramento dell'addizionale o che prevedono esenzioni per determinate fasce di reddito.
+  </p>
+  <p>
+    A differenza dell'addizionale regionale, il cui impatto e' generalmente maggiore in termini assoluti, l'addizionale comunale puo' sembrare un prelievo contenuto. In realta', sommata all'addizionale regionale, contribuisce in modo significativo al divario di netto tra una citta' e l'altra. E' importante considerarla quando si confrontano offerte di lavoro in localita' diverse o quando si valuta un trasferimento di residenza.
+  </p>
+
+  <h2 id="aliquote-comunali-principali-citta">Aliquote Comunali: Principali Citta'</h2>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Comune</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Tipo</th>
+          <th class="py-3 pl-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Roma</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Fissa</td>
+          <td class="py-3 pl-4 text-center tabular-nums font-semibold text-brand">0,9%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Milano</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Fissa</td>
+          <td class="py-3 pl-4 text-center tabular-nums font-semibold text-brand">0,8%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Napoli</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Fissa</td>
+          <td class="py-3 pl-4 text-center tabular-nums font-semibold text-brand">0,9%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Torino</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 pl-4 text-center tabular-nums font-semibold text-brand">0,55%  a 0,9%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Firenze</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 pl-4 text-center tabular-nums font-semibold text-brand">0,2%  a 0,8%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Bologna</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Progressiva</td>
+          <td class="py-3 pl-4 text-center tabular-nums font-semibold text-brand">0,5%  a 0,8%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Udine</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">Fissa</td>
+          <td class="py-3 pl-4 text-center tabular-nums font-semibold text-brand">0,65%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Roma applica l'aliquota massima consentita dalla legge (0,9%), il che, sommato alle aliquote regionali elevate del Lazio, rende la Capitale una delle citta' con il prelievo locale complessivo piu' alto d'Italia. All'estremo opposto, Firenze, con un sistema progressivo che parte dallo 0,2% per i redditi piu' bassi, e' tra le grandi citta' con le addizionali comunali piu' contenute per chi ha un reddito medio.
+  </p>
+
+  <h2 id="esempio-pratico-confronto">Esempio Pratico di Confronto</h2>
+
+  <p>
+    Vediamo ora un caso concreto che illustra quanto le addizionali possano incidere sullo stipendio netto. Confrontiamo due lavoratori con la stessa <strong>RAL di 35.000 euro</strong>: uno residente nel <strong>Lazio (Roma)</strong>, l'altro in <strong>Friuli Venezia Giulia (Udine)</strong>.
+  </p>
+
+  <h3>Passo 1: calcolo dell'imponibile fiscale</h3>
+
+  <p>
+    Per entrambi i lavoratori, il primo passo e' sottrarre i contributi INPS dalla RAL:
+  </p>
+  <ul>
+    <li><strong>RAL:</strong> 35.000 &euro;</li>
+    <li><strong>Contributi INPS:</strong> 35.000 &times; 9,19% = 3.216,50 &euro;</li>
+    <li><strong>Imponibile fiscale:</strong> 35.000 &minus; 3.216,50 = <strong>31.783,50 &euro;</strong></li>
+  </ul>
+  <p>
+    L'imponibile fiscale e' identico per entrambi, perche' i contributi INPS non dipendono dalla residenza. Le differenze emergono nel calcolo delle addizionali.
+  </p>
+
+  <h3>Passo 2: addizionali per il residente nel Lazio (Roma)</h3>
+
+  <p>
+    <strong>Addizionale regionale Lazio</strong> (progressiva per scaglioni su 31.783,50 &euro;):
+  </p>
+  <ul>
+    <li>Sui primi 28.000 &euro; al 1,73%: 28.000 &times; 1,73% = 484,40 &euro;</li>
+    <li>Da 28.001 a 31.783,50 &euro; al 3,33%: 3.783,50 &times; 3,33% = 126,00 &euro;</li>
+    <li><strong>Totale addizionale regionale Lazio: ~610 &euro;</strong></li>
+  </ul>
+
+  <p>
+    <strong>Addizionale comunale Roma</strong> (aliquota fissa 0,9%):
+  </p>
+  <ul>
+    <li>31.783,50 &times; 0,9% = <strong>~286 &euro;</strong></li>
+  </ul>
+
+  <p>
+    <strong>Totale addizionali Lazio + Roma: ~896 &euro;/anno</strong>
+  </p>
+
+  <h3>Passo 3: addizionali per il residente in Friuli Venezia Giulia (Udine)</h3>
+
+  <p>
+    <strong>Addizionale regionale Friuli VG</strong> (progressiva su 31.783,50 &euro;):
+  </p>
+  <ul>
+    <li>Sui primi 15.000 &euro; al 0,70%: 15.000 &times; 0,70% = 105,00 &euro;</li>
+    <li>Da 15.001 a 31.783,50 &euro; al 1,23%: 16.783,50 &times; 1,23% = 206,44 &euro;</li>
+    <li><strong>Totale addizionale regionale Friuli VG: ~311 &euro;</strong></li>
+  </ul>
+
+  <p>
+    <strong>Addizionale comunale Udine</strong> (aliquota fissa 0,65%):
+  </p>
+  <ul>
+    <li>31.783,50 &times; 0,65% = <strong>~207 &euro;</strong></li>
+  </ul>
+
+  <p>
+    <strong>Totale addizionali Friuli VG + Udine: ~518 &euro;/anno</strong>
+  </p>
+
+  <h3>Riepilogo del confronto</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Lazio + Roma</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Friuli VG + Udine</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Addizionale regionale</td>
+          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400">610 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">311 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Addizionale comunale</td>
+          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400">286 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">207 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Totale addizionali</td>
+          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400 font-bold">896 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-bold">518 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Differenza annua</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100" colspan="2"><strong>~378 &euro;/anno</strong> (circa 29 &euro;/mese)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Il lavoratore residente a Roma paga <strong>circa 378 euro in piu' all'anno</strong> di addizionali rispetto al collega residente a Udine, a parita' di RAL. Su base mensile (calcolando 13 mensilita'), la differenza si traduce in circa <strong>29 euro al mese</strong> di netto in meno. Questa cifra, apparentemente contenuta, si accumula nel tempo: su 10 anni di carriera, la differenza supera i 3.700 euro.
+  </p>
+  <p>
+    Per verificare l'impatto delle addizionali sulla tua situazione specifica, utilizza il nostro <a href="/comparatore-regioni">comparatore regionale</a>, che permette di confrontare il netto tra diverse regioni e comuni inserendo la tua RAL.
+  </p>
+
+  <h2 id="come-vengono-trattenute">Come Vengono Trattenute in Busta Paga</h2>
+
+  <p>
+    Le addizionali non vengono trattenute nello stesso modo dell'IRPEF. Mentre l'IRPEF viene calcolata e trattenuta mensilmente dal datore di lavoro, le addizionali seguono un meccanismo di <strong>saldo e acconto</strong> che si distribuisce su piu' mesi.
+  </p>
+  <p>
+    Per l'<strong>addizionale regionale</strong>, il saldo relativo all'anno precedente viene trattenuto in <strong>11 rate mensili</strong>, da marzo dell'anno corrente a gennaio dell'anno successivo. Non e' previsto un meccanismo di acconto: si paga solo il saldo definitivo, calcolato sulla base del reddito effettivo dell'anno precedente.
+  </p>
+  <p>
+    Per l'<strong>addizionale comunale</strong>, il meccanismo e' piu' articolato. Il saldo dell'anno precedente viene trattenuto in 11 rate (da marzo a gennaio dell'anno successivo), mentre l'acconto per l'anno corrente, pari al 30% dell'addizionale dell'anno precedente, viene trattenuto in 9 rate (da marzo a novembre). Questo significa che nei mesi da marzo a novembre il lavoratore si trova a pagare sia il saldo dell'anno precedente sia l'acconto dell'anno in corso.
+  </p>
+  <p>
+    In caso di <strong>cessazione del rapporto di lavoro</strong>, il datore di lavoro e' tenuto a trattenere tutte le rate residue nell'ultima busta paga, il che puo' generare una trattenuta piu' consistente del solito.
+  </p>
+
+  <h2 id="esenzioni-e-soglie">Esenzioni e Soglie di Esenzione</h2>
+
+  <p>
+    Diverse regioni e comuni prevedono soglie di esenzione al di sotto delle quali le addizionali non sono dovute. Queste soglie non coincidono con la no tax area nazionale dell'IRPEF (8.500 euro). Ecco alcuni esempi significativi:
+  </p>
+  <ul>
+    <li><strong>Lazio:</strong> esenzione per redditi complessivi fino a 12.000 euro. Superata la soglia, le aliquote si applicano sull'intero reddito (sistema a "soglia", non a scaglione di esenzione).</li>
+    <li><strong>Lombardia:</strong> esenzione per redditi fino a 15.000 euro per i primi scaglioni agevolati.</li>
+    <li><strong>Roma:</strong> esenzione dall'addizionale comunale per redditi fino a 12.000 euro.</li>
+    <li><strong>Milano:</strong> esenzione per redditi fino a 21.000 euro per determinate categorie di contribuenti.</li>
+  </ul>
+  <p>
+    E' fondamentale verificare le delibere aggiornate del proprio comune e della propria regione, perche' le soglie di esenzione possono cambiare di anno in anno. Il portale del Dipartimento delle Finanze del Ministero dell'Economia pubblica l'elenco completo delle aliquote e delle esenzioni deliberate da ogni ente locale.
+  </p>
+
+  <h2 id="strumenti-utili">Strumenti Utili</h2>
+
+  <p>
+    Per calcolare con precisione le addizionali nella tua situazione specifica, puoi utilizzare i nostri strumenti gratuiti:
+  </p>
+
+  <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+    <a href="/comparatore-regioni" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Confronto tra Regioni</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Confronta le addizionali regionali e comunali tra diverse aree geografiche a parita' di RAL.</p>
+    </a>
+    <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Stipendio Netto</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Inserisci la RAL, la regione e il comune per ottenere il netto con tutte le trattenute dettagliate.</p>
+    </a>
+  </div>
+
+  <!-- FAQ Section -->
+  <h2 id="domande-frequenti">Domande Frequenti</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" />
+  </div>
+
+</GuidaLayout>

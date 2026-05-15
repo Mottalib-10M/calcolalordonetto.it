@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+import { SITE } from '../config';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schema?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = `${SITE.url}/og-default.png`,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const canonicalURL = canonical || Astro.url.href;
+---
+
+<!DOCTYPE html>
+<html lang="it-IT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#E63946" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content={SITE.name} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD Schema -->
+    {schema && <script type="application/ld+json" set:html={schema} />}
+  </head>
+  <body class="bg-white dark:bg-gray-950 text-charcoal dark:text-gray-100 min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Dark mode detection from system preference -->
+    <script is:inline>
+      (function () {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+          if (!localStorage.getItem('theme')) {
+            document.documentElement.classList.toggle('dark', e.matches);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,371 @@
+---
+import GuidaLayout from '../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../config';
+
+const title = "Come Si Calcola lo Stipendio Netto in Italia: Guida 2026";
+const description = "Scopri come calcolare lo stipendio netto dal lordo in Italia nel 2026. Guida completa con contributi INPS, IRPEF, detrazioni, addizionali ed esempio pratico.";
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Guide', url: `${SITE.url}/guide` },
+  { name: 'Come Si Calcola lo Stipendio Netto', url: `${SITE.url}/guide/come-si-calcola-lo-stipendio-netto` },
+];
+
+const faqs = [
+  {
+    question: 'Qual e la differenza tra RAL e stipendio netto?',
+    answer: 'La RAL (Retribuzione Annua Lorda) e il compenso totale annuo concordato con il datore di lavoro, prima di qualsiasi trattenuta. Lo stipendio netto e la somma che effettivamente ricevi in busta paga, dopo aver sottratto contributi INPS, IRPEF, addizionali regionali e comunali, e dopo aver aggiunto eventuali benefici come il trattamento integrativo. La differenza tra i due importi puo variare dal 25% al 45% a seconda del reddito e della residenza.',
+  },
+  {
+    question: 'Quanto si paga di INPS sul lordo?',
+    answer: 'Il lavoratore dipendente del settore privato paga il 9,19% della retribuzione lorda come contributi INPS a proprio carico. Per retribuzioni superiori alla prima fascia contributiva (circa 55.000 euro annui nel 2026) si aggiunge un ulteriore 1% sulla parte eccedente. I contributi INPS finanziano la pensione futura, la cassa integrazione, la disoccupazione (NASpI) e altre prestazioni previdenziali. A questi si sommano i contributi a carico del datore di lavoro (circa il 30%), che pero non vengono detratti dalla busta paga del lavoratore.',
+  },
+  {
+    question: 'Il trattamento integrativo si applica a tutti?',
+    answer: 'No. Il trattamento integrativo (ex bonus Renzi) di 1.200 euro annui spetta integralmente solo ai lavoratori dipendenti con reddito complessivo fino a 15.000 euro, a condizione che l\'IRPEF lorda sia superiore alle detrazioni per lavoro dipendente (cosiddetta \"capienza fiscale\"). Per redditi tra 15.001 e 28.000 euro puo spettare in misura ridotta, solo se la somma di specifiche detrazioni (lavoro dipendente, familiari, mutuo, spese sanitarie) supera l\'IRPEF lorda. Oltre i 28.000 euro non spetta alcun trattamento integrativo.',
+  },
+  {
+    question: 'Le addizionali cambiano molto da regione a regione?',
+    answer: 'Si, in modo significativo. L\'addizionale regionale IRPEF varia dallo 0,70% del Trentino-Alto Adige per i redditi bassi fino al 3,33% del Lazio per i redditi piu alti. La maggior parte delle regioni applica aliquote progressive su piu scaglioni. L\'addizionale comunale va da zero (alcuni comuni la azzerano) fino allo 0,9%, con una media nazionale intorno allo 0,8%. In termini pratici, su un reddito di 30.000 euro la differenza tra la regione piu economica e quella piu costosa puo superare i 600 euro all\'anno.',
+  },
+  {
+    question: 'Come verifico se il mio stipendio netto e corretto?',
+    answer: 'Puoi usare il nostro <a href="/" class="text-brand hover:underline">calcolatore stipendio netto</a> inserendo la tua RAL, la regione, il comune di residenza e il numero di mensilita previste dal tuo contratto. Confronta il risultato con la busta paga: le voci da verificare sono i contributi INPS trattenuti, l\'IRPEF netta (lorda meno detrazioni), le addizionali regionali e comunali, e l\'eventuale trattamento integrativo. Piccole differenze possono dipendere da superminimi, straordinari, benefit o arrotondamenti mensili.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#che-cose-lo-stipendio-netto" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Che Cos'e lo Stipendio Netto?</a></li>
+      <li><a href="#il-percorso-dal-lordo-al-netto" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Il Percorso dal Lordo al Netto</a></li>
+      <li><a href="#passo-1-i-contributi-inps" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Passo 1: I Contributi INPS</a></li>
+      <li><a href="#passo-2-limponibile-fiscale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Passo 2: L'Imponibile Fiscale</a></li>
+      <li><a href="#passo-3-il-calcolo-dellirpef" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Passo 3: Il Calcolo dell'IRPEF</a></li>
+      <li><a href="#passo-4-le-detrazioni" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Passo 4: Le Detrazioni</a></li>
+      <li><a href="#passo-5-le-addizionali" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Passo 5: Le Addizionali</a></li>
+      <li><a href="#passo-6-il-trattamento-integrativo" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Passo 6: Il Trattamento Integrativo</a></li>
+      <li><a href="#passo-7-il-cuneo-fiscale-2026" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Passo 7: Il Cuneo Fiscale 2026</a></li>
+      <li><a href="#esempio-completo" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esempio Completo</a></li>
+      <li><a href="#strumenti-utili" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Strumenti Utili</a></li>
+      <li><a href="#domande-frequenti" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Domande Frequenti</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="che-cose-lo-stipendio-netto">Che Cos'e lo Stipendio Netto?</h2>
+
+  <p>
+    Lo stipendio netto e l'importo che trovi effettivamente accreditato sul tuo conto corrente ogni mese. Rappresenta cio che resta della tua retribuzione lorda dopo che il datore di lavoro ha trattenuto contributi previdenziali, imposte sul reddito e addizionali locali.
+  </p>
+  <p>
+    La distinzione fondamentale e tra <strong>lordo</strong> e <strong>netto</strong>. Quando firmi un contratto di lavoro, l'importo concordato e quasi sempre la <strong>RAL</strong> (Retribuzione Annua Lorda): si tratta del compenso complessivo annuo prima di qualsiasi trattenuta. Il netto, invece, e quello che effettivamente ti entra in tasca.
+  </p>
+  <p>
+    La differenza tra lordo e netto puo sorprendere: su una RAL di 30.000 euro, ad esempio, il netto annuo si aggira intorno ai 23.000 euro. In pratica, circa il 23-25% della tua retribuzione lorda viene assorbito da contributi e imposte. Questa percentuale cresce al salire del reddito, per effetto della progressivita del sistema fiscale italiano prevista dall'art. 53 della Costituzione.
+  </p>
+
+  <h2 id="il-percorso-dal-lordo-al-netto">Il Percorso dal Lordo al Netto</h2>
+
+  <p>
+    Passare dal lordo al netto non e un'unica sottrazione: e un percorso a tappe, ciascuna regolata da norme specifiche. Ecco la sequenza completa:
+  </p>
+  <ol>
+    <li><strong>Contributi INPS</strong> a carico del lavoratore (9,19%)</li>
+    <li><strong>Imponibile fiscale</strong> = RAL &minus; contributi INPS</li>
+    <li><strong>IRPEF lorda</strong> calcolata a scaglioni progressivi</li>
+    <li><strong>Detrazioni</strong> per lavoro dipendente, familiari a carico</li>
+    <li><strong>IRPEF netta</strong> = IRPEF lorda &minus; detrazioni</li>
+    <li><strong>Addizionali</strong> regionale e comunale</li>
+    <li><strong>Trattamento integrativo</strong> (se spettante)</li>
+    <li><strong>Beneficio cuneo fiscale 2026</strong> (se spettante)</li>
+  </ol>
+  <p>
+    Il risultato finale e il tuo stipendio netto annuo. Dividendo per il numero di mensilita (12, 13 o 14 a seconda del CCNL applicato), ottieni il netto mensile che trovi in busta paga. Vediamo ora ogni passaggio nel dettaglio.
+  </p>
+
+  <h2 id="passo-1-i-contributi-inps">Passo 1: I Contributi INPS</h2>
+
+  <p>
+    La prima trattenuta sulla tua retribuzione lorda sono i <strong>contributi previdenziali INPS</strong> a carico del lavoratore. Per i dipendenti del settore privato, l'aliquota standard e del <strong>9,19%</strong> della retribuzione lorda.
+  </p>
+  <p>
+    Questi contributi finanziano il sistema previdenziale italiano e ti garantiscono:
+  </p>
+  <ul>
+    <li><strong>Pensione di vecchiaia e anticipata:</strong> calcolata con il sistema contributivo sulla base dei versamenti effettuati durante la carriera</li>
+    <li><strong>Indennita di disoccupazione (NASpI):</strong> in caso di perdita involontaria del lavoro</li>
+    <li><strong>Cassa integrazione:</strong> sostegno al reddito durante periodi di riduzione dell'attivita aziendale</li>
+    <li><strong>Indennita di malattia e maternita:</strong> copertura economica durante le assenze per motivi di salute o gravidanza</li>
+  </ul>
+  <p>
+    Per le retribuzioni che superano la <strong>prima fascia di retribuzione pensionabile</strong> (circa 55.448 euro nel 2026), si applica un contributo aggiuntivo dell'1% sulla parte eccedente, ai sensi dell'art. 3-<em>ter</em> della L. 438/1992.
+  </p>
+  <p>
+    <strong>Esempio pratico:</strong> con una RAL di 30.000 euro, i contributi INPS a tuo carico ammontano a 30.000 &times; 9,19% = <strong>2.757 euro</strong> all'anno.
+  </p>
+
+  <h2 id="passo-2-limponibile-fiscale">Passo 2: L'Imponibile Fiscale</h2>
+
+  <p>
+    Una volta sottratti i contributi INPS dalla RAL, ottieni l'<strong>imponibile fiscale</strong> (o reddito imponibile ai fini IRPEF). Questa e la base su cui verranno calcolate le imposte sul reddito.
+  </p>
+  <p>
+    La formula e semplice:
+  </p>
+  <p class="text-center">
+    <strong>Imponibile fiscale = RAL &minus; Contributi INPS</strong>
+  </p>
+  <p>
+    Continuando l'esempio precedente: 30.000 &minus; 2.757 = <strong>27.243 euro</strong> di imponibile fiscale.
+  </p>
+  <p>
+    E importante notare che l'imponibile fiscale non coincide con la RAL. I contributi INPS a carico del lavoratore sono infatti <strong>deducibili</strong> dal reddito complessivo (art. 10, comma 1, lettera e del TUIR), il che significa che riducono la base su cui si calcolano le tasse. Questo meccanismo e gia applicato automaticamente dal datore di lavoro in busta paga.
+  </p>
+
+  <h2 id="passo-3-il-calcolo-dellirpef">Passo 3: Il Calcolo dell'IRPEF</h2>
+
+  <p>
+    L'IRPEF (Imposta sul Reddito delle Persone Fisiche) e l'imposta principale che grava sul reddito da lavoro dipendente. Dal 2026, grazie alla Legge di Bilancio, gli <a href="/guide/scaglioni-irpef-2026">scaglioni IRPEF</a> sono tre:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Scaglione di reddito</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF massima</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 28.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">23%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">6.440 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 28.001 a 50.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">33%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">7.260 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 50.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">43%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">Nessun limite</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Il sistema e <strong>progressivo per scaglioni</strong>: ogni aliquota si applica soltanto alla porzione di reddito che rientra in quel dato scaglione, non all'intero importo. Questo e un punto che genera spesso confusione.
+  </p>
+  <p>
+    <strong>Esempio con imponibile di 27.243 euro:</strong> poiche l'intero importo rientra nel primo scaglione (fino a 28.000 euro), l'IRPEF lorda e semplicemente 27.243 &times; 23% = <strong>6.265,89 euro</strong>.
+  </p>
+  <p>
+    Se l'imponibile fosse stato, ad esempio, 35.000 euro, il calcolo sarebbe: (28.000 &times; 23%) + (7.000 &times; 33%) = 6.440 + 2.310 = <strong>8.750 euro</strong>. Puoi verificare questi calcoli con il nostro <a href="/calcolo-irpef">calcolatore IRPEF</a>.
+  </p>
+
+  <h2 id="passo-4-le-detrazioni">Passo 4: Le Detrazioni</h2>
+
+  <p>
+    Le detrazioni fiscali riducono l'IRPEF lorda e sono il principale strumento con cui il legislatore modula il carico fiscale in base alla situazione personale del contribuente.
+  </p>
+
+  <h3>Detrazioni per lavoro dipendente</h3>
+  <p>
+    La detrazione per redditi da lavoro dipendente (art. 13 TUIR) varia in funzione del reddito complessivo ed e strutturata per garantire un beneficio maggiore ai redditi piu bassi:
+  </p>
+  <ul>
+    <li><strong>Reddito fino a 15.000 euro:</strong> detrazione di 1.955 euro (minimo 690 euro, o 1.380 euro per contratti a tempo determinato)</li>
+    <li><strong>Reddito da 15.001 a 28.000 euro:</strong> 1.910 + 1.190 &times; (28.000 &minus; reddito) / 13.000</li>
+    <li><strong>Reddito da 28.001 a 50.000 euro:</strong> 1.910 &times; (50.000 &minus; reddito) / 22.000</li>
+    <li><strong>Reddito oltre 50.000 euro:</strong> nessuna detrazione</li>
+  </ul>
+  <p>
+    Per il nostro esempio (reddito 27.243 euro), la detrazione per lavoro dipendente ammonta a: 1.910 + 1.190 &times; (28.000 &minus; 27.243) / 13.000 = 1.910 + 69,28 = <strong>1.979,28 euro</strong>.
+  </p>
+
+  <h3>Detrazioni per familiari a carico</h3>
+  <p>
+    Se hai un coniuge a carico (reddito annuo non superiore a 2.840,51 euro, o 4.000 euro se under 24), hai diritto a una detrazione variabile. Per i figli a carico, dal 2022 e stato introdotto l'Assegno Unico e Universale (AUU) che ha sostituito le precedenti detrazioni per figli fino a 21 anni. Restano le detrazioni per figli a carico di eta superiore a 21 anni.
+  </p>
+
+  <h2 id="passo-5-le-addizionali">Passo 5: Le Addizionali</h2>
+
+  <p>
+    Oltre all'IRPEF nazionale, devi pagare due imposte aggiuntive che variano in base a dove risiedi.
+  </p>
+
+  <h3>Addizionale regionale IRPEF</h3>
+  <p>
+    Ogni regione stabilisce la propria aliquota, che puo essere fissa o progressiva per scaglioni. L'addizionale si calcola sull'imponibile fiscale (lo stesso su cui si calcola l'IRPEF). Le aliquote variano notevolmente:
+  </p>
+  <ul>
+    <li><strong>Regioni piu economiche:</strong> Trentino-Alto Adige, Friuli-Venezia Giulia, Sardegna (a partire da 0,70%)</li>
+    <li><strong>Regioni piu costose:</strong> Lazio (fino a 3,33%), Campania, Molise, Piemonte</li>
+  </ul>
+  <p>
+    Puoi confrontare le differenze tra regioni con il nostro <a href="/comparatore-regioni">comparatore regionale</a>.
+  </p>
+
+  <h3>Addizionale comunale IRPEF</h3>
+  <p>
+    Anche i comuni applicano un'addizionale propria, con aliquote che vanno dallo 0% (alcuni comuni la azzerano o prevedono esenzioni per redditi bassi) fino allo 0,9% (il tetto massimo fissato per legge). La media nazionale si attesta intorno allo 0,8%.
+  </p>
+  <p>
+    <strong>Nel nostro esempio</strong> (lavoratore in Lombardia, comune di Milano): l'addizionale regionale lombarda per un reddito di 27.243 euro e pari a circa 386 euro; l'addizionale comunale di Milano, con aliquota 0,8%, ammonta a circa 218 euro.
+  </p>
+
+  <h2 id="passo-6-il-trattamento-integrativo">Passo 6: Il Trattamento Integrativo</h2>
+
+  <p>
+    Il trattamento integrativo, introdotto dal D.L. 3/2020 e successivamente modificato dalla riforma IRPEF, e un credito di <strong>1.200 euro annui</strong> (100 euro al mese) riconosciuto direttamente in busta paga.
+  </p>
+  <p>
+    Le regole per beneficiarne sono:
+  </p>
+  <ul>
+    <li><strong>Reddito fino a 15.000 euro:</strong> spetta l'importo pieno di 1.200 euro, a condizione che l'IRPEF lorda sia superiore alla detrazione per lavoro dipendente (cosiddetta "capienza fiscale")</li>
+    <li><strong>Reddito da 15.001 a 28.000 euro:</strong> spetta solo se la somma di specifiche detrazioni (lavoro dipendente, familiari a carico, mutuo prima casa, spese sanitarie e altre) supera l'IRPEF lorda. In tal caso, l'importo e pari alla differenza, fino a un massimo di 1.200 euro</li>
+    <li><strong>Reddito oltre 28.000 euro:</strong> il trattamento integrativo non spetta</li>
+  </ul>
+  <p>
+    Nel nostro esempio, con un imponibile di 27.243 euro, il trattamento integrativo potrebbe spettare in misura ridotta, ma solo a specifiche condizioni legate all'ammontare complessivo delle detrazioni.
+  </p>
+
+  <h2 id="passo-7-il-cuneo-fiscale-2026">Passo 7: Il Cuneo Fiscale 2026</h2>
+
+  <p>
+    La Legge di Bilancio 2026 ha confermato e reso strutturale il meccanismo di riduzione del cuneo fiscale, che per il biennio 2024-2025 era stato applicato sotto forma di esonero contributivo temporaneo. Dal 2026, il beneficio e stato trasformato in un meccanismo fiscale stabile.
+  </p>
+  <p>
+    Il nuovo sistema prevede:
+  </p>
+  <ul>
+    <li><strong>Redditi fino a 20.000 euro:</strong> un bonus calcolato in percentuale sul reddito da lavoro dipendente, con aliquote decrescenti (7,1% fino a 8.500 euro, 5,3% da 8.501 a 15.000 euro, 4,8% da 15.001 a 20.000 euro)</li>
+    <li><strong>Redditi da 20.001 a 32.000 euro:</strong> una detrazione aggiuntiva fissa di 1.000 euro</li>
+    <li><strong>Redditi da 32.001 a 40.000 euro:</strong> una detrazione aggiuntiva di 1.000 euro che decresce linearmente fino ad azzerarsi a 40.000 euro</li>
+    <li><strong>Redditi oltre 40.000 euro:</strong> nessun beneficio</li>
+  </ul>
+  <p>
+    Questo meccanismo sostituisce il precedente esonero contributivo e garantisce un vantaggio netto in busta paga per la grande maggioranza dei lavoratori dipendenti con redditi fino a 40.000 euro.
+  </p>
+
+  <h2 id="esempio-completo">Esempio Completo</h2>
+
+  <p>
+    Mettiamo insieme tutti i passaggi con un caso concreto: <strong>lavoratore dipendente, single, senza figli a carico, residente a Milano (Lombardia), RAL 30.000 euro, 13 mensilita</strong>.
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Importo annuo</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">RAL (Retribuzione Annua Lorda)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">30.000,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Contributi INPS (9,19%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 2.757,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= Imponibile fiscale</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">27.243,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; IRPEF lorda (27.243 &times; 23%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 6.265,89 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Detrazione lavoro dipendente</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 1.979,28 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= IRPEF netta</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 4.286,61 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale regionale (Lombardia)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 386,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale comunale (Milano, 0,8%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 217,94 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Beneficio cuneo fiscale 2026</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 1.000,00 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Stipendio Netto Annuo</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-white font-bold text-base">23.352,45 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Netto Mensile (13 mensilita)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">1.796,34 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Come puoi vedere, da una RAL di 30.000 euro si arriva a un netto annuo di circa 23.350 euro. Questo significa che il <strong>prelievo complessivo</strong> (contributi + imposte, al netto dei benefici) e di circa il 22%. Dividendo per 13 mensilita, il netto mensile e di circa <strong>1.796 euro</strong>.
+  </p>
+  <p>
+    Tieni presente che questo calcolo e semplificato: nella realta, le addizionali regionali possono essere progressive su piu scaglioni e piccole variazioni dipendono dal CCNL applicato. Per un calcolo preciso sulla tua situazione, usa il nostro <a href="/">calcolatore stipendio netto</a>.
+  </p>
+
+  <h2 id="strumenti-utili">Strumenti Utili</h2>
+
+  <p>
+    Per effettuare calcoli precisi e personalizzati sulla tua situazione, puoi utilizzare i nostri strumenti gratuiti:
+  </p>
+
+  <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+    <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Stipendio Netto</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Inserisci la RAL e ottieni il netto mensile con tutte le trattenute dettagliate.</p>
+    </a>
+    <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo IRPEF</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Analizza l'IRPEF con il dettaglio di ogni scaglione e le detrazioni applicabili.</p>
+    </a>
+    <a href="/comparatore-regioni" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Confronto tra Regioni</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Scopri quanto cambia il netto da una regione all'altra a parita di RAL.</p>
+    </a>
+    <a href="/calcolo-busta-paga" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Busta Paga</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Simula una busta paga mensile completa con tutte le voci dettagliate.</p>
+    </a>
+  </div>
+
+  <!-- FAQ Section -->
+  <h2 id="domande-frequenti">Domande Frequenti</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" />
+  </div>
+
+</GuidaLayout>

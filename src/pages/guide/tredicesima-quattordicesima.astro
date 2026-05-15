@@ -1,0 +1,479 @@
+---
+import GuidaLayout from '../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../config';
+
+const title = "Tredicesima e Quattordicesima: Come Si Calcolano nel 2026";
+const description = "Guida completa alla tredicesima e quattordicesima mensilita' nel 2026: chi ne ha diritto, come si calcolano, la tassazione, il calcolo pro-rata e gli esempi pratici.";
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Guide', url: `${SITE.url}/guide` },
+  { name: 'Tredicesima e Quattordicesima', url: `${SITE.url}/guide/tredicesima-quattordicesima` },
+];
+
+const faqs = [
+  {
+    question: 'La tredicesima e obbligatoria per tutti i lavoratori dipendenti?',
+    answer: 'Si. La tredicesima mensilita\' (detta anche gratifica natalizia) e\' un diritto di tutti i lavoratori dipendenti, sia del settore privato che di quello pubblico, indipendentemente dal CCNL applicato. La sua obbligatorieta\' e\' sancita dal D.P.R. 1070/1960 e dalla successiva contrattazione collettiva nazionale. Il datore di lavoro non puo\' in alcun caso scegliere di non erogarla. L\'importo lordo corrisponde a una mensilita\' aggiuntiva (RAL diviso per il numero di mensilita\' previste dal contratto), maturata in proporzione ai mesi effettivamente lavorati nell\'anno.',
+  },
+  {
+    question: 'La quattordicesima spetta a tutti?',
+    answer: 'No. A differenza della tredicesima, la quattordicesima mensilita\' non e\' prevista per legge, ma e\' stabilita dalla <strong>contrattazione collettiva nazionale (CCNL)</strong>. Spetta solo ai lavoratori il cui contratto collettivo di riferimento la prevede. I principali CCNL che includono la quattordicesima sono: Commercio, Turismo e Pubblici Esercizi, Credito e Assicurazioni, Chimico, Alimentare e Logistica. I contratti del settore Metalmeccanico e del settore pubblico generalmente non la prevedono. E\' quindi fondamentale verificare il proprio CCNL per sapere se si ha diritto a questa mensilita\' aggiuntiva.',
+  },
+  {
+    question: 'Perche\' la tredicesima ha un netto inferiore rispetto a una mensilita\' ordinaria?',
+    answer: 'La tredicesima ha un netto inferiore per due motivi principali. Primo: sulla tredicesima <strong>non si applicano le detrazioni per lavoro dipendente</strong>, che vengono distribuite solo sulle 12 mensilita\' ordinarie. Questo significa che l\'intera IRPEF calcolata sulla tredicesima viene trattenuta senza alcuna riduzione. Secondo: l\'IRPEF viene calcolata all\'aliquota marginale del lavoratore, cioe\' l\'aliquota dello scaglione piu\' alto raggiunto dal suo reddito annuo. Per un lavoratore con reddito nel primo scaglione, l\'effetto e\' meno marcato, ma per chi rientra nel secondo o terzo scaglione, la differenza rispetto alla busta paga ordinaria puo\' essere significativa. Le addizionali regionali e comunali, invece, non vengono calcolate separatamente sulla tredicesima.',
+  },
+  {
+    question: 'Come si calcola la tredicesima se ho lavorato solo una parte dell\'anno?',
+    answer: 'Se il rapporto di lavoro non copre l\'intero anno solare (ad esempio, perche\' sei stato assunto a maggio o perche\' hai avuto periodi di aspettativa non retribuita), la tredicesima viene calcolata <strong>pro-rata</strong>, cioe\' in proporzione ai mesi effettivamente lavorati. La formula e\': (retribuzione mensile lorda &times; mesi lavorati) / 12. Si considerano mesi interi: se hai lavorato almeno 15 giorni in un mese, quel mese viene conteggiato per intero. Ad esempio, se hai iniziato a lavorare il 1 luglio con una retribuzione mensile di 2.000 euro lordi, la tredicesima sara\': (2.000 &times; 6) / 12 = 1.000 euro lordi.',
+  },
+  {
+    question: 'Tredicesima e quattordicesima sono incluse nella RAL?',
+    answer: 'Si. La RAL (Retribuzione Annua Lorda) comprende <strong>tutte le mensilita\' previste dal contratto</strong>, incluse la tredicesima e l\'eventuale quattordicesima. Se il tuo contratto prevede 13 mensilita\' e la tua RAL e\' di 30.000 euro, la retribuzione lorda mensile ordinaria e\' 30.000 / 13 = 2.307,69 euro, e la tredicesima lorda e\' anch\'essa 2.307,69 euro. Allo stesso modo, se il CCNL prevede 14 mensilita\', la retribuzione mensile lorda sara\' 30.000 / 14 = 2.142,86 euro. La RAL e\' un importo globale che include tutto, non va moltiplicata per le mensilita\' aggiuntive.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-05-15"
+  dateModified="2026-05-15"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#cosa-sono-le-mensilita-aggiuntive" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Cosa Sono le Mensilita' Aggiuntive</a></li>
+      <li><a href="#la-tredicesima-mensilita" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">La Tredicesima Mensilita'</a></li>
+      <li><a href="#la-quattordicesima-mensilita" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">La Quattordicesima Mensilita'</a></li>
+      <li><a href="#come-si-calcola-il-lordo" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Come Si Calcola il Lordo</a></li>
+      <li><a href="#la-tassazione-della-tredicesima" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">La Tassazione della Tredicesima</a></li>
+      <li><a href="#esempio-pratico-tredicesima-netta" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esempio Pratico: Tredicesima Netta</a></li>
+      <li><a href="#calcolo-pro-rata" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Calcolo Pro Rata</a></li>
+      <li><a href="#ccnl-con-quattordicesima" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">CCNL con Quattordicesima</a></li>
+      <li><a href="#differenze-tra-tredicesima-e-quattordicesima" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Differenze tra Tredicesima e Quattordicesima</a></li>
+      <li><a href="#impatto-sullo-stipendio-mensile" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Impatto sullo Stipendio Mensile</a></li>
+      <li><a href="#strumenti-utili" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Strumenti Utili</a></li>
+      <li><a href="#domande-frequenti" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Domande Frequenti</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="cosa-sono-le-mensilita-aggiuntive">Cosa Sono le Mensilita' Aggiuntive</h2>
+
+  <p>
+    Le mensilita' aggiuntive sono retribuzioni supplementari che il lavoratore dipendente percepisce oltre alle 12 mensilita' ordinarie. In Italia, la piu' conosciuta e' la <strong>tredicesima mensilita'</strong> (detta anche "gratifica natalizia"), che spetta a tutti i lavoratori dipendenti per legge. La <strong>quattordicesima mensilita'</strong>, invece, e' prevista solo da alcuni contratti collettivi nazionali di lavoro (CCNL) e rappresenta un'ulteriore mensilita' aggiuntiva erogata generalmente nel periodo estivo.
+  </p>
+  <p>
+    E' importante capire che le mensilita' aggiuntive <strong>non si sommano alla RAL</strong>. La RAL (Retribuzione Annua Lorda) e' l'importo complessivo annuo concordato nel contratto di lavoro e include gia' tutte le mensilita' previste. Se il tuo CCNL prevede 13 mensilita' e la tua RAL e' di 30.000 euro, la retribuzione lorda mensile e' 30.000 diviso 13, non 30.000 diviso 12. Questo dettaglio e' fondamentale per non sopravvalutare il proprio netto mensile quando si riceve un'offerta di lavoro espressa in RAL.
+  </p>
+  <p>
+    Le mensilita' aggiuntive sono soggette alla stessa contribuzione previdenziale e alla stessa tassazione IRPEF delle mensilita' ordinarie, ma con alcune differenze importanti nella modalita' di calcolo dell'imposta. In particolare, sulla tredicesima e sulla quattordicesima <strong>non si applicano le detrazioni per lavoro dipendente</strong> e <strong>non si calcolano le addizionali regionali e comunali</strong>. Questo spiega perche' il netto della tredicesima e' quasi sempre inferiore a quello di una busta paga ordinaria.
+  </p>
+
+  <h2 id="la-tredicesima-mensilita">La Tredicesima Mensilita'</h2>
+
+  <p>
+    La tredicesima mensilita' e' un diritto di tutti i lavoratori dipendenti italiani, sia del settore privato che di quello pubblico. La sua obbligatorieta' e' stata sancita dal <strong>D.P.R. 28 luglio 1960, n. 1070</strong>, che ha esteso a tutti i lavoratori l'istituto della gratifica natalizia, in precedenza previsto solo da alcuni contratti collettivi. Da allora, la tredicesima e' diventata un elemento fisso della retribuzione annua.
+  </p>
+  <p>
+    La tredicesima viene erogata normalmente nel mese di <strong>dicembre</strong>, generalmente entro la vigilia di Natale. Alcuni datori di lavoro la anticipano ai primi giorni del mese, altri la inseriscono nella busta paga ordinaria di dicembre come voce aggiuntiva. In entrambi i casi, l'importo lordo corrisponde a una mensilita' della retribuzione lorda, calcolata in proporzione ai mesi effettivamente lavorati nell'anno.
+  </p>
+  <p>
+    La tredicesima matura durante l'intero anno solare: ogni mese lavorato contribuisce per un dodicesimo della mensilita'. I periodi di ferie, malattia (entro i limiti di legge), maternita' obbligatoria e infortunio vengono computati ai fini della maturazione. Al contrario, i periodi di aspettativa non retribuita, sciopero prolungato e assenza ingiustificata non concorrono alla maturazione della tredicesima.
+  </p>
+
+  <h2 id="la-quattordicesima-mensilita">La Quattordicesima Mensilita'</h2>
+
+  <p>
+    La quattordicesima mensilita' non e' prevista per legge, ma e' stabilita dalla <strong>contrattazione collettiva nazionale</strong>. Questo significa che spetta solo ai lavoratori il cui CCNL la prevede esplicitamente. La quattordicesima viene generalmente erogata nel mese di <strong>giugno o luglio</strong>, in concomitanza con il periodo estivo, e per questo viene talvolta chiamata "gratifica estiva" o "gratifica feriale".
+  </p>
+  <p>
+    Come la tredicesima, anche la quattordicesima matura pro-rata nel corso dell'anno e viene calcolata sulla base della retribuzione mensile lorda. Le regole di maturazione sono analoghe: si tiene conto dei mesi effettivamente lavorati e dei periodi assimilati (ferie, malattia, maternita' obbligatoria). L'importo lordo corrisponde a una mensilita' di retribuzione, salvo diverse previsioni del CCNL di riferimento.
+  </p>
+  <p>
+    Dal punto di vista fiscale, la quattordicesima segue le stesse regole della tredicesima: e' soggetta a contributi INPS e IRPEF, ma <strong>senza detrazioni per lavoro dipendente</strong> e senza addizionali locali calcolate separatamente. Anche per la quattordicesima, quindi, il netto e' inferiore rispetto a una mensilita' ordinaria di pari importo lordo.
+  </p>
+
+  <h2 id="come-si-calcola-il-lordo">Come Si Calcola il Lordo</h2>
+
+  <p>
+    Il calcolo dell'importo lordo della tredicesima (e della quattordicesima, se prevista) e' semplice:
+  </p>
+  <p class="text-center">
+    <strong>Lordo mensilita' aggiuntiva = RAL / numero di mensilita' previste dal CCNL</strong>
+  </p>
+  <p>
+    Se il CCNL prevede 13 mensilita', la tredicesima lorda corrisponde a 1/13 della RAL. Se prevede 14 mensilita', sia la tredicesima che la quattordicesima corrispondono ciascuna a 1/14 della RAL.
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">RAL</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Mensilita' lorda (13 mensilita')</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Mensilita' lorda (14 mensilita')</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">25.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.923,08 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.785,71 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">30.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.307,69 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.142,86 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">35.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.692,31 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.500,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">40.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">3.076,92 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.857,14 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">50.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">3.846,15 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">3.571,43 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Come si puo' notare, la scelta tra 13 e 14 mensilita' non cambia la RAL totale, ma influisce sull'importo di ciascuna singola mensilita'. Con 14 mensilita', ogni mese si percepisce un importo lordo leggermente inferiore, ma si ricevono due mensilita' aggiuntive nell'arco dell'anno (a dicembre e a giugno/luglio).
+  </p>
+
+  <h2 id="la-tassazione-della-tredicesima">La Tassazione della Tredicesima</h2>
+
+  <p>
+    La tredicesima e' soggetta alla stessa contribuzione previdenziale e alla stessa IRPEF della retribuzione ordinaria, ma con due differenze fondamentali:
+  </p>
+  <ol>
+    <li><strong>Non si applicano le detrazioni per lavoro dipendente:</strong> le detrazioni previste dall'art. 13 del TUIR vengono distribuite esclusivamente sulle 12 mensilita' ordinarie. La tredicesima, di conseguenza, subisce l'IRPEF lorda piena, senza alcuna riduzione.</li>
+    <li><strong>Non si calcolano separatamente le addizionali regionali e comunali:</strong> le addizionali vengono calcolate sull'imponibile fiscale annuo complessivo (che include gia' la tredicesima) e trattenute in rate mensili nell'anno successivo. Sulla tredicesima, quindi, non compaiono voci di addizionali nella busta paga.</li>
+  </ol>
+  <p>
+    L'IRPEF sulla tredicesima viene calcolata all'<strong>aliquota marginale</strong> del lavoratore, cioe' l'aliquota dello scaglione piu' alto raggiunto dal reddito annuo complessivo. Per un lavoratore il cui reddito imponibile annuo ricade interamente nel primo scaglione (fino a 28.000 euro), l'aliquota applicata sara' il 23%. Per chi supera i 28.000 euro di imponibile, la tredicesima sara' tassata al 33% (secondo scaglione). Per redditi oltre 50.000 euro, si applica il 43%.
+  </p>
+  <p>
+    Questo meccanismo, combinato con l'assenza delle detrazioni, spiega perche' il netto della tredicesima e' sensibilmente piu' basso rispetto a quello di una mensilita' ordinaria. La differenza puo' variare da circa il 5% per i redditi piu' bassi fino al 15% o oltre per i redditi piu' alti.
+  </p>
+
+  <h2 id="esempio-pratico-tredicesima-netta">Esempio Pratico: Tredicesima Netta</h2>
+
+  <p>
+    Calcoliamo il netto della tredicesima per un lavoratore dipendente con <strong>RAL di 30.000 euro</strong> e <strong>13 mensilita'</strong>:
+  </p>
+
+  <h3>Passo 1: lordo della tredicesima</h3>
+
+  <p>
+    Lordo tredicesima = 30.000 / 13 = <strong>2.307,69 &euro;</strong>
+  </p>
+
+  <h3>Passo 2: contributi INPS</h3>
+
+  <p>
+    INPS = 2.307,69 &times; 9,19% = <strong>212,08 &euro;</strong>
+  </p>
+
+  <h3>Passo 3: imponibile IRPEF della tredicesima</h3>
+
+  <p>
+    Imponibile = 2.307,69 &minus; 212,08 = <strong>2.095,61 &euro;</strong>
+  </p>
+
+  <h3>Passo 4: calcolo IRPEF</h3>
+
+  <p>
+    Per determinare l'aliquota da applicare, occorre considerare il reddito imponibile annuo complessivo. Con una RAL di 30.000 euro, l'imponibile annuo e' circa 27.243 euro (30.000 &minus; 9,19%), che ricade interamente nel <strong>primo scaglione IRPEF</strong> (fino a 28.000 euro, aliquota 23%).
+  </p>
+  <p>
+    IRPEF sulla tredicesima = 2.095,61 &times; 23% = <strong>482,00 &euro;</strong>
+  </p>
+  <p>
+    Nota: sulla tredicesima <strong>non si applicano detrazioni per lavoro dipendente</strong>. L'IRPEF lorda coincide con l'IRPEF netta.
+  </p>
+
+  <h3>Passo 5: netto della tredicesima</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Importo</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Lordo tredicesima</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.307,69 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Contributi INPS (9,19%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 212,08 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; IRPEF (23%, senza detrazioni)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 482,00 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Netto tredicesima</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold">1.613,61 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Il netto della tredicesima, per questo esempio, e' di <strong>1.613,61 euro</strong>. Se confrontiamo questo importo con una mensilita' ordinaria netta (che beneficia delle detrazioni per lavoro dipendente), la differenza e' evidente. Una mensilita' ordinaria netta per la stessa RAL si aggira intorno ai 1.795 euro, cioe' circa <strong>180 euro in piu'</strong>. La differenza e' interamente dovuta all'assenza delle detrazioni per lavoro dipendente sulla tredicesima.
+  </p>
+
+  <h2 id="calcolo-pro-rata">Calcolo Pro Rata</h2>
+
+  <p>
+    Se il rapporto di lavoro non copre l'intero anno solare, la tredicesima e la quattordicesima vengono calcolate in proporzione ai mesi effettivamente lavorati. La formula e':
+  </p>
+  <p class="text-center">
+    <strong>Mensilita' aggiuntiva pro-rata = (retribuzione mensile lorda &times; mesi lavorati) / 12</strong>
+  </p>
+  <p>
+    Per il conteggio dei mesi si applica la regola dei 15 giorni: se il lavoratore ha prestato servizio per almeno 15 giorni in un dato mese, quel mese viene conteggiato per intero. Se ha lavorato meno di 15 giorni, il mese non viene conteggiato.
+  </p>
+
+  <h3>Esempio pro-rata</h3>
+
+  <p>
+    Un lavoratore con RAL di 30.000 euro (13 mensilita') viene assunto il 1 settembre 2026. La retribuzione mensile lorda e' 30.000 / 13 = 2.307,69 euro. I mesi lavorati nell'anno sono 4 (settembre, ottobre, novembre, dicembre).
+  </p>
+  <ul>
+    <li>Tredicesima pro-rata = (2.307,69 &times; 4) / 12 = <strong>769,23 &euro;</strong> lordi</li>
+    <li>Dopo INPS (9,19%): 769,23 &minus; 70,70 = 698,53 &euro;</li>
+    <li>Dopo IRPEF (23%, senza detrazioni): 698,53 &minus; 160,66 = <strong>~537,87 &euro;</strong> netti</li>
+  </ul>
+  <p>
+    Il calcolo pro-rata si applica anche in caso di cessazione del rapporto di lavoro nel corso dell'anno: il lavoratore dimissionario o licenziato ha diritto alla tredicesima maturata fino alla data di cessazione, che viene erogata nell'ultima busta paga.
+  </p>
+
+  <h2 id="ccnl-con-quattordicesima">CCNL che Prevedono la Quattordicesima</h2>
+
+  <p>
+    La quattordicesima mensilita' non e' universale come la tredicesima. Di seguito i principali CCNL che la prevedono e le relative mensilita' totali:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">CCNL</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Mensilita' totali</th>
+          <th class="py-3 pl-4 text-center font-semibold text-gray-700 dark:text-gray-300">Periodo erogazione quattordicesima</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Commercio (Confcommercio)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">Luglio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Turismo e Pubblici Esercizi</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">Luglio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Credito e Bancario (ABI)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">Giugno</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Assicurazioni (ANIA)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">Giugno</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Chimico Farmaceutico</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">Luglio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Alimentare (Industria)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">Luglio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Logistica e Trasporti</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">Luglio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Metalmeccanico (Industria)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">13</td>
+          <td class="py-3 pl-4 text-center text-gray-500 dark:text-gray-500">Non prevista</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Pubblico Impiego</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">13</td>
+          <td class="py-3 pl-4 text-center text-gray-500 dark:text-gray-500">Non prevista</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    E' opportuno verificare sempre il proprio CCNL di riferimento, perche' le disposizioni possono variare anche tra versioni aggiornate dello stesso contratto collettivo. Il CCNL applicato e' indicato nel contratto individuale di lavoro e nella busta paga.
+  </p>
+
+  <h2 id="differenze-tra-tredicesima-e-quattordicesima">Differenze tra Tredicesima e Quattordicesima</h2>
+
+  <p>
+    Sebbene dal punto di vista del calcolo la tredicesima e la quattordicesima siano molto simili, esistono differenze importanti che vale la pena evidenziare:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Caratteristica</th>
+          <th class="py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300">Tredicesima</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">Quattordicesima</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Fonte normativa</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">D.P.R. 1070/1960 (legge)</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">CCNL (contrattazione collettiva)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Obbligatorieta'</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Obbligatoria per tutti</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Solo se prevista dal CCNL</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Periodo di erogazione</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Dicembre</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Giugno o Luglio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Detrazioni lavoro dipendente</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Non si applicano</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Non si applicano</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Addizionali locali</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Non calcolate separatamente</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Non calcolate separatamente</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Contributi INPS</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Si (9,19%)</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Si (9,19%)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    La differenza piu' significativa e' l'obbligatorieta': mentre la tredicesima e' un diritto di legge inderogabile, la quattordicesima puo' non essere prevista dal CCNL di riferimento. In assenza di quattordicesima, la RAL viene semplicemente suddivisa su 13 mensilita' anziche' 14, con mensilita' ordinarie leggermente piu' alte. L'importo netto annuo complessivo non cambia: a parita' di RAL, 13 mensilita' e 14 mensilita' producono lo stesso netto annuo (con differenze trascurabili legate agli arrotondamenti).
+  </p>
+
+  <h2 id="impatto-sullo-stipendio-mensile">Impatto sullo Stipendio Mensile</h2>
+
+  <p>
+    La scelta tra 13 e 14 mensilita' non modifica la RAL totale, ma ha un impatto diretto sull'importo della busta paga mensile. Con 14 mensilita', il netto mensile ordinario e' piu' basso, ma il lavoratore riceve due "bonus" aggiuntivi nel corso dell'anno. Vediamo il confronto per una RAL di 30.000 euro:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">13 mensilita'</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">14 mensilita'</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Lordo mensilita' ordinaria</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.307,69 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.142,86 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Netto mensilita' ordinaria (stima)</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.795 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.670 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Netto tredicesima (stima)</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.614 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.498 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Netto quattordicesima (stima)</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-500 dark:text-gray-500">Non prevista</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.498 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Netto annuo complessivo (stima)</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-white font-bold">~23.150 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-white font-bold">~23.040 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Come si puo' osservare, il netto annuo complessivo e' sostanzialmente equivalente nei due casi (la piccola differenza e' dovuta agli arrotondamenti e alla distribuzione delle detrazioni). La scelta tra 13 e 14 mensilita' e' quindi principalmente una questione di <strong>distribuzione del flusso di cassa</strong> nel corso dell'anno: chi preferisce un netto mensile piu' alto preferira' 13 mensilita', mentre chi apprezza avere delle somme aggiuntive a giugno/luglio e dicembre potrebbe preferire 14 mensilita'.
+  </p>
+  <p>
+    Molti lavoratori percepiscono la tredicesima e la quattordicesima come un "extra", ma e' fondamentale ricordare che si tratta di denaro gia' incluso nella RAL, non di un bonus aggiuntivo. Questa consapevolezza e' importante quando si confrontano offerte di lavoro con numeri diversi di mensilita': una RAL di 30.000 euro su 13 mensilita' e una RAL di 30.000 euro su 14 mensilita' producono lo stesso reddito lordo annuo, ma con una distribuzione mensile diversa.
+  </p>
+
+  <h2 id="strumenti-utili">Strumenti Utili</h2>
+
+  <p>
+    Per calcolare con precisione il netto della tua tredicesima o quattordicesima, puoi utilizzare i nostri strumenti gratuiti:
+  </p>
+
+  <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+    <a href="/calcolo-tredicesima" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Tredicesima Netta</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Inserisci la RAL e scopri quanto riceverai di tredicesima netta a dicembre.</p>
+    </a>
+    <a href="/calcolo-quattordicesima" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Quattordicesima Netta</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calcola il netto della quattordicesima, se prevista dal tuo contratto collettivo.</p>
+    </a>
+    <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Stipendio Netto</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Il calcolatore completo con tutte le trattenute, incluse tredicesima e quattordicesima.</p>
+    </a>
+    <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo IRPEF</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Analizza l'IRPEF con il dettaglio di ogni scaglione e le detrazioni applicabili.</p>
+    </a>
+  </div>
+
+  <!-- FAQ Section -->
+  <h2 id="domande-frequenti">Domande Frequenti</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" />
+  </div>
+
+</GuidaLayout>

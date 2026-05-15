@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 40" width="320" height="40">
+  <!-- Icon: red rounded square with white euro sign -->
+  <rect x="2" y="6" width="28" height="28" rx="4" ry="4" fill="#E63946"/>
+  <text x="16" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">&#8364;</text>
+  <!-- Wordmark -->
+  <text x="40" y="28" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#FFFFFF" font-weight="600">Calcola Lordo</text>
+  <text x="214" y="28" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#E63946" font-weight="700">Netto</text>
+</svg>

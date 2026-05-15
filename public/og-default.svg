@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- White background -->
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <!-- Red accent bar at top -->
+  <rect width="1200" height="8" fill="#E63946"/>
+  <!-- Icon: red rounded square with white euro sign -->
+  <rect x="422" y="210" width="48" height="48" rx="6" ry="6" fill="#E63946"/>
+  <text x="446" y="245" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">&#8364;</text>
+  <!-- Wordmark: "Calcola Lordo" in charcoal -->
+  <text x="484" y="246" font-family="Inter, system-ui, sans-serif" font-size="36" fill="#1F2937" font-weight="600">Calcola Lordo</text>
+  <!-- "Netto" in red -->
+  <text x="770" y="246" font-family="Inter, system-ui, sans-serif" font-size="36" fill="#E63946" font-weight="700">Netto</text>
+  <!-- Tagline -->
+  <text x="600" y="320" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#6B7280" font-weight="400">Dal lordo al netto in pochi secondi</text>
+  <!-- Subtle divider line -->
+  <line x1="500" y1="370" x2="700" y2="370" stroke="#E5E7EB" stroke-width="1"/>
+  <!-- Domain at bottom -->
+  <text x="600" y="560" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#9CA3AF" font-weight="400">calcolalordonetto.it</text>
+</svg>

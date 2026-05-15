@@ -1,0 +1,319 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import RegimeImpatriati from '../components/calcolatori/RegimeImpatriati';
+
+const title = 'Regime Impatriati 2026: Calcolatore Agevolazione Fiscale';
+const description =
+  'Calcola il risparmio fiscale con il regime impatriati. Confronta stipendio netto con e senza l\'agevolazione del 50%. Requisiti e regole 2026.';
+const canonical = canonicalURL('/regime-impatriati-calcolatore');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Regime Impatriati', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolatore Regime Impatriati"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <RegimeImpatriati client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola il beneficio del regime impatriati
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il regime fiscale per i lavoratori impatriati consente di tassare solo
+        una parte del reddito da lavoro dipendente o autonomo. Nella versione
+        attualmente in vigore, il 50% del reddito e' esente da IRPEF. In
+        pratica, se la tua RAL e' di 60.000 euro, l'imposta viene calcolata
+        solo su 30.000 euro, generando un risparmio fiscale molto significativo.
+      </p>
+      <h3>Chi puo' accedere al regime impatriati</h3>
+      <p>
+        Per beneficiare dell'agevolazione devi soddisfare alcuni requisiti
+        fondamentali: non aver avuto la residenza fiscale in Italia nei tre
+        periodi d'imposta precedenti al trasferimento (o nei sei o sette periodi
+        per chi era precedentemente residente); impegnarti a mantenere la
+        residenza fiscale in Italia per almeno quattro anni; svolgere
+        prevalentemente l'attivita' lavorativa nel territorio italiano. Il
+        regime e' applicabile sia ai lavoratori dipendenti sia ai lavoratori
+        autonomi e professionisti.
+      </p>
+      <h3>Come funziona il calcolo</h3>
+      <p>
+        Il calcolatore confronta due scenari: la tassazione ordinaria applicata
+        all'intero reddito e la tassazione agevolata calcolata sulla quota
+        imponibile ridotta. La differenza tra il netto ordinario e il netto
+        agevolato rappresenta il risparmio fiscale annuo. I contributi
+        previdenziali INPS restano invariati in entrambi gli scenari, poiche'
+        l'agevolazione riguarda esclusivamente l'imposizione fiscale.
+      </p>
+      <h3>I requisiti dettagliati per il regime impatriati 2026</h3>
+      <p>
+        La disciplina attualmente in vigore e' quella riformata dal D.Lgs. 209/2023 (attuativo della riforma fiscale), che ha sostanzialmente riscritto le regole del regime impatriati rispetto alla versione precedente. I requisiti per chi si trasferisce in Italia a partire dal 2024 sono piu' stringenti e vanno verificati con attenzione.
+      </p>
+      <p>
+        <strong>Requisito di non residenza:</strong> il lavoratore deve non essere stato fiscalmente residente in Italia nei tre periodi d'imposta precedenti al trasferimento. Tuttavia, se il lavoratore era gia' stato residente in Italia prima del periodo trascorso all'estero, il requisito sale a sei periodi d'imposta di non residenza, oppure a sette periodi se il lavoratore non svolge la propria attivita' prevalentemente a favore dello stesso datore di lavoro (o di soggetti appartenenti allo stesso gruppo) per cui lavorava prima del trasferimento all'estero. Questa distinzione e' cruciale e rappresenta una delle novita' piu' rilevanti introdotte dalla riforma.
+      </p>
+      <p>
+        <strong>Impegno di permanenza:</strong> il lavoratore deve impegnarsi a mantenere la residenza fiscale in Italia per almeno quattro anni. Non si tratta di un obbligo formale con registrazione, ma di una condizione sostanziale: se si trasferisce all'estero prima del compimento del quadriennio, decade dal beneficio e deve restituire le agevolazioni gia' fruite, maggiorate di interessi e sanzioni.
+      </p>
+      <p>
+        <strong>Prevalenza dell'attivita' in Italia:</strong> l'attivita' lavorativa deve essere prestata prevalentemente nel territorio italiano. Per i lavoratori dipendenti, questo significa che la maggior parte delle giornate lavorative deve essere svolta fisicamente in Italia. Per i lavoratori autonomi, il criterio di prevalenza si riferisce al luogo in cui l'attivita' viene esercitata e non alla residenza del committente.
+      </p>
+      <p>
+        <strong>Divieto di fruizione precedente:</strong> con le nuove regole, non puo' accedere al regime chi ne abbia gia' beneficiato in un periodo d'imposta precedente. Questo impedisce la cosiddetta pratica del "round-tripping", cioe' il trasferimento all'estero e il successivo rientro per fruire nuovamente dell'agevolazione. Il limite di reddito agevolabile e' fissato a 600.000 euro annui.
+      </p>
+      <h3>Estensione da 5 a 10 anni: le vecchie regole</h3>
+      <p>
+        Nella versione precedente del regime impatriati (ante D.Lgs. 209/2023, applicabile a chi si e' trasferito in Italia fino al 31 dicembre 2023), era prevista la possibilita' di estendere il beneficio fiscale da cinque a dieci anni, a condizioni particolarmente vantaggiose. L'esenzione base era del 70% del reddito (non del 50% come nelle nuove regole), e durante il periodo di estensione poteva raggiungere il 90% di esenzione.
+      </p>
+      <p>
+        Le condizioni per ottenere l'estensione quinquennale aggiuntiva erano: l'acquisto di un immobile residenziale in Italia (anche nei 12 mesi precedenti al trasferimento), oppure la presenza di almeno un figlio minorenne o a carico. Chi soddisfaceva una di queste condizioni poteva godere del 90% di esenzione per ulteriori cinque anni, portando il beneficio complessivo a dieci anni con un risparmio fiscale straordinario.
+      </p>
+      <p>
+        E' importante sottolineare che questa possibilita' di estensione non e' piu' disponibile per chi si trasferisce in Italia a partire dal 2024. Tuttavia, chi ha gia' attivato il regime con le vecchie regole e si trova ancora nel periodo di fruizione mantiene le condizioni originarie. Chi ha gia' ottenuto l'estensione quinquennale continua a beneficiare del 90% di esenzione fino alla scadenza naturale del decennio. Questa differenza di trattamento tra "vecchi" e "nuovi" impatriati crea situazioni molto diverse: un lavoratore rientrato nel 2022 con estensione puo' avere il 90% di esenzione fino al 2031, mentre un lavoratore rientrato nel 2024 avra' il 50% di esenzione fino al 2028.
+      </p>
+      <h3>Casi pratici: quanto si risparmia davvero</h3>
+      <p>
+        Per comprendere l'impatto reale del regime impatriati, confrontiamo la tassazione ordinaria con quella agevolata su un caso concreto: un lavoratore dipendente con RAL di 60.000 euro, senza carichi familiari, residente in Lombardia (addizionale regionale ~1,73%, addizionale comunale Milano ~0,8%).
+      </p>
+      <p>
+        <strong>Scenario ordinario (senza agevolazione):</strong> con una RAL di 60.000 euro, il reddito imponibile IRPEF e' pari all'intera RAL al netto dei contributi INPS a carico del dipendente (circa 5.508 euro per l'aliquota IVS 9,19%), quindi circa 54.492 euro. L'IRPEF lorda, calcolata per scaglioni, ammonta a circa 15.098 euro. Dopo la detrazione per lavoro dipendente (circa 336 euro per questo livello di reddito), l'IRPEF netta e' circa 14.762 euro. A questa si aggiungono le addizionali regionali (~943 euro) e comunali (~436 euro), per un totale di imposte di circa 16.141 euro.
+      </p>
+      <p>
+        <strong>Scenario agevolato (regime impatriati 50%):</strong> con il regime impatriati, l'IRPEF viene calcolata sul 50% del reddito imponibile, cioe' circa 27.246 euro. L'IRPEF lorda su questa base scende a circa 6.349 euro. La detrazione per lavoro dipendente e' piu' alta (circa 1.486 euro, perche' calcolata sul reddito ridotto), portando l'IRPEF netta a circa 4.863 euro. Anche le addizionali si riducono proporzionalmente (~471 euro la regionale, ~218 euro la comunale), per un totale imposte di circa 5.552 euro.
+      </p>
+      <p>
+        <strong>Il risparmio:</strong> la differenza tra i due scenari e' di circa 10.589 euro all'anno. Su cinque anni di regime, il risparmio complessivo supera i 50.000 euro. I contributi INPS restano identici in entrambi i casi (circa 5.508 euro a carico del dipendente e circa 17.898 euro a carico del datore), perche' l'agevolazione non incide sulla base contributiva. Il netto mensile in busta paga passa da circa 2.900 euro (ordinario) a circa 3.782 euro (agevolato), con un incremento di circa 882 euro al mese.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Risparmio fiscale con il regime impatriati: tabella per livello di RAL
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra il confronto tra IRPEF ordinaria e IRPEF agevolata con il regime impatriati (esenzione del 50%), per un lavoratore dipendente residente in Lombardia senza carichi familiari. I valori sono indicativi e tengono conto degli scaglioni IRPEF 2026 e delle detrazioni per lavoro dipendente. Le addizionali regionali e comunali sono incluse nel calcolo dell'IRPEF totale.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-600">
+              <th class="text-left py-2 pr-4 font-semibold">RAL</th>
+              <th class="text-right py-2 px-4 font-semibold">IRPEF ordinaria</th>
+              <th class="text-right py-2 px-4 font-semibold">IRPEF agevolata</th>
+              <th class="text-right py-2 pl-4 font-semibold">Risparmio annuo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">40.000 &euro;</td>
+              <td class="text-right py-2 px-4">~6.200 &euro;</td>
+              <td class="text-right py-2 px-4">~3.600 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~2.600 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">50.000 &euro;</td>
+              <td class="text-right py-2 px-4">~9.100 &euro;</td>
+              <td class="text-right py-2 px-4">~4.800 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~4.300 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">60.000 &euro;</td>
+              <td class="text-right py-2 px-4">~13.100 &euro;</td>
+              <td class="text-right py-2 px-4">~6.200 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~6.900 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">80.000 &euro;</td>
+              <td class="text-right py-2 px-4">~21.700 &euro;</td>
+              <td class="text-right py-2 px-4">~9.100 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~12.600 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">100.000 &euro;</td>
+              <td class="text-right py-2 px-4">~30.300 &euro;</td>
+              <td class="text-right py-2 px-4">~13.100 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~17.200 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Nota importante sui contributi INPS:</strong> i contributi previdenziali INPS a carico del dipendente (aliquota IVS 9,19% fino al massimale) e a carico del datore di lavoro (~29,9%) vengono calcolati sull'intera retribuzione lorda, senza alcuna riduzione legata al regime impatriati. L'agevolazione incide esclusivamente sull'IRPEF e sulle addizionali regionali e comunali. Questo significa che il costo del lavoro per il datore non cambia, e che l'anzianita' contributiva del lavoratore non viene penalizzata dal regime agevolato.
+      </p>
+      <p>
+        Come si nota dalla tabella, il risparmio cresce in modo piu' che proporzionale all'aumentare della RAL. Questo accade perche' le aliquote IRPEF sono progressive: redditi piu' alti vengono tassati con aliquote marginali piu' elevate (fino al 43% per la quota eccedente 50.000 euro). Dimezzando la base imponibile, si evita di ricadere negli scaglioni superiori, generando un risparmio percentuale sempre maggiore. Per una RAL di 100.000 euro, il risparmio annuo di circa 17.200 euro equivale a un incremento del netto mensile di oltre 1.430 euro, un impatto estremamente significativo sulla capacita' di spesa e di risparmio del lavoratore.
+      </p>
+      <p>
+        Nell'arco dei cinque anni di durata del regime, il risparmio complessivo per una RAL di 60.000 euro ammonta a circa 34.500 euro. Per una RAL di 100.000 euro, il risparmio quinquennale supera gli 86.000 euro. Queste cifre rendono il regime impatriati uno dei piu' vantaggiosi incentivi fiscali disponibili in Italia e spiegano perche' rappresenta un fattore determinante nella scelta di molti lavoratori qualificati di rientrare o trasferirsi nel Paese.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Quanto posso risparmiare con il regime impatriati?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il risparmio dipende dalla RAL e dalla tua aliquota marginale. Con una RAL di 50.000 euro puoi risparmiare indicativamente tra 5.000 e 8.000 euro all'anno di IRPEF. Redditi piu' alti beneficiano di un risparmio assoluto maggiore perche' le aliquote marginali sono piu' elevate. Usa il calcolatore qui sopra per ottenere la stima precisa per la tua situazione.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Per quanti anni posso usufruire del regime impatriati?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il regime impatriati nella sua formulazione attuale ha una durata base di cinque anni. In passato esistevano estensioni fino a dieci anni per chi acquistava un immobile residenziale o aveva figli minorenni, ma le regole sono cambiate nel tempo. Verifica sempre la normativa aggiornata o consulta un commercialista per confermare la durata applicabile al tuo caso.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          I contributi INPS cambiano con il regime impatriati?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No, i contributi previdenziali INPS vengono calcolati sull'intera retribuzione lorda, senza alcuna riduzione. L'agevolazione del regime impatriati si applica esclusivamente all'IRPEF e alle addizionali regionali e comunali. Quindi il risparmio riguarda solo la componente fiscale, non quella contributiva.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Devo comunicare qualcosa al datore di lavoro?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si'. Per applicare il beneficio direttamente in busta paga, devi presentare al datore di lavoro una richiesta scritta con autocertificazione dei requisiti. In alternativa, puoi recuperare il beneficio in sede di dichiarazione dei redditi (730 o Modello Redditi). Il consiglio e' di informare subito il datore cosi' da beneficiare dell'agevolazione mese per mese.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Il regime impatriati e' cumulabile con altre agevolazioni?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          In linea di principio, il regime impatriati non e' cumulabile con altri regimi agevolativi (come il regime forfettario). Tuttavia, puo' coesistere con le detrazioni ordinarie per lavoro dipendente e con il trattamento integrativo (ex bonus Renzi), calcolati sulla quota imponibile ridotta. Per situazioni specifiche, consulta sempre un professionista.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Il regime impatriati si applica anche ai lavoratori autonomi e freelance?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', il regime impatriati si applica sia ai redditi da lavoro dipendente sia ai redditi da lavoro autonomo. I professionisti con partita IVA in regime ordinario possono beneficiare dell'esenzione del 50% sul reddito di lavoro autonomo, applicando l'IRPEF solo sulla meta' del reddito imponibile. E' importante notare che il regime impatriati non e' compatibile con il regime forfettario: chi sceglie il forfettario non puo' contemporaneamente applicare l'agevolazione per impatriati, perche' il forfettario prevede gia' un'imposta sostitutiva che sostituisce l'IRPEF. I lavoratori autonomi che rientrano in Italia devono quindi valutare attentamente quale regime sia piu' conveniente per la loro situazione specifica, confrontando il carico fiscale complessivo delle due opzioni.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Cosa succede se lascio l'Italia prima dei 4 anni di permanenza obbligatoria?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Se trasferisci la residenza fiscale fuori dall'Italia prima di aver completato il periodo minimo di quattro anni, decadi dall'agevolazione con effetto retroattivo. Questo significa che dovrai restituire all'Erario tutte le imposte non versate grazie al regime agevolato, cioe' la differenza tra quanto avresti pagato con la tassazione ordinaria e quanto hai effettivamente versato. Alla somma dovuta si aggiungono gli interessi legali maturati e le sanzioni previste per l'insufficiente versamento di imposta. L'Agenzia delle Entrate puo' procedere con l'accertamento entro i termini ordinari di decadenza. E' quindi fondamentale essere certi della propria intenzione di rimanere in Italia per almeno quattro anni prima di aderire al regime, per evitare conseguenze economiche molto onerose.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come funziona il regime impatriati per chi ha doppia cittadinanza?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La doppia cittadinanza di per se' non preclude l'accesso al regime impatriati. Il requisito fondamentale e' la residenza fiscale, non la cittadinanza. Un cittadino italiano con doppia cittadinanza che ha vissuto all'estero per almeno tre periodi d'imposta (o sei/sette se era precedentemente residente in Italia) puo' accedere al regime al momento del rientro, alle stesse condizioni di qualsiasi altro contribuente. Analogamente, un cittadino straniero che si trasferisce in Italia per la prima volta puo' beneficiare del regime se non e' stato residente fiscalmente in Italia nei periodi precedenti. Il criterio determinante e' sempre la residenza fiscale effettiva, che in Italia si basa sull'iscrizione anagrafica, sul domicilio civilistico o sulla residenza ai sensi del codice civile per la maggior parte del periodo d'imposta (183 giorni).
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Dettaglio scaglione per scaglione dell'IRPEF sul tuo reddito
+        </p>
+      </a>
+      <a
+        href="/calcolo-busta-paga"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Busta Paga
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simula il cedolino mensile con tutte le trattenute
+        </p>
+      </a>
+      <a
+        href="/calcolo-stipendio-lordo"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Lordo da Netto
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Scopri la RAL necessaria per ottenere il netto desiderato
+        </p>
+      </a>
+      <a
+        href="/calcolo-forfettari"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Regime Forfettario
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calcola tasse e netto con la partita IVA forfettaria
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

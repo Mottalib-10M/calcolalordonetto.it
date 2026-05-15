@@ -1,0 +1,362 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import Tredicesima from '../components/calcolatori/Tredicesima';
+
+const title = `Calcolo Tredicesima Netta ${SITE.annoFiscale}: Simulatore Gratuito`;
+const description = `Calcola la tredicesima netta ${SITE.annoFiscale} partendo dalla tua RAL. Scopri trattenute INPS, IRPEF marginale e l'importo esatto che riceverai in busta paga a dicembre.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolatori', url: SITE.url },
+  { name: 'Calcolo Tredicesima', url: `${SITE.url}/calcolo-tredicesima` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Tredicesima Netta"
+  breadcrumbs={breadcrumbs}
+>
+  <Tredicesima client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Come si calcola la tredicesima netta
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La <strong>tredicesima mensilita'</strong> e' una mensilita' aggiuntiva che viene erogata
+        generalmente a dicembre. Ecco come si calcola:
+      </p>
+      <ol>
+        <li>
+          <strong>Tredicesima lorda</strong> = RAL / 12. Se hai lavorato meno di 12 mesi,
+          viene calcolata pro-rata: RAL / 12 &times; mesi lavorati / 12.
+        </li>
+        <li>
+          <strong>Contributi INPS</strong>: si applicano i contributi previdenziali (9,19%) sulla tredicesima lorda.
+        </li>
+        <li>
+          <strong>IRPEF</strong>: la tredicesima viene tassata all'aliquota IRPEF marginale,
+          cioe' l'aliquota dello scaglione in cui ricade il tuo reddito. Non si applicano
+          le detrazioni da lavoro dipendente ne' il trattamento integrativo.
+        </li>
+        <li>
+          <strong>Tredicesima netta</strong> = Tredicesima lorda - INPS - IRPEF.
+        </li>
+      </ol>
+      <p>
+        Per questo motivo la tredicesima risulta tassata piu' pesantemente dello stipendio
+        mensile ordinario, dove invece si beneficia delle detrazioni fiscali.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Il calcolo mese per mese della maturazione
+      </h3>
+      <p>
+        La tredicesima non viene generata interamente a dicembre: matura progressivamente nel corso
+        dell'anno solare, nella misura di <strong>1/12 per ogni mese di lavoro</strong>. Questo
+        significa che a gennaio maturi 1/12, a febbraio un altro dodicesimo, e cosi' via fino a
+        dicembre, quando hai accumulato l'intero importo.
+      </p>
+      <p>
+        La regola fondamentale riguarda il conteggio dei mesi lavorati: un mese viene considerato
+        "intero" ai fini della maturazione della tredicesima se il lavoratore ha prestato servizio
+        per <strong>piu' di 15 giorni</strong> in quel mese. Se ad esempio inizi un nuovo lavoro il
+        giorno 14 di un mese, quel mese viene conteggiato come intero perche' hai lavorato piu' di 15
+        giorni. Al contrario, se inizi il giorno 20, quel mese non verra' conteggiato perche' i giorni
+        lavorati (circa 10-11) sono inferiori a 15.
+      </p>
+      <p>
+        Questa regola dei 15 giorni si applica sia all'inizio del rapporto di lavoro sia alla sua
+        cessazione. In caso di dimissioni o licenziamento, la tredicesima maturata e non ancora
+        erogata viene corrisposta nell'ultima busta paga, calcolata in proporzione ai mesi lavorati
+        nell'anno. Per esempio, se ti dimetti a fine maggio avendo lavorato 5 mesi pieni, riceverai
+        5/12 della tredicesima annuale.
+      </p>
+      <p>
+        E' importante notare che durante i periodi di assenza retribuita (come ferie, permessi
+        retribuiti, festivita' e malattia entro il periodo di comporto) la tredicesima continua
+        a maturare regolarmente. Non matura invece durante le assenze non retribuite, i periodi di
+        aspettativa non retribuita e la cassa integrazione a zero ore (in questo ultimo caso, una
+        quota viene comunque corrisposta dall'INPS).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Tassazione della tredicesima: perche' si paga di piu'
+      </h3>
+      <p>
+        Uno degli aspetti che crea piu' confusione tra i lavoratori e' il fatto che la tredicesima,
+        a parita' di importo lordo, produce un netto significativamente inferiore rispetto alla
+        normale mensilita'. La ragione risiede nel meccanismo di tassazione IRPEF applicato alle
+        mensilita' aggiuntive.
+      </p>
+      <p>
+        Sulla retribuzione ordinaria mensile, il datore di lavoro (in qualita' di sostituto d'imposta)
+        applica le <strong>detrazioni da lavoro dipendente</strong>, che riducono l'IRPEF dovuta. Per
+        il 2026, queste detrazioni possono arrivare fino a 1.955 euro annui e vengono ripartite sulle
+        12 mensilita' ordinarie. Inoltre, per i redditi fino a 15.000 euro (o fino a 28.000 euro con
+        determinate condizioni), si applica il <strong>trattamento integrativo</strong> (ex bonus
+        Renzi) di 1.200 euro annui.
+      </p>
+      <p>
+        La tredicesima, invece, non beneficia di nessuna di queste agevolazioni. L'IRPEF viene
+        calcolata applicando direttamente l'<strong>aliquota marginale</strong>, cioe' l'aliquota
+        dello scaglione piu' alto raggiunto dal reddito complessivo del lavoratore. Per capire
+        meglio: se la tua RAL e' di 30.000 euro, il tuo reddito ricade nel secondo scaglione IRPEF
+        (da 28.001 a 50.000 euro) con aliquota del 35%. Questo significa che sulla tredicesima, dopo
+        aver sottratto i contributi INPS, verra' trattenuto il 35% di IRPEF, senza alcuna detrazione
+        a mitigare l'impatto. Il risultato e' una tredicesima netta che puo' essere anche il 25-30%
+        piu' bassa rispetto allo stipendio netto ordinario, pur partendo dallo stesso importo lordo.
+      </p>
+      <p>
+        E' bene precisare che questa tassazione piu' pesante non rappresenta un "sopruso": le
+        detrazioni da lavoro dipendente sono gia' state interamente ripartite sulle 12 mensilita'
+        ordinarie e il trattamento integrativo viene erogato mensilmente. Applicarli anche sulla
+        tredicesima significherebbe raddoppiarne l'effetto, con conseguente conguaglio a debito in
+        sede di dichiarazione dei redditi.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Diritti e obblighi: cosa dice la legge
+      </h3>
+      <p>
+        Il diritto alla tredicesima mensilita' per i lavoratori dipendenti del settore privato e'
+        sancito dal <strong>DPR 28 luglio 1960, n. 1070</strong>, che ha esteso a tutti i lavoratori
+        la cosiddetta "gratifica natalizia" inizialmente prevista solo per alcuni settori. Prima
+        di questa norma, la tredicesima era una concessione contrattuale; con il DPR 1070/1960
+        e' diventata un diritto irrinunciabile garantito a tutti i lavoratori subordinati.
+      </p>
+      <p>
+        Per i dipendenti pubblici, la tredicesima e' regolata dall'articolo 2 della Legge 27 maggio
+        1959, n. 324, e successive modifiche. Anche i pensionati hanno diritto alla tredicesima sulla
+        pensione, come stabilito dalla legislazione previdenziale.
+      </p>
+      <p>
+        I singoli <strong>CCNL</strong> (Contratti Collettivi Nazionali di Lavoro) possono prevedere
+        condizioni migliorative rispetto alla legge. Ad esempio, il CCNL Commercio (Confcommercio)
+        stabilisce che la tredicesima venga calcolata sulla retribuzione globale di fatto, includendo
+        paga base, contingenza, scatti di anzianita', terzi elementi e superminimi assorbibili. Il CCNL
+        Metalmeccanico (Federmeccanica) prevede disposizioni analoghe, con la precisazione che i
+        periodi di malattia entro il comporto sono utili alla maturazione. Il CCNL del Credito
+        prevede il pagamento entro il 20 dicembre di ogni anno.
+      </p>
+      <p>
+        Per quanto riguarda i <strong>tempi di pagamento</strong>, la legge non fissa una data
+        precisa, ma stabilisce che la tredicesima debba essere corrisposta in occasione delle
+        festivita' natalizie. Nella prassi, la maggior parte dei datori di lavoro la eroga con la
+        busta paga di dicembre, spesso nella prima meta' del mese. In caso di ritardo nel pagamento,
+        il lavoratore puo' rivolgersi all'Ispettorato del Lavoro o agire in via giudiziale. Il mancato
+        pagamento della tredicesima costituisce una violazione degli obblighi retributivi del datore
+        di lavoro e puo' comportare sanzioni amministrative. Il lavoratore ha inoltre diritto agli
+        interessi legali e alla rivalutazione monetaria sull'importo non corrisposto.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Tredicesima netta per fascia di RAL: tabella 2026
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra la tredicesima netta stimata per le principali fasce di RAL nel 2026,
+        ipotizzando 12 mesi di lavoro pieno e le aliquote IRPEF vigenti. I valori sono approssimativi
+        e non tengono conto di eventuali addizionali regionali e comunali.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Tredicesima lorda</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">INPS (9,19%)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">IRPEF (aliquota marginale)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Tredicesima netta</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">20.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">1.538 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">141 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">321 &euro; (23%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.076 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">25.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">1.923 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">177 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">402 &euro; (23%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.344 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">30.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">2.308 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">212 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">692 &euro; (33%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.404 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">40.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">3.077 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">283 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">922 &euro; (33%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.872 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">50.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">3.846 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">354 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">1.502 &euro; (43%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.990 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        Come si evince dalla tabella, l'incidenza della tassazione sulla tredicesima cresce
+        sensibilmente al crescere della RAL. Un lavoratore con RAL di 20.000 euro riceve in tasca
+        circa il 70% della tredicesima lorda, mentre chi ha una RAL di 50.000 euro trattiene appena
+        il 52%. Questo divario e' dovuto alla progressivita' delle aliquote IRPEF: chi ricade nello
+        scaglione del 43% subisce un prelievo fiscale quasi doppio rispetto a chi si trova nello
+        scaglione del 23%. Per una stima precisa basata sulla tua situazione specifica, utilizza
+        il simulatore in alto inserendo la tua RAL e il numero di mesi lavorati.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti sulla tredicesima
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Quando viene pagata la tredicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          La tredicesima viene pagata generalmente nella busta paga di dicembre, in tempo per le feste natalizie.
+          Alcuni datori di lavoro la erogano nella prima meta' di dicembre, altri a fine mese.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Perche' la tredicesima e' piu' tassata dello stipendio normale?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Sulla tredicesima non si applicano le detrazioni da lavoro dipendente (fino a 1.955 euro) e il trattamento
+          integrativo (ex bonus Renzi, fino a 1.200 euro). L'IRPEF viene calcolata all'aliquota marginale,
+          senza alcuna riduzione, rendendo l'impatto fiscale piu' pesante rispetto alla mensilita' ordinaria.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Tutti i lavoratori hanno diritto alla tredicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Si', la tredicesima mensilita' e' un diritto previsto per tutti i lavoratori dipendenti, sia con contratto
+          a tempo indeterminato che determinato, full-time e part-time. E' stabilita dalla legge (DPR 1070/1960)
+          e non dal CCNL come la quattordicesima.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Come funziona la tredicesima pro-rata?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Se non hai lavorato per tutto l'anno (ad esempio perche' hai iniziato a meta' anno o ti sei dimesso),
+          la tredicesima viene calcolata in proporzione ai mesi effettivamente lavorati.
+          Il calcolo e': (RAL / 12) &times; (mesi lavorati / 12). I giorni superiori a 15 in un mese
+          contano come mese intero.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          La tredicesima influisce sul calcolo del TFR?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Si', la tredicesima e' inclusa nel calcolo del TFR. La base di calcolo del TFR e' la retribuzione annua
+          comprensiva della tredicesima (e della quattordicesima, se prevista). Il TFR annuo si calcola
+          dividendo l'intera retribuzione per 13,5.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          La tredicesima viene pagata durante la malattia o la maternita'?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Si', la tredicesima continua a maturare durante i periodi di malattia (entro il periodo di comporto previsto
+          dal CCNL) e durante la maternita' obbligatoria. Durante il congedo di maternita' obbligatorio (5 mesi), la
+          tredicesima matura regolarmente e la relativa quota e' a carico dell'INPS. Anche durante il congedo
+          parentale (facoltativo) la tredicesima matura, sebbene in misura ridotta. In caso di malattia prolungata
+          oltre il periodo di comporto, la maturazione si interrompe.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Come incide la tredicesima sull'ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          La tredicesima incide sull'ISEE in quanto fa parte del reddito complessivo dichiarato nella Certificazione
+          Unica (CU) e di conseguenza nella dichiarazione dei redditi. L'ISEE considera il reddito complessivo del
+          nucleo familiare, che include tutte le componenti retributive, tredicesima e quattordicesima comprese. Non
+          e' possibile escluderla dal calcolo dell'indicatore. Per chi percepisce sia tredicesima che quattordicesima,
+          il reddito ai fini ISEE risultera corrispondente all'intera RAL annuale.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Si puo' chiedere la tredicesima anticipata o in rate mensili?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          La legge non prevede un diritto all'anticipo della tredicesima, ma il lavoratore puo' richiedere al datore
+          di lavoro di erogarla in rate mensili distribuite nelle 12 buste paga ordinarie. Questa modalita va
+          concordata con l'azienda e puo' essere prevista da accordi individuali o aziendali. Alcuni datori di lavoro
+          accettano di anticipare la tredicesima o parte di essa su richiesta motivata del dipendente, ma si tratta
+          di una concessione e non di un obbligo. E' importante sapere che la mensilizzazione della tredicesima non
+          cambia il carico fiscale complessivo annuo: cambia solo la distribuzione temporale dei pagamenti.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/calcolo-quattordicesima" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Quattordicesima</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calcola la quattordicesima netta per i CCNL che la prevedono</p>
+      </a>
+      <a href="/calcolo-tfr" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo TFR</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Stima il TFR maturato e confronta azienda vs fondo pensione</p>
+      </a>
+      <a href="/calcolo-paga-oraria" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Paga Oraria</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Converti la RAL in paga oraria lorda e netta</p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

@@ -1,0 +1,335 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import ComparatoreRegioni from '../components/calcolatori/ComparatoreRegioni';
+
+const title = 'Confronto Stipendio Netto per Regione Italia 2026';
+const description =
+  'Confronta lo stipendio netto in tutte le 21 regioni italiane. Scopri dove il tuo netto mensile e\' piu\' alto grazie alle addizionali regionali piu\' basse.';
+const canonical = canonicalURL('/comparatore-regioni');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Comparatore Regioni', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Comparatore Stipendio Netto per Regione"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <ComparatoreRegioni client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola la differenza tra regioni
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        A parita' di RAL, lo stipendio netto di un lavoratore dipendente varia
+        in base alla regione di residenza. La causa principale e' l'addizionale
+        regionale IRPEF, un'imposta locale che ogni regione fissa autonomamente.
+      </p>
+      <h3>Perche' le regioni hanno aliquote diverse</h3>
+      <p>
+        L'addizionale regionale IRPEF e' stata introdotta nel 1998 e ha una
+        forbice tra l'1,23% e il 3,33%. Le regioni possono applicare un'aliquota
+        unica (flat) oppure un sistema a scaglioni progressivi, simile
+        all'IRPEF nazionale. Le regioni con maggiore autonomia fiscale (come
+        Friuli-Venezia Giulia e le province autonome di Trento e Bolzano)
+        tendono ad avere aliquote piu' basse.
+      </p>
+      <h3>Le regioni piu' care e piu' economiche</h3>
+      <p>
+        Storicamente, il Lazio e la Campania presentano le addizionali
+        regionali piu' elevate, con aliquote che arrivano al 3,33%. Al
+        contrario, regioni come il Friuli-Venezia Giulia, il Veneto e la
+        Sardegna applicano aliquote piu' contenute. Per redditi medi, la
+        differenza annua tra la regione piu' cara e quella piu' economica
+        puo' superare i 500 euro.
+      </p>
+      <h3>Come leggere i risultati</h3>
+      <p>
+        Il calcolatore mostra il netto mensile calcolato su 13 mensilita per
+        ciascuna delle 21 regioni italiane (incluse le province autonome di
+        Trento e Bolzano). L'addizionale comunale e' stimata con l'aliquota
+        media nazionale dello 0,8% per rendere il confronto equo tra regioni.
+      </p>
+
+      <h3>Classifica completa delle regioni per carico fiscale</h3>
+      <p>
+        Analizzando nel dettaglio le aliquote dell'addizionale regionale IRPEF vigenti, e' possibile stilare una classifica delle regioni italiane dalla piu' conveniente alla piu' onerosa per il lavoratore dipendente. La classifica tiene conto non solo dell'aliquota nominale massima, ma anche della struttura a scaglioni e delle eventuali esenzioni previste per i redditi piu' bassi.
+      </p>
+      <p>
+        Al primo posto troviamo la <strong>Provincia Autonoma di Bolzano</strong>, che applica un'aliquota unica dell'1,23%, la piu' bassa consentita dalla legge. Questa aliquota minima, unita ai servizi pubblici di altissimo livello finanziati dalla speciale autonomia fiscale della provincia, rende Bolzano il territorio piu' vantaggioso d'Italia dal punto di vista delle addizionali regionali. Un lavoratore con reddito imponibile di 35.000 euro paga qui appena 430 euro di addizionale regionale.
+      </p>
+      <p>
+        Segue al secondo posto la <strong>Provincia Autonoma di Trento</strong>, anch'essa con l'aliquota minima dell'1,23%, che gode degli stessi vantaggi dell'autonomia speciale del Trentino-Alto Adige. Al terzo posto si colloca il <strong>Friuli-Venezia Giulia</strong>, regione a statuto speciale che applica un sistema a scaglioni molto favorevole: lo 0,70% per i redditi fino a 15.000 euro, l'1,23% fino a 28.000 euro, l'1,23% fino a 50.000 euro e l'1,23% per i redditi superiori. In pratica, per la grande maggioranza dei lavoratori dipendenti, l'aliquota effettiva resta vicina al minimo.
+      </p>
+      <p>
+        Al quarto posto troviamo la <strong>Sardegna</strong>, altra regione a statuto speciale, che applica un'aliquota unica dell'1,23% per tutti i livelli di reddito. Il quinto posto spetta al <strong>Veneto</strong>, che con la sua aliquota flat dell'1,23% si conferma la regione a statuto ordinario piu' conveniente. Seguono in posizioni intermedie <strong>Basilicata</strong> (1,23% flat), <strong>Lombardia</strong> (con scaglioni da 1,23% a 1,74%), <strong>Piemonte</strong> (da 1,62% a 2,33%), <strong>Liguria</strong> (1,23% flat), <strong>Toscana</strong> (da 1,42% a 1,73%), <strong>Emilia-Romagna</strong> (da 1,33% a 2,03%) e <strong>Umbria</strong> (da 1,23% a 1,83%).
+      </p>
+      <p>
+        Nella parte bassa della classifica si trovano le regioni con le addizionali piu' elevate. Le <strong>Marche</strong> applicano aliquote da 1,23% a 1,73%, la <strong>Puglia</strong> da 1,33% a 2,33%, la <strong>Sicilia</strong> da 1,23% a 1,73% ma con peculiarita' legate allo statuto speciale. La <strong>Calabria</strong> e il <strong>Molise</strong> si collocano tra le piu' care con aliquote che raggiungono il 2,03-2,33%. Chiudono la classifica la <strong>Campania</strong> e il <strong>Lazio</strong>: la Campania applica un'aliquota che puo' arrivare al 3,33% per i redditi piu' alti (una delle piu' elevate d'Italia, imposta anche per via del piano di rientro del debito sanitario), mentre il Lazio raggiunge il 3,33% per i redditi superiori a 50.000 euro, anch'esso gravato dalla necessita' di ripianare il deficit sanitario regionale accumulato negli anni passati.
+      </p>
+
+      <h3>Impatto delle addizionali su diversi livelli di RAL</h3>
+      <p>
+        L'effetto delle addizionali regionali sullo stipendio netto non e' uniforme: cambia significativamente in base al livello di reddito del lavoratore, e questo e' particolarmente vero per le regioni che adottano un sistema a scaglioni progressivi.
+      </p>
+      <p>
+        Per un lavoratore con <strong>RAL di 25.000 euro</strong> (reddito imponibile di circa 22.700 euro dopo i contributi INPS), la differenza tra la regione piu' economica e quella piu' cara si aggira intorno ai 300-400 euro annui, pari a circa 23-30 euro al mese su 13 mensilita'. Una differenza percepibile ma non stravolgente.
+      </p>
+      <p>
+        La situazione cambia radicalmente per un lavoratore con <strong>RAL di 50.000 euro</strong> (reddito imponibile di circa 45.400 euro). In questo caso, la differenza puo' superare i 700-900 euro annui, pari a 54-69 euro al mese. Questo accade perche' le regioni con aliquote progressive applicano scaglioni piu' alti che impattano proporzionalmente di piu' sui redditi elevati, mentre le regioni con aliquota flat mantengono lo stesso tasso indipendentemente dal reddito.
+      </p>
+      <p>
+        Per i <strong>redditi superiori a 75.000 euro</strong> (dirigenti, manager, professionisti senior), il divario puo' raggiungere e superare i 1.200-1.500 euro annui. A queste cifre, la scelta della regione di residenza diventa un fattore fiscale rilevante, soprattutto per chi ha la flessibilita' di lavorare in remoto e puo' scegliere dove stabilire la propria residenza senza vincoli legati alla sede lavorativa.
+      </p>
+      <p>
+        E' importante sottolineare che il sistema progressivo utilizzato da alcune regioni crea un effetto di amplificazione delle differenze man mano che il reddito cresce. La Lombardia, ad esempio, con il suo sistema a scaglioni moderati (da 1,23% a 1,74%), resta relativamente competitiva anche per i redditi alti, mentre il Lazio e la Campania, con aliquote che raggiungono il 3,33%, diventano progressivamente piu' penalizzanti per i redditi superiori.
+      </p>
+
+      <h3>La mappa fiscale d'Italia: Nord vs Centro vs Sud</h3>
+      <p>
+        Analizzando la distribuzione geografica delle addizionali regionali emergono alcuni pattern generali, ma anche importanti eccezioni che sfatano i luoghi comuni sulla fiscalita' territoriale italiana.
+      </p>
+      <p>
+        Il <strong>Nord Italia</strong> presenta in generale le aliquote piu' basse. Le province autonome di Trento e Bolzano, il Veneto, la Lombardia e il Friuli-Venezia Giulia offrono le condizioni fiscali piu' favorevoli. Questo e' in parte dovuto alla maggiore autonomia fiscale delle regioni a statuto speciale (Trentino-Alto Adige, FVG) e in parte alla migliore gestione dei bilanci sanitari regionali, che evita la necessita' di aumentare le addizionali per coprire deficit. La Liguria e il Piemonte si collocano in posizioni intermedie, con il Piemonte leggermente piu' caro a causa del suo sistema progressivo con aliquote che raggiungono il 2,33%.
+      </p>
+      <p>
+        Il <strong>Centro Italia</strong> mostra un quadro eterogeneo. La Toscana e l'Umbria hanno aliquote moderate, l'Emilia-Romagna (spesso considerata Nord ma geograficamente centro) si colloca anch'essa in fascia media. Le Marche sono sostanzialmente nella media nazionale. L'eccezione clamorosa e' il <strong>Lazio</strong>, che a causa del pesante debito sanitario accumulato e del conseguente piano di rientro imposto dal governo centrale, applica le aliquote piu' alte d'Italia: un paradosso per una regione che ospita la capitale e che ha un PIL pro capite superiore alla media nazionale.
+      </p>
+      <p>
+        Il <strong>Sud Italia e le isole</strong> presentano anch'essi un quadro variegato che sfida le semplificazioni. La Sardegna, grazie al suo statuto speciale e a una gestione oculata delle finanze regionali, e' tra le regioni piu' convenienti d'Italia con l'aliquota minima dell'1,23%. La Sicilia, altro statuto speciale, si colloca in fascia media. La Basilicata applica l'aliquota flat minima dell'1,23%. Al contrario, la <strong>Campania</strong> si conferma tra le regioni piu' costose: come il Lazio, sconta un deficit sanitario storico che ha portato all'imposizione di aliquote massime al 3,33%, un peso fiscale che si aggiunge a un contesto economico gia' difficile. Puglia, Calabria e Molise si collocano nella fascia medio-alta.
+      </p>
+      <p>
+        Un dato che sorprende molti e' che il luogo comune "al Sud si paga meno" non trova riscontro nelle addizionali regionali. Al contrario, alcune delle regioni meridionali (Campania su tutte) sono tra le piu' care d'Italia, creando un'ulteriore penalizzazione per i lavoratori di queste aree che gia' devono confrontarsi con retribuzioni mediamente piu' basse e un costo della vita che, nelle grandi citta' come Napoli, non e' significativamente diverso da quello di alcune citta' del Nord.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Differenza di netto annuo tra regioni: esempi con RAL 35.000 euro
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente illustra come cambia lo stipendio netto annuo di un lavoratore dipendente senza figli a carico, con RAL di 35.000 euro, in funzione della regione di residenza. I calcoli includono contributi INPS dipendente (9,19%), IRPEF 2026 con detrazioni da lavoro dipendente, addizionale regionale specifica di ciascuna regione e addizionale comunale stimata allo 0,8%. La colonna "Differenza vs media" indica il risparmio (+) o il maggior costo (-) rispetto alla media nazionale delle 21 regioni.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-600">
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Regione</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Addizionale regionale</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Netto annuo stimato</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Differenza vs media</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Veneto</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1,23% flat</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~26.420 &euro;</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+250 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Friuli-Venezia Giulia</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">0,70%-1,23%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~26.430 &euro;</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+260 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Lombardia</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1,23%-1,74%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~26.310 &euro;</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+140 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Toscana</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1,42%-1,73%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~26.260 &euro;</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+90 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Piemonte</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1,62%-2,33%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~26.120 &euro;</td>
+              <td class="py-3 px-4 text-red-600 dark:text-red-400">-50 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Sicilia</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1,23%-1,73%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~26.270 &euro;</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+100 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Campania</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">fino a 3,33%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~25.810 &euro;</td>
+              <td class="py-3 px-4 text-red-600 dark:text-red-400">-360 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Lazio</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">fino a 3,33%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~25.830 &euro;</td>
+              <td class="py-3 px-4 text-red-600 dark:text-red-400">-340 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Come evidenziato dalla tabella, per una RAL di 35.000 euro la <strong>differenza tra la regione piu' conveniente (Friuli-Venezia Giulia) e quella piu' costosa (Campania) raggiunge circa 620 euro annui</strong>, equivalenti a quasi 48 euro al mese su 13 mensilita'. E' una cifra che, pur non essendo determinante per la scelta di dove vivere, rappresenta un fattore concreto da considerare nelle proprie valutazioni finanziarie. Vale la pena sottolineare che le regioni del Nord con aliquote basse (Veneto, FVG, Lombardia) combinano il vantaggio fiscale con retribuzioni mediamente piu' alte, ampliando ulteriormente il gap di potere d'acquisto rispetto alle regioni meridionali con aliquote elevate. Chi lavora in smart working per un'azienda con sede al Nord e puo' scegliere liberamente la propria residenza dovrebbe considerare attentamente questo aspetto: trasferirsi in una regione con addizionale bassa puo' equivalere a un piccolo aumento di stipendio, senza alcun cambiamento lavorativo.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Quanto puo' cambiare il netto tra una regione e l'altra?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Per una RAL di 35.000 euro, la differenza tra la regione piu' cara (tipicamente Lazio o Campania) e quella piu' economica (Friuli-Venezia Giulia o province autonome) puo' arrivare a circa 30-50 euro al mese, ovvero 400-650 euro l'anno. Per redditi piu' alti la forbice si allarga ulteriormente.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Conta la regione dove lavoro o dove risiedo?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          L'addizionale regionale e comunale si pagano nella regione e nel comune di residenza al 1 gennaio dell'anno di riferimento. Se lavori a Milano ma risiedi nel Lazio, pagherai le addizionali del Lazio. Questo e' un aspetto importante per chi considera di trasferirsi.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Le addizionali regionali sono progressive come l'IRPEF?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Dipende dalla regione. Alcune (come Veneto, Sardegna, Liguria) applicano un'aliquota unica flat. Altre (come Lombardia, Lazio, Campania, Emilia-Romagna) utilizzano un sistema a scaglioni progressivi dove l'aliquota aumenta al crescere del reddito. Il nostro calcolatore tiene conto del sistema specifico di ciascuna regione.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Perche' il Friuli-Venezia Giulia ha le addizionali piu' basse?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il Friuli-Venezia Giulia e' una regione a statuto speciale con ampia autonomia fiscale. Per i redditi fino a 15.000 euro applica un'aliquota ridotta dello 0,70%, tra le piu' basse d'Italia. Anche le province autonome di Trento e Bolzano beneficiano di condizioni simili grazie alla loro autonomia fiscale.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          L'addizionale comunale e' inclusa nel confronto?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', l'addizionale comunale e' inclusa nel calcolo del netto usando l'aliquota media nazionale dello 0,8%. Poiche' l'addizionale comunale varia da comune a comune (e non da regione a regione), viene tenuta costante per garantire un confronto equo tra regioni. Per un calcolo preciso con la tua aliquota comunale, usa il calcolatore dello stipendio netto.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Cambiare residenza per pagare meno tasse conviene davvero?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Dal punto di vista puramente fiscale delle addizionali regionali, il risparmio per un reddito medio (RAL 35.000 euro) si aggira tra i 300 e i 600 euro annui, una cifra che raramente giustifica un trasferimento. Tuttavia, ci sono diversi aspetti da considerare. Primo: il risparmio aumenta significativamente per i redditi alti (oltre 50.000-60.000 euro), dove la differenza puo' superare i 1.000 euro all'anno. Secondo: la residenza influisce anche sull'addizionale comunale, che puo' variare dallo 0% allo 0,9% a seconda del comune. Terzo: bisogna considerare il costo della vita complessivo (affitti, servizi, trasporti) che varia enormemente tra le diverse aree d'Italia e puo' annullare o amplificare il vantaggio fiscale. In sintesi, cambiare residenza solo per le addizionali conviene principalmente a chi ha redditi elevati e puo' lavorare in remoto, mentre per la maggior parte dei lavoratori il beneficio fiscale e' troppo modesto per giustificare un cambiamento di vita cosi' significativo.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Le addizionali regionali cambiano ogni anno?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Le aliquote delle addizionali regionali possono essere modificate ogni anno dalle singole regioni tramite legge regionale, ma nella pratica i cambiamenti sono poco frequenti. La maggior parte delle regioni mantiene le stesse aliquote per diversi anni consecutivi. Le variazioni piu' significative avvengono quando una regione entra o esce da un piano di rientro del debito sanitario (come nel caso di Lazio e Campania), il che puo' comportare aumenti obbligatori delle aliquote. Le regioni a statuto speciale e le province autonome tendono ad avere la maggiore stabilita', grazie alla loro autonomia finanziaria che le rende meno esposte a pressioni di bilancio. Il nostro calcolatore viene aggiornato all'inizio di ogni anno fiscale con le aliquote in vigore, verificate sulle delibere regionali pubblicate sul sito del Dipartimento delle Finanze del MEF.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come vengono calcolate le addizionali per chi cambia regione durante l'anno?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La regola e' semplice ma spesso fraintesa: l'addizionale regionale si paga interamente nella regione in cui si ha la residenza al 1 gennaio dell'anno di imposta. Non esiste un riparto proporzionale ai mesi trascorsi in ciascuna regione. Se il 1 gennaio 2026 risiedi in Campania e a marzo ti trasferisci in Veneto, per tutto il 2026 pagherai l'addizionale regionale della Campania (la piu' cara). Il trasferimento avra' effetto fiscale solo dall'anno successivo (2027), quando pagherai l'addizionale del Veneto. Per questo motivo, chi pianifica un trasferimento per motivi fiscali dovrebbe farlo entro il 31 dicembre dell'anno precedente, in modo da risultare residente nella nuova regione gia' al 1 gennaio. L'addizionale comunale segue la stessa regola, con riferimento al domicilio fiscale al 1 gennaio.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Dettaglio scaglione per scaglione dell'IRPEF sul tuo reddito
+        </p>
+      </a>
+      <a
+        href="/calcolo-busta-paga"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Busta Paga
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simula il cedolino mensile con tutte le trattenute
+        </p>
+      </a>
+      <a
+        href="/calcolo-stipendio-lordo"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Lordo da Netto
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Scopri la RAL necessaria per ottenere il netto desiderato
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

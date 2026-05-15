@@ -1,0 +1,474 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import Buonuscita from '../components/calcolatori/Buonuscita';
+
+const title = `Calcolo Buonuscita e Incentivo all'Esodo ${SITE.annoFiscale}: Netto`;
+const description = `Calcola il netto della buonuscita o incentivo all'esodo ${SITE.annoFiscale}. Confronta tassazione separata e ordinaria, scopri quanto ricevi in tasca e risparmia con la simulazione gratuita.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolatori', url: SITE.url },
+  { name: 'Calcolo Buonuscita', url: `${SITE.url}/calcolo-buonuscita` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Buonuscita e Incentivo all'Esodo"
+  breadcrumbs={breadcrumbs}
+>
+  <Buonuscita client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Come si calcola la buonuscita e l'incentivo all'esodo
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        L'<strong>incentivo all'esodo</strong> (comunemente chiamato "buonuscita") e' una somma che il
+        datore di lavoro offre al dipendente per incentivarlo a lasciare volontariamente il posto di
+        lavoro. Si tratta di un accordo consensuale: l'azienda propone una cifra, il lavoratore puo'
+        accettare o rifiutare, ed eventualmente negoziare condizioni migliori. E' una pratica molto
+        diffusa nelle ristrutturazioni aziendali, nei piani di esodo volontario e nelle riorganizzazioni
+        societarie.
+      </p>
+      <p>
+        A differenza del TFR (Trattamento di Fine Rapporto), che e' un diritto maturato automaticamente
+        dal lavoratore e il cui importo e' determinato dalla legge, l'incentivo all'esodo e' una somma
+        aggiuntiva il cui ammontare dipende esclusivamente dalla trattativa tra le parti. Non esiste un
+        importo minimo o massimo stabilito per legge: le cifre variano tipicamente da poche mensilita'
+        fino a 24 o piu' mensilita' di RAL, a seconda dell'anzianita' del dipendente, del ruolo ricoperto,
+        della dimensione aziendale e del contesto negoziale.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Differenza tra buonuscita, TFR e incentivo all'esodo
+      </h3>
+      <p>
+        E' fondamentale distinguere tre concetti che spesso vengono confusi:
+      </p>
+      <ul>
+        <li>
+          <strong>TFR (Trattamento di Fine Rapporto)</strong>: e' un diritto irrinunciabile del
+          lavoratore, disciplinato dall'art. 2120 del Codice Civile. Si accumula anno dopo anno nella
+          misura di circa il 6,91% della retribuzione annua (RAL / 13,5) e viene erogato alla cessazione
+          del rapporto di lavoro, indipendentemente dal motivo. Il TFR e' dovuto sempre, che il lavoratore
+          si dimetta, venga licenziato o il contratto scada naturalmente. La sua tassazione segue regole
+          specifiche (tassazione separata con aliquota media degli ultimi 5 anni).
+        </li>
+        <li>
+          <strong>Buonuscita / Incentivo all'esodo</strong>: e' una somma aggiuntiva rispetto al TFR,
+          offerta dall'azienda per incentivare le dimissioni volontarie. Non e' obbligatoria, non e' un
+          diritto del lavoratore e il suo importo e' frutto di negoziazione. La tassazione puo' avvenire
+          con regime separato (piu' vantaggioso) o ordinario.
+        </li>
+        <li>
+          <strong>Indennita' sostitutiva del preavviso</strong>: e' la somma che il datore di lavoro paga
+          quando esonera il dipendente dal lavorare durante il periodo di preavviso. Il suo importo e'
+          pari alla retribuzione che sarebbe stata percepita durante il preavviso. Viene tassata con
+          tassazione ordinaria (non separata).
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Tassazione separata vs ordinaria: come funziona
+      </h3>
+      <p>
+        Il trattamento fiscale dell'incentivo all'esodo e' disciplinato dagli articoli 17 e 19 del
+        <strong> TUIR (Testo Unico delle Imposte sui Redditi)</strong>. L'incentivo puo' beneficiare
+        della tassazione separata quando e' collegato alla cessazione del rapporto di lavoro e
+        l'erogazione avviene in un periodo d'imposta successivo a quello in cui e' sorto il diritto.
+        In pratica, la tassazione separata si applica nella stragrande maggioranza dei casi.
+      </p>
+      <p>
+        La <strong>tassazione separata</strong> funziona cosi':
+      </p>
+      <ol>
+        <li>
+          Si calcola l'<strong>aliquota media</strong> IRPEF dell'ultimo biennio: si prende il reddito
+          complessivo degli ultimi 2 anni di imposta, si calcola l'IRPEF lorda corrispondente e si divide
+          per il reddito imponibile. In forma semplificata (come fa il nostro calcolatore), si usa la RAL
+          dell'ultimo anno come riferimento.
+        </li>
+        <li>
+          Si applica questa aliquota media all'importo lordo dell'incentivo. L'imposta risultante e' quasi
+          sempre inferiore a quella che si pagherebbe con tassazione ordinaria, perche' l'aliquota media e'
+          per definizione piu' bassa dell'aliquota marginale che colpirebbe la somma aggiuntiva.
+        </li>
+        <li>
+          L'Agenzia delle Entrate si riserva di <strong>riliquidare</strong> l'imposta entro i termini di
+          decadenza, applicando l'aliquota media effettiva calcolata sui redditi degli ultimi 2 anni. Se
+          l'aliquota effettiva risulta superiore a quella applicata dal sostituto d'imposta, verra'
+          notificata una cartella di pagamento per la differenza; se risulta inferiore, si avra' diritto a
+          un rimborso.
+        </li>
+      </ol>
+      <p>
+        La <strong>tassazione ordinaria</strong>, invece, somma l'incentivo al reddito dell'anno in
+        corso. Poiche' l'IRPEF italiana e' progressiva, l'aggiunta di una somma consistente fa salire
+        il reddito complessivo in scaglioni piu' alti, con aliquote marginali del 35% o addirittura
+        del 43%. Il risultato e' un prelievo fiscale significativamente maggiore.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Formula di calcolo ed esempio pratico
+      </h3>
+      <p>
+        <strong>Formula tassazione separata:</strong><br />
+        Imposta = Importo lordo incentivo &times; Aliquota media IRPEF (basata sugli ultimi 2 anni)
+      </p>
+      <p>
+        <strong>Esempio</strong>: supponiamo un incentivo di <strong>30.000 &euro;</strong> con RAL ultimo
+        anno di <strong>40.000 &euro;</strong> e <strong>8 anni di servizio</strong>.
+      </p>
+      <ol>
+        <li>
+          RAL = 40.000 &euro;. Contributi INPS dipendente (9,19%) = 3.676 &euro;. Imponibile fiscale =
+          36.324 &euro;.
+        </li>
+        <li>
+          IRPEF lorda su 36.324 &euro;: primi 28.000 &euro; al 23% = 6.440 &euro; + restanti 8.324 &euro;
+          al 35% = 2.913 &euro;. Totale IRPEF = 9.353 &euro;.
+        </li>
+        <li>
+          Aliquota media = 9.353 / 36.324 = <strong>25,75%</strong> circa.
+        </li>
+        <li>
+          Imposta con tassazione separata = 30.000 &times; 25,75% = <strong>7.725 &euro;</strong>.
+          Netto = 30.000 &minus; 7.725 = <strong>22.275 &euro;</strong>.
+        </li>
+        <li>
+          Con tassazione ordinaria, i 30.000 &euro; si aggiungerebbero al reddito: l'imponibile
+          salirebbe a 66.324 &euro;, con IRPEF al 43% sulla porzione eccedente i 50.000 &euro;.
+          L'imposta incrementale sarebbe di circa 10.050 &euro;. Netto = 19.950 &euro;.
+        </li>
+        <li>
+          <strong>Risparmio con tassazione separata: circa 2.325 &euro;</strong>.
+        </li>
+      </ol>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Quanto chiedere come incentivo all'esodo
+      </h3>
+      <p>
+        Non esiste una regola fissa, ma nella prassi italiana le buonuscite vengono negoziate
+        considerando diversi fattori:
+      </p>
+      <ul>
+        <li>
+          <strong>Anzianita' di servizio</strong>: piu' anni hai lavorato, piu' alta sara' la tua
+          capacita' negoziale. Una regola empirica comune prevede da 1 a 2 mensilita' per ogni anno
+          di servizio.
+        </li>
+        <li>
+          <strong>Ruolo e livello</strong>: dirigenti e quadri con alte responsabilita' possono negoziare
+          importi maggiori, spesso tra 12 e 24 mensilita' complessive.
+        </li>
+        <li>
+          <strong>Contesto aziendale</strong>: se l'azienda sta chiudendo una sede o ristrutturando un
+          intero reparto, la disponibilita' a offrire somme generose puo' essere maggiore.
+        </li>
+        <li>
+          <strong>Tutele del lavoratore</strong>: per lavoratori con tutele forti (art. 18, contratto a
+          tempo indeterminato, eta' vicina alla pensione), l'azienda potrebbe dover offrire di piu' per
+          rendere l'esodo conveniente.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Aspetti legali e contributivi
+      </h3>
+      <p>
+        L'incentivo all'esodo presenta alcune caratteristiche giuridiche importanti:
+      </p>
+      <ul>
+        <li>
+          <strong>Non obbligatorieta'</strong>: il lavoratore non e' obbligato ad accettare. Le dimissioni
+          devono essere sempre volontarie. Qualsiasi pressione o coercizione puo' rendere nullo l'accordo.
+        </li>
+        <li>
+          <strong>Contributi INPS</strong>: l'incentivo all'esodo non e' soggetto a contribuzione INPS
+          quando e' classificato come somma incentivante la risoluzione consensuale del rapporto, come
+          chiarito dalla Circolare INPS n. 263/1997 e dalla giurisprudenza consolidata. Questa esenzione
+          e' un ulteriore vantaggio rispetto alla retribuzione ordinaria.
+        </li>
+        <li>
+          <strong>Forma dell'accordo</strong>: l'accordo di risoluzione consensuale deve essere
+          formalizzato per iscritto e le dimissioni devono essere convalidate telematicamente tramite
+          il portale del Ministero del Lavoro (procedura obbligatoria dal 2016). E' altamente
+          consigliabile farsi assistere da un avvocato del lavoro o da un sindacato nella stesura
+          dell'accordo.
+        </li>
+        <li>
+          <strong>NASpI</strong>: in caso di risoluzione consensuale con incentivo all'esodo, il
+          lavoratore puo' avere diritto alla NASpI (indennita' di disoccupazione) solo se la
+          risoluzione avviene in sede protetta (conciliazione presso l'Ispettorato Territoriale del
+          Lavoro, sede sindacale, o commissione di certificazione). La semplice firma di un accordo
+          tra le parti non garantisce automaticamente il diritto alla NASpI.
+        </li>
+        <li>
+          <strong>Ticket di licenziamento</strong>: il datore di lavoro e' tenuto a versare all'INPS il
+          cosiddetto "ticket di licenziamento" (contributo di recesso), pari al 41% del massimale NASpI
+          mensile per ogni anno di servizio, fino a un massimo di 3 anni. Questo costo e' interamente a
+          carico dell'azienda.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Tabella indicativa: netto incentivo per fasce di importo
+      </h3>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Incentivo lordo</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL rif.</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Aliquota media</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Imposta separata</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Netto stimato</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">10.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">30.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~23,0%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~2.300 &euro;</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~7.700 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">20.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">35.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~24,5%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~4.900 &euro;</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~15.100 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">30.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">40.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~25,8%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~7.725 &euro;</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~22.275 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">50.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">50.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~28,1%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~14.050 &euro;</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~35.950 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">80.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">60.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~31,2%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~24.960 &euro;</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~55.040 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        I valori riportati in tabella sono stime basate sulla tassazione separata con aliquota media
+        calcolata sulla RAL di riferimento. L'aliquota effettiva applicata dall'Agenzia delle Entrate
+        potrebbe variare leggermente in sede di riliquidazione, poiche' tiene conto dei redditi
+        complessivi (non solo la RAL da lavoro dipendente) degli ultimi due anni di imposta. Per una
+        stima personalizzata, utilizza il calcolatore in alto inserendo il tuo importo e la tua RAL.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Riferimenti normativi e aliquote {SITE.annoFiscale}
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La disciplina fiscale dell'incentivo all'esodo e della buonuscita si basa principalmente sui
+        seguenti riferimenti normativi:
+      </p>
+      <ul>
+        <li>
+          <strong>Art. 17, comma 1, lett. a) del TUIR</strong>: prevede la tassazione separata per le
+          "somme percepite una tantum in dipendenza della cessazione dei rapporti di lavoro dipendente",
+          includendo gli incentivi all'esodo.
+        </li>
+        <li>
+          <strong>Art. 19 del TUIR</strong>: disciplina la determinazione dell'imposta con tassazione
+          separata per il TFR e le somme equiparate, definendo i criteri per il calcolo dell'aliquota
+          media di riferimento.
+        </li>
+        <li>
+          <strong>Circolare Agenzia delle Entrate n. 29/E del 2001</strong>: fornisce chiarimenti
+          operativi sulla tassazione separata delle somme erogate alla cessazione del rapporto di lavoro.
+        </li>
+        <li>
+          <strong>Circolare INPS n. 263/1997</strong>: chiarisce l'esclusione dalla base imponibile
+          contributiva delle somme corrisposte a titolo di incentivo all'esodo.
+        </li>
+      </ul>
+      <p>
+        Per il {SITE.annoFiscale}, gli scaglioni IRPEF utilizzati per il calcolo dell'aliquota media sono:
+      </p>
+      <ul>
+        <li>Fino a 28.000 &euro;: <strong>23%</strong></li>
+        <li>Da 28.001 a 50.000 &euro;: <strong>35%</strong></li>
+        <li>Oltre 50.000 &euro;: <strong>43%</strong></li>
+      </ul>
+      <p>
+        L'aliquota media risultante, applicata alla buonuscita con tassazione separata, sara' sempre
+        inferiore o uguale all'aliquota marginale. Per i redditi intorno ai 35.000 &euro; l'aliquota
+        media si aggira intorno al 24&ndash;26%, contro un'aliquota marginale del 35%. Per i redditi
+        oltre i 55.000 &euro; l'aliquota media raggiunge circa il 32&ndash;34%, contro il 43% marginale.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti sulla buonuscita
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          L'incentivo all'esodo e' obbligatorio?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, l'incentivo all'esodo e' frutto di una trattativa tra datore di lavoro e dipendente. Non esiste
+          un obbligo di legge per l'azienda di offrirlo ne' per il lavoratore di accettarlo. Il lavoratore
+          ha tutto il diritto di rifiutare la proposta e continuare il rapporto di lavoro. E' sempre
+          consigliabile valutare attentamente l'offerta, possibilmente con l'assistenza di un legale o
+          di un sindacato, prima di prendere una decisione.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La buonuscita e' soggetta a contributi INPS?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, l'incentivo all'esodo non e' soggetto a contributi previdenziali INPS quando e' classificato
+          come somma incentivante la risoluzione consensuale del rapporto di lavoro, come chiarito dalla
+          Circolare INPS n. 263/1997. Questo rappresenta un vantaggio significativo rispetto alla
+          retribuzione ordinaria, dove i contributi INPS a carico del dipendente ammontano al 9,19%.
+          L'esenzione contributiva si applica sia alla quota a carico del lavoratore che a quella a carico
+          del datore di lavoro.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Posso ottenere la NASpI dopo aver accettato un incentivo all'esodo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Dipende dalla modalita' di formalizzazione della risoluzione. La NASpI spetta in caso di
+          risoluzione consensuale avvenuta in sede protetta (Ispettorato Territoriale del Lavoro,
+          sede sindacale, o commissione di certificazione). Se la risoluzione e' formalizzata
+          semplicemente come dimissioni volontarie, il diritto alla NASpI non sussiste. E' quindi
+          fondamentale strutturare correttamente l'accordo per preservare il diritto all'indennita'
+          di disoccupazione.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come viene tassata la buonuscita: separata o ordinaria?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          L'incentivo all'esodo beneficia di norma della tassazione separata ai sensi dell'art. 17 del
+          TUIR. L'aliquota applicata e' quella media calcolata sui redditi degli ultimi due anni fiscali.
+          Il sostituto d'imposta (il datore di lavoro) applica in via provvisoria un'aliquota basata
+          sull'ultimo reddito disponibile. Successivamente, l'Agenzia delle Entrate puo' riliquidare
+          l'imposta applicando l'aliquota effettiva. La tassazione ordinaria si applica solo se il
+          lavoratore lo richiede espressamente o in casi particolari previsti dalla normativa.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quante mensilita' di buonuscita posso chiedere?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Non esiste un minimo o massimo stabilito per legge. Nella pratica italiana, gli importi variano
+          notevolmente a seconda dell'anzianita', del ruolo e del contesto. Come riferimento generale:
+          da 1 a 2 mensilita' per ogni anno di servizio per impiegati e quadri, fino a 24 o piu'
+          mensilita' complessive per dirigenti con lunga anzianita'. E' importante ricordare che tutto
+          dipende dalla negoziazione: piu' forte e' la posizione del lavoratore (tutele contrattuali,
+          anzianita', competenze specifiche), piu' alta sara' la cifra negoziabile.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La buonuscita influisce sul TFR?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, la buonuscita e l'incentivo all'esodo sono somme separate dal TFR. Il TFR viene calcolato
+          esclusivamente sulla retribuzione percepita durante il rapporto di lavoro e l'incentivo
+          all'esodo non rientra nella base di calcolo. Al momento della cessazione, il lavoratore ricevera'
+          sia il TFR maturato sia l'incentivo all'esodo concordato, come due voci distinte. Entrambi
+          possono beneficiare della tassazione separata, ma con modalita' di calcolo differenti.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa succede se l'Agenzia delle Entrate riliquida l'imposta?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          L'Agenzia delle Entrate ha la facolta' di ricalcolare (riliquidare) l'imposta sulla buonuscita,
+          applicando l'aliquota media effettiva calcolata sui redditi complessivi dei due anni precedenti
+          alla cessazione del rapporto. Se l'aliquota risulta superiore a quella applicata dal datore di
+          lavoro, il contribuente ricevera' una comunicazione con l'invito a pagare la differenza. Se
+          invece l'aliquota risulta inferiore, si avra' diritto a un rimborso. La riliquidazione puo'
+          avvenire entro il termine ordinario di decadenza dell'accertamento (cinque anni dalla
+          dichiarazione). E' possibile richiedere la rateizzazione dell'eventuale maggiore imposta dovuta.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/calcolo-tfr" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo TFR</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calcola il TFR maturato e confronta le opzioni di destinazione</p>
+      </a>
+      <a href="/calcolo-busta-paga" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Busta Paga</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Simula la tua busta paga completa dal lordo al netto</p>
+      </a>
+      <a href="/confronto-dipendente-piva" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Dipendente vs P.IVA</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Confronta il netto tra lavoro dipendente e partita IVA forfettaria</p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

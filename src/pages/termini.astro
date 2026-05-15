@@ -1,0 +1,263 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+
+const title = 'Termini e Condizioni d\'Uso del Calcolatore Online';
+const description = 'Termini e condizioni d\'uso del calcolatore stipendio netto su calcolalordonetto.it. I risultati sono stime indicative a scopo informativo, non consulenza fiscale professionale. Legge italiana.';
+const lastUpdated = '15 maggio 2026';
+---
+
+<Layout title={title} description={description}>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Termini e Condizioni d'Uso
+      </h1>
+      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+        Ultimo aggiornamento: {lastUpdated}
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>1. Ambito di Applicazione e Accettazione dei Termini</h2>
+      <p>
+        I presenti Termini e Condizioni d'Uso (di seguito "Termini") disciplinano l'accesso e l'utilizzo del sito web <strong>{SITE.domain}</strong> (di seguito "il Sito") e di tutti i servizi in esso offerti, inclusi i calcolatori di stipendio, le guide informative e le tabelle comparative.
+      </p>
+      <p>
+        L'accesso e l'utilizzo del Sito implicano l'accettazione integrale e senza riserve dei presenti Termini. Se l'utente non accetta i presenti Termini, e' pregato di non utilizzare il Sito e di abbandonare immediatamente la navigazione.
+      </p>
+      <p>
+        I presenti Termini costituiscono un accordo giuridicamente vincolante tra il titolare del Sito e l'utente. L'utente dichiara di avere la capacita' giuridica di accettare i presenti Termini e di essere vincolato dalle disposizioni in essi contenute.
+      </p>
+
+      <h2>2. Definizioni</h2>
+      <p>
+        Ai fini dei presenti Termini, si intende per:
+      </p>
+      <ul>
+        <li><strong>"Sito":</strong> il sito web {SITE.domain} e tutti i suoi contenuti, servizi e funzionalita'</li>
+        <li><strong>"Titolare":</strong> il soggetto che gestisce il Sito, come identificato nella sezione <a href="/note-legali">Note Legali</a></li>
+        <li><strong>"Utente":</strong> qualsiasi persona fisica che accede al Sito o ne utilizza i servizi</li>
+        <li><strong>"Calcolatore":</strong> lo strumento online che consente di stimare lo stipendio netto a partire dalla RAL e altri parametri</li>
+        <li><strong>"Servizi":</strong> l'insieme delle funzionalita' offerte dal Sito, inclusi i calcolatori, le guide informative e le tabelle comparative</li>
+        <li><strong>"Contenuti":</strong> tutti i testi, le immagini, i grafici, il codice sorgente, gli algoritmi, il design e ogni altro materiale presente sul Sito</li>
+      </ul>
+
+      <h2>3. Descrizione del Servizio</h2>
+      <p>
+        Il Sito fornisce gratuitamente i seguenti servizi:
+      </p>
+      <ul>
+        <li><strong>Calcolatori online</strong> per la stima dello stipendio netto, del lordo, dell'IRPEF, del TFR e di altri valori correlati alla retribuzione da lavoro dipendente in Italia</li>
+        <li><strong>Guide informative</strong> sulla fiscalita' del lavoro dipendente, gli scaglioni IRPEF, le detrazioni per lavoro dipendente e per carichi di famiglia, i contributi previdenziali e altri aspetti della busta paga</li>
+        <li><strong>Tabelle comparative</strong> per regione, importo RAL, stipendio mensile netto e altre variabili fiscali</li>
+      </ul>
+      <p>
+        Tutti i servizi sono offerti a titolo gratuito e senza necessita' di registrazione. Il Sito non richiede la creazione di un account, non prevede aree riservate e non offre servizi a pagamento.
+      </p>
+
+      <h2>4. Natura Indicativa dei Risultati: Non Costituiscono Consulenza Fiscale</h2>
+      <p>
+        <strong>I risultati prodotti dai calcolatori del Sito sono stime indicative e approssimative, fornite esclusivamente a scopo informativo e divulgativo.</strong>
+      </p>
+      <p>
+        L'utente riconosce e accetta che:
+      </p>
+      <ul>
+        <li>I calcoli si basano su parametri generali della normativa fiscale italiana per l'anno {SITE.annoFiscale} e potrebbero non riflettere la situazione specifica individuale</li>
+        <li>I risultati <strong>non costituiscono consulenza fiscale, tributaria, previdenziale o legale</strong> e non possono in alcun modo sostituire il parere di un professionista abilitato</li>
+        <li>I risultati non sostituiscono in alcun modo la busta paga elaborata dal datore di lavoro o dal consulente del lavoro</li>
+        <li>I risultati non hanno valore legale, contrattuale, certificativo o probatorio e non possono essere utilizzati a tali fini</li>
+        <li>Fattori quali detrazioni specifiche, redditi ulteriori, regimi fiscali particolari (come il regime forfettario), contributi aggiuntivi, accordi contrattuali, benefit aziendali, assegni familiari o normative regionali e comunali possono determinare scostamenti significativi tra la stima e il valore reale</li>
+        <li>Le variazioni normative successive all'ultimo aggiornamento del calcolatore potrebbero rendere obsoleti i parametri utilizzati</li>
+      </ul>
+      <p>
+        <strong>L'utente e' invitato a rivolgersi a un commercialista, un consulente del lavoro o un CAF per ottenere calcoli precisi e personalizzati.</strong> Il titolare del Sito declina ogni responsabilita' per l'utilizzo dei risultati del calcolatore come base per decisioni economiche, finanziarie, contrattuali o di altro tipo.
+      </p>
+
+      <h2>5. Impegno per l'Accuratezza</h2>
+      <p>
+        Pur non potendo garantire l'esattezza assoluta dei risultati, il titolare si impegna a:
+      </p>
+      <ul>
+        <li>Utilizzare i parametri fiscali aggiornati alla normativa vigente</li>
+        <li>Basare i calcoli su fonti ufficiali (Agenzia delle Entrate, INPS, delibere regionali e comunali)</li>
+        <li>Aggiornare tempestivamente gli algoritmi in caso di variazioni normative</li>
+        <li>Documentare le metodologie di calcolo e le fonti utilizzate</li>
+        <li>Segnalare chiaramente eventuali limitazioni o approssimazioni nei risultati</li>
+        <li>Correggere errori segnalati dagli utenti nel piu' breve tempo possibile</li>
+      </ul>
+
+      <h2>6. Utilizzo Consentito</h2>
+      <p>
+        Il Sito e i suoi servizi sono destinati all'uso personale e informativo. L'utente si impegna a:
+      </p>
+      <ul>
+        <li>Utilizzare il Sito in conformita' alla legge italiana e alle normative applicabili</li>
+        <li>Non utilizzare il Sito per attivita' illecite, fraudolente o comunque contrarie all'ordine pubblico e al buon costume</li>
+        <li>Non tentare di compromettere la sicurezza, l'integrita' o la disponibilita' del Sito</li>
+        <li>Non riprodurre, modificare, distribuire o redistribuire i contenuti del Sito senza autorizzazione</li>
+        <li>Non utilizzare sistemi automatici (bot, crawler, scraper) per accedere ai contenuti del Sito in modo massivo o sistematico</li>
+        <li>Non presentare i risultati del calcolatore come calcoli ufficiali, certificazioni o pareri professionali</li>
+      </ul>
+
+      <h2>7. Utilizzi Vietati</h2>
+      <p>
+        Ferme restando le disposizioni di cui al punto precedente, sono espressamente vietati i seguenti utilizzi del Sito:
+      </p>
+      <ul>
+        <li>L'accesso non autorizzato ai sistemi informatici del Sito, ai server o ai database</li>
+        <li>L'utilizzo di tecniche di reverse engineering, decompilazione o disassemblaggio degli algoritmi del Sito</li>
+        <li>La rimozione, l'alterazione o l'occultamento di avvisi di copyright, marchi o altre indicazioni di proprieta' intellettuale</li>
+        <li>La creazione di opere derivate basate sui contenuti del Sito senza autorizzazione scritta del titolare</li>
+        <li>L'utilizzo del Sito per inviare comunicazioni indesiderate (spam) o per diffondere malware</li>
+        <li>Il tentativo di sovraccaricare i server del Sito con richieste eccessive (attacchi DDoS o simili)</li>
+        <li>L'utilizzo del Sito per raccogliere informazioni su altri utenti</li>
+        <li>Qualsiasi utilizzo commerciale dei contenuti del Sito senza previa autorizzazione scritta del titolare</li>
+      </ul>
+      <p>
+        Il titolare si riserva il diritto di adottare tutte le misure necessarie per prevenire e contrastare gli utilizzi vietati, incluso il blocco dell'accesso al Sito e il ricorso alle autorita' competenti.
+      </p>
+
+      <h2>8. Proprieta' Intellettuale</h2>
+      <p>
+        Tutti i contenuti del Sito, inclusi ma non limitati a testi, guide, algoritmi, codice sorgente, design grafico, loghi, marchi, layout, struttura delle banche dati e ogni altro materiale, sono protetti dalla legge italiana sul diritto d'autore (Legge 22 aprile 1941, n. 633 e successive modifiche) e dalle normative internazionali sulla proprieta' intellettuale, incluse la Convenzione di Berna per la protezione delle opere letterarie e artistiche e la Direttiva 2001/29/CE.
+      </p>
+      <p>
+        E' vietata qualsiasi forma di riproduzione, distribuzione, trasmissione, modifica, adattamento, traduzione o utilizzo commerciale dei contenuti senza previa autorizzazione scritta del titolare del Sito. L'utente puo' visualizzare e stampare i contenuti del Sito esclusivamente per uso personale e non commerciale.
+      </p>
+      <p>
+        Eventuali marchi, loghi e segni distintivi di terze parti eventualmente menzionati nel Sito sono di proprieta' dei rispettivi titolari e sono utilizzati esclusivamente a scopo informativo e descrittivo, senza implicare alcuna affiliazione o approvazione.
+      </p>
+
+      <h2>9. Contenuti Generati dagli Utenti</h2>
+      <p>
+        Il Sito attualmente non prevede funzionalita' che consentano agli utenti di pubblicare, caricare o condividere contenuti propri (commenti, recensioni, feedback pubblici, ecc.). Qualora in futuro venissero introdotte tali funzionalita', i presenti Termini saranno aggiornati per disciplinare le condizioni di utilizzo, la licenza concessa dal titolare del contenuto, la moderazione e la rimozione dei contenuti inappropriati.
+      </p>
+      <p>
+        Le comunicazioni inviate dall'utente tramite la <a href="/contatti">pagina contatti</a> sono considerate comunicazioni private e non saranno pubblicate sul Sito senza il consenso dell'autore.
+      </p>
+
+      <h2>10. Disponibilita' del Servizio</h2>
+      <p>
+        Il Sito e i servizi sono forniti "cosi' come sono" (<em>as is</em>) e "come disponibili" (<em>as available</em>). Il titolare si impegna a garantire la disponibilita' del Sito nei limiti di quanto ragionevolmente possibile, ma non garantisce che il servizio sia accessibile in modo continuo, ininterrotto o privo di errori.
+      </p>
+      <p>
+        Il Sito potrebbe essere temporaneamente non disponibile per le seguenti ragioni:
+      </p>
+      <ul>
+        <li>Manutenzione programmata o straordinaria</li>
+        <li>Aggiornamenti tecnici delle infrastrutture o del software</li>
+        <li>Problemi di connettivita' della rete Internet</li>
+        <li>Cause di forza maggiore (calamita' naturali, interruzioni di energia, ecc.)</li>
+        <li>Attacchi informatici o tentativi di violazione della sicurezza</li>
+      </ul>
+      <p>
+        Il titolare non sara' responsabile per eventuali danni o disagi derivanti dall'indisponibilita' temporanea o permanente del Sito o di una sua parte.
+      </p>
+
+      <h2>11. Esclusione di Garanzie</h2>
+      <p>
+        Il Sito e i servizi sono forniti senza garanzie di alcun tipo, esplicite o implicite, incluse, a titolo esemplificativo e non esaustivo:
+      </p>
+      <ul>
+        <li>Garanzie di idoneita' per uno scopo particolare</li>
+        <li>Garanzie di accuratezza, completezza o tempestivita' dei risultati</li>
+        <li>Garanzie di disponibilita' continua e ininterrotta del servizio</li>
+        <li>Garanzie di assenza di errori, virus o altri componenti dannosi</li>
+        <li>Garanzie di compatibilita' con tutti i dispositivi, browser o sistemi operativi</li>
+      </ul>
+
+      <h2>12. Limitazione di Responsabilita'</h2>
+      <p>
+        Nei limiti massimi consentiti dalla legge applicabile, il titolare del Sito non sara' responsabile per:
+      </p>
+      <ul>
+        <li>Danni diretti, indiretti, incidentali, consequenziali, speciali o punitivi derivanti dall'utilizzo o dall'impossibilita' di utilizzo del Sito</li>
+        <li>Decisioni prese dall'utente sulla base dei risultati forniti dal calcolatore</li>
+        <li>Errori, imprecisioni o omissioni nei calcoli o nei contenuti informativi</li>
+        <li>Interruzioni, ritardi o malfunzionamenti tecnici del Sito</li>
+        <li>Eventuali danni derivanti dall'accesso a siti web esterni collegati tramite link</li>
+        <li>Perdite di dati, mancato guadagno, perdita di opportunita' commerciali o altri danni economici</li>
+      </ul>
+      <p>
+        In nessun caso la responsabilita' complessiva del titolare nei confronti dell'utente potra' superare l'importo eventualmente corrisposto dall'utente per l'utilizzo dei servizi del Sito. Essendo i servizi offerti a titolo gratuito, tale importo e' pari a zero.
+      </p>
+
+      <h2>13. Manleva e Indennizzo</h2>
+      <p>
+        L'utente si impegna a manlevare e tenere indenne il titolare del Sito, i suoi collaboratori, consulenti e prestatori di servizi da qualsiasi pretesa, richiesta di risarcimento, danno, costo, spesa (incluse le spese legali) derivanti da o connessi a:
+      </p>
+      <ul>
+        <li>La violazione dei presenti Termini da parte dell'utente</li>
+        <li>L'utilizzo improprio o illecito del Sito da parte dell'utente</li>
+        <li>La violazione di diritti di terze parti da parte dell'utente nell'ambito dell'utilizzo del Sito</li>
+        <li>La violazione di leggi o regolamenti applicabili da parte dell'utente</li>
+      </ul>
+      <p>
+        Tale obbligo di manleva sopravvive alla cessazione dell'utilizzo del Sito da parte dell'utente e alla eventuale risoluzione dei presenti Termini.
+      </p>
+
+      <h2>14. Link a Siti Esterni</h2>
+      <p>
+        Il Sito puo' contenere link a siti web di terze parti, forniti esclusivamente a titolo informativo e per comodita' dell'utente. Il titolare non esercita alcun controllo sui contenuti di tali siti e non assume alcuna responsabilita' per i contenuti, le politiche sulla privacy, le pratiche commerciali o le condizioni d'uso dei siti web di terze parti. L'utente accede ai siti esterni a proprio rischio e pericolo.
+      </p>
+
+      <h2>15. Modifiche al Servizio e ai Termini</h2>
+      <p>
+        Il titolare si riserva il diritto di:
+      </p>
+      <ul>
+        <li>Modificare, sospendere o interrompere qualsiasi funzionalita' del Sito in qualsiasi momento e senza preavviso</li>
+        <li>Aggiornare i presenti Termini a propria discrezione</li>
+        <li>Limitare l'accesso al Sito per ragioni tecniche, di sicurezza o per qualsiasi altra ragione</li>
+        <li>Introdurre nuove funzionalita' o servizi, anche a pagamento, con termini specifici</li>
+      </ul>
+      <p>
+        Le modifiche ai Termini saranno effettive dal momento della pubblicazione sul Sito. La data dell'ultimo aggiornamento e' indicata in cima alla presente pagina. L'utilizzo continuato del Sito dopo la pubblicazione di modifiche ai Termini costituisce accettazione delle modifiche stesse. Si consiglia di consultare periodicamente la presente pagina per verificare eventuali aggiornamenti.
+      </p>
+
+      <h2>16. Legge Applicabile e Foro Competente</h2>
+      <p>
+        I presenti Termini sono regolati dalla <strong>legge italiana</strong> e devono essere interpretati in conformita' con le disposizioni dell'ordinamento giuridico italiano e del diritto dell'Unione Europea direttamente applicabile.
+      </p>
+      <p>
+        Per qualsiasi controversia derivante dall'interpretazione, esecuzione o violazione dei presenti Termini, sara' competente il <strong>foro del luogo di residenza o domicilio del consumatore</strong>, ai sensi dell'art. 66-bis del Codice del Consumo (D.Lgs. 206/2005). Per gli utenti che non rivestano la qualifica di consumatore ai sensi del Codice del Consumo, sara' competente in via esclusiva il Foro di Milano.
+      </p>
+      <p>
+        Si informa inoltre l'utente della possibilita' di ricorrere alla <strong>piattaforma ODR</strong> (Online Dispute Resolution) della Commissione Europea per la risoluzione alternativa delle controversie online: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>. La piattaforma ODR consente ai consumatori e ai professionisti dell'Unione Europea di risolvere le controversie relative ad acquisti online senza ricorrere ai tribunali.
+      </p>
+
+      <h2>17. Clausola di Salvaguardia (Severability)</h2>
+      <p>
+        Qualora una o piu' clausole dei presenti Termini fossero ritenute invalide, nulle o inapplicabili da un'autorita' giudiziaria o amministrativa competente, tale invalidita' non pregiudichera' la validita' e l'efficacia delle restanti clausole, che rimarranno in vigore e pienamente efficaci.
+      </p>
+      <p>
+        In tale ipotesi, la clausola invalida sara' sostituita da una disposizione valida che si avvicini il piu' possibile all'intento e alla finalita' economica della clausola originaria, nei limiti consentiti dalla legge applicabile.
+      </p>
+
+      <h2>18. Accordo Integrale</h2>
+      <p>
+        I presenti Termini, unitamente all'<a href="/privacy">Informativa sulla Privacy</a>, alla <a href="/cookie-policy">Cookie Policy</a> e alle <a href="/note-legali">Note Legali</a>, costituiscono l'accordo integrale tra il titolare del Sito e l'utente in relazione all'utilizzo del Sito e dei servizi offerti, e sostituiscono qualsiasi precedente accordo, intesa o comunicazione, verbale o scritta, avente il medesimo oggetto.
+      </p>
+      <p>
+        Il mancato esercizio di un diritto previsto dai presenti Termini non costituisce rinuncia a tale diritto. La rinuncia a un diritto deve essere espressa in forma scritta per essere efficace.
+      </p>
+
+      <h2>19. Contatti</h2>
+      <p>
+        Per qualsiasi domanda, chiarimento, segnalazione o richiesta relativa ai presenti Termini e Condizioni d'Uso, l'utente puo' contattare il titolare tramite la <a href="/contatti">pagina contatti</a> del Sito.
+      </p>
+      <p>
+        Il titolare si impegna a rispondere alle richieste nel piu' breve tempo possibile e comunque entro i termini previsti dalla normativa applicabile.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Vedi anche: <a href="/note-legali">Note Legali</a> | <a href="/privacy">Informativa sulla Privacy</a> | <a href="/cookie-policy">Cookie Policy</a>
+      </p>
+    </div>
+  </div>
+</Layout>

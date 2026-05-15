@@ -1,0 +1,349 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import PagaOraria from '../components/calcolatori/PagaOraria';
+
+const title = 'Calcolo Paga Oraria 2026: da RAL a Tariffa Oraria Netta';
+const description =
+  'Converti la RAL in paga oraria lorda e netta. Calcola quanto guadagni per ogni ora lavorata tenendo conto di tasse e contributi 2026.';
+const canonical = canonicalURL('/calcolo-paga-oraria');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Paga Oraria', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolatore Paga Oraria"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <PagaOraria client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola la paga oraria dalla RAL
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Per calcolare la paga oraria lorda si divide la RAL per il numero
+        totale di ore lavorate in un anno. In Italia, un contratto full-time
+        standard prevede 40 ore settimanali per circa 52 settimane, ma
+        bisogna sottrarre le ore di ferie, permessi e festivita'. Il
+        risultato tipico e' tra 1.720 e 1.760 ore lavorative effettive
+        all'anno, a seconda del CCNL applicato.
+      </p>
+      <h3>Dalla paga lorda alla paga netta oraria</h3>
+      <p>
+        La paga oraria netta si ottiene dividendo lo stipendio netto annuo
+        per le stesse ore lavorate. In alternativa, puoi applicare alla paga
+        oraria lorda le trattenute percentuali medie (INPS + IRPEF +
+        addizionali). Il risultato ti dice quanto effettivamente guadagni
+        per ogni ora di lavoro dopo le tasse, un dato utile per confrontare
+        diverse opportunita' lavorative o per valutare il costo-opportunita'
+        del tuo tempo.
+      </p>
+      <h3>Perche' conoscere la propria paga oraria</h3>
+      <p>
+        Sapere quanto guadagni all'ora e' fondamentale per diverse
+        decisioni: valutare se un aumento di stipendio compensa un maggior
+        numero di ore lavorate, confrontare un'offerta da dipendente con
+        una da freelance, decidere se vale la pena fare straordinari o
+        accettare un part-time. Questo calcolatore ti aiuta a fare questi
+        confronti in modo rapido e preciso.
+      </p>
+
+      <h3>Ore lavorative effettive in Italia per CCNL</h3>
+      <p>
+        Non tutti i contratti collettivi nazionali prevedono lo stesso monte ore annuo. Il numero di ore effettivamente lavorate dipende da tre variabili principali: le ferie, le festivita' e i permessi retribuiti (ROL). Vediamo nel dettaglio come cambiano queste componenti nei principali CCNL italiani e quale impatto hanno sul calcolo della paga oraria.
+      </p>
+      <p>
+        Il <strong>CCNL Metalmeccanico</strong> (il piu' diffuso in Italia con oltre 1,5 milioni di lavoratori) prevede un orario standard di 40 ore settimanali. Dopo aver sottratto le 4 settimane di ferie obbligatorie (160 ore), le festivita' nazionali che cadono in giorni lavorativi (mediamente 10 giorni, pari a 80 ore) e i ROL (che per questo contratto ammontano a 104 ore per le aziende sopra i 15 dipendenti e 72 ore per quelle piu' piccole), si ottengono circa <strong>1.720 ore lavorative effettive</strong> all'anno. Questo e' il valore di riferimento piu' utilizzato nei calcoli.
+      </p>
+      <p>
+        Il <strong>CCNL Commercio e Terziario</strong> (Confcommercio) copre oltre 2 milioni di lavoratori nel settore della distribuzione, dei servizi e del turismo. L'orario contrattuale e' sempre di 40 ore settimanali, ma i ROL sono inferiori: 56 ore annue per le aziende fino a 15 dipendenti e 72 ore per quelle con organico maggiore. Sommando le ferie (160 ore) e le festivita' (circa 80 ore), il risultato e' di circa <strong>1.752 ore effettive</strong>, leggermente superiore al metalmeccanico.
+      </p>
+      <p>
+        Il <strong>CCNL Bancari e Credito</strong> si distingue per condizioni piu' favorevoli al lavoratore. L'orario settimanale e' di 37,5 ore (7 ore e 30 minuti al giorno), le ferie arrivano fino a 25-27 giorni lavorativi a seconda dell'anzianita', e sono previsti permessi aggiuntivi per ex festivita' soppresse. Il monte ore annuo effettivo scende a circa <strong>1.650 ore</strong>, il che significa che a parita' di RAL la paga oraria lorda di un bancario e' sensibilmente piu' alta.
+      </p>
+      <p>
+        Per quanto riguarda le <strong>ferie</strong>, la legge italiana (D.Lgs. 66/2003) prevede un minimo inderogabile di 4 settimane annue (20 giorni lavorativi). Molti CCNL, tuttavia, prevedono giorni aggiuntivi legati all'anzianita' aziendale: ad esempio, nel CCNL Metalmeccanico si arriva a 22 giorni dopo 10 anni e a 25 giorni dopo 18 anni di servizio.
+      </p>
+      <p>
+        Le <strong>festivita' nazionali</strong> sono 11 in Italia (dal 1 gennaio al 25 dicembre, incluse la Festa della Repubblica il 2 giugno e la Festa dei Lavoratori il 1 maggio). A queste si aggiunge il Santo Patrono del comune di residenza. In media, circa 10-12 di queste festivita' cadono in giorni lavorativi ogni anno, anche se il numero varia annualmente a seconda del calendario.
+      </p>
+      <p>
+        I <strong>ROL (Riduzione Orario di Lavoro)</strong> sono permessi retribuiti che variano notevolmente tra i diversi CCNL: dai 32 ore annue del CCNL Studi Professionali alle 104 ore del CCNL Metalmeccanico per le aziende con piu' di 15 dipendenti. I ROL non goduti entro il termine previsto dal contratto vengono monetizzati in busta paga, ma usarli effettivamente significa avere meno ore lavorate e quindi una paga oraria reale piu' alta.
+      </p>
+
+      <h3>Confronto dipendente vs freelance: il vero costo</h3>
+      <p>
+        Uno degli errori piu' comuni e' confrontare direttamente la paga oraria netta di un dipendente con la tariffa oraria di un freelance. In realta', il costo totale del lavoro dipendente per il datore di lavoro e' significativamente superiore alla RAL, e questo costo nascosto rappresenta un beneficio concreto per il lavoratore dipendente che il freelance deve invece coprire autonomamente.
+      </p>
+      <p>
+        Ecco le principali voci di costo a carico del datore di lavoro che arricchiscono il pacchetto retributivo del dipendente, oltre alla RAL visibile in busta paga:
+      </p>
+      <p>
+        Il <strong>TFR (Trattamento di Fine Rapporto)</strong> rappresenta circa il 6,91% della RAL. Si tratta di una retribuzione differita che il lavoratore riceve alla cessazione del rapporto di lavoro, oppure che confluisce in un fondo pensione complementare. Per una RAL di 30.000 euro, il TFR vale circa 2.073 euro all'anno: denaro che il freelance non riceve e che dovrebbe accantonare autonomamente per il proprio futuro previdenziale.
+      </p>
+      <p>
+        I <strong>contributi previdenziali a carico del datore di lavoro</strong> ammontano al 23,81% della RAL per la quota INPS (IVS), a cui si aggiungono i contributi per malattia, maternita', disoccupazione (NASpI), assegni familiari e INAIL, per un totale che puo' raggiungere il 30-32% della RAL. Per un dipendente con RAL 30.000 euro, il datore versa circa 9.000-9.600 euro di contributi: una cifra enorme che il freelance in regime forfettario copre autonomamente al 26,23% (gestione separata INPS) sul reddito imponibile.
+      </p>
+      <p>
+        Le <strong>ferie e i permessi retribuiti</strong> rappresentano un costo indiretto ma sostanziale. Un dipendente full-time gode di circa 30-35 giorni tra ferie, festivita' e ROL durante i quali viene regolarmente retribuito. Il freelance, al contrario, non guadagna nulla nei giorni in cui non lavora: niente ferie pagate, niente malattia retribuita, niente permessi. Considerando che un freelance lavora mediamente 220-230 giorni fatturabili all'anno contro i 252 giorni lavorativi di un dipendente (di cui una trentina retribuiti senza lavorare), il gap e' evidente.
+      </p>
+      <p>
+        La <strong>malattia e la maternita'</strong> retribuite sono un altro vantaggio del lavoro dipendente. In caso di malattia, il dipendente riceve dal 50% al 100% della retribuzione (a seconda del CCNL e della durata dell'assenza), con costo ripartito tra INPS e datore di lavoro. La maternita' obbligatoria prevede l'80% della retribuzione a carico INPS, spesso integrata al 100% dal datore. Il freelance, invece, riceve solo l'indennita' INPS di base, che per la gestione separata e' calcolata su importi generalmente piu' bassi.
+      </p>
+      <p>
+        A tutto questo si aggiungono i <strong>benefit aziendali</strong> frequenti nel lavoro dipendente: buoni pasto (fino a 8 euro/giorno esentasse se elettronici), assicurazione sanitaria integrativa, formazione professionale, auto aziendale, welfare aziendale. Questi benefit possono valere dal 5% al 15% della RAL.
+      </p>
+      <p>
+        Per tutte queste ragioni, la regola empirica e' che una <strong>tariffa oraria da freelance dovrebbe essere almeno 2-2,5 volte la paga oraria netta da dipendente</strong> per garantire un tenore di vita equivalente. Ad esempio, se un dipendente guadagna 12 euro netti all'ora, un freelance dovrebbe fatturare almeno 24-30 euro all'ora per avere un livello di protezione e risparmio paragonabile.
+      </p>
+
+      <h3>Benchmark settoriali della paga oraria in Italia</h3>
+      <p>
+        La paga oraria varia enormemente a seconda del settore di impiego, riflettendo il diverso valore aggiunto generato, la scarsita' di competenze specifiche e il potere contrattuale dei lavoratori. Ecco una panoramica dei principali settori con le relative fasce retributive lorde orarie per posizioni a tempo pieno e indeterminato.
+      </p>
+      <p>
+        Nel settore <strong>IT e tecnologia</strong> la paga oraria lorda si colloca tipicamente tra 18 e 35 euro all'ora. Le posizioni entry-level (junior developer, help desk, tester) partono dai 18-22 euro, mentre i profili senior e specialistici (cloud architect, data engineer, security specialist, DevOps senior) raggiungono facilmente i 30-35 euro. Per i ruoli manageriali (CTO, VP Engineering) si superano i 40 euro orari lordi. La domanda costantemente superiore all'offerta in questo settore sostiene retribuzioni in crescita anno dopo anno, specialmente per le competenze legate a intelligenza artificiale, cybersecurity e cloud computing.
+      </p>
+      <p>
+        Il settore <strong>Finance e Banking</strong> offre paghe orarie lorde tra 20 e 40 euro. Le posizioni operative in filiale (cassieri, addetti ai servizi) si collocano nella fascia 20-25 euro, mentre gli analisti finanziari, i risk manager e i compliance officer raggiungono i 28-35 euro. Le posizioni di front office in investment banking e private banking possono superare ampiamente i 40 euro orari lordi, escludendo i bonus variabili che in questo settore possono rappresentare una quota significativa della retribuzione totale.
+      </p>
+      <p>
+        Il <strong>Manufacturing e industria</strong> presenta una forbice tra 12 e 20 euro lordi all'ora. Gli operai specializzati e i tecnici di produzione si collocano generalmente tra 12 e 16 euro, mentre i ruoli tecnici qualificati (progettisti meccanici, responsabili qualita', ingegneri di processo) arrivano ai 18-20 euro. Il CCNL Metalmeccanico, con la sua struttura a livelli (dal C1 al D2 per i quadri), definisce minimi tabellari che pero' vengono spesso integrati con superminimi individuali e premi di produzione.
+      </p>
+      <p>
+        Il settore <strong>Retail e GDO</strong> e' tra quelli con le paghe orarie piu' basse, nella fascia 10-15 euro lordi all'ora. I commessi e gli addetti alla vendita percepiscono 10-12 euro, i capi reparto e gli store manager 13-15 euro. La diffusione del part-time involontario in questo settore riduce ulteriormente il reddito annuo complessivo, anche se la paga oraria lorda rimane nominalmente invariata rispetto al full-time. Le catene della grande distribuzione organizzata (GDO) tendono a offrire condizioni leggermente migliori rispetto ai negozi indipendenti.
+      </p>
+      <p>
+        Nel settore <strong>Healthcare e Sanita'</strong> la paga oraria lorda oscilla tra 15 e 25 euro. Gli infermieri professionisti si collocano nella fascia 15-19 euro, i medici ospedalieri dipendenti tra 20 e 25 euro. Va notato che nel settore pubblico le retribuzioni tendono a essere piu' basse rispetto al privato, ma sono compensate da una maggiore stabilita' del posto di lavoro, benefit previdenziali migliori e, in molti casi, un numero di ore lavorative annue inferiore. La carenza cronica di personale sanitario, accentuata dopo la pandemia, sta iniziando a esercitare una pressione al rialzo sulle retribuzioni, soprattutto per le specializzazioni piu' richieste come anestesia, emergenza-urgenza e terapia intensiva.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Paga oraria per livello di RAL: tabella comparativa
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra la conversione dalla RAL alla paga oraria lorda, netta stimata e l'equivalente tariffa freelance necessaria per ottenere un tenore di vita comparabile. I calcoli sono basati su 1.720 ore lavorative annue (CCNL Metalmeccanico), con IRPEF 2026, contributi INPS dipendente al 9,19% e addizionali regionali e comunali medie.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-600">
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">RAL</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Paga oraria lorda (1.720h)</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Paga oraria netta stimata</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Equivalente freelance</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">20.000 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">11,63 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~8,40 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~17-21 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">25.000 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">14,53 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~10,50 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~21-26 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">30.000 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">17,44 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~12,30 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~25-31 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">40.000 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">23,26 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~15,70 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~31-39 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">50.000 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">29,07 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~18,70 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~37-47 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">60.000 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">34,88 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~21,70 &euro;</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~43-54 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Osservando la tabella emerge chiaramente la <strong>relazione non lineare tra RAL e paga oraria netta</strong>. Passando da 20.000 a 40.000 euro di RAL (un raddoppio), la paga oraria lorda raddoppia proporzionalmente (da 11,63 a 23,26 euro), ma la paga oraria netta aumenta solo dell'87% (da 8,40 a 15,70 euro). Questo effetto di compressione e' dovuto alla progressivita' dell'IRPEF: all'aumentare del reddito, una quota crescente viene tassata con aliquote marginali piu' elevate (dal 23% per i primi 28.000 euro al 43% oltre i 50.000 euro). Le detrazioni da lavoro dipendente, inoltre, si riducono progressivamente fino ad azzerarsi per i redditi superiori a 50.000 euro, amplificando ulteriormente l'effetto di compressione del netto rispetto al lordo. Questa dinamica rende particolarmente importante conoscere la propria paga oraria netta, piuttosto che ragionare solo sul lordo: due offerte di lavoro con RAL molto diverse potrebbero avere paghe orarie nette piu' vicine di quanto ci si aspetti.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Quante ore lavorative ci sono in un anno in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Con un contratto full-time di 40 ore settimanali, le ore lavorative annue sono circa 2.080 (40 x 52). Sottraendo ferie (tipicamente 4 settimane), festivita' (circa 10 giorni) e permessi (ROL, variabili per CCNL), si arriva a circa 1.720-1.760 ore effettivamente lavorate. Il numero esatto dipende dal tuo CCNL e dal calendario dell'anno specifico.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come confronto la paga oraria da dipendente con quella da freelance?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Attenzione: il confronto diretto non e' immediato. Come dipendente, la tua paga oraria include benefit nascosti come TFR (circa +7%), contributi pensionistici a carico del datore (+24%), ferie e malattia pagate. Come freelance devi coprire tutti questi costi autonomamente, oltre a spese professionali e periodi senza incarichi. In linea generale, una tariffa oraria da freelance dovrebbe essere almeno il doppio della paga oraria netta da dipendente per essere equivalente.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Le ore di straordinario sono incluse nel calcolo?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No, il calcolo si basa sulle ore contrattuali ordinarie. Le ore di straordinario vengono retribuite con una maggiorazione che varia dal 15% al 30% (o piu') a seconda del CCNL, del giorno (feriale, festivo, notturno) e della quantita'. Se fai regolarmente straordinari, la tua paga oraria effettiva sara' diversa da quella calcolata qui, perche' il compenso extra aumenta il netto annuo ma va diviso per un numero maggiore di ore.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come cambia la paga oraria con un contratto part-time?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La paga oraria lorda di un part-time e' identica a quella di un full-time con lo stesso inquadramento contrattuale: cambia solo il numero di ore lavorate. Tuttavia, la paga oraria netta potrebbe differire leggermente perche' il reddito annuo piu' basso colloca il lavoratore in scaglioni IRPEF inferiori, con aliquote marginali piu' basse e un peso maggiore delle detrazioni.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Qual e' la paga oraria media in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Secondo i dati ISTAT, la retribuzione oraria lorda media in Italia si aggira intorno ai 16-17 euro. Tuttavia, le differenze sono molto ampie: si va dai 9-10 euro orari per le qualifiche piu' basse (operai, addetti alle pulizie) fino a oltre 40-50 euro orari per dirigenti e professionisti specializzati. Anche la regione e il settore influenzano significativamente questo valore.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come si calcola la paga oraria per un part-time verticale vs orizzontale?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Nel part-time orizzontale il lavoratore presta servizio tutti i giorni della settimana con un orario ridotto (ad esempio 4 ore al giorno anziche' 8), mentre nel part-time verticale lavora a tempo pieno ma solo in alcuni giorni della settimana (ad esempio 3 giorni su 5) o in determinati periodi dell'anno. La paga oraria lorda e' identica in entrambi i casi e corrisponde a quella di un full-time con lo stesso inquadramento contrattuale. La differenza principale riguarda la paga oraria netta: nel part-time verticale, concentrando le ore in meno giorni, il reddito annuo puo' essere superiore rispetto a un part-time orizzontale con la stessa percentuale, influenzando lo scaglione IRPEF applicato e di conseguenza la paga netta per ora lavorata. Inoltre, nel part-time verticale le ferie e i ROL maturano proporzionalmente ai giorni lavorati, impattando il calcolo delle ore effettive annue.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Quanto vale un'ora di straordinario in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il valore dello straordinario dipende dal CCNL applicato e dal tipo di lavoro straordinario. In generale, la legge italiana (D.Lgs. 66/2003) prevede una maggiorazione minima del 10%, ma i CCNL stabiliscono percentuali piu' elevate. Nel CCNL Metalmeccanico, ad esempio, la maggiorazione e' del 25% per le prime 2 ore giornaliere di straordinario feriale, del 30% per le ore successive, del 50% per lo straordinario festivo e del 55% per lo straordinario notturno festivo. Per calcolare il valore effettivo, si moltiplica la paga oraria lorda ordinaria per il coefficiente di maggiorazione: con una paga base di 17 euro/ora, un'ora di straordinario feriale vale circa 21,25 euro lordi. Attenzione: lo straordinario e' soggetto a tassazione ordinaria, quindi l'incremento netto e' inferiore alla maggiorazione lorda, specialmente per chi si trova in scaglioni IRPEF elevati.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come confrontare la paga oraria tra paesi diversi?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Confrontare la paga oraria tra paesi richiede diversi aggiustamenti per ottenere un paragone significativo. Innanzitutto, bisogna considerare il diverso numero di ore lavorate all'anno: in Germania sono circa 1.350, in Francia 1.520, in Italia 1.720 e nel Regno Unito 1.670. Poi occorre tenere conto del costo della vita tramite la parita' di potere d'acquisto (PPP): 20 euro/ora a Milano non comprano le stesse cose di 20 euro/ora a Berlino o 20 sterline a Londra. Inoltre, i sistemi fiscali e previdenziali differiscono radicalmente: in alcuni paesi (come la Danimarca) i contributi previdenziali sono bassi ma le tasse sul reddito molto alte, in altri (come la Francia) i contributi sociali sono elevati ma i servizi pubblici piu' estesi. Per un confronto realistico, il metodo migliore e' calcolare il netto orario aggiustato per il costo della vita locale, usando indici come il Big Mac Index o gli indicatori Eurostat sul costo della vita.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-busta-paga"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Busta Paga
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simula il cedolino mensile con tutte le trattenute
+        </p>
+      </a>
+      <a
+        href="/calcolo-stipendio-lordo"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Lordo da Netto
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Scopri la RAL necessaria per ottenere il netto desiderato
+        </p>
+      </a>
+      <a
+        href="/comparatore-regioni"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Comparatore Regioni
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Confronta il netto mensile in tutte le 21 regioni italiane
+        </p>
+      </a>
+      <a
+        href="/calcolo-forfettari"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Regime Forfettario
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calcola tasse e netto con la partita IVA forfettaria
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

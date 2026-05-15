@@ -1,0 +1,495 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import ConfrontoDipendentePIVA from '../components/calcolatori/ConfrontoDipendentePIVA';
+
+const title = `Dipendente vs Partita IVA ${SITE.annoFiscale}: Confronto Netto`;
+const description = `Confronta lo stipendio netto tra lavoro dipendente e partita IVA forfettaria nel ${SITE.annoFiscale}. Calcola le differenze reali includendo TFR, tredicesima, ferie e contributi.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolatori', url: SITE.url },
+  { name: 'Confronto Dipendente vs P.IVA', url: `${SITE.url}/confronto-dipendente-piva` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Confronto Dipendente vs Partita IVA"
+  breadcrumbs={breadcrumbs}
+>
+  <ConfrontoDipendentePIVA client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Quando conviene la Partita IVA e quando il lavoro dipendente
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La scelta tra <strong>lavoro dipendente</strong> e <strong>partita IVA</strong> e' una delle
+        decisioni finanziarie piu' importanti per un lavoratore italiano. Non esiste una risposta
+        universale: la convenienza dipende dal livello di reddito, dal settore di attivita', dalla
+        propensione al rischio e da fattori personali come la necessita' di stabilita' o il desiderio
+        di flessibilita'. Questo calcolatore ti aiuta a confrontare i numeri reali, ma la decisione
+        finale deve tenere conto anche di aspetti non monetari.
+      </p>
+      <p>
+        La partita IVA con regime forfettario tende ad essere piu' conveniente dal punto di vista
+        puramente fiscale per fatturati medio&ndash;bassi (fino a 50.000&ndash;60.000 &euro;), grazie
+        all'imposta sostitutiva ridotta (5% per i primi 5 anni, 15% a regime) e all'assenza di IRPEF
+        progressiva. Tuttavia, il dipendente beneficia di una serie di tutele e voci retributive aggiuntive
+        che hanno un valore economico concreto e che vanno considerate nel confronto.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Le voci nascoste del lavoro dipendente
+      </h3>
+      <p>
+        Quando si confronta il netto di un dipendente con quello di un libero professionista, e' un
+        errore comune limitarsi a guardare solo lo stipendio netto mensile. Il pacchetto retributivo
+        di un lavoratore dipendente include diverse voci aggiuntive che hanno un valore economico reale:
+      </p>
+      <ul>
+        <li>
+          <strong>TFR (Trattamento di Fine Rapporto)</strong>: pari a circa il 6,91% della RAL annua
+          (RAL / 13,5), viene accantonato ogni anno e liquidato alla cessazione del rapporto. Per una RAL
+          di 40.000 &euro;, si tratta di circa 2.963 &euro; all'anno. Il lavoratore autonomo non ha
+          nulla di equivalente e deve provvedere autonomamente al proprio risparmio.
+        </li>
+        <li>
+          <strong>Tredicesima mensilita'</strong>: e' gia' inclusa nella RAL, ma rappresenta una
+          mensilita' aggiuntiva che il freelancer non riceve. La RAL di 40.000 &euro; si distribuisce su
+          13 mensilita' (circa 3.077 &euro; lordi ciascuna), non su 12.
+        </li>
+        <li>
+          <strong>Ferie retribuite</strong>: il dipendente ha diritto ad almeno 26 giorni lavorativi di
+          ferie retribuite all'anno (4 settimane minime per legge + festivita' e permessi previsti dal
+          CCNL). Questo equivale a circa il 10% del tempo lavorativo annuo pagato senza lavorare. Il
+          freelancer che non lavora, non fattura.
+        </li>
+        <li>
+          <strong>Malattia retribuita</strong>: in caso di malattia, il dipendente continua a percepire
+          lo stipendio (con le modalita' previste dal CCNL e dall'INPS). Il libero professionista in
+          malattia semplicemente non guadagna. L'INPS gestione separata prevede un'indennita' di malattia,
+          ma solo in caso di ricovero ospedaliero e con importi molto limitati.
+        </li>
+        <li>
+          <strong>Maternita' e paternita'</strong>: la lavoratrice dipendente ha diritto a 5 mesi di
+          congedo obbligatorio retribuito all'80% della retribuzione (con molti CCNL che integrano al
+          100%) e al congedo parentale facoltativo. Il padre dipendente ha diritto a 10 giorni di congedo
+          obbligatorio retribuito al 100%. Per i titolari di partita IVA in gestione separata INPS,
+          l'indennita' di maternita' e' prevista ma calcolata su base convenzionale, risultando spesso
+          inferiore a quella delle dipendenti.
+        </li>
+        <li>
+          <strong>INAIL e assicurazione infortuni</strong>: il datore di lavoro versa i contributi
+          INAIL per la copertura degli infortuni sul lavoro e delle malattie professionali. Questo e'
+          un costo interamente a carico dell'azienda che il lavoratore autonomo deve eventualmente
+          coprire con polizze private.
+        </li>
+        <li>
+          <strong>Contributi previdenziali del datore</strong>: l'azienda versa circa il 23,81% della
+          RAL in contributi INPS a proprio carico. Questi contributi si traducono in una pensione futura
+          piu' alta per il dipendente. Il lavoratore autonomo in gestione separata versa il 26,07% del
+          reddito imponibile, che e' gia' ridotto dal coefficiente di redditivita'.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Il regime forfettario: vantaggi e limiti
+      </h3>
+      <p>
+        Il <strong>regime forfettario</strong> e' il regime fiscale agevolato per le partite IVA con
+        ricavi fino a <strong>85.000 &euro;</strong> annui. I suoi principali vantaggi sono:
+      </p>
+      <ul>
+        <li>
+          <strong>Imposta sostitutiva ridotta</strong>: 5% per i primi 5 anni di attivita' (se si
+          rispettano determinati requisiti), 15% a regime. Sostituisce IRPEF, addizionali regionali e
+          comunali, e IRAP.
+        </li>
+        <li>
+          <strong>Semplificazione contabile</strong>: nessun obbligo di fatturazione elettronica con
+          IVA esposta (le fatture sono esenti IVA ai sensi dell'art. 1, comma 58, L. 190/2014), nessun
+          obbligo di registri IVA, nessun invio delle liquidazioni periodiche IVA.
+        </li>
+        <li>
+          <strong>Nessuna ritenuta d'acconto</strong> applicata in fattura.
+        </li>
+      </ul>
+      <p>
+        I <strong>limiti</strong> del regime forfettario sono altrettanto importanti:
+      </p>
+      <ul>
+        <li>
+          <strong>Nessuna deduzione di spese effettive</strong>: le spese sono forfettizzate tramite
+          il coefficiente di redditivita'. Se le spese reali sono superiori alla percentuale forfettaria,
+          il regime risulta svantaggioso.
+        </li>
+        <li>
+          <strong>Tetto di fatturato a 85.000 &euro;</strong>: superato questo limite si esce dal regime
+          (dall'anno successivo, o immediatamente se si superano i 100.000 &euro;).
+        </li>
+        <li>
+          <strong>INPS gestione separata al 26,07%</strong>: l'aliquota contributiva e' piuttosto
+          elevata e si applica sul reddito imponibile (non sull'intero fatturato). Per chi e' iscritto
+          a casse previdenziali di categoria (es. INARCASSA per ingegneri, Cassa Forense per avvocati),
+          le aliquote possono essere diverse.
+        </li>
+        <li>
+          <strong>Nessuna detrazione IRPEF</strong>: nel forfettario non si possono portare in
+          detrazione spese mediche, interessi del mutuo, ristrutturazioni, bonus edilizi, ecc. Questo
+          puo' rappresentare uno svantaggio significativo per chi ha spese detraibili rilevanti.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        La trappola del confronto: RAL 40.000 vs fatturato 40.000
+      </h3>
+      <p>
+        Uno degli errori piu' comuni e' confrontare una RAL di 40.000 &euro; con un fatturato di
+        40.000 &euro; come se fossero equivalenti. <strong>Non lo sono</strong>. La RAL del dipendente
+        include la tredicesima (e' distribuita su 13 mensilita') e a essa si aggiungono TFR, ferie
+        pagate, malattia e contributi del datore di lavoro. Il <strong>costo aziendale</strong> per
+        un dipendente con RAL 40.000 &euro; e' di circa <strong>52.000&ndash;54.000 &euro;</strong>
+        (RAL + contributi datore + TFR + INAIL).
+      </p>
+      <p>
+        Questo significa che per un confronto equo, un freelancer dovrebbe fatturare almeno
+        <strong> 52.000&ndash;55.000 &euro;</strong> per avere un pacchetto retributivo complessivo
+        equivalente a quello di un dipendente con RAL 40.000 &euro;. E anche cosi', il freelancer
+        non avrebbe le tutele in caso di malattia, maternita' o licenziamento.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Tabella di confronto: RAL vs fatturato equivalente
+      </h3>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL dipendente</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Netto dip. annuo</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Fatturato P.IVA equiv.</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Netto P.IVA annuo</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Nota</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">25.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~20.500 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~33.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~24.600 &euro;</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, aliquota 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">30.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~23.800 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~40.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~29.200 &euro;</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, aliquota 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">40.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~30.200 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~55.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~39.400 &euro;</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, aliquota 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">50.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~36.100 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~68.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~48.700 &euro;</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, aliquota 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">60.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~41.500 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~82.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~58.700 &euro;</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, aliquota 15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        La tabella mostra che per avere un netto annuo equivalente a quello di un dipendente, il
+        freelancer deve fatturare significativamente di piu'. Ad esempio, per eguagliare un dipendente
+        con RAL 40.000 &euro;, un consulente IT in forfettario (coefficiente 78%) dovrebbe fatturare
+        circa 55.000 &euro;. E questo senza contare il valore delle tutele aggiuntive del dipendente
+        (TFR, ferie, malattia, maternita').
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Esempio pratico: RAL 40.000 &euro; vs fatturato 55.000 &euro;
+      </h3>
+      <p>
+        Prendiamo un <strong>consulente IT</strong> che deve decidere tra un'offerta di lavoro
+        dipendente a 40.000 &euro; di RAL e continuare come freelancer fatturando 55.000 &euro;.
+      </p>
+      <p>
+        <strong>Come dipendente (RAL 40.000 &euro;)</strong>:
+      </p>
+      <ul>
+        <li>Contributi INPS dipendente (9,19%): ~3.676 &euro;</li>
+        <li>IRPEF netta (con detrazioni e cuneo fiscale): ~6.100 &euro;</li>
+        <li>Addizionali regionali e comunali: ~600 &euro;</li>
+        <li><strong>Netto annuo: ~30.200 &euro;</strong> (~2.323 &euro;/mese su 13)</li>
+        <li>TFR accantonato: ~2.963 &euro;/anno</li>
+        <li>Contributi datore INPS: ~9.524 &euro;</li>
+        <li>Costo azienda totale: ~52.500 &euro;</li>
+      </ul>
+      <p>
+        <strong>Come P.IVA forfettaria (fatturato 55.000 &euro;, coeff. 78%)</strong>:
+      </p>
+      <ul>
+        <li>Reddito imponibile (78%): 42.900 &euro;</li>
+        <li>Contributi INPS gestione separata (26,07%): ~11.184 &euro;</li>
+        <li>Base imponibile per imposta sostitutiva: 31.716 &euro;</li>
+        <li>Imposta sostitutiva (15%): ~4.757 &euro;</li>
+        <li><strong>Netto annuo: ~39.059 &euro;</strong> (~3.255 &euro;/mese su 12)</li>
+        <li>TFR accantonato: 0 &euro;</li>
+        <li>Ferie pagate: 0 giorni</li>
+      </ul>
+      <p>
+        A prima vista il freelancer guadagna di piu' (39.059 vs 30.200 &euro;), ma se aggiungiamo al
+        dipendente il TFR annuo (~2.963 &euro;) e il valore economico di 26 giorni di ferie retribuite
+        (~4.000 &euro;), il gap si riduce notevolmente. Inoltre il freelancer deve coprire autonomamente
+        le spese professionali (commercialista, software, coworking, assicurazioni) che nel forfettario
+        non sono deducibili. Considerando tutti questi fattori, i due pacchetti diventano molto piu'
+        simili di quanto il semplice confronto tra netti suggerirebbe.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Fattori non monetari da considerare
+      </h3>
+      <p>
+        Oltre ai numeri, la scelta tra lavoro dipendente e partita IVA coinvolge fattori qualitativi
+        importanti:
+      </p>
+      <ul>
+        <li>
+          <strong>Flessibilita'</strong>: il freelancer ha generalmente piu' controllo sul proprio
+          orario e sulla scelta dei progetti. Puo' lavorare da remoto, scegliere i clienti e organizzare
+          il tempo come preferisce. Il dipendente ha orari piu' rigidi ma anche una struttura che puo'
+          essere rassicurante.
+        </li>
+        <li>
+          <strong>Sicurezza economica</strong>: il dipendente ha uno stipendio fisso garantito, tutele
+          in caso di licenziamento (preavviso, NASpI), malattia pagata e contributi pensionistici certi.
+          Il freelancer e' esposto al rischio di perdita di clienti, ritardi nei pagamenti e periodi senza
+          commesse.
+        </li>
+        <li>
+          <strong>Crescita professionale</strong>: in azienda si puo' crescere internamente (promozioni,
+          aumenti, formazione pagata). Come freelancer, la crescita dipende interamente dalla propria
+          capacita' di acquisire nuovi clienti e competenze. D'altra parte, il freelancer puo' diversificare
+          le esperienze lavorando con piu' realta' contemporaneamente.
+        </li>
+        <li>
+          <strong>Accesso al credito</strong>: ottenere un mutuo o un finanziamento e' generalmente piu'
+          facile per un lavoratore dipendente con contratto a tempo indeterminato. I titolari di partita
+          IVA devono dimostrare almeno 2&ndash;3 anni di fatturato stabile e le condizioni offerte dalle
+          banche sono spesso meno favorevoli.
+        </li>
+        <li>
+          <strong>Gestione amministrativa</strong>: il freelancer deve gestire fatturazione, contabilita',
+          dichiarazioni fiscali e rapporti con l'INPS. Anche in regime forfettario (che semplifica molto),
+          il costo del commercialista si aggira intorno ai 600&ndash;1.500 &euro; annui.
+        </li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Parametri fiscali {SITE.annoFiscale} per il confronto
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il confronto tra lavoro dipendente e partita IVA forfettaria si basa sui seguenti parametri
+        fiscali e contributivi vigenti per l'anno {SITE.annoFiscale}:
+      </p>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">
+        Lavoro dipendente
+      </h3>
+      <ul>
+        <li>Contributi INPS dipendente: <strong>9,19%</strong> della RAL</li>
+        <li>Scaglioni IRPEF: 23% fino a 28.000 &euro;, 35% da 28.001 a 50.000 &euro;, 43% oltre 50.000 &euro;</li>
+        <li>Detrazioni lavoro dipendente: fino a 1.955 &euro; annui</li>
+        <li>Cuneo fiscale: riduzione contributiva/detrazione per redditi fino a 40.000 &euro;</li>
+        <li>TFR: circa 6,91% della RAL (RAL / 13,5)</li>
+        <li>Contributi datore INPS: circa 23,81% della RAL</li>
+      </ul>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">
+        Partita IVA forfettaria
+      </h3>
+      <ul>
+        <li>Limite fatturato: <strong>85.000 &euro;</strong> annui</li>
+        <li>Imposta sostitutiva: <strong>5%</strong> per i primi 5 anni, <strong>15%</strong> a regime</li>
+        <li>Contributi INPS gestione separata: <strong>26,07%</strong> del reddito imponibile</li>
+        <li>Reddito imponibile: fatturato &times; coefficiente di redditivita' (varia per settore ATECO)</li>
+        <li>Base imponibile per imposta: reddito imponibile &minus; contributi INPS</li>
+        <li>Nessuna detrazione IRPEF, nessuna addizionale regionale/comunale</li>
+      </ul>
+      <p>
+        I coefficienti di redditivita' piu' comuni per i lavoratori del settore servizi e IT sono:
+        86% per informatica e consulenza tecnica, 78% per le professioni intellettuali, 67% per le
+        attivita' di servizi generici. Per il commercio e la ristorazione i coefficienti scendono al
+        40%, riflettendo costi operativi piu' elevati.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti sul confronto dipendente vs P.IVA
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Conviene di piu' la partita IVA o il lavoro dipendente?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Non esiste una risposta universale. Dal punto di vista puramente fiscale, la partita IVA
+          forfettaria puo' essere piu' conveniente per fatturati medio&ndash;bassi grazie all'imposta
+          sostitutiva ridotta. Tuttavia, il dipendente beneficia di TFR, tredicesima, ferie pagate,
+          malattia, maternita' e contributi del datore di lavoro. Per un confronto equo, il fatturato
+          P.IVA dovrebbe essere almeno il 30&ndash;50% superiore alla RAL. La scelta dipende anche da
+          fattori non monetari come la flessibilita', la sicurezza economica e la propensione al rischio.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto devo fatturare in P.IVA per guadagnare come un dipendente?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Come regola generale, per ottenere un netto equivalente a quello di un dipendente (includendo
+          TFR e valore delle tutele), il fatturato P.IVA dovrebbe essere circa il 30&ndash;50% superiore
+          alla RAL. Ad esempio, per eguagliare una RAL di 40.000 &euro; dovresti fatturare circa
+          55.000&ndash;60.000 &euro; come consulente in regime forfettario. Usa il calcolatore qui sopra
+          per una stima precisa basata sul tuo coefficiente di redditivita'.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa succede se supero gli 85.000 &euro; di fatturato?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Se i ricavi superano 85.000 &euro; ma restano sotto i 100.000 &euro;, si esce dal regime
+          forfettario a partire dall'anno successivo e si passa al regime ordinario con IRPEF
+          progressiva, IVA e contabilita' ordinaria. Se invece si superano i 100.000 &euro;, l'uscita
+          e' immediata gia' nell'anno in corso. Nel regime ordinario la tassazione e' significativamente
+          piu' alta: IRPEF progressiva (fino al 43%), addizionali regionali e comunali, e IVA da versare.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il freelancer in forfettario paga meno tasse del dipendente?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In termini di aliquota marginale, si': l'imposta sostitutiva al 5&ndash;15% e' molto piu'
+          bassa dell'IRPEF progressiva che arriva al 43%. Tuttavia il confronto non e' cosi' semplice.
+          Il forfettario paga il 26,07% di INPS sul reddito imponibile (vs 9,19% del dipendente, con il
+          datore che paga un ulteriore 23,81%). Inoltre il forfettario non puo' detrarre spese mediche,
+          mutuo, ristrutturazioni e altri oneri. Quando si considerano tutti i fattori (tasse, contributi,
+          detrazioni perse, assenza di tutele), la differenza reale e' molto piu' contenuta.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Posso essere dipendente e avere anche la partita IVA?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si', e' possibile essere dipendente e avere contemporaneamente una partita IVA, purche' non ci
+          siano clausole di esclusiva nel contratto di lavoro e non ci sia un conflitto di interessi con
+          il datore di lavoro. Dal punto di vista fiscale, si puo' accedere al regime forfettario anche
+          come dipendente, a condizione che il reddito da lavoro dipendente non superi i 30.000 &euro;
+          annui lordi (questo e' un requisito aggiuntivo per chi ha anche un rapporto di lavoro
+          dipendente). Se il reddito dipendente supera questa soglia, il regime forfettario non e'
+          accessibile e la partita IVA sara' in regime ordinario.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come funziona la pensione per il freelancer in gestione separata?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          I titolari di partita IVA iscritti alla gestione separata INPS versano il 26,07% del reddito
+          imponibile in contributi previdenziali. Questi contributi si accumulano nel montante
+          contributivo e determinano l'importo della pensione futura, calcolata con il sistema
+          contributivo. Poiche' il reddito imponibile del forfettario e' ridotto dal coefficiente di
+          redditivita', i contributi effettivamente versati (e quindi la pensione futura) saranno
+          generalmente inferiori a quelli di un dipendente con RAL equivalente, dove il datore di lavoro
+          versa un ulteriore 23,81% di contributi. Per questo motivo, molti freelancer scelgono di
+          integrare la pensione pubblica con forme di previdenza complementare (fondi pensione aperti).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il forfettario deve applicare l'IVA in fattura?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, chi aderisce al regime forfettario emette fatture senza IVA, ai sensi dell'art. 1, comma
+          58, della Legge 190/2014. In fattura deve essere indicata la dicitura di esenzione. Questo
+          semplifica notevolmente la gestione contabile ma ha un rovescio della medaglia: il forfettario
+          non puo' detrarre l'IVA sugli acquisti. Per i clienti privati (B2C) questo e' un vantaggio
+          perche' il prezzo e' piu' competitivo; per i clienti aziendali (B2B) e' neutro perche' questi
+          non possono scaricare l'IVA sulle fatture ricevute dal forfettario.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/calcolo-forfettari" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Forfettari</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calcola il netto in regime forfettario con tutti i coefficienti ATECO</p>
+      </a>
+      <a href="/calcolo-busta-paga" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Busta Paga</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Simula la tua busta paga completa dal lordo al netto</p>
+      </a>
+      <a href="/calcolo-buonuscita" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Buonuscita</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calcola il netto dell'incentivo all'esodo con tassazione separata</p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

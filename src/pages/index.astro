@@ -1,0 +1,312 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import StipendioNetto from '../components/calcolatori/StipendioNetto';
+import { SITE } from '../config';
+
+const title = "Calcolo Stipendio Netto 2026: da Lordo a Netto in Italia";
+const description = "Calcola il tuo stipendio netto dal lordo (RAL) con IRPEF 2026, addizionali regionali e comunali, INPS e detrazioni. Risultato istantaneo e preciso.";
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolatore Stipendio Netto"
+  breadcrumbs={[
+    { name: 'Home', url: SITE.url },
+    { name: 'Calcolo Stipendio Netto', url: `${SITE.url}/` },
+  ]}
+>
+  <!-- Calculator -->
+  <StipendioNetto client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Come si calcola lo stipendio netto dal lordo
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Per calcolare il tuo stipendio netto partendo dalla RAL (Retribuzione Annua Lorda) devi sottrarre le imposte e i contributi previdenziali. Il procedimento segue questi passaggi fondamentali:
+      </p>
+      <ol>
+        <li>
+          <strong>Sottrai i contributi INPS:</strong> dal lordo si detrae il 9,19% a carico del lavoratore dipendente. Questo importo finanzia la pensione e le prestazioni INPS. Il risultato e' l'imponibile fiscale.
+        </li>
+        <li>
+          <strong>Calcola l'IRPEF lorda:</strong> sull'imponibile fiscale si applicano le aliquote IRPEF a scaglioni progressivi. Nel 2026 gli scaglioni sono tre: 23% fino a 28.000 euro, 33% da 28.001 a 50.000 euro e 43% oltre i 50.000 euro.
+        </li>
+        <li>
+          <strong>Applica le detrazioni:</strong> dall'IRPEF lorda si sottraggono le detrazioni per lavoro dipendente (variabili in base al reddito), eventuali detrazioni per coniuge e figli a carico, e il beneficio del cuneo fiscale 2026.
+        </li>
+        <li>
+          <strong>Sottrai le addizionali:</strong> si aggiungono l'addizionale regionale IRPEF (variabile per regione, da 0,70% a 3,33%) e l'addizionale comunale (mediamente 0,8%).
+        </li>
+        <li>
+          <strong>Aggiungi il trattamento integrativo:</strong> per redditi fino a 15.000 euro spetta un bonus di 1.200 euro all'anno. Per redditi tra 15.001 e 28.000 euro puo' spettare un importo ridotto.
+        </li>
+      </ol>
+      <p>
+        Il risultato finale e' il tuo <strong>stipendio netto annuo</strong>. Dividendo per il numero di mensilita' (12, 13 o 14) ottieni il <strong>netto mensile in busta paga</strong>.
+      </p>
+
+      <h3>Il cuneo fiscale 2026: novita' e impatto sul netto</h3>
+      <p>
+        A partire dal 2026, il legislatore ha introdotto un nuovo meccanismo di riduzione del cuneo fiscale che sostituisce la precedente riduzione contributiva temporanea introdotta nel 2023 e prorogata nel 2024 e 2025. Il vecchio sistema prevedeva un taglio diretto dei contributi INPS a carico del lavoratore (dal 6% al 7% a seconda della fascia di reddito), ma questa misura aveva un impatto negativo sulla pensione futura del lavoratore, poiche' riduceva l'importo dei contributi versati. Il nuovo sistema, invece, agisce interamente sul lato fiscale, preservando integralmente la contribuzione previdenziale.
+      </p>
+      <p>
+        Il nuovo cuneo fiscale 2026 si articola in tre fasce di reddito complessivo, ciascuna con un meccanismo diverso:
+      </p>
+      <ul>
+        <li>
+          <strong>Redditi fino a 20.000 euro:</strong> il lavoratore beneficia di un'esenzione fiscale sotto forma di una percentuale applicata al reddito da lavoro dipendente, che non concorre alla formazione del reddito imponibile. La percentuale varia progressivamente dal 7,1% per i redditi piu' bassi (fino a 8.500 euro) al 5,3% per i redditi intorno a 15.000 euro, fino al 4,8% per i redditi prossimi a 20.000 euro. In pratica, questa quota di reddito viene esclusa dal calcolo dell'IRPEF, riducendo l'imposta dovuta e aumentando il netto in busta paga. Ad esempio, un lavoratore con un reddito di 18.000 euro vedra' esclusa dall'imponibile una quota pari a circa il 4,8% del suo reddito, ottenendo un risparmio significativo.
+        </li>
+        <li>
+          <strong>Redditi da 20.001 a 32.000 euro:</strong> il lavoratore ottiene una detrazione IRPEF aggiuntiva fissa pari a 1.000 euro all'anno. Questa detrazione si aggiunge alle normali detrazioni per lavoro dipendente e viene applicata direttamente sull'IRPEF lorda, riducendo l'imposta netta. Si tratta di un importo costante indipendentemente dal livello esatto del reddito all'interno di questa fascia, garantendo cosi' un beneficio uniforme per tutti i lavoratori con redditi medi.
+        </li>
+        <li>
+          <strong>Redditi da 32.001 a 40.000 euro:</strong> la detrazione aggiuntiva spetta ancora, ma si riduce gradualmente fino ad azzerarsi al raggiungimento dei 40.000 euro di reddito complessivo. Il meccanismo di decalage e' lineare: un lavoratore con un reddito di 36.000 euro ricevera' una detrazione pari a circa 500 euro, mentre chi si avvicina alla soglia dei 40.000 euro ricevera' un importo residuale. Oltre i 40.000 euro, il beneficio del cuneo fiscale si annulla completamente.
+        </li>
+      </ul>
+      <p>
+        In sintesi, il nuovo cuneo fiscale 2026 concentra il beneficio sui redditi medio-bassi, garantendo un vantaggio particolarmente rilevante per chi guadagna tra i 25.000 e i 35.000 euro annui, dove il risparmio complessivo tra esenzione e detrazione puo' raggiungere e superare i 1.000 euro annui. Il nostro calcolatore applica automaticamente il meccanismo corretto in base al reddito inserito, cosi' puoi verificare immediatamente quanto il cuneo fiscale incide sul tuo stipendio netto.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Scaglioni IRPEF 2026 -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Scaglioni IRPEF 2026
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Scaglione di reddito</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF massima nello scaglione</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 28.000 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">23%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">6.440,00 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 28.001 a 50.000 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">33%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">7.260,00 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 50.000 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">43%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">Nessun limite</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il sistema a scaglioni IRPEF 2026 e' <strong>progressivo</strong>: ogni aliquota si applica solo alla porzione di reddito che rientra in quello scaglione, non all'intero importo. Ad esempio, con un imponibile di 35.000 euro paghi il 23% sui primi 28.000 euro e il 33% solo sui rimanenti 7.000 euro.
+      </p>
+      <h3>Esempi pratici</h3>
+      <ul>
+        <li><strong>RAL 25.000 &euro;:</strong> netto mensile circa 1.540 &euro; (su 13 mensilita)</li>
+        <li><strong>RAL 30.000 &euro;:</strong> netto mensile circa 1.780 &euro; (su 13 mensilita)</li>
+        <li><strong>RAL 40.000 &euro;:</strong> netto mensile circa 2.260 &euro; (su 13 mensilita)</li>
+        <li><strong>RAL 50.000 &euro;:</strong> netto mensile circa 2.690 &euro; (su 13 mensilita)</li>
+        <li><strong>RAL 60.000 &euro;:</strong> netto mensile circa 3.120 &euro; (su 13 mensilita)</li>
+      </ul>
+      <p>
+        I valori indicati sono approssimativi e calcolati con la regione Lombardia. Il tuo netto effettivo dipende dalla regione, dal comune e dalla tua situazione familiare: usa il calcolatore qui sopra per ottenere un risultato preciso.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Come si calcola lo stipendio netto dal lordo?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            Per passare dallo stipendio lordo al netto devi sottrarre dalla RAL (Retribuzione Annua Lorda) i contributi INPS a carico del lavoratore (9,19%), l'IRPEF netta (calcolata a scaglioni, al netto delle detrazioni) e le addizionali regionali e comunali. Se il tuo reddito lo prevede, va poi aggiunto il trattamento integrativo (ex bonus Renzi). Il nostro calcolatore esegue tutti questi passaggi automaticamente: ti basta inserire la RAL, selezionare la regione e il comune, e otterrai il netto mensile e annuo in tempo reale.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Quali sono gli scaglioni IRPEF 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            Nel 2026 l'IRPEF si articola su tre scaglioni progressivi. Il primo scaglione tassa il reddito fino a 28.000 euro al 23%. Il secondo scaglione copre la fascia da 28.001 a 50.000 euro con un'aliquota del 33%, ridotta rispetto al precedente 35% grazie alla Legge di Bilancio 2026. Il terzo scaglione, per redditi superiori a 50.000 euro, prevede un'aliquota del 43%. Ricorda che il sistema e' progressivo: se guadagni 60.000 euro, il 43% si applica solo ai 10.000 euro che superano i 50.000, non su tutto il reddito.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Cos'e la RAL e dove la trovo?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            La RAL (Retribuzione Annua Lorda) e' il compenso totale annuo che il datore di lavoro ti riconosce, prima che vengano detratte le tasse e i contributi. Include lo stipendio base mensile moltiplicato per il numero di mensilita' (tipicamente 13 o 14), eventuali superminimi e indennita' fisse. Non include i contributi a carico del datore di lavoro, il TFR e i benefit aziendali. Puoi trovare la tua RAL nel contratto di lavoro, nella lettera di assunzione oppure nella CU (Certificazione Unica) che il datore ti consegna ogni anno. In alternativa, puoi moltiplicare lo stipendio lordo mensile per il numero di mensilita' previste dal tuo CCNL.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Quanto incidono le addizionali regionali e comunali?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            Le addizionali sono imposte locali che si aggiungono all'IRPEF e il loro peso varia notevolmente in base a dove risiedi. L'addizionale regionale va dallo 0,70% del Friuli-Venezia Giulia (prima fascia) fino al 3,33% del Lazio (fascia piu' alta). La maggior parte delle regioni applica aliquote progressive con piu' scaglioni, proprio come l'IRPEF nazionale. L'addizionale comunale varia da comune a comune, con un'aliquota media nazionale intorno allo 0,8%, ma puo' arrivare fino allo 0,9% in alcune citta'. Complessivamente, le addizionali possono pesare da poche centinaia di euro a oltre mille euro all'anno, a seconda del reddito e della residenza. Per questo e' importante selezionare regione e comune nel calcolatore per un risultato preciso.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Cos'e il trattamento integrativo e a chi spetta?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            Il trattamento integrativo (conosciuto anche come ex bonus Renzi o bonus 100 euro) e' un credito riconosciuto ai lavoratori dipendenti con redditi piu' bassi. Funziona cosi': se il tuo reddito complessivo non supera i 15.000 euro, ricevi l'importo pieno di 1.200 euro all'anno (100 euro al mese) in busta paga, a patto che ci sia una capienza IRPEF (cioe' che la tua imposta lorda sia positiva). Per redditi compresi tra 15.001 e 28.000 euro, il trattamento integrativo spetta solo se la somma delle detrazioni (lavoro dipendente, familiari a carico, mutuo prima casa, spese sanitarie, ecc.) supera l'IRPEF lorda: in tal caso ricevi un importo pari alla differenza, fino a un massimo di 1.200 euro. Oltre i 28.000 euro di reddito non spetta alcun trattamento integrativo.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Cosa cambia nello stipendio netto con il cuneo fiscale 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            Il cuneo fiscale 2026 ha un impatto diretto e significativo sullo stipendio netto di milioni di lavoratori dipendenti italiani. Rispetto al sistema precedente, che prevedeva un taglio dei contributi INPS a carico del lavoratore, il nuovo meccanismo interviene sul versante fiscale attraverso esenzioni e detrazioni IRPEF. In pratica, la busta paga non cambia in modo drastico per la maggior parte dei lavoratori, ma il meccanismo sottostante e' diverso. I lavoratori con redditi compresi tra 25.000 e 35.000 euro sono quelli che beneficiano di piu': la detrazione aggiuntiva di 1.000 euro, sommata alle detrazioni ordinarie, si traduce in un aumento del netto mensile di circa 80-85 euro rispetto a una situazione senza cuneo fiscale. Per i redditi piu' bassi, sotto i 20.000 euro, l'esenzione percentuale garantisce un vantaggio proporzionalmente ancora piu' elevato in rapporto al reddito complessivo, arrivando a un risparmio che puo' superare i 1.200 euro annui per chi guadagna intorno ai 10.000-12.000 euro. Oltre i 40.000 euro il beneficio scompare del tutto, rendendo il meccanismo fortemente progressivo e mirato ai redditi medio-bassi.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Come si calcola lo stipendio netto per un contratto part-time?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            Il calcolo dello stipendio netto per un contratto part-time segue esattamente la stessa metodologia del calcolo per un contratto full-time. La differenza fondamentale sta nella RAL di partenza, che e' proporzionalmente ridotta in base alla percentuale di part-time. Ad esempio, se un contratto full-time prevede una RAL di 28.000 euro e il lavoratore ha un part-time al 50%, la RAL di riferimento sara' 14.000 euro. Da qui in poi si applicano le stesse regole: contributi INPS al 9,19%, IRPEF a scaglioni, detrazioni per lavoro dipendente e addizionali locali. Un aspetto interessante del part-time e' che, avendo un reddito complessivo piu' basso, il lavoratore ricade spesso in scaglioni IRPEF inferiori, beneficiando di aliquote piu' vantaggiose. Inoltre, puo' avere diritto al trattamento integrativo pieno (1.200 euro annui) e a un'esenzione da cuneo fiscale percentualmente piu' elevata. Per calcolare il netto di un part-time con il nostro calcolatore, inserisci direttamente la RAL effettiva del contratto part-time, non quella equivalente del full-time, e otterrai un risultato accurato.
+          </p>
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-stipendio-lordo"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Da Netto a Lordo
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calcola la RAL necessaria per ottenere un determinato stipendio netto mensile.
+        </p>
+      </a>
+
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Analizza nel dettaglio l'imposta IRPEF con il dettaglio per ogni scaglione.
+        </p>
+      </a>
+
+      <a
+        href="/comparatore-regioni"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Confronto Regioni
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Confronta il netto tra regioni diverse per capire quanto incide la residenza.
+        </p>
+      </a>
+
+      <a
+        href="/calcolo-busta-paga"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Busta Paga
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Simula una busta paga mensile completa con tutte le voci dettagliate.
+        </p>
+      </a>
+
+      <a
+        href="/calcolo-tfr"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo TFR
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Stima il TFR maturato e la tassazione separata alla fine del rapporto di lavoro.
+        </p>
+      </a>
+
+      <a
+        href="/calcolo-forfettari"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Regime Forfettario
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calcola tasse e netto per Partita IVA con il regime forfettario agevolato.
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

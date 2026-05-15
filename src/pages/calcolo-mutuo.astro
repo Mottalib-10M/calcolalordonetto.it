@@ -1,0 +1,438 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import Mutuo from '../components/calcolatori/Mutuo';
+
+const title = 'Calcolo Mutuo 2026: Simulatore Rata Mensile Online';
+const description = 'Calcola la rata del mutuo online: inserisci importo, tasso e durata per ottenere rata mensile, piano di ammortamento e totale interessi. Aggiornato 2026.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Mutuo', url: `${SITE.url}/calcolo-mutuo` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Mutuo"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Mutuo
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Simula la rata del tuo mutuo e visualizza il piano di ammortamento completo.
+  </p>
+
+  <Mutuo client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola la rata del mutuo?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La rata del mutuo viene calcolata con il metodo dell'<strong>ammortamento alla francese</strong>
+        (rata costante), il piu' diffuso in Italia. La formula matematica e':
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        R = C &times; r &times; (1 + r)<sup>n</sup> / [(1 + r)<sup>n</sup> &minus; 1]
+      </div>
+      <p>Dove:</p>
+      <ul>
+        <li><strong>R</strong> = rata mensile</li>
+        <li><strong>C</strong> = capitale (importo del mutuo)</li>
+        <li><strong>r</strong> = tasso di interesse mensile (tasso annuo diviso 12)</li>
+        <li><strong>n</strong> = numero totale di rate (anni &times; 12)</li>
+      </ul>
+      <p>
+        Con questo metodo, la rata rimane costante per tutta la durata del mutuo. All'inizio
+        la quota interessi e' piu' alta e la quota capitale piu' bassa; col passare del tempo
+        la proporzione si inverte progressivamente.
+      </p>
+      <p>
+        Nel caso di un <strong>mutuo a tasso variabile</strong>, la rata viene ricalcolata periodicamente
+        in base all'andamento dell'Euribor o di un altro indice di riferimento. Il nostro
+        calcolatore mostra la rata iniziale basata sul tasso corrente.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Ammortamento alla francese vs ammortamento all'italiana
+      </h3>
+      <p>
+        In Italia esistono due principali metodi di ammortamento per i mutui, e la scelta tra i due
+        puo' avere un impatto significativo sul costo complessivo del finanziamento e sulla sostenibilita'
+        delle rate mensili.
+      </p>
+      <p>
+        L'<strong>ammortamento alla francese</strong> e' di gran lunga il piu' utilizzato dalle banche italiane
+        (oltre il 95% dei mutui concessi). Il suo punto di forza e' la rata costante per tutta la durata del
+        mutuo, che facilita la pianificazione finanziaria familiare. Tuttavia, la composizione interna della
+        rata cambia radicalmente nel tempo: nelle prime rate, la quota interessi puo' rappresentare il 60-70%
+        dell'importo totale, mentre la quota capitale e' ridotta. Questo significa che nei primi anni si
+        restituisce pochissimo debito e si pagano soprattutto interessi. Ad esempio, su un mutuo di 200.000
+        euro a 25 anni al 3%, la prima rata di 948 euro e' composta da circa 500 euro di interessi e solo 448
+        euro di capitale. Alla rata numero 150 (dopo 12,5 anni), la proporzione si inverte. Questo meccanismo
+        ha un'implicazione importante: in caso di estinzione anticipata nei primi anni, si saranno gia pagati
+        gran parte degli interessi totali.
+      </p>
+      <p>
+        L'<strong>ammortamento all'italiana</strong> (o "a quota capitale costante") funziona in modo diverso:
+        la quota di capitale rimborsata e' uguale in ogni rata, mentre la quota interessi diminuisce progressivamente
+        perche' viene calcolata sul debito residuo decrescente. Il risultato e' una rata iniziale piu' alta rispetto
+        al metodo francese, che poi decresce nel tempo. Per lo stesso mutuo di 200.000 euro a 25 anni al 3%,
+        la prima rata sarebbe di circa 1.167 euro (667 euro di capitale + 500 euro di interessi), ma l'ultima
+        rata sarebbe di soli 669 euro. Il vantaggio principale e' che il totale degli interessi pagati e' inferiore
+        rispetto al metodo francese, perche' il debito residuo si riduce piu' rapidamente. Lo svantaggio e' che le
+        rate iniziali sono piu' pesanti, richiedendo una maggiore capacita' reddituale all'inizio del piano.
+      </p>
+      <p>
+        La scelta tra i due metodi dipende dalla situazione personale: chi ha un reddito stabile e preferisce
+        la prevedibilita' optera' per l'ammortamento alla francese. Chi prevede una crescita del reddito nel tempo
+        o vuole risparmiare sugli interessi totali potrebbe preferire l'ammortamento all'italiana, sebbene sia
+        offerto da poche banche in Italia.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        LTV (Loan to Value) e il suo impatto
+      </h3>
+      <p>
+        Il <strong>Loan to Value (LTV)</strong> e' il rapporto tra l'importo del mutuo richiesto e il valore
+        dell'immobile da acquistare, espresso in percentuale. E' uno dei parametri piu' importanti nella valutazione
+        di una richiesta di mutuo e influenza direttamente il tasso di interesse applicato dalla banca.
+      </p>
+      <p>
+        Le banche italiane concedono generalmente mutui con un <strong>LTV massimo dell'80%</strong>, in
+        conformita' con le linee guida della Banca d'Italia. Questo significa che per acquistare un immobile
+        del valore di 250.000 euro, la banca finanziera al massimo 200.000 euro e l'acquirente dovra' disporre
+        di almeno 50.000 euro di anticipo, a cui aggiungere le spese accessorie (notaio, imposte, perizia,
+        agenzia) che possono ammontare a un ulteriore 8-10% del valore dell'immobile.
+      </p>
+      <p>
+        Un LTV piu' basso e' generalmente premiato dalle banche con <strong>tassi di interesse migliori</strong>.
+        La differenza tra un mutuo al 60% LTV e uno all'80% LTV puo' essere di 0,2-0,5 punti percentuali sul tasso,
+        che su un mutuo ventennale di 200.000 euro si traduce in diverse migliaia di euro di interessi risparmiati.
+        Le fasce di LTV tipiche sono: fino al 50% (condizioni migliori), 50-70% (condizioni buone), 70-80%
+        (condizioni standard) e oltre l'80% (condizioni piu' restrittive, se disponibili).
+      </p>
+      <p>
+        Per i <strong>giovani sotto i 36 anni</strong> con ISEE inferiore a 40.000 euro annui, il Fondo di
+        Garanzia per la Prima Casa (gestito da Consap) consente di accedere a mutui fino al <strong>100%
+        del valore dell'immobile</strong>, senza necessita' di anticipo. Il Fondo garantisce alla banca fino
+        all'80% della quota eccedente il normale limite LTV dell'80%, riducendo il rischio per l'istituto
+        di credito. Questo strumento ha permesso a migliaia di giovani italiani di acquistare la prima casa
+        senza avere risparmi ingenti, anche se i tassi applicati su questi mutui possono essere leggermente
+        superiori alla media.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Le detrazioni fiscali sul mutuo prima casa
+      </h3>
+      <p>
+        L'acquisto della prima casa con un mutuo ipotecario da diritto a importanti <strong>agevolazioni
+        fiscali</strong> previste dalla normativa italiana. La principale e' la detrazione IRPEF del 19% sugli
+        interessi passivi e sugli oneri accessori del mutuo, fino a un importo massimo di <strong>4.000 euro
+        annui</strong>, che si traduce in un risparmio fiscale massimo di <strong>760 euro all'anno</strong>.
+      </p>
+      <p>
+        Gli oneri accessori detraibili comprendono non solo gli interessi sul capitale, ma anche le spese
+        di istruttoria, la commissione bancaria per l'erogazione del mutuo, le spese di perizia, le imposte
+        sostitutive sul mutuo e le spese notarili relative al contratto di mutuo (ma non quelle relative
+        all'atto di compravendita dell'immobile). Nei primi anni del mutuo, quando la quota interessi e'
+        particolarmente elevata, la detrazione raggiunge spesso il tetto massimo di 760 euro annui.
+      </p>
+      <p>
+        Per usufruire della detrazione e' necessario rispettare alcune <strong>condizioni fondamentali</strong>:
+        l'immobile deve essere adibito ad abitazione principale entro 12 mesi dall'acquisto (o entro 12 mesi
+        dalla stipula del mutuo, se antecedente); il mutuo deve essere stipulato per l'acquisto (non per
+        ristrutturazione o costruzione, che hanno regole diverse) dell'unita' immobiliare; l'immobile deve
+        essere situato nel territorio italiano; e il mutuatario deve trasferire la propria residenza nel
+        Comune in cui si trova l'immobile entro 12 mesi dall'acquisto. La detrazione spetta anche nel caso
+        di acquisto di pertinenze (garage, cantina) purche contestuale all'acquisto dell'abitazione principale.
+      </p>
+      <p>
+        E' importante sapere che il limite di 4.000 euro e' riferito complessivamente a tutti i mutuatari:
+        se il mutuo e' cointestato tra due coniugi, ciascuno potra' detrarre il 19% della propria quota di
+        interessi, ma il tetto complessivo resta 4.000 euro (quindi 2.000 euro ciascuno, per un risparmio
+        massimo di 380 euro a testa). In caso di surroga o rinegoziazione del mutuo, il diritto alla
+        detrazione viene mantenuto alle stesse condizioni del mutuo originario.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Rata del mutuo per importo e durata: tabella di riferimento
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra la <strong>rata mensile</strong> e il <strong>totale degli interessi</strong>
+        per un mutuo di 200.000 euro con ammortamento alla francese, al variare del tasso di interesse e della
+        durata. Questi valori sono puramente indicativi e servono come riferimento per una prima valutazione.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Durata</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Tasso</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Rata mensile</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Totale interessi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">20 anni</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3,00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.109 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">66.207 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">20 anni</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">4,00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.212 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">90.871 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">25 anni</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3,00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">948 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">84.486 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">25 anni</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">4,00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.056 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">116.702 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">30 anni</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3,00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">843 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">103.554 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">30 anni</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">4,00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">955 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">143.739 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        I dati evidenziano un trade-off fondamentale tra la sostenibilita' della rata mensile e il costo
+        complessivo del mutuo. Allungando la durata da 20 a 30 anni con un tasso del 3%, la rata scende
+        da 1.109 euro a 843 euro al mese (una riduzione di 266 euro mensili), ma il totale degli interessi
+        cresce da 66.207 euro a 103.554 euro, con un aggravio di 37.347 euro. L'effetto e' ancora piu'
+        marcato con tassi piu' alti: a un tasso del 4%, passare da 20 a 30 anni fa risparmiare 257 euro
+        al mese sulla rata, ma costa 52.868 euro in piu' di interessi complessivi. Anche la differenza
+        di un solo punto percentuale nel tasso ha un impatto enorme: sullo stesso importo di 200.000 euro
+        a 30 anni, passare dal 3% al 4% aggiunge oltre 40.000 euro di interessi totali. Per questo motivo
+        e' cruciale confrontare le offerte di piu' banche e valutare attentamente la durata del mutuo in
+        relazione alle proprie possibilita' di spesa mensile e agli obiettivi finanziari a lungo termine.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Meglio tasso fisso o variabile nel 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La scelta dipende dalla tua propensione al rischio e dalle previsioni sui tassi.
+          Il tasso fisso ti garantisce una rata costante per tutta la durata, ideale se
+          preferisci la certezza. Il tasso variabile puo' essere inizialmente piu' basso,
+          ma la rata puo' aumentare o diminuire nel tempo seguendo l'andamento dei tassi di mercato.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Qual e' la durata ideale di un mutuo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In Italia la durata media e' tra 20 e 30 anni. Una durata piu' lunga riduce la rata
+          mensile ma aumenta il totale degli interessi pagati. Una durata piu' breve comporta
+          rate piu' alte ma un risparmio significativo sugli interessi totali. La regola
+          generale e' che la rata non dovrebbe superare il 30-35% del reddito mensile netto.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa include il piano di ammortamento?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il piano di ammortamento mostra per ogni rata la suddivisione tra quota capitale
+          (la parte che riduce il debito) e quota interessi. Include anche il debito residuo
+          dopo ogni pagamento. Con l'ammortamento alla francese, le prime rate sono composte
+          prevalentemente da interessi, mentre verso la fine del mutuo la quota capitale diventa predominante.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Posso detrarre gli interessi del mutuo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si, per il mutuo prima casa puoi detrarre il 19% degli interessi passivi e degli
+          oneri accessori fino a un massimo di 4.000 euro annui, per un risparmio fiscale
+          massimo di 760 euro all'anno. La detrazione spetta solo per l'abitazione principale
+          e va riportata nella dichiarazione dei redditi.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come influisce l'anticipo sull'importo del mutuo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Le banche generalmente finanziano fino all'80% del valore dell'immobile (LTV - Loan to Value).
+          Un anticipo piu' consistente riduce l'importo del mutuo necessario, abbassando sia la rata
+          mensile che il totale degli interessi pagati. Inoltre, un LTV piu' basso puo' consentirti
+          di ottenere tassi di interesse migliori.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cos'e la surroga del mutuo e quando conviene?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La surroga (o portabilita') e' il trasferimento del mutuo da una banca a un'altra per ottenere
+          condizioni migliori, senza alcun costo per il mutuatario. La legge Bersani del 2007 garantisce
+          che la banca originaria non possa opporsi ne addebitare penali. Conviene valutare la surroga
+          quando i tassi di mercato scendono significativamente rispetto al tasso del proprio mutuo: in
+          generale, una differenza di almeno 0,5-1 punto percentuale rende l'operazione vantaggiosa,
+          soprattutto se si e' ancora nella prima meta' della durata del mutuo (quando la quota interessi
+          e' piu' alta). E' possibile anche passare da tasso variabile a fisso o viceversa. La surroga puo'
+          essere richiesta piu' volte durante la vita del mutuo, senza limiti, e non comporta spese
+          notarili, di perizia o di istruttoria a carico del cliente.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto posso detrarre degli interessi del mutuo nella dichiarazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La detrazione IRPEF sugli interessi passivi del mutuo prima casa e' pari al 19% degli interessi
+          pagati nell'anno, fino a un tetto massimo di 4.000 euro di interessi (corrispondente a un
+          risparmio massimo di 760 euro annui). La detrazione va indicata nel quadro E del modello 730
+          o nel quadro RP del modello Redditi PF, al rigo dedicato agli interessi per mutui ipotecari
+          per l'acquisto dell'abitazione principale. Sono detraibili anche gli oneri accessori del mutuo
+          sostenuti al momento della stipula: le spese di perizia, le spese notarili per il contratto di
+          mutuo, le commissioni bancarie e l'imposta sostitutiva. Attenzione: se l'immobile cessa di
+          essere abitazione principale (ad esempio perche' viene affittato o perche' si trasferisce la
+          residenza altrove), il diritto alla detrazione decade, salvo eccezioni come il ricovero
+          permanente in strutture sanitarie o il trasferimento per motivi di lavoro.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa succede se non riesco a pagare le rate del mutuo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il mancato pagamento delle rate del mutuo attiva una serie di conseguenze progressive. Dopo
+          il primo ritardo (generalmente oltre 30 giorni), la banca invia un sollecito e applica
+          interessi di mora. Se il ritardo supera i 90 giorni, il mutuatario viene segnalato alla
+          Centrale Rischi della Banca d'Italia e ai sistemi di informazione creditizia (CRIF, CTC),
+          compromettendo gravemente la possibilita' di ottenere futuri finanziamenti. Dopo il mancato
+          pagamento di almeno 7 rate (anche non consecutive) o di un importo equivalente, la banca puo'
+          avviare la procedura di escussione dell'ipoteca, cioe la vendita forzata dell'immobile
+          all'asta giudiziaria. Prima di arrivare a questa situazione estrema, esistono strumenti di
+          tutela: il Fondo Gasparrini consente la sospensione del pagamento delle rate fino a 18 mesi
+          in caso di perdita del lavoro, cassa integrazione, morte o handicap grave di un mutuatario.
+          E' anche possibile richiedere alla banca una rinegoziazione delle condizioni del mutuo
+          (allungamento della durata, riduzione temporanea della rata) per superare un periodo di
+          difficolta' economica.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-prestito" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Prestito Personale
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola rata e TAEG di un prestito personale
+        </p>
+      </a>
+      <a href="/calcolo-interesse-composto" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Interesse Composto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la crescita del tuo capitale con l'interesse composto
+        </p>
+      </a>
+      <a href="/calcolo-piano-accumulo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Piano di Accumulo (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola il rendimento di un piano di accumulo
+        </p>
+      </a>
+      <a href="/calcolo-inflazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'impatto dell'inflazione sul potere d'acquisto
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

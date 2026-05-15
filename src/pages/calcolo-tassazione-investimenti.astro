@@ -1,0 +1,511 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import TassazioneInvestimenti from '../components/calcolatori/TassazioneInvestimenti';
+
+const title = 'Calcolo Tasse Investimenti 2026: Capital Gain Italia';
+const description = 'Calcola le tasse sui tuoi investimenti in Italia: aliquota 26% o 12,5%, capital gain, minusvalenze, regime amministrato. Simulatore aggiornato 2026.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Tassazione Investimenti', url: `${SITE.url}/calcolo-tassazione-investimenti` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Tassazione Investimenti"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Tasse Investimenti 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Calcola il capital gain e le imposte sui tuoi investimenti finanziari in Italia: azioni, ETF, BTP, crypto e fondi.
+  </p>
+
+  <TassazioneInvestimenti client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come funziona la tassazione dei rendimenti finanziari in Italia
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tassazione dei rendimenti finanziari in Italia e' regolata dal <strong>Testo Unico delle
+        Imposte sui Redditi (TUIR)</strong>, in particolare dagli articoli 44 (redditi da capitale)
+        e 67 (redditi diversi). Quando un investitore realizza un guadagno dalla vendita di
+        strumenti finanziari — la cosiddetta <strong>plusvalenza</strong> o capital gain — questo
+        guadagno e' soggetto a un'imposta sostitutiva. L'aliquota applicata dipende dal tipo di
+        strumento finanziario e dalla natura del reddito generato.
+      </p>
+      <p>
+        Il sistema fiscale italiano distingue due grandi categorie di redditi finanziari, con
+        regole di compensazione molto diverse tra loro. Comprendere questa distinzione e'
+        fondamentale per una pianificazione fiscale efficiente e per evitare sorprese al momento
+        della dichiarazione dei redditi o della liquidazione degli investimenti.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Aliquota 26% vs 12,5%: quali strumenti, perche' la differenza
+      </h3>
+      <p>
+        L'aliquota standard sui rendimenti finanziari in Italia e' del <strong>26%</strong>. Questa
+        aliquota si applica alla maggior parte degli strumenti: azioni italiane e estere, ETF
+        azionari e obbligazionari, obbligazioni corporate (emesse da societa' private), fondi comuni
+        di investimento, conti deposito bancari, pronti contro termine e criptovalute. L'imposta
+        viene applicata sulla plusvalenza realizzata, cioe' sulla differenza tra il prezzo di vendita
+        e il prezzo di acquisto (il cosiddetto prezzo di carico o costo medio ponderato).
+      </p>
+      <p>
+        Esiste tuttavia un'<strong>aliquota agevolata del 12,5%</strong> che si applica ai
+        rendimenti derivanti da titoli di Stato italiani (BTP, BOT, CCT, CTZ), titoli di Stato
+        emessi da Paesi inclusi nella cosiddetta "white list" dell'Unione Europea, e buoni fruttiferi
+        postali emessi da Cassa Depositi e Prestiti. La ratio di questa agevolazione e' incentivare
+        il finanziamento del debito pubblico, rendendo piu' conveniente per i risparmiatori
+        l'investimento in titoli governativi rispetto a strumenti privati.
+      </p>
+      <p>
+        Per i fondi e gli ETF che investono parzialmente in titoli di Stato, la tassazione e'
+        proporzionale: la quota di rendimento attribuibile ai titoli governativi viene tassata al
+        12,5%, mentre la parte restante al 26%. Ad esempio, un ETF obbligazionario che investe il
+        40% in BTP e il 60% in obbligazioni corporate avra' un'aliquota media ponderata di circa
+        il 20,6% (40% x 12,5% + 60% x 26%). La percentuale della quota agevolata viene comunicata
+        periodicamente dalla societa' di gestione.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Regime dichiarativo vs regime amministrato
+      </h3>
+      <p>
+        In Italia l'investitore puo' scegliere tra due regimi fiscali per la gestione delle
+        imposte sugli investimenti:
+      </p>
+      <ul>
+        <li>
+          <strong>Regime del risparmio amministrato</strong> (art. 6 D.Lgs. 461/1997): e' il regime
+          piu' diffuso. La banca o il broker online agisce come <strong>sostituto d'imposta</strong>,
+          calcolando e versando automaticamente le imposte dovute al momento della vendita degli
+          strumenti. L'investitore non deve dichiarare questi redditi nella dichiarazione annuale.
+          Questo regime gestisce automaticamente anche la compensazione delle minusvalenze entro i
+          4 anni previsti dalla legge.
+        </li>
+        <li>
+          <strong>Regime dichiarativo</strong> (art. 5 D.Lgs. 461/1997): l'investitore e'
+          responsabile di dichiarare tutti i redditi finanziari nel quadro RT della dichiarazione
+          dei redditi (Modello Redditi PF). Questo regime e' obbligatorio per chi utilizza broker
+          esteri che non operano come sostituti d'imposta in Italia (ad esempio Interactive Brokers,
+          Degiro, Trading 212). Richiede una gestione fiscale piu' complessa ma offre potenzialmente
+          una maggiore flessibilita' nella compensazione delle minusvalenze.
+        </li>
+      </ul>
+      <p>
+        La scelta del regime ha implicazioni pratiche importanti: nel regime amministrato il prelievo
+        fiscale avviene immediatamente al momento della vendita, mentre nel dichiarativo le imposte
+        vengono versate con la dichiarazione dei redditi dell'anno successivo, con un potenziale
+        vantaggio di liquidita' temporaneo.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Redditi da capitale vs redditi diversi e compensazione minusvalenze
+      </h3>
+      <p>
+        Questa e' una delle distinzioni piu' importanti — e piu' spesso fraintese — del sistema
+        fiscale italiano sugli investimenti. Il TUIR classifica i redditi finanziari in due
+        categorie:
+      </p>
+      <ul>
+        <li>
+          <strong>Redditi da capitale</strong> (art. 44 TUIR): comprendono i dividendi, gli
+          interessi su obbligazioni e conti deposito, e i proventi derivanti da fondi comuni ed
+          ETF armonizzati (OICR UCITS). Questi redditi <strong>non possono essere compensati</strong>
+          con le minusvalenze.
+        </li>
+        <li>
+          <strong>Redditi diversi</strong> (art. 67 TUIR): comprendono le plusvalenze da
+          compravendita di azioni, obbligazioni, derivati, criptovalute e strumenti non armonizzati.
+          Questi redditi <strong>possono essere compensati</strong> con le minusvalenze realizzate
+          negli ultimi 4 anni.
+        </li>
+      </ul>
+      <p>
+        La regola fondamentale e': le minusvalenze (perdite realizzate) possono compensare solo
+        i redditi diversi (plusvalenze), non i redditi da capitale. Questo significa che se hai
+        realizzato perdite vendendo azioni e hai guadagni da un fondo comune, <strong>non puoi
+        usare le prime per ridurre le tasse sui secondi</strong>.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        ETF: la trappola fiscale italiana
+      </h3>
+      <p>
+        Gli ETF armonizzati (cioe' conformi alla direttiva UCITS, che sono la stragrande
+        maggioranza degli ETF quotati in Europa) generano <strong>esclusivamente redditi da
+        capitale</strong>. Questo ha una conseguenza critica: le plusvalenze generate dalla vendita
+        di un ETF <strong>non possono essere compensate con minusvalenze pregresse</strong>.
+      </p>
+      <p>
+        Esempio pratico: un investitore vende azioni con una perdita di 5.000 euro, generando
+        una minusvalenza. Successivamente vende un ETF con un guadagno di 5.000 euro. Nonostante
+        il risultato complessivo sia pari a zero, l'investitore dovra' comunque pagare il 26%
+        sulla plusvalenza dell'ETF (1.300 euro), perche' il guadagno dell'ETF e' un reddito da
+        capitale, non compensabile con la minusvalenza (reddito diverso).
+      </p>
+      <p>
+        Questa asimmetria fiscale — nota come "trappola fiscale degli ETF" — spinge alcuni
+        investitori italiani a preferire strategie di compensazione che utilizzino strumenti
+        generatori di redditi diversi (come ETC su materie prime, certificati o azioni singole)
+        per recuperare le minusvalenze prima della scadenza quadriennale.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tassazione crypto dal 2026: le nuove regole
+      </h3>
+      <p>
+        La tassazione delle criptovalute in Italia e' stata disciplinata dalla <strong>Legge di
+        Bilancio 2023 (L. 197/2022)</strong>, che ha introdotto un'aliquota del 26% sulle
+        plusvalenze derivanti da crypto-attivita'. La legge ha anche previsto una soglia di
+        esenzione di 2.000 euro annui: le plusvalenze inferiori a questa soglia non sono tassate.
+      </p>
+      <p>
+        Dal punto di vista classificatorio, le plusvalenze da criptovalute rientrano nei
+        <strong>redditi diversi</strong> (art. 67, comma 1, lett. c-sexies TUIR), il che significa
+        che possono essere compensate con minusvalenze della stessa categoria. La legge ha inoltre
+        offerto la possibilita' di rivalutare il valore delle crypto detenute al 1 gennaio 2023,
+        pagando un'imposta sostitutiva del 14% sul valore complessivo, per azzerare le plusvalenze
+        latenti accumulate negli anni precedenti.
+      </p>
+      <p>
+        E' importante notare che le criptovalute devono essere dichiarate nel <strong>quadro RW</strong>
+        della dichiarazione dei redditi (monitoraggio fiscale), oltre che nel quadro RT per le
+        plusvalenze. La mancata dichiarazione puo' comportare sanzioni significative.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Doppia imposizione e convenzioni internazionali
+      </h3>
+      <p>
+        Quando un investitore italiano percepisce redditi da fonti estere (dividendi di azioni
+        americane, interessi di obbligazioni estere, etc.), il reddito puo' essere tassato sia
+        nel Paese di origine che in Italia. Per evitare la doppia imposizione, l'Italia ha
+        stipulato <strong>convenzioni contro le doppie imposizioni</strong> con la maggior parte
+        dei Paesi (oltre 100 trattati bilaterali).
+      </p>
+      <p>
+        Ad esempio, i dividendi di azioni USA subiscono una ritenuta alla fonte del 15% negli
+        Stati Uniti (ridotta dal 30% grazie alla convenzione Italia-USA). In Italia, il dividendo
+        viene poi tassato al 26%, ma con un credito d'imposta per l'importo gia' pagato all'estero.
+        Tuttavia, il meccanismo del credito d'imposta non sempre permette un recupero completo,
+        specialmente nel regime amministrato, dove la banca italiana applica il 26% sull'importo
+        lordo e il recupero della doppia imposizione richiede la presentazione della dichiarazione
+        dei redditi.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: portafoglio misto 100.000 euro
+      </h3>
+      <p>
+        Consideriamo un investitore che ha un portafoglio di 100.000 euro cosi' composto:
+      </p>
+      <ul>
+        <li><strong>60.000 €</strong> in un ETF azionario globale (MSCI World), acquistato a 48.000 € — plusvalenza: 12.000 €</li>
+        <li><strong>40.000 €</strong> in BTP Italia, acquistato a 38.000 € — plusvalenza: 2.000 €</li>
+      </ul>
+      <p>Se l'investitore vende tutto:</p>
+      <ul>
+        <li>ETF: plusvalenza 12.000 € x 26% = <strong>3.120 € di imposta</strong> (reddito da capitale)</li>
+        <li>BTP: plusvalenza 2.000 € x 12,5% = <strong>250 € di imposta</strong> (reddito diverso)</li>
+        <li><strong>Totale imposte: 3.370 €</strong></li>
+        <li><strong>Netto incassato: 96.630 €</strong> su un investimento di 86.000 €</li>
+      </ul>
+      <p>
+        Se l'investitore avesse anche 5.000 € di minusvalenze pregresse da azioni vendute in
+        perdita, potrebbe compensarle con la plusvalenza del BTP (reddito diverso), risparmiando
+        250 € di imposta sul BTP. Ma <strong>non potrebbe compensarle con la plusvalenza
+        dell'ETF</strong>, perche' quest'ultima e' un reddito da capitale.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Aliquote per tipo di strumento finanziario (2026)
+    </h2>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Strumento</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Aliquota</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Tipo reddito</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Compensazione minus.</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Azioni (italiane e estere)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Si'</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">ETF armonizzati (UCITS)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Fondi comuni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Obbligazioni corporate</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Si'</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">BTP, BOT, CCT (Titoli di Stato IT)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">12,5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Si'</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Titoli di Stato UE (white list)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">12,5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Si'</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Buoni fruttiferi postali</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">12,5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Conti deposito</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Criptovalute</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Si'</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Certificati (Certificates)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Si'</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">ETC (materie prime)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Si'</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        La tabella evidenzia una differenza cruciale: la maggior parte degli strumenti piu'
+        popolari tra i risparmiatori italiani — ETF e fondi comuni — genera redditi da capitale,
+        che non possono essere compensati con le minusvalenze. Questa caratteristica rende
+        particolarmente importante pianificare con attenzione la sequenza di vendita degli
+        strumenti in portafoglio, soprattutto quando si hanno minusvalenze in scadenza (ricorda:
+        scadono dopo 4 anni dalla realizzazione).
+      </p>
+      <p>
+        Un approccio comune tra gli investitori consapevoli e' quello di mantenere in portafoglio
+        anche strumenti che generano redditi diversi (come azioni singole, obbligazioni corporate
+        o ETC) per poter eventualmente compensare le minusvalenze accumulate, prima di procedere
+        alla vendita di ETF o fondi. Tuttavia, questa strategia deve essere valutata caso per caso,
+        considerando anche i costi di transazione e la diversificazione complessiva del portafoglio.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quando devo pagare le tasse sugli investimenti?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Le tasse sui capital gain si pagano solo al momento della <strong>realizzazione</strong>
+          della plusvalenza, cioe' quando vendi lo strumento finanziario. Le plusvalenze "latenti"
+          (non ancora realizzate) non sono tassate. Nel regime amministrato, la banca trattiene
+          automaticamente l'imposta al momento della vendita. Nel regime dichiarativo, le imposte
+          vanno versate con la dichiarazione dei redditi entro il 30 giugno dell'anno successivo
+          (con possibilita' di rateizzazione).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Posso compensare le minusvalenze degli ETF?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Questa e' una delle domande piu' frequenti e la risposta e' articolata. Se vendi un
+          ETF in perdita, generi una minusvalenza che puo' essere usata per compensare futuri
+          redditi diversi (plusvalenze da azioni, obbligazioni, ETC, certificati) entro 4 anni.
+          Ma se vendi un ETF in guadagno, la plusvalenza e' un reddito da capitale e
+          <strong>non puo' essere compensata</strong> con minusvalenze pregresse. E' un'asimmetria
+          fiscale nota e criticata.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come funziona la tassazione dei dividendi?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          I dividendi sono tassati al 26% come redditi da capitale. Nel regime amministrato, la
+          ritenuta viene applicata direttamente dalla banca. Per i dividendi esteri, puo'
+          esserci una ritenuta nel Paese di origine (es. 15% per azioni USA con convenzione),
+          e poi il 26% in Italia. Il credito d'imposta per evitare la doppia imposizione va
+          richiesto in dichiarazione dei redditi. Per i dividendi da partecipazioni qualificate
+          (sopra certe soglie), la tassazione avviene in dichiarazione con regole diverse.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Le criptovalute sono tassate in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si', dal 2023 le criptovalute sono tassate al 26% sulle plusvalenze realizzate, con
+          una soglia di esenzione di 2.000 € annui. Le plusvalenze rientrano nei "redditi
+          diversi" e possono quindi compensare minusvalenze. Le crypto devono essere dichiarate
+          anche nel quadro RW ai fini del monitoraggio fiscale, con un'imposta di bollo dello
+          0,2% sul valore (IVAFE). La mancata dichiarazione puo' comportare sanzioni dal 3%
+          al 15% dell'importo non dichiarato.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          L'imposta di bollo sugli investimenti e' inclusa nel calcolo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, questo calcolatore si concentra esclusivamente sul capital gain (plusvalenza). In
+          Italia esiste anche un'imposta di bollo proporzionale dello 0,2% annuo sul valore dei
+          depositi titoli (IVAFE per i titoli detenuti all'estero, imposta di bollo per quelli
+          in Italia). Per i titoli di Stato e i buoni postali, l'imposta di bollo e' ridotta
+          allo 0,2% con un massimo di 14.000 € per soggetto. L'imposta di bollo si applica
+          sul valore di mercato e non sulle plusvalenze.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto durano le minusvalenze?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Le minusvalenze possono essere portate in compensazione per un massimo di <strong>4
+          anni</strong> dalla loro realizzazione (art. 68, comma 5, TUIR). Ad esempio, una
+          minusvalenza realizzata nel 2024 puo' essere utilizzata per compensare plusvalenze
+          fino al 31 dicembre 2028. Dopo questa data, la minusvalenza si "perde" e non puo'
+          piu' essere utilizzata. Per questo motivo e' importante monitorare le minusvalenze
+          in scadenza e valutare strategie di compensazione prima della scadenza.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come si calcola il prezzo di carico medio?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il prezzo di carico (o prezzo medio ponderato di acquisto) si calcola dividendo il
+          costo totale di acquisto per il numero totale di quote/azioni detenute. Se hai
+          acquistato 100 azioni a 10 € e poi altre 50 azioni a 12 €, il prezzo medio
+          ponderato e' (100 x 10 + 50 x 12) / 150 = 10,67 €. Il regime LIFO non si
+          applica piu' in Italia dal 2012: si usa sempre il costo medio ponderato.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-piano-accumulo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Piano di Accumulo (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula il rendimento del tuo PAC con tassazione al 26%
+        </p>
+      </a>
+      <a href="/calcolo-interesse-composto" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Interesse Composto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la crescita del tuo capitale con l'interesse composto
+        </p>
+      </a>
+      <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'IRPEF e le detrazioni per redditi da lavoro
+        </p>
+      </a>
+      <a href="/calcolo-inflazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'impatto dell'inflazione sul potere d'acquisto
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

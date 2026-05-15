@@ -1,0 +1,556 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import BonusRistrutturazione from '../components/calcolatori/BonusRistrutturazione';
+
+const title = 'Calcolo Bonus Ristrutturazione 2026: Simulatore';
+const description = 'Calcola il bonus ristrutturazione 2026: detrazione 50%, ecobonus, sismabonus, bonus mobili. Simula il risparmio fiscale reale con verifica capienza IRPEF.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Bonus Ristrutturazione', url: `${SITE.url}/calcolo-bonus-ristrutturazione` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Bonus Ristrutturazione"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Bonus Ristrutturazione 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Simula la detrazione fiscale per ristrutturazione, ecobonus, sismabonus e bonus mobili. Verifica
+    la capienza IRPEF e il risparmio effettivo anno per anno.
+  </p>
+
+  <BonusRistrutturazione client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Panorama dei bonus edilizi 2026: cosa e' cambiato
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il panorama dei <strong>bonus edilizi</strong> in Italia ha subito profonde trasformazioni negli ultimi
+        anni. Dopo l'esperienza del Superbonus 110%, introdotto dal Decreto Rilancio (D.L. 34/2020) e
+        progressivamente ridimensionato, il legislatore ha operato un riordino delle agevolazioni fiscali
+        per gli interventi sugli immobili. La Legge di Bilancio 2025 (L. 207/2024) ha confermato il
+        quadro normativo che si applica anche per il 2026, con alcune modifiche rilevanti rispetto agli
+        anni precedenti. Il cambiamento piu' significativo riguarda la <strong>differenziazione tra prima
+        casa e altri immobili</strong>: per la ristrutturazione edilizia, l'aliquota del 50% si applica
+        esclusivamente all'abitazione principale, mentre per gli altri immobili l'aliquota scende al 36%.
+        Questa distinzione rappresenta una novita' importante rispetto al passato, quando il 50% era
+        applicabile indistintamente a tutti gli immobili residenziali.
+      </p>
+      <p>
+        Un'altra modifica fondamentale riguarda la <strong>cessione del credito e lo sconto in fattura</strong>,
+        che dal 17 febbraio 2023 (data di entrata in vigore del D.L. 11/2023, convertito dalla L. 38/2023)
+        sono stati sostanzialmente aboliti per i nuovi interventi, con pochissime eccezioni legate a situazioni
+        gia' avviate o a interventi su immobili danneggiati da eventi sismici. Questo significa che nel 2026
+        l'unica modalita' di fruizione dei bonus edilizi e', nella quasi totalita' dei casi, la
+        <strong>detrazione diretta dall'IRPEF</strong> nella dichiarazione dei redditi, ripartita in quote annuali
+        di pari importo. E' quindi essenziale verificare di avere sufficiente capienza IRPEF per sfruttare
+        interamente la detrazione spettante, perche' la quota eccedente l'imposta lorda non e' rimborsabile
+        ne' trasferibile agli anni successivi.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Bonus ristrutturazione 50%: requisiti, limiti e lavori ammessi
+      </h3>
+      <p>
+        Il <strong>bonus ristrutturazione</strong> e' disciplinato dall'art. 16-bis del TUIR (Testo Unico
+        delle Imposte sui Redditi, D.P.R. 917/1986) e dal D.L. 63/2013. Per il 2026, la detrazione e' pari
+        al <strong>50%</strong> delle spese sostenute per interventi di ristrutturazione sull'<strong>abitazione
+        principale</strong>, fino a un tetto massimo di spesa di <strong>96.000 euro</strong> per unita'
+        immobiliare. Per gli altri immobili (seconde case, immobili locati, etc.), l'aliquota scende al
+        <strong>36%</strong> con lo stesso tetto di 96.000 euro. La detrazione viene ripartita in
+        <strong>10 quote annuali</strong> di pari importo.
+      </p>
+      <p>
+        I lavori ammessi comprendono un'ampia gamma di interventi, tra cui: manutenzione straordinaria
+        (sostituzione infissi, rifacimento bagno, sostituzione impianto elettrico o idraulico),
+        restauro e risanamento conservativo, ristrutturazione edilizia vera e propria, interventi necessari
+        alla ricostruzione o al ripristino dell'immobile danneggiato da eventi calamitosi, eliminazione
+        delle barriere architettoniche, interventi relativi alla realizzazione di autorimesse o posti auto
+        pertinenziali, e bonifica dall'amianto. Per le <strong>parti comuni condominiali</strong>, sono
+        ammessi anche gli interventi di manutenzione ordinaria (tinteggiatura, sostituzione pavimenti,
+        sostituzione grondaie, etc.).
+      </p>
+      <p>
+        Per fruire della detrazione e' necessario rispettare specifici adempimenti: il pagamento deve
+        avvenire tramite <strong>bonifico parlante</strong> (bancario o postale) che riporti la causale
+        del versamento con riferimento alla norma (art. 16-bis del TUIR), il codice fiscale del beneficiario
+        della detrazione e il codice fiscale o la partita IVA del beneficiario del pagamento. E' inoltre
+        necessario conservare le fatture, le ricevute fiscali, la documentazione relativa ai permessi
+        edilizi (CILA, SCIA o permesso di costruire a seconda del tipo di intervento) e la comunicazione
+        preventiva all'ASL, ove prevista dalla normativa sulla sicurezza nei cantieri.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Ecobonus: interventi energetici con aliquote 50% e 65%
+      </h3>
+      <p>
+        L'<strong>ecobonus</strong> e' la detrazione fiscale per gli interventi di riqualificazione
+        energetica degli edifici esistenti, disciplinata dall'art. 1, commi 344-349, della L. 296/2006
+        e successive modificazioni. Le aliquote variano in base al tipo di intervento:
+      </p>
+      <p>
+        La detrazione al <strong>50%</strong> si applica a: sostituzione di finestre comprensive di
+        infissi, schermature solari, caldaie a biomassa, caldaie a condensazione (solo classe A).
+        Il tetto massimo di spesa varia: 60.000 euro per gli infissi, 60.000 euro per le schermature
+        solari, 30.000 euro per le caldaie a condensazione classe A.
+      </p>
+      <p>
+        La detrazione al <strong>65%</strong> si applica a: coibentazione dell'involucro edilizio
+        (cappotto termico), installazione di pannelli solari termici per la produzione di acqua calda,
+        sostituzione di impianti di climatizzazione invernale con pompe di calore ad alta efficienza o
+        con impianti geotermici, installazione di caldaie a condensazione di classe A con contestuale
+        installazione di sistemi di termoregolazione evoluti (classe V, VI o VIII), acquisto e installazione
+        di micro-cogeneratori, installazione di dispositivi per il controllo da remoto degli impianti di
+        riscaldamento (building automation). Il tetto massimo di spesa e' di 100.000 euro per la
+        riqualificazione energetica globale e di importi variabili per i singoli interventi.
+      </p>
+      <p>
+        Per beneficiare dell'ecobonus e' obbligatoria la <strong>comunicazione all'ENEA</strong>
+        (Agenzia Nazionale per le Nuove Tecnologie, l'Energia e lo Sviluppo Economico Sostenibile)
+        entro 90 giorni dalla fine dei lavori. La trasmissione avviene tramite il portale telematico
+        dedicato e deve contenere i dati relativi all'immobile, al tipo di intervento e al risparmio
+        energetico conseguito, attestato dalla scheda tecnica o dall'APE (Attestato di Prestazione
+        Energetica) post-intervento.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Sismabonus e bonus mobili: regole specifiche
+      </h3>
+      <p>
+        Il <strong>sismabonus</strong> e' la detrazione per gli interventi di adeguamento antisismico,
+        prevista dall'art. 16, commi da 1-bis a 1-septies, del D.L. 63/2013. Le aliquote sono
+        differenziate in base all'efficacia dell'intervento in termini di riduzione del rischio sismico:
+        <strong>70%</strong> per interventi che comportano la riduzione di una classe di rischio,
+        <strong>80%</strong> per la riduzione di due classi di rischio. Per gli interventi sulle
+        <strong>parti comuni condominiali</strong>, le aliquote salgono rispettivamente al 75% e all'85%.
+        Il tetto di spesa e' di 96.000 euro per unita' immobiliare e la detrazione si ripartisce in
+        <strong>5 quote annuali</strong> (non 10 come per la ristrutturazione ordinaria). Gli immobili
+        devono essere ubicati nelle zone sismiche 1, 2 e 3 (classificazione sismica definita
+        dall'Ordinanza PCM 3519/2006).
+      </p>
+      <p>
+        Il <strong>bonus mobili</strong> consente la detrazione del 50% delle spese sostenute per
+        l'acquisto di mobili e di grandi elettrodomestici di classe energetica elevata (non inferiore alla
+        classe A per i forni, E per lavatrici, lavasciugatrici e lavastoviglie, F per frigoriferi e
+        congelatori), destinati ad arredare l'immobile oggetto di ristrutturazione. Il tetto massimo di
+        spesa per il 2026 e' di <strong>5.000 euro</strong>. E' fondamentale che il bonus mobili sia
+        collegato a un intervento di ristrutturazione edilizia: non e' possibile usufruirne autonomamente.
+        La data di inizio dei lavori di ristrutturazione deve essere anteriore a quella di acquisto
+        dei mobili ed elettrodomestici. Il pagamento puo' avvenire con bonifico bancario o postale, carta
+        di debito o carta di credito; non e' ammesso il pagamento con assegni bancari, contanti o altri
+        mezzi non tracciabili.
+      </p>
+      <p>
+        Il <strong>bonus verde</strong> consente la detrazione del 36% delle spese sostenute per la
+        sistemazione a verde di aree scoperte private di edifici esistenti, unita' immobiliari,
+        pertinenze o recinzioni, impianti di irrigazione e realizzazione di pozzi, nonche' la
+        realizzazione di coperture a verde e di giardini pensili. Il tetto massimo e' di 5.000 euro
+        per unita' immobiliare, con una detrazione massima di 1.800 euro ripartita in 10 quote annuali.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Come funziona la detrazione: ripartizione in quote annuali
+      </h3>
+      <p>
+        La detrazione per i bonus edilizi funziona come una riduzione dell'IRPEF (Imposta sul Reddito
+        delle Persone Fisiche) dovuta dal contribuente. L'importo totale della detrazione viene
+        suddiviso in <strong>quote annuali di pari importo</strong>: 10 per la ristrutturazione,
+        l'ecobonus, il bonus mobili e il bonus verde; 5 per il sismabonus. Ogni anno, il contribuente
+        inserisce la quota nella dichiarazione dei redditi (modello 730 o modello Redditi PF) e la
+        sottrae dall'IRPEF lorda calcolata sul proprio reddito.
+      </p>
+      <p>
+        Facciamo un esempio concreto: su una spesa di <strong>40.000 euro</strong> per una
+        ristrutturazione della prima casa al 50%, la detrazione totale e' di 20.000 euro, suddivisa
+        in 10 quote annuali da 2.000 euro ciascuna. Ogni anno, nella dichiarazione dei redditi, il
+        contribuente riduce la propria IRPEF di 2.000 euro.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Capienza fiscale: perche' e' fondamentale avere IRPEF sufficiente
+      </h3>
+      <p>
+        Uno degli aspetti piu' critici e meno compresi dei bonus edilizi riguarda la <strong>capienza
+        fiscale</strong>. La detrazione annua puo' essere fruita solo fino a concorrenza dell'IRPEF
+        lorda dovuta dal contribuente per quell'anno, al netto delle altre detrazioni gia' spettanti
+        (detrazioni per lavoro dipendente, carichi familiari, altre detrazioni). Se la quota annua di
+        detrazione supera l'IRPEF netta dovuta, <strong>la parte eccedente viene persa definitivamente</strong>:
+        non puo' essere riportata all'anno successivo ne' richiesta a rimborso.
+      </p>
+      <p>
+        Questo aspetto penalizza particolarmente i contribuenti con redditi bassi o con molte altre
+        detrazioni che riducono gia' significativamente l'IRPEF. Per esempio, un contribuente con una
+        RAL di 15.000 euro ha un'IRPEF lorda di circa 2.262 euro, che dopo la detrazione per lavoro
+        dipendente (circa 1.955 euro per redditi fino a 15.000 euro) e il trattamento integrativo
+        scende quasi a zero. In questo scenario, la detrazione per ristrutturazione non sarebbe
+        fruibile. Il nostro calcolatore verifica automaticamente la capienza IRPEF e segnala eventuali
+        situazioni di perdita della detrazione.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Cessione del credito e sconto in fattura: stato attuale
+      </h3>
+      <p>
+        Il <strong>D.L. 11/2023</strong> (convertito dalla L. 38/2023) ha segnato una svolta epocale
+        nel sistema dei bonus edilizi, vietando la cessione del credito d'imposta e lo sconto in
+        fattura per la quasi totalita' dei nuovi interventi a partire dal 17 febbraio 2023. Le uniche
+        eccezioni residue riguardano: interventi gia' avviati prima della data di entrata in vigore
+        del decreto per i quali era stata presentata la CILAS o altri titoli abilitativi; interventi
+        di demolizione e ricostruzione in zone sismiche per i quali era stata presentata l'istanza per
+        l'acquisizione del titolo abilitativo; interventi su immobili danneggiati da eventi sismici
+        rientranti nei territori colpiti. Per tutti gli altri casi, dal 2026 l'unica possibilita' e'
+        la detrazione diretta in dichiarazione dei redditi, il che rende ancora piu' cruciale il tema
+        della capienza fiscale analizzato nel paragrafo precedente.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: ristrutturazione bagno e cucina 40.000 €, RAL 35.000 €
+      </h3>
+      <p>
+        Consideriamo un caso concreto molto comune: Mario decide di ristrutturare bagno e cucina del
+        suo appartamento (abitazione principale) con una spesa complessiva di <strong>40.000 euro</strong>.
+        La sua RAL e' di <strong>35.000 euro</strong>.
+      </p>
+      <p>
+        <strong>Calcolo della detrazione:</strong> il bonus ristrutturazione al 50% su 40.000 euro
+        genera una detrazione totale di 20.000 euro, ripartita in 10 quote annuali da 2.000 euro.
+      </p>
+      <p>
+        <strong>Verifica capienza IRPEF:</strong> con una RAL di 35.000 euro, i contributi INPS a
+        carico del dipendente sono circa 3.217 euro (9,19%), portando il reddito imponibile a circa
+        31.783 euro. L'IRPEF lorda e' circa 7.648 euro (28.000 x 23% + 3.783 x 33%). Le detrazioni
+        per lavoro dipendente ammontano a circa 1.561 euro. L'IRPEF netta e' quindi circa 6.087 euro,
+        ampiamente sufficiente a coprire la quota annua di 2.000 euro. Mario beneficera' interamente
+        del bonus.
+      </p>
+      <p>
+        <strong>Costo effettivo:</strong> i lavori costano 40.000 euro, ma con il bonus Mario
+        recupera 20.000 euro in 10 anni. Il <strong>costo effettivo reale</strong> e' quindi di
+        20.000 euro, equivalente a uno sconto del 50% sui lavori.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Documenti necessari per ottenere la detrazione
+      </h3>
+      <p>
+        Per fruire dei bonus edilizi e' necessario conservare e, in caso di controllo, esibire la
+        seguente documentazione: <strong>bonifico parlante</strong> con causale del versamento (art.
+        16-bis del TUIR o norma di riferimento per l'ecobonus), codice fiscale del beneficiario e
+        codice fiscale o partita IVA del destinatario del pagamento; <strong>fatture e ricevute
+        fiscali</strong> relative alle spese sostenute; <strong>titoli abilitativi edilizi</strong>
+        (CILA, SCIA, permesso di costruire) o, in alternativa, una dichiarazione sostitutiva dell'atto
+        di notorieta' che attesti la data di inizio dei lavori e la conformita' degli interventi alla
+        normativa edilizia; <strong>comunicazione all'ASL</strong>, ove prevista dalla normativa
+        sulla sicurezza nei cantieri; <strong>comunicazione all'ENEA</strong> entro 90 giorni dalla
+        fine dei lavori, obbligatoria per l'ecobonus e per alcuni interventi di ristrutturazione che
+        comportano un risparmio energetico (sostituzione caldaia, sostituzione infissi, installazione
+        pannelli solari); <strong>delibera assembleare</strong> per i lavori sulle parti comuni
+        condominiali e tabella millesimale di ripartizione delle spese; visura catastale dell'immobile
+        o ricevuta di presentazione della domanda di accatastamento; ricevute di pagamento dell'IMU
+        (se dovuta); per il bonus mobili, le fatture di acquisto con indicazione della natura, qualita'
+        e quantita' dei beni e la prova del pagamento con strumento tracciabile.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Tabella riepilogativa dei bonus edilizi 2026
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente riassume i principali <strong>bonus edilizi</strong> disponibili nel 2026,
+        con le relative aliquote, tetti di spesa e durata della detrazione.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Bonus</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Aliquota</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Tetto spesa</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Quote annuali</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Norma</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Ristrutturazione (prima casa)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">50%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">96.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Art. 16-bis TUIR</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Ristrutturazione (altri immobili)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">36%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">96.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Art. 16-bis TUIR</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Ecobonus (infissi, caldaie A)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">50%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">60.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">L. 296/2006</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Ecobonus (cappotto, pompa calore)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">65%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">100.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">L. 296/2006</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Sismabonus (1 classe rischio)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">70%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">96.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">5</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">D.L. 63/2013</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Sismabonus (2 classi rischio)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">80%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">96.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">5</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">D.L. 63/2013</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Bonus mobili</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">50%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">5.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">D.L. 63/2013</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Bonus verde</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">36%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">5.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">L. 205/2017</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        I valori indicati sono soggetti a conferma annuale da parte della Legge di Bilancio. Si consiglia
+        di verificare sempre la normativa vigente al momento dell'inizio dei lavori, consultando il sito
+        dell'Agenzia delle Entrate o rivolgendosi a un professionista abilitato.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Chi puo' beneficiare del bonus ristrutturazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Possono beneficiare della detrazione tutti i contribuenti soggetti all'IRPEF, residenti o meno
+          in Italia, che possiedono o detengono l'immobile oggetto degli interventi sulla base di un
+          titolo idoneo: proprietari, nudi proprietari, titolari di diritti reali di godimento
+          (usufrutto, uso, abitazione, superficie), locatari, comodatari, soci di cooperative divise
+          e indivise, imprenditori individuali (per immobili non strumentali ne' merce), soggetti
+          indicati nell'art. 5 del TUIR (societa' semplici, imprese familiari). La detrazione spetta
+          anche al familiare convivente che sostiene la spesa, purche' i bonifici e le fatture siano
+          a lui intestati o cointestati.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa succede se il costo dei lavori supera il tetto massimo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La detrazione si calcola esclusivamente sulla spesa fino al tetto massimo previsto dalla norma.
+          Se ad esempio il costo della ristrutturazione e' di 120.000 euro e il tetto e' di 96.000 euro,
+          la detrazione del 50% si applica solo su 96.000 euro (48.000 euro di detrazione totale), e i
+          restanti 24.000 euro di spesa rimangono interamente a carico del contribuente. Il tetto e'
+          riferito alla singola unita' immobiliare, quindi se si possiedono piu' immobili il tetto si
+          applica separatamente a ciascuno.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Posso cumulare piu' bonus sullo stesso immobile?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si, e' possibile cumulare piu' bonus sullo stesso immobile, purche' si tratti di interventi
+          diversi e le spese non siano le stesse. Ad esempio, e' possibile fruire contemporaneamente
+          del bonus ristrutturazione per il rifacimento del bagno, dell'ecobonus per la sostituzione
+          degli infissi, e del bonus mobili per l'acquisto di arredi e elettrodomestici. Non e' invece
+          possibile applicare due diverse agevolazioni sulla stessa spesa: se si sostituiscono gli infissi,
+          bisogna scegliere se fruire del bonus ristrutturazione o dell'ecobonus (non entrambi).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cos'e' il bonifico parlante e come si compila?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il bonifico parlante e' un bonifico bancario o postale che deve contenere obbligatoriamente
+          tre informazioni: la causale del versamento con il riferimento normativo (ad esempio
+          "Pagamento fattura n. XX del XX/XX/XXXX per lavori di ristrutturazione edilizia ai sensi
+          dell'art. 16-bis del D.P.R. 917/1986"), il codice fiscale del soggetto che intende fruire
+          della detrazione, e il codice fiscale o la partita IVA del beneficiario del pagamento (la
+          ditta o il professionista). La maggior parte delle banche e degli uffici postali dispongono
+          di moduli precompilati specifici per i bonifici relativi ai bonus edilizi, che applicano anche
+          la ritenuta d'acconto dell'8% prevista dalla legge.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La detrazione si perde se vendo l'immobile prima dei 10 anni?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In caso di vendita dell'immobile, le quote residue della detrazione si trasferiscono
+          automaticamente all'acquirente, salvo diverso accordo tra le parti. Nell'atto di compravendita
+          e' possibile specificare che il venditore mantiene il diritto alle quote residue. In caso di
+          donazione, il donatario subentra nel diritto alla detrazione. In caso di successione per
+          decesso, la detrazione si trasferisce all'erede che conserva la "detenzione materiale e
+          diretta del bene" (ovvero che vi abita o lo utilizza direttamente, non che lo affitta).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          E' ancora possibile la cessione del credito nel 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, salvo pochissime eccezioni. Il D.L. 11/2023, convertito dalla L. 38/2023, ha bloccato
+          la cessione del credito e lo sconto in fattura per i nuovi interventi dal 17 febbraio 2023.
+          Le eccezioni residue riguardano pratiche gia' in corso alla data del decreto e interventi
+          su immobili in zone sismiche colpite da eventi calamitosi. Per la stragrande maggioranza dei
+          contribuenti, nel 2026 l'unica opzione e' la detrazione diretta dall'IRPEF nella dichiarazione
+          dei redditi, suddivisa nelle quote annuali previste per ciascun tipo di bonus.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quali lavori richiedono la CILA e quali la SCIA?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La <strong>CILA</strong> (Comunicazione di Inizio Lavori Asseverata) e' necessaria per gli
+          interventi di manutenzione straordinaria che non comportano variazioni volumetriche o
+          modifiche strutturali: ad esempio, il rifacimento del bagno, la sostituzione degli impianti,
+          il rifacimento dei pavimenti con modifica del sottofondo. La <strong>SCIA</strong> (Segnalazione
+          Certificata di Inizio Attivita') e' richiesta per interventi che comportano modifiche strutturali:
+          apertura o chiusura di vani, spostamento di muri portanti, interventi antisismici. Per gli
+          interventi di edilizia libera (tinteggiatura interna, sostituzione sanitari senza modifiche
+          all'impianto, sostituzione pavimenti senza modifica delle quote) non e' necessario alcun titolo
+          abilitativo, ma e' sufficiente una dichiarazione sostitutiva dell'atto di notorieta'.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          L'IVA sulle ristrutturazioni e' agevolata?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si, per gli interventi di manutenzione ordinaria e straordinaria su edifici a prevalente
+          destinazione abitativa privata, l'IVA e' applicata nella misura ridotta del 10% anziche'
+          del 22%. Questa agevolazione si applica sia al costo della manodopera che a quello dei materiali,
+          con una limitazione per i cosiddetti "beni significativi" (ascensori, infissi, caldaie,
+          sanitari, etc.): su questi beni, l'IVA al 10% si applica solo fino a concorrenza del
+          valore della prestazione di manodopera. L'IVA agevolata al 10% e' un beneficio separato
+          e aggiuntivo rispetto alla detrazione IRPEF per ristrutturazione.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-plusvalenza-immobiliare" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Plusvalenza Immobiliare
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola le tasse sulla vendita di un immobile
+        </p>
+      </a>
+      <a href="/calcolo-mutuo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Mutuo
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la rata del mutuo e il piano di ammortamento
+        </p>
+      </a>
+      <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'IRPEF lorda e netta con gli scaglioni 2026
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+      <a href="/calcolo-inflazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'impatto dell'inflazione sul potere d'acquisto
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

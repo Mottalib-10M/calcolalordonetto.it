@@ -1,0 +1,350 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+import { calcolaStipendio } from '../../lib/irpef-engine';
+import { formatCurrency } from '../../lib/format-it';
+import { breadcrumbSchema } from '../../lib/seo';
+
+const title = 'Stipendio Netto per Ogni RAL 2026: Tabelle e Calcoli Completi';
+const description =
+  'Scopri lo stipendio netto mensile per ogni livello di RAL nel 2026. Tabelle aggiornate con IRPEF, INPS, addizionali regionali e detrazioni per tutte le fasce.';
+
+const ralAmounts = [
+  15_000, 18_000, 20_000, 22_000,
+  25_000, 27_000, 28_000, 30_000, 32_000, 35_000, 38_000,
+  40_000, 42_000, 45_000, 50_000, 55_000,
+  60_000, 65_000, 70_000, 80_000, 90_000, 100_000, 120_000, 150_000,
+];
+
+interface RalPreview {
+  ral: number;
+  slug: string;
+  nettoMensile: number;
+}
+
+const ralPreviews: RalPreview[] = ralAmounts.map((ral) => {
+  const result = calcolaStipendio({ ral, regione: 'LOM', mensilita: 13 });
+  return {
+    ral,
+    slug: `${ral}-euro-netto`,
+    nettoMensile: result.nettoMensile,
+  };
+});
+
+interface RalGroup {
+  label: string;
+  description: string;
+  items: RalPreview[];
+}
+
+const groups: RalGroup[] = [
+  {
+    label: 'Stipendi bassi',
+    description: 'RAL da 15.000 a 22.000 euro: posizioni entry-level e contratti part-time',
+    items: ralPreviews.filter((r) => r.ral >= 15_000 && r.ral <= 22_000),
+  },
+  {
+    label: 'Stipendi medi',
+    description: 'RAL da 25.000 a 38.000 euro: la fascia salariale piu diffusa in Italia',
+    items: ralPreviews.filter((r) => r.ral >= 25_000 && r.ral <= 38_000),
+  },
+  {
+    label: 'Stipendi medio-alti',
+    description: 'RAL da 40.000 a 55.000 euro: profili specializzati e quadri',
+    items: ralPreviews.filter((r) => r.ral >= 40_000 && r.ral <= 55_000),
+  },
+  {
+    label: 'Stipendi alti',
+    description: 'RAL da 60.000 a 150.000 euro: dirigenti, manager e ruoli senior',
+    items: ralPreviews.filter((r) => r.ral >= 60_000 && r.ral <= 150_000),
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'RAL', url: `${SITE.url}/ral` },
+];
+
+const schemas = [breadcrumbSchema(breadcrumbs)];
+const schemaString = JSON.stringify(schemas);
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`${SITE.url}/ral`}
+  schema={schemaString}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">RAL</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <div class="mb-12">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+        Stipendio Netto per Ogni RAL nel {SITE.annoFiscale}
+      </h1>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
+        Quanto guadagni davvero netto al mese? Seleziona la tua RAL per vedere il calcolo completo con
+        IRPEF, contributi INPS, addizionali regionali e detrazioni. Tutti i valori sono aggiornati alla
+        normativa fiscale {SITE.annoFiscale}.
+      </p>
+    </div>
+
+    <!-- RAL groups -->
+    {groups.map((group) => (
+      <section class="mb-12">
+        <div class="mb-4">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{group.label}</h2>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{group.description}</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {group.items.map((item) => (
+            <a
+              href={`/ral/${item.slug}`}
+              class="group flex flex-col justify-between rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand hover:shadow-md transition-all"
+            >
+              <div>
+                <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">RAL</p>
+                <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+                  {formatCurrency(item.ral)}
+                </p>
+              </div>
+              <div class="mt-4 flex items-end justify-between">
+                <div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">Netto mensile</p>
+                  <p class="text-lg font-semibold text-brand">
+                    ~{formatCurrency(item.nettoMensile)}
+                  </p>
+                </div>
+                <svg class="h-5 w-5 text-gray-300 dark:text-gray-600 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Contenuto editoriale -->
+    <section class="mb-16 max-w-3xl">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        Che cos'e' la RAL e perche' conta
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none">
+        <p>
+          RAL sta per Retribuzione Annua Lorda. E' l'importo complessivo che il datore di lavoro si impegna
+          a corrispondere al dipendente nell'arco di un anno, prima di qualsiasi trattenuta fiscale o
+          previdenziale. La RAL comprende lo stipendio base, la tredicesima mensilita' (e la quattordicesima,
+          se prevista dal contratto collettivo), gli scatti di anzianita' e le eventuali indennita' fisse
+          stabilite dal CCNL di riferimento.
+        </p>
+        <p>
+          Quando un'azienda propone un'offerta di lavoro, il valore che compare nella lettera di assunzione
+          e' quasi sempre la RAL. E' quindi il parametro principale su cui si negozia la retribuzione. Il
+          netto in busta paga, quello che effettivamente viene accreditato sul conto corrente ogni mese,
+          dipende da una serie di fattori che riducono il lordo: contributi INPS a carico del lavoratore,
+          IRPEF, addizionali regionali e comunali, detrazioni per lavoro dipendente, cuneo fiscale e
+          trattamento integrativo. Il rapporto tra lordo e netto varia quindi in base al livello di reddito,
+          alla regione di residenza, al comune e alla situazione familiare del lavoratore.
+        </p>
+
+        <h3>Le componenti della RAL</h3>
+        <p>
+          La RAL si costruisce a partire dalla paga base mensile moltiplicata per il numero di mensilita'
+          previste dal contratto. La maggior parte dei CCNL italiani prevede 13 mensilita': 12 stipendi
+          ordinari piu' la tredicesima, erogata solitamente a dicembre. Alcuni contratti, come il CCNL
+          Commercio, il CCNL Turismo e il CCNL Metalmeccanico, prevedono anche la quattordicesima
+          mensilita', portando il totale a 14 pagamenti annui.
+        </p>
+        <p>
+          Oltre alla paga base, nella RAL confluiscono gli scatti di anzianita', cioe' aumenti periodici
+          automatici previsti dal CCNL in base agli anni di servizio nella stessa azienda. Per alcuni
+          contratti, come il CCNL Metalmeccanico, lo scatto avviene ogni due anni; per altri, come
+          il Commercio, ogni tre. Anche i superminimi individuali, cioe' le somme aggiuntive riconosciute
+          dal datore di lavoro al singolo lavoratore al di fuori del CCNL, entrano nel computo della RAL.
+        </p>
+        <p>
+          Non fanno parte della RAL, invece, i benefit aziendali non monetari come i buoni pasto, l'auto
+          aziendale ad uso promiscuo (che ha un regime fiscale specifico basato sulle tabelle ACI), il
+          welfare aziendale, i premi di risultato variabili e il TFR (Trattamento di Fine Rapporto). Il
+          TFR e' una componente della retribuzione differita che il lavoratore matura ogni anno nella misura
+          di circa il 6,91% della RAL, ma viene accantonato e non erogato mensilmente.
+        </p>
+
+        <h3>RAL e costo azienda: due concetti diversi</h3>
+        <p>
+          La RAL rappresenta il lordo del lavoratore, ma non il costo totale che l'azienda sostiene per
+          quel dipendente. Il costo azienda include, oltre alla RAL, i contributi previdenziali e
+          assicurativi a carico del datore di lavoro, il TFR e l'IRAP. I contributi a carico dell'azienda
+          pesano mediamente tra il 30% e il 32% della RAL, a seconda del settore e della dimensione aziendale.
+        </p>
+        <p>
+          Per avere un ordine di grandezza: con una RAL di 30.000 euro, il costo azienda complessivo si aggira
+          intorno ai 41.000/42.000 euro. Con una RAL di 50.000 euro, il costo azienda supera i 68.000 euro.
+          Questo divario spiega perche' le aziende ragionano spesso in termini di "budget per posizione" e
+          non semplicemente di stipendio lordo.
+        </p>
+
+        <h3>Esempio pratico: dalla RAL al netto mensile</h3>
+        <p>
+          Prendiamo un lavoratore dipendente single, residente a Milano (Lombardia), con una RAL di 30.000
+          euro su 13 mensilita'. Ecco come si arriva al netto mensile.
+        </p>
+        <p>
+          <strong>Contributi INPS a carico del lavoratore:</strong> 30.000 x 9,19% = 2.757 euro annui.
+          L'imponibile fiscale diventa: 30.000 - 2.757 = 27.243 euro.
+        </p>
+        <p>
+          <strong>IRPEF lorda:</strong> l'intero imponibile ricade nel primo scaglione (fino a 28.000 euro,
+          aliquota 23%), quindi l'IRPEF lorda e' di 27.243 x 23% = 6.266 euro.
+        </p>
+        <p>
+          <strong>Detrazioni:</strong> la detrazione per lavoro dipendente per un reddito di 27.243 euro
+          vale circa 1.766 euro. Il cuneo fiscale aggiunge una detrazione di 1.000 euro per redditi tra
+          20.001 e 32.000 euro. L'IRPEF netta diventa: 6.266 - 1.766 - 1.000 = 3.500 euro circa.
+        </p>
+        <p>
+          <strong>Addizionali:</strong> l'addizionale regionale Lombardia su questo imponibile vale circa
+          358 euro. L'addizionale comunale (Milano, aliquota 0,8%) vale circa 218 euro.
+        </p>
+        <p>
+          <strong>Risultato:</strong> il netto annuo e' di circa 30.000 - 2.757 - 3.500 - 358 - 218 =
+          23.167 euro. Diviso per 13 mensilita', il netto mensile e' di circa 1.782 euro.
+        </p>
+
+        <h3>RAL per professione in Italia</h3>
+        <p>
+          Le RAL variano molto in base al settore, all'esperienza e alla posizione geografica. Per dare
+          un quadro realistico, ecco alcune fasce retributive tipiche del mercato italiano nel 2026,
+          basate sui dati degli Osservatori sulle Retribuzioni di OD&amp;M Consulting e sulle rilevazioni
+          di JobPricing.
+        </p>
+        <p>
+          Un neolaureato al primo impiego nel settore privato parte tipicamente con una RAL tra 22.000 e
+          26.000 euro. Per un impiegato amministrativo con 3/5 anni di esperienza la RAL si colloca tra
+          25.000 e 32.000 euro. Un programmatore software junior parte da 24.000/28.000 euro, mentre uno
+          sviluppatore senior con 5+ anni di esperienza raggiunge i 38.000/50.000 euro. Un ingegnere
+          industriale con esperienza si posiziona tipicamente tra 35.000 e 48.000 euro.
+        </p>
+        <p>
+          Le figure manageriali e i quadri percepiscono RAL tra 45.000 e 65.000 euro, mentre i dirigenti
+          partono da 70.000 euro e possono superare ampiamente i 120.000 euro nei settori finanza,
+          farmaceutico e tech. I professionisti dell'IT, del data engineering e della cybersecurity hanno
+          visto le retribuzioni crescere in modo significativo negli ultimi anni, con figure come i DevOps
+          engineer e i data scientist che si collocano tra 40.000 e 60.000 euro anche con pochi anni di
+          esperienza.
+        </p>
+
+        <h3>Differenze regionali nella RAL</h3>
+        <p>
+          A parita' di RAL, il netto mensile cambia in base alla regione di residenza, per via delle
+          diverse aliquote dell'addizionale regionale IRPEF. Il Lazio applica le aliquote piu' alte,
+          con una progressivita' che arriva fino al 3,33% per i redditi elevati. Le regioni con
+          addizionali piu' contenute sono il Friuli Venezia Giulia, la Sardegna e il Trentino-Alto Adige.
+        </p>
+        <p>
+          La differenza concreta tra la regione "migliore" e la "peggiore" dipende dal livello di RAL.
+          Per una RAL di 30.000 euro, la differenza mensile e' di circa 15/25 euro; per RAL di 60.000
+          euro, la forbice si allarga fino a 50/70 euro al mese. In un anno questa differenza puo'
+          significare diverse centinaia di euro. Per chi lavora in smart working e puo' scegliere dove
+          stabilire la residenza, la regione diventa una variabile da considerare con attenzione.
+        </p>
+        <p>
+          Oltre alle addizionali regionali, anche l'addizionale comunale incide sul netto. Ogni comune
+          fissa la propria aliquota entro un tetto massimo dello 0,8%, e alcuni comuni prevedono soglie
+          di esenzione per i redditi piu' bassi. I grandi capoluoghi come Roma (0,9% con addizionale
+          speciale), Milano (0,8%) e Torino (0,8%) applicano generalmente le aliquote massime.
+        </p>
+
+        <h3>Come si negozia la RAL</h3>
+        <p>
+          La RAL e' il punto centrale di qualsiasi trattativa retributiva, sia in fase di assunzione
+          che al momento di chiedere un aumento. Per prepararsi a una negoziazione efficace serve
+          conoscere il proprio valore di mercato, cioe' la fascia retributiva standard per il proprio
+          ruolo, settore ed esperienza nella zona geografica di riferimento.
+        </p>
+        <p>
+          Strumenti utili per questa valutazione sono i report annuali di JobPricing (Italian Salary
+          Report), le survey retributive di Hays, Michael Page e Mercer, e i dati anonimi raccolti
+          da Glassdoor e Indeed. L'ISTAT pubblica periodicamente statistiche sulle retribuzioni medie
+          per settore e qualifica (codice ATECO), consultabili gratuitamente sul sito istat.it.
+        </p>
+        <p>
+          Durante la negoziazione, ragionare solo in termini di RAL puo' essere riduttivo. Il pacchetto
+          retributivo complessivo include anche benefit come i buoni pasto, l'assicurazione sanitaria
+          integrativa, il contributo al fondo pensione, lo smart working, i giorni di ferie aggiuntivi
+          e i premi variabili. Un aumento di 2.000 euro di RAL produce un incremento netto mensile di
+          circa 90/110 euro (a seconda della fascia di reddito), mentre un buono pasto giornaliero da
+          8 euro vale circa 1.760 euro netti all'anno per chi lavora 220 giorni, completamente esenti
+          da tasse se in formato elettronico.
+        </p>
+
+        <h3>Fonti ufficiali e riferimenti normativi</h3>
+        <p>
+          I calcoli presentati in queste pagine si basano sulla normativa fiscale italiana vigente per
+          il 2026. Le fonti principali sono:
+        </p>
+        <ul>
+          <li>
+            <strong>Testo Unico delle Imposte sui Redditi (TUIR)</strong>, D.P.R. 917/1986, aggiornato
+            dalla Legge di Bilancio 2026, che definisce gli scaglioni IRPEF (23%, 33%, 43%), le
+            detrazioni per lavoro dipendente e le regole per la determinazione del reddito imponibile.
+          </li>
+          <li>
+            <strong>INPS</strong>: le aliquote contributive per i lavoratori dipendenti del settore
+            privato sono fissate al 9,19% a carico del lavoratore. Il massimale contributivo per il
+            2026 e' di circa 119.650 euro. Riferimento: circolare INPS annuale sulle aliquote
+            contributive.
+          </li>
+          <li>
+            <strong>Agenzia delle Entrate</strong>: le tabelle delle addizionali regionali e comunali
+            IRPEF sono pubblicate annualmente e consultabili sul sito agenziaentrate.gov.it nella
+            sezione dedicata ai tributi locali.
+          </li>
+          <li>
+            <strong>Legge di Bilancio 2025 e 2026</strong>: ha reso permanente la struttura a tre
+            scaglioni IRPEF, confermato il cuneo fiscale con la somma esente per i redditi fino a
+            20.000 euro e la detrazione di 1.000 euro per i redditi tra 20.001 e 40.000 euro, e
+            ridotto l'aliquota del secondo scaglione dal 35% al 33%.
+          </li>
+          <li>
+            <strong>ISTAT</strong>: i dati sulle retribuzioni medie e mediane in Italia sono tratti
+            dall'indagine sulla struttura delle retribuzioni (SES), pubblicata su istat.it.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mt-16 mb-12 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 text-center">
+      <h2 class="text-2xl font-bold text-white">La tua RAL non e' in elenco?</h2>
+      <p class="mt-3 text-gray-300 max-w-xl mx-auto">
+        Usa il calcolatore per inserire qualsiasi importo e ottenere il tuo stipendio netto personalizzato con regione, comune e situazione familiare.
+      </p>
+      <a
+        href="/"
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+      >
+        Calcola il tuo stipendio netto
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </section>
+  </div>
+</Layout>

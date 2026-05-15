@@ -1,0 +1,436 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import BustaPaga from '../components/calcolatori/BustaPaga';
+
+const title = 'Calcolo Busta Paga 2026: Simulatore Cedolino Mensile';
+const description =
+  'Simula la tua busta paga mensile partendo dalla RAL. Vedi tutte le voci del cedolino: INPS, IRPEF, addizionali, trattamento integrativo e netto in busta.';
+const canonical = canonicalURL('/calcolo-busta-paga');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Busta Paga', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Simulatore Busta Paga 2026"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <BustaPaga client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si legge la busta paga
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La busta paga (o cedolino) e' il documento che il datore di lavoro
+        consegna ogni mese al dipendente. Riporta tutte le voci che compongono
+        la retribuzione e le trattenute applicate per arrivare al netto finale.
+        Comprendere ogni singola riga del cedolino e' fondamentale per
+        verificare la correttezza degli importi e per pianificare le proprie
+        finanze personali con consapevolezza.
+      </p>
+      <h3>Le voci principali</h3>
+      <ul>
+        <li>
+          <strong>Retribuzione base mensile:</strong> il lordo mensile, pari alla
+          RAL divisa per il numero di mensilita' (tipicamente 13)
+        </li>
+        <li>
+          <strong>Contributi INPS:</strong> la quota previdenziale a carico del
+          lavoratore (9,19% della retribuzione lorda)
+        </li>
+        <li>
+          <strong>IRPEF:</strong> l'imposta sul reddito calcolata sull'imponibile
+          fiscale (lordo meno INPS), al netto delle detrazioni
+        </li>
+        <li>
+          <strong>Addizionali regionali e comunali:</strong> trattenute in 11
+          rate mensili da marzo a gennaio dell'anno successivo
+        </li>
+        <li>
+          <strong>Trattamento integrativo:</strong> fino a 100 euro/mese per
+          redditi fino a 15.000 euro, ridotto fino a 28.000 euro
+        </li>
+      </ul>
+      <h3>Anatomia completa del cedolino</h3>
+      <p>
+        Il cedolino paga si divide tradizionalmente in tre sezioni distinte,
+        ciascuna con un ruolo specifico nella rappresentazione della
+        retribuzione mensile del lavoratore dipendente.
+      </p>
+      <p>
+        <strong>Intestazione (parte superiore):</strong> contiene i dati
+        identificativi del datore di lavoro (ragione sociale, codice fiscale,
+        posizione INPS e INAIL) e del lavoratore (nome, cognome, codice
+        fiscale, data di assunzione, qualifica, livello contrattuale e CCNL
+        applicato). In questa sezione si trovano anche il mese di competenza,
+        la sede di lavoro e la posizione contributiva. E' importante
+        verificare che il livello e la qualifica siano corretti, poiche'
+        determinano la retribuzione minima prevista dal contratto collettivo.
+      </p>
+      <p>
+        <strong>Corpo (parte centrale):</strong> e' la sezione piu' articolata
+        e riporta tutte le voci retributive e le trattenute. Si trovano qui
+        la paga base, l'indennita' di contingenza, l'EDR (Elemento Distinto
+        della Retribuzione), eventuali superminimi, scatti di anzianita',
+        indennita' di funzione, straordinari, premi, ferie e permessi
+        maturati e goduti, ore lavorate e assenze. Ogni voce e' identificata
+        da un codice e da una descrizione, con indicazione delle ore o dei
+        giorni di riferimento, della base di calcolo e dell'importo
+        risultante. E' in questa sezione che compaiono anche le trattenute
+        per contributi INPS, IRPEF e addizionali.
+      </p>
+      <p>
+        <strong>Piede (parte inferiore):</strong> riporta i dati riepilogativi
+        e i totali progressivi dall'inizio dell'anno. Si trovano il totale
+        delle ritenute fiscali e previdenziali, l'imponibile INPS e fiscale
+        progressivo, il TFR maturato, i ratei di tredicesima (e
+        quattordicesima se prevista dal CCNL), le ferie e i permessi residui,
+        e infine il netto in busta, cioe' l'importo effettivamente accreditato
+        sul conto corrente del lavoratore. E' utile controllare periodicamente
+        i progressivi per assicurarsi che coincidano con quanto atteso.
+      </p>
+      <h3>Le voci variabili della busta paga</h3>
+      <p>
+        Oltre alla retribuzione fissa mensile, il cedolino puo' contenere
+        numerose voci variabili che incidono significativamente sull'importo
+        netto percepito.
+      </p>
+      <p>
+        <strong>Straordinari:</strong> le ore di lavoro effettuate oltre
+        l'orario contrattuale ordinario vengono retribuite con una
+        maggiorazione percentuale che varia in base al CCNL applicato e al
+        tipo di straordinario (diurno, notturno, festivo). Tipicamente la
+        maggiorazione va dal 15% al 50% sulla paga oraria ordinaria.
+        Gli straordinari sono soggetti a contributi INPS e IRPEF come la
+        retribuzione ordinaria.
+      </p>
+      <p>
+        <strong>Premi e bonus:</strong> possono essere di natura contrattuale
+        (premio di produzione previsto dal CCNL) o individuale (bonus
+        discrezionali, MBO). I premi di risultato legati ad incrementi di
+        produttivita' possono godere di una tassazione agevolata al 5%
+        (sostitutiva dell'IRPEF) fino a un importo massimo di 3.000 euro
+        annui per redditi da lavoro dipendente fino a 80.000 euro nell'anno
+        precedente.
+      </p>
+      <p>
+        <strong>Indennita':</strong> comprendono l'indennita' di trasferta,
+        l'indennita' di turno, l'indennita' di reperibilita', l'indennita'
+        sostitutiva di mensa e altre voci specifiche previste dal CCNL o
+        dalla contrattazione aziendale. Alcune indennita' (come quella di
+        trasferta entro certi limiti) possono essere esenti da tassazione.
+      </p>
+      <p>
+        <strong>Trattenute per assenze:</strong> le assenze non retribuite
+        comportano una riduzione proporzionale della retribuzione lorda.
+        Anche ferie e permessi non goduti, se liquidati, compaiono come
+        voci positive nel cedolino e sono soggetti a tassazione ordinaria.
+      </p>
+      <h3>La tredicesima mensilita'</h3>
+      <p>
+        La tredicesima e' una mensilita' aggiuntiva erogata a dicembre. Il suo
+        importo lordo e' pari a RAL/13. Viene tassata con IRPEF e INPS, ma
+        non prevede la trattenuta delle addizionali regionali e comunali. Per
+        questo motivo il netto della tredicesima puo' essere leggermente diverso
+        da quello di un mese ordinario.
+      </p>
+      <h3>Quando variano le trattenute in busta paga</h3>
+      <p>
+        Le trattenute non sono costanti durante l'anno. Nei mesi di gennaio e
+        febbraio, le addizionali dell'anno precedente sono terminate e quelle
+        nuove non sono ancora partite, quindi il netto puo' risultare piu'
+        alto. Da marzo si aggiungono le rate delle addizionali regionale e
+        comunale dell'anno corrente.
+      </p>
+      <h3>Conguaglio di fine anno</h3>
+      <p>
+        Il conguaglio fiscale e' un'operazione che il datore di lavoro (in
+        qualita' di sostituto d'imposta) effettua tipicamente nel mese di
+        dicembre o, al piu' tardi, in quello di febbraio dell'anno successivo.
+        Serve a ricalcolare l'IRPEF effettivamente dovuta sull'intero reddito
+        annuo e a confrontarla con le ritenute gia' operate mese per mese.
+      </p>
+      <p>
+        Durante l'anno, le trattenute IRPEF mensili vengono calcolate in via
+        provvisoria, proiettando il reddito del mese su base annua. Tuttavia
+        variazioni di stipendio, straordinari, bonus, periodi di assenza o
+        cambi di detrazioni (ad esempio per un figlio nato in corso d'anno)
+        possono creare uno scostamento tra le ritenute gia' operate e
+        l'imposta realmente dovuta. Il conguaglio corregge queste differenze.
+      </p>
+      <p>
+        Se durante l'anno sono state trattenute piu' imposte del dovuto, il
+        conguaglio genera un <strong>credito</strong> a favore del dipendente,
+        che si traduce in un netto di dicembre piu' alto del solito. Al
+        contrario, se le ritenute mensili sono state insufficienti, il
+        conguaglio produce un <strong>debito</strong>, e il netto di dicembre
+        risulta inferiore. In casi estremi, il debito puo' superare il netto
+        del mese e viene recuperato nei mesi successivi. Questo meccanismo
+        spiega perche' la busta paga di dicembre puo' riservare sorprese,
+        sia in positivo che in negativo.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Esempio di busta paga: le voci nel dettaglio
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Per comprendere concretamente come si arriva dal lordo al netto, vediamo
+        un esempio pratico basato su una RAL di 30.000 euro distribuita su
+        13 mensilita'. I valori sono indicativi e si riferiscono a un mese
+        ordinario (da marzo a novembre, quando tutte le trattenute sono attive).
+      </p>
+    </div>
+    <div class="mt-6 overflow-x-auto">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="text-left px-6 py-3 font-semibold text-gray-900 dark:text-white">Voce</th>
+            <th class="text-right px-6 py-3 font-semibold text-gray-900 dark:text-white">Importo</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-6 py-3 text-gray-900 dark:text-white font-medium">Retribuzione lorda mensile</td>
+            <td class="px-6 py-3 text-right text-gray-900 dark:text-white">2.307,69 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-600 dark:text-gray-400">Contributi INPS (9,19%)</td>
+            <td class="px-6 py-3 text-right text-red-600 dark:text-red-400">-212,08 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-900 dark:text-white font-medium">Imponibile fiscale</td>
+            <td class="px-6 py-3 text-right text-gray-900 dark:text-white">2.095,61 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-600 dark:text-gray-400">IRPEF lorda</td>
+            <td class="px-6 py-3 text-right text-red-600 dark:text-red-400">~397 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-600 dark:text-gray-400">Detrazioni lavoro dipendente</td>
+            <td class="px-6 py-3 text-right text-green-600 dark:text-green-400">~130 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-600 dark:text-gray-400">IRPEF netta</td>
+            <td class="px-6 py-3 text-right text-red-600 dark:text-red-400">~267 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-600 dark:text-gray-400">Addizionale regionale</td>
+            <td class="px-6 py-3 text-right text-red-600 dark:text-red-400">~25 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-600 dark:text-gray-400">Addizionale comunale</td>
+            <td class="px-6 py-3 text-right text-red-600 dark:text-red-400">~14 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 text-gray-600 dark:text-gray-400">Trattamento integrativo</td>
+            <td class="px-6 py-3 text-right text-gray-400 dark:text-gray-500">0 &euro;</td>
+          </tr>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <td class="px-6 py-3 text-gray-900 dark:text-white font-bold">NETTO IN BUSTA</td>
+            <td class="px-6 py-3 text-right text-gray-900 dark:text-white font-bold">~1.789 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        Partendo dalla retribuzione lorda mensile di 2.307,69 euro (30.000 / 13),
+        la prima trattenuta sono i <strong>contributi INPS</strong> a carico del
+        lavoratore, pari al 9,19%, che ammontano a 212,08 euro. Questa quota
+        finanzia la pensione futura e le prestazioni previdenziali (malattia,
+        maternita', disoccupazione). L'imponibile fiscale che ne risulta e'
+        di 2.095,61 euro.
+      </p>
+      <p>
+        Su questo imponibile si calcola l'<strong>IRPEF lorda</strong>,
+        applicando le aliquote per scaglioni vigenti: 23% fino a 28.000 euro
+        e 35% da 28.000 a 50.000 euro. Per una RAL di 30.000 euro,
+        l'imponibile annuo (al netto dei contributi INPS) rientra
+        prevalentemente nel primo scaglione, con l'IRPEF lorda mensile che
+        si aggira intorno ai 397 euro.
+      </p>
+      <p>
+        Le <strong>detrazioni per lavoro dipendente</strong> riducono
+        l'imposta lorda. Per redditi compresi tra 15.000 e 28.000 euro,
+        la detrazione annua e' di 1.910 euro maggiorata di un importo
+        decrescente fino a 28.000 euro. Nel nostro esempio, la detrazione
+        mensile e' di circa 130 euro, portando l'IRPEF netta a circa 267 euro.
+      </p>
+      <p>
+        Si aggiungono poi le <strong>addizionali</strong>: quella regionale
+        (circa 25 euro/mese, in base alla regione di residenza) e quella
+        comunale (circa 14 euro/mese, variabile per comune). Il
+        <strong>trattamento integrativo</strong> (ex bonus Renzi) non spetta
+        per redditi sopra i 28.000 euro lordi, come in questo caso, e quindi
+        risulta pari a zero.
+      </p>
+      <p>
+        Il risultato finale e' un <strong>netto in busta di circa
+        1.789 euro</strong>. Questo valore puo' variare sensibilmente in base
+        alla regione e al comune di residenza: ad esempio, un lavoratore in
+        Lombardia con addizionale regionale all'1,23% avra' un netto diverso
+        rispetto a uno residente nel Lazio dove l'aliquota regionale arriva
+        al 3,33% per la stessa fascia di reddito. Anche l'addizionale
+        comunale varia notevolmente: si va dallo 0% di alcuni piccoli comuni
+        allo 0,9% dei comuni con le aliquote piu' elevate.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Perche' la mia busta paga reale e' diversa dal calcolo?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Diversi fattori possono causare differenze: il CCNL puo' prevedere voci aggiuntive (superminimo, scatti di anzianita', indennita'); potresti avere trattenute per la previdenza complementare, cessioni del quinto o pignoramenti; i buoni pasto e altri benefit non compaiono nella retribuzione base; le addizionali comunali dipendono dal tuo comune specifico.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Perche' in alcuni mesi il netto e' piu' alto?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Nei mesi di gennaio e febbraio non vengono ancora trattenute le addizionali regionali e comunali dell'anno corrente (che partono tipicamente da marzo). In quei mesi potresti vedere un netto leggermente piu' alto. Inoltre, se nell'anno precedente avevi addizionali che terminano a gennaio, il mese di febbraio risulta il piu' "leggero" come trattenute.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come vengono trattenute le addizionali?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Le addizionali regionali e comunali dell'anno precedente vengono trattenute in 11 rate mensili, da gennaio a novembre dell'anno successivo. Le addizionali dell'anno corrente vengono calcolate in sede di conguaglio a fine anno oppure trattenute in acconto a partire da marzo. Il simulatore assume la trattenuta in 11 rate uguali.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Cos'e' il rateo di tredicesima nella busta paga?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il rateo di tredicesima e' la quota di tredicesima che maturi ogni mese. Ogni mese lavorato ti da' diritto a 1/12 della tredicesima annua. Questo rateo non viene erogato mensilmente ma si accumula e viene pagato interamente a dicembre. Nel cedolino puo' essere indicato come voce informativa per mostrare quanto stai maturando.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Il TFR compare nella busta paga?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il TFR (Trattamento di Fine Rapporto) non viene trattenuto dalla busta paga del dipendente perche' e' interamente a carico del datore di lavoro. E' pari a circa il 6,91% della RAL e si accumula anno dopo anno. Nel riepilogo annuale del nostro calcolatore trovi la stima del TFR maturato. Il TFR puo' essere destinato alla previdenza complementare o mantenuto in azienda.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Cosa succede alla busta paga in caso di malattia o maternita'?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          In caso di malattia, i primi 3 giorni (periodo di carenza) sono retribuiti interamente dal datore di lavoro. Dal 4o al 20o giorno l'INPS corrisponde il 50% della retribuzione media giornaliera, dal 21o al 180o giorno il 66,67%. Molti CCNL prevedono un'integrazione a carico del datore di lavoro per raggiungere il 100% della retribuzione ordinaria. Per la maternita' obbligatoria (5 mesi), l'INPS eroga l'80% della retribuzione e il CCNL puo' prevedere l'integrazione al 100%. In entrambi i casi, l'indennita' INPS viene anticipata dal datore di lavoro in busta paga e poi recuperata tramite conguaglio con i contributi dovuti all'Istituto. Nel cedolino troverai le voci separate: la retribuzione ridotta per i giorni di assenza e l'indennita' INPS corrispondente.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come vengono calcolati gli straordinari in busta paga?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il compenso per lavoro straordinario si calcola partendo dalla paga oraria ordinaria e applicando una maggiorazione percentuale stabilita dal CCNL. La paga oraria si ottiene dividendo la retribuzione mensile per il divisore orario contrattuale (tipicamente 168 o 173 ore per un full-time). Le maggiorazioni piu' comuni sono: straordinario diurno feriale 15-25%, straordinario notturno 30-40%, straordinario festivo 40-50%, straordinario notturno festivo 50-60%. Il D.Lgs. 66/2003 fissa un tetto massimo di 250 ore annue di lavoro straordinario, salvo diverse previsioni del CCNL. Gli straordinari sono soggetti a contributi INPS e IRPEF ordinari, ma possono beneficiare della tassazione agevolata al 5% (imposta sostitutiva) se rientrano nei premi di produttivita' entro i limiti previsti dalla legge. In busta paga, le ore di straordinario vengono indicate separatamente con il relativo codice e la maggiorazione applicata.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          La busta paga elettronica ha lo stesso valore legale?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', la busta paga in formato elettronico ha pieno valore legale, come confermato dal D.Lgs. 82/2005 (Codice dell'Amministrazione Digitale) e dalle successive interpretazioni del Ministero del Lavoro. Il datore di lavoro puo' consegnare il cedolino in formato digitale (PDF via e-mail, portale aziendale, app dedicata) a condizione che il lavoratore possa accedervi, scaricarlo e conservarlo. L'obbligo previsto dall'art. 1 della Legge 4/1953 e' rispettato anche con la consegna elettronica, purche' il documento sia integro, leggibile e disponibile al dipendente. Il datore di lavoro deve garantire la conservazione dei cedolini per almeno 5 anni. Per il lavoratore, e' consigliabile scaricare e archiviare autonomamente le proprie buste paga, sia per verifiche future sia per eventuali necessita' documentali (richieste di mutuo, ISEE, contenziosi).
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Dettaglio scaglione per scaglione dell'IRPEF sul tuo reddito
+        </p>
+      </a>
+      <a
+        href="/calcolo-stipendio-lordo"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Lordo da Netto
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Scopri la RAL necessaria per ottenere il netto desiderato
+        </p>
+      </a>
+      <a
+        href="/comparatore-regioni"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Comparatore Regioni
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Confronta il netto mensile in tutte le 21 regioni italiane
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

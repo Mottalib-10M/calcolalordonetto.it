@@ -1,0 +1,418 @@
+---
+import GuidaLayout from '../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../config';
+
+const title = "Cuneo Fiscale 2026: Come Funziona e Quanto Vale in Busta Paga";
+const description = "Guida completa al cuneo fiscale 2026: somma esente, detrazione aggiuntiva, confronto con il vecchio esonero contributivo ed esempi pratici per ogni fascia di reddito.";
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Guide', url: `${SITE.url}/guide` },
+  { name: 'Cuneo Fiscale 2026', url: `${SITE.url}/guide/cuneo-fiscale-2026` },
+];
+
+const faqs = [
+  {
+    question: 'Il cuneo fiscale 2026 si applica automaticamente in busta paga?',
+    answer: 'Si, il beneficio del cuneo fiscale 2026 viene applicato automaticamente dal datore di lavoro in busta paga, senza che il lavoratore debba presentare alcuna richiesta. Per i redditi fino a 20.000 euro, il bonus viene erogato mensilmente come somma aggiuntiva allo stipendio netto. Per i redditi da 20.001 a 40.000 euro, la detrazione aggiuntiva viene applicata direttamente nel calcolo dell\'IRPEF mensile, riducendo la trattenuta fiscale.',
+  },
+  {
+    question: 'Qual e la differenza tra il vecchio esonero contributivo e il nuovo meccanismo?',
+    answer: 'Il vecchio esonero contributivo (2024-2025) riduceva direttamente i contributi INPS a carico del lavoratore del 6% o 7%. Il nuovo meccanismo del 2026 non tocca i contributi previdenziali (che tornano al 9,19% pieno) ma introduce un beneficio fiscale: una somma esente per i redditi fino a 20.000 euro e una detrazione IRPEF aggiuntiva per i redditi da 20.001 a 40.000 euro. Il risultato netto in busta paga e simile, ma il vantaggio del nuovo sistema e che non penalizza la futura pensione del lavoratore, perche i contributi previdenziali vengono versati per intero.',
+  },
+  {
+    question: 'Il bonus per redditi fino a 20.000 euro si cumula con il trattamento integrativo?',
+    answer: 'Il bonus del cuneo fiscale 2026 (somma esente) e il trattamento integrativo (ex bonus Renzi) sono due misure distinte. Per i redditi piu bassi possono coesistere, ma le regole di cumulo dipendono dalla specifica fascia di reddito e dalle condizioni previste dalla normativa. In generale, il trattamento integrativo di 1.200 euro spetta integralmente fino a 15.000 euro di reddito (con capienza fiscale), mentre il bonus del cuneo fiscale si applica fino a 20.000 euro. Per i redditi tra 15.001 e 20.000 euro le due misure possono sovrapporsi parzialmente.',
+  },
+  {
+    question: 'Cosa succede se il mio reddito supera i 40.000 euro?',
+    answer: 'Se il reddito complessivo supera i 40.000 euro, non si ha diritto ad alcun beneficio dal meccanismo del cuneo fiscale 2026. Non spetta ne la somma esente (riservata ai redditi fino a 20.000 euro) ne la detrazione aggiuntiva (che si azzera a 40.000 euro). Tuttavia, i contribuenti con redditi piu alti beneficiano comunque della riduzione dell\'aliquota IRPEF del secondo scaglione dal 35% al 33%, introdotta dalla stessa Legge di Bilancio 2026.',
+  },
+  {
+    question: 'Il reddito di riferimento per il cuneo fiscale include solo il lavoro dipendente?',
+    answer: 'No. Il reddito di riferimento per determinare la fascia di appartenenza (e quindi il diritto al beneficio) e il <strong>reddito complessivo</strong> del contribuente, che include tutti i redditi: lavoro dipendente, eventuali redditi da fabbricati, redditi diversi e altre categorie. Tuttavia, il calcolo della somma esente (per redditi fino a 20.000 euro) si basa specificamente sul reddito da lavoro dipendente. Questo significa che un lavoratore con reddito da lavoro dipendente di 18.000 euro ma reddito complessivo di 22.000 euro (per via di altri redditi) ricadrebbe nel Tier 2 (detrazione aggiuntiva) e non nel Tier 1 (somma esente).',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-05-15"
+  dateModified="2026-05-15"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#che-cose-il-cuneo-fiscale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Che Cos'e il Cuneo Fiscale?</a></li>
+      <li><a href="#il-vecchio-sistema-2024-2025" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Il Vecchio Sistema (2024-2025)</a></li>
+      <li><a href="#il-nuovo-meccanismo-2026" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Il Nuovo Meccanismo 2026</a></li>
+      <li><a href="#tier-1-somma-esente" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tier 1: Somma Esente</a></li>
+      <li><a href="#tier-2-detrazione-aggiuntiva" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tier 2: Detrazione Aggiuntiva</a></li>
+      <li><a href="#esempi-pratici-di-calcolo" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esempi Pratici di Calcolo</a></li>
+      <li><a href="#confronto-vecchio-vs-nuovo-sistema" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Confronto Vecchio vs Nuovo</a></li>
+      <li><a href="#impatto-sulla-pensione" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Impatto sulla Pensione</a></li>
+      <li><a href="#come-si-integra-con-le-altre-misure" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Integrazione con Altre Misure</a></li>
+      <li><a href="#fonti-normative" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Fonti Normative</a></li>
+      <li><a href="#domande-frequenti" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Domande Frequenti</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="che-cose-il-cuneo-fiscale">Che Cos'e il Cuneo Fiscale?</h2>
+
+  <p>
+    Il cuneo fiscale e la differenza tra il costo totale che il datore di lavoro sostiene per un dipendente e lo stipendio netto che il lavoratore effettivamente percepisce. Questa differenza e composta da contributi previdenziali (a carico sia del datore sia del lavoratore), imposte sul reddito (IRPEF) e addizionali locali. In Italia, il cuneo fiscale e storicamente tra i piu alti d'Europa, e la sua riduzione e un obiettivo ricorrente della politica fiscale degli ultimi governi.
+  </p>
+  <p>
+    Ridurre il cuneo fiscale significa, in sostanza, aumentare lo stipendio netto del lavoratore senza incrementare il costo per l'azienda, oppure ridurre il costo aziendale a parita di netto percepito. Le misure di riduzione del cuneo possono agire su tre leve: riduzione dei contributi previdenziali, riduzione delle imposte sul reddito, oppure introduzione di bonus e detrazioni aggiuntive.
+  </p>
+  <p>
+    Dal 2024 al 2025, il governo ha utilizzato la leva contributiva, introducendo un esonero parziale dei contributi INPS a carico del lavoratore. Dal 2026, la Legge di Bilancio (L. 207/2024) ha radicalmente cambiato approccio, sostituendo l'esonero contributivo con un meccanismo fiscale strutturale. Questa guida spiega nel dettaglio come funziona il nuovo sistema e quanto vale concretamente in busta paga.
+  </p>
+
+  <h2 id="il-vecchio-sistema-2024-2025">Il Vecchio Sistema (2024-2025): Esonero Contributivo</h2>
+
+  <p>
+    Per comprendere il cambiamento introdotto nel 2026, e necessario ricordare come funzionava il sistema precedente. Nel biennio 2024-2025, la riduzione del cuneo fiscale era attuata attraverso un <strong>esonero parziale dei contributi INPS</strong> a carico del lavoratore:
+  </p>
+  <ul>
+    <li><strong>Retribuzione imponibile fino a 25.000 euro:</strong> esonero del 7% (i contributi INPS scendevano dal 9,19% al 2,19%)</li>
+    <li><strong>Retribuzione imponibile da 25.001 a 35.000 euro:</strong> esonero del 6% (i contributi INPS scendevano dal 9,19% al 3,19%)</li>
+    <li><strong>Retribuzione imponibile oltre 35.000 euro:</strong> nessun esonero (contributi al 9,19% pieno)</li>
+  </ul>
+  <p>
+    Questo meccanismo aveva il vantaggio della semplicita: il lavoratore vedeva direttamente meno contributi trattenuti in busta paga. Tuttavia, presentava un problema significativo: riducendo i contributi effettivamente versati, penalizzava l'accumulo pensionistico del lavoratore. La quota di contributi non versata, infatti, non concorreva al calcolo della futura pensione contributiva.
+  </p>
+  <p>
+    Inoltre, l'esonero era una misura temporanea, finanziata anno per anno e soggetta a conferma nella Legge di Bilancio. Questa incertezza rendeva difficile per i lavoratori pianificare il proprio reddito a lungo termine.
+  </p>
+
+  <h2 id="il-nuovo-meccanismo-2026">Il Nuovo Meccanismo 2026</h2>
+
+  <p>
+    La Legge di Bilancio 2025 (Legge 30 dicembre 2024, n. 207) ha introdotto un sistema completamente nuovo per la riduzione del cuneo fiscale, con carattere <strong>strutturale</strong> (non piu temporaneo). Il principio fondamentale e il seguente: i contributi INPS a carico del lavoratore tornano al 9,19% pieno (tutelando cosi la futura pensione), ma viene introdotto un beneficio fiscale compensativo che mantiene (o migliora) il netto in busta paga.
+  </p>
+  <p>
+    Il nuovo meccanismo si articola in due livelli, che dipendono dal <strong>reddito complessivo</strong> del contribuente:
+  </p>
+  <ul>
+    <li><strong>Tier 1: Somma esente</strong> per redditi da lavoro dipendente fino a 20.000 euro</li>
+    <li><strong>Tier 2: Detrazione IRPEF aggiuntiva</strong> per redditi da 20.001 a 40.000 euro</li>
+  </ul>
+  <p>
+    I lavoratori con reddito complessivo superiore a 40.000 euro non beneficiano di alcuna misura specifica di riduzione del cuneo, ma possono comunque trarre vantaggio dalla riduzione dell'aliquota IRPEF del secondo scaglione dal 35% al 33%.
+  </p>
+  <p>
+    E fondamentale sottolineare che il reddito di riferimento per determinare la fascia di appartenenza e il <strong>reddito complessivo</strong> del contribuente (comprensivo di tutti i redditi, non solo quello da lavoro dipendente). Tuttavia, il calcolo del bonus nel Tier 1 si basa specificamente sul reddito da lavoro dipendente.
+  </p>
+
+  <h2 id="tier-1-somma-esente">Tier 1: Somma Esente (Redditi fino a 20.000 &euro;)</h2>
+
+  <p>
+    Per i lavoratori con reddito complessivo fino a 20.000 euro, il beneficio consiste in una <strong>somma esente</strong> da imposte, calcolata in percentuale sul reddito da lavoro dipendente. Questa somma viene erogata direttamente in busta paga come importo aggiuntivo, senza concorrere alla formazione del reddito imponibile.
+  </p>
+  <p>
+    Il calcolo avviene su tre sotto fasce progressive, analogamente al meccanismo degli scaglioni IRPEF:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Sotto fascia di reddito</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Percentuale bonus</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Bonus massimo nella fascia</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 8.500 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">7,1%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">603,50 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 8.501 a 15.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">5,3%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">344,50 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 15.001 a 20.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">4,8%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">240,00 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold" colspan="2">Bonus massimo complessivo (reddito = 20.000 &euro;)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-white font-bold">1.188,00 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Il meccanismo e progressivo: il bonus viene calcolato applicando ciascuna percentuale alla porzione di reddito che ricade nella rispettiva sotto fascia. Cosi come per gli scaglioni IRPEF, non e vero che superando una soglia si applica la percentuale inferiore all'intero reddito.
+  </p>
+  <p>
+    Essendo una "somma esente", questo importo non viene tassato. Il lavoratore lo riceve interamente, al netto, come maggiorazione dello stipendio. Per i lavoratori con redditi molto bassi (fino a 8.500 euro), il bonus puo arrivare a 603,50 euro annui, pari a circa 46 euro al mese su 13 mensilita.
+  </p>
+
+  <h2 id="tier-2-detrazione-aggiuntiva">Tier 2: Detrazione IRPEF Aggiuntiva (Redditi da 20.001 a 40.000 &euro;)</h2>
+
+  <p>
+    Per i lavoratori con reddito complessivo compreso tra 20.001 e 40.000 euro, il beneficio assume la forma di una <strong>detrazione aggiuntiva dall'IRPEF</strong>. A differenza della somma esente del Tier 1, questa detrazione riduce l'imposta dovuta (e non il reddito imponibile).
+  </p>
+  <p>
+    La detrazione funziona in due fasce:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Fascia di reddito</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">Detrazione</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 20.001 a 32.000 &euro;</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100"><strong>1.000 &euro;</strong> (importo fisso)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 32.001 a 40.000 &euro;</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">1.000 &times; (40.000 &minus; reddito) / 8.000</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 40.000 &euro;</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Nessuna detrazione</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Per i redditi compresi tra 20.001 e 32.000 euro, la detrazione e fissa e pari a <strong>1.000 euro annui</strong>. Si tratta del beneficio massimo ottenibile in questo Tier, equivalente a circa 77 euro al mese su 13 mensilita.
+  </p>
+  <p>
+    Per i redditi compresi tra 32.001 e 40.000 euro, la detrazione decresce linearmente (meccanismo di <em>phase out</em>) fino ad azzerarsi a 40.000 euro. Ad esempio, con un reddito di 36.000 euro la detrazione sara: 1.000 &times; (40.000 &minus; 36.000) / 8.000 = 1.000 &times; 4.000 / 8.000 = <strong>500 euro</strong>.
+  </p>
+  <p>
+    Questa detrazione si somma alle altre detrazioni IRPEF gia esistenti (lavoro dipendente, familiari a carico, ecc.) e contribuisce a ridurre l'IRPEF netta effettivamente trattenuta in busta paga.
+  </p>
+
+  <h2 id="esempi-pratici-di-calcolo">Esempi Pratici di Calcolo</h2>
+
+  <h3>Esempio 1: RAL 18.000 &euro; (Tier 1)</h3>
+
+  <p>
+    Consideriamo un lavoratore con RAL di 18.000 euro. Per determinare il reddito da lavoro dipendente, dobbiamo prima sottrarre i contributi INPS:
+  </p>
+  <ul>
+    <li><strong>RAL:</strong> 18.000 &euro;</li>
+    <li><strong>Contributi INPS (9,19%):</strong> 18.000 &times; 9,19% = 1.654,20 &euro;</li>
+    <li><strong>Reddito da lavoro dipendente:</strong> 18.000 &minus; 1.654,20 = 16.345,80 &euro;</li>
+  </ul>
+  <p>
+    Ipotizzando che il reddito complessivo coincida con il reddito da lavoro dipendente (nessun altro reddito), il lavoratore rientra nel <strong>Tier 1</strong> (reddito fino a 20.000 euro). Il bonus viene calcolato sulle tre sotto fasce:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Sotto fascia</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Reddito nella fascia</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Percentuale</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Bonus</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 8.500 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">8.500 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">7,1%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">603,50 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 8.501 a 15.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">6.500 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">5,3%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">344,50 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 15.001 a 16.345,80 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.345,80 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">4,8%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">64,60 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold" colspan="3">Bonus annuo totale</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-white font-bold">1.012,60 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Il lavoratore con RAL di 18.000 euro riceve un bonus di circa <strong>1.013 euro annui</strong>, pari a circa <strong>78 euro al mese</strong> su 13 mensilita. Questo importo viene erogato come somma esente, non soggetta a tassazione.
+  </p>
+
+  <h3>Esempio 2: RAL 25.000 &euro; (Tier 2)</h3>
+
+  <p>
+    Consideriamo ora un lavoratore con RAL di 25.000 euro:
+  </p>
+  <ul>
+    <li><strong>RAL:</strong> 25.000 &euro;</li>
+    <li><strong>Contributi INPS (9,19%):</strong> 25.000 &times; 9,19% = 2.297,50 &euro;</li>
+    <li><strong>Reddito da lavoro dipendente (imponibile):</strong> 25.000 &minus; 2.297,50 = 22.702,50 &euro;</li>
+  </ul>
+  <p>
+    Con un reddito complessivo di 22.702,50 euro, il lavoratore ricade nel <strong>Tier 2</strong> (reddito da 20.001 a 32.000 euro). La detrazione aggiuntiva e fissa e pari a <strong>1.000 euro annui</strong>.
+  </p>
+  <p>
+    In termini mensili, su 13 mensilita, il beneficio equivale a circa <strong>77 euro al mese</strong>. Questa detrazione si aggiunge alle normali detrazioni per lavoro dipendente e riduce l'IRPEF netta trattenuta in busta paga.
+  </p>
+
+  <h3>Esempio 3: RAL 35.000 &euro; (Tier 2)</h3>
+
+  <p>
+    Analizziamo un lavoratore con RAL di 35.000 euro:
+  </p>
+  <ul>
+    <li><strong>RAL:</strong> 35.000 &euro;</li>
+    <li><strong>Contributi INPS (9,19%):</strong> 35.000 &times; 9,19% = 3.216,50 &euro;</li>
+    <li><strong>Reddito da lavoro dipendente (imponibile):</strong> 35.000 &minus; 3.216,50 = 31.783,50 &euro;</li>
+  </ul>
+  <p>
+    Con un reddito di 31.783,50 euro, il lavoratore ricade ancora nel <strong>Tier 2</strong>, nella fascia tra 20.001 e 32.000 euro. La detrazione aggiuntiva e quindi piena: <strong>1.000 euro annui</strong>, equivalenti a circa <strong>77 euro al mese</strong> su 13 mensilita.
+  </p>
+  <p>
+    Se la RAL fosse stata leggermente superiore (ad esempio 36.000 euro, con imponibile di circa 32.692 euro), il lavoratore sarebbe ricaduto nella fascia di phase out (32.001-40.000 euro) e la detrazione sarebbe stata: 1.000 &times; (40.000 &minus; 32.692) / 8.000 = <strong>913,50 euro</strong>.
+  </p>
+
+  <h2 id="confronto-vecchio-vs-nuovo-sistema">Confronto Vecchio vs Nuovo Sistema</h2>
+
+  <p>
+    Per valutare concretamente l'impatto del passaggio dal vecchio esonero contributivo al nuovo meccanismo fiscale, ecco un confronto diretto su diversi livelli di RAL. I valori sono indicativi e calcolati per un lavoratore dipendente single senza altri redditi.
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">RAL</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Beneficio 2025 (esonero INPS)</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Beneficio 2026 (cuneo fiscale)</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Differenza</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">15.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.050 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~876 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus;174 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">20.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.288 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.088 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus;200 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">25.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.500 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.000 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus;500 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">30.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.638 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.000 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus;638 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">35.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.914 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~1.000 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus;914 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">40.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">0 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~460 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+460 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Come si evince dalla tabella, per la maggior parte delle fasce di reddito il beneficio netto immediato in busta paga nel 2026 e <strong>inferiore</strong> rispetto al 2025. Questo e particolarmente evidente per i redditi tra 25.000 e 35.000 euro, dove la differenza puo superare i 500 euro annui.
+  </p>
+  <p>
+    Tuttavia, questo confronto e parziale e non tiene conto di due fattori cruciali. Il primo: la riduzione dell'aliquota IRPEF del secondo scaglione dal 35% al 33%, che compensa parzialmente la perdita per i redditi superiori a 28.000 euro (fino a 440 euro di risparmio IRPEF). Il secondo: l'impatto positivo sulla futura pensione, perche nel 2026 i contributi previdenziali vengono versati per intero.
+  </p>
+  <p>
+    Per i redditi intorno a 40.000 euro, il nuovo sistema e leggermente piu vantaggioso perche il vecchio esonero contributivo non si applicava oltre i 35.000 euro, mentre la detrazione aggiuntiva del 2026 si estende (in fase di uscita) fino a 40.000 euro.
+  </p>
+
+  <h2 id="impatto-sulla-pensione">Impatto sulla Pensione</h2>
+
+  <p>
+    Uno degli aspetti piu rilevanti (e spesso sottovalutati) del cambiamento introdotto nel 2026 e l'impatto sulla pensione futura del lavoratore. Con il vecchio esonero contributivo, la quota di contributi INPS non versata non veniva accreditata ai fini pensionistici. In altre parole, il lavoratore beneficiava di uno stipendio netto piu alto, ma accumulava meno contributi per la pensione.
+  </p>
+  <p>
+    Con il nuovo sistema, i contributi INPS vengono versati per intero al 9,19%. Questo significa che tutto il reddito da lavoro dipendente viene regolarmente accreditato ai fini pensionistici, senza penalizzazioni. Il beneficio netto in busta paga, invece di derivare da una riduzione dei contributi, e generato da un meccanismo fiscale (somma esente o detrazione) che non incide sulla previdenza.
+  </p>
+  <p>
+    Per dare un'idea concreta dell'impatto: un lavoratore con RAL di 30.000 euro che nel 2025 beneficiava dell'esonero contributivo del 6% "perdeva" circa 1.638 euro di contributi pensionistici all'anno. Su un'intera carriera lavorativa, questa differenza potrebbe tradursi in una pensione mensile inferiore di alcune decine di euro. Con il nuovo sistema 2026, questo problema e completamente risolto.
+  </p>
+  <p>
+    Questo aspetto rende il nuovo meccanismo complessivamente piu equilibrato dal punto di vista previdenziale, anche se il beneficio immediato in busta paga puo risultare leggermente inferiore in alcune fasce di reddito.
+  </p>
+
+  <h2 id="come-si-integra-con-le-altre-misure">Come Si Integra con le Altre Misure Fiscali</h2>
+
+  <p>
+    Il cuneo fiscale 2026 non agisce in isolamento, ma si inserisce in un quadro fiscale piu ampio che include diverse misure a favore dei lavoratori dipendenti. E utile comprendere come queste misure interagiscono:
+  </p>
+  <ul>
+    <li><strong>Scaglioni IRPEF 2026:</strong> la riduzione del secondo scaglione dal 35% al 33% produce un risparmio aggiuntivo fino a 440 euro per i redditi superiori a 28.000 euro. Per approfondire, consulta la nostra <a href="/guide/scaglioni-irpef-2026">guida agli scaglioni IRPEF 2026</a>.</li>
+    <li><strong>Trattamento integrativo:</strong> il bonus di 1.200 euro annui (ex bonus Renzi) resta in vigore per i redditi fino a 15.000 euro (con capienza fiscale) e in misura ridotta per redditi fino a 28.000 euro. Per i redditi piu bassi, questo beneficio si cumula con la somma esente del cuneo fiscale.</li>
+    <li><strong>Detrazioni per lavoro dipendente:</strong> le detrazioni previste dall'art. 13 TUIR restano invariate e si aggiungono alla detrazione aggiuntiva del cuneo fiscale per chi rientra nel Tier 2.</li>
+  </ul>
+  <p>
+    L'effetto combinato di tutte queste misure determina il beneficio netto complessivo per il lavoratore. Per questo motivo, calcolare l'impatto del solo cuneo fiscale senza considerare il quadro completo puo portare a conclusioni incomplete. Il nostro <a href="/">calcolatore stipendio netto</a> tiene conto di tutte queste variabili e fornisce un risultato preciso.
+  </p>
+
+  <h2 id="fonti-normative">Fonti Normative e Riferimenti</h2>
+
+  <p>
+    Le informazioni contenute in questa guida si basano sulle seguenti fonti normative:
+  </p>
+  <ul>
+    <li><strong>Legge 30 dicembre 2024, n. 207 (Legge di Bilancio 2025):</strong> introduce il nuovo meccanismo strutturale di riduzione del cuneo fiscale, sostituendo l'esonero contributivo temporaneo con la somma esente e la detrazione aggiuntiva.</li>
+    <li><strong>D.L. 5 gennaio 2024, n. 1 (convertito in L. 29/2024):</strong> disciplinava l'esonero contributivo per il 2024, poi prorogato al 2025 dalla successiva Legge di Bilancio.</li>
+    <li><strong>D.Lgs. 30 dicembre 2023, n. 216:</strong> decreto attuativo della riforma fiscale che ha introdotto la struttura a tre scaglioni IRPEF, confermata e migliorata nel 2026.</li>
+    <li><strong>Art. 13 del TUIR (D.P.R. 917/1986):</strong> disciplina le detrazioni per redditi da lavoro dipendente, a cui si aggiunge la nuova detrazione prevista dal cuneo fiscale 2026.</li>
+    <li><strong>Circolari dell'Agenzia delle Entrate:</strong> forniscono le istruzioni operative per l'applicazione del nuovo meccanismo da parte dei sostituti d'imposta (datori di lavoro).</li>
+  </ul>
+  <p>
+    Queste informazioni hanno carattere divulgativo e informativo. La normativa fiscale e soggetta a frequenti aggiornamenti e interpretazioni. Per la tua situazione specifica, si consiglia di consultare un professionista abilitato (commercialista o consulente del lavoro) o di verificare direttamente sul sito dell'<a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate</a>.
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="domande-frequenti">Domande Frequenti</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" />
+  </div>
+
+</GuidaLayout>

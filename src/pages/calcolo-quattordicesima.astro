@@ -1,0 +1,421 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import Quattordicesima from '../components/calcolatori/Quattordicesima';
+
+const title = `Calcolo Quattordicesima Netta ${SITE.annoFiscale}: Simulatore Online`;
+const description = `Calcola la quattordicesima netta ${SITE.annoFiscale} partendo dalla RAL. Verifica quali CCNL la prevedono e scopri le trattenute INPS e IRPEF sulla mensilita' aggiuntiva.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolatori', url: SITE.url },
+  { name: 'Calcolo Quattordicesima', url: `${SITE.url}/calcolo-quattordicesima` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Quattordicesima Netta"
+  breadcrumbs={breadcrumbs}
+>
+  <Quattordicesima client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Come si calcola la quattordicesima netta
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La <strong>quattordicesima mensilita'</strong> e' una mensilita' aggiuntiva prevista
+        da alcuni contratti collettivi nazionali di lavoro (CCNL). A differenza della tredicesima,
+        non e' obbligatoria per legge.
+      </p>
+      <ol>
+        <li>
+          <strong>Quattordicesima lorda</strong> = RAL / 12, con eventuale pro-rata per i mesi
+          effettivamente lavorati nell'anno.
+        </li>
+        <li>
+          <strong>Contributi INPS</strong>: si applicano i contributi previdenziali (9,19%) come sullo stipendio ordinario.
+        </li>
+        <li>
+          <strong>IRPEF</strong>: come per la tredicesima, la quattordicesima e' tassata all'aliquota marginale
+          senza le detrazioni da lavoro dipendente e il trattamento integrativo.
+        </li>
+        <li>
+          <strong>Quattordicesima netta</strong> = Quattordicesima lorda - INPS - IRPEF.
+        </li>
+      </ol>
+      <p>
+        La quattordicesima viene generalmente erogata tra giugno e luglio, in corrispondenza
+        del periodo estivo. Controlla il tuo CCNL per sapere se ne hai diritto e quando viene pagata.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Quali CCNL prevedono la quattordicesima
+      </h3>
+      <p>
+        A differenza della tredicesima, che e' garantita per legge a tutti i lavoratori dipendenti,
+        la quattordicesima mensilita' e' un istituto di natura contrattuale: spetta solo se il CCNL
+        applicato al rapporto di lavoro la prevede espressamente. Ecco un quadro dettagliato dei
+        principali contratti collettivi.
+      </p>
+      <p>
+        <strong>CCNL che prevedono la quattordicesima:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Commercio e Terziario (Confcommercio)</strong>: e' uno dei contratti piu' diffusi in
+          Italia, applicato a milioni di lavoratori nel settore della distribuzione, vendita al
+          dettaglio e ingrosso, servizi alle imprese. La quattordicesima e' pari a una mensilita'
+          della retribuzione globale di fatto e viene erogata entro il 1&deg; luglio di ogni anno.
+        </li>
+        <li>
+          <strong>Turismo (Federalberghi e Confcommercio)</strong>: comprende alberghi, pubblici
+          esercizi, ristorazione, stabilimenti balneari e agenzie di viaggio. La quattordicesima
+          matura dal 1&deg; luglio al 30 giugno dell'anno successivo e viene pagata generalmente
+          con la busta paga di luglio.
+        </li>
+        <li>
+          <strong>Banche e Credito (ABI)</strong>: il contratto del settore bancario prevede la
+          quattordicesima, tradizionalmente erogata nel mese di giugno. In alcuni istituti di
+          credito possono essere previste ulteriori mensilita' aggiuntive in base ad accordi
+          integrativi aziendali.
+        </li>
+        <li>
+          <strong>Assicurazioni (ANIA)</strong>: il CCNL del settore assicurativo prevede la
+          quattordicesima mensilita', generalmente corrisposta nel mese di giugno. Il settore
+          assicurativo e' storicamente tra quelli con il trattamento retributivo complessivo piu'
+          elevato.
+        </li>
+        <li>
+          <strong>Alimentari (industria)</strong>: il contratto del settore alimentare prevede la
+          quattordicesima, calcolata sugli elementi fissi della retribuzione e corrisposta
+          generalmente entro luglio.
+        </li>
+        <li>
+          <strong>Autotrasporto e Logistica</strong>: il CCNL Logistica, Trasporto Merci e Spedizione
+          prevede la quattordicesima mensilita', erogata nel periodo giugno-luglio.
+        </li>
+        <li>
+          <strong>Studi professionali (Confprofessioni)</strong>: il contratto per i dipendenti
+          degli studi professionali (avvocati, commercialisti, consulenti del lavoro, notai)
+          prevede la quattordicesima, pagata generalmente con la retribuzione di giugno.
+        </li>
+        <li>
+          <strong>Chimico-farmaceutico (Federchimica)</strong>: il CCNL del settore chimico e
+          farmaceutico prevede la quattordicesima, corrisposta entro il mese di luglio. Il contratto
+          e' considerato tra i piu' completi e strutturati nel panorama contrattuale italiano.
+        </li>
+      </ul>
+      <p>
+        <strong>CCNL che NON prevedono la quattordicesima:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Metalmeccanico (Federmeccanica/Fiom-Fim-Uilm)</strong>: uno dei contratti piu'
+          applicati in Italia. La retribuzione e' distribuita su 13 mensilita'. Non e' prevista
+          la quattordicesima, anche se singoli accordi aziendali possono prevedere premi o
+          gratifiche aggiuntive.
+        </li>
+        <li>
+          <strong>Edilizia (ANCE)</strong>: il settore edile non prevede la quattordicesima. I
+          lavoratori edili hanno pero' la Cassa Edile, che eroga gratifiche natalizie e ferie
+          attraverso un meccanismo specifico di accantonamento.
+        </li>
+        <li>
+          <strong>Pubblico Impiego</strong>: i dipendenti della pubblica amministrazione (sia
+          comparti ministeriali che enti locali, sanita', scuola e universita') ricevono solo la
+          tredicesima mensilita'. Non e' prevista la quattordicesima in nessun comparto del
+          pubblico impiego.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Il calcolo pro-rata della quattordicesima
+      </h3>
+      <p>
+        Quando il lavoratore non ha prestato servizio per l'intero periodo di maturazione (di solito
+        da luglio a giugno, oppure da gennaio a dicembre a seconda del CCNL), la quattordicesima
+        viene calcolata in proporzione ai mesi effettivamente lavorati. La formula e':
+      </p>
+      <p>
+        <strong>Quattordicesima pro-rata</strong> = (Retribuzione mensile) &times; (mesi lavorati / 12)
+      </p>
+      <p>
+        Come per la tredicesima, vale la regola dei 15 giorni: un mese viene conteggiato come
+        intero se il lavoratore ha prestato servizio per piu' di 15 giorni di calendario in quel mese.
+        Se i giorni lavorati sono 15 o meno, il mese non viene conteggiato.
+      </p>
+      <p>
+        Facciamo alcuni <strong>esempi pratici</strong>. Un lavoratore con RAL di 30.000 euro (su 14
+        mensilita', quindi retribuzione mensile di circa 2.143 euro) che inizia a lavorare il 1&deg;
+        aprile avra' maturato, entro il periodo di erogazione della quattordicesima (luglio), solo
+        4 mesi su 12. La sua quattordicesima pro-rata sara' quindi: 2.143 &times; 4/12 = circa 714
+        euro lordi. Da questo importo andranno poi sottratti i contributi INPS (9,19%) e l'IRPEF
+        all'aliquota marginale.
+      </p>
+      <p>
+        Altro esempio: un dipendente che si dimette il 20 settembre, avendo lavorato 9 mesi pieni
+        nell'anno, ricevera la quattordicesima pro-rata nell'ultima busta paga: retribuzione mensile
+        &times; 9/12. In questo caso, se la quattordicesima era gia stata erogata a luglio per
+        l'intero anno in corso, il datore di lavoro effettuera un conguaglio trattenendo la quota
+        relativa ai mesi non lavorati (ottobre-dicembre, ossia 3/12).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Differenze tra tredicesima e quattordicesima
+      </h3>
+      <p>
+        Sebbene tredicesima e quattordicesima siano entrambe mensilita' aggiuntive e vengano calcolate
+        in modo analogo, presentano differenze sostanziali che e' importante conoscere.
+      </p>
+      <p>
+        La <strong>base giuridica</strong> e' profondamente diversa. La tredicesima e' un diritto
+        sancito dalla legge (DPR 1070/1960) e spetta a tutti i lavoratori subordinati senza
+        eccezione. La quattordicesima, invece, e' un istituto di origine contrattuale: il diritto
+        nasce dal CCNL applicato o, in assenza, da un accordo individuale o aziendale. Se il
+        contratto non la prevede, il datore di lavoro non ha alcun obbligo di corrisponderla.
+      </p>
+      <p>
+        Il <strong>periodo di erogazione</strong> e' diverso: la tredicesima viene pagata a
+        dicembre, in occasione delle festivita natalizie, mentre la quattordicesima viene
+        corrisposta generalmente tra giugno e luglio, prima delle vacanze estive. Anche il
+        periodo di maturazione puo' differire: la tredicesima matura sull'anno solare
+        (gennaio-dicembre), mentre per la quattordicesima il periodo di riferimento varia in base
+        al CCNL (spesso luglio-giugno).
+      </p>
+      <p>
+        Dal punto di vista della <strong>tassazione</strong>, il trattamento e' identico: sia la
+        tredicesima che la quattordicesima sono soggette a contributi INPS al 9,19% e a IRPEF
+        calcolata all'aliquota marginale, senza applicazione di detrazioni da lavoro dipendente
+        ne' del trattamento integrativo. Di conseguenza, a parita' di importo lordo, il netto
+        percepito dal lavoratore e' lo stesso per entrambe le mensilita' aggiuntive.
+      </p>
+      <p>
+        Un'ultima differenza riguarda l'<strong>impatto sulla busta paga mensile</strong>: con 14
+        mensilita' la stessa RAL annuale viene distribuita su piu' pagamenti, riducendo l'importo
+        di ogni singola busta paga mensile. Con una RAL di 30.000 euro e 13 mensilita', lo stipendio
+        mensile lordo e' di circa 2.308 euro; con 14 mensilita' scende a circa 2.143 euro. Il totale
+        annuo lordo rimane invariato, ma il flusso di cassa mensile e' diverso.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Quattordicesima netta per fascia di RAL: tabella 2026
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra la quattordicesima netta stimata per le principali fasce di RAL nel
+        2026, ipotizzando 12 mesi di maturazione completa e le aliquote IRPEF vigenti. Il calcolo e'
+        identico a quello della tredicesima, poiche' il meccanismo di tassazione delle mensilita'
+        aggiuntive e' lo stesso.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Quattordicesima lorda</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">INPS (9,19%)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">IRPEF (aliquota marginale)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Quattordicesima netta</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">20.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">1.538 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">141 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">321 &euro; (23%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.076 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">25.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">1.923 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">177 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">402 &euro; (23%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.344 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">30.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">2.308 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">212 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">692 &euro; (33%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.404 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">40.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">3.077 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">283 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">922 &euro; (33%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.872 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">50.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">3.846 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">354 &euro;</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">1.502 &euro; (43%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~1.990 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        E' importante considerare che nei contratti a 14 mensilita' la stessa RAL annuale viene
+        suddivisa su 14 rate anziche' 12 o 13. Questo significa che il <strong>netto mensile
+        ordinario</strong> e' proporzionalmente piu' basso rispetto a chi ha lo stesso RAL su 13
+        mensilita'. Ad esempio, con una RAL di 30.000 euro e 14 mensilita', lo stipendio mensile lordo
+        scende da 2.308 euro (su 13 mensilita') a circa 2.143 euro. In compenso, il lavoratore riceve
+        due erogazioni extra durante l'anno (la tredicesima a dicembre e la quattordicesima a
+        giugno/luglio) che possono essere utili per gestire spese straordinarie o per il
+        risparmio. Il totale annuo netto complessivo resta sostanzialmente lo stesso, con piccole
+        differenze dovute alla distribuzione delle detrazioni fiscali sulle mensilita' ordinarie.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti sulla quattordicesima
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Quali contratti prevedono la quattordicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          I principali CCNL che prevedono la quattordicesima sono: Commercio e Terziario (Confcommercio),
+          Turismo (alberghi, pubblici esercizi), Banche e Credito, Assicurazioni, Alimentari (industria),
+          Autotrasporto e Logistica, Studi professionali e Chimico-farmaceutico. Non e' prevista, ad esempio,
+          nel CCNL Metalmeccanico e nel CCNL Edilizia.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          La quattordicesima e' obbligatoria?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          No, a differenza della tredicesima (prevista per legge), la quattordicesima e' una retribuzione
+          aggiuntiva stabilita solo da alcuni CCNL. Se il tuo contratto non la prevede,
+          il datore di lavoro non ha l'obbligo di erogarla, a meno che non sia indicata
+          nel contratto individuale di lavoro.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Quando viene pagata la quattordicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          La quattordicesima viene generalmente erogata nella busta paga di giugno o luglio,
+          prima delle vacanze estive. La data precisa dipende dal CCNL applicato e dalle
+          prassi aziendali. Alcuni contratti prevedono l'erogazione il 1&deg; luglio,
+          altri con la busta paga di giugno.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          La quattordicesima si calcola sullo stipendio base o sulla RAL?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          La quattordicesima viene generalmente calcolata sulla retribuzione globale mensile,
+          che include paga base, contingenza, scatti di anzianita' e altri elementi fissi.
+          In questo calcolatore usiamo RAL/12 come approssimazione semplificata.
+          Per il calcolo esatto, fai riferimento al tuo cedolino e al CCNL applicato.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Con 14 mensilita' guadagno di piu'?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          No, la RAL resta invariata. Con 14 mensilita' ogni singola busta paga mensile sara' piu' bassa
+          (RAL / 14 anziche' RAL / 12 o RAL / 13), ma riceverai due mensilita' extra. Il totale annuo
+          lordo e' sempre lo stesso. Tuttavia, la distribuzione delle detrazioni puo' portare
+          a piccole differenze nel netto complessivo.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          La quattordicesima matura durante il periodo di prova?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Si', la quattordicesima matura regolarmente anche durante il periodo di prova, poiche' il
+          rapporto di lavoro e' a tutti gli effetti un rapporto subordinato fin dal primo giorno. Se
+          il periodo di prova non viene superato e il rapporto si interrompe, il lavoratore ha diritto
+          a ricevere la quota di quattordicesima maturata in proporzione ai mesi lavorati (pro-rata),
+          calcolata nell'ultima busta paga con il consueto meccanismo dei 15 giorni per il conteggio
+          del mese intero.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Come viene tassata la quattordicesima rispetto alla tredicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          La quattordicesima viene tassata esattamente come la tredicesima: si applicano i contributi
+          INPS (9,19%) sull'importo lordo e poi l'IRPEF all'aliquota marginale, senza detrazioni da
+          lavoro dipendente e senza trattamento integrativo. Di conseguenza, a parita' di importo lordo,
+          il netto della quattordicesima e' identico a quello della tredicesima. Entrambe le mensilita'
+          aggiuntive risultano tassate piu' pesantemente rispetto allo stipendio mensile ordinario, dove
+          invece si beneficia delle detrazioni fiscali.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Posso rinunciare alla quattordicesima per avere un lordo mensile piu' alto?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          In linea di principio, non e' possibile rinunciare unilateralmente alla quattordicesima se
+          il CCNL applicato la prevede, poiche' si tratta di un diritto stabilito dal contratto
+          collettivo. Tuttavia, e' possibile concordare con il datore di lavoro la
+          "mensilizzazione" della quattordicesima, cioe' la distribuzione del suo importo nelle 12
+          buste paga ordinarie. In questo modo, ogni mensilita' sarebbe leggermente piu' alta, ma non
+          si riceverebbe l'erogazione separata a giugno/luglio. Questa soluzione va formalizzata
+          per iscritto e non modifica il totale annuo lordo ne' il carico fiscale complessivo,
+          ma cambia solo la distribuzione temporale dei pagamenti.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/calcolo-tredicesima" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Tredicesima</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calcola la tredicesima netta dalla tua RAL</p>
+      </a>
+      <a href="/calcolo-tfr" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo TFR</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Stima il TFR maturato e confronta azienda vs fondo pensione</p>
+      </a>
+      <a href="/calcolo-paga-oraria" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Paga Oraria</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Converti la RAL in paga oraria lorda e netta</p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

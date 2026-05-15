@@ -1,0 +1,581 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import FIRE from '../components/calcolatori/FIRE';
+
+const title = 'Calcolo FIRE 2026: Indipendenza Finanziaria Italia';
+const description = 'Calcola il tuo FIRE number e scopri in quanti anni puoi raggiungere l\'indipendenza finanziaria in Italia con tassazione al 26%, inflazione e regola del 4%.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo FIRE', url: `${SITE.url}/calcolo-fire` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo FIRE - Indipendenza Finanziaria"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo FIRE: Indipendenza Finanziaria
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Scopri quanto patrimonio ti serve per vivere di rendita e in quanti anni puoi raggiungerlo.
+  </p>
+
+  <FIRE client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Cos'e' il movimento FIRE e come si calcola l'indipendenza finanziaria
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il <strong>FIRE (Financial Independence, Retire Early)</strong> e' un movimento nato negli Stati Uniti
+        che si propone un obiettivo tanto semplice da enunciare quanto impegnativo da realizzare: accumulare
+        un patrimonio sufficiente a coprire le proprie spese per il resto della vita, senza dover
+        dipendere da un lavoro. L'idea centrale e' che, raggiunta una certa soglia di ricchezza investita,
+        i rendimenti generati dal portafoglio possano sostituire lo stipendio, permettendo di scegliere
+        liberamente come impiegare il proprio tempo. Il concetto e' stato reso popolare dal blog
+        "Mr. Money Mustache" e dal libro "Your Money or Your Life" di Vicki Robin, e negli ultimi anni
+        ha conquistato un numero crescente di seguaci anche in Europa e in Italia.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        La regola del 4% e il Trinity Study
+      </h3>
+      <p>
+        Il pilastro su cui si fonda la strategia FIRE e' la cosiddetta <strong>regola del 4%</strong>,
+        derivata dal celebre <strong>Trinity Study</strong> (Cooley, Hubbard e Walz, 1998). Lo studio
+        analizzava i dati storici del mercato azionario e obbligazionario statunitense dal 1926 al 1995,
+        concludendo che un portafoglio composto al 50-75% da azioni e al 25-50% da obbligazioni poteva
+        sostenere un prelievo annuo del 4% del valore iniziale (aggiustato per l'inflazione) per almeno
+        30 anni nel 95% degli scenari storici testati.
+      </p>
+      <p>
+        In termini pratici, la regola del 4% implica che il <strong>FIRE number</strong>, cioe' il
+        patrimonio necessario per raggiungere l'indipendenza finanziaria, si calcola semplicemente come:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        FIRE Number = Spese annue / Tasso di prelievo = Spese annue &times; 25
+      </div>
+      <p>
+        Se le tue spese annue sono di 24.000 &euro; (2.000 &euro;/mese), il tuo FIRE number e' di
+        600.000 &euro;. Una volta accumulato questo patrimonio investito, puoi teoricamente prelevare
+        24.000 &euro; l'anno senza esaurire il capitale nel lungo periodo.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Applicabilita' della regola del 4% in Italia
+      </h3>
+      <p>
+        La regola del 4% nasce dall'analisi del mercato statunitense, che storicamente ha avuto
+        rendimenti superiori alla media globale. Per un investitore italiano, ci sono alcune considerazioni
+        importanti da fare. Prima fra tutte, la <strong>tassazione</strong>: in Italia i rendimenti
+        finanziari (capital gain, dividendi, interessi) sono soggetti a un'imposta sostitutiva del
+        <strong>26%</strong> per la maggior parte degli strumenti (azioni, ETF, fondi comuni, conti
+        deposito). I titoli di Stato italiani e di paesi nella "white list" beneficiano di un'aliquota
+        agevolata del <strong>12,5%</strong>. Questa tassazione riduce significativamente il rendimento
+        netto disponibile.
+      </p>
+      <p>
+        Il nostro calcolatore tiene conto di questo fattore, calcolando un <strong>rendimento reale
+        netto</strong> con la formula:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        Rendimento reale netto = (Rendimento nominale - Inflazione) &times; (1 - Aliquota fiscale)
+      </div>
+      <p>
+        Con un rendimento nominale del 7%, inflazione al 2% e tassazione al 26%, il rendimento reale
+        netto e' circa il 3,7%. Alcuni esperti suggeriscono che in contesto europeo un tasso di prelievo
+        del 3-3,5% sia piu' prudente rispetto al 4% americano, soprattutto considerando la maggiore
+        tassazione e i rendimenti storicamente inferiori dei mercati europei.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Come calcolare il proprio FIRE number
+      </h3>
+      <p>
+        Il calcolo del FIRE number parte da un'analisi accurata delle proprie <strong>spese annue</strong>.
+        Non si tratta delle spese attuali da lavoratore, ma di quelle che si prevede di avere una volta
+        raggiunta l'indipendenza finanziaria. Bisogna includere tutte le voci: affitto o mutuo, bollette,
+        alimentari, trasporti, assicurazioni sanitarie, svago, viaggi, manutenzione, e prevedere un
+        margine per imprevisti. In Italia, secondo i dati ISTAT, la spesa media mensile di una famiglia
+        di due persone si aggira intorno ai 2.200-2.800 &euro; al mese, con forti variazioni regionali.
+      </p>
+      <p>
+        Una volta stabilite le spese annue, si divide per il tasso di prelievo scelto. Con un tasso del
+        4%, si moltiplica per 25. Con un 3,5% piu' conservativo, si moltiplica per circa 28,6.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Il savings rate: perche' conta piu' del rendimento
+      </h3>
+      <p>
+        Il <strong>savings rate</strong> (tasso di risparmio) e' la percentuale del reddito che si
+        riesce a risparmiare e investire. E' il fattore piu' importante nel percorso verso il FIRE,
+        molto piu' del rendimento degli investimenti. Il motivo e' duplice: un savings rate alto
+        significa contemporaneamente (1) piu' denaro investito ogni anno e (2) meno spese da
+        coprire una volta raggiunta l'indipendenza, quindi un FIRE number piu' basso.
+      </p>
+      <p>
+        L'impatto del savings rate sugli anni necessari al FIRE e' drammatico. Ecco una tabella
+        indicativa (assumendo rendimento reale netto del 3,7% e patrimonio iniziale zero):
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Savings Rate</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Anni al FIRE</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Commento</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">10%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~51 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Pensione standard</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">20%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~37 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Buon inizio</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">30%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~28 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Obiettivo realistico</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">40%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~22 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Molto ambizioso</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">50%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~17 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">FIRE accelerato</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~13 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Estremamente frugale</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        Come si nota, passare da un savings rate del 20% al 50% riduce gli anni al FIRE da 37 a 17,
+        piu' che dimezzandoli. Il rendimento degli investimenti ha un impatto molto minore: passare dal
+        5% al 9% di rendimento nominale riduce gli anni di "soli" 5-8 anni, mentre raddoppiare il
+        savings rate li dimezza.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tassazione italiana sui rendimenti finanziari
+      </h3>
+      <p>
+        La fiscalita' e' un elemento cruciale per chi insegue il FIRE in Italia. L'imposta sostitutiva
+        sui rendimenti finanziari si applica secondo queste aliquote:
+      </p>
+      <ul>
+        <li><strong>26%</strong> su azioni, ETF azionari, fondi comuni, obbligazioni corporate, conti deposito</li>
+        <li><strong>12,5%</strong> su titoli di Stato italiani (BTP, BOT, CCT) e di paesi in "white list"</li>
+        <li><strong>26%</strong> su dividendi e cedole (esclusi titoli di Stato)</li>
+      </ul>
+      <p>
+        Per gli ETF che contengono titoli di Stato, la quota di rendimento attribuibile a tali titoli
+        viene tassata al 12,5%, riducendo il carico fiscale complessivo. Ad esempio, un ETF obbligazionario
+        governativo europeo potrebbe avere un'aliquota effettiva intorno al 14-16%.
+      </p>
+      <p>
+        E' importante considerare anche il <strong>bollo sugli investimenti</strong> (imposta di bollo
+        proporzionale), pari allo 0,2% annuo del controvalore del portafoglio. Su un patrimonio di
+        500.000 &euro;, questo rappresenta 1.000 &euro;/anno, una voce non trascurabile.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Le varianti del FIRE
+      </h3>
+      <p>
+        Nel tempo, il movimento FIRE ha generato diverse "correnti" che si adattano a stili di vita
+        e obiettivi diversi:
+      </p>
+      <ul>
+        <li>
+          <strong>Lean FIRE</strong>: indipendenza finanziaria con un budget molto frugale, tipicamente
+          sotto i 1.500 &euro;/mese per persona in Italia. Richiede un FIRE number relativamente basso
+          (sotto i 450.000 &euro;) ma impone uno stile di vita essenziale.
+        </li>
+        <li>
+          <strong>Fat FIRE</strong>: indipendenza finanziaria con un tenore di vita elevato, con spese
+          superiori a 4.000-5.000 &euro;/mese. Richiede patrimoni importanti (oltre 1,2-1,5 milioni di euro)
+          ma permette di mantenere comodita' e lussi.
+        </li>
+        <li>
+          <strong>Barista FIRE</strong>: raggiungere un patrimonio sufficiente a coprire gran parte delle
+          spese, integrando con un lavoro part-time leggero o una passione che genera reddito. E' una
+          via di mezzo pragmatica che riduce il FIRE number necessario.
+        </li>
+        <li>
+          <strong>Coast FIRE</strong>: accumulare abbastanza investimenti in giovane eta' affinche',
+          grazie all'interesse composto, il patrimonio cresca autonomamente fino a raggiungere il FIRE
+          number entro l'eta' pensionabile standard, senza bisogno di ulteriori risparmi. Si continua
+          a lavorare, ma solo per coprire le spese correnti, senza pressione di risparmiare.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Strumenti per investire in Italia verso il FIRE
+      </h3>
+      <p>
+        Chi insegue il FIRE in Italia ha a disposizione diversi strumenti:
+      </p>
+      <ul>
+        <li>
+          <strong>ETF su Borsa Italiana</strong>: sono lo strumento preferito dalla comunita' FIRE italiana.
+          ETF come quelli che replicano l'MSCI World o il FTSE All-World offrono diversificazione globale
+          con costi minimi (TER 0,1-0,3%). Sono acquistabili tramite broker online come Directa, Fineco,
+          Degiro o Interactive Brokers.
+        </li>
+        <li>
+          <strong>BTP e titoli di Stato</strong>: offrono rendimenti certi con tassazione agevolata al
+          12,5%. I BTP indicizzati all'inflazione (BTP Italia) possono proteggere il potere d'acquisto.
+          Utili per la parte "sicura" del portafoglio.
+        </li>
+        <li>
+          <strong>Conti deposito</strong>: per il fondo di emergenza o la liquidita' a breve termine.
+          Rendimenti modesti ma capitale garantito fino a 100.000 &euro; dal FITD.
+        </li>
+        <li>
+          <strong>Fondi pensione complementari</strong>: offrono vantaggi fiscali significativi
+          (deducibilita' fino a 5.164 &euro;/anno) e possono essere uno strumento complementare per
+          la fase successiva al FIRE, quando si raggiunge l'eta' pensionabile.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: stipendio netto 2.500 &euro;/mese
+      </h3>
+      <p>
+        Consideriamo Marco, 30 anni, con uno stipendio netto di 2.500 &euro; al mese. Le sue spese
+        mensili sono di 1.500 &euro; (affitto 600 &euro;, bollette 150 &euro;, alimentari 300 &euro;,
+        trasporti 100 &euro;, svago 200 &euro;, varie 150 &euro;). Riesce a risparmiare 1.000 &euro;/mese,
+        per un savings rate del 40%. Ha gia' accumulato 30.000 &euro; investiti in un ETF MSCI World.
+      </p>
+      <p>
+        Con le nostre ipotesi (rendimento 7%, inflazione 2%, tassazione 26%), il suo FIRE number e':
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        FIRE Number = 1.500 &euro; &times; 12 / 0,04 = 450.000 &euro;
+      </div>
+      <p>
+        Inserendo i dati nel calcolatore, Marco raggiungerebbe il suo FIRE number in circa
+        <strong>21-22 anni</strong>, a 51-52 anni. Se riuscisse ad aumentare il risparmio a
+        1.300 &euro;/mese (savings rate ~52%), potrebbe arrivare al FIRE in 16-17 anni, a soli 46-47 anni.
+      </p>
+      <p>
+        E' importante notare che Marco potrebbe scegliere il Barista FIRE: a 45 anni, con un patrimonio
+        di circa 350.000 &euro;, potrebbe trovare un lavoro part-time che copra anche solo 500 &euro;/mese
+        delle sue spese, riducendo il prelievo dal portafoglio e rendendo il piano molto piu' sostenibile.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Rischi e limiti del FIRE
+      </h3>
+      <p>
+        Il percorso FIRE non e' privo di rischi e incertezze che vanno considerati con attenzione:
+      </p>
+      <ul>
+        <li>
+          <strong>Rischio di sequenza dei rendimenti</strong>: se i mercati crollano nei primi anni
+          dopo il FIRE (quando si inizia a prelevare), l'impatto sul patrimonio e' molto piu' grave
+          che un crollo a meta' percorso. Questo e' il rischio piu' insidioso e puo' essere mitigato
+          tenendo 2-3 anni di spese in liquidita' o strumenti a basso rischio.
+        </li>
+        <li>
+          <strong>Inflazione</strong>: periodi di alta inflazione (come il 2022-2023 in Italia, con
+          punte dell'8-11%) possono erodere rapidamente il potere d'acquisto delle rendite. Un
+          portafoglio con componente azionaria significativa offre una protezione naturale nel lungo
+          periodo, ma nel breve l'impatto puo' essere severo.
+        </li>
+        <li>
+          <strong>Costi sanitari</strong>: in Italia il SSN offre una copertura sanitaria universale,
+          un vantaggio enorme rispetto agli USA. Tuttavia, chi raggiunge il FIRE potrebbe non avere
+          piu' accesso a polizze sanitarie aziendali integrative, e potrebbe voler prevedere un budget
+          aggiuntivo per sanita' privata o assicurazioni.
+        </li>
+        <li>
+          <strong>Longevita'</strong>: il Trinity Study era basato su un orizzonte di 30 anni. Chi
+          raggiunge il FIRE a 40 anni potrebbe aver bisogno del patrimonio per 50-60 anni. Per orizzonti
+          cosi' lunghi, un tasso di prelievo del 3-3,5% e' piu' prudente.
+        </li>
+        <li>
+          <strong>Modifiche normative</strong>: le aliquote fiscali, le regole previdenziali e le
+          agevolazioni possono cambiare nel tempo. Un piano FIRE a 20+ anni deve essere flessibile.
+        </li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Parametri di riferimento per il FIRE in Italia (2026)
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il calcolatore utilizza i seguenti parametri di default, che riflettono le condizioni
+        economiche e fiscali italiane aggiornate:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Parametro</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Valore</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Fonte</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Tasso di prelievo sicuro (SWR)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Trinity Study (1998)</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Rendimento nominale atteso</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">7%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Media storica MSCI World</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Inflazione attesa</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">2%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Target BCE</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Tassazione rendimenti</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">D.Lgs. 461/1997</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Rendimento reale netto</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~3,7%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Calcolato</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Spesa media famiglia ISTAT</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~2.600 &euro;/mese</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">ISTAT 2024</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Imposta di bollo portafoglio</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">0,2%/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">D.P.R. 642/1972</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti sul FIRE
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cos'e' il FIRE number e come si calcola?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il FIRE number e' il patrimonio necessario per vivere di rendita senza lavorare. Si calcola
+          dividendo le spese annue per il tasso di prelievo sicuro (Safe Withdrawal Rate). Con la
+          regola del 4%, il FIRE number e' pari a 25 volte le spese annue. Ad esempio, con spese
+          di 2.000 &euro;/mese (24.000 &euro;/anno), il FIRE number e' 600.000 &euro;.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La regola del 4% funziona anche in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La regola del 4% e' basata sui dati del mercato statunitense, storicamente tra i piu'
+          performanti. Per l'Italia, la tassazione piu' alta (26% vs ~15% negli USA) e i rendimenti
+          storicamente inferiori del mercato europeo suggeriscono di usare un tasso piu' conservativo
+          del 3-3,5%. Tuttavia, investendo in un portafoglio globale diversificato (ad esempio un
+          ETF MSCI World), ci si avvicina ai rendimenti del mercato globale. Il vantaggio italiano
+          e' il SSN, che riduce significativamente i costi sanitari rispetto agli USA.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto devo risparmiare al mese per raggiungere il FIRE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Non esiste un importo fisso: dipende dalle tue spese, dal patrimonio attuale e dal
+          rendimento degli investimenti. La metrica chiave e' il savings rate. Con un savings rate
+          del 50%, puoi raggiungere il FIRE in circa 17 anni. Con il 30%, servono circa 28 anni.
+          L'importante e' massimizzare il divario tra entrate e uscite, sia aumentando il reddito
+          che riducendo le spese. Usa il calcolatore qui sopra per simulare il tuo scenario specifico.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Che differenza c'e' tra Lean FIRE, Fat FIRE e Barista FIRE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il Lean FIRE prevede uno stile di vita frugale (sotto 1.500 &euro;/mese in Italia) con
+          un FIRE number basso. Il Fat FIRE punta a un tenore di vita elevato (oltre 4.000 &euro;/mese)
+          richiedendo patrimoni importanti. Il Barista FIRE e' una via di mezzo pratica: si accumula
+          un patrimonio che copre la maggior parte delle spese, integrando con un lavoro part-time
+          o un'attivita' flessibile. Il Coast FIRE consiste nell'accumulare abbastanza in giovane
+          eta' da lasciare che l'interesse composto faccia il resto fino all'eta' pensionabile.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come viene tassato il prelievo dal portafoglio in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In Italia il prelievo dal portafoglio e' soggetto all'imposta sostitutiva del 26% sul
+          capital gain (la plusvalenza realizzata). Questa imposta si paga solo sulla differenza
+          tra il prezzo di vendita e il prezzo di acquisto, non sull'intero importo venduto. Per
+          i titoli di Stato l'aliquota e' del 12,5%. Si paga inoltre l'imposta di bollo dello 0,2%
+          annuo sul controvalore totale del portafoglio. Il regime del risparmio amministrato
+          gestisce automaticamente queste imposte tramite il broker.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          E' realistico raggiungere il FIRE con uno stipendio italiano medio?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Con lo stipendio netto medio italiano di circa 1.600-1.800 &euro;/mese, il FIRE tradizionale
+          (smettere completamente di lavorare a 40-50 anni) e' molto difficile, perche' il margine di
+          risparmio e' limitato. Tuttavia, il Barista FIRE o il Coast FIRE sono piu' raggiungibili.
+          Strategie per accelerare: aumentare il reddito (carriera, cambio lavoro, secondo reddito),
+          ridurre le spese fisse (trasferirsi in citta' meno costose, eliminare l'auto se possibile),
+          e investire in modo efficiente con ETF a basso costo. Il costo della vita piu' basso al
+          Sud Italia puo' rendere il FIRE piu' accessibile rispetto a Milano o Roma.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa succede alla pensione INPS se smetto di lavorare prima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Se smetti di lavorare e versare contributi, il montante contributivo accumulato fino a quel
+          momento continuera' a essere rivalutato annualmente (in base alla media mobile del PIL),
+          ma non crescera' con nuovi versamenti. La pensione risultante sara' significativamente
+          inferiore. Per accedere alla pensione di vecchiaia servono comunque almeno 20 anni di
+          contributi. Chi raggiunge il FIRE dovrebbe considerare di versare contributi volontari
+          INPS (circa 5.000-8.000 &euro;/anno) per non perdere la copertura pensionistica, oppure
+          destinare una parte del patrimonio a un fondo pensione complementare.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Dove conviene investire per il FIRE in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La strategia piu' efficiente per il FIRE in Italia e' un portafoglio diversificato di ETF
+          a basso costo. La base puo' essere un ETF azionario globale (MSCI World o FTSE All-World,
+          TER 0,1-0,2%), affiancato da ETF obbligazionari governativi europei per la stabilita'
+          (con tassazione agevolata al 12,5%). Per la liquidita' a breve termine, conti deposito e BOT.
+          Il tutto acquistabile tramite broker italiani (Directa, Fineco) o europei (Degiro, Interactive
+          Brokers). Evita fondi attivi con TER elevati e prodotti assicurativi-finanziari (unit-linked)
+          che hanno costi nascosti molto alti.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-piano-accumulo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Piano di Accumulo (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula il rendimento di un PAC con costi e tassazione
+        </p>
+      </a>
+      <a href="/calcolo-interesse-composto" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Interesse Composto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola la crescita del tuo capitale con l'interesse composto
+        </p>
+      </a>
+      <a href="/calcolo-pensione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Stima Pensione INPS
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola la tua pensione INPS stimata con il sistema contributivo
+        </p>
+      </a>
+      <a href="/calcolo-inflazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'impatto dell'inflazione sul potere d'acquisto
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

@@ -1,0 +1,298 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+import { breadcrumbSchema } from '../../lib/seo';
+
+const title = "Guide Fiscali 2026: IRPEF, Stipendio Netto e Tasse in Italia";
+const description = "Scopri come funzionano IRPEF, stipendio netto, detrazioni e tasse in Italia nel 2026. Guide complete con esempi pratici, calcoli e riferimenti normativi aggiornati.";
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Guide', url: `${SITE.url}/guide` },
+];
+
+const schema = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: `${SITE.url}/guide`,
+    inLanguage: SITE.locale,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.url,
+    },
+  },
+]);
+
+interface Guida {
+  titolo: string;
+  descrizione: string;
+  slug: string;
+  data: string;
+  disponibile: boolean;
+}
+
+const guide: Guida[] = [
+  {
+    titolo: 'Come Si Calcola lo Stipendio Netto',
+    descrizione: 'Il percorso completo dal lordo al netto: contributi INPS, IRPEF, detrazioni, addizionali e trattamento integrativo spiegati passo per passo.',
+    slug: 'come-si-calcola-lo-stipendio-netto',
+    data: '2026-01-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'Scaglioni IRPEF 2026',
+    descrizione: 'I tre scaglioni IRPEF 2026 con aliquote, esempi di calcolo, confronto con gli anni precedenti e quanto risparmi con le nuove aliquote.',
+    slug: 'scaglioni-irpef-2026',
+    data: '2026-01-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'Addizionali Regionali e Comunali',
+    descrizione: 'Come funzionano le addizionali IRPEF regionali e comunali, quanto pesano sul netto e le differenze tra le regioni italiane.',
+    slug: 'addizionali-regionali-comunali',
+    data: '2026-05-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'Tredicesima e Quattordicesima Spiegate',
+    descrizione: 'Quando spettano, come si calcolano e quanto impattano sul netto annuo la tredicesima e la quattordicesima mensilita.',
+    slug: 'tredicesima-quattordicesima',
+    data: '2026-05-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'Regime Impatriati Spiegato',
+    descrizione: 'Chi ne ha diritto, quanto si risparmia e come funziona il regime fiscale agevolato per i lavoratori che rientrano in Italia.',
+    slug: 'regime-impatriati',
+    data: '2026-05-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'Regime Forfettario 2026',
+    descrizione: 'Requisiti, limiti di fatturato, coefficienti di redditivita e imposta sostitutiva: tutto sul regime forfettario per Partita IVA.',
+    slug: 'regime-forfettario-2026',
+    data: '2026-05-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'TFR: Come Funziona',
+    descrizione: 'Maturazione, calcolo, tassazione separata e le opzioni tra azienda e fondo pensione per il Trattamento di Fine Rapporto.',
+    slug: 'tfr-come-funziona',
+    data: '2026-05-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'Cuneo Fiscale 2026',
+    descrizione: 'Il nuovo meccanismo di riduzione del cuneo fiscale 2026: chi ne beneficia, quanto vale e come si applica in busta paga.',
+    slug: 'cuneo-fiscale-2026',
+    data: '2026-05-15',
+    disponibile: true,
+  },
+  {
+    titolo: 'Busta Paga: Come Leggerla',
+    descrizione: 'Tutte le voci della busta paga spiegate una per una: dal lordo ai contributi, dalle trattenute fiscali al netto in tasca.',
+    slug: 'busta-paga-come-leggerla',
+    data: '2026-05-15',
+    disponibile: true,
+  },
+];
+
+const dateFormatter = new Intl.DateTimeFormat('it-IT', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout title={title} description={description} schema={schema}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-8">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">Guide</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Page header -->
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Guide Fiscali 2026
+      </h1>
+      <p class="mt-3 text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+        Approfondimenti completi su IRPEF, stipendio netto, detrazioni e tasse in Italia. Ogni guida include esempi pratici, calcoli dettagliati e riferimenti alle normative vigenti.
+      </p>
+    </header>
+
+    <!-- Introductory content -->
+    <div class="mb-12 prose prose-gray dark:prose-invert max-w-none">
+      <h2>Perche' abbiamo creato queste guide</h2>
+      <p>
+        Il sistema fiscale italiano e' tra i piu' complessi d'Europa. Con oltre 800 norme tributarie, decine di detrazioni e deduzioni, scaglioni progressivi, addizionali locali differenziate per regione e comune, e un quadro normativo che cambia ogni anno con la Legge di Bilancio, orientarsi nella propria situazione fiscale e' un'impresa per chiunque. La realta' e' che la maggior parte dei lavoratori italiani non comprende appieno le voci della propria busta paga. Molti non sanno spiegare come viene calcolata l'IRPEF, cosa sono le addizionali regionali e comunali, o perche' il netto cambia tra una regione e l'altra a parita' di RAL.
+      </p>
+      <p>
+        Queste guide nascono per colmare questo divario informativo. Non sostituiscono la consulenza di un professionista, ne' pretendono di coprire ogni caso particolare, ma rappresentano un ponte tra i nostri calcolatori automatici e la comprensione effettiva di come funziona la fiscalita' del lavoro in Italia. Ogni guida e' pensata per essere letta anche da chi non ha alcuna formazione in ambito economico o tributario: partiamo sempre dalle basi, spieghiamo ogni termine tecnico la prima volta che viene utilizzato e accompagniamo le spiegazioni con esempi concreti e cifre reali. Il nostro obiettivo e' che, dopo aver letto una guida, tu possa utilizzare il calcolatore corrispondente con piena consapevolezza di cosa sta succedendo dietro le quinte, e che possa interpretare la tua busta paga senza dover cercare ogni voce su internet.
+      </p>
+
+      <h2>Come sono organizzate le guide</h2>
+      <p>
+        Le guide sono organizzate per aree tematiche, seguendo un percorso logico che rispecchia il modo in cui la retribuzione si trasforma dal lordo al netto. Abbiamo strutturato i contenuti in modo che possano essere letti sia in sequenza, per un apprendimento completo, sia singolarmente, per approfondire un argomento specifico. Ogni guida e' autoconsistente e include tutti i riferimenti necessari per essere compresa senza prerequisiti.
+      </p>
+      <ul>
+        <li>
+          <strong>IRPEF e scaglioni fiscali:</strong> il cuore del sistema fiscale italiano. Queste guide spiegano come funziona l'imposta sul reddito delle persone fisiche, quali sono gli scaglioni 2026 con le nuove aliquote (23%, 33%, 43%), come si calcola l'imposta progressivamente e quali sono le differenze rispetto agli anni precedenti. Includiamo tabelle comparative, esempi di calcolo per diverse fasce di reddito e un approfondimento sull'evoluzione storica degli scaglioni IRPEF.
+        </li>
+        <li>
+          <strong>Meccanica della busta paga:</strong> dalla RAL lorda al netto in tasca, passando per contributi INPS, IRPEF netta, detrazioni per lavoro dipendente, addizionali regionali e comunali, trattamento integrativo e tredicesima. Queste guide scompongono ogni passaggio del calcolo, spiegando il significato di ogni voce del cedolino e come ciascuna di esse influisce sul netto finale.
+        </li>
+        <li>
+          <strong>Regimi speciali:</strong> il regime forfettario per le Partite IVA e il regime impatriati per chi rientra dall'estero hanno regole completamente diverse dal regime ordinario dei lavoratori dipendenti. Le guide dedicate spiegano i requisiti di accesso, i limiti di fatturato, le aliquote agevolate, i coefficienti di redditivita' e le procedure per aderire o recedere da questi regimi.
+        </li>
+        <li>
+          <strong>TFR e fine rapporto:</strong> il Trattamento di Fine Rapporto e' un diritto di ogni lavoratore dipendente, ma il suo calcolo e la sua tassazione sono tra gli aspetti meno compresi della retribuzione. Le guide sul TFR spiegano come matura, come si calcola la tassazione separata, quali sono le differenze tra lasciarlo in azienda o destinarlo a un fondo pensione, e cosa succede in caso di anticipazione.
+        </li>
+        <li>
+          <strong>Cuneo fiscale:</strong> il nuovo meccanismo introdotto nel 2026, che ha sostituito la riduzione contributiva precedente con un sistema di esenzioni e detrazioni IRPEF. La guida dedicata spiega nel dettaglio come funziona, chi ne beneficia, quanto vale per le diverse fasce di reddito e come si applica concretamente in busta paga.
+        </li>
+      </ul>
+      <p>
+        Ogni guida include esempi pratici con cifre reali, riferimenti alla normativa vigente e link diretti ai calcolatori correlati, cosi' da poter verificare immediatamente quanto appreso con una simulazione personalizzata.
+      </p>
+
+      <h2>Come utilizzare le guide insieme ai calcolatori</h2>
+      <p>
+        Le guide e i calcolatori del nostro sito sono progettati per funzionare in sinergia. Il percorso consigliato e' il seguente: leggi prima la guida relativa all'argomento che ti interessa per comprendere i meccanismi di calcolo e il contesto normativo, poi utilizza il calcolatore corrispondente per ottenere un risultato personalizzato basato sui tuoi dati specifici (RAL, regione, comune, situazione familiare). Questo approccio ti permettera' di interpretare correttamente i risultati del calcolatore e di capire perche' il tuo netto e' quello che e'.
+      </p>
+      <p>
+        Ad esempio, se vuoi capire quanto paghi di IRPEF, leggi prima la <a href="/guide/scaglioni-irpef-2026">guida sugli scaglioni IRPEF 2026</a> per comprendere il meccanismo della progressivita' e le novita' introdotte dalla Legge di Bilancio, poi inserisci la tua RAL nel <a href="/calcolo-irpef">calcolatore IRPEF</a> per vedere l'imposta effettiva nel tuo caso. Allo stesso modo, la <a href="/guide/come-si-calcola-lo-stipendio-netto">guida sul calcolo dello stipendio netto</a> spiega tutti i passaggi (contributi INPS, IRPEF, detrazioni, addizionali, trattamento integrativo) che il <a href="/">calcolatore stipendio netto</a> esegue automaticamente. Leggere la guida prima di usare il calcolatore ti aiutera' a verificare la correttezza del risultato e a individuare eventuali elementi della tua situazione personale che il calcolatore non puo' considerare automaticamente.
+      </p>
+      <p>
+        Tutte le guide includono in fondo alla pagina i link diretti ai calcolatori correlati e alla sezione FAQ con le risposte alle domande piu' frequenti su ciascun argomento.
+      </p>
+
+      <h2>Fonti Normative e Aggiornamenti</h2>
+      <p>
+        Tutte le informazioni contenute nelle nostre guide provengono da <strong>fonti ufficiali</strong> e vengono aggiornate ogni anno in concomitanza con la pubblicazione della Legge di Bilancio e dei decreti attuativi. Le fonti principali che utilizziamo sono:
+      </p>
+      <ul>
+        <li>
+          <strong>Agenzia delle Entrate</strong> (<a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">agenziaentrate.gov.it</a>): per gli scaglioni IRPEF, le detrazioni per lavoro dipendente, il trattamento integrativo, le regole sul cuneo fiscale e tutte le disposizioni relative all'imposta sul reddito delle persone fisiche. Le circolari e le risoluzioni dell'Agenzia sono il riferimento primario per l'interpretazione delle norme fiscali.
+        </li>
+        <li>
+          <strong>INPS</strong> (<a href="https://www.inps.it" target="_blank" rel="noopener noreferrer">inps.it</a>): per le aliquote contributive, i massimali e minimali contributivi, le prestazioni previdenziali e le circolari operative che disciplinano il calcolo dei contributi a carico del lavoratore e del datore di lavoro. Le comunicazioni INPS sono fondamentali per calcolare correttamente l'imponibile fiscale.
+        </li>
+        <li>
+          <strong>Gazzetta Ufficiale della Repubblica Italiana</strong>: per i testi di legge, i decreti legislativi e i decreti legge che modificano il quadro fiscale e contributivo. La Legge di Bilancio, pubblicata entro il 31 dicembre di ogni anno, e' il documento che introduce le principali novita' fiscali per l'anno successivo.
+        </li>
+        <li>
+          <strong>TUIR (Testo Unico delle Imposte sui Redditi, D.P.R. 917/1986)</strong>: il testo normativo di riferimento per l'IRPEF, le detrazioni, le deduzioni e la disciplina dei redditi di lavoro dipendente. Gli articoli 11, 12, 13 e 51 del TUIR sono quelli piu' frequentemente citati nelle nostre guide.
+        </li>
+        <li>
+          <strong>Delibere regionali e comunali</strong>: per le aliquote delle addizionali IRPEF locali. Ogni regione e ogni comune stabilisce autonomamente le proprie aliquote, che possono variare significativamente da un territorio all'altro. Monitoriamo le delibere pubblicate sui portali istituzionali di ciascuna regione.
+        </li>
+      </ul>
+      <p>
+        Le nostre guide vengono aggiornate tipicamente tra dicembre e gennaio, quando i nuovi parametri fiscali diventano effettivi. In caso di modifiche normative in corso d'anno (decreti legge, circolari interpretative), procediamo ad aggiornamenti straordinari. La data dell'ultimo aggiornamento e' sempre indicata in ciascuna guida.
+      </p>
+
+      <h2>A chi si rivolgono</h2>
+      <p>
+        Le nostre guide sono pensate per un pubblico ampio e diversificato, accomunato dalla necessita' di comprendere meglio la fiscalita' italiana legata al lavoro. Ecco i principali profili di utenti che possono trarne beneficio:
+      </p>
+      <ul>
+        <li>
+          <strong>Lavoratori dipendenti che vogliono capire la propria busta paga:</strong> se ogni mese guardi il cedolino senza comprendere realmente perche' il netto e' quello che e', queste guide ti aiuteranno a decifrare ogni voce, a capire quanto paghi di tasse e contributi e a verificare che tutto sia calcolato correttamente. Sapere leggere la busta paga e' il primo passo per negoziare consapevolmente il proprio stipendio.
+        </li>
+        <li>
+          <strong>Chi cerca lavoro e deve valutare offerte economiche:</strong> quando ricevi un'offerta di lavoro con una certa RAL, sapere quanto ti restera' in tasca e' fondamentale per prendere una decisione informata. Le guide ti permettono di comprendere non solo il netto mensile, ma anche l'impatto della tredicesima, del TFR e delle differenze regionali.
+        </li>
+        <li>
+          <strong>Freelancer e liberi professionisti che scelgono un regime fiscale:</strong> il regime forfettario, il regime ordinario e il regime impatriati hanno caratteristiche molto diverse in termini di tassazione, contribuzione e adempimenti. Le nostre guide confrontano i diversi scenari con esempi numerici, aiutandoti a capire quale opzione e' piu' vantaggiosa per la tua situazione specifica.
+        </li>
+        <li>
+          <strong>Italiani all'estero che considerano il rientro:</strong> il regime impatriati offre agevolazioni fiscali significative per chi trasferisce la residenza in Italia dopo un periodo all'estero. La guida dedicata spiega i requisiti, la durata del beneficio, la percentuale di abbattimento del reddito imponibile e le condizioni per accedervi, fornendo tutti gli elementi necessari per valutare la convenienza del rientro.
+        </li>
+        <li>
+          <strong>Professionisti HR e payroll specialist:</strong> responsabili delle risorse umane e addetti all'elaborazione delle paghe possono utilizzare le nostre guide come riferimento rapido per verificare parametri fiscali, spiegare le voci della busta paga ai dipendenti e mantenersi aggiornati sulle novita' normative annuali. Le tabelle riepilogative e gli esempi pratici rendono le guide uno strumento utile anche per chi opera professionalmente nel settore.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Guide grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {guide.map((g) => (
+        <article class={`relative rounded-xl border bg-white dark:bg-gray-900 shadow-sm transition-all ${g.disponibile ? 'border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30' : 'border-gray-100 dark:border-gray-800 opacity-70'}`}>
+          {g.disponibile ? (
+            <a href={`/guide/${g.slug}`} class="block p-6">
+              <h2 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+                {g.titolo}
+              </h2>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {g.descrizione}
+              </p>
+              <div class="mt-4 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-500">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd" />
+                </svg>
+                <time datetime={g.data}>{dateFormatter.format(new Date(g.data))}</time>
+              </div>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand">
+                Leggi la guida
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </span>
+            </a>
+          ) : (
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h2 class="text-lg font-semibold text-gray-500 dark:text-gray-400">
+                  {g.titolo}
+                </h2>
+                <span class="flex-shrink-0 inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">
+                  In arrivo
+                </span>
+              </div>
+              <p class="mt-2 text-sm text-gray-500 dark:text-gray-500 leading-relaxed">
+                {g.descrizione}
+              </p>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 text-center">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+        Vuoi calcolare subito il tuo stipendio netto?
+      </h2>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">
+        Usa il nostro calcolatore gratuito per ottenere un risultato preciso in pochi secondi.
+      </p>
+      <a
+        href="/"
+        class="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-red-700 transition-colors"
+      >
+        Calcola Stipendio Netto
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</Layout>

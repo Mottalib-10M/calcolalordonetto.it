@@ -1,0 +1,193 @@
+---
+import Layout from './Layout.astro';
+import { SITE } from '../config';
+import { breadcrumbSchema, webAppSchema } from '../lib/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ral: number;
+  nettoMensile: number;
+  regione?: string;
+  breadcrumbs: { name: string; url: string }[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ral,
+  nettoMensile,
+  regione,
+  breadcrumbs,
+} = Astro.props;
+
+const canonicalURL = canonical || Astro.url.href;
+
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  webAppSchema(
+    `Calcolo Netto per RAL ${ral.toLocaleString('it-IT')}\u00A0€`,
+    description,
+    canonicalURL,
+  ),
+];
+
+const schemaString = JSON.stringify(schemas);
+
+const formatCurrency = (value: number) =>
+  value.toLocaleString('it-IT', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+const ralStep = 1000;
+const prevRal = ral - ralStep;
+const nextRal = ral + ralStep;
+
+function ralToSlug(amount: number): string {
+  return `/stipendio-netto/${amount.toLocaleString('it-IT').replace(/\./g, '')}-euro`;
+}
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+  schema={schemaString}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb navigation -->
+    <nav aria-label="Breadcrumb" class="py-4">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        {breadcrumbs.map((crumb, index) => (
+          <li class="flex items-center gap-1.5">
+            {index > 0 && (
+              <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            )}
+            {index < breadcrumbs.length - 1 ? (
+              <a href={crumb.url} class="hover:text-brand transition-colors">
+                {crumb.name}
+              </a>
+            ) : (
+              <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">
+                {crumb.name}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <!-- Hero section with key result -->
+    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-14 mb-10">
+      <div class="relative z-10">
+        <p class="text-sm font-medium text-gray-400 uppercase tracking-wider">
+          RAL {formatCurrency(ral)} &euro;{regione ? ` \u2014 ${regione}` : ''}
+        </p>
+
+        <div class="mt-4 flex flex-col sm:flex-row sm:items-end sm:gap-6">
+          <div>
+            <p class="text-sm text-gray-400">Stipendio netto mensile</p>
+            <p class="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+              {formatCurrency(nettoMensile)} <span class="text-brand">&euro;</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 ring-1 ring-green-500/30">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+            </svg>
+            Aggiornato {SITE.annoFiscale}
+          </span>
+        </div>
+
+        <!-- CTA to main calculator -->
+        <div class="mt-8">
+          <a
+            href={`/?ral=${ral}`}
+            class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
+            Calcola con parametri personalizzati
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Decorative background -->
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand"></div>
+        <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
+      </div>
+    </section>
+
+    <!-- Region comparison table -->
+    <section class="mb-12">
+      <slot name="confronto-regioni" />
+    </section>
+
+    <!-- Family situation table -->
+    <section class="mb-12">
+      <slot name="situazione-familiare" />
+    </section>
+
+    <!-- Detailed breakdown -->
+    <section class="mb-12">
+      <slot name="dettaglio" />
+    </section>
+
+    <!-- Contextual analysis -->
+    <section class="mb-12">
+      <slot name="analisi" />
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-12">
+      <slot name="faq" />
+    </section>
+
+    <!-- Adjacent RAL page links -->
+    <nav aria-label="Pagine RAL correlate" class="mb-16 flex flex-col sm:flex-row gap-4">
+      {prevRal > 0 && (
+        <a
+          href={ralToSlug(prevRal)}
+          class="flex-1 group flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        >
+          <svg class="h-5 w-5 text-gray-400 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+          </svg>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">RAL precedente</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+              {formatCurrency(prevRal)} &euro;
+            </p>
+          </div>
+        </a>
+      )}
+      <a
+        href={ralToSlug(nextRal)}
+        class="flex-1 group flex items-center justify-end gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors text-right"
+      >
+        <div>
+          <p class="text-xs text-gray-500 dark:text-gray-400">RAL successiva</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+            {formatCurrency(nextRal)} &euro;
+          </p>
+        </div>
+        <svg class="h-5 w-5 text-gray-400 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </nav>
+  </div>
+</Layout>

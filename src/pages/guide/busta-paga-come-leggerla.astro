@@ -1,0 +1,480 @@
+---
+import GuidaLayout from '../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../config';
+
+const title = "Busta Paga: Come Leggerla Voce per Voce nel 2026";
+const description = "Guida completa alla lettura della busta paga italiana nel 2026: scopri ogni voce, dalle competenze alle trattenute, con esempio pratico su RAL 28.000 euro e CCNL Commercio.";
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Guide', url: `${SITE.url}/guide` },
+  { name: 'Busta Paga: Come Leggerla', url: `${SITE.url}/guide/busta-paga-come-leggerla` },
+];
+
+const faqs = [
+  {
+    question: 'Cosa succede se trovo un errore nella busta paga?',
+    answer: 'Se riscontri un errore nella busta paga, il primo passo e segnalarlo per iscritto all\'ufficio paghe o al consulente del lavoro dell\'azienda. Il datore di lavoro e obbligato a correggere l\'errore e, se hai percepito meno del dovuto, a versarti la differenza nel cedolino successivo (o con un conguaglio separato). In caso di mancata correzione, puoi rivolgerti a un sindacato o a un consulente del lavoro di fiducia. Hai diritto a contestare entro 5 anni per le voci retributive e 10 anni per i contributi previdenziali.',
+  },
+  {
+    question: 'Perche\' il netto di marzo e piu\' basso rispetto a gennaio?',
+    answer: 'A partire da marzo, nella busta paga iniziano le trattenute per le addizionali regionale e comunale relative all\'anno precedente. L\'addizionale regionale viene trattenuta in 11 rate da marzo a gennaio dell\'anno successivo. L\'addizionale comunale (saldo) segue la stessa tempistica, mentre l\'acconto comunale dell\'anno in corso viene trattenuto in 9 rate da marzo a novembre. Per questo i mesi da gennaio a febbraio hanno un netto piu alto: mancano ancora queste trattenute.',
+  },
+  {
+    question: 'La tredicesima viene tassata di piu\' rispetto allo stipendio ordinario?',
+    answer: 'Si, la tredicesima subisce un prelievo fiscale maggiore. Pur avendo la stessa aliquota IRPEF, sulla tredicesima non si applicano le detrazioni per lavoro dipendente ne\' le addizionali regionali e comunali (che vengono gia trattenute nei mesi ordinari). L\'assenza delle detrazioni fa si che l\'IRPEF netta sulla tredicesima sia significativamente piu alta. Ad esempio, su una RAL di 28.000 euro, la tredicesima netta e circa 150 euro inferiore rispetto a una mensilita ordinaria (senza addizionali).',
+  },
+  {
+    question: 'Dove trovo l\'imponibile previdenziale nella busta paga?',
+    answer: 'L\'imponibile previdenziale e indicato nella sezione delle trattenute, generalmente nella parte centrale o inferiore del cedolino, accanto alla voce "contributi INPS" o "imponibile previdenziale". Corrisponde alla retribuzione lorda mensile su cui vengono calcolati i contributi al 9,19%. In molte buste paga e riportato anche nel riepilogo in fondo al documento, insieme all\'imponibile fiscale e al totale delle trattenute.',
+  },
+  {
+    question: 'Come posso simulare la mia busta paga prima di riceverla?',
+    answer: 'Puoi utilizzare il nostro <a href="/calcolo-busta-paga" class="text-brand hover:underline">calcolatore busta paga</a> inserendo la tua RAL, la regione e il comune di residenza, il tipo di contratto e il numero di mensilita. Il calcolatore restituisce una simulazione dettagliata con tutte le voci: retribuzione lorda, contributi INPS, IRPEF lorda e netta, detrazioni, addizionali e netto in busta. Tieni presente che il risultato e una stima: voci come straordinari, superminimi individuali o benefit aziendali possono generare scostamenti rispetto al cedolino effettivo.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-05-15"
+  dateModified="2026-05-15"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#che-cose-la-busta-paga" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Che Cos'e la Busta Paga?</a></li>
+      <li><a href="#le-tre-sezioni-principali" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Le Tre Sezioni Principali</a></li>
+      <li><a href="#competenze-le-voci-in-positivo" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Competenze: Le Voci in Positivo</a></li>
+      <li><a href="#trattenute-le-voci-in-negativo" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Trattenute: Le Voci in Negativo</a></li>
+      <li><a href="#mese-ordinario-e-tredicesima" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Mese Ordinario e Tredicesima</a></li>
+      <li><a href="#tempistica-delle-addizionali" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tempistica delle Addizionali</a></li>
+      <li><a href="#esempio-completo" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esempio Completo</a></li>
+      <li><a href="#strumenti-utili" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Strumenti Utili</a></li>
+      <li><a href="#domande-frequenti" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Domande Frequenti</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="che-cose-la-busta-paga">Che Cos'e la Busta Paga?</h2>
+
+  <p>
+    La busta paga (detta anche <strong>cedolino paga</strong> o <strong>prospetto paga</strong>) e il documento che il datore di lavoro e obbligato a consegnare al lavoratore dipendente in occasione di ogni pagamento della retribuzione. Questo obbligo e stabilito dalla <strong>Legge 5 gennaio 1953, n. 4, articolo 1</strong>, che prevede anche sanzioni amministrative per il datore di lavoro inadempiente.
+  </p>
+  <p>
+    La busta paga rappresenta la "fotografia" mensile del rapporto di lavoro: contiene tutte le informazioni relative alla retribuzione lorda maturata, alle trattenute operate e al netto effettivamente corrisposto. Saper leggere questo documento e fondamentale per verificare che lo stipendio sia corretto, per comprendere l'incidenza delle imposte e dei contributi, e per prendere decisioni consapevoli sulla propria situazione finanziaria.
+  </p>
+  <p>
+    Nonostante non esista un formato obbligatorio unico, la struttura del cedolino e sostanzialmente standard e si articola in tre macro sezioni. Vediamole nel dettaglio.
+  </p>
+
+  <h2 id="le-tre-sezioni-principali">Le Tre Sezioni Principali</h2>
+
+  <p>
+    Ogni busta paga, indipendentemente dal software utilizzato dall'azienda, si compone di tre blocchi fondamentali:
+  </p>
+  <ol>
+    <li><strong>Intestazione (dati anagrafici e contrattuali):</strong> contiene le informazioni identificative del datore di lavoro (ragione sociale, codice fiscale, posizione INPS e INAIL) e del lavoratore (nome, cognome, codice fiscale, data di assunzione, qualifica, livello contrattuale, CCNL applicato). In questa sezione sono riportati anche i dati relativi alla posizione contributiva e alla sede di lavoro.</li>
+    <li><strong>Corpo centrale (competenze e trattenute):</strong> e il cuore della busta paga. Nella parte sinistra o superiore sono elencate le <em>competenze</em>, cioe tutte le voci retributive che compongono il lordo mensile. Nella parte destra o inferiore compaiono le <em>trattenute</em>, cioe i contributi previdenziali e le imposte sottratte. La differenza tra il totale delle competenze e il totale delle trattenute determina il netto.</li>
+    <li><strong>Parte finale (netto in busta e dati riepilogativi):</strong> riporta l'importo netto da corrispondere al lavoratore, i progressivi annui (retribuzione lorda, contributi INPS, IRPEF, addizionali) e altri dati utili come il TFR maturato nel periodo e le ferie e i permessi residui.</li>
+  </ol>
+
+  <h2 id="competenze-le-voci-in-positivo">Competenze: Le Voci in Positivo</h2>
+
+  <p>
+    Le competenze sono le voci che concorrono a formare la retribuzione lorda mensile. Ciascuna ha un'origine e una regolamentazione specifica. Ecco le principali.
+  </p>
+
+  <h3>Retribuzione base (paga base)</h3>
+  <p>
+    E' l'importo minimo stabilito dal <strong>Contratto Collettivo Nazionale di Lavoro (CCNL)</strong> per il livello di inquadramento del lavoratore. Ogni CCNL prevede tabelle retributive che fissano la paga base per ciascun livello. Ad esempio, nel CCNL Commercio, un lavoratore inquadrato al Livello 3 ha una paga base di circa 1.263 &euro; mensili (importo soggetto a rivalutazione periodica). La paga base e il fondamento su cui si costruisce l'intera retribuzione.
+  </p>
+
+  <h3>Contingenza</h3>
+  <p>
+    L'indennita di contingenza e un importo fisso che ha origine storica: fu introdotta per adeguare gli stipendi al costo della vita. Dal <strong>1992</strong> (Accordo interconfederale del 31 luglio 1992) il meccanismo di adeguamento automatico e stato congelato, pertanto l'importo resta invariato nel tempo. Nella busta paga compare ancora come voce separata per ragioni contabili e contrattuali. L'importo varia in base al CCNL e al livello di inquadramento.
+  </p>
+
+  <h3>Scatti di anzianita'</h3>
+  <p>
+    Gli scatti di anzianita' sono aumenti periodici della retribuzione, riconosciuti automaticamente al lavoratore in funzione della permanenza in azienda. La cadenza e l'importo dipendono dal CCNL applicato: nel Commercio, ad esempio, si matura uno scatto ogni <strong>3 anni</strong> di servizio, per un massimo di 10 scatti. L'importo di ciascuno scatto varia in base al livello di inquadramento (circa 20 &euro; al mese per il Livello 3 del CCNL Commercio).
+  </p>
+
+  <h3>Superminimo</h3>
+  <p>
+    Il superminimo e una voce retributiva aggiuntiva rispetto ai minimi contrattuali. Puo essere <strong>individuale</strong> (concordato tra datore e lavoratore al momento dell'assunzione o di un successivo accordo) oppure <strong>collettivo</strong> (previsto da accordi aziendali o territoriali). Il superminimo individuale puo essere assorbibile, cioe riducibile in caso di futuri aumenti del CCNL, oppure non assorbibile, a seconda di quanto previsto nella lettera di assunzione.
+  </p>
+
+  <h3>Straordinario</h3>
+  <p>
+    La retribuzione per lavoro straordinario e calcolata applicando una maggiorazione sulla paga oraria ordinaria. Le percentuali di maggiorazione sono stabilite dal CCNL:
+  </p>
+  <ul>
+    <li><strong>Straordinario feriale (giorni lavorativi):</strong> maggiorazione del 25% sulla paga oraria</li>
+    <li><strong>Straordinario festivo o domenicale:</strong> maggiorazione del 30%</li>
+    <li><strong>Straordinario notturno:</strong> maggiorazione variabile dal 35% al 50% a seconda del contratto</li>
+  </ul>
+  <p>
+    La paga oraria si ottiene dividendo la retribuzione mensile per il divisore orario previsto dal CCNL (tipicamente 168 o 173 ore per il Commercio).
+  </p>
+
+  <h3>Indennita' varie</h3>
+  <p>
+    In questa voce rientrano numerose componenti accessorie che variano in base al contratto e all'azienda: l'indennita' di turno (per chi lavora su turni a rotazione), l'indennita' di trasferta, i buoni pasto (se erogati come voce in busta e non come ticket), l'indennita' di cassa (per chi maneggia denaro), e l'indennita' di reperibilita'. Ciascuna di queste voci ha un proprio trattamento ai fini fiscali e previdenziali.
+  </p>
+
+  <h2 id="trattenute-le-voci-in-negativo">Trattenute: Le Voci in Negativo</h2>
+
+  <p>
+    Le trattenute riducono la retribuzione lorda per arrivare al netto in busta. Sono operate direttamente dal datore di lavoro in qualita di <strong>sostituto d'imposta</strong>. Vediamo le principali nel dettaglio.
+  </p>
+
+  <h3>Contributi INPS (9,19%)</h3>
+  <p>
+    I contributi previdenziali a carico del lavoratore vengono calcolati sull'<strong>imponibile previdenziale</strong>, che corrisponde alla retribuzione lorda del mese (comprensiva di tutte le competenze soggette a contribuzione). L'aliquota standard per i dipendenti del settore privato e del <strong>9,19%</strong>. Per le retribuzioni che nell'anno superano la prima fascia pensionabile (circa 55.448 &euro; nel 2026) si aggiunge un ulteriore 1% sulla parte eccedente, ai sensi dell'art. 3-<em>ter</em> della L. 438/1992.
+  </p>
+  <p>
+    I contributi INPS sono <strong>deducibili</strong> ai fini fiscali: riducono la base imponibile su cui si calcola l'IRPEF. Il datore di lavoro applica questa deduzione automaticamente nel calcolo della busta paga.
+  </p>
+
+  <h3>IRPEF (trattenuta mensile)</h3>
+  <p>
+    L'IRPEF in busta paga non viene calcolata sul solo mese corrente, ma attraverso un meccanismo di <strong>proiezione annuale</strong>. Il datore di lavoro stima il reddito complessivo annuo del lavoratore, calcola l'IRPEF dovuta su base annua applicando gli <a href="/guide/scaglioni-irpef-2026">scaglioni IRPEF 2026</a> (23% fino a 28.000 &euro;, 33% da 28.001 a 50.000 &euro;, 43% oltre), e divide per il numero di mensilita. A fine anno, con il conguaglio di dicembre, eventuali differenze tra l'imposta trattenuta e quella effettivamente dovuta vengono regolate.
+  </p>
+
+  <h3>Addizionale regionale IRPEF</h3>
+  <p>
+    L'addizionale regionale e calcolata sul reddito imponibile dell'<strong>anno precedente</strong> e viene trattenuta in <strong>11 rate</strong> da marzo dell'anno corrente a gennaio dell'anno successivo. Le aliquote variano significativamente da regione a regione: il Lazio, ad esempio, applica aliquote progressive che arrivano fino al 3,33% per i redditi piu alti, mentre regioni come il Trentino Alto Adige partono dallo 0,70%.
+  </p>
+
+  <h3>Addizionale comunale IRPEF</h3>
+  <p>
+    L'addizionale comunale segue un meccanismo a due componenti:
+  </p>
+  <ul>
+    <li><strong>Saldo anno precedente:</strong> trattenuto in 11 rate da marzo a gennaio dell'anno successivo</li>
+    <li><strong>Acconto anno corrente:</strong> trattenuto in 9 rate da marzo a novembre, pari al 30% dell'addizionale dell'anno precedente</li>
+  </ul>
+  <p>
+    Le aliquote comunali vanno da zero (alcuni comuni azzerano l'addizionale per redditi bassi) fino a un massimo dello 0,9%. Roma, ad esempio, applica un'aliquota dello 0,9% per i redditi superiori a una certa soglia.
+  </p>
+
+  <h3>Trattamento integrativo (ex bonus Renzi)</h3>
+  <p>
+    Il trattamento integrativo e un credito di <strong>100 &euro; al mese</strong> (1.200 &euro; annui) riconosciuto direttamente in busta paga ai lavoratori dipendenti con reddito complessivo fino a 15.000 &euro;, a condizione che l'IRPEF lorda sia superiore alla detrazione per lavoro dipendente. Per redditi tra 15.001 e 28.000 &euro; puo spettare in misura ridotta, solo se la somma di determinate detrazioni supera l'IRPEF lorda. Oltre i 28.000 &euro; non spetta.
+  </p>
+
+  <h2 id="mese-ordinario-e-tredicesima">Mese Ordinario e Tredicesima a Confronto</h2>
+
+  <p>
+    La busta paga di dicembre merita un'attenzione particolare perche' include, oltre allo stipendio ordinario, anche la <strong>tredicesima mensilita</strong> (o gratifica natalizia). La tredicesima viene di norma esposta come sezione separata nel cedolino di dicembre, con le proprie trattenute.
+  </p>
+  <p>
+    La differenza cruciale rispetto a un mese ordinario e il <strong>trattamento fiscale</strong>. Sulla tredicesima si applicano i contributi INPS e l'IRPEF, ma <strong>non</strong> si applicano:
+  </p>
+  <ul>
+    <li>Le <strong>detrazioni per lavoro dipendente</strong> (sono gia state interamente ripartite sulle 12 mensilita ordinarie)</li>
+    <li>Le <strong>addizionali regionali e comunali</strong> (queste seguono il proprio calendario di rateizzazione)</li>
+    <li>Il <strong>trattamento integrativo</strong> (anch'esso distribuito sulle 12 mensilita ordinarie)</li>
+  </ul>
+  <p>
+    L'assenza delle detrazioni per lavoro dipendente sulla tredicesima ha un impatto significativo: l'IRPEF netta sulla tredicesima e sensibilmente piu alta rispetto a quella di un mese ordinario. Per questo molti lavoratori notano che la tredicesima "pesa meno" di quanto ci si aspetterebbe. Non e un errore del datore di lavoro: e il funzionamento ordinario del sistema fiscale.
+  </p>
+
+  <h2 id="tempistica-delle-addizionali">Tempistica delle Addizionali</h2>
+
+  <p>
+    Una delle fonti di maggiore confusione nella lettura della busta paga e la tempistica con cui vengono trattenute le addizionali. Ecco il riepilogo completo:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300">Riferimento</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">N. rate</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">Periodo</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Addizionale regionale (saldo)</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Anno precedente</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">11</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Marzo &rarr; Gennaio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Addizionale comunale (saldo)</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Anno precedente</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">11</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Marzo &rarr; Gennaio</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Addizionale comunale (acconto)</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Anno corrente (30%)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">9</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Marzo &rarr; Novembre</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    In pratica, questo meccanismo produce un effetto molto evidente: le buste paga di <strong>gennaio e febbraio</strong> non contengono trattenute per addizionali e risultano percio piu "ricche". A partire da marzo, il netto cala per effetto delle rate che iniziano a decorrere. Molti lavoratori si accorgono di questa differenza senza comprenderne la ragione: ora sai che dipende esclusivamente dal calendario delle addizionali.
+  </p>
+
+  <h2 id="esempio-completo">Esempio Completo: RAL 28.000 &euro;, CCNL Commercio, Livello 3, Roma</h2>
+
+  <p>
+    Mettiamo in pratica quanto spiegato con un caso concreto: <strong>lavoratore dipendente, single, senza figli a carico, residente a Roma (Lazio), RAL 28.000 &euro;, CCNL Commercio Livello 3, 13 mensilita</strong>. Calcoliamo prima i valori mensili e poi ricostruiamo la busta paga completa.
+  </p>
+
+  <h3>Calcolo passo per passo</h3>
+  <p>
+    Il lordo mensile si ottiene dividendo la RAL per le 13 mensilita: 28.000 / 13 = <strong>2.153,85 &euro;</strong>.
+  </p>
+  <p>
+    I contributi INPS a carico del lavoratore: 2.153,85 &times; 9,19% = <strong>197,94 &euro;</strong>.
+  </p>
+  <p>
+    L'imponibile fiscale mensile: 2.153,85 &minus; 197,94 = <strong>1.955,91 &euro;</strong>.
+  </p>
+  <p>
+    Per il calcolo dell'IRPEF, il datore di lavoro proietta l'imponibile su base annua: 1.955,91 &times; 13 = <strong>25.426,83 &euro;</strong>. Questo importo rientra interamente nel primo scaglione IRPEF (fino a 28.000 &euro;, aliquota 23%), quindi l'IRPEF lorda annua stimata e 25.426,83 &times; 23% = <strong>5.848,17 &euro;</strong>. L'IRPEF lorda mensile e circa 5.848,17 / 12 = <strong>487,35 &euro;</strong> (sulle 12 mensilita ordinarie, perche' le detrazioni si applicano solo su queste).
+  </p>
+  <p>
+    La detrazione per lavoro dipendente, con un reddito di 25.426,83 &euro; (nella fascia da 15.001 a 28.000 &euro;), si calcola come: 1.910 + 1.190 &times; (28.000 &minus; 25.426,83) / 13.000 = 1.910 + 235,62 = <strong>2.145,62 &euro;</strong> annui, pari a circa <strong>178,80 &euro;</strong> al mese (su 12 mesi).
+  </p>
+  <p>
+    L'IRPEF netta mensile (mese ordinario): 487,35 &minus; 178,80 = circa <strong>308,55 &euro;</strong>.
+  </p>
+  <p>
+    L'addizionale regionale del Lazio per un imponibile di circa 25.427 &euro; si calcola con le aliquote della regione. Poiche' l'intero imponibile ricade nel primo scaglione (fino a 28.000 &euro;, aliquota 1,73%), l'addizionale annua ammonta a circa <strong>440 &euro;</strong> (25.427 &times; 1,73%), trattenuta in 11 rate: circa <strong>40 &euro; al mese</strong> (da marzo a gennaio).
+  </p>
+  <p>
+    L'addizionale comunale di Roma (aliquota 0,9% per la fascia di reddito): circa 25.427 &times; 0,9% = <strong>229 &euro;</strong> annui. Il saldo viene trattenuto in 11 rate (circa <strong>21 &euro; al mese</strong> da marzo a gennaio) e l'acconto dell'anno corrente in 9 rate (marzo a novembre).
+  </p>
+  <p>
+    Il trattamento integrativo: con un reddito di circa 25.427 &euro; (nella fascia da 15.001 a 28.000 &euro;) puo spettare in misura ridotta, a condizione che la somma delle detrazioni specifiche superi l'IRPEF lorda. Ipotizzando l'idoneita', il credito e di <strong>100 &euro; al mese</strong>.
+  </p>
+  <p>
+    Il beneficio del cuneo fiscale 2026: il reddito rientra nella fascia da 20.001 a 32.000 &euro; (Tier 2), che prevede una detrazione aggiuntiva di 1.000 &euro; annui, pari a circa <strong>83 &euro; al mese</strong> (su 12 mensilita' ordinarie).
+  </p>
+
+  <h3>Busta paga ricostruita: mese ordinario (gennaio o febbraio, senza addizionali)</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Importo mensile</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Retribuzione lorda mensile (28.000 / 13)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.153,85 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Contributi INPS (9,19%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 197,94 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= Imponibile fiscale mensile</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.955,91 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; IRPEF lorda mensile</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 487,35 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Detrazione lavoro dipendente (mensile)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 178,80 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= IRPEF netta mensile</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 308,55 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Trattamento integrativo</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 100,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Beneficio cuneo fiscale 2026</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 83,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 text-gray-500 italic">Addizionale regionale Lazio (rata)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-400 italic">0,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 text-gray-500 italic">Addizionale comunale Roma (rata)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-400 italic">0,00 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Netto in busta (gen/feb)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">1.830,36 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Busta paga ricostruita: mese ordinario (da marzo a novembre, con addizionali)</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Importo mensile</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Retribuzione lorda mensile</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.153,85 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Contributi INPS (9,19%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 197,94 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; IRPEF netta mensile</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 308,55 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Trattamento integrativo</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 100,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Beneficio cuneo fiscale 2026</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 83,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale regionale Lazio (rata)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 40,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale comunale Roma (rata)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 21,00 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Netto in busta (mar/nov)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">1.769,36 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    La differenza tra il netto di gennaio/febbraio e quello dei mesi successivi e di circa <strong>61 &euro;</strong>, dovuta interamente alle rate delle addizionali. I mesi di dicembre e gennaio dell'anno successivo avranno un importo leggermente diverso per effetto delle sole rate di addizionale regionale e comunale (saldo), senza l'acconto comunale.
+  </p>
+
+  <h3>Riepilogo annuale</h3>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Voce</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Importo annuo</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">RAL (Retribuzione Annua Lorda)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">28.000,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Contributi INPS (9,19%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 2.573,20 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= Imponibile fiscale annuo</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">25.426,80 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; IRPEF lorda (23%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 5.848,16 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Detrazione lavoro dipendente</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 2.145,62 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= IRPEF netta</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 3.702,54 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale regionale (Lazio)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 440,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale comunale (Roma)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; 229,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Trattamento integrativo</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 1.200,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Beneficio cuneo fiscale 2026</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ 1.000,00 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Stipendio Netto Annuo</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-white font-bold text-base">23.255,26 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Netto Mensile Medio (13 mensilita)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">1.788,87 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Il netto mensile effettivo varia nel corso dell'anno: come visto sopra, i mesi di gennaio e febbraio offrono un netto piu alto (circa 1.830 &euro;), mentre da marzo in poi il netto scende a circa 1.769 &euro; per effetto delle rate delle addizionali. La tredicesima, pur essendo dello stesso importo lordo, produce un netto inferiore per l'assenza delle detrazioni.
+  </p>
+
+  <h2 id="strumenti-utili">Strumenti Utili</h2>
+
+  <p>
+    Per verificare il tuo cedolino o simulare una busta paga personalizzata, puoi utilizzare i nostri calcolatori gratuiti:
+  </p>
+
+  <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+    <a href="/calcolo-busta-paga" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Busta Paga</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Simula una busta paga mensile completa con tutte le voci, dalle competenze al netto.</p>
+    </a>
+    <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Stipendio Netto</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Inserisci la RAL e scopri il netto annuo e mensile con il dettaglio di ogni trattenuta.</p>
+    </a>
+    <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo IRPEF</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Verifica l'IRPEF lorda e netta con il dettaglio degli scaglioni e delle detrazioni.</p>
+    </a>
+    <a href="/comparatore-regioni" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
+      <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Confronto tra Regioni</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Scopri quanto cambia il netto in busta da una regione all'altra a parita di RAL.</p>
+    </a>
+  </div>
+
+  <!-- FAQ Section -->
+  <h2 id="domande-frequenti">Domande Frequenti</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" />
+  </div>
+
+</GuidaLayout>

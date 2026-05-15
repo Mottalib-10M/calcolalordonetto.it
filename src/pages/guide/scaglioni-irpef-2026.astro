@@ -1,0 +1,406 @@
+---
+import GuidaLayout from '../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../config';
+
+const title = "Scaglioni IRPEF 2026: Aliquote, Calcolo e Novita Fiscali";
+const description = "Guida completa agli scaglioni IRPEF 2026: le tre aliquote, come si calcola l'imposta, la no tax area, il confronto con gli anni precedenti e quanto risparmi.";
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Guide', url: `${SITE.url}/guide` },
+  { name: 'Scaglioni IRPEF 2026', url: `${SITE.url}/guide/scaglioni-irpef-2026` },
+];
+
+const faqs = [
+  {
+    question: 'Quanti sono gli scaglioni IRPEF nel 2026?',
+    answer: 'Nel 2026 gli scaglioni IRPEF sono tre: il primo fino a 28.000 euro con aliquota al 23%, il secondo da 28.001 a 50.000 euro con aliquota al 33%, e il terzo oltre 50.000 euro con aliquota al 43%. Questa struttura a tre scaglioni e stata introdotta nel 2024 (riducendo i precedenti quattro scaglioni) e confermata strutturalmente dalla Legge di Bilancio 2026 con l\'ulteriore riduzione del secondo scaglione dal 35% al 33%.',
+  },
+  {
+    question: 'L\'IRPEF si calcola su tutta la RAL?',
+    answer: 'No. L\'IRPEF non si calcola direttamente sulla RAL, ma sull\'imponibile fiscale, che si ottiene sottraendo dalla RAL i contributi INPS a carico del lavoratore (9,19%). Inoltre, il sistema e progressivo: ogni aliquota si applica solo alla porzione di reddito che ricade nel rispettivo scaglione. Ad esempio, se il tuo imponibile e di 35.000 euro, paghi il 23% solo sui primi 28.000 euro e il 33% solo sui 7.000 euro rimanenti.',
+  },
+  {
+    question: 'Cosa significa \"no tax area\"?',
+    answer: 'La no tax area e la soglia di reddito sotto la quale non si paga IRPEF grazie alle detrazioni per lavoro dipendente. Nel 2026, questa soglia e di 8.500 euro: se il tuo reddito complessivo non supera questo importo, la detrazione per lavoro dipendente (1.955 euro) azzera completamente l\'IRPEF lorda (8.500 &times; 23% = 1.955 euro). In pratica, fino a 8.500 euro di reddito l\'imposta netta e zero.',
+  },
+  {
+    question: 'Quanto risparmio rispetto al 2025 con i nuovi scaglioni?',
+    answer: 'Il risparmio dipende dal tuo livello di reddito. La novita principale del 2026 e la riduzione dell\'aliquota del secondo scaglione dal 35% al 33%, che produce un risparmio per chi ha un imponibile superiore a 28.000 euro. Per un imponibile di 35.000 euro il risparmio e di 140 euro annui, per 50.000 euro e di 440 euro annui. Chi ha un reddito inferiore a 28.000 euro non beneficia di questa specifica modifica, in quanto gia rientra interamente nel primo scaglione al 23%.',
+  },
+  {
+    question: 'Le addizionali regionali seguono gli stessi scaglioni?',
+    answer: 'No. Le addizionali regionali IRPEF hanno scaglioni e aliquote propri, stabiliti autonomamente da ciascuna regione. Alcune regioni applicano un\'aliquota fissa, altre un sistema progressivo con scaglioni che non necessariamente coincidono con quelli nazionali. Ad esempio, la Lombardia ha tre scaglioni con aliquote dal 1,23% al 1,74%, mentre il Lazio ne ha cinque con aliquote dall\'1,73% al 3,33%. Per conoscere le aliquote della tua regione, puoi usare il nostro <a href="/comparatore-regioni" class="text-brand hover:underline">comparatore regionale</a>.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#cosa-sono-gli-scaglioni-irpef" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Cosa Sono gli Scaglioni IRPEF?</a></li>
+      <li><a href="#i-tre-scaglioni-irpef-2026" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">I Tre Scaglioni IRPEF 2026</a></li>
+      <li><a href="#le-novita-del-2026" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Le Novita del 2026</a></li>
+      <li><a href="#come-si-calcola-lirpef-esempio-pratico" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esempio di Calcolo</a></li>
+      <li><a href="#le-detrazioni-da-lavoro-dipendente" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Detrazioni da Lavoro Dipendente</a></li>
+      <li><a href="#no-tax-area" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">No Tax Area</a></li>
+      <li><a href="#confronto-con-gli-anni-precedenti" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Confronto Anni Precedenti</a></li>
+      <li><a href="#quanto-risparmio-con-i-nuovi-scaglioni" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Quanto Risparmio?</a></li>
+      <li><a href="#faq-scaglioni-irpef" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">FAQ</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="cosa-sono-gli-scaglioni-irpef">Cosa Sono gli Scaglioni IRPEF?</h2>
+
+  <p>
+    L'IRPEF (Imposta sul Reddito delle Persone Fisiche) e la principale imposta che colpisce i redditi dei cittadini italiani. La sua caratteristica fondamentale e la <strong>progressivita</strong>: chi guadagna di piu paga un'aliquota piu alta, ma solo sulla porzione di reddito che supera determinate soglie.
+  </p>
+  <p>
+    Queste soglie si chiamano <strong>scaglioni</strong>. Il sistema funziona come una scala: il tuo reddito imponibile viene suddiviso in "fette" e ciascuna fetta viene tassata con l'aliquota corrispondente al proprio scaglione. Questo principio, sancito dall'art. 53 della Costituzione e disciplinato dal Testo Unico delle Imposte sui Redditi (TUIR, artt. 11-13), garantisce che il prelievo fiscale sia proporzionato alla capacita contributiva di ciascun cittadino.
+  </p>
+  <p>
+    Un errore molto diffuso e pensare che, superata una soglia, l'intera retribuzione venga tassata con l'aliquota piu alta. Non e cosi: se guadagni 30.000 euro, non paghi il 33% su tutto il reddito. Paghi il 23% sui primi 28.000 euro e solo il 33% sui 2.000 euro rimanenti. Questa distinzione e cruciale per capire il reale impatto delle tasse sul tuo stipendio.
+  </p>
+
+  <h2 id="i-tre-scaglioni-irpef-2026">I Tre Scaglioni IRPEF 2026</h2>
+
+  <p>
+    Dal 1 gennaio 2026, l'IRPEF si articola su <strong>tre scaglioni</strong> con le seguenti aliquote, come stabilito dalla Legge di Bilancio 2026:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Scaglione</th>
+          <th class="py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300">Reddito imponibile</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF nello scaglione</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF cumulata</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">1&deg;</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Fino a 28.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">23%</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">max 6.440 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">6.440 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">2&deg;</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Da 28.001 a 50.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">33%</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">max 7.260 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">13.700 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">3&deg;</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Oltre 50.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">43%</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">Illimitata</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">13.700 &euro; + 43% eccedenza</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    In concreto, l'IRPEF lorda si calcola sommando le imposte di ciascuno scaglione. Se il tuo reddito imponibile ricade interamente nel primo scaglione (fino a 28.000 euro), il calcolo e immediato: basta moltiplicare per il 23%. Se supera le soglie, devi calcolare l'imposta per ogni fascia e sommare i risultati.
+  </p>
+
+  <h2 id="le-novita-del-2026">Le Novita del 2026</h2>
+
+  <p>
+    La principale novita introdotta dalla Legge di Bilancio 2026 in materia di IRPEF e la <strong>riduzione dell'aliquota del secondo scaglione dal 35% al 33%</strong>. Questa modifica si inserisce nel percorso di riforma fiscale avviato con la Legge Delega n. 111/2023 e proseguito con il D.Lgs. 216/2023.
+  </p>
+  <p>
+    Ecco l'evoluzione recente del sistema IRPEF:
+  </p>
+  <ul>
+    <li><strong>Fino al 2023:</strong> quattro scaglioni (23%, 25%, 35%, 43%)</li>
+    <li><strong>2024-2025:</strong> tre scaglioni (23%, 35%, 43%): accorpamento dei primi due scaglioni</li>
+    <li><strong>Dal 2026:</strong> tre scaglioni (23%, 33%, 43%): riduzione dell'aliquota intermedia</li>
+  </ul>
+  <p>
+    La riduzione di 2 punti percentuali del secondo scaglione produce un risparmio tangibile per tutti i contribuenti con reddito imponibile superiore a 28.000 euro. Il risparmio massimo si raggiunge a 50.000 euro di imponibile ed e pari a <strong>440 euro annui</strong> (22.000 &times; 2%).
+  </p>
+  <p>
+    Altra conferma importante: la <strong>strutturalizzazione</strong> del sistema a tre scaglioni, che nel 2024 era stato introdotto inizialmente come misura temporanea per un solo anno. Dal 2026 la riforma e a regime.
+  </p>
+
+  <h2 id="come-si-calcola-lirpef-esempio-pratico">Come Si Calcola l'IRPEF: Esempio Pratico</h2>
+
+  <p>
+    Vediamo il calcolo passo per passo con un <strong>reddito imponibile di 35.000 euro</strong> (corrispondente, indicativamente, a una RAL di circa 38.500 euro):
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Scaglione</th>
+          <th class="py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300">Base imponibile</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Aliquota</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">1&deg; scaglione</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">28.000 &euro;</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">23%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">6.440,00 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">2&deg; scaglione</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">7.000 &euro; (35.000 &minus; 28.000)</td>
+          <td class="py-3 px-4 text-center font-semibold text-brand">33%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.310,00 &euro;</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold" colspan="3">IRPEF Lorda Totale</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-white font-bold">8.750,00 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    L'IRPEF lorda su 35.000 euro di imponibile e quindi <strong>8.750 euro</strong>. L'aliquota media effettiva e 8.750 / 35.000 = <strong>25%</strong>, ben inferiore al 33% del secondo scaglione. Questo dimostra come la progressivita attenui l'impatto delle aliquote piu alte.
+  </p>
+  <p>
+    Da questa IRPEF lorda vanno poi sottratte le detrazioni (per lavoro dipendente, familiari a carico, ecc.) per ottenere l'IRPEF netta effettivamente dovuta. Puoi effettuare questo calcolo con il nostro <a href="/calcolo-irpef">calcolatore IRPEF</a>.
+  </p>
+
+  <h2 id="le-detrazioni-da-lavoro-dipendente">Le Detrazioni da Lavoro Dipendente</h2>
+
+  <p>
+    Le detrazioni per redditi da lavoro dipendente (art. 13 TUIR) sono il principale meccanismo che riduce l'IRPEF netta. Sono inversamente proporzionali al reddito: piu guadagni, meno detrai.
+  </p>
+  <p>
+    Per il 2026, le detrazioni funzionano cosi:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Fascia di reddito</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">Detrazione</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 15.000 &euro;</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">1.955 &euro; (minimo 690 &euro;; 1.380 &euro; per tempo determinato)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 15.001 a 28.000 &euro;</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">1.910 + 1.190 &times; (28.000 &minus; reddito) / 13.000</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 28.001 a 50.000 &euro;</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">1.910 &times; (50.000 &minus; reddito) / 22.000</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 50.000 &euro;</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Nessuna detrazione</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Riprendendo il nostro esempio con 35.000 euro di imponibile, la detrazione per lavoro dipendente ammonta a: 1.910 &times; (50.000 &minus; 35.000) / 22.000 = 1.910 &times; 15.000 / 22.000 = <strong>1.302,27 euro</strong>.
+  </p>
+  <p>
+    L'IRPEF netta diventa quindi: 8.750 &minus; 1.302,27 = <strong>7.447,73 euro</strong>.
+  </p>
+
+  <h2 id="no-tax-area">No Tax Area</h2>
+
+  <p>
+    La <strong>no tax area</strong> e la soglia di reddito sotto la quale l'IRPEF netta e pari a zero, grazie all'effetto combinato dell'aliquota del primo scaglione e della detrazione per lavoro dipendente.
+  </p>
+  <p>
+    Nel 2026, la no tax area per i lavoratori dipendenti e fissata a <strong>8.500 euro</strong>. Ecco come si arriva a questo valore:
+  </p>
+  <ul>
+    <li>IRPEF lorda su 8.500 euro: 8.500 &times; 23% = <strong>1.955 euro</strong></li>
+    <li>Detrazione per lavoro dipendente (reddito fino a 15.000 euro): <strong>1.955 euro</strong></li>
+    <li>IRPEF netta: 1.955 &minus; 1.955 = <strong>0 euro</strong></li>
+  </ul>
+  <p>
+    In pratica, se il tuo reddito complessivo annuo non supera gli 8.500 euro, non paghi alcuna IRPEF. La no tax area del 2026 e stata equiparata a quella dei pensionati (anch'essi a 8.500 euro), eliminando la disparita che esisteva fino al 2023 quando il limite per i dipendenti era di 8.174 euro.
+  </p>
+  <p>
+    Attenzione: la no tax area riguarda soltanto l'IRPEF nazionale. Le addizionali regionali e comunali possono comunque essere dovute anche sotto questa soglia, a seconda delle regole previste da ciascun ente locale. Alcune regioni prevedono esenzioni per redditi fino a una certa soglia, altre no.
+  </p>
+
+  <h2 id="confronto-con-gli-anni-precedenti">Confronto con gli Anni Precedenti</h2>
+
+  <p>
+    Per capire l'evoluzione del sistema fiscale, ecco il confronto degli scaglioni IRPEF dal 2023 al 2026:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Fascia di reddito</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">2023</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">2024</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">2025</th>
+          <th class="py-3 pl-4 text-center font-semibold text-gray-700 dark:text-gray-300">2026</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 15.000 &euro;</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">23%</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100" rowspan="2">23%</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100" rowspan="2">23%</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100" rowspan="2">23%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 15.001 a 28.000 &euro;</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">25%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Da 28.001 a 50.000 &euro;</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">35%</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">35%</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">35%</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">33%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 50.000 &euro;</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">43%</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">43%</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">43%</td>
+          <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">43%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Come si vede dalla tabella, il percorso di semplificazione e alleggerimento fiscale e stato graduale. Nel 2024 si e passati da quattro a tre scaglioni accorpando le prime due fasce al 23%. Nel 2026 si e intervenuti sul secondo scaglione, riducendo l'aliquota di 2 punti percentuali. La fascia piu alta (43% oltre 50.000 euro) e rimasta invariata dal 2007.
+  </p>
+
+  <h2 id="quanto-risparmio-con-i-nuovi-scaglioni">Quanto Risparmio con i Nuovi Scaglioni?</h2>
+
+  <p>
+    La riduzione del secondo scaglione dal 35% al 33% produce un risparmio concreto per tutti i contribuenti con reddito imponibile superiore a 28.000 euro. Ecco una tabella che mostra il risparmio annuo rispetto al 2025 per diversi livelli di reddito:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Reddito imponibile</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF 2025</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF 2026</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Risparmio annuo</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">20.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">4.600 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">4.600 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-500">0 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">28.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">6.440 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">6.440 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-500">0 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">30.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">7.140 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">7.100 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-medium">40 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">35.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">8.890 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">8.750 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-medium">140 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">40.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">10.640 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">10.400 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-medium">240 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">50.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">14.140 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">13.700 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-medium">440 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">60.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">18.440 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">18.000 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-medium">440 &euro;</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">80.000 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">27.040 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">26.600 &euro;</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-medium">440 &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Come puoi notare, il risparmio e nullo per redditi fino a 28.000 euro (che rientrano interamente nel primo scaglione) e cresce linearmente fino a raggiungere il massimo di <strong>440 euro annui</strong> a partire da 50.000 euro di imponibile. Oltre questa soglia, il risparmio resta fisso a 440 euro perche il terzo scaglione (43%) non e stato modificato.
+  </p>
+  <p>
+    In termini mensili, per chi percepisce 13 mensilita, il risparmio massimo corrisponde a circa <strong>34 euro al mese</strong>. Non si tratta di una cifra rivoluzionaria, ma contribuisce ad alleggerire il carico fiscale sulla classe media.
+  </p>
+  <p>
+    Vuoi verificare l'impatto sulla tua situazione specifica? Usa il nostro <a href="/">calcolatore stipendio netto</a> per ottenere un risultato preciso con tutte le variabili (regione, comune, situazione familiare). Puoi anche esplorare le differenze tra regioni con il <a href="/comparatore-regioni">comparatore regionale</a>.
+  </p>
+
+  <h2 id="fonti-normative">Fonti Normative e Riferimenti</h2>
+
+  <p>
+    Gli scaglioni e le aliquote IRPEF 2026 presentati in questa guida sono stabiliti dalle seguenti fonti normative:
+  </p>
+  <ul>
+    <li><strong>D.P.R. 22 dicembre 1986, n. 917 (TUIR)</strong>, articolo 11: definisce la struttura progressiva dell'IRPEF e le aliquote per scaglioni di reddito. La versione vigente recepisce le modifiche introdotte dalla Legge di Bilancio 2026.</li>
+    <li><strong>Legge di Bilancio 2025</strong> (Legge 30 dicembre 2024, n. 207): ha confermato la struttura a tre scaglioni e ridotto l'aliquota del secondo scaglione dal 35% al 33%, rendendo strutturale la riforma avviata nel 2024.</li>
+    <li><strong>D.Lgs. 30 dicembre 2023, n. 216</strong>: decreto attuativo della Legge Delega per la riforma fiscale (L. 111/2023) che ha introdotto nel 2024 il passaggio da quattro a tre scaglioni IRPEF, inizialmente come misura sperimentale per un anno.</li>
+    <li><strong>Art. 13 TUIR</strong>: disciplina le detrazioni per redditi da lavoro dipendente, che si applicano sull'IRPEF lorda per determinare l'imposta netta effettivamente dovuta. Le fasce di reddito e le formule di calcolo della detrazione sono aggiornate alla normativa 2026.</li>
+    <li><strong>Circolari dell'Agenzia delle Entrate</strong>: forniscono le istruzioni operative per l'applicazione delle nuove aliquote e delle detrazioni aggiornate. In particolare, la circolare relativa alle novita' fiscali della Legge di Bilancio 2026 chiarisce le modalita' di calcolo e i casi particolari.</li>
+  </ul>
+  <p>
+    Per verificare direttamente i testi normativi, puoi consultare il sito dell'<a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate</a> o la <a href="https://www.gazzettaufficiale.it" target="_blank" rel="noopener noreferrer">Gazzetta Ufficiale della Repubblica Italiana</a>. Ricorda che le informazioni contenute in questa guida hanno carattere informativo e divulgativo: per la tua situazione specifica, rivolgiti a un commercialista o a un consulente del lavoro.
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="faq-scaglioni-irpef">FAQ Scaglioni IRPEF</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" />
+  </div>
+
+</GuidaLayout>

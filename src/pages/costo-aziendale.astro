@@ -1,0 +1,495 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import CostoAziendale from '../components/calcolatori/CostoAziendale';
+
+const title = 'Calcolo Costo Aziendale 2026: Quanto Costa un Dipendente';
+const description =
+  'Calcola il costo aziendale totale di un dipendente: RAL, contributi INPS datore, TFR, INAIL. Simulatore aggiornato al 2026 con costo mensile e orario.';
+const canonical = canonicalURL('/costo-aziendale');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Costo Aziendale', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolatore Costo Aziendale"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <CostoAziendale client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Cos'e' il costo aziendale e come si calcola
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il <strong>costo aziendale</strong> (o costo del lavoro) rappresenta la spesa complessiva che
+        un'azienda sostiene per impiegare un lavoratore dipendente. E' un concetto fondamentale per
+        imprenditori, responsabili HR e consulenti del lavoro, perche' e' sempre significativamente
+        superiore alla RAL (Retribuzione Annua Lorda) indicata nel contratto di lavoro. Comprendere
+        questa differenza e' essenziale sia per chi assume sia per chi negozia il proprio stipendio.
+      </p>
+      <p>
+        La differenza tra costo aziendale e RAL puo' essere sorprendente: per un dipendente con RAL
+        di 30.000 euro, il costo aziendale totale supera tipicamente i 40.000 euro, con un
+        moltiplicatore di circa 1,35x. Questo significa che per ogni euro di stipendio lordo, l'azienda
+        spende circa 35 centesimi aggiuntivi in contributi e accantonamenti obbligatori.
+      </p>
+
+      <h3>Le componenti del costo aziendale</h3>
+      <p>
+        Il costo aziendale di un dipendente si compone di quattro elementi principali, ciascuno
+        regolato da normative specifiche e con aliquote che variano in base al settore, alla
+        dimensione dell'azienda e al tipo di contratto applicato.
+      </p>
+
+      <h4>1. RAL - Retribuzione Annua Lorda</h4>
+      <p>
+        La RAL e' la componente principale del costo aziendale e corrisponde allo stipendio lordo
+        annuale concordato nel contratto di lavoro. Include lo stipendio base mensile moltiplicato
+        per il numero di mensilita' previste dal CCNL (tipicamente 13 o 14), oltre a eventuali
+        superminimi, indennita' fisse e altri emolumenti ricorrenti. La RAL rappresenta mediamente
+        il 70-75% del costo aziendale totale, a seconda del settore e del livello retributivo.
+      </p>
+
+      <h4>2. Contributi INPS a carico del datore di lavoro (23,81%)</h4>
+      <p>
+        I contributi previdenziali a carico del datore di lavoro costituiscono la voce piu'
+        rilevante dopo la RAL. L'aliquota standard per il settore privato e' del 23,81% della
+        retribuzione imponibile, che comprende diverse sotto-voci: il contributo IVS (Invalidita',
+        Vecchiaia, Superstiti) pari al 23,81%, a cui si aggiungono contributi minori per CUAF
+        (Cassa Unica Assegni Familiari), maternita', disoccupazione (NASpI) e malattia. L'aliquota
+        complessiva effettiva puo' variare leggermente in base al settore e alla qualifica del
+        lavoratore, ma il 23,81% rappresenta il valore di riferimento per la grande maggioranza
+        dei dipendenti del settore privato, come indicato dalle tabelle contributive INPS
+        pubblicate annualmente nella circolare di inizio anno.
+      </p>
+
+      <h4>3. TFR - Trattamento di Fine Rapporto (7,41%)</h4>
+      <p>
+        Il TFR e' un accantonamento obbligatorio disciplinato dall'articolo 2120 del Codice Civile.
+        Ogni anno il datore di lavoro deve accantonare una quota pari alla retribuzione annua divisa
+        per 13,5, che corrisponde a circa il 7,41% della RAL (al netto del contributo dello 0,50%
+        destinato al Fondo Adeguamento Pensioni INPS, l'accantonamento effettivo e' di circa il
+        6,91%). Il TFR, pur non essendo un costo "versato" immediatamente come i contributi INPS,
+        rappresenta un debito certo dell'azienda nei confronti del lavoratore, esigibile alla
+        cessazione del rapporto di lavoro. Per le aziende con piu' di 50 dipendenti, il TFR
+        deve essere conferito al Fondo Tesoreria INPS, trasformandolo di fatto in un esborso
+        corrente mensile.
+      </p>
+
+      <h4>4. Premio INAIL (variabile per settore)</h4>
+      <p>
+        Il premio assicurativo INAIL (Istituto Nazionale per l'Assicurazione contro gli Infortuni
+        sul Lavoro) copre il rischio di infortuni e malattie professionali ed e' interamente a
+        carico del datore di lavoro. L'aliquota varia significativamente in base alla classe di
+        rischio dell'attivita' svolta, come definito dalla Tariffa dei Premi approvata con DM
+        27 febbraio 2019. Per le attivita' di ufficio e terziario il tasso e' molto contenuto
+        (circa 0,3-0,5%), mentre per settori ad alto rischio come l'edilizia puo' superare il 5%.
+        Il premio viene calcolato sulla retribuzione imponibile INAIL e pagato con autoliquidazione
+        annuale entro il 16 febbraio di ogni anno.
+      </p>
+
+      <h3>La formula completa del costo aziendale</h3>
+      <p>
+        La formula sintetica per il calcolo del costo aziendale e':
+      </p>
+      <p>
+        <strong>Costo Aziendale = RAL + Contributi INPS Datore + TFR + Premio INAIL</strong>
+      </p>
+      <p>
+        In termini percentuali, rispetto alla RAL:
+      </p>
+      <ul>
+        <li>INPS datore: +23,81%</li>
+        <li>TFR: +7,41% (lordo) ovvero +6,91% (netto del contributo 0,50%)</li>
+        <li>INAIL: da +0,3% a +5% e oltre, in base al settore</li>
+      </ul>
+      <p>
+        Per un'attivita' di ufficio con INAIL allo 0,4%, il moltiplicatore totale e' circa 1,32x.
+        Per un'attivita' metalmeccanica con INAIL al 2,5%, il moltiplicatore sale a circa 1,34x.
+        Per l'edilizia con INAIL al 5%, si arriva a circa 1,36x.
+      </p>
+
+      <h3>Esempio dettagliato: RAL 35.000 euro</h3>
+      <p>
+        Vediamo nel dettaglio il costo aziendale per un dipendente con RAL di 35.000 euro,
+        impiegato in un'attivita' di ufficio (INAIL 0,4%):
+      </p>
+      <ul>
+        <li><strong>RAL:</strong> 35.000,00 €</li>
+        <li><strong>INPS datore (23,81%):</strong> 35.000 x 0,2381 = 8.333,50 €</li>
+        <li><strong>TFR (RAL / 13,5 - 0,50%):</strong> 35.000 / 13,5 - (35.000 / 13,5 x 0,005) = 2.580,25 €</li>
+        <li><strong>INAIL (0,4%):</strong> 35.000 x 0,004 = 140,00 €</li>
+        <li><strong>Costo aziendale totale:</strong> 46.053,75 €</li>
+      </ul>
+      <p>
+        Il moltiplicatore in questo caso e' 46.053,75 / 35.000 = 1,316x. Il costo mensile per
+        l'azienda e' di circa 3.837,81 €, mentre il costo orario (basato su 1.720 ore annue
+        standard) e' di circa 26,78 €. Se consideriamo che il netto in busta per il dipendente
+        con questa RAL e' di circa 1.870 € al mese (con 13 mensilita' in Lombardia), l'azienda
+        spende piu' del doppio di quello che il dipendente effettivamente incassa: un dato che
+        evidenzia l'impatto del cosiddetto "cuneo fiscale" italiano.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Costo aziendale per livello di RAL: tabella di riferimento {SITE.annoFiscale}
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra il costo aziendale stimato per diversi livelli di RAL, con
+        contributi INPS datore al 23,81%, TFR secondo la formula dell'art. 2120 c.c. e INAIL
+        allo 0,4% (attivita' d'ufficio). Per settori con INAIL diverso, il costo totale
+        variera' di conseguenza: utilizza il calcolatore sopra per una stima personalizzata.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-6">
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">INPS datore</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">TFR</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">INAIL</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Costo totale</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Multipl.</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">25.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">5.953 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.843 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">100 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">32.896 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">30.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">7.143 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2.211 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">120 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">39.474 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">35.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">8.334 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2.580 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">140 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">46.054 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">40.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">9.524 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2.948 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">160 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">52.632 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">50.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">11.905 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">3.686 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">200 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">65.791 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">60.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">14.286 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">4.423 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">240 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">78.949 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,32x</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        <strong>Nota:</strong> il moltiplicatore resta costante al 1,32x perche' tutti i contributi
+        sono calcolati in percentuale sulla RAL. Il rapporto cambia solo al variare dell'aliquota
+        INAIL o al superamento del massimale INPS annuo (per il {SITE.annoFiscale} pari a circa
+        119.650 euro), oltre il quale i contributi INPS non aumentano piu' proporzionalmente.
+      </p>
+
+      <h3>Tassi INAIL per settore: quanto incide il premio assicurativo</h3>
+      <p>
+        Il premio INAIL varia enormemente in base alla Tariffa dei Premi e alla classe di rischio
+        assegnata all'attivita'. Ecco alcuni valori indicativi per i principali settori:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-6">
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Settore</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Tasso INAIL indicativo</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Costo per RAL 35.000 &euro;</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Ufficio / Terziario</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">0,3% - 0,5%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">105 - 175 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Commercio</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">0,5% - 1,0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">175 - 350 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Ristorazione / Turismo</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,0% - 2,0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">350 - 700 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Metalmeccanico / Industria</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2,0% - 3,0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">700 - 1.050 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Edilizia</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">4,0% - 6,0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.400 - 2.100 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Trasporto merci</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">3,0% - 5,0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.050 - 1.750 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        I tassi effettivi dipendono dalla voce di tariffa specifica assegnata dall'INAIL
+        all'azienda e possono essere ulteriormente ridotti (o aumentati) in base all'andamento
+        infortunistico aziendale attraverso il meccanismo oscillazione del tasso (OT). Le aziende
+        virtuose con basso tasso di infortuni possono ottenere sconti significativi presentando
+        domanda con il modello OT23.
+      </p>
+
+      <h3>Altri costi del lavoro non inclusi nel calcolo base</h3>
+      <p>
+        Oltre alle componenti considerate dal nostro calcolatore, il costo effettivo di un
+        dipendente puo' includere ulteriori voci:
+      </p>
+      <ul>
+        <li>
+          <strong>Formazione obbligatoria:</strong> corsi di sicurezza sul lavoro (D.Lgs. 81/2008),
+          aggiornamenti professionali, formazione per l'apprendistato.
+        </li>
+        <li>
+          <strong>Buoni pasto e welfare:</strong> se previsti dal CCNL o dalla contrattazione
+          aziendale, i buoni pasto (fino a 8 € al giorno se elettronici, esenti fino a questo
+          importo) e i piani di welfare rappresentano un costo aggiuntivo.
+        </li>
+        <li>
+          <strong>Costi amministrativi:</strong> elaborazione buste paga (consulente del lavoro),
+          gestione presenze, costi del software HR.
+        </li>
+        <li>
+          <strong>Costi indiretti:</strong> postazione di lavoro, attrezzature, utenze, spazi
+          ufficio pro-quota.
+        </li>
+      </ul>
+      <p>
+        Per una stima completa del "total cost of employment", questi costi accessori possono
+        aggiungere dal 5% al 15% al costo base calcolato dal nostro strumento. Un'analisi
+        completa del costo del lavoro dovrebbe sempre tenerne conto nella pianificazione del budget
+        del personale.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti sul costo aziendale
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Quanto costa all'azienda un dipendente con RAL 30.000 euro?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Per un dipendente con RAL di 30.000 euro in un'attivita' d'ufficio (INAIL 0,4%), il costo aziendale totale e' di circa 39.474 euro annui. Questo include: RAL 30.000 euro + contributi INPS datore 7.143 euro (23,81%) + TFR 2.211 euro (RAL/13,5 al netto dello 0,50%) + INAIL 120 euro (0,4%). Il costo mensile e' di circa 3.290 euro e il costo orario di circa 22,95 euro (su 1.720 ore annue).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Qual e' il moltiplicatore per passare dalla RAL al costo aziendale?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il moltiplicatore dipende dal settore, ma una regola pratica e' la seguente: per attivita' d'ufficio (INAIL basso) si moltiplica la RAL per circa 1,32x; per il settore industriale e metalmeccanico per circa 1,34x; per l'edilizia per circa 1,37x. Questi valori includono INPS datore (23,81%), TFR (~6,91%) e INAIL (variabile). Non includono costi accessori come buoni pasto, welfare, formazione e costi amministrativi, che possono aggiungere un ulteriore 5-15%.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Il TFR e' un costo per l'azienda?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', il TFR e' un costo aziendale a tutti gli effetti. Anche se viene accantonato e non versato mensilmente (nelle aziende fino a 50 dipendenti che lo mantengono in azienda), il TFR rappresenta un debito certo e determinabile nei confronti del lavoratore. Contabilmente viene registrato come "fondo TFR" nel passivo dello stato patrimoniale. Per le aziende con oltre 50 dipendenti, il TFR deve essere versato mensilmente al Fondo Tesoreria INPS, diventando un esborso effettivo. Se il lavoratore ha scelto di destinare il TFR a un fondo pensione, l'azienda versa la quota direttamente al fondo con cadenza mensile.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come si calcola il costo orario di un dipendente?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il costo orario si ottiene dividendo il costo aziendale annuo per le ore lavorative annue. La convenzione standard (usata anche in ambito europeo per i bandi pubblici) prevede 1.720 ore annue, che corrispondono a circa 215 giornate lavorative da 8 ore, gia' al netto di ferie, festivita' e permessi retribuiti. Il costo orario effettivo "produttivo" puo' essere superiore se si considerano assenze per malattia, permessi aggiuntivi e ore di formazione non direttamente produttive.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Ci sono agevolazioni che riducono il costo aziendale?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', esistono diverse agevolazioni contributive che riducono i contributi INPS a carico del datore di lavoro: l'esonero contributivo per nuove assunzioni a tempo indeterminato (variabile di anno in anno, nel 2026 puo' arrivare fino al 100% per giovani under 36 o donne svantaggiate in determinate condizioni); la decontribuzione per le assunzioni nel Mezzogiorno; le agevolazioni per apprendistato professionalizzante (aliquota INPS ridotta al 10% per le aziende fino a 9 dipendenti); e lo sgravio INAIL tramite modello OT23 per le aziende con buon andamento infortunistico. Inoltre, i costi del personale sono interamente deducibili ai fini IRES e IRAP, con l'importante eccezione della deduzione integrale del costo del lavoro dalla base imponibile IRAP prevista a partire dal 2015.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Il costo aziendale di un apprendista e' diverso?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', l'apprendistato professionalizzante gode di un regime contributivo agevolato. Per le aziende con meno di 10 dipendenti, l'aliquota INPS a carico del datore e' ridotta al 3,11% per il primo anno e al 4,61% per il secondo anno, per poi salire al 11,61% dal terzo anno in poi. Per le aziende con 10 o piu' dipendenti, l'aliquota e' del 11,61% per tutta la durata dell'apprendistato. Queste aliquote sono significativamente inferiori al 23,81% standard, rendendo l'apprendistato uno strumento di inserimento molto conveniente per le aziende. Al termine del periodo formativo, i contributi tornano all'aliquota piena.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come incide la quattordicesima sul costo aziendale?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La quattordicesima non cambia il costo aziendale totale se si ragiona in termini di RAL. La RAL include gia' tutte le mensilita' previste (12, 13 o 14). Cio' che cambia e' la distribuzione dei pagamenti nell'anno: con 14 mensilita', ogni mensilita' singola sara' di importo inferiore rispetto a 13 mensilita', a parita' di RAL. Il costo aziendale annuo complessivo resta identico perche' i contributi INPS, il TFR e l'INAIL sono tutti calcolati sulla RAL annua, indipendentemente da come viene suddivisa nei vari mesi.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Qual e' la differenza tra costo aziendale e cuneo fiscale?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il cuneo fiscale e' la differenza tra il costo totale sostenuto dall'azienda (costo aziendale) e il netto effettivamente percepito dal dipendente in busta paga. Include sia gli oneri a carico del datore (INPS datore, TFR, INAIL) sia quelli a carico del lavoratore (INPS dipendente, IRPEF, addizionali regionali e comunali). In Italia il cuneo fiscale e' tra i piu' elevati in Europa: per un lavoratore single senza figli con reddito medio, l'OCSE stima un cuneo fiscale intorno al 45-47% del costo del lavoro complessivo. La Legge di Bilancio 2025 ha introdotto misure strutturali di riduzione del cuneo fiscale per i redditi fino a 40.000 euro, mediante un mix di somma esente e detrazione fiscale aggiuntiva.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-busta-paga"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calcola il netto in busta paga partendo dalla RAL
+        </p>
+      </a>
+      <a
+        href="/calcolo-tfr"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo TFR
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simula il trattamento di fine rapporto maturato
+        </p>
+      </a>
+      <a
+        href="/calcolo-paga-oraria"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Paga Oraria
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Scopri la tua tariffa oraria lorda e netta dalla RAL
+        </p>
+      </a>
+      <a
+        href="/calcolo-forfettari"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolatore P.IVA Forfettario
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Confronta il costo di un dipendente con la P.IVA forfettaria
+        </p>
+      </a>
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Dettaglio scaglione per scaglione dell'IRPEF sul reddito
+        </p>
+      </a>
+      <a
+        href="/calcolo-ferie-permessi"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Ferie e Permessi Non Goduti
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calcola l'indennita' per ferie e ROL non utilizzati
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

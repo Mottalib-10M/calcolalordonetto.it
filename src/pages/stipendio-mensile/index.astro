@@ -1,0 +1,461 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+import { calcolaLordoDaNetto } from '../../lib/irpef-engine';
+import { breadcrumbSchema } from '../../lib/seo';
+
+const title = 'Stipendio Mensile Netto: Quanto Lordo Serve? Tabella 2026';
+const description = 'Scopri quale RAL serve per ottenere uno stipendio mensile netto da 1.000 a 5.000 euro. Tabelle aggiornate 2026 con calcoli IRPEF, INPS e addizionali per ogni importo.';
+
+const amounts = [
+  1000, 1200, 1300, 1400, 1500, 1600, 1700, 1800,
+  2000, 2200, 2500, 2800, 3000, 3500, 4000, 5000,
+];
+
+const defaultRegione = 'LOM';
+
+const pages = amounts.map((netto) => {
+  const { ral, risultato } = calcolaLordoDaNetto(netto, defaultRegione);
+  return {
+    netto,
+    slug: `${netto}-euro`,
+    ral,
+    nettoEffettivo: risultato.nettoMensile,
+    aliquotaMedia: risultato.aliquotaMedia,
+  };
+});
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Stipendio Mensile', url: `${SITE.url}/stipendio-mensile` },
+];
+
+const schemaString = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: `${SITE.url}/stipendio-mensile`,
+    inLanguage: SITE.locale,
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
+  },
+]);
+
+const formatCurrency = (value: number) =>
+  value.toLocaleString('it-IT', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+const formatPercent = (value: number) =>
+  (value * 100).toLocaleString('it-IT', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+
+// Group by income level
+const groups = [
+  { label: 'Stipendi Base (1.000 - 1.400 euro)', items: pages.filter(p => p.netto <= 1400) },
+  { label: 'Stipendi Medi (1.500 - 2.000 euro)', items: pages.filter(p => p.netto >= 1500 && p.netto <= 2000) },
+  { label: 'Stipendi Medio-Alti (2.200 - 3.000 euro)', items: pages.filter(p => p.netto >= 2200 && p.netto <= 3000) },
+  { label: 'Stipendi Alti (3.500 - 5.000 euro)', items: pages.filter(p => p.netto >= 3500) },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  schema={schemaString}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="py-4">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        {breadcrumbs.map((crumb, index) => (
+          <li class="flex items-center gap-1.5">
+            {index > 0 && (
+              <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            )}
+            {index < breadcrumbs.length - 1 ? (
+              <a href={crumb.url} class="hover:text-brand transition-colors">
+                {crumb.name}
+              </a>
+            ) : (
+              <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">
+                {crumb.name}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-14 mb-10">
+      <div class="relative z-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          Stipendio Mensile Netto: Quale RAL Serve nel 2026?
+        </h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-2xl">
+          Quanto devi guadagnare di lordo per portare a casa il netto che desideri? Scopri la RAL necessaria per ogni importo, con calcoli aggiornati a normativa {SITE.annoFiscale}.
+        </p>
+        <div class="mt-4">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 ring-1 ring-green-500/30">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+            </svg>
+            16 importi analizzati | Aggiornato {SITE.annoFiscale}
+          </span>
+        </div>
+      </div>
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand"></div>
+        <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
+      </div>
+    </section>
+
+    <!-- Tabella riepilogativa -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Tabella Riepilogativa: Da Netto Mensile a RAL
+      </h2>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Netto Mensile</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">RAL Necessaria</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Netto Effettivo</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Aliquota Media</th>
+              <th class="px-4 py-3 text-center font-semibold text-gray-900 dark:text-white">Dettaglio</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+            {pages.map((page) => (
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors">
+                <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                  {formatCurrency(page.netto)} &euro;
+                </td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
+                  {formatCurrency(page.ral)} &euro;
+                </td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
+                  {page.nettoEffettivo.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} &euro;
+                </td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
+                  {formatPercent(page.aliquotaMedia)}
+                </td>
+                <td class="px-4 py-3 text-center">
+                  <a
+                    href={`/stipendio-mensile/${page.slug}`}
+                    class="inline-flex items-center gap-1 text-brand hover:underline font-medium"
+                  >
+                    Vedi
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+        * Calcoli basati su: 13 mensilita', regione Lombardia, lavoratore dipendente senza carichi familiari. L'importo effettivo puo' variare in base alla regione e al comune di residenza.
+      </p>
+    </section>
+
+    <!-- Sezioni per livello -->
+    {groups.map((group) => (
+      <section class="mb-12">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">{group.label}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {group.items.map((page) => (
+            <a
+              href={`/stipendio-mensile/${page.slug}`}
+              class="group flex flex-col rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+            >
+              <p class="text-sm text-gray-500 dark:text-gray-400">Netto mensile</p>
+              <p class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+                {formatCurrency(page.netto)} &euro;
+              </p>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                RAL necessaria: <span class="font-semibold text-gray-900 dark:text-white">{formatCurrency(page.ral)} &euro;</span>
+              </p>
+              <p class="mt-auto pt-3 text-xs text-brand font-medium flex items-center gap-1">
+                Scopri il dettaglio
+                <svg class="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Metodologia -->
+    <section class="mb-12 max-w-3xl">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Come Calcoliamo la RAL Necessaria</h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none">
+        <p>
+          Per ogni importo netto mensile desiderato, il nostro calcolatore determina la RAL (Retribuzione Annua Lorda) necessaria attraverso un algoritmo di ricerca binaria che tiene conto di:
+        </p>
+        <ul>
+          <li><strong>Contributi INPS</strong> a carico del lavoratore (9,19%)</li>
+          <li><strong>IRPEF</strong> con gli scaglioni vigenti nel {SITE.annoFiscale} (23%, 33%, 43%)</li>
+          <li><strong>Detrazioni per lavoro dipendente</strong></li>
+          <li><strong>Cuneo fiscale</strong> (Legge di Bilancio {SITE.annoFiscale})</li>
+          <li><strong>Trattamento integrativo</strong> (ex Bonus Renzi)</li>
+          <li><strong>Addizionali regionali e comunali</strong></li>
+        </ul>
+        <p>
+          I risultati sono indicativi e basati su 13 mensilita', contratto a tempo indeterminato, senza carichi familiari. Per un calcolo personalizzato, usa il nostro <a href="/calcolo-stipendio-lordo" class="text-brand hover:underline">calcolatore da netto a lordo</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contenuto editoriale -->
+    <section class="mb-12 max-w-3xl">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        Come si calcola lo stipendio mensile netto dalla RAL
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none">
+        <p>
+          Lo stipendio mensile netto e' la cifra che il lavoratore riceve effettivamente sul conto corrente
+          ogni mese. Per ricavarlo partendo dalla RAL (Retribuzione Annua Lorda), servono diversi passaggi:
+          prima si sottraggono i contributi previdenziali INPS, poi si calcola l'IRPEF con le relative
+          detrazioni, si aggiungono le addizionali regionali e comunali, e infine si divide il netto annuo
+          per il numero di mensilita' previste dal contratto.
+        </p>
+        <p>
+          Il numero di mensilita' e' un dato fondamentale, perche' modifica direttamente l'importo che
+          arriva ogni mese sul conto. Con 13 mensilita', il netto annuo viene diviso per 13: dodici
+          stipendi ordinari piu' la tredicesima, che viene pagata solitamente a dicembre. Con 14 mensilita'
+          (previste da contratti come il CCNL Commercio, Turismo, Metalmeccanico), il netto annuo si
+          divide per 14, riducendo l'importo di ogni singola busta paga ma aggiungendo un pagamento
+          extra, di norma erogato a giugno o luglio.
+        </p>
+        <p>
+          Un punto che genera spesso confusione: la RAL annua non cambia tra chi riceve 13 o 14
+          mensilita'. Un lavoratore con RAL 30.000 euro su 13 mensilita' e uno con la stessa RAL su
+          14 mensilita' guadagnano lo stesso importo lordo annuo. La differenza sta solo nella
+          distribuzione mensile. Con 14 mensilita', ogni singolo stipendio sara' piu' basso (circa il
+          7% in meno rispetto al caso con 13 mensilita'), ma il lavoratore riceve due mesi "extra"
+          nell'arco dell'anno.
+        </p>
+
+        <h3>L'impatto delle mensilita' sul netto mensile</h3>
+        <p>
+          Per capire concretamente la differenza, prendiamo una RAL di 35.000 euro per un lavoratore
+          single in Lombardia. Il netto annuo rimane identico sia con 13 sia con 14 mensilita', perche'
+          le tasse si calcolano sul reddito annuo complessivo. Con 13 mensilita', il netto mensile e'
+          di circa 2.040 euro. Con 14 mensilita', scende a circa 1.894 euro al mese, ma il lavoratore
+          riceve due mensilita' aggiuntive (tredicesima e quattordicesima) che compensano esattamente
+          la differenza.
+        </p>
+        <p>
+          Alcuni lavoratori preferiscono le 13 mensilita' perche' lo stipendio mensile risulta piu' alto
+          e facilita la gestione delle spese correnti. Altri apprezzano le 14 mensilita' perche' la
+          tredicesima (a dicembre) e la quattordicesima (a giugno/luglio) funzionano come una sorta di
+          "risparmio forzato" utile per le spese straordinarie: vacanze estive, regali natalizi, spese
+          condominiali. Non esiste una scelta migliore in assoluto; dipende dalle abitudini di gestione
+          del budget familiare.
+        </p>
+
+        <h3>Esempio: da RAL 25.000 euro allo stipendio mensile</h3>
+        <p>
+          Vediamo nel dettaglio cosa succede con una RAL di 25.000 euro, un livello molto comune per
+          impiegati con qualche anno di esperienza. Il lavoratore e' single, residente a Milano, con
+          contratto a 13 mensilita'.
+        </p>
+        <p>
+          <strong>Contributi INPS:</strong> 25.000 x 9,19% = 2.297,50 euro. L'imponibile fiscale
+          risulta di 22.702,50 euro.
+        </p>
+        <p>
+          <strong>Somma esente per cuneo fiscale:</strong> per redditi tra 15.001 e 20.000 euro,
+          la Legge di Bilancio prevede un'esenzione del 4,8% sull'imponibile. Tra 8.501 e 15.000
+          euro, l'esenzione sale al 5,3%. Fino a 8.500 euro, e' del 7,1%. Questi benefici riducono
+          la base su cui si calcola l'IRPEF.
+        </p>
+        <p>
+          <strong>IRPEF lorda:</strong> sull'imponibile ridotto dal cuneo fiscale, interamente nel
+          primo scaglione al 23%, l'IRPEF lorda e' di circa 4.950 euro.
+        </p>
+        <p>
+          <strong>Detrazioni:</strong> la detrazione per lavoro dipendente per questo livello di
+          reddito vale circa 1.910 euro. Il cuneo fiscale aggiunge una detrazione di 1.000 euro
+          (prevista per redditi tra 20.001 e 32.000 euro). L'IRPEF netta scende a circa 2.040 euro.
+        </p>
+        <p>
+          <strong>Addizionali:</strong> regionale Lombardia circa 310 euro, comunale Milano circa
+          182 euro.
+        </p>
+        <p>
+          <strong>Trattamento integrativo:</strong> per redditi intorno a 22.000/25.000 euro, il
+          trattamento integrativo puo' spettare in misura ridotta se le detrazioni complessive
+          superano l'IRPEF lorda. L'importo varia caso per caso.
+        </p>
+        <p>
+          <strong>Netto annuo:</strong> circa 25.000 - 2.297 - 2.040 - 310 - 182 = 20.171 euro.
+          Su 13 mensilita': circa <strong>1.551 euro netti al mese</strong>.
+        </p>
+
+        <h3>Differenze regionali sullo stipendio mensile</h3>
+        <p>
+          A parita' di RAL e di situazione familiare, il netto mensile varia in base alla regione
+          di residenza. L'addizionale regionale IRPEF e' un'imposta aggiuntiva che ogni regione
+          determina in autonomia entro limiti fissati dalla legge statale. Le differenze, pur non
+          enormi in valore assoluto, si accumulano nel tempo.
+        </p>
+        <p>
+          Il Lazio e' storicamente la regione con le addizionali piu' alte, per via del contributo
+          straordinario legato al piano di rientro del debito sanitario. Per un lavoratore con RAL
+          40.000 euro, l'addizionale regionale laziale vale circa 1.050 euro annui, contro i 560 euro
+          del Friuli Venezia Giulia o i 490 euro della Sardegna. Su base mensile, la differenza tra
+          Lazio e Friuli puo' arrivare a 40 euro.
+        </p>
+        <p>
+          La Lombardia si colloca in una posizione intermedia, con un'addizionale regionale che
+          applica un'aliquota unica dell'1,73% fino a 28.000 euro e dell'1,73% anche oltre. Il
+          Piemonte ha un sistema progressivo simile al Lazio ma con aliquote piu' contenute. Regioni
+          come il Veneto, la Liguria e l'Emilia Romagna si collocano nella fascia media.
+        </p>
+        <p>
+          Per chi lavora da remoto e puo' scegliere dove stabilire la residenza, queste differenze
+          regionali meritano un'analisi attenta. Su una RAL di 50.000 euro, scegliere la regione con
+          l'addizionale piu' bassa rispetto a quella piu' alta puo' far risparmiare 500/700 euro
+          all'anno, cioe' circa 40/55 euro netti in piu' ogni mese.
+        </p>
+
+        <h3>Leggere la busta paga: le voci da controllare</h3>
+        <p>
+          La busta paga (o cedolino) e' il documento che riassume ogni mese tutte le componenti dello
+          stipendio. Saperla leggere e' fondamentale per verificare che il netto corrisponda a quanto
+          dovuto. Le voci principali da controllare sono:
+        </p>
+        <p>
+          <strong>Retribuzione lorda mensile:</strong> e' la RAL divisa per il numero di mensilita'. Con
+          una RAL di 30.000 euro su 13 mensilita', il lordo mensile ordinario sara' di circa 2.308 euro.
+          Nella busta della tredicesima compare lo stesso importo come voce separata.
+        </p>
+        <p>
+          <strong>Contributi INPS:</strong> calcolati al 9,19% del lordo mensile. Su un lordo di 2.308 euro,
+          i contributi INPS mensili valgono circa 212 euro. Questa voce compare nella sezione "trattenute"
+          del cedolino.
+        </p>
+        <p>
+          <strong>Imponibile fiscale:</strong> e' il lordo meno i contributi INPS. Su questa base si
+          applicano le ritenute IRPEF mensili. Il datore di lavoro agisce come sostituto d'imposta e
+          trattiene l'IRPEF ogni mese, applicando le aliquote in base al reddito annuo presunto.
+        </p>
+        <p>
+          <strong>Detrazioni:</strong> nella busta paga sono indicate le detrazioni per lavoro dipendente,
+          gia' applicate mensilmente dal datore di lavoro. Se ci sono familiari a carico (coniuge o figli
+          over 21), le relative detrazioni compaiono come voce separata. Il cuneo fiscale compare come
+          "ulteriore detrazione" o con una dicitura simile, a seconda del software paghe utilizzato.
+        </p>
+        <p>
+          <strong>Addizionali regionali e comunali:</strong> vengono trattenute a rate nei mesi da
+          gennaio (o marzo) a novembre dell'anno successivo a quello di competenza. Questo significa
+          che nella busta paga di febbraio 2026 potresti trovare la rata dell'addizionale relativa
+          al 2025. L'acconto dell'addizionale comunale dell'anno corrente viene invece trattenuto
+          da marzo a novembre.
+        </p>
+        <p>
+          <strong>Trattamento integrativo:</strong> per chi ne ha diritto, compare come voce positiva
+          (circa 100 euro al mese per redditi fino a 15.000 euro). E' la somma che il datore di lavoro
+          anticipa per conto dello Stato e che viene poi conguagliata a fine anno o in sede di
+          dichiarazione dei redditi.
+        </p>
+
+        <h3>Netto mensile per le RAL piu' diffuse in Italia</h3>
+        <p>
+          Secondo i dati delle indagini ISTAT sulla struttura delle retribuzioni e i report di
+          JobPricing, la RAL mediana in Italia per i lavoratori dipendenti del settore privato si
+          attesta intorno a 29.000/30.000 euro. Il 50% dei lavoratori guadagna meno di questa cifra
+          e il 50% guadagna di piu'.
+        </p>
+        <p>
+          Con una RAL di 25.000 euro (fascia bassa, tipica di posizioni junior o contratti part-time
+          a tempo pieno in settori a bassa retribuzione), il netto mensile su 13 mensilita' si aggira
+          intorno a 1.550/1.600 euro, a seconda della regione. Con una RAL di 30.000 euro (fascia
+          media, in linea con la mediana nazionale), il netto mensile e' di circa 1.780/1.850 euro.
+        </p>
+        <p>
+          Salendo a 40.000 euro di RAL (fascia medio-alta, tipica di profili con 5/8 anni di
+          esperienza in settori come IT, consulenza e ingegneria), il netto mensile raggiunge circa
+          2.250/2.350 euro. A 50.000 euro di RAL, il netto mensile sale a circa 2.700/2.800 euro.
+          A questo livello la pressione fiscale si fa sentire: l'aliquota marginale del 33% si
+          applica a buona parte dell'imponibile che supera i 28.000 euro.
+        </p>
+        <p>
+          Per RAL superiori a 55.000 euro, si entra progressivamente nel terzo scaglione IRPEF al
+          43%. Con una RAL di 70.000 euro il netto mensile si attesta intorno a 3.500/3.600 euro,
+          mentre con 100.000 euro di RAL si arriva a circa 4.800/5.000 euro netti al mese. L'aliquota
+          media effettiva a questi livelli supera il 35%, il che significa che piu' di un terzo del
+          lordo viene assorbito da imposte e contributi.
+        </p>
+
+        <h3>Consigli pratici per gestire il netto mensile</h3>
+        <p>
+          Una volta conosciuto il proprio netto mensile, e' utile pianificare le uscite su base mensile
+          e annuale. La regola empirica del 50/30/20 (50% per le spese necessarie, 30% per le spese
+          personali, 20% per risparmio e investimenti) funziona bene come punto di partenza, ma va
+          adattata al costo della vita della propria citta' e alla propria situazione.
+        </p>
+        <p>
+          Chi percepisce la tredicesima o la quattordicesima puo' considerare queste mensilita' come
+          una riserva per le spese straordinarie (manutenzione auto, spese mediche, assicurazioni
+          annuali) o per alimentare un fondo di emergenza. Un fondo di emergenza pari a 3/6 mesi di
+          spese fisse e' una protezione concreta contro gli imprevisti.
+        </p>
+        <p>
+          Per chi ha una RAL nella fascia 28.000/50.000 euro, il versamento al fondo pensione
+          complementare e' una delle strategie piu' efficaci per ottimizzare il netto: i contributi
+          versati (fino a 5.164,57 euro annui) sono interamente deducibili dall'imponibile IRPEF.
+          Con un'aliquota marginale del 33%, ogni 1.000 euro versati riducono le tasse di 330 euro,
+          generando un rendimento fiscale immediato a cui si somma la rivalutazione del capitale nel
+          tempo.
+        </p>
+
+        <h3>Fonti e riferimenti normativi</h3>
+        <p>
+          I calcoli presentati in questa pagina sono basati sulla normativa fiscale italiana in vigore
+          per il {SITE.annoFiscale}. Le fonti principali sono:
+        </p>
+        <ul>
+          <li>
+            <strong>TUIR (D.P.R. 917/1986)</strong>, aggiornato dalla Legge di Bilancio 2025 e 2026,
+            per gli scaglioni IRPEF (23%, 33%, 43%), le detrazioni per lavoro dipendente e le regole
+            di determinazione del reddito da lavoro dipendente (artt. 49-52).
+          </li>
+          <li>
+            <strong>INPS</strong>: l'aliquota contributiva a carico del lavoratore dipendente del
+            settore privato e' del 9,19%. Il massimale contributivo annuo per il 2026 e' fissato a
+            circa 119.650 euro. Riferimento: circolari INPS annuali sulle aliquote contributive.
+          </li>
+          <li>
+            <strong>Agenzia delle Entrate</strong>: le tabelle delle addizionali regionali e comunali
+            sono disponibili sul portale agenziaentrate.gov.it nella sezione "Servizi" > "Tributi
+            locali".
+          </li>
+          <li>
+            <strong>Legge di Bilancio 2025 e 2026</strong>: conferma della struttura a tre scaglioni,
+            riduzione dell'aliquota del secondo scaglione dal 35% al 33%, e stabilizzazione del cuneo
+            fiscale con la somma esente per redditi fino a 20.000 euro e la detrazione aggiuntiva di
+            1.000 euro per redditi tra 20.001 e 40.000 euro.
+          </li>
+          <li>
+            <strong>ISTAT</strong>: i dati sulle retribuzioni mediane e la distribuzione salariale
+            provengono dall'indagine SES (Structure of Earnings Survey) e sono consultabili su istat.it.
+          </li>
+          <li>
+            <strong>JobPricing</strong>: l'Italian Salary Report annuale fornisce dati retributivi per
+            settore, qualifica e area geografica, basati su un campione di oltre 500.000 profili.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>

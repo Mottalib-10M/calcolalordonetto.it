@@ -1,0 +1,698 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+import { calcolaStipendio, type RisultatoStipendio } from '../../lib/irpef-engine';
+import { regioni } from '../../data/regioni';
+import { formatCurrency, formatRate } from '../../lib/format-it';
+import { breadcrumbSchema, faqSchema } from '../../lib/seo';
+
+/* ──────────────────────────────────────────────────────────────────────────
+   getStaticPaths — generates 24 RAL pages
+   ────────────────────────────────────────────────────────────────────────── */
+
+export function getStaticPaths() {
+  const ALL_RALS = [
+    15_000, 18_000, 20_000, 22_000,
+    25_000, 27_000, 28_000, 30_000, 32_000, 35_000, 38_000,
+    40_000, 42_000, 45_000, 50_000, 55_000,
+    60_000, 65_000, 70_000, 80_000, 90_000, 100_000, 120_000, 150_000,
+  ];
+
+  function ralToSlug(ral: number): string {
+    return `${ral}-euro-netto`;
+  }
+
+  function fmtRal(ral: number): string {
+    return ral.toLocaleString('it-IT');
+  }
+
+  function getRangeKey(ral: number): string {
+    if (ral <= 22_000) return 'low';
+    if (ral <= 32_000) return 'lower-middle';
+    if (ral <= 45_000) return 'middle';
+    if (ral <= 70_000) return 'upper-middle';
+    return 'high';
+  }
+
+  function getAdjacentLinks(ral: number) {
+    const idx = ALL_RALS.indexOf(ral);
+    const indices: number[] = [];
+    for (let i = Math.max(0, idx - 3); i < idx; i++) indices.push(i);
+    for (let i = idx + 1; i <= Math.min(ALL_RALS.length - 1, idx + 3); i++) indices.push(i);
+
+    const anchors = [
+      'Scopri quanto si guadagna con',
+      'Quanto resta netto con',
+      'Calcolo stipendio netto per',
+      'Vedi il dettaglio di',
+      'Netto mensile per',
+      'Analisi completa della',
+    ];
+
+    return indices.map((i, j) => ({
+      ral: ALL_RALS[i],
+      slug: ralToSlug(ALL_RALS[i]),
+      anchor: `${anchors[j % anchors.length]} RAL ${fmtRal(ALL_RALS[i])} €`,
+    }));
+  }
+
+  function buildFaqs(
+    ral: number,
+    result: RisultatoStipendio,
+    best: { nome: string; nettoMensile: number },
+    worst: { nome: string; nettoMensile: number },
+  ) {
+    const ralF = fmtRal(ral);
+    const nettoF = formatCurrency(result.nettoMensile);
+    const rangeKey = getRangeKey(ral);
+
+    const faqs = [
+      {
+        question: `Quanto si guadagna netto al mese con una RAL di ${ralF} euro?`,
+        answer: `Con una RAL di ${ralF} euro e 13 mensilita', lo stipendio netto mensile e' di circa ${nettoF} per un lavoratore single residente in Lombardia. L'importo varia in base alla regione di residenza, alla situazione familiare e all'aliquota comunale.`,
+      },
+      {
+        question: `Qual e' la regione dove si guadagna di piu' con RAL ${ralF} euro?`,
+        answer: `Con una RAL di ${ralF} euro, la regione dove il netto mensile e' piu' alto e' ${best.nome} (${formatCurrency(best.nettoMensile)}), grazie ad addizionali regionali piu' basse. La regione meno conveniente e' ${worst.nome} (${formatCurrency(worst.nettoMensile)}), con una differenza di ${formatCurrency(best.nettoMensile - worst.nettoMensile)} al mese.`,
+      },
+      {
+        question: `Quante tasse si pagano su ${ralF} euro di RAL?`,
+        answer: `Su una RAL di ${ralF} euro si paga circa il ${formatRate(result.aliquotaMedia)} di tasse complessive (INPS + IRPEF + addizionali). L'aliquota marginale IRPEF e' del ${formatRate(result.aliquotaMarginale)}. Il netto annuo e' di circa ${formatCurrency(result.nettoAnnuo)}.`,
+      },
+    ];
+
+    if (rangeKey === 'low') {
+      faqs.push({
+        question: `Con RAL ${ralF} euro si ha diritto al trattamento integrativo?`,
+        answer: `Si', con una RAL di ${ralF} euro il lavoratore ha generalmente diritto al trattamento integrativo (ex bonus Renzi) di 1.200 euro annui (100 euro al mese), che viene erogato direttamente in busta paga dal datore di lavoro. Questo bonus e' previsto per redditi fino a 15.000 euro e, in forma ridotta, fino a 28.000 euro.`,
+      });
+      faqs.push({
+        question: `Come verificare che la busta paga sia corretta con RAL ${ralF} euro?`,
+        answer: `Controlla che l'imponibile INPS corrisponda alla RAL, che i contributi siano calcolati al 9,19%, che il trattamento integrativo sia applicato, e che le detrazioni per lavoro dipendente siano presenti. Con stipendi bassi gli errori sono piu' frequenti e l'impatto percentuale e' maggiore.`,
+      });
+    } else if (rangeKey === 'lower-middle') {
+      faqs.push({
+        question: `Con RAL ${ralF} euro come funziona il cuneo fiscale?`,
+        answer: `Per redditi tra 20.001 e 32.000 euro, il cuneo fiscale prevede una detrazione aggiuntiva di 1.000 euro annui. Tra 32.001 e 40.000 euro la detrazione si riduce progressivamente fino ad azzerarsi. Questo beneficio si aggiunge alle normali detrazioni per lavoro dipendente.`,
+      });
+    } else if (rangeKey === 'middle') {
+      faqs.push({
+        question: `Conviene un fondo pensione con RAL ${ralF} euro?`,
+        answer: `Si', con una RAL di ${ralF} euro i contributi al fondo pensione sono deducibili fino a 5.164,57 euro annui. Con un'aliquota marginale del ${formatRate(result.aliquotaMarginale)}, ogni 1.000 euro versati riducono le tasse di circa ${formatCurrency(1000 * result.aliquotaMarginale)}. E' una delle strategie di ottimizzazione fiscale piu' efficaci a questo livello di reddito.`,
+      });
+      faqs.push({
+        question: `In quale scaglione IRPEF cade una RAL di ${ralF} euro?`,
+        answer: `Con una RAL di ${ralF} euro, al netto dei contributi INPS, l'imponibile fiscale ricade principalmente nel secondo scaglione IRPEF (23% fino a 28.000 euro e 33% da 28.001 a 50.000 euro). L'aliquota marginale effettiva e' del ${formatRate(result.aliquotaMarginale)}.`,
+      });
+    } else if (rangeKey === 'upper-middle') {
+      faqs.push({
+        question: `A ${ralF} euro di RAL si paga il 43% di tasse?`,
+        answer: `Non su tutto lo stipendio. Con una RAL di ${ralF} euro, l'aliquota del 43% si applica solo alla parte di imponibile che supera i 50.000 euro. Le prime fasce sono tassate al 23% e al 33%. L'aliquota media effettiva e' del ${formatRate(result.aliquotaMedia)}, sensibilmente inferiore al 43%.`,
+      });
+    } else {
+      faqs.push({
+        question: `Come funziona il regime impatriati con RAL ${ralF} euro?`,
+        answer: `Il regime impatriati prevede un'esenzione del 50% del reddito imponibile per lavoratori che trasferiscono la residenza fiscale in Italia. Con una RAL di ${ralF} euro, il risparmio fiscale annuo puo' superare i ${formatCurrency(ral * 0.15)} grazie alla tassazione ridotta. Il regime e' disponibile per 5 anni, estendibili in alcuni casi.`,
+      });
+      faqs.push({
+        question: `Esiste un tetto contributivo INPS per RAL ${ralF} euro?`,
+        answer: `Si', per il 2026 il massimale contributivo INPS e' di circa 119.650 euro. Oltre questa soglia non si versano ulteriori contributi previdenziali INPS. Con una RAL di ${ralF} euro, ${ral > 119_650 ? 'la parte eccedente non e\' soggetta a contributi INPS dipendente' : "l'intera RAL e' soggetta a contributi INPS"}.`,
+      });
+    }
+
+    return faqs;
+  }
+
+  return ALL_RALS.map((ral) => {
+    const slug = ralToSlug(ral);
+    const ralFormatted = fmtRal(ral);
+
+    const defaultResult = calcolaStipendio({ ral, regione: 'LOM', mensilita: 13 });
+
+    const regionResults = regioni.map((r) => {
+      const res = calcolaStipendio({ ral, regione: r.codice, mensilita: 13 });
+      return {
+        nome: r.nome,
+        codice: r.codice,
+        nettoMensile: res.nettoMensile,
+        addizionaleRegionale: res.addizionaleRegionale,
+        differenza: 0,
+      };
+    });
+
+    regionResults.sort((a, b) => b.nettoMensile - a.nettoMensile);
+
+    const bestRegion = regionResults[0];
+    const worstRegion = regionResults[regionResults.length - 1];
+
+    const regionRows = regionResults.map((r) => ({
+      ...r,
+      differenza: r.nettoMensile - bestRegion.nettoMensile,
+    }));
+
+    const familySituations = [
+      { label: 'Single', opts: {} },
+      { label: 'Con coniuge a carico', opts: { coniugeACarico: true } },
+      { label: 'Con 1 figlio (21+)', opts: { figliACarico21plus: 1 } },
+      { label: 'Con 2 figli (21+)', opts: { figliACarico21plus: 2 } },
+      { label: 'Con coniuge + 1 figlio', opts: { coniugeACarico: true, figliACarico21plus: 1 } },
+    ];
+
+    const singleNetto = defaultResult.nettoMensile;
+
+    const familyRows = familySituations.map((sit) => {
+      const res = calcolaStipendio({ ral, regione: 'LOM', mensilita: 13, ...sit.opts });
+      return {
+        label: sit.label,
+        nettoMensile: res.nettoMensile,
+        differenza: res.nettoMensile - singleNetto,
+      };
+    });
+
+    const rangeKey = getRangeKey(ral);
+    const adjacentLinks = getAdjacentLinks(ral);
+    const faqs = buildFaqs(ral, defaultResult, bestRegion, worstRegion);
+
+    const seoTitle = `RAL ${ralFormatted} € Netto: Stipendio Mensile nel 2026`;
+    const nettoPreview = formatCurrency(defaultResult.nettoMensile);
+    const seoDescription = `Con RAL ${ralFormatted} € guadagni circa ${nettoPreview} netti al mese. Calcolo aggiornato ${SITE.annoFiscale} con IRPEF, INPS e addizionali per tutte le regioni.`;
+
+    return {
+      params: { slug },
+      props: {
+        ral,
+        ralFormatted,
+        defaultResult,
+        regionRows,
+        bestRegion,
+        worstRegion,
+        familyRows,
+        faqs,
+        adjacentLinks,
+        rangeKey,
+        seoTitle,
+        seoDescription,
+      },
+    };
+  });
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Page rendering
+   ────────────────────────────────────────────────────────────────────────── */
+
+interface RegionRow {
+  nome: string;
+  codice: string;
+  nettoMensile: number;
+  addizionaleRegionale: number;
+  differenza: number;
+}
+
+interface FamilyRow {
+  label: string;
+  nettoMensile: number;
+  differenza: number;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface AdjacentLink {
+  ral: number;
+  slug: string;
+  anchor: string;
+}
+
+const {
+  ral,
+  ralFormatted,
+  defaultResult,
+  regionRows,
+  bestRegion,
+  worstRegion,
+  familyRows,
+  faqs,
+  adjacentLinks,
+  rangeKey,
+  seoTitle,
+  seoDescription,
+} = Astro.props as {
+  ral: number;
+  ralFormatted: string;
+  defaultResult: RisultatoStipendio;
+  regionRows: RegionRow[];
+  bestRegion: RegionRow;
+  worstRegion: RegionRow;
+  familyRows: FamilyRow[];
+  faqs: FaqItem[];
+  adjacentLinks: AdjacentLink[];
+  rangeKey: string;
+  seoTitle: string;
+  seoDescription: string;
+};
+
+const { slug } = Astro.params;
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'RAL', url: `${SITE.url}/ral` },
+  { name: `RAL ${ralFormatted} €`, url: `${SITE.url}/ral/${slug}` },
+];
+
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: seoTitle,
+    description: seoDescription,
+    url: `${SITE.url}/ral/${slug}`,
+    inLanguage: 'it-IT',
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
+  },
+  faqSchema(faqs),
+];
+
+const schemaString = JSON.stringify(schemas);
+
+/* ── Narrative content by range ─────────────────────────────────────────── */
+
+function formatRalLabel(ral: number): string {
+  return ral.toLocaleString('it-IT');
+}
+
+function getNarrative(rk: string, ral: number, result: RisultatoStipendio, best: RegionRow, worst: RegionRow) {
+  const ralF = formatRalLabel(ral);
+  const nettoF = formatCurrency(result.nettoMensile);
+  const diffRegione = formatCurrency(best.nettoMensile - worst.nettoMensile);
+
+  if (rk === 'low') {
+    return {
+      analysisTitle: 'Analisi per la Fascia di Reddito Bassa',
+      analysisBody: `<p>Con una RAL di ${ralF} euro, ti trovi nella fascia di reddito bassa, tipica di posizioni entry-level, contratti part-time o prime esperienze lavorative. A questo livello, il sistema fiscale italiano prevede diversi meccanismi di tutela che riducono significativamente il carico fiscale.</p>
+<p>Il <strong>trattamento integrativo</strong> (ex bonus Renzi) e' il vantaggio piu' rilevante: se il tuo reddito imponibile non supera i 15.000 euro, ricevi 1.200 euro annui (100 euro al mese) direttamente in busta paga. Tra 15.001 e 28.000 euro, il beneficio e' riconosciuto in misura ridotta, solo se le detrazioni complessive superano l'IRPEF lorda.</p>
+<p>La <strong>no-tax area</strong> garantisce che, per redditi molto bassi, la detrazione per lavoro dipendente assorba interamente l'IRPEF dovuta. Il <strong>cuneo fiscale</strong> prevede una somma esente che riduce la base imponibile: fino a 8.500 euro l'esenzione e' del 7,1%, tra 8.501 e 15.000 euro del 5,3%, e tra 15.001 e 20.000 euro del 4,8%.</p>
+<p>Per le famiglie con figli sotto i 21 anni, l'<strong>Assegno Unico Universale</strong> (AUU) rappresenta un sostegno importante che si aggiunge allo stipendio netto e non e' incluso nei calcoli sopra. Controlla sempre la tua busta paga: a questi livelli retributivi, un errore di pochi euro al mese puo' incidere in modo significativo sul bilancio familiare.</p>`,
+      goodSalaryTitle: 'E\' un Buono Stipendio?',
+      goodSalaryBody: `<p>Una RAL di ${ralF} euro produce un netto mensile di circa ${nettoF}. Lo stipendio mediano in Italia si aggira intorno a 29.000-30.000 euro lordi, quindi questo livello retributivo si colloca al di sotto della media nazionale.</p>
+<p>Tuttavia, il costo della vita varia enormemente tra le citta' italiane. In citta' del Sud come Catania, Bari o Palermo, uno stipendio netto di ${nettoF} puo' coprire le spese essenziali, mentre a Milano o Roma risulterebbe insufficiente per un affitto autonomo.</p>
+<p>Se ti trovi a questo livello, valuta se hai diritto all'Assegno Unico per i figli, al bonus bollette o ad altre agevolazioni legate all'ISEE. Ogni euro conta quando il margine e' ridotto.</p>`,
+    };
+  }
+
+  if (rk === 'lower-middle') {
+    return {
+      analysisTitle: 'Analisi per la Fascia di Reddito Medio-Bassa',
+      analysisBody: `<p>Con una RAL di ${ralF} euro ti collochi nella fascia salariale piu' diffusa in Italia. Secondo i dati ISTAT, lo stipendio mediano dei lavoratori dipendenti italiani e' di circa 29.000-30.000 euro lordi, il che rende questa fascia estremamente rappresentativa del mercato del lavoro nazionale.</p>
+<p>A questo livello avviene una transizione fiscale importante: il primo <strong>scaglione IRPEF</strong> al 23% copre i redditi fino a 28.000 euro, mentre il secondo scaglione al 33% si applica alla parte eccedente. Questo significa che ogni euro lordo guadagnato sopra i 28.000 euro di imponibile subisce una tassazione marginale sensibilmente piu' alta.</p>
+<p>Il <strong>cuneo fiscale</strong> prevede una detrazione di 1.000 euro annui per redditi tra 20.001 e 32.000 euro, che si riduce progressivamente tra 32.001 e 40.000 euro. Questo beneficio si somma alla detrazione per lavoro dipendente e puo' fare una differenza significativa nel netto mensile.</p>
+<p>Il <strong>trattamento integrativo</strong> si esaurisce progressivamente in questa fascia: sopra i 28.000 euro di reddito non e' piu' riconosciuto. Se il tuo reddito e' vicino a questa soglia, un aumento di stipendio potrebbe paradossalmente ridurre il netto a causa della perdita del bonus.</p>
+<p>La differenza tra regioni inizia a farsi sentire: tra ${best.nome} e ${worst.nome} ci sono ${diffRegione} al mese, pari a circa ${formatCurrency((best.nettoMensile - worst.nettoMensile) * 13)} all'anno.</p>`,
+      goodSalaryTitle: 'E\' un Buono Stipendio?',
+      goodSalaryBody: `<p>Una RAL di ${ralF} euro produce un netto di circa ${nettoF} al mese. Questo livello e' allineato allo stipendio mediano italiano e rappresenta una retribuzione adeguata per molte posizioni con qualche anno di esperienza.</p>
+<p>Il potere d'acquisto di ${nettoF} al mese varia enormemente in base alla citta'. Al Nord, soprattutto a Milano, questo stipendio copre le necessita' ma lascia margini risicati dopo affitto e spese. Al Centro-Sud offre una qualita' di vita decisamente superiore.</p>
+<p>Rispetto alla media europea, gli stipendi italiani in questa fascia risultano inferiori del 15-25% rispetto a Francia e Germania per ruoli equivalenti, ma il divario si riduce considerando il costo della vita inferiore in molte citta' italiane.</p>`,
+    };
+  }
+
+  if (rk === 'middle') {
+    return {
+      analysisTitle: 'Analisi per la Fascia di Reddito Media',
+      analysisBody: `<p>Con una RAL di ${ralF} euro ti trovi nella fascia media, tipica di profili specializzati, piccoli quadri aziendali e professionisti con esperienza. A questo livello, il sistema fiscale italiano inizia a pesare in modo significativo.</p>
+<p>Il <strong>secondo scaglione IRPEF al 33%</strong> si applica a buona parte del tuo imponibile (da 28.001 a 50.000 euro). Questo significa che su ogni euro di aumento lordo, ne trattieni meno di 60 centesimi dopo INPS, IRPEF e addizionali.</p>
+<p>Il <strong>cuneo fiscale</strong> prevede la detrazione di 1.000 euro fino a 32.000 euro di reddito, dopodiche si riduce gradualmente. A 40.000 euro di reddito la detrazione si azzera completamente, il che crea un effetto soglia particolarmente penalizzante per chi si trova appena sopra.</p>
+<p>Le <strong>differenze regionali</strong> diventano molto significative a questo livello: tra ${best.nome} e ${worst.nome} la differenza e' di ${diffRegione} al mese, ovvero circa ${formatCurrency((best.nettoMensile - worst.nettoMensile) * 13)} all'anno. Per un lavoratore in smart working, la scelta della regione di residenza puo' incidere quanto un piccolo aumento di stipendio.</p>
+<p>Una strategia di <strong>ottimizzazione fiscale</strong> molto efficace a questo livello e' il versamento al fondo pensione complementare: con un'aliquota marginale del ${formatRate(result.aliquotaMarginale)}, ogni 1.000 euro versati (fino a 5.164,57 euro annui deducibili) generano un risparmio fiscale di circa ${formatCurrency(1000 * result.aliquotaMarginale)}.</p>`,
+      goodSalaryTitle: 'E\' un Buono Stipendio?',
+      goodSalaryBody: `<p>Una RAL di ${ralF} euro, con un netto di circa ${nettoF} al mese, si colloca decisamente sopra la mediana italiana. Questo stipendio e' tipico di ruoli con 5-10 anni di esperienza in settori come IT, ingegneria, finanza e consulenza.</p>
+<p>In citta' come Milano, Torino o Bologna, ${nettoF} al mese consentono uno stile di vita dignitoso e la possibilita' di risparmiare, pur senza lussi particolari. Nelle citta' del Centro-Sud questo stesso netto garantisce un'ottima qualita' della vita.</p>
+<p>Rispetto all'Europa, una RAL di ${ralF} euro in Italia corrisponde a stipendi relativamente piu' bassi rispetto a quelli dei colleghi in Germania, Francia o Paesi Bassi per posizioni equivalenti. La differenza si amplifica ulteriormente se si considera la pressione fiscale italiana.</p>`,
+    };
+  }
+
+  if (rk === 'upper-middle') {
+    return {
+      analysisTitle: 'Analisi per la Fascia di Reddito Medio-Alta',
+      analysisBody: `<p>Con una RAL di ${ralF} euro entri nella fascia medio-alta, caratterizzata dall'ingresso nel <strong>terzo scaglione IRPEF al 43%</strong>, che si applica alla parte di imponibile superiore a 50.000 euro. Questo e' il tasso marginale piu' alto del sistema italiano e pesa in modo significativo sui redditi di questa fascia.</p>
+<p>A questo livello, tutti i benefici del cuneo fiscale sono esauriti: nessuna somma esente, nessuna detrazione aggiuntiva. Le <strong>detrazioni per lavoro dipendente</strong> si azzerano completamente sopra i 50.000 euro di reddito, il che significa che ogni euro aggiuntivo subisce il pieno impatto della tassazione.</p>
+<p>Le <strong>addizionali regionali</strong> raggiungono i loro valori piu' alti. Il Lazio, con la sua aliquota progressiva che arriva al 3,33%, puo' costare oltre ${formatCurrency(result.imponibileFiscale * 0.03)} all'anno, mentre regioni come il Friuli-Venezia Giulia o il Veneto mantengono aliquote piu' contenute. La differenza tra ${best.nome} e ${worst.nome} e' di ${diffRegione} al mese.</p>
+<p>Se sei un professionista in questa fascia, le principali <strong>leve di ottimizzazione</strong> sono: il fondo pensione (deduzione fino a 5.164,57 euro), le polizze assicurative detraibili, e la negoziazione di benefit aziendali detassati come buoni pasto, auto aziendale e welfare aziendale. Questi strumenti possono ridurre il carico fiscale effettivo di diverse centinaia di euro all'anno.</p>`,
+      goodSalaryTitle: 'E\' un Buono Stipendio?',
+      goodSalaryBody: `<p>Una RAL di ${ralF} euro produce un netto di circa ${nettoF}, collocandoti nel top 10-15% dei lavoratori dipendenti italiani. E' uno stipendio che consente di vivere comodamente in qualsiasi citta' italiana, di risparmiare e investire regolarmente.</p>
+<p>A questo livello diventa evidente il cosiddetto "paradosso fiscale italiano": nonostante il lordo sia elevato, il netto e' eroso in modo significativo dalla combinazione di INPS al 9,19%, IRPEF fino al 43% e addizionali. L'aliquota media effettiva del ${formatRate(result.aliquotaMedia)} significa che oltre un terzo della tua retribuzione lorda va in tasse e contributi.</p>
+<p>Nel confronto europeo, uno stipendio di ${ralF} euro in Italia si traduce in un potere d'acquisto inferiore rispetto a posizioni equivalenti in Germania, Francia o Paesi Bassi. Il gap e' particolarmente evidente nei settori tech e finanza, dove i differenziali retributivi lordi si sommano a una pressione fiscale comparativamente piu' alta.</p>`,
+    };
+  }
+
+  // high
+  return {
+    analysisTitle: 'Analisi per la Fascia di Reddito Alta',
+    analysisBody: `<p>Con una RAL di ${ralF} euro ti trovi nella fascia alta dei redditi da lavoro dipendente in Italia. A questo livello, l'<strong>aliquota marginale IRPEF del 43%</strong> si applica a tutta la porzione di imponibile superiore a 50.000 euro, rendendo ogni aumento lordo particolarmente costoso in termini fiscali.</p>
+<p>Il <strong>regime impatriati</strong> rappresenta la leva di ottimizzazione piu' potente per chi ne ha diritto. Prevede un'esenzione del 50% del reddito imponibile per lavoratori che trasferiscono la residenza fiscale in Italia, con un risparmio che a questo livello di RAL puo' superare i ${formatCurrency(ral * 0.15)} all'anno. Il regime dura 5 anni ed e' accessibile a chi non ha risieduto in Italia nei 3 anni precedenti il trasferimento.</p>
+<p>Il <strong>massimale contributivo INPS</strong> (circa 119.650 euro nel 2026) diventa rilevante${ral > 119_650 ? ': la parte di RAL eccedente non e\' soggetta a contributi INPS dipendente, il che riduce leggermente il peso contributivo complessivo' : ' per RAL appena superiori a questa cifra'}. Questo massimale influisce anche sulla pensione futura, limitando l'accredito contributivo.</p>
+<p>Nel <strong>contesto internazionale</strong>, una RAL di ${ralF} euro in Italia si confronta con stipendi significativamente piu' alti in Paesi come Svizzera, Germania, Paesi Bassi e Regno Unito per ruoli equivalenti. Dopo le tasse, il differenziale si amplia ulteriormente: il netto italiano di ${nettoF} al mese corrisponde a un potere d'acquisto inferiore rispetto a quello di un professionista con lo stesso ruolo a Zurigo, Londra o Amsterdam.</p>
+<p>A questo livello patrimoniale, la <strong>pianificazione finanziaria</strong> diventa essenziale: fondo pensione al massimo deducibile (5.164,57 euro), portafoglio investimenti diversificato, e valutazione di strutture societarie per eventuali attivita' extra (consulenze, advisory) sono tutti strumenti da discutere con un consulente fiscale qualificato.</p>`,
+    goodSalaryTitle: 'E\' un Buono Stipendio?',
+    goodSalaryBody: `<p>Una RAL di ${ralF} euro, con un netto di circa ${nettoF} al mese, ti colloca nella fascia alta dei lavoratori dipendenti italiani, probabilmente nel top 3-5%. Questo livello retributivo e' tipico di dirigenti, manager senior, e professionisti altamente specializzati.</p>
+<p>L'aliquota media effettiva del ${formatRate(result.aliquotaMedia)} evidenzia quanto il sistema fiscale italiano pesi sui redditi alti. Nonostante cio', ${nettoF} mensili consentono un elevato standard di vita ovunque in Italia, con ampi margini per risparmio e investimenti.</p>
+<p>Nel confronto con l'estero, e' importante considerare che stipendi equivalenti in Svizzera, Regno Unito o USA generano netti significativamente superiori, ma vanno rapportati al costo della vita locale (in particolare immobiliare e sanitario) e alla qualita' della vita che l'Italia offre in termini di clima, cultura e servizi pubblici.</p>`,
+  };
+}
+
+const narrative = getNarrative(rangeKey, ral, defaultResult, bestRegion, worstRegion);
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  canonical={`${SITE.url}/ral/${slug}`}
+  schema={schemaString}
+>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <a href="/ral" class="hover:text-brand transition-colors">RAL</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">RAL {ralFormatted} &euro;</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- H1 -->
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-8">
+      RAL {ralFormatted} &euro;: Quanto Guadagni Netto al Mese nel {SITE.annoFiscale}
+    </h1>
+
+    <!-- Hero box -->
+    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 mb-12">
+      <div class="relative z-10">
+        <p class="text-sm font-medium text-gray-400 uppercase tracking-wider mb-1">
+          RAL {ralFormatted} &euro; | Stipendio netto {SITE.annoFiscale}
+        </p>
+        <p class="text-lg text-gray-200 mt-4">
+          Con una RAL di <strong class="text-white">{formatCurrency(ral)}</strong>, riceverai circa
+        </p>
+        <p class="text-4xl sm:text-5xl font-bold text-white tracking-tight mt-2">
+          {formatCurrency(defaultResult.nettoMensile)} <span class="text-brand">netti/mese</span>
+        </p>
+        <p class="mt-2 text-sm text-gray-400">
+          su 13 mensilita' | {formatCurrency(defaultResult.nettoAnnuo)} netti all'anno
+        </p>
+        <p class="mt-4 text-xs text-gray-500">
+          Calcolato per un lavoratore single residente in Lombardia, con aliquota comunale media
+        </p>
+        <div class="mt-6">
+          <a
+            href={`/?ral=${ral}`}
+            class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
+            Calcola il tuo caso specifico
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Decorative -->
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand"></div>
+        <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
+      </div>
+    </section>
+
+    <!-- Region table -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Stipendio Netto per Regione con RAL {ralFormatted} &euro;
+      </h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        Il netto mensile varia in base all'addizionale regionale IRPEF. Ecco il confronto tra tutte e 21 le regioni e province autonome italiane.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">#</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Regione</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Netto Mensile</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white hidden sm:table-cell">Addiz. Regionale</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Differenza</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {regionRows.map((row, idx) => {
+              const isFirst = idx === 0;
+              const isLast = idx === regionRows.length - 1;
+              const rowClass = isFirst
+                ? 'bg-green-50/50 dark:bg-green-900/10'
+                : isLast
+                  ? 'bg-red-50/50 dark:bg-red-900/10'
+                  : '';
+              return (
+                <tr class={rowClass}>
+                  <td class="px-4 py-2.5 text-gray-500 dark:text-gray-400">{idx + 1}</td>
+                  <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">
+                    {row.nome}
+                    {isFirst && <span class="ml-2 inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">Migliore</span>}
+                    {isLast && <span class="ml-2 inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/30 px-2 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">Peggiore</span>}
+                  </td>
+                  <td class="px-4 py-2.5 text-right font-semibold text-gray-900 dark:text-white">{formatCurrency(row.nettoMensile)}</td>
+                  <td class="px-4 py-2.5 text-right text-gray-600 dark:text-gray-400 hidden sm:table-cell">{formatCurrency(row.addizionaleRegionale)}/anno</td>
+                  <td class={`px-4 py-2.5 text-right font-medium ${row.differenza === 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                    {row.differenza === 0 ? '---' : formatCurrency(row.differenza)}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-500">
+        Valori calcolati su 13 mensilita', lavoratore single, aliquota comunale media. La differenza e' calcolata rispetto alla regione con il netto piu' alto.
+      </p>
+    </section>
+
+    <!-- Family table -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Netto per Situazione Familiare
+      </h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        Lo stipendio netto cambia in base alla presenza di familiari a carico. Le detrazioni per coniuge e figli over 21 riducono l'IRPEF dovuta.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Situazione</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Netto Mensile</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Differenza da Single</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {familyRows.map((row) => (
+              <tr>
+                <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">{row.label}</td>
+                <td class="px-4 py-2.5 text-right font-semibold text-gray-900 dark:text-white">{formatCurrency(row.nettoMensile)}</td>
+                <td class={`px-4 py-2.5 text-right font-medium ${row.differenza > 0 ? 'text-green-600 dark:text-green-400' : row.differenza < 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-400'}`}>
+                  {row.differenza === 0 ? '---' : `+${formatCurrency(row.differenza)}`}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-500">
+        Calcolato per Lombardia, 13 mensilita'. Per i figli sotto i 21 anni le detrazioni sono sostituite dall'Assegno Unico Universale (non incluso nel calcolo).
+      </p>
+    </section>
+
+    <!-- Detailed breakdown -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Dettaglio delle Imposte e Trattenute
+      </h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        Ecco come si arriva dalla RAL lorda al netto mensile, voce per voce.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">RAL (Retribuzione Annua Lorda)</td>
+              <td class="px-4 py-3 text-right font-bold text-gray-900 dark:text-white">{formatCurrency(defaultResult.ral)}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Contributi INPS (9,19%)</td>
+              <td class="px-4 py-2.5 text-right text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.contributiINPS)}</td>
+            </tr>
+            <tr class="bg-gray-50/50 dark:bg-gray-800/30">
+              <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">Imponibile fiscale</td>
+              <td class="px-4 py-2.5 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(defaultResult.imponibileFiscale)}</td>
+            </tr>
+            {defaultResult.cuneoFiscaleSommaEsente > 0 && (
+              <tr>
+                <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Cuneo fiscale (somma esente)</td>
+                <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">-{formatCurrency(defaultResult.cuneoFiscaleSommaEsente)} dall'imponibile</td>
+              </tr>
+            )}
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">IRPEF lorda</td>
+              <td class="px-4 py-2.5 text-right text-gray-900 dark:text-white">{formatCurrency(defaultResult.irpefLorda)}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300 pl-8">Detrazione lavoro dipendente</td>
+              <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">-{formatCurrency(defaultResult.detrazioneLavoroDipendente)}</td>
+            </tr>
+            {defaultResult.cuneoFiscaleDetrazione > 0 && (
+              <tr>
+                <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300 pl-8">Cuneo fiscale (detrazione)</td>
+                <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">-{formatCurrency(defaultResult.cuneoFiscaleDetrazione)}</td>
+              </tr>
+            )}
+            <tr>
+              <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">IRPEF netta</td>
+              <td class="px-4 py-2.5 text-right font-medium text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.irpefNetta)}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Addizionale regionale</td>
+              <td class="px-4 py-2.5 text-right text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.addizionaleRegionale)}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Addizionale comunale</td>
+              <td class="px-4 py-2.5 text-right text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.addizionaleComunale)}</td>
+            </tr>
+            {defaultResult.trattamentoIntegrativo > 0 && (
+              <tr>
+                <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Trattamento integrativo</td>
+                <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">+{formatCurrency(defaultResult.trattamentoIntegrativo)}</td>
+              </tr>
+            )}
+            <tr class="bg-gray-900 dark:bg-gray-700">
+              <td class="px-4 py-3 font-bold text-white">Netto Annuo</td>
+              <td class="px-4 py-3 text-right font-bold text-white text-lg">{formatCurrency(defaultResult.nettoAnnuo)}</td>
+            </tr>
+            <tr class="bg-gray-800 dark:bg-gray-600">
+              <td class="px-4 py-3 font-bold text-white">Netto Mensile (13 mensilita')</td>
+              <td class="px-4 py-3 text-right font-bold text-brand text-lg">{formatCurrency(defaultResult.nettoMensile)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aliquota media</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatRate(defaultResult.aliquotaMedia)}</p>
+        </div>
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aliquota marginale</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatRate(defaultResult.aliquotaMarginale)}</p>
+        </div>
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Costo azienda</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(defaultResult.costoAzienda)}</p>
+        </div>
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">TFR annuo</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(defaultResult.tfrAnnuo)}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis narrative -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        {narrative.analysisTitle}
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed space-y-4" set:html={narrative.analysisBody} />
+    </section>
+
+    <!-- Good salary? -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        {narrative.goodSalaryTitle}
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed space-y-4" set:html={narrative.goodSalaryBody} />
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Domande Frequenti
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden">
+            <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors list-none">
+              <span>{faq.question}</span>
+              <svg class="h-5 w-5 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Adjacent RAL links -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+        Scopri anche
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {adjacentLinks.map((link) => (
+          <a
+            href={`/ral/${link.slug}`}
+            class="group flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 hover:border-brand dark:hover:border-brand transition-colors"
+          >
+            <svg class="h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm text-gray-700 dark:text-gray-300 group-hover:text-brand transition-colors">
+              {link.anchor}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="mb-16 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 text-center">
+      <h2 class="text-2xl font-bold text-white">Calcola il tuo stipendio netto</h2>
+      <p class="mt-3 text-gray-300 max-w-xl mx-auto">
+        Inserisci la tua RAL, seleziona regione e comune, e scopri esattamente quanto ti resta in busta paga ogni mese.
+      </p>
+      <a
+        href={`/?ral=${ral}`}
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+      >
+        Calcola con RAL {ralFormatted} &euro;
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </section>
+  </div>
+</Layout>

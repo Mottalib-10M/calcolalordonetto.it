@@ -1,0 +1,541 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import PlusvalenzaImmobiliare from '../components/calcolatori/PlusvalenzaImmobiliare';
+
+const title = 'Calcolo Plusvalenza Immobiliare 2026: Tasse Vendita';
+const description = 'Calcola la plusvalenza immobiliare e le tasse sulla vendita: confronto imposta sostitutiva 26% vs tassazione ordinaria IRPEF. Simulatore aggiornato 2026.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Plusvalenza Immobiliare', url: `${SITE.url}/calcolo-plusvalenza-immobiliare` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Plusvalenza Immobiliare"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Plusvalenza Immobiliare 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Calcola le tasse sulla vendita di un immobile: confronta la tassazione ordinaria IRPEF con
+    l'imposta sostitutiva al 26% e scopri l'opzione piu' conveniente.
+  </p>
+
+  <PlusvalenzaImmobiliare client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Cos'e' la plusvalenza immobiliare e quando si paga
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La <strong>plusvalenza immobiliare</strong> e' il guadagno che si realizza dalla vendita di un
+        immobile a un prezzo superiore a quello di acquisto. In termini tecnici, l'art. 67, comma 1,
+        lettera b) del <strong>TUIR</strong> (Testo Unico delle Imposte sui Redditi, D.P.R. 917/1986)
+        classifica le plusvalenze immobiliari tra i "redditi diversi", cioe' quei redditi che non
+        rientrano nelle categorie tipiche del reddito da lavoro, d'impresa o di capitale, ma che
+        derivano da operazioni speculative o comunque dalla cessione di beni a titolo oneroso.
+      </p>
+      <p>
+        La tassazione della plusvalenza immobiliare non si applica in tutti i casi di vendita con
+        guadagno. La legge prevede che la plusvalenza sia tassabile solo quando la cessione avviene
+        <strong>entro 5 anni dall'acquisto</strong> (o dalla costruzione dell'immobile). Se l'immobile
+        e' stato posseduto per piu' di 5 anni, la plusvalenza realizzata e' completamente esente da
+        imposte. Questa regola si basa sul presupposto che una vendita entro un periodo breve abbia
+        una finalita' speculativa, mentre una detenzione prolungata rappresenta un investimento di
+        lungo periodo che il legislatore non intende penalizzare.
+      </p>
+      <p>
+        Esiste un'ulteriore, importantissima esenzione: la plusvalenza non e' mai tassabile se
+        l'immobile e' stato adibito ad <strong>abitazione principale</strong> del venditore o dei suoi
+        familiari per la maggior parte del periodo di possesso. Questo significa che se hai acquistato
+        un appartamento, vi hai trasferito la residenza e ci hai abitato stabilmente, la vendita
+        anche entro i 5 anni non genera alcuna plusvalenza tassabile. La condizione e' che l'immobile
+        sia stato la tua residenza principale per oltre la meta' del periodo intercorso tra acquisto e
+        vendita. Ad esempio, se hai acquistato un immobile 3 anni fa e ci hai abitato per almeno 18
+        mesi e un giorno, la plusvalenza e' esente.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Come si calcola la plusvalenza: prezzo vendita meno prezzo acquisto meno costi documentati
+      </h3>
+      <p>
+        Il calcolo della plusvalenza e' disciplinato dall'<strong>art. 68 del TUIR</strong>. La formula
+        base e' apparentemente semplice: la plusvalenza e' pari alla differenza tra il <strong>corrispettivo
+        percepito</strong> (prezzo di vendita) e il <strong>prezzo di acquisto o il costo di
+        costruzione</strong> dell'immobile, aumentato di ogni altro costo inerente documentato. In
+        formula:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        Plusvalenza = Prezzo vendita &minus; Prezzo acquisto &minus; Costi acquisto &minus; Costi ristrutturazione
+      </div>
+      <p>
+        I <strong>costi inerenti</strong> che possono essere portati in diminuzione del prezzo di acquisto
+        comprendono: le spese notarili relative all'atto di acquisto (ma non quelle relative al mutuo),
+        le imposte pagate all'acquisto (imposta di registro, IVA se applicabile, imposte ipotecarie e
+        catastali), le spese di agenzia immobiliare sostenute all'acquisto (con fattura), i costi di
+        ristrutturazione e miglioramento dell'immobile sostenuti nel periodo di possesso (purche'
+        documentati da fatture e pagati con strumenti tracciabili). Non sono deducibili le spese di
+        manutenzione ordinaria ne' le spese non documentate.
+      </p>
+      <p>
+        E' fondamentale conservare tutta la documentazione di spesa per il periodo di possesso
+        dell'immobile, perche' ogni euro di costo documentato riduce l'importo della plusvalenza
+        tassabile. In particolare, le <strong>spese di ristrutturazione</strong> possono avere un
+        impatto molto significativo: un intervento di ristrutturazione da 30.000 euro documentato
+        riduce la plusvalenza di altrettanto, con un risparmio fiscale di 7.800 euro (al 26%) o fino
+        a 12.900 euro (al 43% di aliquota marginale IRPEF).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Le due opzioni: tassazione ordinaria vs imposta sostitutiva 26%
+      </h3>
+      <p>
+        Il contribuente che realizza una plusvalenza immobiliare tassabile ha la facolta' di scegliere
+        tra due regimi di tassazione:
+      </p>
+      <p>
+        <strong>Tassazione ordinaria IRPEF:</strong> la plusvalenza viene dichiarata nel quadro RL del
+        modello Redditi PF (o nel quadro D del modello 730) e concorre a formare il reddito complessivo
+        del contribuente. Viene quindi tassata secondo gli <strong>scaglioni IRPEF</strong> vigenti nel
+        2026: 23% fino a 28.000 euro, 33% da 28.001 a 50.000 euro, 43% oltre i 50.000 euro. A questa
+        si aggiungono le addizionali regionali e comunali. L'effetto pratico e' che la plusvalenza si
+        "somma" al reddito ordinario (stipendio, pensione, etc.) e viene tassata all'aliquota marginale
+        del contribuente.
+      </p>
+      <p>
+        <strong>Imposta sostitutiva al 26%:</strong> in alternativa, il contribuente puo' chiedere al
+        notaio rogante, all'atto della vendita, l'applicazione di un'<strong>imposta sostitutiva con
+        aliquota fissa del 26%</strong> sulla plusvalenza. Questa opzione e' prevista dall'art. 1,
+        comma 496, della L. 266/2005 e successive modificazioni. L'imposta viene versata dal notaio
+        contestualmente alla registrazione dell'atto e ha carattere liberatorio: la plusvalenza non va
+        piu' dichiarata nella dichiarazione dei redditi.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Quando conviene l'imposta sostitutiva
+      </h3>
+      <p>
+        La scelta tra le due opzioni dipende interamente dall'<strong>aliquota IRPEF marginale</strong>
+        del contribuente. Il ragionamento e' lineare: l'imposta sostitutiva conviene quando l'aliquota
+        marginale IRPEF e' superiore al 26%. In pratica:
+      </p>
+      <p>
+        Se l'aliquota marginale e' del <strong>23%</strong> (redditi fino a 28.000 euro), conviene
+        la tassazione ordinaria, perche' paghi meno del 26%. Se l'aliquota marginale e' del
+        <strong>33%</strong> (redditi tra 28.001 e 50.000 euro) o del <strong>43%</strong> (redditi
+        sopra i 50.000 euro), conviene l'imposta sostitutiva al 26%. Tuttavia, bisogna considerare
+        un aspetto importante: con la tassazione ordinaria, la plusvalenza si aggiunge al reddito e
+        puo' far "salire" l'aliquota marginale. Un contribuente con un reddito di 25.000 euro che
+        realizza una plusvalenza di 30.000 euro vedrebbe parte di questa tassata al 23% e parte al
+        33%. In questo caso, il calcolo va fatto considerando l'effetto cumulativo. Il nostro
+        calcolatore utilizza l'aliquota marginale come riferimento semplificato, ma per situazioni
+        complesse e' consigliabile consultare un commercialista.
+      </p>
+      <p>
+        Considerate anche le <strong>addizionali IRPEF</strong> (regionali e comunali), che si
+        applicano solo con la tassazione ordinaria e non con la sostitutiva. Queste possono aggiungere
+        dall'1,5% al 4% circa a seconda della regione e del comune di residenza, rendendo la
+        sostitutiva conveniente anche per contribuenti nell'aliquota marginale del 23% se le addizionali
+        locali sono particolarmente elevate.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Costi deducibili: notaio, agenzia, imposte registro, ristrutturazione documentata
+      </h3>
+      <p>
+        La corretta individuazione dei <strong>costi deducibili</strong> e' essenziale per minimizzare
+        la plusvalenza tassabile. I principali costi che possono essere portati in diminuzione del prezzo
+        di acquisto sono:
+      </p>
+      <p>
+        <strong>Spese notarili</strong> relative all'atto di acquisto dell'immobile (ma non le spese
+        notarili relative al contratto di mutuo, che restano a carico del contribuente senza possibilita'
+        di deduzione ai fini del calcolo della plusvalenza).
+      </p>
+      <p>
+        <strong>Imposte pagate all'acquisto:</strong> imposta di registro (tipicamente il 2% del valore
+        catastale per la prima casa, il 9% per le seconde case), imposte ipotecarie e catastali (50 euro
+        ciascuna per la prima casa, oppure l'1% e il 2% per le seconde case se l'acquisto e' da privato).
+        Se l'acquisto e' avvenuto da un costruttore con IVA, l'IVA pagata (4% prima casa, 10% seconda
+        casa) e' anch'essa deducibile.
+      </p>
+      <p>
+        <strong>Spese di agenzia immobiliare</strong> sostenute all'acquisto, purche' documentate da
+        fattura. Le commissioni di agenzia sulla vendita non sono invece deducibili dalla plusvalenza
+        (ma possono essere portate in detrazione al 19% nella dichiarazione dei redditi per l'acquisto
+        della prima casa, fino a un massimo di 1.000 euro).
+      </p>
+      <p>
+        <strong>Costi di ristrutturazione e miglioramento:</strong> tutte le spese sostenute per
+        interventi edilizi sull'immobile durante il periodo di possesso, purche' documentate da fatture
+        e pagate con strumenti tracciabili (bonifico, carta). Questo include lavori di manutenzione
+        straordinaria, ristrutturazione, ampliamento, e qualsiasi intervento che abbia incrementato
+        il valore dell'immobile. Le spese di manutenzione ordinaria (piccole riparazioni, tinteggiatura
+        interna) non sono generalmente deducibili.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Caso ereditato: il valore iniziale e' quello dichiarato in successione
+      </h3>
+      <p>
+        Per gli immobili acquisiti per <strong>successione ereditaria</strong>, l'art. 67, comma 1,
+        lettera b) del TUIR prevede un'esenzione totale dalla plusvalenza. La vendita di un immobile
+        ereditato non genera mai plusvalenza tassabile, indipendentemente dal tempo trascorso dalla
+        successione e dal prezzo di vendita. Questa esenzione si applica perche' il legislatore
+        considera che l'acquisizione per successione non ha natura speculativa.
+      </p>
+      <p>
+        E' importante distinguere questa situazione da quella della donazione, che segue regole diverse
+        (vedi paragrafo successivo). Il trattamento favorevole dell'eredita' e' uno dei motivi per cui
+        molte famiglie italiane preferiscono la trasmissione mortis causa degli immobili rispetto alla
+        donazione inter vivos.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Caso donazione: il valore iniziale e' il prezzo pagato dal donante
+      </h3>
+      <p>
+        Per gli immobili acquisiti per <strong>donazione</strong>, la situazione e' piu' complessa e
+        spesso meno favorevole. L'art. 68 del TUIR stabilisce che, in caso di cessione a titolo oneroso
+        di un immobile ricevuto in donazione, la plusvalenza si calcola prendendo come prezzo di acquisto
+        il <strong>costo sostenuto dal donante</strong> (cioe' quanto aveva pagato il donante per
+        acquistare l'immobile), aumentato dei costi inerenti documentati dal donante stesso e da quelli
+        sostenuti dal donatario. Inoltre, il termine dei 5 anni per l'esenzione decorre dalla data di
+        acquisto del donante, non dalla data della donazione.
+      </p>
+      <p>
+        Facciamo un esempio: il padre acquista un immobile nel 2020 a 150.000 euro. Nel 2024 lo dona
+        al figlio. Il figlio lo vende nel 2026 a 250.000 euro. Il periodo di possesso si calcola dal
+        2020 (acquisto del padre): sono 6 anni, quindi la plusvalenza e' esente. Se invece il padre
+        avesse acquistato nel 2022, i 5 anni non sarebbero ancora trascorsi e il figlio dovrebbe
+        tassare la plusvalenza di 100.000 euro (250.000 meno 150.000), ridotta degli eventuali costi
+        documentati.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: acquisto 200.000 € nel 2023, vendita 280.000 € nel 2026
+      </h3>
+      <p>
+        Consideriamo il caso di Lucia, che ha acquistato un appartamento nel 2023 a <strong>200.000
+        euro</strong> come investimento (non come abitazione principale). Al momento dell'acquisto ha
+        sostenuto le seguenti spese: notaio 3.000 euro, agenzia immobiliare 5.000 euro, imposta di
+        registro e imposte ipotecarie e catastali 7.000 euro. Totale costi di acquisto:
+        <strong>15.000 euro</strong>. Durante il possesso ha eseguito lavori di ristrutturazione del
+        bagno e della cucina per <strong>10.000 euro</strong> (documentati con fattura e pagati con
+        bonifico).
+      </p>
+      <p>
+        Nel 2026, Lucia vende l'immobile a <strong>280.000 euro</strong>. Il possesso e' di 3 anni
+        (2023-2026), quindi inferiore ai 5 anni previsti per l'esenzione. La plusvalenza tassabile e':
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-sm">
+        <p>Prezzo di vendita: 280.000 €</p>
+        <p>Prezzo di acquisto: 200.000 €</p>
+        <p>Costi di acquisto: 15.000 €</p>
+        <p>Costi di ristrutturazione: 10.000 €</p>
+        <p class="font-semibold mt-2 border-t border-gray-200 dark:border-gray-700 pt-2">
+          Plusvalenza = 280.000 &minus; 200.000 &minus; 15.000 &minus; 10.000 = 55.000 €
+        </p>
+      </div>
+      <p>
+        Lucia ha una RAL di 40.000 euro, che la colloca nell'aliquota marginale del 33%. Vediamo le
+        due opzioni:
+      </p>
+      <p>
+        <strong>Imposta sostitutiva (26%):</strong> 55.000 x 26% = <strong>14.300 euro</strong>.
+        Netto dalla vendita: 280.000 &minus; 14.300 = 265.700 euro.
+      </p>
+      <p>
+        <strong>Tassazione ordinaria (aliquota marginale 33%):</strong> la plusvalenza si aggiunge
+        al reddito. Con la RAL di 40.000 euro piu' la plusvalenza di 55.000 euro, parte della
+        plusvalenza ricadrebbe nello scaglione al 43% (sopra i 50.000 euro). Approssimativamente:
+        10.000 euro al 33% (fino a 50.000 euro di reddito complessivo) + 45.000 euro al 43% = 3.300
+        + 19.350 = <strong>22.650 euro</strong>, a cui aggiungere le addizionali. Netto dalla vendita:
+        circa 257.350 euro.
+      </p>
+      <p>
+        Per Lucia, l'imposta sostitutiva al 26% e' nettamente piu' conveniente, con un
+        <strong>risparmio di circa 8.350 euro</strong>. La differenza e' ancora piu' marcata se si
+        considerano le addizionali regionali e comunali che si applicano solo alla tassazione ordinaria.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Aliquote e riferimenti normativi 2026
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente riassume le <strong>aliquote applicabili</strong> alla plusvalenza
+        immobiliare e i principali riferimenti normativi per il 2026.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Regime</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Aliquota</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Imposta su 50.000 €</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Imposta sostitutiva</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">26%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">13.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Richiesta al notaio all'atto della vendita</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">IRPEF 23%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">23%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">11.500 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reddito fino a 28.000 € (+ addizionali)</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">IRPEF 33%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">33%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">16.500 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reddito 28.001 - 50.000 € (+ addizionali)</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">IRPEF 43%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">43%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">21.500 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reddito oltre 50.000 € (+ addizionali)</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Esenzione</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">0%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">0 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Possesso > 5 anni o abitazione principale</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        La tabella evidenzia chiaramente come l'imposta sostitutiva al 26% sia vantaggiosa per chi ha
+        un'aliquota marginale IRPEF del 33% o superiore. Per contribuenti nello scaglione piu' basso
+        (23%), la tassazione ordinaria risulta leggermente meno onerosa, anche se la differenza si
+        riduce quando si considerano le addizionali regionali e comunali (che possono aggiungere dal
+        2% al 3,5% circa). Il consiglio e' di valutare attentamente la propria situazione fiscale
+        complessiva prima di scegliere, possibilmente con l'ausilio di un professionista.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quando la plusvalenza immobiliare e' esente da imposte?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La plusvalenza e' esente in tre casi principali. Primo: l'immobile e' stato posseduto per
+          piu' di 5 anni dalla data di acquisto. Secondo: l'immobile e' stato adibito ad abitazione
+          principale del venditore o dei suoi familiari per la maggior parte del periodo di possesso,
+          anche se la vendita avviene entro i 5 anni. Terzo: l'immobile e' stato acquisito per
+          successione ereditaria (in questo caso la plusvalenza e' sempre esente, indipendentemente
+          dal tempo trascorso). Non e' invece esente l'immobile ricevuto per donazione, per il quale
+          si applicano regole specifiche.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come si sceglie tra imposta sostitutiva e tassazione ordinaria?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La scelta deve essere comunicata al notaio rogante al momento della stipula dell'atto di
+          vendita. Se si opta per l'imposta sostitutiva, il notaio la versa contestualmente alla
+          registrazione dell'atto e la pratica si chiude li. Se si sceglie la tassazione ordinaria,
+          la plusvalenza va dichiarata nella successiva dichiarazione dei redditi (modello 730 o
+          Redditi PF). La scelta e' irrevocabile: una volta optato per un regime, non e' possibile
+          cambiare idea. Per questo motivo, e' fondamentale fare i calcoli prima di recarsi dal notaio.
+          Come regola generale, la sostitutiva conviene per chi ha un'aliquota marginale IRPEF
+          superiore al 26%, cioe' chi ha un reddito complessivo superiore a circa 28.000 euro annui.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quali costi posso detrarre dal calcolo della plusvalenza?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Possono essere portati in diminuzione del prezzo di acquisto tutti i costi inerenti
+          documentati: spese notarili dell'atto di acquisto, imposta di registro o IVA pagata
+          all'acquisto, imposte ipotecarie e catastali, provvigioni di agenzia immobiliare pagate
+          all'acquisto (con fattura), spese di ristrutturazione e miglioramento documentate con fatture
+          e pagate con bonifico o altro strumento tracciabile. Non sono deducibili: le spese di
+          manutenzione ordinaria, le spese del notaio per il mutuo, le provvigioni di agenzia pagate
+          alla vendita, le rate del mutuo (che comprendono sia il capitale restituito che gli interessi
+          passivi), e qualsiasi spesa non documentata. Conservare tutte le ricevute e' essenziale.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Se vendo un immobile ereditato, devo pagare le tasse sulla plusvalenza?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No. La vendita di un immobile acquisito per successione ereditaria non genera mai plusvalenza
+          tassabile, indipendentemente dal prezzo di vendita e dal tempo trascorso dalla successione.
+          Questa esenzione e' prevista espressamente dall'art. 67, comma 1, lettera b) del TUIR, che
+          esclude dall'ambito dei redditi diversi le plusvalenze derivanti dalla cessione di immobili
+          acquisiti per successione. L'esenzione si applica sia per la successione legittima che per
+          quella testamentaria, e indipendentemente dal grado di parentela con il de cuius.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come funziona per un immobile ricevuto in donazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Per gli immobili ricevuti in donazione, la plusvalenza si calcola utilizzando come prezzo di
+          acquisto il costo originariamente sostenuto dal donante, non il valore dichiarato nell'atto
+          di donazione. Anche il periodo di possesso ai fini dell'esenzione quinquennale si calcola
+          dalla data di acquisto del donante, non dalla data della donazione. Se il donante aveva
+          acquistato l'immobile piu' di 5 anni prima della vendita da parte del donatario, la
+          plusvalenza e' esente. Se il periodo complessivo e' inferiore a 5 anni, la plusvalenza e'
+          tassabile. Questa regola di "retrodatazione" e' particolarmente importante da considerare
+          quando si pianificano operazioni di passaggio generazionale degli immobili.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La plusvalenza si applica anche alle pertinenze (garage, cantina)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si, le pertinenze (garage, cantina, posto auto, soffitta) seguono le stesse regole
+          dell'immobile principale a cui sono legate. Se la pertinenza viene venduta insieme
+          all'abitazione principale e l'immobile e' esente da plusvalenza (per possesso oltre 5 anni
+          o perche' adibito a prima casa), anche la pertinenza e' esente. Se invece la pertinenza
+          viene venduta separatamente o l'immobile non gode dell'esenzione, la plusvalenza sulla
+          pertinenza e' tassabile con le stesse regole previste per gli immobili. Il prezzo di acquisto
+          della pertinenza va determinato in modo autonomo se acquistata separatamente, oppure in
+          proporzione se acquistata congiuntamente all'immobile con un unico atto.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa succede se vendo in perdita (minusvalenza)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Se il prezzo di vendita e' inferiore al costo complessivo di acquisto (comprensivo di tutti
+          i costi inerenti documentati), si realizza una <strong>minusvalenza</strong>. Le minusvalenze
+          immobiliari di cui all'art. 67, comma 1, lettera b) del TUIR non possono essere compensate
+          con altre plusvalenze ne' portate a riduzione del reddito complessivo. In sostanza, la
+          perdita rimane interamente a carico del contribuente senza alcun beneficio fiscale. Questo
+          trattamento asimmetrico (le plusvalenze sono tassate, le minusvalenze non sono deducibili) e'
+          una delle criticita' piu' discusse del sistema fiscale italiano relativo agli immobili.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il prezzo di acquisto si rivaluta per l'inflazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, a differenza di altri paesi, in Italia il prezzo di acquisto degli immobili non viene
+          rivalutato per tenere conto dell'inflazione ai fini del calcolo della plusvalenza. Il confronto
+          avviene tra valori nominali: il prezzo effettivamente pagato all'acquisto e il corrispettivo
+          effettivamente incassato alla vendita. Questo significa che parte della "plusvalenza" tassata
+          puo' in realta' essere solo un effetto dell'inflazione e non un guadagno reale in termini di
+          potere d'acquisto. Periodicamente il legislatore ha previsto la possibilita' di rivalutare
+          il valore degli immobili pagando un'imposta sostitutiva ridotta, ma queste finestre di
+          rivalutazione sono temporanee e non sempre disponibili.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-bonus-ristrutturazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Bonus Ristrutturazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola la detrazione per ristrutturazione, ecobonus e sismabonus
+        </p>
+      </a>
+      <a href="/calcolo-mutuo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Mutuo
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la rata del mutuo e il piano di ammortamento
+        </p>
+      </a>
+      <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'IRPEF lorda e netta con gli scaglioni 2026
+        </p>
+      </a>
+      <a href="/calcolo-interesse-composto" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Interesse Composto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la crescita del tuo capitale con l'interesse composto
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

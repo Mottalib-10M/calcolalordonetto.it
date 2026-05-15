@@ -1,0 +1,414 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import TFR from '../components/calcolatori/TFR';
+
+const title = 'Calcolo TFR 2026: Simulatore Trattamento Fine Rapporto';
+const description =
+  'Calcola il tuo TFR accumulato e la tassazione. Simula il trattamento di fine rapporto per anni di servizio e RAL. Aggiornato al 2026.';
+const canonical = canonicalURL('/calcolo-tfr');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo TFR', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolatore TFR"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <TFR client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola il TFR
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il Trattamento di Fine Rapporto (TFR) e' una somma che il datore di
+        lavoro accantona ogni anno a favore del dipendente e che viene
+        corrisposta al termine del rapporto di lavoro. La formula di calcolo
+        e' definita dall'articolo 2120 del Codice Civile: ogni anno si
+        accantona una quota pari alla retribuzione annua divisa per 13,5
+        (circa il 6,91% della RAL).
+      </p>
+      <h3>La rivalutazione annua</h3>
+      <p>
+        Il TFR accantonato in azienda viene rivalutato ogni anno con un tasso
+        composto da una quota fissa dell'1,5% piu' il 75% dell'indice ISTAT
+        dei prezzi al consumo. Questa rivalutazione protegge parzialmente il
+        TFR dall'inflazione, anche se nei periodi di alta inflazione la
+        rivalutazione potrebbe non coprire interamente la perdita di potere
+        d'acquisto.
+      </p>
+      <h3>Tassazione del TFR</h3>
+      <p>
+        Il TFR non viene tassato con le normali aliquote IRPEF ma con la
+        cosiddetta "tassazione separata". L'aliquota applicata e' quella
+        media IRPEF calcolata sui redditi degli ultimi cinque anni.
+        Questo meccanismo e' generalmente favorevole al lavoratore, perche'
+        l'aliquota media e' inferiore a quella marginale. Sulla rivalutazione
+        annua si applica invece un'imposta sostitutiva del 17%.
+      </p>
+      <h3>La formula dell'articolo 2120 del Codice Civile</h3>
+      <p>
+        L'articolo 2120 del Codice Civile disciplina in modo preciso il calcolo del
+        Trattamento di Fine Rapporto. La norma stabilisce che, per ciascun anno di
+        servizio, il datore di lavoro deve accantonare una quota pari alla retribuzione
+        annua complessiva divisa per il coefficiente fisso 13,5. La retribuzione
+        considerata ai fini del TFR comprende tutte le somme corrisposte in dipendenza
+        del rapporto di lavoro a titolo non occasionale, inclusi i compensi in natura,
+        le mensilita' aggiuntive (tredicesima e quattordicesima), i premi di produzione
+        ricorrenti e le indennita' fisse mensili. Sono invece esclusi i rimborsi spese,
+        le erogazioni una tantum e le somme occasionali.
+      </p>
+      <p>
+        In termini pratici, la formula si articola cosi': si prende la retribuzione
+        annua lorda e la si divide per 13,5, ottenendo la quota annua lorda. Da questa
+        si sottrae il contributo dello 0,50% della retribuzione destinato al fondo
+        adeguamento pensioni gestito dall'INPS. Il risultato e' la quota netta di TFR
+        effettivamente accantonata per quell'anno di servizio. Ad esempio, con una
+        retribuzione annua di 30.000 euro, la quota lorda e' pari a 2.222,22 euro
+        (30.000 / 13,5), da cui si sottrae il contributo di 150 euro (30.000 x 0,50%),
+        per un accantonamento effettivo di circa 2.072,22 euro. Per le frazioni di
+        anno, il calcolo viene riproporzionato: le frazioni di mese pari o superiori
+        a 15 giorni vengono computate come mese intero, mentre quelle inferiori vengono
+        trascurate.
+      </p>
+      <h3>TFR in azienda vs fondo pensione: confronto dettagliato</h3>
+      <p>
+        La scelta tra lasciare il TFR in azienda o destinarlo a un fondo pensione
+        complementare rappresenta una delle decisioni finanziarie piu' importanti per
+        ogni lavoratore dipendente. Entrambe le opzioni presentano vantaggi e svantaggi
+        significativi che vanno valutati attentamente in base alla propria situazione
+        personale, all'eta' anagrafica e agli obiettivi di lungo termine.
+      </p>
+      <p>
+        <strong>Tassazione.</strong> Il TFR lasciato in azienda viene tassato con la
+        tassazione separata al momento della liquidazione. L'aliquota effettiva dipende
+        dal reddito di riferimento e puo' variare dal 23% al 43%, con un'aliquota media
+        che per la maggior parte dei lavoratori si colloca tra il 23% e il 27%. Il TFR
+        destinato a un fondo pensione, invece, gode di un regime fiscale decisamente
+        piu' favorevole: la tassazione sulle prestazioni e' con un'aliquota sostitutiva
+        che parte dal 15% e si riduce dello 0,30% per ogni anno di partecipazione al
+        fondo oltre il quindicesimo, fino a raggiungere un minimo del 9% dopo 35 anni
+        di adesione. Questo differenziale fiscale, su orizzonti temporali lunghi, puo'
+        tradursi in un risparmio di diverse migliaia di euro.
+      </p>
+      <p>
+        <strong>Rendimento.</strong> Il TFR in azienda si rivaluta annualmente secondo
+        la formula legale: 1,5% fisso piu' il 75% dell'indice ISTAT dei prezzi al
+        consumo per le famiglie di operai e impiegati (FOI). Storicamente, questo tasso
+        di rivalutazione si e' aggirato tra il 2% e il 4% annuo, a seconda
+        dell'andamento dell'inflazione. Il TFR conferito a un fondo pensione, invece,
+        viene investito nei mercati finanziari e il rendimento dipende dalla linea di
+        investimento scelta (garantita, obbligazionaria, bilanciata o azionaria). Le
+        linee azionarie hanno storicamente offerto rendimenti superiori alla
+        rivalutazione legale del TFR, soprattutto su orizzonti di 15-20 anni e oltre,
+        ma con una maggiore volatilita' nel breve periodo.
+      </p>
+      <p>
+        <strong>Liquidita' e accesso ai fondi.</strong> Il TFR in azienda puo' essere
+        anticipato nella misura massima del 70% dopo 8 anni di servizio, per motivi
+        specifici previsti dalla legge (acquisto prima casa, spese sanitarie, congedo
+        parentale). Il fondo pensione prevede regole differenti: e' possibile
+        richiedere anticipazioni per spese sanitarie (fino al 75%, in qualsiasi
+        momento), per acquisto o ristrutturazione prima casa (fino al 75%, dopo 8 anni
+        di iscrizione) e per altre esigenze (fino al 30%, dopo 8 anni di iscrizione).
+        Va tenuto presente che il capitale nel fondo pensione e' tendenzialmente
+        vincolato fino al pensionamento.
+      </p>
+      <p>
+        <strong>Contributo datoriale aggiuntivo.</strong> Un vantaggio spesso
+        sottovalutato del fondo pensione e' il contributo aggiuntivo del datore di
+        lavoro. La maggior parte dei contratti collettivi nazionali (CCNL) prevede che,
+        se il lavoratore destina il TFR a un fondo pensione negoziale e versa un
+        contributo minimo a proprio carico (generalmente l'1% o il 2% della
+        retribuzione), il datore di lavoro e' tenuto a versare un ulteriore contributo,
+        che tipicamente varia dall'1% al 2% della retribuzione. Questo contributo
+        datoriale rappresenta di fatto una retribuzione aggiuntiva che si perde se si
+        sceglie di lasciare il TFR in azienda.
+      </p>
+      <h3>La scelta del fondo pensione</h3>
+      <p>
+        La decisione sulla destinazione del TFR deve essere presa entro sei mesi
+        dall'assunzione. Durante questo periodo, il lavoratore puo' scegliere
+        esplicitamente di conferire il TFR a un fondo pensione (negoziale, aperto o
+        PIP - Piano Individuale Pensionistico) oppure di mantenerlo in azienda. Se
+        il lavoratore non esprime alcuna preferenza entro il termine di sei mesi,
+        scatta il meccanismo del silenzio-assenso: il TFR viene automaticamente
+        conferito al fondo pensione negoziale previsto dal CCNL di riferimento o, in
+        mancanza, al fondo residuale INPS (FondInps). E' importante sottolineare che
+        la scelta di destinare il TFR al fondo pensione e' irrevocabile: una volta
+        conferito, non e' possibile tornare indietro e riportare il TFR in azienda.
+        Al contrario, chi inizialmente sceglie di mantenere il TFR in azienda puo'
+        successivamente decidere di destinarlo a un fondo pensione in qualsiasi
+        momento.
+      </p>
+      <p>
+        Esistono diverse tipologie di fondi pensione tra cui scegliere. I <strong>fondi
+        negoziali</strong> (o chiusi) sono istituiti sulla base di accordi collettivi e
+        sono riservati a specifiche categorie di lavoratori (ad esempio Cometa per i
+        metalmeccanici, Fonchim per i chimici, Fonte per i commercianti). Offrono
+        generalmente costi di gestione piu' bassi e la possibilita' di ottenere il
+        contributo datoriale aggiuntivo. I <strong>fondi aperti</strong> sono invece
+        istituiti da banche, assicurazioni e SGR, e sono accessibili a tutti i
+        lavoratori indipendentemente dalla categoria. Offrono maggiore liberta' nella
+        scelta delle linee di investimento ma tendono ad avere costi di gestione
+        leggermente superiori. Infine, i <strong>PIP</strong> (Piani Individuali
+        Pensionistici) sono contratti assicurativi individuali che garantiscono
+        flessibilita' massima ma presentano solitamente i costi piu' elevati.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      TFR maturato per livello di RAL: tabella di riferimento
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra il TFR lordo maturato in base alla Retribuzione
+        Annua Lorda (RAL) per diversi orizzonti temporali. I valori sono calcolati
+        applicando la formula base (RAL / 13,5) senza considerare la rivalutazione
+        annua, che aggiungerebbe un rendimento pari all'1,5% fisso piu' il 75%
+        dell'indice ISTAT dei prezzi al consumo. I valori reali saranno quindi
+        superiori a quelli indicati, soprattutto per periodi di servizio piu' lunghi.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-6">
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">TFR annuo lordo</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">TFR 5 anni</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">TFR 10 anni</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">TFR 20 anni</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">20.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.481 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">7.407 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">14.815 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">29.630 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">25.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.852 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">9.259 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">18.519 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">37.037 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">30.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2.222 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">11.111 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">22.222 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">44.444 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">40.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2.963 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">14.815 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">29.630 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">59.259 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">50.000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">3.704 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">18.519 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">37.037 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">74.074 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        <strong>Nota importante:</strong> i valori in tabella sono al lordo e non
+        includono la rivalutazione annua del TFR (1,5% fisso + 75% dell'indice ISTAT),
+        che incrementa progressivamente il montante accantonato. Ad esempio, con
+        un'inflazione media del 2%, il tasso di rivalutazione annuo sarebbe circa il
+        3% (1,5% + 75% di 2%), il che su 20 anni potrebbe aumentare il TFR maturato
+        di oltre il 30% rispetto ai valori della tabella. Utilizzando il nostro
+        calcolatore sopra puoi ottenere una stima piu' precisa che tiene conto della
+        rivalutazione.
+      </p>
+      <p>
+        <strong>Implicazioni fiscali.</strong> Al momento della liquidazione, il TFR
+        lordo viene sottoposto a tassazione separata. Per un lavoratore con RAL di
+        30.000 euro e 20 anni di servizio, il TFR lordo senza rivalutazione sarebbe
+        di circa 44.444 euro. Applicando un'aliquota media indicativa del 23%, la
+        tassazione ammonterebbe a circa 10.222 euro, lasciando un netto di
+        circa 34.222 euro. Se lo stesso TFR fosse stato destinato a un fondo pensione
+        con aliquota al 9% (dopo 35 anni di adesione), la tassazione si ridurrebbe a
+        circa 4.000 euro, con un risparmio fiscale di oltre 6.000 euro. Anche
+        con un'adesione di soli 20 anni (aliquota al 13,5%), il risparmio fiscale
+        sarebbe comunque significativo, nell'ordine di circa 4.200 euro.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Quanto TFR maturo ogni anno?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Ogni anno maturi circa il 6,91% della tua retribuzione annua lorda (RAL diviso 13,5). Con una RAL di 30.000 euro, ad esempio, il TFR annuo e' circa 2.222 euro lordi. A questo va sottratto il contributo dello 0,50% della retribuzione destinato al fondo adeguamento pensioni, quindi il netto accantonato e' leggermente inferiore.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Meglio lasciare il TFR in azienda o destinarlo a un fondo pensione?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Dipende da diversi fattori. Il fondo pensione offre generalmente un vantaggio fiscale superiore: la tassazione finale e' con aliquota dal 15% al 9% (invece della tassazione separata), e i contributi versati sono deducibili fino a 5.164,57 euro annui. In compenso, il TFR in azienda e' piu' liquido in caso di necessita' (puoi richiedere anticipazioni dopo 8 anni). Valuta con attenzione in base alla tua situazione personale.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Posso chiedere un anticipo del TFR?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', dopo almeno 8 anni di servizio presso lo stesso datore di lavoro puoi richiedere un anticipo fino al 70% del TFR maturato. Le motivazioni previste dalla legge sono: acquisto della prima casa per se' o per i figli, spese sanitarie straordinarie, o congedo parentale. Alcuni CCNL prevedono la possibilita' di anticipo anche per altri motivi. L'anticipo puo' essere richiesto una sola volta durante il rapporto di lavoro.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come viene tassato il TFR alla liquidazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il TFR e' soggetto a tassazione separata. Si calcola il "reddito di riferimento" dividendo il TFR maturato per gli anni di servizio e moltiplicando per 12. Su questo reddito si applica l'IRPEF per ottenere l'aliquota media, che viene poi applicata all'intero TFR. Questo meccanismo e' generalmente piu' vantaggioso rispetto alla tassazione ordinaria, soprattutto per rapporti di lavoro di lunga durata.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Il TFR e' compreso nella RAL?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No, il TFR non e' incluso nella RAL (Retribuzione Annua Lorda). La RAL comprende lo stipendio base piu' le mensilita' aggiuntive (tredicesima e eventuale quattordicesima). Il TFR e' un costo aggiuntivo a carico del datore di lavoro, pari a circa il 6,91% della RAL, che si somma al costo azienda complessivo insieme ai contributi INPS a carico dell'azienda.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come funziona la rivalutazione del TFR in dettaglio?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La rivalutazione del TFR lasciato in azienda e' composta da due elementi: una quota fissa dell'1,5% annuo e una quota variabile pari al 75% dell'aumento dell'indice ISTAT dei prezzi al consumo per le famiglie di operai e impiegati (indice FOI). Ad esempio, se l'inflazione annua e' del 2%, la rivalutazione totale sara' pari al 3% (1,5% + 75% di 2%). Sulla rivalutazione maturata ogni anno il datore di lavoro trattiene un'imposta sostitutiva del 17%, che viene versata direttamente all'Erario. Questo significa che la rivalutazione netta effettiva e' inferiore a quella lorda. Nei periodi di deflazione (indice ISTAT negativo), la componente variabile puo' diventare negativa, ma la rivalutazione complessiva non puo' mai scendere sotto l'1,5% annuo.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Cosa succede al TFR se l'azienda fallisce?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          In caso di fallimento o insolvenza del datore di lavoro, il TFR dei dipendenti e' tutelato dal Fondo di Garanzia gestito dall'INPS, istituito dalla legge n. 297/1982. Il lavoratore deve prima insinuarsi nel passivo fallimentare e ottenere l'ammissione del credito per TFR. Una volta accertata l'insolvenza del datore di lavoro, il lavoratore puo' presentare domanda all'INPS che provvede al pagamento del TFR maturato e non corrisposto, comprensivo della rivalutazione. Il Fondo di Garanzia copre l'intero importo del TFR dovuto, senza limiti di importo. Se il TFR era stato destinato a un fondo pensione, il problema non si pone: le somme gia' versate al fondo sono di proprieta' del lavoratore e restano al sicuro nel patrimonio separato del fondo, indipendentemente dalle sorti dell'azienda.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Conviene chiedere l'anticipo del TFR o un prestito?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La scelta tra anticipo del TFR e prestito personale dipende da diversi fattori. L'anticipo del TFR ha il vantaggio di non comportare il pagamento di interessi, ma presenta alcuni svantaggi: riduce il montante finale che riceverai alla cessazione del rapporto di lavoro, puo' essere richiesto una sola volta, e la tassazione sull'anticipo e' a tassazione separata (con aliquota minima del 23%). Un prestito personale, d'altra parte, comporta il pagamento di interessi ma non intacca il TFR che continua a rivalutarsi in azienda. In generale, se il tasso del prestito e' contenuto e il rapporto di lavoro proseguira' per molti anni, potrebbe essere piu' conveniente mantenere il TFR intatto e accendere un prestito. Viceversa, se il tasso del prestito e' elevato o si prevede di cambiare lavoro a breve, l'anticipo del TFR potrebbe risultare la scelta migliore.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-busta-paga"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Busta Paga
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simula il cedolino mensile con tutte le trattenute
+        </p>
+      </a>
+      <a
+        href="/calcolo-tredicesima"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Tredicesima
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calcola l'importo netto della tredicesima mensilita'
+        </p>
+      </a>
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Dettaglio scaglione per scaglione dell'IRPEF sul tuo reddito
+        </p>
+      </a>
+      <a
+        href="/calcolo-inflazione"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Inflazione
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Scopri come l'inflazione erode il potere d'acquisto nel tempo
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

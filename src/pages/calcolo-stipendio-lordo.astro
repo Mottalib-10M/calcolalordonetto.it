@@ -1,0 +1,401 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import StipendioLordo from '../components/calcolatori/StipendioLordo';
+
+const title = 'Calcolo Stipendio Lordo da Netto 2026: Trova la RAL';
+const description =
+  'Calcola la RAL necessaria partendo dallo stipendio netto mensile desiderato. Calcolatore inverso aggiornato al 2026 con aliquote IRPEF e detrazioni.';
+const canonical = canonicalURL('/calcolo-stipendio-lordo');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Lordo da Netto', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Stipendio Lordo da Netto 2026"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <StipendioLordo client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola il lordo dal netto
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il calcolo inverso (dal netto al lordo) non ha una formula diretta
+        perche' il sistema fiscale italiano e' progressivo con detrazioni che
+        variano in base al reddito stesso. Il nostro calcolatore utilizza un
+        algoritmo di ricerca binaria per trovare la RAL che produce il netto
+        mensile desiderato.
+      </p>
+      <h3>Perche' serve il calcolo inverso</h3>
+      <p>
+        Quando valuti una nuova offerta di lavoro, spesso ragioni in termini di
+        netto mensile: "quanto mi serve in busta paga per coprire le mie
+        spese?". Questo calcolatore ti aiuta a tradurre quella cifra nella RAL
+        da richiedere durante la trattativa salariale.
+      </p>
+      <h3>Fattori che influenzano il risultato</h3>
+      <ul>
+        <li>
+          <strong>Regione di residenza:</strong> le addizionali regionali possono
+          variare di oltre 2 punti percentuali tra una regione e l'altra
+        </li>
+        <li>
+          <strong>Numero di mensilita:</strong> su 14 mensilita il netto mensile
+          e' piu' basso rispetto a 13, perche' lo stesso netto annuo viene
+          diviso per un numero maggiore
+        </li>
+        <li>
+          <strong>Detrazioni e bonus:</strong> il cuneo fiscale e il trattamento
+          integrativo possono aumentare significativamente il netto per redditi
+          fino a 40.000 euro
+        </li>
+      </ul>
+      <h3>Precisione del calcolo</h3>
+      <p>
+        Il calcolatore arrotonda la RAL ai 100 euro piu' vicini per fornire una
+        cifra realistica da usare in trattativa. Il netto effettivo potrebbe
+        differire di pochi euro dal target inserito.
+      </p>
+      <h3>Il metodo di calcolo inverso</h3>
+      <p>
+        A differenza del calcolo lordo-netto, dove si applicano in sequenza
+        contributi INPS, scaglioni IRPEF e addizionali, il percorso inverso non
+        puo' essere risolto con una formula chiusa. Il motivo e' la natura
+        progressiva del sistema fiscale: le aliquote IRPEF cambiano a seconda
+        dello scaglione di reddito, le detrazioni da lavoro dipendente si
+        riducono all'aumentare del reddito imponibile, e il trattamento
+        integrativo (ex bonus Renzi) si applica solo entro determinate soglie.
+        Tutte queste variabili rendono impossibile "invertire" la formula con una
+        semplice operazione algebrica.
+      </p>
+      <p>
+        Il nostro calcolatore risolve il problema utilizzando un algoritmo di
+        <strong>ricerca binaria</strong> (detto anche bisezione). In pratica, il
+        sistema parte da un intervallo ampio di possibili valori di RAL (ad
+        esempio tra 0 e 200.000 euro) e ad ogni iterazione calcola il netto
+        corrispondente al punto medio dell'intervallo. Se il netto risultante e'
+        inferiore al target desiderato, il sistema sposta il limite inferiore
+        verso l'alto; se e' superiore, abbassa il limite superiore. Questo
+        processo si ripete rapidamente (in genere bastano 20-30 iterazioni) fino
+        a convergere sulla RAL che produce il netto piu' vicino al valore
+        richiesto. Il risultato viene poi arrotondato ai 100 euro piu' vicini
+        per offrire una cifra pratica e facilmente negoziabile.
+      </p>
+      <h3>Errori frequenti nella negoziazione salariale</h3>
+      <p>
+        La confusione tra stipendio lordo e netto e' alla base di molti
+        fraintendimenti durante le trattative di lavoro. Ecco gli errori piu'
+        comuni da evitare:
+      </p>
+      <ul>
+        <li>
+          <strong>Confondere lordo e netto:</strong> molti candidati, soprattutto
+          alla prima esperienza lavorativa, confondono la RAL con il netto annuo.
+          Una RAL di 30.000 euro non significa ricevere 30.000 euro sul conto
+          corrente: il netto annuo sara' circa 22.000-23.000 euro, a seconda
+          della regione e delle detrazioni applicabili. Prima di accettare
+          un'offerta, verifica sempre il netto mensile che ti spetta utilizzando
+          questo calcolatore.
+        </li>
+        <li>
+          <strong>Ignorare le differenze regionali:</strong> l'addizionale
+          regionale IRPEF varia significativamente da regione a regione. Ad
+          esempio, il Lazio applica aliquote che possono superare il 3%, mentre
+          altre regioni come il Trentino-Alto Adige si fermano intorno all'1,23%.
+          A parita' di RAL, questo puo' tradursi in una differenza di diverse
+          centinaia di euro l'anno sul netto. Se stai valutando un trasferimento,
+          tieni conto anche di questo fattore.
+        </li>
+        <li>
+          <strong>Non considerare il numero di mensilita:</strong> il CCNL
+          (Contratto Collettivo Nazionale di Lavoro) applicato dall'azienda
+          determina se riceverai 13 o 14 mensilita. La RAL resta la stessa, ma
+          il netto mensile cambia sensibilmente: con 14 mensilita ogni singolo
+          stipendio mensile sara' piu' basso, anche se il totale annuo rimane
+          invariato. Nella negoziazione, assicurati di specificare sempre se il
+          netto che hai in mente e' riferito a 13 o 14 mensilita.
+        </li>
+        <li>
+          <strong>Trascurare i benefit non monetari:</strong> quando confronti
+          due offerte, non guardare solo la RAL. Buoni pasto, assicurazione
+          sanitaria integrativa, auto aziendale, welfare aziendale e smart
+          working possono valere diverse migliaia di euro l'anno. Un'offerta con
+          RAL inferiore ma ricca di benefit potrebbe essere complessivamente piu'
+          vantaggiosa.
+        </li>
+      </ul>
+      <h3>Il ruolo del cuneo fiscale nel 2026</h3>
+      <p>
+        Il <strong>cuneo fiscale</strong> rappresenta la differenza tra il costo
+        totale sostenuto dal datore di lavoro e il netto percepito dal
+        lavoratore. In Italia, il cuneo fiscale e' storicamente tra i piu' alti
+        d'Europa, attestandosi intorno al 45-47% per il lavoratore medio. Questo
+        significa che per ogni 100 euro di costo azienda, il dipendente ne
+        percepisce in tasca circa 53-55.
+      </p>
+      <p>
+        Nel 2026, il governo ha confermato e reso strutturale la riduzione del
+        cuneo contributivo introdotta negli anni precedenti. Questa misura riduce
+        i contributi INPS a carico del lavoratore per i redditi fino a 35.000
+        euro, generando un aumento del netto mensile che puo' arrivare fino a
+        circa 100 euro al mese. Il beneficio si riduce gradualmente per i
+        redditi tra 25.000 e 35.000 euro e si azzera completamente sopra questa
+        soglia.
+      </p>
+      <p>
+        Per il calcolo inverso, il cuneo fiscale ha un impatto diretto: grazie
+        alla riduzione contributiva, per i redditi medio-bassi la RAL necessaria
+        per raggiungere un dato netto e' inferiore rispetto a quanto sarebbe
+        senza questa agevolazione. In altre parole, se desideri 1.500 euro netti
+        al mese, oggi ti basta una RAL piu' bassa rispetto a qualche anno fa.
+        Questo effetto, tuttavia, si esaurisce superando i 35.000 euro di
+        reddito: oltre questa soglia, il rapporto netto-lordo torna a seguire le
+        regole ordinarie, con aliquote contributive piene e la sola progressivita'
+        IRPEF a determinare il netto.
+      </p>
+      <p>
+        Comprendere il funzionamento del cuneo fiscale e' fondamentale per
+        negoziare con consapevolezza. Se il tuo obiettivo di netto mensile si
+        colloca nella fascia coperta dalla riduzione contributiva, potresti
+        ottenere il risultato desiderato con una RAL ragionevolmente accessibile.
+        Se invece punti a un netto piu' elevato, dovrai mettere in conto
+        l'effetto combinato di aliquote IRPEF piu' alte e contributi pieni, che
+        rendono il passaggio da lordo a netto sempre meno favorevole
+        all'aumentare del reddito.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Tabella conversione netto-lordo: esempi pratici
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Netto mensile desiderato</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">RAL necessaria (13 mensilita')</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">RAL necessaria (14 mensilita')</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">1.200 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~21.000 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~21.000 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">1.500 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~26.000 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~27.000 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">1.800 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~31.000 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~32.000 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">2.000 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~36.000 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~37.000 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">2.500 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~47.000 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~48.000 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">3.000 &euro;</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~58.000 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~60.000 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella mette in evidenza un aspetto fondamentale del sistema fiscale
+        italiano: la <strong>relazione non lineare</strong> tra netto e lordo.
+        Passare da 1.200 a 1.500 euro netti al mese richiede un aumento della
+        RAL di circa 5.000 euro, ma passare da 2.500 a 3.000 euro netti
+        richiede un incremento di oltre 11.000 euro di RAL. Questo effetto e'
+        dovuto alla progressivita' dell'IRPEF: man mano che il reddito aumenta,
+        si entra in scaglioni con aliquote piu' elevate, e ogni euro aggiuntivo
+        di lordo produce un incremento di netto sempre minore.
+      </p>
+      <p>
+        Inoltre, per i redditi piu' bassi (fino a circa 28.000 euro di RAL), la
+        riduzione del cuneo contributivo e il trattamento integrativo
+        amplificano il netto, rendendo il rapporto netto/lordo particolarmente
+        favorevole. Superata questa soglia, il rapporto si deteriora
+        progressivamente.
+      </p>
+      <p>
+        <strong>Nota sulle variazioni regionali:</strong> i valori indicati in
+        tabella sono approssimativi e calcolati ipotizzando la residenza in
+        Lombardia con addizionale comunale media. Il netto effettivo puo'
+        variare di 30-80 euro al mese a seconda della regione: ad esempio,
+        risiedere nel Lazio anziche' in Lombardia puo' ridurre il netto mensile
+        di circa 40-60 euro a parita' di RAL, a causa della maggiore addizionale
+        regionale. Usa sempre il calcolatore qui sopra per ottenere un risultato
+        personalizzato sulla base della tua regione e del tuo comune di
+        residenza.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Per avere 2.000 euro netti al mese, quale RAL devo chiedere?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Dipende dalla regione di residenza e dal numero di mensilita. Indicativamente, per ottenere circa 2.000 euro netti al mese su 13 mensilita serve una RAL intorno ai 35.000-37.000 euro. Usa il calcolatore qui sopra con la tua regione per ottenere il valore preciso.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Cosa cambia tra 12, 13 e 14 mensilita?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il numero di mensilita determina come viene suddiviso il netto annuo. Con 13 mensilita (il caso piu' comune in Italia), ricevi 12 stipendi ordinari piu' la tredicesima a dicembre. Con 14 mensilita ricevi anche la quattordicesima, tipica di alcuni CCNL come il commercio e il turismo. Il netto annuo resta lo stesso, ma il netto mensile e' piu' basso perche' diviso per un numero maggiore di pagamenti.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          La RAL include i contributi a carico del datore di lavoro?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No. La RAL (Retribuzione Annua Lorda) e' il tuo stipendio lordo prima delle trattenute a tuo carico (INPS dipendente e IRPEF). Il costo azienda e' piu' alto perche' include anche i contributi INPS a carico del datore (circa 23,81%) e il TFR (circa 6,91%). Il calcolatore mostra anche il costo azienda nella sezione di dettaglio.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Perche' il netto effettivo potrebbe differire dal target?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il calcolatore arrotonda la RAL ai 100 euro piu' vicini per proporre una cifra realistica e negoziabile. Questo arrotondamento puo' causare una differenza di pochi euro nel netto mensile risultante. In pratica, in sede di trattativa si ragiona sempre in termini di RAL arrotondata.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Posso usare questo calcolo per valutare un'offerta di lavoro?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Assolutamente si'. Se sai quanto ti serve al mese per le tue spese, puoi calcolare la RAL minima da accettare. Tieni presente che nella valutazione complessiva dovresti considerare anche benefit aziendali (buoni pasto, auto aziendale, welfare), il TFR che maturi ogni anno, e le prospettive di crescita.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come influisce il cuneo fiscale 2026 sul calcolo inverso?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il cuneo fiscale 2026 prevede una riduzione strutturale dei contributi INPS a carico del lavoratore per redditi fino a 35.000 euro lordi annui. Questo significa che, per i redditi che rientrano in questa fascia, il netto mensile e' piu' alto rispetto al calcolo standard senza agevolazioni. Di conseguenza, il calcolo inverso restituisce una RAL necessaria inferiore: per ottenere, ad esempio, 1.500 euro netti al mese, serve una RAL piu' bassa rispetto a quanto sarebbe necessario senza la riduzione del cuneo. Attenzione pero' alla soglia dei 35.000 euro: superato questo limite, il beneficio si azzera completamente e il rapporto netto-lordo torna a seguire le regole ordinarie, con un impatto significativo sulla RAL richiesta. Il nostro calcolatore tiene conto automaticamente di questa agevolazione nel determinare la RAL necessaria.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Qual e' la differenza tra costo azienda e RAL?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La RAL (Retribuzione Annua Lorda) e' lo stipendio lordo del dipendente, cioe' l'importo su cui vengono calcolate le trattenute a carico del lavoratore (contributi INPS dipendente, IRPEF, addizionali). Il costo azienda, invece, e' la spesa complessiva che il datore di lavoro sostiene per quel dipendente: include la RAL, i contributi INPS a carico del datore (circa il 23,81% della RAL), il TFR maturato (circa il 6,91%), l'INAIL e altri oneri accessori. In pratica, il costo azienda e' mediamente superiore del 30-35% rispetto alla RAL. Ad esempio, una RAL di 30.000 euro corrisponde a un costo azienda di circa 39.000-40.000 euro. Questa distinzione e' importante nella negoziazione: l'azienda ragiona in termini di costo azienda, mentre il candidato ragiona in termini di RAL o di netto mensile.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come negoziare lo stipendio usando il calcolo inverso?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il calcolo inverso e' uno strumento prezioso per prepararsi alla negoziazione salariale. Ecco come usarlo al meglio: innanzitutto, calcola le tue spese mensili fisse (affitto, bollette, alimentari, trasporti, risparmio) per determinare il netto minimo di cui hai bisogno. Poi, usa il calcolatore per tradurre quel netto nella RAL corrispondente, selezionando la tua regione di residenza e il numero di mensilita previsto dal CCNL dell'azienda. Aggiungi un margine del 5-10% alla RAL risultante per avere spazio di trattativa. In sede di colloquio, presenta la tua richiesta in termini di RAL (non di netto), perche' e' il linguaggio che le aziende utilizzano. Infine, ricorda di valutare anche i benefit: se l'azienda offre buoni pasto da 8 euro al giorno, questo equivale a circa 1.760 euro netti in piu' all'anno, che potresti sottrarre dal tuo fabbisogno di netto mensile prima di calcolare la RAL necessaria.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Dettaglio scaglione per scaglione dell'IRPEF sul tuo reddito
+        </p>
+      </a>
+      <a
+        href="/calcolo-busta-paga"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Busta Paga
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simula il cedolino mensile con tutte le trattenute
+        </p>
+      </a>
+      <a
+        href="/comparatore-regioni"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Comparatore Regioni
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Confronta il netto mensile in tutte le 21 regioni italiane
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

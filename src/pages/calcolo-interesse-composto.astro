@@ -1,0 +1,414 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import InteresseComposto from '../components/calcolatori/InteresseComposto';
+
+const title = 'Calcolo Interesse Composto: Simulatore Online Gratis';
+const description = 'Calcola l\'interesse composto online: inserisci capitale, tasso e durata per vedere la crescita del tuo investimento nel tempo. Simulatore gratuito aggiornato.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Interesse Composto', url: `${SITE.url}/calcolo-interesse-composto` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Interesse Composto"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Interesse Composto
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Scopri come cresce il tuo capitale grazie all'interesse composto con versamenti periodici.
+  </p>
+
+  <InteresseComposto client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola l'interesse composto?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        L'interesse composto si calcola applicando gli interessi non solo al capitale iniziale,
+        ma anche agli interessi gia' maturati nei periodi precedenti. La formula base e':
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        A = P &times; (1 + r/n)<sup>n&times;t</sup>
+      </div>
+      <p>Dove:</p>
+      <ul>
+        <li><strong>A</strong> = capitale finale (montante)</li>
+        <li><strong>P</strong> = capitale iniziale</li>
+        <li><strong>r</strong> = tasso di interesse annuo (in decimale)</li>
+        <li><strong>n</strong> = numero di capitalizzazioni per anno</li>
+        <li><strong>t</strong> = durata in anni</li>
+      </ul>
+      <p>
+        Se aggiungi <strong>versamenti periodici</strong>, il capitale cresce ancora piu'
+        velocemente perche' ogni versamento beneficia a sua volta dell'effetto composto.
+        Albert Einstein avrebbe definito l'interesse composto "l'ottava meraviglia del
+        mondo" proprio per la sua capacita' di far crescere esponenzialmente il capitale
+        nel lungo periodo.
+      </p>
+      <p>
+        La <strong>frequenza di capitalizzazione</strong> (annuale, semestrale, trimestrale,
+        mensile) influenza il risultato finale: piu' frequente e' la capitalizzazione,
+        maggiore sara' il rendimento effettivo.
+      </p>
+
+      <h3>La Regola del 72</h3>
+      <p>
+        La <strong>Regola del 72</strong> e' una scorciatoia matematica che permette di stimare
+        rapidamente in quanti anni un investimento raddoppiera' di valore. Il calcolo e'
+        semplice: basta dividere il numero 72 per il tasso di interesse annuo atteso. Il
+        risultato indica, in modo approssimativo, il numero di anni necessari affinche' il
+        capitale iniziale si moltiplichi per due grazie all'effetto dell'interesse composto.
+      </p>
+      <p>
+        Ad esempio, se il tuo investimento rende il <strong>3% annuo</strong>, il capitale
+        raddoppiera' in circa 72 / 3 = <strong>24 anni</strong>. Con un rendimento del
+        <strong>5% annuo</strong>, il tempo si riduce a 72 / 5 = <strong>14,4 anni</strong>.
+        Se il tasso sale al <strong>7%</strong>, bastano 72 / 7 = <strong>10,3 anni</strong>,
+        mentre con un rendimento del <strong>10% annuo</strong> il raddoppio avviene in soli
+        72 / 10 = <strong>7,2 anni</strong>.
+      </p>
+      <p>
+        Questa regola, pur essendo un'approssimazione, si rivela sorprendentemente accurata
+        per tassi compresi tra il 2% e il 15%. E' uno strumento molto utilizzato dai consulenti
+        finanziari e dagli investitori per valutare rapidamente l'attrattivita' di un investimento
+        senza ricorrere a calcoli complessi. Ricorda che la regola non tiene conto di inflazione,
+        tasse o costi di gestione, quindi il tempo reale di raddoppio del potere d'acquisto
+        sara' in genere piu' lungo.
+      </p>
+
+      <h3>Confronto tra frequenze di capitalizzazione</h3>
+      <p>
+        La frequenza con cui gli interessi vengono capitalizzati ha un impatto diretto sul
+        rendimento finale dell'investimento. A parita' di tasso nominale e durata, una
+        capitalizzazione piu' frequente genera un montante superiore. Questo accade perche'
+        gli interessi maturati vengono reinvestiti prima, e a loro volta iniziano a generare
+        ulteriori interessi.
+      </p>
+      <p>
+        Consideriamo un esempio concreto: un capitale iniziale di <strong>10.000 &euro;</strong>
+        investito al <strong>5% annuo</strong> per <strong>10 anni</strong>, con diverse
+        frequenze di capitalizzazione:
+      </p>
+      <ul>
+        <li><strong>Annuale</strong> (1 volta/anno): 10.000 &times; (1 + 0,05)<sup>10</sup> = <strong>16.288,95 &euro;</strong></li>
+        <li><strong>Semestrale</strong> (2 volte/anno): 10.000 &times; (1 + 0,025)<sup>20</sup> = <strong>16.386,16 &euro;</strong></li>
+        <li><strong>Trimestrale</strong> (4 volte/anno): 10.000 &times; (1 + 0,0125)<sup>40</sup> = <strong>16.436,19 &euro;</strong></li>
+        <li><strong>Mensile</strong> (12 volte/anno): 10.000 &times; (1 + 0,00417)<sup>120</sup> = <strong>16.470,09 &euro;</strong></li>
+      </ul>
+      <p>
+        Come si nota, la differenza tra capitalizzazione annuale e mensile in questo esempio
+        e' di circa <strong>181 &euro;</strong> su 10 anni. Sebbene possa sembrare modesta, questa
+        differenza cresce in modo significativo con importi maggiori, tassi piu' elevati e
+        orizzonti temporali piu' lunghi. Per investimenti di lungo periodo, scegliere prodotti
+        finanziari con capitalizzazione piu' frequente puo' tradursi in un vantaggio concreto.
+      </p>
+
+      <h3>Tassazione dei rendimenti finanziari in Italia</h3>
+      <p>
+        In Italia i rendimenti derivanti da investimenti finanziari sono soggetti a diversi
+        livelli di tassazione che riducono il rendimento effettivo percepito dall'investitore.
+        E' fondamentale tenerne conto quando si pianificano investimenti di lungo termine basati
+        sull'interesse composto.
+      </p>
+      <p>
+        L'<strong>imposta sostitutiva sulle rendite finanziarie</strong> (capital gain) e' pari
+        al <strong>26%</strong> per la maggior parte degli strumenti finanziari, inclusi azioni,
+        ETF, fondi comuni, obbligazioni corporate e conti deposito. I <strong>titoli di Stato</strong>
+        italiani ed europei (come BTP, BOT, CCT) beneficiano invece di un'aliquota agevolata
+        del <strong>12,5%</strong>, cosi' come i buoni fruttiferi postali.
+      </p>
+      <p>
+        Oltre all'imposta sui rendimenti, esiste l'<strong>imposta di bollo</strong> pari allo
+        <strong>0,2% annuo</strong> sul controvalore degli strumenti finanziari detenuti al 31
+        dicembre di ogni anno (o alla data di chiusura del rapporto). Questa imposta si applica
+        a depositi titoli, conti deposito, fondi comuni e polizze di investimento, e va a
+        ridurre ulteriormente il rendimento netto.
+      </p>
+      <p>
+        In pratica, un rendimento lordo del 7% annuo si traduce, dopo la tassazione al 26%
+        e l'imposta di bollo dello 0,2%, in un rendimento netto di circa il <strong>4,98%</strong>.
+        Questa riduzione ha un impatto molto significativo sull'interesse composto nel lungo
+        periodo: su 30 anni, la differenza tra il montante lordo e quello netto puo' superare
+        il 30-40% del capitale finale. Per questo motivo, nella pianificazione finanziaria e'
+        sempre consigliabile ragionare in termini di rendimenti netti e considerare strumenti
+        fiscalmente efficienti.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Interesse composto: quanto cresce il capitale nel tempo
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Durata</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Capitale finale</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Interessi maturati</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">5 anni</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">14.026 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+4.026 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">10 anni</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">19.672 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+9.672 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">15 anni</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">27.590 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+17.590 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">20 anni</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">38.697 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+28.697 &euro;</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">30 anni</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">76.123 &euro;</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+66.123 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+      Capitale iniziale: 10.000 &euro; | Rendimento: 7% annuo | Capitalizzazione annuale | Senza versamenti aggiuntivi
+    </p>
+
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <h3>L'effetto dei versamenti periodici</h3>
+      <p>
+        L'interesse composto diventa ancora piu' potente quando si aggiungono
+        <strong>versamenti ricorrenti</strong>. Partendo dallo stesso capitale iniziale di
+        10.000 &euro; al 7% annuo, ma aggiungendo <strong>200 &euro; al mese</strong>, i
+        risultati cambiano radicalmente: dopo 10 anni il capitale sale a circa
+        <strong>54.130 &euro;</strong> (di cui 34.000 &euro; di versamenti e 10.130 &euro; di
+        interessi), dopo 20 anni si raggiungono circa <strong>142.400 &euro;</strong> (con
+        58.000 &euro; di versamenti e 74.400 &euro; di soli interessi), e dopo 30 anni il
+        montante supera i <strong>319.000 &euro;</strong>, di cui oltre 237.000 &euro;
+        derivano esclusivamente dagli interessi composti.
+      </p>
+      <p>
+        Questi numeri mostrano un principio fondamentale: nel lungo periodo, il contributo
+        degli interessi composti supera di gran lunga quello dei versamenti effettivi. A 30
+        anni, gli interessi rappresentano quasi il <strong>75%</strong> del capitale finale.
+        Questo significa che il tempo e' il fattore piu' prezioso per un investitore: prima si
+        inizia a investire con costanza, maggiore sara' l'effetto moltiplicatore del denaro.
+        Anche piccoli importi mensili, se mantenuti con disciplina su orizzonti lunghi,
+        possono generare patrimoni significativi.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Qual e' la differenza tra interesse semplice e composto?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Con l'interesse semplice, gli interessi vengono calcolati solo sul capitale iniziale.
+          Con l'interesse composto, gli interessi vengono calcolati anche sugli interessi
+          gia' maturati. Questa differenza diventa sempre piu' significativa col passare
+          del tempo, creando una crescita esponenziale invece che lineare.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa significa frequenza di capitalizzazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La frequenza di capitalizzazione indica quante volte all'anno gli interessi
+          vengono calcolati e aggiunti al capitale. Con capitalizzazione mensile gli
+          interessi vengono calcolati 12 volte all'anno, con trimestrale 4 volte, e cosi'
+          via. A parita' di tasso nominale, una frequenza piu' alta produce un rendimento
+          effettivo leggermente maggiore.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto tempo serve per raddoppiare il capitale?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Puoi usare la "Regola del 72": dividi 72 per il tasso di interesse annuo per
+          ottenere il numero approssimativo di anni necessari a raddoppiare il capitale.
+          Ad esempio, con un rendimento del 7% annuo servono circa 72/7 = 10,3 anni. Con
+          il 5% servono circa 14,4 anni.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Perche' conviene iniziare a investire presto?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          L'interesse composto premia il tempo piu' di qualsiasi altra variabile. Iniziare
+          a investire 10 anni prima puo' fare una differenza enorme sul capitale finale,
+          anche con versamenti piu' piccoli. La crescita esponenziale fa si' che gli ultimi
+          anni siano quelli in cui il capitale cresce di piu' in termini assoluti.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il calcolo tiene conto delle tasse?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Questo calcolatore mostra il rendimento lordo. In Italia, sui rendimenti finanziari
+          si applica un'imposta sostitutiva del 26% (12,5% per i titoli di Stato). Per un
+          calcolo che include l'impatto fiscale, usa il nostro calcolatore del Piano di
+          Accumulo (PAC) che calcola automaticamente l'imposta sul capital gain.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come influisce l'inflazione sul rendimento reale?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          L'inflazione erode il potere d'acquisto del denaro nel tempo, riducendo il valore
+          reale dei rendimenti ottenuti. Il rendimento reale si calcola sottraendo il tasso di
+          inflazione dal rendimento nominale: ad esempio, un investimento che rende il 7% annuo
+          con un'inflazione del 2% offre un rendimento reale di circa il 5%. Questo significa
+          che, sebbene il capitale cresca in termini nominali, il suo potere d'acquisto
+          effettivo aumenta a un ritmo inferiore. Per proteggere il capitale dall'inflazione,
+          e' importante scegliere investimenti con rendimenti che superino costantemente il
+          tasso di inflazione medio nel lungo periodo.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Qual e' la differenza tra tasso nominale e tasso effettivo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il tasso nominale (TAN - Tasso Annuo Nominale) e' il tasso di interesse dichiarato
+          senza tenere conto della frequenza di capitalizzazione. Il tasso effettivo, invece,
+          rappresenta il rendimento realmente ottenuto considerando l'effetto della
+          capitalizzazione infrannuale. Ad esempio, un TAN del 6% con capitalizzazione mensile
+          produce un tasso effettivo annuo del 6,17%, perche' gli interessi mensili vengono
+          reinvestiti e generano a loro volta interessi. La formula per calcolare il tasso
+          effettivo e': (1 + r/n)<sup>n</sup> - 1, dove r e' il tasso nominale e n il numero
+          di capitalizzazioni annue. Maggiore e' la frequenza di capitalizzazione, maggiore
+          sara' la differenza tra tasso nominale e tasso effettivo.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          L'interesse composto funziona anche con i debiti?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si', l'interesse composto si applica anche ai debiti, e in questo caso lavora contro
+          il debitore. Nei mutui, nei prestiti personali e soprattutto nel credito revolving
+          delle carte di credito, gli interessi non pagati vengono capitalizzati e aggiunti
+          al debito residuo, generando interessi su interessi. Questo e' il motivo per cui
+          il debito su carte di credito puo' crescere molto rapidamente se non viene saldato
+          per intero ogni mese. Per i mutui a tasso fisso, l'ammortamento alla francese
+          prevede rate costanti in cui la quota interessi diminuisce progressivamente,
+          ma il costo totale degli interessi sul lungo periodo resta significativo: su un
+          mutuo trentennale si possono pagare interessi complessivi pari o superiori al
+          capitale inizialmente preso in prestito.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-piano-accumulo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Piano di Accumulo (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola il rendimento netto di un piano di accumulo
+        </p>
+      </a>
+      <a href="/calcolo-inflazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'impatto dell'inflazione sul potere d'acquisto
+        </p>
+      </a>
+      <a href="/calcolo-mutuo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Mutuo
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la rata del mutuo e il piano di ammortamento
+        </p>
+      </a>
+      <a href="/calcolo-prestito" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Prestito Personale
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola rata e TAEG di un prestito personale
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

@@ -1,0 +1,536 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import DetrazioniFamiliari from '../components/calcolatori/DetrazioniFamiliari';
+
+const title = 'Calcolo Detrazioni Familiari 2026: Coniuge e Figli a Carico';
+const description = 'Calcola le detrazioni IRPEF per familiari a carico: coniuge e figli di 21 anni o piu\'. Scopri quanto risparmi in busta paga. Formule aggiornate 2026 da TUIR art. 12.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Detrazioni Familiari', url: `${SITE.url}/calcolo-detrazioni-familiari` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Detrazioni Familiari"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Detrazioni Familiari 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Calcola le detrazioni IRPEF per il coniuge e i figli a carico di 21 anni o piu' e scopri l'impatto sul tuo stipendio netto mensile.
+  </p>
+
+  <DetrazioniFamiliari client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come funzionano le detrazioni per familiari a carico?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Le <strong>detrazioni per familiari a carico</strong> sono riduzioni dell'IRPEF (Imposta sul Reddito delle
+        Persone Fisiche) previste dall'<strong>articolo 12 del TUIR</strong> (Testo Unico delle Imposte sui Redditi,
+        D.P.R. 917/1986) a favore dei contribuenti che hanno familiari economicamente dipendenti. Queste detrazioni
+        riducono direttamente l'imposta da pagare, non il reddito imponibile, e si traducono quindi in un risparmio
+        concreto in busta paga per i lavoratori dipendenti.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Chi sono i familiari a carico?
+      </h3>
+      <p>
+        Un familiare si considera <strong>fiscalmente a carico</strong> quando il suo reddito complessivo annuo
+        non supera <strong>2.840,51 &euro;</strong> al lordo degli oneri deducibili. Per i <strong>figli di eta'
+        non superiore a 24 anni</strong>, la soglia di reddito e' elevata a <strong>4.000 &euro;</strong>. Questa
+        soglia piu' alta per i giovani riconosce che molti figli tra i 21 e i 24 anni possono avere piccoli redditi
+        da lavori occasionali o stage senza che la famiglia perda il diritto alle detrazioni.
+      </p>
+      <p>
+        Possono essere considerati a carico: il <strong>coniuge</strong> (non legalmente ed effettivamente separato),
+        i <strong>figli</strong> (compresi quelli naturali riconosciuti, adottivi, affidati o affiliati) e gli
+        <strong>altri familiari</strong> (genitori, generi, nuore, suoceri, fratelli e sorelle) a condizione che
+        convivano con il contribuente o percepiscano assegni alimentari non risultanti da provvedimenti giudiziari.
+        Il nostro calcolatore si concentra sulle due detrazioni principali: quella per il coniuge e quella per i
+        figli di 21 anni o piu'.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Detrazione per il coniuge a carico
+      </h3>
+      <p>
+        La detrazione per il coniuge a carico e' calcolata con un sistema di <strong>formule a fasce</strong> che
+        varia in base al reddito complessivo del contribuente (non del coniuge). Il meccanismo e' strutturato per
+        garantire una detrazione piu' elevata ai redditi bassi, con una riduzione progressiva all'aumentare del
+        reddito, fino ad azzerarsi per redditi superiori a 80.000 &euro;.
+      </p>
+      <p>
+        <strong>Reddito fino a 15.000 &euro;:</strong> la detrazione si calcola con la formula
+        <code>800 &minus; 110 &times; (reddito / 15.000)</code>, con un importo minimo garantito di
+        <strong>690 &euro;</strong>. Questo significa che anche con redditi molto bassi, la detrazione non scende
+        mai sotto i 690 &euro; annui. A un reddito di 10.000 &euro;, ad esempio, la formula darebbe
+        800 &minus; 110 &times; (10.000 / 15.000) = 800 &minus; 73,33 = 726,67 &euro;.
+      </p>
+      <p>
+        <strong>Reddito tra 15.001 e 40.000 &euro;:</strong> si applica un sistema di <strong>importi fissi
+        per sotto-fasce</strong>, con un "dosso" nelle fasce centrali che premia i redditi medio-bassi. Gli importi
+        variano tra 690 e 720 &euro; a seconda della sotto-fascia specifica:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Fascia di reddito</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Detrazione coniuge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">15.001 &euro; &ndash; 29.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">690 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">29.001 &euro; &ndash; 29.200 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">700 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">29.201 &euro; &ndash; 34.700 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">710 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">34.701 &euro; &ndash; 35.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">720 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">35.001 &euro; &ndash; 35.100 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">710 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">35.101 &euro; &ndash; 35.200 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">700 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">35.201 &euro; &ndash; 40.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">690 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Reddito tra 40.001 e 80.000 &euro;:</strong> la detrazione decresce linearmente con la formula
+        <code>690 &times; (80.000 &minus; reddito) / 40.000</code>. A un reddito di 60.000 &euro;, la detrazione
+        sarebbe 690 &times; (80.000 &minus; 60.000) / 40.000 = 690 &times; 0,5 = 345 &euro;.
+      </p>
+      <p>
+        <strong>Reddito superiore a 80.000 &euro;:</strong> la detrazione e' pari a zero.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Detrazione per figli a carico di 21 anni o piu'
+      </h3>
+      <p>
+        A partire dal <strong>1&deg; marzo 2022</strong>, con l'introduzione dell'<strong>Assegno Unico
+        Universale (AUU)</strong> erogato dall'INPS, le tradizionali detrazioni IRPEF per figli a carico si
+        applicano esclusivamente ai <strong>figli che hanno compiuto 21 anni</strong>. Per i figli minorenni e
+        quelli tra 18 e 20 anni, il sostegno economico e' erogato interamente tramite l'Assegno Unico, che e'
+        un trasferimento monetario diretto basato sull'ISEE del nucleo familiare.
+      </p>
+      <p>
+        Per i figli di 21 anni e piu' che risultano fiscalmente a carico (reddito annuo &le; 2.840,51 &euro;, o
+        &le; 4.000 &euro; se under 24), la detrazione IRPEF si calcola con la seguente formula:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        Detrazione = 950 &times; (95.000 &minus; reddito complessivo) / 95.000
+      </div>
+      <p>
+        La formula produce una detrazione che decresce linearmente: a un reddito di 0 &euro;, la detrazione e' di
+        950 &euro; per figlio; a un reddito di 47.500 &euro;, e' di 475 &euro;; e si azzera quando il reddito
+        raggiunge i 95.000 &euro;. In presenza di piu' figli a carico, il reddito di riferimento (95.000 &euro;)
+        viene aumentato di <strong>15.000 &euro; per ogni figlio successivo al primo</strong>, rendendo la detrazione
+        piu' generosa per le famiglie numerose.
+      </p>
+      <p>
+        La detrazione per i figli e' normalmente <strong>ripartita al 50% tra i due genitori</strong>. Tuttavia,
+        e' possibile attribuire il 100% della detrazione al genitore con il reddito piu' alto, se i genitori sono
+        d'accordo e se cio' consente al nucleo familiare di sfruttare pienamente la detrazione (ad esempio, quando
+        il genitore con reddito piu' basso non ha sufficiente capienza IRPEF per utilizzare la propria quota).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        L'Assegno Unico Universale per figli sotto i 21 anni
+      </h3>
+      <p>
+        L'<strong>Assegno Unico Universale (AUU)</strong>, introdotto dal D.Lgs. 230/2021 e operativo dal marzo
+        2022, e' la misura economica che ha sostituito le precedenti detrazioni IRPEF per figli minorenni, gli
+        assegni al nucleo familiare (ANF), il bonus bebe' e il premio alla nascita. L'AUU e' un trasferimento
+        monetario mensile erogato dall'INPS direttamente sul conto corrente del beneficiario, dal settimo mese di
+        gravidanza fino al compimento del ventunesimo anno di eta' del figlio (con importi ridotti per i figli
+        maggiorenni tra 18 e 20 anni).
+      </p>
+      <p>
+        L'importo dell'AUU varia in base all'<strong>ISEE</strong> del nucleo familiare: per ISEE fino a
+        17.090,61 &euro; l'importo massimo per figlio minorenne e' di circa 199,40 &euro; al mese; per ISEE
+        superiori a 45.574,96 &euro; (o in assenza di ISEE), l'importo minimo e' di circa 57 &euro; al mese per
+        figlio. Sono previste maggiorazioni per nuclei numerosi (3 o piu' figli), per figli con disabilita', per
+        madri sotto i 21 anni e per nuclei con entrambi i genitori lavoratori. La domanda va presentata all'INPS
+        (online, tramite patronato o contact center) e l'assegno viene erogato mensilmente.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: reddito 35.000 &euro; con coniuge e 1 figlio di 22 anni
+      </h3>
+      <p>
+        Consideriamo un lavoratore dipendente con una RAL di 35.000 &euro;, il coniuge a carico (reddito del
+        coniuge inferiore a 2.840,51 &euro;) e un figlio di 22 anni a carico al 50%. Calcoliamo le detrazioni
+        passo per passo.
+      </p>
+      <p>
+        <strong>Imponibile fiscale:</strong> La RAL di 35.000 &euro;, al netto dei contributi INPS (9,19% =
+        3.216,50 &euro;), produce un reddito imponibile di circa 31.783,50 &euro;.
+      </p>
+      <p>
+        <strong>Detrazione coniuge:</strong> Con un reddito di 31.783,50 &euro;, ci troviamo nella fascia
+        29.201 &minus; 34.700 &euro;, che prevede un importo fisso di <strong>710 &euro;</strong>.
+      </p>
+      <p>
+        <strong>Detrazione figlio 22 anni al 50%:</strong> La formula e'
+        950 &times; (95.000 &minus; 31.783,50) / 95.000 = 950 &times; 0,6654 = 632,17 &euro;. Al 50%, la
+        detrazione spettante e' 632,17 &times; 50% = <strong>316,09 &euro;</strong>.
+      </p>
+      <p>
+        <strong>Totale detrazioni familiari:</strong> 710 + 316,09 = <strong>1.026,09 &euro; annui</strong>.
+        Diviso per 13 mensilita', questo corrisponde a circa <strong>78,93 &euro; in piu' al mese</strong>
+        in busta paga rispetto a un contribuente senza familiari a carico.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tabella riepilogativa: detrazioni per livello di reddito
+      </h3>
+      <p>
+        La tabella seguente mostra le detrazioni annue spettanti per il coniuge a carico e per un figlio di 21+
+        anni a carico al 50%, al variare del reddito imponibile. I valori sono calcolati applicando le formule
+        dell'art. 12 TUIR.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Reddito</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Detr. coniuge</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Detr. figlio 21+ (50%)</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Totale annuo</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Al mese (/13)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">15.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">690 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">400 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">1.090 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">84 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">25.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">690 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">350 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">1.040 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">80 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">35.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">710 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">300 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">1.010 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">78 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">50.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">517 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">225 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">742 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">57 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">70.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">172 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">125 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">297 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">23 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">80.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">0 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">75 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">75 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">6 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        La tabella evidenzia come le detrazioni familiari siano piu' significative per i redditi medio-bassi: un
+        contribuente con reddito di 25.000 &euro; riceve circa 1.040 &euro; annui di detrazioni (80 &euro; al mese),
+        mentre un contribuente con 70.000 &euro; riceve solo 297 &euro; annui (23 &euro; al mese). Oltre gli 80.000
+        &euro; di reddito, la detrazione per il coniuge si azzera completamente, e resta solo una detrazione residuale
+        per i figli fino a 95.000 &euro;.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Come comunicare i familiari a carico al datore di lavoro
+      </h3>
+      <p>
+        Per beneficiare delle detrazioni in busta paga, il lavoratore dipendente deve comunicare al proprio datore
+        di lavoro (o all'ufficio del personale) la situazione dei familiari a carico mediante la compilazione di un
+        apposito modulo di richiesta. La comunicazione va effettuata all'inizio del rapporto di lavoro e ogni volta
+        che intervengono variazioni (nascita di un figlio, variazione del reddito del coniuge, compimento dei 21 anni
+        di un figlio, ecc.). Il datore di lavoro, in qualita' di sostituto d'imposta, applica le detrazioni
+        mensilmente in busta paga, dividendo l'importo annuo per il numero di mensilita' (generalmente 12, con
+        conguaglio a fine anno). E' responsabilita' del lavoratore comunicare tempestivamente eventuali variazioni:
+        se un familiare supera la soglia di reddito durante l'anno, la detrazione non spetta piu' e l'importo
+        gia' fruito dovra' essere restituito in sede di conguaglio o dichiarazione dei redditi.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        La capienza fiscale: quando la detrazione non si puo' sfruttare
+      </h3>
+      <p>
+        Un aspetto fondamentale da comprendere e' quello della <strong>capienza fiscale</strong>. Le detrazioni
+        possono ridurre l'IRPEF fino a zero, ma non possono generare un credito d'imposta: se l'IRPEF lorda e'
+        inferiore al totale delle detrazioni spettanti, la parte eccedente va persa. Questo e' particolarmente
+        rilevante per i redditi bassi, dove la combinazione di detrazione per lavoro dipendente, cuneo fiscale
+        e detrazioni familiari potrebbe superare l'IRPEF lorda dovuta. In questi casi, attribuire il 100% della
+        detrazione figli al genitore con il reddito piu' alto puo' essere la strategia ottimale per il nucleo
+        familiare, poiche' quel genitore avra' una maggiore capienza fiscale per assorbire la detrazione.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Soglie e valori di riferimento per il 2026
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        I principali parametri per le detrazioni familiari nell'anno fiscale 2026, come definiti dal TUIR e
+        confermati dalla Legge di Bilancio 2026:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Parametro</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Valore 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Soglia reddito familiare a carico (generale)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">2.840,51 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Soglia reddito figli under 24 a carico</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">4.000,00 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Detrazione massima coniuge (reddito basso)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">800 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Detrazione coniuge fascia media</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">690 &ndash; 720 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reddito oltre il quale la detrazione coniuge = 0</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">80.000 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Detrazione base per figlio 21+</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">950 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reddito di riferimento per figli (1 figlio)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">95.000 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Incremento reddito di rif. per figli aggiuntivi</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">+15.000 &euro; per figlio</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Ripartizione standard tra genitori</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">50% ciascuno</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Eta' minima figli per detrazione IRPEF</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">21 anni (sotto: AUU)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          I figli sotto i 21 anni hanno ancora le detrazioni IRPEF?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No. Dal 1&deg; marzo 2022, le detrazioni IRPEF per figli a carico si applicano solo ai figli che hanno
+          compiuto 21 anni. Per i figli minorenni e quelli tra 18 e 20 anni, il sostegno economico e' erogato
+          tramite l'Assegno Unico Universale (AUU), un trasferimento monetario mensile dell'INPS il cui importo
+          dipende dall'ISEE del nucleo familiare. L'AUU va richiesto separatamente all'INPS.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Conviene attribuire il 100% della detrazione figli a un solo genitore?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Dipende dalla situazione specifica. Se entrambi i genitori hanno redditi sufficienti per sfruttare
+          appieno le detrazioni, la ripartizione al 50% e' generalmente equivalente. Tuttavia, se un genitore
+          ha un reddito molto basso (con poca capienza IRPEF), attribuire il 100% al genitore con reddito piu'
+          alto puo' essere vantaggioso, poiche' evita di "perdere" la parte di detrazione non utilizzabile.
+          La scelta va comunicata al datore di lavoro e deve essere concordata tra i genitori.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il coniuge convivente (non sposato) da diritto alla detrazione?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La detrazione per il coniuge a carico spetta solo al coniuge legalmente sposato o alla parte dell'unione
+          civile (Legge 76/2016). Il convivente di fatto (non unito civilmente) non ha diritto alla detrazione per
+          coniuge, anche se convive e ha un reddito sotto la soglia. Questo e' uno dei motivi per cui le coppie
+          conviventi con redditi asimmetrici possono valutare il matrimonio o l'unione civile anche sotto il profilo
+          fiscale.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa succede se il coniuge supera la soglia di reddito durante l'anno?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Se il coniuge supera la soglia di 2.840,51 &euro; di reddito annuo, la detrazione non spetta per l'intero
+          anno (non si fraziona per mesi). Il contribuente deve comunicare tempestivamente la variazione al datore
+          di lavoro per interrompere l'applicazione della detrazione in busta paga. Se la detrazione e' stata gia'
+          fruita, l'importo dovra' essere restituito in sede di conguaglio di fine anno o nella dichiarazione dei
+          redditi. Per evitare conguagli pesanti, e' consigliabile stimare il reddito annuo del coniuge con
+          ragionevole anticipo.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Le detrazioni familiari si applicano anche ai lavoratori autonomi?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Le detrazioni per familiari a carico si applicano a tutti i contribuenti soggetti a IRPEF, compresi i
+          lavoratori autonomi con regime ordinario. Tuttavia, chi opera in <strong>regime forfettario</strong>
+          paga un'imposta sostitutiva e non l'IRPEF, quindi non puo' beneficiare delle detrazioni per familiari
+          a carico (ne' di nessun'altra detrazione IRPEF). Questo e' un aspetto importante da considerare nella
+          scelta del regime fiscale, soprattutto per chi ha familiari a carico. In regime forfettario, le detrazioni
+          non fruite dal contribuente possono comunque essere fruite dall'altro genitore (se lavoratore dipendente
+          o autonomo in regime ordinario).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come si dichiarano i familiari a carico nel 730?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Nel modello 730, i familiari a carico vanno indicati nel <strong>Prospetto dei familiari a carico</strong>
+          (sezione iniziale del modello), specificando per ciascuno: codice fiscale, tipo di parentela (C per coniuge,
+          F per figlio, A per altro familiare), numero di mesi a carico, percentuale di detrazione spettante (50%
+          o 100% per i figli). Il modello 730 precompilato disponibile sul sito dell'Agenzia delle Entrate
+          contiene gia' molte informazioni precaricate, ma e' responsabilita' del contribuente verificare la
+          correttezza dei dati e aggiornare eventuali variazioni intervenute nell'anno. Le detrazioni gia' fruite
+          in busta paga vengono automaticamente conguagliate.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-isee" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo ISEE
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula il tuo ISEE per verificare l'accesso alle agevolazioni
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+      <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'IRPEF lorda e netta scaglione per scaglione
+        </p>
+      </a>
+      <a href="/calcolo-busta-paga" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Simulatore Busta Paga
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Visualizza una busta paga dettagliata voce per voce
+        </p>
+      </a>
+      <a href="/calcolo-forfettari" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Regime Forfettario
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola tasse e netto con il regime forfettario
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

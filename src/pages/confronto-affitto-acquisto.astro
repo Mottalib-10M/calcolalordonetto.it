@@ -1,0 +1,501 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import AffittoVsAcquisto from '../components/calcolatori/AffittoVsAcquisto';
+
+const title = 'Affitto vs Acquisto 2026: Calcolatore Confronto';
+const description = 'Confronta il costo totale di affittare vs comprare casa in Italia. Calcola il breakeven, il costo opportunita\' e scopri quando conviene acquistare.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Confronto Affitto vs Acquisto', url: `${SITE.url}/confronto-affitto-acquisto` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Confronto Affitto vs Acquisto"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Affitto vs Acquisto Casa: Calcolatore 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Confronta il costo reale di affittare vs comprare un immobile in Italia, tenendo conto di mutuo, costi nascosti e costo opportunita'.
+  </p>
+
+  <AffittoVsAcquisto client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Il mito &quot;l'affitto sono soldi buttati&quot;: perche' e' piu' complesso
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        &quot;L'affitto sono soldi buttati&quot; e' probabilmente la convinzione finanziaria piu' radicata
+        nella cultura italiana. Ma la realta' e' molto piu' sfumata di quanto suggerisca questo
+        luogo comune. La decisione tra affitto e acquisto e' una delle scelte finanziarie piu'
+        importanti nella vita di una persona, e merita un'analisi razionale che tenga conto di
+        tutti i fattori in gioco, non solo dell'istinto culturale.
+      </p>
+      <p>
+        La verita' e' che <strong>sia l'affitto che il mutuo sono "soldi spesi"</strong>: nel primo
+        caso paghi per avere un tetto, nel secondo paghi interessi alla banca, imposte allo Stato,
+        spese condominiali, manutenzione e assicurazioni. La differenza fondamentale e' che
+        l'acquisto costruisce un patrimonio immobiliare, ma vincola una grande quantita' di
+        capitale che potrebbe essere investita altrimenti. Questo calcolatore ti aiuta a
+        quantificare esattamente la differenza.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        I costi nascosti dell'acquisto
+      </h3>
+      <p>
+        Quando si valuta l'acquisto di un immobile, il prezzo di vendita e' solo l'inizio. I costi
+        accessori possono incidere significativamente sul costo totale:
+      </p>
+      <ul>
+        <li>
+          <strong>Imposte di acquisto</strong>: per la prima casa, l'imposta di registro e' il 2%
+          del valore catastale (o IVA al 4% se acquisti dal costruttore). Per la seconda casa,
+          l'imposta di registro sale al 9% (o IVA al 10%).
+        </li>
+        <li>
+          <strong>Notaio</strong>: gli onorari notarili per un atto di compravendita variano
+          tipicamente tra 2.000 e 4.000 €, a cui si aggiungono quelli per il mutuo (1.500-3.000 €).
+        </li>
+        <li>
+          <strong>Agenzia immobiliare</strong>: la provvigione standard in Italia e' del 3-4% del
+          prezzo di vendita, IVA inclusa, a carico dell'acquirente (e spesso anche del venditore).
+        </li>
+        <li>
+          <strong>Perizia e istruttoria mutuo</strong>: costi bancari per la concessione del mutuo,
+          tipicamente tra 200 e 500 €.
+        </li>
+        <li>
+          <strong>Manutenzione ordinaria e straordinaria</strong>: la regola pratica suggerisce di
+          preventivare l'1-2% del valore dell'immobile all'anno per la manutenzione.
+        </li>
+        <li>
+          <strong>IMU</strong>: l'Imposta Municipale Unica non si paga sulla prima casa (salvo
+          immobili di lusso, categorie A/1, A/8, A/9), ma si paga sulla seconda casa con
+          aliquote che variano per comune (dallo 0,76% all'1,06% del valore catastale).
+        </li>
+        <li>
+          <strong>Spese condominiali</strong>: spese fisse mensili per la gestione delle parti
+          comuni, che possono variare da 50 a 300+ € al mese.
+        </li>
+        <li>
+          <strong>Assicurazione</strong>: la polizza incendio e scoppio e' obbligatoria per il
+          mutuo, e l'assicurazione sulla vita e' fortemente consigliata.
+        </li>
+      </ul>
+      <p>
+        In totale, i costi di transazione per l'acquisto di un immobile in Italia si aggirano
+        tipicamente tra il <strong>7% e il 10% del valore dell'immobile</strong>. Questo
+        significa che su un appartamento da 250.000 €, i costi accessori possono arrivare a
+        20.000-25.000 €.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Il costo opportunita': cosa faresti con l'anticipo se affittassi?
+      </h3>
+      <p>
+        Questo e' il fattore piu' spesso ignorato nel confronto affitto vs acquisto, e forse
+        il piu' importante. Se decidi di affittare, l'intero importo dell'anticipo (tipicamente
+        il 20-30% del valore dell'immobile) puo' essere investito sui mercati finanziari.
+      </p>
+      <p>
+        Con un anticipo di 50.000 € investito in un portafoglio diversificato con un rendimento
+        medio del 5% annuo, dopo 20 anni avresti accumulato circa 133.000 € (al lordo delle
+        tasse). Questa e' la somma che "perdi" vincolando il capitale nell'immobile. Il costo
+        opportunita' e' ancora piu' significativo se consideri anche i costi di acquisto
+        (notaio, agenzia, imposte) che avresti potuto investire.
+      </p>
+      <p>
+        D'altra parte, il vantaggio dell'acquisto e' che ti "obbliga" a risparmiare attraverso
+        il pagamento del mutuo, creando un patrimonio immobiliare. Molte persone che affittano
+        non hanno la disciplina per investire sistematicamente la differenza, e finiscono per
+        spenderla. Questo aspetto comportamentale e' un vantaggio reale dell'acquisto, anche se
+        non appare nei calcoli finanziari puri.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        La regola del price-to-rent ratio
+      </h3>
+      <p>
+        Un indicatore sintetico per valutare rapidamente se conviene affittare o comprare e' il
+        <strong>rapporto prezzo/affitto</strong> (price-to-rent ratio), calcolato dividendo il
+        prezzo dell'immobile per l'affitto annuo equivalente:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        Price-to-Rent Ratio = Prezzo immobile / (Affitto mensile &times; 12)
+      </div>
+      <ul>
+        <li><strong>Rapporto &lt; 15</strong>: l'acquisto e' generalmente piu' conveniente</li>
+        <li><strong>Rapporto 15-20</strong>: zona grigia, dipende dalle circostanze individuali</li>
+        <li><strong>Rapporto &gt; 20</strong>: l'affitto e' generalmente piu' conveniente</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Situazione italiana: rapporti prezzo/affitto per citta'
+      </h3>
+      <p>
+        I rapporti prezzo/affitto variano enormemente tra le citta' italiane, riflettendo le
+        diverse dinamiche di domanda e offerta nei mercati locali. Ecco una stima basata sui
+        dati OMI (Osservatorio del Mercato Immobiliare dell'Agenzia delle Entrate) e Nomisma:
+      </p>
+      <div class="overflow-x-auto mt-4">
+        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+          <thead class="bg-gray-50 dark:bg-gray-800">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Citta'</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Prezzo medio/m&sup2;</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Affitto medio/m&sup2; annuo</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Rapporto P/R</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Indicazione</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+            <tr>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Milano</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~4.800 &euro;</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~210 &euro;</td>
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~23</td>
+              <td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400">Affitto piu' conveniente</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Roma</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~3.400 &euro;</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~160 &euro;</td>
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~21</td>
+              <td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400">Zona grigia/Affitto</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Bologna</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~3.200 &euro;</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~170 &euro;</td>
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~19</td>
+              <td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400">Zona grigia</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Napoli</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~2.300 &euro;</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~120 &euro;</td>
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~19</td>
+              <td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400">Zona grigia</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Torino</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~1.800 &euro;</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~110 &euro;</td>
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~16</td>
+              <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Acquisto piu' conveniente</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Palermo</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~1.200 &euro;</td>
+              <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~80 &euro;</td>
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~15</td>
+              <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Acquisto piu' conveniente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <em>Nota: i valori sono indicativi e si riferiscono a medie cittadine. I prezzi possono
+        variare enormemente tra quartieri della stessa citta'. Fonte: elaborazione su dati OMI
+        Agenzia delle Entrate e Nomisma.</em>
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: appartamento 250.000 € a Milano vs affitto 1.200 €/mese
+      </h3>
+      <p>
+        Vediamo un confronto concreto. Ipotesi di acquisto:
+      </p>
+      <ul>
+        <li>Prezzo immobile: 250.000 €</li>
+        <li>Anticipo: 50.000 € (20%)</li>
+        <li>Mutuo: 200.000 € a 25 anni, tasso fisso 3,5%</li>
+        <li>Costi di acquisto: 8% (20.000 €) — notaio, agenzia, imposte</li>
+        <li>Spese condominiali: 150 €/mese</li>
+        <li>Manutenzione: 2.500 €/anno</li>
+        <li>IMU: 0 € (prima casa)</li>
+        <li>Rivalutazione immobile: 2% annuo</li>
+      </ul>
+      <p>
+        Ipotesi di affitto:
+      </p>
+      <ul>
+        <li>Canone: 1.200 €/mese</li>
+        <li>Crescita annua affitto: 2% (adeguamento ISTAT)</li>
+        <li>Anticipo + costi acquisto investiti: 70.000 € al 5% annuo</li>
+      </ul>
+      <p>
+        Dopo 20 anni, il calcolatore considera tutti i flussi di cassa: rate del mutuo, spese di
+        mantenimento, rivalutazione dell'immobile da un lato; affitti crescenti e rendimento del
+        capitale investito dall'altro. Il punto di pareggio dipende fortemente dal rendimento
+        dell'investimento alternativo e dalla rivalutazione dell'immobile. Con i parametri sopra,
+        l'acquisto inizia a convenire intorno all'anno 12-15.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Fattori non finanziari
+      </h3>
+      <p>
+        La decisione tra affitto e acquisto non e' puramente finanziaria. Ci sono fattori
+        importanti che nessun calcolatore puo' quantificare completamente:
+      </p>
+      <ul>
+        <li><strong>Stabilita' e sicurezza</strong>: possedere la propria casa offre una
+        sicurezza psicologica e la protezione da aumenti di canone o sfratti.</li>
+        <li><strong>Liberta' e flessibilita'</strong>: l'affitto permette di cambiare citta',
+        quartiere o dimensione dell'abitazione con facilita', un vantaggio enorme per chi ha
+        una carriera mobile o non ha ancora definito dove stabilirsi.</li>
+        <li><strong>Personalizzazione</strong>: la casa di proprieta' puo' essere ristrutturata
+        e personalizzata senza vincoli.</li>
+        <li><strong>Radici</strong>: la proprieta' immobiliare crea un legame con il territorio
+        e la comunita'.</li>
+        <li><strong>Disciplina di risparmio</strong>: il mutuo impone un risparmio forzato
+        che molte persone non avrebbero la disciplina di mantenere volontariamente.</li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Costi tipici di acquisto e affitto in Italia (2026)
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        I dati seguenti rappresentano i costi medi per un appartamento di 80 m&sup2; in una citta'
+        italiana di medie dimensioni. Le stime si basano sui dati dell'Osservatorio del Mercato
+        Immobiliare (OMI) dell'Agenzia delle Entrate, della Banca d'Italia e di Nomisma.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Voce di costo</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Acquisto</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Affitto</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Esborso iniziale</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Anticipo 20-30% + costi (7-10%)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Cauzione (2-3 mensilita')</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Costo mensile fisso</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Rata mutuo + condominio</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Canone di locazione</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">IMU (prima casa)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">0 €</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Non applicabile</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Manutenzione ordinaria</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">1-2% del valore/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">A carico del proprietario</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Tassa media mutuo (25 anni, 3,5%)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~1.000 €/mese per 200k €</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">-</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Flessibilita'</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Bassa (vendita richiede mesi)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Alta (preavviso 3-6 mesi)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Conviene comprare casa o restare in affitto nel 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Non esiste una risposta universale. Dipende dalla citta', dal rapporto prezzo/affitto
+          locale, dal tuo orizzonte temporale, dalla tua stabilita' lavorativa e dalla tua
+          capacita' di investire l'alternativa. Come regola pratica: se prevedi di restare nello
+          stesso posto per almeno 7-10 anni e il rapporto prezzo/affitto e' sotto 20, l'acquisto
+          tende a essere conveniente. Se hai mobilita' lavorativa o il rapporto supera 20,
+          l'affitto puo' essere la scelta migliore.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cos'e' il costo opportunita' e perche' e' importante?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il costo opportunita' e' il rendimento che avresti potuto ottenere investendo il denaro
+          in un'alternativa. Se usi 50.000 € come anticipo per una casa, quei soldi non possono
+          essere investiti sui mercati finanziari. Se il mercato azionario rende mediamente il
+          7% annuo, dopo 20 anni quei 50.000 € sarebbero diventati circa 193.000 €. Questa
+          differenza e' il costo opportunita' dell'acquisto, ed e' il motivo per cui il
+          calcolatore include il rendimento alternativo tra i parametri.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come viene calcolato il punto di breakeven?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il breakeven (punto di pareggio) e' l'anno in cui il costo totale dell'acquisto (inclusi
+          tutti i costi e al netto della rivalutazione dell'immobile) diventa inferiore al costo
+          totale dell'affitto (incluso il costo opportunita' del mancato investimento). Nei primi
+          anni l'acquisto e' piu' costoso a causa dei costi di transazione iniziali, ma col
+          passare del tempo la rivalutazione dell'immobile e il pagamento progressivo del mutuo
+          riducono il costo netto dell'acquisto.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quali agevolazioni fiscali esistono per l'acquisto prima casa?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Per l'acquisto della prima casa in Italia esistono diverse agevolazioni: imposta di
+          registro ridotta al 2% (invece del 9%); IVA ridotta al 4% se acquisti dal costruttore
+          (invece del 10%); esenzione IMU; detrazione IRPEF del 19% sugli interessi passivi del
+          mutuo fino a 4.000 € annui (risparmio massimo 760 €/anno); Fondo di Garanzia Prima
+          Casa (Consap) che garantisce fino all'80% del mutuo per giovani under 36.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto dovrei avere di anticipo per comprare casa?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Le banche italiane finanziano tipicamente fino all'80% del valore dell'immobile (LTV
+          80%), quindi dovresti avere almeno il 20% di anticipo. A questo devi aggiungere il
+          7-10% per i costi di acquisto (notaio, agenzia, imposte). In totale, per un immobile
+          da 200.000 € dovresti disporre di almeno 54.000-60.000 €. I giovani under 36 possono
+          accedere al Fondo di Garanzia Consap per mutui fino al 100% LTV, ma resta necessario
+          coprire i costi accessori.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          L'immobile e' un buon investimento in Italia?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Storicamente, i prezzi degli immobili in Italia sono rimasti sostanzialmente piatti o
+          in calo in termini reali (al netto dell'inflazione) dal picco del 2007-2008. Solo
+          alcune citta' come Milano hanno registrato una crescita significativa. A differenza
+          di azioni e obbligazioni, l'immobile e' un asset illiquido (difficile da vendere
+          rapidamente), non diversificato (tutto il capitale e' in un solo bene) e ha costi
+          di gestione elevati. Come investimento puro, un portafoglio finanziario diversificato
+          ha storicamente offerto rendimenti superiori con maggiore liquidita'.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il calcolo tiene conto delle detrazioni fiscali sul mutuo?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il calcolatore non include esplicitamente la detrazione IRPEF del 19% sugli interessi
+          passivi del mutuo (massimo 4.000 € annui, quindi risparmio massimo 760 €/anno) per
+          mantenere il calcolo piu' semplice e trasparente. Se vuoi tenerne conto, puoi ridurre
+          leggermente il tasso del mutuo nel calcolatore per simulare il beneficio fiscale. In
+          pratica, il beneficio della detrazione e' modesto rispetto ai costi totali e non
+          cambia significativamente il punto di breakeven.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-mutuo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Mutuo
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la rata del mutuo e il piano di ammortamento completo
+        </p>
+      </a>
+      <a href="/calcolo-tassazione-investimenti" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Tassazione Investimenti
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola il capital gain e le tasse sui tuoi investimenti
+        </p>
+      </a>
+      <a href="/calcolo-interesse-composto" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Interesse Composto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la crescita del tuo capitale con l'interesse composto
+        </p>
+      </a>
+      <a href="/calcolo-budget" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Budget 50/30/20
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Gestisci il tuo budget mensile con la regola del 50/30/20
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

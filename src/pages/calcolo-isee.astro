@@ -1,0 +1,572 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import ISEE from '../components/calcolatori/ISEE';
+
+const title = 'Calcolo ISEE 2026: Simulatore Indicatore Online';
+const description = 'Simula il tuo ISEE online: inserisci redditi, patrimoni e composizione familiare per ottenere una stima dell\'Indicatore della Situazione Economica Equivalente. Aggiornato 2026.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo ISEE', url: `${SITE.url}/calcolo-isee` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo ISEE"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo ISEE 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Simula il tuo ISEE inserendo redditi, patrimoni e composizione del nucleo familiare. Il risultato e' una stima semplificata: l'ISEE ufficiale richiede la DSU tramite CAF o INPS.
+  </p>
+
+  <ISEE client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Cos'e' l'ISEE e come si calcola?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        L'<strong>ISEE (Indicatore della Situazione Economica Equivalente)</strong> e' lo strumento principale
+        utilizzato in Italia per valutare la condizione economica delle famiglie che richiedono prestazioni
+        sociali agevolate. Introdotto con il decreto legislativo 109/1998 e riformato dal <strong>DPCM 159/2013</strong>,
+        l'ISEE tiene conto sia dei redditi percepiti sia del patrimonio posseduto dal nucleo familiare, rapportandoli
+        alla composizione e alle caratteristiche del nucleo stesso attraverso una scala di equivalenza.
+      </p>
+      <p>
+        L'ISEE e' richiesto per accedere a una vastissima gamma di prestazioni e servizi: dalle <strong>agevolazioni
+        universitarie</strong> (riduzione delle tasse universitarie, borse di studio, posti alloggio) alle
+        <strong>tariffe agevolate per mense scolastiche e asili nido</strong>, dal <strong>bonus sociale per le
+        bollette</strong> di elettricita', gas e acqua alle <strong>agevolazioni per il Servizio Sanitario
+        Nazionale</strong> (ticket sanitari ridotti o esenzioni), fino all'accesso a misure di sostegno al reddito
+        e ai <strong>bandi per l'edilizia residenziale pubblica</strong>. Praticamente ogni prestazione pubblica
+        condizionata alla situazione economica richiede la presentazione dell'ISEE.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Le tre componenti fondamentali dell'ISEE
+      </h3>
+      <p>
+        Il calcolo dell'ISEE si basa su tre indicatori principali che, combinati insieme, producono il valore finale:
+      </p>
+      <p>
+        L'<strong>ISR (Indicatore della Situazione Reddituale)</strong> rappresenta la componente reddituale del nucleo
+        familiare. Include la somma di tutti i redditi dei componenti del nucleo: redditi da lavoro dipendente e autonomo,
+        pensioni, redditi da fabbricati, trattamenti assistenziali, assegni di mantenimento percepiti e qualsiasi altra
+        forma di reddito. Dall'ISR si sottraggono alcune componenti come gli assegni di mantenimento corrisposti al
+        coniuge separato e i redditi dei trattamenti assistenziali, previdenziali e indennitari fino a determinate soglie.
+        Nel nostro simulatore, per semplicita', l'ISR corrisponde al reddito complessivo dichiarato, gia' al netto delle
+        deduzioni principali.
+      </p>
+      <p>
+        L'<strong>ISP (Indicatore della Situazione Patrimoniale)</strong> misura la ricchezza accumulata dal nucleo
+        familiare. Si compone di due parti: il patrimonio mobiliare (conti correnti, depositi, titoli di Stato,
+        obbligazioni, azioni, fondi comuni, polizze vita a capitalizzazione, partecipazioni societarie, e qualsiasi
+        altro strumento finanziario) e il patrimonio immobiliare (terreni e fabbricati di proprieta', misurati
+        attraverso il valore catastale rivalutato, cioe' la rendita catastale moltiplicata per i coefficienti di
+        rivalutazione previsti dalla legge). Su entrambe le componenti si applicano delle franchigie che riducono
+        l'importo da considerare.
+      </p>
+      <p>
+        L'<strong>ISE (Indicatore della Situazione Economica)</strong> e' il valore intermedio che combina le due
+        componenti precedenti con la formula: <strong>ISE = ISR + 20% &times; ISP</strong>. Il patrimonio, quindi,
+        pesa per il 20% rispetto al reddito nel determinare la situazione economica complessiva. Questo bilanciamento
+        e' stato introdotto per evitare che famiglie con redditi bassi ma patrimoni significativi (o viceversa)
+        possano ottenere agevolazioni non appropriate alla loro reale condizione economica.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Le franchigie patrimoniali
+      </h3>
+      <p>
+        Le franchigie sono soglie al di sotto delle quali il patrimonio non viene considerato ai fini del calcolo
+        dell'ISP. Sono previste per garantire che un livello minimo di risparmio e il possesso dell'abitazione
+        principale non penalizzino eccessivamente le famiglie.
+      </p>
+      <p>
+        Per il <strong>patrimonio mobiliare</strong>, la franchigia base e' di <strong>15.493,71 &euro;</strong> per
+        un nucleo di una persona, aumentata di <strong>1.000 &euro; per ciascun figlio</strong> componente del nucleo
+        (a partire dal primo). Cio' significa che una coppia con due figli ha una franchigia mobiliare di 17.493,71
+        &euro;. Solo la parte eccedente questa soglia viene considerata nell'ISP. Ad esempio, se una famiglia di 4
+        persone con 2 figli possiede un patrimonio mobiliare di 25.000 &euro;, il patrimonio mobiliare netto sara'
+        25.000 &minus; 17.493,71 = 7.506,29 &euro;.
+      </p>
+      <p>
+        Per il <strong>patrimonio immobiliare</strong>, e' prevista una franchigia specifica per la <strong>prima
+        casa</strong> (abitazione principale) fino a un massimo di <strong>52.500 &euro;</strong>. Se il nucleo ha
+        un mutuo residuo sulla prima casa, la franchigia e' pari al minor valore tra 52.500 &euro; e il mutuo residuo.
+        Dopo aver sottratto la franchigia, il valore residuo del patrimonio immobiliare viene considerato nella misura
+        dei <strong>due terzi (2/3)</strong>. Questo ulteriore abbattimento riconosce che gli immobili hanno una
+        liquidita' inferiore rispetto al patrimonio finanziario.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        La scala di equivalenza (DPCM 159/2013)
+      </h3>
+      <p>
+        La scala di equivalenza e' il fattore che "normalizza" l'ISE in base alla dimensione e alle caratteristiche
+        del nucleo familiare. Una famiglia di 4 persone ha bisogno di un reddito superiore rispetto a un single per
+        raggiungere lo stesso tenore di vita: la scala di equivalenza tiene conto di questa differenza. I parametri
+        base previsti dal DPCM 159/2013 sono i seguenti:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">N. componenti</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Parametro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">1</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1,00</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">2</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1,57</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">3</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2,04</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">4</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2,46</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">5</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2,85</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Ogni ulteriore componente</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">+0,35</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Al parametro base si aggiungono le <strong>maggiorazioni</strong> previste per situazioni specifiche:
+        <strong>+0,2 per ogni figlio minorenne</strong>, <strong>+0,35 in presenza di almeno 3 figli
+        minorenni</strong>, <strong>+0,5 per ogni componente con disabilita' media, grave o non autosufficiente</strong>,
+        e <strong>+0,2 per nuclei monogenitoriali</strong> (un solo genitore con almeno un figlio minorenne).
+        Queste maggiorazioni si sommano al parametro base. Ad esempio, un nucleo di 4 persone (coppia con 2 figli
+        minorenni) avra' una scala di equivalenza di 2,46 + 0,2 + 0,2 = 2,86.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Le fasce ISEE e le agevolazioni corrispondenti
+      </h3>
+      <p>
+        L'ISEE finale determina la fascia di appartenenza del nucleo familiare e, di conseguenza, le agevolazioni
+        a cui si ha diritto. Le soglie principali utilizzate nel 2026 sono le seguenti:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Fascia ISEE</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Agevolazioni principali</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Fino a 6.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Bonus sociali (elettricita', gas, acqua), carta acquisti, bonus asilo nido massimo, esenzione ticket sanitario</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Fino a 9.530 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Sussidi sociali, Supporto Formazione e Lavoro, contributi per affitto, agevolazioni tariffarie</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Fino a 15.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Agevolazioni universitarie massime (esenzione totale tasse), mense scolastiche ridotte, bonus vari</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Fino a 20.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Agevolazioni universitarie parziali, riduzioni tariffarie trasporti, bandi regionali</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Fino a 40.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Agevolazioni universitarie ridotte, Fondo Garanzia Prima Casa per giovani under 36</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Oltre 40.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Nessuna agevolazione specifica legata all'ISEE. Restano comunque le detrazioni fiscali ordinarie</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: famiglia di 4 persone con casa di proprieta'
+      </h3>
+      <p>
+        Consideriamo una famiglia tipo composta da due genitori e due figli minorenni, residente in un appartamento
+        di proprieta'. I dati della famiglia sono: reddito complessivo del nucleo 35.000 &euro; (25.000 &euro; del
+        primo genitore + 10.000 &euro; del secondo), patrimonio mobiliare 20.000 &euro; (conti correnti e piccoli
+        investimenti), valore catastale della casa 130.000 &euro;, mutuo residuo 70.000 &euro;.
+      </p>
+      <p>
+        <strong>Calcolo ISR:</strong> 35.000 &euro; (reddito complessivo del nucleo).
+      </p>
+      <p>
+        <strong>Calcolo ISP:</strong> Per il patrimonio mobiliare, la franchigia e' 15.493,71 + 2.000 (2 figli) =
+        17.493,71 &euro;. Il patrimonio mobiliare netto e' 20.000 &minus; 17.493,71 = 2.506,29 &euro;. Per il
+        patrimonio immobiliare, la franchigia prima casa e' il minore tra 52.500 &euro; e il mutuo residuo di
+        70.000 &euro;, quindi 52.500 &euro;. Il patrimonio immobiliare al netto della franchigia e'
+        130.000 &minus; 52.500 = 77.500 &euro;. Di questo si considera il 2/3: 77.500 &times; 2/3 = 51.666,67
+        &euro;. L'ISP totale e' 2.506,29 + 51.666,67 = 54.172,96 &euro;.
+      </p>
+      <p>
+        <strong>Calcolo ISE:</strong> 35.000 + 20% &times; 54.172,96 = 35.000 + 10.834,59 = 45.834,59 &euro;.
+      </p>
+      <p>
+        <strong>Scala di equivalenza:</strong> 4 componenti = 2,46 (base) + 0,2 (figlio minorenne 1) + 0,2
+        (figlio minorenne 2) = 2,86.
+      </p>
+      <p>
+        <strong>ISEE:</strong> 45.834,59 / 2,86 = <strong>16.025,38 &euro;</strong>.
+      </p>
+      <p>
+        Con un ISEE di circa 16.025 &euro;, questa famiglia avrebbe accesso ad agevolazioni universitarie parziali,
+        riduzioni sulle tariffe delle mense scolastiche e potrebbe partecipare a diversi bandi regionali. Non
+        rientrerebbe pero' nelle fasce piu' basse per i bonus sociali o le esenzioni complete.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Le diverse tipologie di ISEE
+      </h3>
+      <p>
+        Oltre all'<strong>ISEE ordinario</strong>, che e' quello calcolato dal nostro simulatore e che serve per
+        la maggior parte delle prestazioni, esistono altre tipologie specifiche previste dal DPCM 159/2013:
+      </p>
+      <p>
+        L'<strong>ISEE universitario</strong> e' richiesto per le agevolazioni sul diritto allo studio (tasse
+        universitarie, borse di studio, alloggi). La peculiarita' e' che il nucleo familiare dello studente
+        viene determinato con regole specifiche: anche se lo studente non convive piu' con i genitori, il suo
+        nucleo ai fini ISEE include comunque i genitori, salvo che non dimostri la piena indipendenza economica
+        (residenza autonoma da almeno 2 anni e reddito sufficiente). Per gli studenti stranieri si applicano
+        regole particolari riguardo alla documentazione dei redditi e patrimoni esteri.
+      </p>
+      <p>
+        L'<strong>ISEE sociosanitario</strong> si applica per le prestazioni sociali di natura assistenziale
+        (assistenza domiciliare, ricovero in strutture residenziali per anziani, prestazioni per disabili). In
+        questo caso, il nucleo familiare puo' essere ristretto al solo beneficiario, al coniuge e ai figli (se
+        minorenni), escludendo gli altri conviventi. Inoltre, le maggiorazioni per disabilita' sono piu' elevate
+        e i criteri di valutazione del patrimonio differiscono leggermente.
+      </p>
+      <p>
+        L'<strong>ISEE minorenni</strong> e' utilizzato per le prestazioni agevolate rivolte ai minori (ad esempio
+        l'Assegno Unico Universale). Quando i genitori del minore non sono coniugati e non convivono, il genitore
+        non convivente puo' essere incluso o meno nel nucleo in base a specifiche condizioni previste dalla normativa.
+      </p>
+      <p>
+        Esiste infine l'<strong>ISEE corrente</strong>, una versione "aggiornata" dell'ISEE ordinario che tiene
+        conto di variazioni significative nella situazione economica intervenute dopo il periodo di riferimento
+        della DSU originaria. Puo' essere richiesto in caso di perdita del lavoro, riduzione dell'orario
+        lavorativo, interruzione di un trattamento previdenziale, o in presenza di una variazione patrimoniale
+        superiore al 20%. L'ISEE corrente ha una validita' di 6 mesi (e non di un anno come l'ISEE ordinario)
+        e puo' essere richiesto in qualsiasi momento dell'anno.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Come presentare la DSU per ottenere l'ISEE ufficiale
+      </h3>
+      <p>
+        La <strong>DSU (Dichiarazione Sostitutiva Unica)</strong> e' il documento che il nucleo familiare deve
+        compilare e presentare per ottenere il certificato ISEE ufficiale. La DSU contiene i dati anagrafici,
+        reddituali e patrimoniali di tutti i componenti del nucleo e fa riferimento ai redditi percepiti due
+        anni prima (per il 2026, i redditi del 2024) e ai patrimoni posseduti al 31 dicembre dell'anno
+        precedente (31 dicembre 2025).
+      </p>
+      <p>
+        La DSU puo' essere presentata attraverso diversi canali. Il modo piu' comune e' rivolgersi a un
+        <strong>CAF (Centro di Assistenza Fiscale)</strong> o a un <strong>patronato</strong>: il servizio e'
+        gratuito e gli operatori assistono il contribuente nella compilazione. In alternativa, e' possibile
+        compilare la <strong>DSU precompilata</strong> direttamente sul portale INPS (www.inps.it), accedendo
+        con SPID, CIE o CNS. La DSU precompilata contiene gia' molti dati recuperati automaticamente
+        dall'Agenzia delle Entrate e dall'INPS, rendendo la compilazione piu' veloce e riducendo il rischio
+        di errori. Una volta presentata la DSU, l'INPS elabora l'attestazione ISEE entro 10 giorni lavorativi,
+        disponibile nell'area riservata del portale INPS.
+      </p>
+      <p>
+        La validita' dell'ISEE e' annuale: la DSU presentata nel 2026 ha validita' fino al 31 dicembre 2026.
+        E' importante rinnovare l'ISEE ogni anno all'inizio di gennaio se si ha bisogno delle agevolazioni,
+        poiche' alcune prestazioni (come l'Assegno Unico) richiedono un ISEE in corso di validita' per
+        erogare l'importo pieno.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Valori di riferimento ISEE per nucleo familiare tipo
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente mostra l'ISEE stimato per diversi profili familiari, con patrimonio mobiliare di 15.000 &euro;
+        e immobiliare di 120.000 &euro; (prima casa con mutuo residuo di 60.000 &euro;). I valori sono puramente indicativi.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Nucleo</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Reddito</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Scala eq.</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">ISEE stimato</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Single</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">20.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1,00</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">28.907 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Coppia senza figli</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">30.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1,57</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">24.682 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Coppia + 1 figlio minore</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">35.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2,24</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">19.823 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Coppia + 2 figli minori</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">35.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2,86</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">15.526 &euro;</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Coppia + 3 figli minori</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">40.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3,60</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">13.837 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Genitore unico + 1 figlio minore</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">18.000 &euro;</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1,97</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">13.737 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Come si nota dalla tabella, l'ISEE varia significativamente in funzione della composizione del nucleo
+        familiare anche a parita' di reddito e patrimonio. Una coppia con due figli minorenni e un reddito
+        complessivo di 35.000 &euro; ha un ISEE di circa 15.500 &euro;, che consente l'accesso alla maggior
+        parte delle agevolazioni universitarie e ai bonus per le famiglie. Un single con lo stesso reddito
+        avrebbe un ISEE quasi doppio, restando escluso da molte agevolazioni.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto tempo ci vuole per ottenere l'ISEE ufficiale?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Dopo la presentazione della DSU (tramite CAF, patronato o portale INPS), l'attestazione ISEE viene
+          rilasciata dall'INPS entro 10 giorni lavorativi. Con la DSU precompilata online, i tempi possono
+          essere piu' rapidi. Una volta ottenuto, l'ISEE e' valido fino al 31 dicembre dell'anno in corso.
+          E' consigliabile presentare la DSU all'inizio dell'anno per non perdere mesi di agevolazioni.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quali documenti servono per la DSU?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Per compilare la DSU servono: documento di identita' e codice fiscale di tutti i componenti del nucleo,
+          ultima dichiarazione dei redditi (730 o Redditi PF), certificazioni reddituali (CU), saldi e giacenze
+          medie dei conti correnti e dei depositi al 31 dicembre dell'anno precedente, visure catastali degli
+          immobili di proprieta', documentazione dei mutui in essere, e informazioni su eventuali veicoli di
+          proprieta' (targhe e valori). Con la DSU precompilata, molti di questi dati sono gia' inseriti
+          automaticamente.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il conto corrente influisce sull'ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si, il patrimonio mobiliare (che include i conti correnti) influisce sull'ISEE, ma solo nella misura
+          in cui supera la franchigia (15.493,71 &euro; base + 1.000 &euro; per figlio). Viene considerato il
+          maggiore tra il saldo al 31 dicembre e la giacenza media annua di ogni rapporto finanziario. Ad
+          esempio, se avete un saldo di 20.000 &euro; ma una giacenza media di 25.000 &euro;, viene considerato
+          il valore di 25.000 &euro;. Se il totale del patrimonio mobiliare e' inferiore alla franchigia, non
+          ha alcun impatto sull'ISEE.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa cambia tra ISEE ordinario e ISEE corrente?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          L'ISEE ordinario si basa sui redditi di due anni prima e sui patrimoni dell'anno precedente. L'ISEE
+          corrente, invece, tiene conto delle variazioni significative intervenute dopo quel periodo: perdita
+          del lavoro, riduzione dell'orario, interruzione di trattamenti previdenziali o variazioni patrimoniali
+          superiori al 20%. L'ISEE corrente ha validita' di 6 mesi e serve a "fotografare" la situazione
+          economica attuale della famiglia in caso di peggioramento. Puo' essere richiesto in qualsiasi momento
+          dell'anno, purche' sia gia' stato ottenuto l'ISEE ordinario.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Chi fa parte del nucleo familiare ai fini ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il nucleo familiare ISEE coincide in linea di principio con la famiglia anagrafica, cioe' l'insieme
+          delle persone che coabitano e sono legate da vincoli di matrimonio, parentela, affinita', adozione,
+          tutela o vincoli affettivi. I coniugi fanno sempre parte dello stesso nucleo, anche se hanno residenze
+          diverse (salvo separazione legale). I figli minorenni seguono il genitore con cui convivono. I figli
+          maggiorenni non conviventi fanno parte del nucleo dei genitori se hanno meno di 26 anni, non sono
+          sposati, non hanno figli propri, sono ancora a carico IRPEF dei genitori e sono nella stessa residenza
+          anagrafica. Le regole specifiche per ogni situazione sono dettagliate nel DPCM 159/2013.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La casa di proprieta' aumenta molto l'ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          L'impatto della casa sull'ISEE dipende dal suo valore catastale, dal mutuo residuo e dalla franchigia
+          applicata. Per la prima casa, si sottrae una franchigia fino a 52.500 &euro; (o il mutuo residuo, se
+          inferiore), e del valore residuo si considera solo il 2/3. Questo riduce notevolmente l'impatto: una
+          casa con valore catastale di 120.000 &euro; e un mutuo residuo di 60.000 &euro; pesa sull'ISP per
+          circa 45.000 &euro;, che a sua volta incide sull'ISEE per il 20% di questa cifra diviso la scala di
+          equivalenza. Per una famiglia di 4 persone, l'effetto e' di circa 3.000-4.000 &euro; di ISEE in piu'.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il simulatore da' lo stesso risultato dell'ISEE ufficiale?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, questo simulatore fornisce una stima semplificata. L'ISEE ufficiale calcolato dall'INPS a partire
+          dalla DSU considera molte piu' variabili: redditi figurativi, trattamenti assistenziali, rendite
+          catastali specifiche per ogni immobile, giacenze medie bancarie, patrimoni all'estero, e numerose
+          altre componenti. Inoltre, l'ISEE ufficiale viene elaborato incrociando i dati dichiarati con quelli
+          presenti nelle banche dati dell'Agenzia delle Entrate e dell'INPS. Il nostro simulatore e' utile per
+          avere un'idea di massima della propria fascia, ma non sostituisce l'ISEE ufficiale rilasciato dall'INPS.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come posso ridurre il mio ISEE legalmente?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Non esistono "trucchi" per abbassare l'ISEE, e dichiarazioni false nella DSU costituiscono reato.
+          Tuttavia, ci sono strategie lecite: utilizzare i risparmi per estinguere debiti (riducendo il patrimonio
+          mobiliare), verificare che i conti correnti non abbiano giacenze medie elevate a fine anno, investire
+          in previdenza complementare (i versamenti al fondo pensione riducono il reddito imponibile), e verificare
+          la corretta composizione del nucleo familiare. In caso di variazione significativa della situazione
+          economica (perdita del lavoro, riduzione del reddito), e' possibile richiedere l'ISEE corrente che
+          riflette la situazione aggiornata.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-detrazioni-familiari" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Detrazioni Familiari
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola le detrazioni IRPEF per coniuge e figli a carico
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+      <a href="/calcolo-irpef" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'IRPEF lorda e netta scaglione per scaglione
+        </p>
+      </a>
+      <a href="/calcolo-mutuo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Mutuo
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la rata del mutuo e il piano di ammortamento
+        </p>
+      </a>
+      <a href="/calcolo-forfettari" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Regime Forfettario
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola tasse e netto con il regime forfettario
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

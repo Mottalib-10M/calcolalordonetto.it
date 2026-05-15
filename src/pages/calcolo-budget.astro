@@ -1,0 +1,544 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import Budget from '../components/calcolatori/Budget';
+
+const title = 'Calcolatore Budget 50/30/20: Gestisci il Tuo Netto';
+const description = 'Calcola come distribuire il tuo stipendio netto con la regola del 50/30/20: necessita\', desideri e risparmio. Calcolatore budget personale italiano.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolatore Budget 50/30/20', url: `${SITE.url}/calcolo-budget` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolatore Budget 50/30/20"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolatore Budget 50/30/20
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Distribuisci il tuo stipendio netto mensile con la regola del 50/30/20: confronta la distribuzione ideale con le tue spese reali.
+  </p>
+
+  <Budget client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      La regola del 50/30/20: come funziona
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La <strong>regola del 50/30/20</strong> e' un metodo di budgeting ideato dalla senatrice
+        statunitense <strong>Elizabeth Warren</strong> e da sua figlia Amelia Warren Tyagi nel
+        libro <em>&quot;All Your Worth: The Ultimate Lifetime Money Plan&quot;</em> (2005). Il principio e'
+        semplice: dividere il proprio reddito netto mensile in tre macro-categorie, ciascuna con
+        una percentuale di riferimento.
+      </p>
+      <p>
+        La forza di questo metodo sta nella sua semplicita'. Non richiede di tracciare ogni
+        singola spesa o di compilare fogli di calcolo complessi. Basta dividere il proprio netto
+        in tre "secchi" e verificare periodicamente che la distribuzione sia coerente con i
+        target. E' un punto di partenza eccellente per chi non ha mai gestito un budget, e un
+        framework utile anche per chi e' gia' avanzato nella gestione delle proprie finanze.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Adattamento al contesto italiano
+      </h3>
+      <p>
+        La regola e' nata nel contesto statunitense e va adattata alla realta' italiana, dove
+        il costo della vita e le abitudini di spesa sono diversi. In Italia, il costo dell'affitto
+        nelle grandi citta' puo' assorbire da solo il 35-50% del reddito netto di un giovane
+        lavoratore, rendendo difficile rispettare il limite del 50% per le necessita'. Allo
+        stesso tempo, il sistema di welfare italiano (sanita' pubblica, pensione obbligatoria,
+        TFR) offre una rete di sicurezza che negli USA non esiste, riducendo in parte la
+        necessita' di un fondo emergenza molto grande.
+      </p>
+      <p>
+        Per questo motivo, la regola 50/30/20 va intesa come una <strong>linea guida
+        flessibile</strong>, non come un vincolo rigido. Se vivi a Milano con un affitto di
+        800-900 €/mese, potrebbe essere piu' realistico puntare a un 55/25/20 o addirittura
+        60/25/15 nei primi anni di carriera, con l'obiettivo di avvicinarsi al 50/30/20 man
+        mano che il reddito cresce.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        50% Necessita': le spese irrinunciabili
+      </h3>
+      <p>
+        La meta' del tuo stipendio netto dovrebbe coprire tutte le spese essenziali, cioe'
+        quelle che non puoi eliminare senza compromettere la tua qualita' di vita di base:
+      </p>
+      <ul>
+        <li><strong>Affitto o rata del mutuo</strong>: la voce piu' pesante per la maggior
+        parte degli italiani. La regola pratica suggerisce che non dovrebbe superare il 30%
+        del netto da sola.</li>
+        <li><strong>Bollette</strong>: luce, gas, acqua, rifiuti, internet. In Italia, una
+        famiglia media spende circa 150-250 €/mese in utenze.</li>
+        <li><strong>Spesa alimentare</strong>: la spesa al supermercato per i pasti
+        quotidiani, escludendo ristoranti e delivery (che rientrano nei desideri). Per una
+        persona sola: 200-350 €/mese; per una coppia: 350-500 €/mese.</li>
+        <li><strong>Trasporti</strong>: abbonamento ai mezzi pubblici (35-50 €/mese nelle
+        grandi citta'), carburante, assicurazione auto, bollo.</li>
+        <li><strong>Assicurazioni</strong>: RC auto, polizza sanitaria integrativa, polizza
+        sulla vita (se necessaria per il mutuo).</li>
+        <li><strong>Spese sanitarie</strong>: visite, farmaci, ticket. In Italia la sanita'
+        pubblica copre molto, ma le liste d'attesa spingono molti a ricorrere al privato.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        30% Desideri: le spese discrezionali
+      </h3>
+      <p>
+        Questa categoria include tutto cio' che migliora la qualita' della vita ma di cui
+        potresti fare a meno in caso di necessita':
+      </p>
+      <ul>
+        <li><strong>Ristoranti e delivery</strong>: cene fuori, pranzi al bar, aperitivi.
+        Per molti italiani questa e' una voce significativa.</li>
+        <li><strong>Abbigliamento e cura personale</strong>: vestiti, scarpe, parrucchiere,
+        estetista (oltre il minimo indispensabile).</li>
+        <li><strong>Palestra e sport</strong>: abbonamenti sportivi, attrezzatura.</li>
+        <li><strong>Intrattenimento e streaming</strong>: Netflix, Spotify, cinema,
+        concerti, libri, videogiochi.</li>
+        <li><strong>Vacanze e viaggi</strong>: accantonamento mensile per le ferie.</li>
+        <li><strong>Hobby</strong>: qualsiasi attivita' ricreativa personale.</li>
+        <li><strong>Upgrade di lifestyle</strong>: l'abbonamento telefonico premium invece
+        di quello base, l'auto piu' bella invece di quella funzionale.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        20% Risparmio e investimenti
+      </h3>
+      <p>
+        Il quinto del reddito destinato al futuro e' la parte piu' importante per la
+        costruzione del patrimonio nel lungo periodo. Include:
+      </p>
+      <ul>
+        <li><strong>Fondo di emergenza</strong>: la priorita' assoluta. Dovrebbe coprire
+        3-6 mesi di spese essenziali, parcheggiato in un conto deposito o conto corrente
+        facilmente accessibile. Per uno stipendio netto di 1.800 €/mese con 900 € di spese
+        fisse, il fondo dovrebbe essere di 2.700-5.400 €.</li>
+        <li><strong>PAC (Piano di Accumulo Capitale)</strong>: versamento periodico in un
+        ETF o fondo, per costruire ricchezza attraverso la capitalizzazione composta.</li>
+        <li><strong>Fondo pensione integrativo</strong>: oltre alla pensione INPS, i fondi
+        pensione offrono vantaggi fiscali significativi (deducibilita' fino a 5.164,57 €/anno).</li>
+        <li><strong>TFR</strong>: il Trattamento di Fine Rapporto viene gia' accantonato
+        dall'azienda; se versato nel fondo pensione, offre vantaggi fiscali aggiuntivi.</li>
+        <li><strong>Estinzione debiti</strong>: se hai debiti al consumo (prestiti, finanziamenti
+        per auto), la priorita' e' estinguerli il prima possibile, perche' i tassi di
+        interesse pagati sono quasi sempre superiori ai rendimenti ottenibili investendo.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Budget esempio per diversi stipendi netti
+      </h3>
+      <div class="overflow-x-auto mt-4">
+        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+          <thead class="bg-gray-50 dark:bg-gray-800">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Voce</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">1.400 &euro;</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">1.800 &euro;</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">2.200 &euro;</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">2.800 &euro;</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+            <tr>
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Necessita' (50%)</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">700 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">900 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">1.100 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">1.400 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-500 dark:text-gray-400 pl-8">di cui affitto/mutuo</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~420 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~540 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~660 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~840 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-500 dark:text-gray-400 pl-8">di cui bollette + spesa</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~280 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~360 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~440 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~560 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Desideri (30%)</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">420 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">540 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">660 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">840 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Risparmio (20%)</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">280 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">360 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">440 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">560 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Risparmio annuo</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">3.360 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">4.320 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">5.280 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">6.720 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Alternative alla regola 50/30/20
+      </h3>
+      <p>
+        La 50/30/20 non e' l'unica regola di budgeting. Ecco alcune varianti adatte a
+        situazioni diverse:
+      </p>
+      <ul>
+        <li>
+          <strong>Regola 60/20/20</strong>: adatta a chi vive in citta' costose (Milano, Roma)
+          dove le spese fisse sono inevitabilmente piu' alte. Il 60% va alle necessita', il 20%
+          ai desideri e il 20% al risparmio. E' una versione piu' realistica per molti italiani.
+        </li>
+        <li>
+          <strong>Regola 70/20/10</strong>: per chi ha redditi piu' bassi o debiti da estinguere.
+          Il 70% copre necessita' e desideri (senza distinzione), il 20% va al risparmio e il
+          10% all'estinzione dei debiti. Una volta eliminati i debiti, il 10% confluisce nel
+          risparmio.
+        </li>
+        <li>
+          <strong>Metodo "Pay Yourself First"</strong>: invece di risparmiare cio' che avanza,
+          metti da parte subito il 20% (o piu') appena ricevi lo stipendio, tramite un bonifico
+          automatico. Poi vivi con il restante 80%. Questo metodo elimina il rischio di "spendere
+          tutto e risparmiare niente".
+        </li>
+        <li>
+          <strong>Metodo a buste (Envelope System)</strong>: assegna fisicamente (o virtualmente)
+          il denaro a categorie specifiche all'inizio del mese. Quando una busta e' vuota, smetti
+          di spendere in quella categoria. E' il metodo piu' rigoroso per chi ha difficolta' a
+          controllare le spese.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Il fondo di emergenza: quanto tenere
+      </h3>
+      <p>
+        Il fondo di emergenza e' la base di qualsiasi piano finanziario solido. La raccomandazione
+        standard e' di mantenere <strong>3-6 mesi di spese essenziali</strong> in un conto
+        facilmente accessibile (conto deposito svincolabile o conto corrente remunerato). La
+        dimensione esatta dipende dalla tua situazione:
+      </p>
+      <ul>
+        <li><strong>3 mesi</strong>: sufficiente se hai un lavoro stabile (contratto indeterminato),
+        nessun debito e una fonte di reddito alternativa in famiglia.</li>
+        <li><strong>6 mesi o piu'</strong>: consigliato se sei lavoratore autonomo, hai un
+        contratto precario, sei l'unico reddito in famiglia, o hai spese mediche ricorrenti.</li>
+      </ul>
+      <p>
+        Con uno stipendio netto di 1.800 €/mese e 900 € di spese necessarie, il fondo emergenza
+        ideale e' tra 2.700 € (3 mesi) e 5.400 € (6 mesi). A un tasso di risparmio del 20%
+        (360 €/mese), servono circa 8-15 mesi per costruirlo da zero — questo dovrebbe essere
+        il primo obiettivo finanziario prima di iniziare a investire.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Esempio pratico: stipendio netto 1.800 €/mese
+      </h3>
+      <p>
+        Maria guadagna 1.800 € netti al mese con un contratto a tempo indeterminato a Bologna.
+        Ecco come potrebbe distribuire il suo budget secondo la regola 50/30/20:
+      </p>
+      <ul>
+        <li><strong>Necessita' (900 €)</strong>: affitto 550 €, bollette 120 €, spesa alimentare
+        180 €, abbonamento bus 39 €, assicurazione sanitaria integrativa 11 €.</li>
+        <li><strong>Desideri (540 €)</strong>: ristoranti/aperitivi 150 €, palestra 40 €,
+        abbigliamento 80 €, streaming/abbonamenti 30 €, uscite e svago 100 €, accantonamento
+        vacanze 140 €.</li>
+        <li><strong>Risparmio (360 €)</strong>: PAC in ETF azionario globale 200 €, fondo
+        emergenza 100 € (fino a raggiungere 5.000 €), fondo pensione integrativo 60 €.</li>
+      </ul>
+      <p>
+        Con 360 € al mese di risparmio (4.320 € all'anno), investiti in un PAC con rendimento
+        medio del 7% lordo annuo, dopo 20 anni Maria avrebbe accumulato circa 190.000 € lordi.
+        Al netto della tassazione del 26% sui capital gain, il capitale netto sarebbe di circa
+        157.000 €. Un risultato notevole partendo da un risparmio mensile che sembra modesto.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Spese medie degli italiani: dati di riferimento
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        I dati seguenti sono basati sull'<strong>Indagine sul bilancio delle famiglie</strong>
+        della Banca d'Italia e sui dati ISTAT sulla spesa per consumi delle famiglie. Possono
+        servire come riferimento per valutare se le proprie spese sono in linea con la media
+        nazionale.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Categoria di spesa</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Media mensile (persona singola)</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">% sul netto medio</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Abitazione (affitto/mutuo)</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">500-900 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">28-50%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Alimentari e beni di prima necessita'</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">200-350 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">11-19%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Utenze (luce, gas, acqua, internet)</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">120-200 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">7-11%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Trasporti</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">100-250 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">6-14%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Ristoranti e pasti fuori</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">100-200 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">6-11%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Abbigliamento</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">50-100 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">3-6%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Svago e tempo libero</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">80-150 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">4-8%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Salute</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">30-80 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">2-4%</td>
+          </tr>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Tasso di risparmio medio IT</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">-</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">~10%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        Secondo la Banca d'Italia, il tasso di risparmio medio delle famiglie italiane e' circa
+        il 10% del reddito disponibile — ben al di sotto del 20% raccomandato dalla regola
+        50/30/20. Le famiglie del Nord tendono a risparmiare di piu' (12-15%) rispetto a quelle
+        del Sud (6-8%), e il tasso di risparmio cresce con l'eta' fino ai 55-60 anni per poi
+        diminuire in pensione. Questo dato conferma che per la maggior parte degli italiani c'e'
+        un margine significativo di miglioramento nella gestione del budget.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          L'affitto da solo supera il 50%: come faccio?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          E' una situazione comune, specialmente nelle grandi citta' italiane. In questo caso,
+          la regola va adattata: prova con un 55/25/20 o 60/20/20. L'obiettivo minimo e'
+          mantenere il risparmio ad almeno il 10-15%, anche se le necessita' superano il 50%.
+          Valuta se ci sono modi per ridurre l'affitto (coinquilini, zona meno centrale) o
+          aumentare il reddito (straordinari, secondo lavoro, formazione per avanzamento). Se
+          l'affitto supera il 40% del netto, e' un segnale che l'abitazione potrebbe non essere
+          sostenibile nel lungo periodo.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il TFR conta come risparmio nel 20%?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il TFR e' tecnicamente un risparmio forzato accantonato dal datore di lavoro (circa
+          il 6,9% della retribuzione lorda). Tuttavia, poiche' non transita dal tuo conto
+          corrente e non e' disponibile fino alla fine del rapporto di lavoro, la maggior parte
+          degli esperti consiglia di <strong>non contarlo</strong> nel budget 50/30/20. Il TFR
+          e' un "bonus" aggiuntivo che arrivera' in futuro. Il 20% di risparmio della regola
+          si riferisce al denaro che metti attivamente da parte ogni mese dal tuo stipendio
+          netto.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto dovrebbe essere grande il fondo emergenza?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La raccomandazione standard e' 3-6 mesi di spese essenziali (non di stipendio). Se
+          le tue spese necessarie sono 900 €/mese, il fondo emergenza dovrebbe essere tra
+          2.700 € e 5.400 €. Un dipendente con contratto indeterminato puo' stare sul limite
+          basso; un lavoratore autonomo o a tempo determinato dovrebbe puntare a 6 mesi o piu'.
+          Il fondo va tenuto in strumenti liquidi: conto deposito svincolabile, BOT a breve
+          scadenza, o semplicemente sul conto corrente.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come gestisco le spese variabili come le vacanze?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Le spese periodiche (vacanze, regali di Natale, assicurazione auto annuale) vanno
+          "mensilizzate": calcola il costo annuo e dividi per 12. Se prevedi 1.800 € di vacanze
+          all'anno, accantona 150 € al mese nella categoria "desideri". Lo stesso vale per le
+          spese annuali che rientrano nelle "necessita'" (come l'assicurazione auto): calcola il
+          costo annuo e distribuiscilo nei 12 mesi. Questo evita "sorprese" che sballano il
+          budget in certi mesi.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Dovrei prima risparmiare o prima estinguere i debiti?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La priorita' assoluta e' un fondo emergenza minimo (1.000-2.000 €) per evitare di
+          contrarre nuovi debiti in caso di imprevisti. Poi, concentra le risorse
+          sull'estinzione dei debiti al consumo (prestiti personali, carte revolving) perche' i
+          loro tassi di interesse (8-20% annuo) sono molto superiori a qualsiasi rendimento
+          ottenibile investendo. Solo dopo aver eliminato i debiti ad alto interesse,
+          inizia a investire e a costruire il fondo emergenza completo (3-6 mesi). Il mutuo
+          sulla casa e' un'eccezione: con tassi al 3-4%, non ha senso estinguerlo anticipatamente
+          se puoi ottenere rendimenti superiori investendo.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La tredicesima e la quattordicesima come si gestiscono?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Ci sono due approcci. Il primo: applica la regola 50/30/20 anche alle mensilita'
+          aggiuntive, destinando il 50% alle necessita' (anticipare bollette, fare scorta),
+          il 30% ai desideri (regali, vacanze) e il 20% al risparmio. Il secondo, piu'
+          aggressivo: usa la tredicesima e la quattordicesima interamente per obiettivi
+          finanziari — rafforzare il fondo emergenza, fare un versamento extra nel PAC,
+          estinguere un debito. Molti esperti consigliano il secondo approccio perche' le spese
+          mensili sono gia' coperte dallo stipendio ordinario.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          La regola 50/30/20 funziona anche per le coppie?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si', e spesso funziona meglio perche' le coppie hanno economie di scala sulle spese
+          fisse (un solo affitto, bollette condivise). Basta sommare i due netti mensili e
+          applicare le stesse percentuali. Con due stipendi da 1.800 €, il netto combinato e'
+          3.600 €: 1.800 € per le necessita', 1.080 € per i desideri e 720 € per il risparmio.
+          Le coppie riescono tipicamente a risparmiare una quota maggiore rispetto ai single,
+          grazie alla condivisione delle spese fisse.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+      <a href="/calcolo-piano-accumulo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Piano di Accumulo (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula il rendimento del tuo PAC mensile
+        </p>
+      </a>
+      <a href="/calcolo-inflazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'impatto dell'inflazione sul potere d'acquisto
+        </p>
+      </a>
+      <a href="/confronto-affitto-acquisto" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Affitto vs Acquisto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Confronta il costo di affittare vs comprare casa
+        </p>
+      </a>
+      <a href="/calcolo-tassazione-investimenti" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Tassazione Investimenti
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola le tasse sui capital gain in Italia
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

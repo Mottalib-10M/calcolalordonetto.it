@@ -1,0 +1,310 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import { canonicalURL } from '../lib/seo';
+import Forfettari from '../components/calcolatori/Forfettari';
+
+const title = 'Calcolo Tasse Regime Forfettario 2026: Netto Partita IVA';
+const description =
+  'Calcola tasse e netto con il regime forfettario. Imposta sostitutiva al 5% o 15%, contributi INPS gestione separata. Soglia 85.000 euro.';
+const canonical = canonicalURL('/calcolo-forfettari');
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Regime Forfettario', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolatore Regime Forfettario"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+>
+  <Forfettari client:load />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcolano le tasse nel regime forfettario
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il regime forfettario e' il regime fiscale agevolato dedicato a
+        professionisti e ditte individuali con ricavi annui entro 85.000 euro.
+        Il reddito imponibile non viene calcolato analiticamente (costi reali
+        meno ricavi), ma applicando un coefficiente di redditivita' che varia
+        in base al codice ATECO dell'attivita' svolta. Sul reddito cosi'
+        determinato si applica un'imposta sostitutiva che sostituisce IRPEF,
+        addizionali regionali e comunali, e IRAP.
+      </p>
+      <h3>Imposta sostitutiva: 5% o 15%</h3>
+      <p>
+        L'aliquota ordinaria e' del 15%, ma per i primi cinque anni di
+        attivita' (le cosiddette "startup") si applica l'aliquota ridotta del
+        5%, a condizione che nei tre anni precedenti non si sia svolta la
+        stessa attivita' in forma autonoma. Dopo il quinquennio, l'aliquota
+        passa automaticamente al 15%.
+      </p>
+      <h3>Contributi previdenziali</h3>
+      <p>
+        I contributi INPS dipendono dalla gestione previdenziale di
+        appartenenza. Chi e' iscritto alla Gestione Separata INPS versa il
+        26,07% del reddito imponibile (aliquota 2026 per i non iscritti ad
+        altre forme pensionistiche). Per artigiani e commercianti si applicano
+        le aliquote delle rispettive gestioni, con un minimale contributivo
+        annuo obbligatorio. I contributi versati sono deducibili dal reddito
+        imponibile dell'anno successivo.
+      </p>
+      <h3>Tabella dei coefficienti di redditivita' per codice ATECO</h3>
+      <p>
+        Il coefficiente di redditivita' e' il cuore del regime forfettario: determina quale percentuale del fatturato viene considerata reddito imponibile. La parte restante (100% meno il coefficiente) rappresenta i costi forfettariamente riconosciuti. Il legislatore ha stabilito coefficienti differenziati per settore economico, basandosi su analisi statistiche dei costi medi per ciascuna categoria. Ecco i principali coefficienti raggruppati per macrocategoria di attivita':
+      </p>
+      <ul>
+        <li><strong>Intermediari del commercio: 86%.</strong> La percentuale piu' alta, perche' l'attivita' di intermediazione comporta costi operativi molto bassi (niente magazzino, niente merci). Solo il 14% del fatturato viene riconosciuto come costo forfettario.</li>
+        <li><strong>Professionisti (avvocati, consulenti, IT, ingegneri): 78%.</strong> Il coefficiente tipico per chi lavora nel settore dei servizi professionali e intellettuali. Include sviluppatori software, consulenti aziendali, commercialisti e tutte le professioni codificate sotto i gruppi ATECO 69-74.</li>
+        <li><strong>Servizi alla persona (parrucchieri, estetisti): 67%.</strong> Un coefficiente intermedio che riconosce costi piu' elevati rispetto ai professionisti, legati a prodotti, attrezzature e affitto del locale.</li>
+        <li><strong>Commercio all'ingrosso e al dettaglio: 40%.</strong> Il coefficiente piu' basso, che riflette l'alta incidenza del costo delle merci vendute. Per il commercio all'ingrosso di prodotti non alimentari il coefficiente sale al 62%.</li>
+        <li><strong>Costruzioni e attivita' immobiliari: 62%.</strong> Un valore che tiene conto dei costi di materiali, subappalti e attrezzature tipici del settore edile e delle attivita' di gestione immobiliare.</li>
+        <li><strong>Alloggio e ristorazione: 40%.</strong> Il coefficiente basso riconosce i costi significativi legati a materie prime alimentari, affitto locali, utenze e personale.</li>
+      </ul>
+      <p>
+        E' fondamentale scegliere il codice ATECO corretto al momento dell'apertura della partita IVA, perche' il coefficiente influisce direttamente sul carico fiscale. Un errore nella classificazione puo' portare a pagare piu' tasse del dovuto o, peggio, a contestazioni da parte dell'Agenzia delle Entrate. Se la tua attivita' ricade in piu' codici ATECO, il coefficiente applicato e' quello relativo all'attivita' prevalente per fatturato.
+      </p>
+      <h3>Confronto regime forfettario vs ordinario</h3>
+      <p>
+        La scelta tra regime forfettario e regime ordinario e' una delle decisioni fiscali piu' importanti per chi ha una partita IVA. Non esiste una risposta universale: la convenienza dipende dalla struttura dei costi reali della tua attivita' e dalla tua situazione personale. Vediamo i principali scenari.
+      </p>
+      <p>
+        <strong>Quando il forfettario conviene di piu':</strong> il regime forfettario risulta vantaggioso quando i tuoi costi reali sono inferiori alla quota forfettaria riconosciuta. Ad esempio, se sei un professionista IT con coefficiente 78%, il fisco ti riconosce il 22% di costi forfettari. Se i tuoi costi effettivi (software, hardware, formazione, coworking) sono inferiori al 22% del fatturato, il forfettario e' la scelta migliore. Inoltre, l'aliquota sostitutiva del 15% (o 5% per le startup) e' generalmente molto piu' bassa dell'aliquota marginale IRPEF, che puo' raggiungere il 43% per redditi superiori a 50.000 euro. Per un freelance con pochi costi e un fatturato medio, il risparmio annuo puo' superare i 5.000-10.000 euro rispetto all'ordinario.
+      </p>
+      <p>
+        <strong>Quando l'ordinario conviene di piu':</strong> il regime ordinario diventa preferibile quando hai costi reali significativi che superano la quota forfettaria. Se gestisci un'attivita' con dipendenti, affitto un ufficio costoso, acquisti merci o macchinari, la deduzione analitica dei costi reali puo' abbattere la base imponibile molto piu' di quanto faccia il coefficiente forfettario. Inoltre, nel regime ordinario puoi beneficiare di tutte le detrazioni personali (spese mediche, interessi del mutuo, spese per figli a carico, ristrutturazioni edilizie), che nel forfettario non sono applicabili. Questo aspetto e' spesso sottovalutato ma puo' fare una differenza di migliaia di euro, specialmente per chi ha un mutuo sulla prima casa o figli a carico.
+      </p>
+      <p>
+        <strong>L'analisi di break-even:</strong> il punto di pareggio si calcola confrontando il carico fiscale totale nei due regimi. Prendi il tuo fatturato, calcola il reddito imponibile forfettario (fatturato per coefficiente) e il reddito imponibile ordinario (fatturato meno costi reali meno deduzioni). Poi applica le rispettive imposte: aliquota sostitutiva per il forfettario, scaglioni IRPEF piu' addizionali per l'ordinario. Il punto di break-even per un professionista con coefficiente 78% si colloca generalmente quando i costi reali superano il 35-40% del fatturato, ma questo valore varia in base al livello di reddito e alle detrazioni personali spettanti.
+      </p>
+      <h3>Obbligo di fatturazione elettronica</h3>
+      <p>
+        A partire dal 1 gennaio 2024, l'obbligo di fatturazione elettronica e' stato esteso a tutti i contribuenti in regime forfettario, senza piu' alcuna soglia di esenzione. In precedenza, i forfettari con ricavi inferiori a 25.000 euro erano esonerati, ma questa deroga e' stata definitivamente eliminata.
+      </p>
+      <p>
+        La fatturazione elettronica avviene tramite il Sistema di Interscambio (SDI), la piattaforma gestita dall'Agenzia delle Entrate che riceve, valida e inoltra le fatture in formato XML al destinatario. Per emettere fatture elettroniche e' necessario utilizzare un software di fatturazione compatibile: esistono soluzioni gratuite (come il portale "Fatture e Corrispettivi" dell'Agenzia delle Entrate) e soluzioni commerciali a pagamento che offrono funzionalita' aggiuntive come la gestione automatica della numerazione, l'archiviazione sostitutiva e l'integrazione con la contabilita'.
+      </p>
+      <p>
+        Il formato della fattura elettronica e' il FatturaPA (estensione .xml), conforme alle specifiche tecniche definite dall'Agenzia delle Entrate. Ogni fattura deve contenere il codice destinatario SDI del cliente (o la PEC), i dati fiscali del mittente e del destinatario, la natura dell'operazione (N2.2 per le operazioni in regime forfettario, in quanto esenti IVA), l'importo e la descrizione del servizio o bene. Per i forfettari, la fattura deve riportare la dicitura prevista dall'art. 1 comma 63 della Legge 190/2014, che indica l'assenza di addebito IVA e di ritenuta d'acconto.
+      </p>
+      <p>
+        Le sanzioni per chi non emette fattura elettronica o la emette in ritardo vanno dal 5% al 10% dei corrispettivi non documentati, con un minimo di 500 euro per ciascuna violazione. In caso di emissione tardiva (oltre 12 giorni dalla data di effettuazione dell'operazione), la sanzione e' ridotta se il contribuente regolarizza spontaneamente entro i termini previsti dal ravvedimento operoso. E' quindi fondamentale dotarsi di un sistema di fatturazione affidabile e rispettare le scadenze di emissione.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Tasse nel regime forfettario: esempi pratici per attivita'
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Di seguito una tabella riepilogativa che mostra il calcolo delle tasse per un professionista iscritto alla Gestione Separata INPS (coefficiente di redditivita' 78%, aliquota contributiva 26,07%) con imposta sostitutiva al 15%. I valori dei contributi INPS sono calcolati sul reddito imponibile forfettario e non tengono conto della deduzione dei contributi dell'anno precedente, per semplicita' di esposizione.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-600">
+              <th class="text-left py-2 pr-4 font-semibold">Fatturato annuo</th>
+              <th class="text-right py-2 px-4 font-semibold">Imponibile (78%)</th>
+              <th class="text-right py-2 px-4 font-semibold">Imposta 15%</th>
+              <th class="text-right py-2 px-4 font-semibold">Imposta 5% (startup)</th>
+              <th class="text-right py-2 pl-4 font-semibold">INPS (26,07%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">30.000 &euro;</td>
+              <td class="text-right py-2 px-4">23.400 &euro;</td>
+              <td class="text-right py-2 px-4">3.510 &euro;</td>
+              <td class="text-right py-2 px-4">1.170 &euro;</td>
+              <td class="text-right py-2 pl-4">~6.100 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">50.000 &euro;</td>
+              <td class="text-right py-2 px-4">39.000 &euro;</td>
+              <td class="text-right py-2 px-4">5.850 &euro;</td>
+              <td class="text-right py-2 px-4">1.950 &euro;</td>
+              <td class="text-right py-2 pl-4">~10.168 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">85.000 &euro;</td>
+              <td class="text-right py-2 px-4">66.300 &euro;</td>
+              <td class="text-right py-2 px-4">9.945 &euro;</td>
+              <td class="text-right py-2 px-4">3.315 &euro;</td>
+              <td class="text-right py-2 pl-4">~17.284 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Confronto aliquota 15% vs 5% (startup):</strong> la differenza tra le due aliquote diventa sempre piu' rilevante al crescere del fatturato. Con un fatturato di 30.000 euro, la differenza e' di 2.340 euro all'anno (3.510 meno 1.170). Con un fatturato di 85.000 euro, il risparmio della startup arriva a 6.630 euro all'anno. Nei cinque anni di applicazione dell'aliquota ridotta, un professionista con fatturato medio di 50.000 euro puo' risparmiare complessivamente circa 19.500 euro rispetto all'aliquota ordinaria.
+      </p>
+      <p>
+        <strong>Analisi del tax rate effettivo:</strong> il carico fiscale complessivo (imposta sostitutiva piu' INPS) incide in misura significativa sul fatturato. Con un fatturato di 50.000 euro e aliquota al 15%, il totale tra imposta (5.850 euro) e contributi INPS (~10.168 euro) ammonta a circa 16.018 euro, pari al 32% del fatturato lordo. Con l'aliquota startup al 5%, il totale scende a circa 12.118 euro, pari al 24,2% del fatturato. A questi importi va aggiunto il costo della cassa previdenziale obbligatoria per le professioni regolamentate (avvocati, ingegneri, architetti), che sostituisce la Gestione Separata con aliquote e regole proprie. Per un professionista non regolamentato con fatturato di 85.000 euro, il netto disponibile dopo tasse e contributi si aggira intorno ai 57.771 euro con aliquota al 15% e intorno ai 64.401 euro con aliquota al 5%.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Qual e' il limite di fatturato per il regime forfettario?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il limite di ricavi o compensi per accedere e permanere nel regime forfettario e' di 85.000 euro annui. Se superi questa soglia ma resti sotto i 100.000 euro, esci dal regime forfettario dall'anno successivo. Se superi i 100.000 euro in corso d'anno, esci immediatamente dal regime e devi applicare la tassazione ordinaria da quel momento.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Cosa sono i coefficienti di redditivita'?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          I coefficienti di redditivita' sono percentuali fissate dalla legge che determinano quale porzione dei tuoi ricavi viene considerata reddito imponibile. Ad esempio, per i professionisti il coefficiente e' del 78%, quindi su 50.000 euro di ricavi, il reddito imponibile sara' 39.000 euro. I coefficienti variano dal 40% (commercio di alimenti) all'86% (intermediari di commercio) in base al codice ATECO.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Il forfettario conviene rispetto al regime ordinario?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Dipende dalla tua situazione specifica. Il forfettario conviene quando i tuoi costi reali sono inferiori alla quota forfettaria (cioe' 100% meno il coefficiente di redditivita'). Se hai costi elevati (affitti, dipendenti, acquisto merci), il regime ordinario potrebbe farti pagare meno tasse perche' puoi dedurre i costi reali. Inoltre, nel forfettario non puoi detrarre spese personali (mutuo, spese mediche, ecc.) dall'imposta.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Posso dedurre i contributi INPS nel regime forfettario?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Si', i contributi previdenziali obbligatori versati nell'anno sono l'unica deduzione ammessa nel regime forfettario. Vengono sottratti dal reddito imponibile forfettario prima di applicare l'imposta sostitutiva. Questo significa che i contributi INPS dell'anno precedente riducono la base imponibile dell'anno corrente.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Devo emettere fattura con IVA nel regime forfettario?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No. I contribuenti in regime forfettario non addebitano l'IVA in fattura e non hanno diritto alla detrazione dell'IVA sugli acquisti. Nelle fatture deve essere riportata la dicitura di esenzione prevista dalla normativa. Sei comunque obbligato alla fatturazione elettronica tramite il Sistema di Interscambio (SDI).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Quali sono i requisiti per accedere al regime forfettario nel 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Per accedere al regime forfettario nel 2026 devi rispettare diversi requisiti. Il fatturato dell'anno precedente non deve superare 85.000 euro. Non devi aver sostenuto spese per lavoro dipendente o collaboratori superiori a 20.000 euro lordi annui. Non devi possedere partecipazioni in societa' di persone, associazioni professionali o SRL che svolgono attivita' riconducibili alla tua. Inoltre, non devi percepire redditi da lavoro dipendente o assimilati superiori a 35.000 euro nell'anno precedente (a meno che il rapporto di lavoro non sia cessato). Infine, non devi avvalersi di regimi speciali IVA ne' effettuare in via esclusiva cessioni di fabbricati o terreni edificabili.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Come funziona il passaggio da forfettario a ordinario?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Il passaggio avviene in due modi diversi a seconda dell'entita' del superamento della soglia. Se i tuoi ricavi superano 85.000 euro ma restano sotto i 100.000 euro, esci dal regime forfettario a partire dall'anno successivo: per l'anno in corso continui ad applicare il forfettario normalmente. Se invece superi i 100.000 euro in corso d'anno, l'uscita e' immediata: da quel momento devi applicare il regime ordinario con IVA, IRPEF e tenuta della contabilita' completa. In entrambi i casi, dovrai adeguare la fatturazione (aggiungendo l'IVA), aprire i registri contabili e adempiere a tutti gli obblighi del regime ordinario. Potrai eventualmente rientrare nel forfettario negli anni successivi se torni a rispettare tutti i requisiti.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          I contributi INPS nel regime forfettario possono essere ridotti?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          La riduzione contributiva del 35% e' disponibile esclusivamente per artigiani e commercianti iscritti alle rispettive gestioni INPS. Questa agevolazione riduce sia i contributi fissi sul minimale sia quelli calcolati sul reddito eccedente il minimale. La riduzione deve essere richiesta esplicitamente tramite il portale INPS entro il 28 febbraio di ogni anno. Attenzione: chi e' iscritto alla Gestione Separata INPS (la maggior parte dei professionisti senza cassa) non ha diritto a questa riduzione. Inoltre, la riduzione contributiva comporta un accredito proporzionalmente ridotto dei mesi di contribuzione ai fini pensionistici: si accumula meno anzianita' contributiva, il che puo' avere un impatto sulla pensione futura.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Calcolatori correlati
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/calcolo-irpef"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Dettaglio scaglione per scaglione dell'IRPEF sul tuo reddito
+        </p>
+      </a>
+      <a
+        href="/regime-impatriati-calcolatore"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Regime Impatriati
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calcola il risparmio fiscale con il regime per lavoratori impatriati
+        </p>
+      </a>
+      <a
+        href="/calcolo-paga-oraria"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Paga Oraria
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Converti la RAL in tariffa oraria lorda e netta
+        </p>
+      </a>
+      <a
+        href="/calcolo-inflazione"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Inflazione
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Scopri come l'inflazione erode il potere d'acquisto nel tempo
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

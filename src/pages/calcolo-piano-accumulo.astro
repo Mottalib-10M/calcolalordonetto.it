@@ -1,0 +1,437 @@
+---
+import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
+import { SITE } from '../config';
+import PianoAccumulo from '../components/calcolatori/PianoAccumulo';
+
+const title = 'Calcolo PAC Piano di Accumulo: Simulatore Online';
+const description = 'Calcola il rendimento del tuo PAC online: inserisci versamento mensile, rendimento atteso e durata per simulare il capitale netto finale con tassazione al 26%.';
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Calcolo Piano di Accumulo', url: `${SITE.url}/calcolo-piano-accumulo` },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Calcolo Piano di Accumulo (PAC)"
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Calcolo Piano di Accumulo (PAC)
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Simula il rendimento del tuo PAC tenendo conto di costi e tassazione italiana.
+  </p>
+
+  <PianoAccumulo client:load />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Come si calcola il rendimento di un PAC?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Il <strong>Piano di Accumulo Capitale (PAC)</strong> e' una strategia di investimento
+        che prevede versamenti periodici costanti in un fondo comune o un ETF. Il calcolo
+        tiene conto di:
+      </p>
+      <ul>
+        <li><strong>Versamento mensile</strong> al netto delle commissioni di ingresso</li>
+        <li><strong>Rendimento atteso</strong> al netto dei costi di gestione annui (TER)</li>
+        <li><strong>Capitalizzazione composta</strong> dei rendimenti mese dopo mese</li>
+      </ul>
+      <p>La formula iterativa utilizzata per ogni mese e':</p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        C<sub>m</sub> = (C<sub>m-1</sub> + V<sub>netto</sub>) &times; (1 + r<sub>mensile</sub>)
+      </div>
+      <p>Dove:</p>
+      <ul>
+        <li><strong>C<sub>m</sub></strong> = capitale al mese m</li>
+        <li><strong>V<sub>netto</sub></strong> = versamento al netto del costo di ingresso</li>
+        <li><strong>r<sub>mensile</sub></strong> = (rendimento annuo - costo gestione) / 12</li>
+      </ul>
+      <p>
+        Sul rendimento lordo finale (capitale finale - totale versato) si applica
+        l'<strong>imposta sostitutiva del 26%</strong> sui capital gain, come previsto
+        dalla normativa fiscale italiana. Per i titoli di Stato l'aliquota e' ridotta al 12,5%.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        DCA (Dollar Cost Averaging) vs PIC (Piano di Investimento di Capitale)
+      </h3>
+      <p>
+        Quando si decide di investire una somma di denaro, si presentano due strategie
+        fondamentali: il <strong>DCA (Dollar Cost Averaging)</strong>, su cui si basa il PAC,
+        e il <strong>PIC (Piano di Investimento di Capitale)</strong>, che prevede un investimento
+        in un'unica soluzione. Comprendere le differenze tra queste due modalita' e' essenziale
+        per scegliere l'approccio piu' adatto al proprio profilo di rischio e ai propri obiettivi
+        finanziari.
+      </p>
+      <p>
+        Il DCA consiste nell'investire una somma fissa a intervalli regolari, tipicamente ogni
+        mese. Il vantaggio principale di questa strategia e' la <strong>mediazione del prezzo
+        di acquisto</strong>: quando i mercati scendono, con lo stesso importo si acquistano
+        piu' quote; quando i mercati salgono, se ne acquistano meno. Questo meccanismo automatico
+        riduce significativamente il rischio di timing, cioe' il rischio di investire l'intero
+        capitale in un momento sfavorevole, come un picco di mercato poco prima di un ribasso.
+        Il DCA e' particolarmente indicato per chi ha un reddito mensile e vuole costruire un
+        patrimonio gradualmente, senza dover prendere decisioni di market timing che anche i
+        professionisti faticano a indovinare con costanza.
+      </p>
+      <p>
+        Il PIC, al contrario, prevede l'investimento dell'intera somma disponibile in un unico
+        momento. I dati storici mostrano che, su orizzonti temporali lunghi, il PIC tende a
+        produrre rendimenti superiori rispetto al DCA, perche' il capitale e' esposto al mercato
+        per un periodo piu' lungo. Tuttavia, il PIC comporta un <strong>rischio di timing molto
+        piu' elevato</strong>: se si investe tutto poco prima di una correzione significativa del
+        mercato, le perdite iniziali possono essere consistenti e richiedere anni per essere
+        recuperate. Per questo motivo, il PIC e' consigliato solo a chi ha una tolleranza al
+        rischio elevata e un orizzonte temporale molto lungo, oppure a chi investe in un momento
+        in cui le valutazioni di mercato appaiono ragionevoli.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        ETF vs Fondi comuni: quale scegliere per un PAC
+      </h3>
+      <p>
+        La scelta dello strumento finanziario su cui attivare il PAC e' un fattore determinante
+        per il rendimento netto finale. Le due opzioni principali sono gli <strong>ETF (Exchange
+        Traded Fund)</strong> e i <strong>fondi comuni di investimento a gestione attiva</strong>,
+        e le differenze in termini di costi possono avere un impatto enorme nel lungo periodo.
+      </p>
+      <p>
+        Gli ETF sono fondi a gestione passiva quotati in borsa che replicano fedelmente un
+        indice di mercato (come l'MSCI World, l'S&P 500 o il FTSE MIB). Il loro principale
+        vantaggio e' il costo estremamente contenuto: il <strong>TER (Total Expense Ratio)</strong>
+        degli ETF azionari globali si colloca tipicamente tra lo 0,1% e lo 0,5% annuo. Non
+        prevedono commissioni di ingresso, ne di uscita, ne di performance. Possono essere
+        acquistati e venduti in tempo reale durante gli orari di borsa, offrendo massima
+        trasparenza e liquidita'.
+      </p>
+      <p>
+        I fondi comuni a gestione attiva, al contrario, sono gestiti da un team di professionisti
+        che selezionano i titoli con l'obiettivo di battere il mercato di riferimento. Questo
+        servizio ha un costo significativamente piu' elevato: il TER si colloca generalmente tra
+        l'<strong>1,5% e il 2,5% annuo</strong>, a cui si aggiungono spesso commissioni di
+        ingresso (dall'1% al 3% del versamento) e, in alcuni casi, commissioni di performance.
+        Nonostante le promesse di sovraperformance, i dati storici dimostrano che la grande
+        maggioranza dei fondi attivi (oltre l'80-90% su orizzonti decennali) non riesce a
+        battere il proprio indice di riferimento al netto dei costi. La differenza di TER
+        tra un ETF (0,2%) e un fondo attivo (2%) puo' sembrare modesta, ma su 20-30 anni di
+        PAC si traduce in decine di migliaia di euro di rendimento perso a causa dei costi.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        La tassazione del capital gain in Italia
+      </h3>
+      <p>
+        La fiscalita' degli investimenti finanziari in Italia e' un aspetto cruciale da
+        considerare nel calcolo del rendimento netto di un PAC. L'imposta sostitutiva standard
+        sui capital gain (la plusvalenza realizzata, cioe la differenza tra il prezzo di vendita
+        e il prezzo di acquisto delle quote) e' pari al <strong>26%</strong>. Questa aliquota si
+        applica alla maggior parte degli strumenti finanziari: azioni, ETF azionari, fondi
+        comuni, obbligazioni corporate e conti deposito.
+      </p>
+      <p>
+        Esiste tuttavia un'aliquota agevolata del <strong>12,5%</strong> che si applica ai
+        rendimenti derivanti da titoli di Stato italiani (BTP, BOT, CCT) e di altri Paesi
+        inclusi nella cosiddetta "white list". Per i fondi e gli ETF che investono parzialmente
+        in titoli di Stato, la quota di rendimento attribuibile a tali titoli viene tassata
+        al 12,5%, mentre la parte restante al 26%. La percentuale esatta della quota agevolata
+        viene comunicata periodicamente dalla societa' di gestione del fondo.
+      </p>
+      <p>
+        Un aspetto importante riguarda la <strong>compensazione delle minusvalenze</strong>.
+        Se in un anno si realizzano perdite dalla vendita di strumenti finanziari, queste
+        minusvalenze possono essere utilizzate per compensare future plusvalenze, riducendo
+        cosi' il carico fiscale. Le minusvalenze possono essere portate in compensazione per
+        un massimo di 4 anni dalla loro realizzazione. Tuttavia, e' fondamentale sapere che
+        i redditi da fondi ed ETF (armonizzati UCITS) sono classificati come "redditi da
+        capitale" e non possono essere compensati con le minusvalenze, che sono "redditi
+        diversi". Questa asimmetria fiscale e' un elemento da considerare nella pianificazione
+        degli investimenti.
+      </p>
+      <p>
+        Infine, per quanto riguarda il regime fiscale, la maggior parte degli investitori
+        italiani utilizza il <strong>regime del risparmio amministrato</strong>, in cui la
+        banca o il broker agisce come sostituto d'imposta e calcola e versa automaticamente
+        le imposte dovute. In alternativa esiste il <strong>regime dichiarativo</strong>, in
+        cui l'investitore deve dichiarare autonomamente i redditi da investimento nella
+        dichiarazione dei redditi. Il regime amministrato e' piu' semplice e conveniente per
+        la maggior parte dei risparmiatori.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      PAC: rendimento netto stimato per versamento e durata
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        La tabella seguente illustra il rendimento netto stimato di un PAC con versamento
+        mensile di 200 euro, ipotizzando un rendimento lordo annuo del 7% (media storica
+        di un portafoglio azionario globale diversificato), un TER dello 0,2% (tipico di un
+        ETF a basso costo) e la tassazione italiana del 26% sui capital gain. I valori sono
+        al netto di tasse e costi di gestione.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Durata</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Totale versato</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Capitale lordo</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Capitale netto</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">12.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~14.300 &euro;</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~13.700 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">10 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">24.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~34.600 &euro;</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~31.800 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">20 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">48.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~104.000 &euro;</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~89.400 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">30 anni</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">72.000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~243.000 &euro;</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~198.400 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        Questi numeri rendono evidente l'enorme potenza della capitalizzazione composta nel
+        lungo periodo, anche al netto della tassazione italiana. Con 5 anni di PAC, il
+        rendimento netto e' modesto: su 12.000 euro versati, il guadagno netto e' di circa
+        1.700 euro. Ma e' con orizzonti temporali piu' lunghi che l'interesse composto mostra
+        il suo vero potenziale. A 20 anni, il capitale netto (89.400 euro) e' quasi il doppio
+        di quanto versato (48.000 euro), con un guadagno netto di oltre 41.000 euro. A 30
+        anni il risultato e' straordinario: a fronte di 72.000 euro versati, il capitale netto
+        supera i 198.000 euro, con un guadagno netto di circa 126.000 euro, quasi il triplo
+        del totale dei versamenti effettuati.
+      </p>
+      <p>
+        Questo effetto esponenziale e' possibile perche' ogni mese i rendimenti si accumulano
+        non solo sui versamenti effettuati, ma anche sui rendimenti gia maturati nei mesi
+        precedenti. Piu' lungo e' l'orizzonte temporale, piu' la componente di "interessi su
+        interessi" diventa preponderante rispetto ai versamenti diretti. Per questo motivo,
+        iniziare un PAC il prima possibile, anche con importi contenuti, e' una delle decisioni
+        finanziarie piu' efficaci che si possano prendere.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Domande frequenti
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cos'e un PAC e come funziona?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il Piano di Accumulo Capitale (PAC) e' una strategia di investimento che prevede
+          versamenti periodici costanti (tipicamente mensili) in un fondo comune o un ETF.
+          Grazie al "dollar cost averaging", compri piu' quote quando i prezzi sono bassi
+          e meno quando sono alti, mediando il prezzo di acquisto nel tempo e riducendo
+          il rischio di mercato.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto si paga di tasse sul rendimento?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In Italia si applica un'imposta sostitutiva del 26% sui capital gain (la
+          differenza tra capitale finale e totale versato). Per i fondi che investono
+          in titoli di Stato italiani o europei, una parte del rendimento puo' essere
+          tassata al 12,5%. L'imposta viene applicata al momento del riscatto o della
+          vendita delle quote.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Cosa sono il costo di ingresso e il TER?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Il costo di ingresso e' una commissione applicata su ogni versamento (puo' variare
+          dallo 0% al 3-5% per i fondi attivi). Il TER (Total Expense Ratio) e il costo
+          annuo di gestione del fondo, che riduce il rendimento effettivo. Gli ETF hanno
+          generalmente TER molto bassi (0,1-0,5%), mentre i fondi attivi possono arrivare
+          all'1,5-2,5%.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quale rendimento atteso e' realistico?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Storicamente, un portafoglio azionario globale diversificato ha reso in media
+          il 7-8% annuo lordo nel lungo periodo (20+ anni). Un portafoglio bilanciato
+          (azioni + obbligazioni) rende tipicamente il 4-6%. Ricorda che i rendimenti
+          passati non garantiscono quelli futuri e che la volatilita a breve termine
+          puo' essere significativa.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Posso sospendere o modificare il versamento?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Si, nella maggior parte dei casi puoi sospendere, ridurre o aumentare i versamenti
+          del PAC senza penali. La flessibilita' dipende dal tipo di prodotto scelto. Con
+          gli ETF acquistati tramite broker online hai la massima liberta', mentre i PAC
+          bancari su fondi comuni possono avere vincoli contrattuali specifici.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Quanto dovrei investire mensilmente in un PAC?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Non esiste un importo universale: l'ideale e' investire una somma che sia
+          sostenibile nel lungo periodo senza intaccare il fondo di emergenza (3-6 mesi
+          di spese). Una regola comune e' destinare al PAC il 10-20% del reddito netto
+          mensile dopo aver coperto le spese essenziali. Molti broker online consentono
+          di partire da importi minimi di 25-50 euro al mese, quindi anche piccole somme
+          possono avviare un percorso di accumulo efficace grazie all'interesse composto.
+          L'importante e' la costanza nel tempo, non l'importo iniziale.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Il PAC e' adatto anche per un obiettivo a breve termine (3-5 anni)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Un PAC azionario su un orizzonte di 3-5 anni comporta un rischio significativo,
+          perche' i mercati azionari possono avere fasi negative anche prolungate. Per
+          obiettivi a breve termine e' preferibile orientarsi verso strumenti meno volatili:
+          ETF obbligazionari a breve scadenza, conti deposito vincolati o titoli di Stato
+          a breve termine (BOT). Se comunque si desidera un PAC a breve termine, e'
+          consigliabile scegliere un portafoglio bilanciato con una componente azionaria
+          ridotta (30-40%) e una quota maggioritaria in obbligazioni, accettando un
+          rendimento atteso inferiore in cambio di una volatilita' piu' contenuta.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Come scelgo l'ETF giusto per il mio PAC?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          La scelta dell'ETF dipende da diversi fattori. Per la massima diversificazione,
+          un ETF che replica l'indice MSCI World o il FTSE All-World copre migliaia di
+          aziende a livello globale. Verifica che il TER sia basso (sotto lo 0,3%), che
+          il fondo abbia un patrimonio gestito ampio (oltre 500 milioni di euro, per
+          garantire liquidita' e ridurre il rischio di chiusura), e che sia ad accumulazione
+          (reinveste automaticamente i dividendi) piuttosto che a distribuzione, per
+          massimizzare l'effetto dell'interesse composto. Infine, scegli un ETF domiciliato
+          in Irlanda o Lussemburgo, che offrono la migliore efficienza fiscale per gli
+          investitori italiani grazie ai trattati contro la doppia imposizione.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Calcolatori correlati
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/calcolo-interesse-composto" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Interesse Composto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la crescita del tuo capitale con l'interesse composto
+        </p>
+      </a>
+      <a href="/calcolo-inflazione" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflazione
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola l'impatto dell'inflazione sul potere d'acquisto
+        </p>
+      </a>
+      <a href="/calcolo-mutuo" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Mutuo
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simula la rata del mutuo e il piano di ammortamento
+        </p>
+      </a>
+      <a href="/calcolo-prestito" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Prestito Personale
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calcola rata e TAEG di un prestito personale
+        </p>
+      </a>
+      <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Stipendio Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Dal lordo al netto: calcola il tuo stipendio netto mensile
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

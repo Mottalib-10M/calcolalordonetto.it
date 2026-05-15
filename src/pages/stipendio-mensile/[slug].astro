@@ -1,0 +1,490 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+import { calcolaLordoDaNetto, calcolaStipendio, calcolaIRPEF } from '../../lib/irpef-engine';
+import { regioni } from '../../data/regioni';
+import { breadcrumbSchema, faqSchema } from '../../lib/seo';
+
+export function getStaticPaths() {
+  const amounts = [
+    1000, 1200, 1300, 1400, 1500, 1600, 1700, 1800,
+    2000, 2200, 2500, 2800, 3000, 3500, 4000, 5000,
+  ];
+
+  return amounts.map((netto) => ({
+    params: { slug: `${netto}-euro` },
+    props: { nettoTarget: netto },
+  }));
+}
+
+interface Props {
+  nettoTarget: number;
+}
+
+const { nettoTarget } = Astro.props;
+const { slug } = Astro.params;
+
+const defaultRegione = 'LOM';
+
+// Main calculation
+const { ral: ralDefault, risultato: defaultResult } = calcolaLordoDaNetto(nettoTarget, defaultRegione);
+
+// Calculate for all regions
+const regionResults = regioni.map((r) => {
+  const { ral, risultato } = calcolaLordoDaNetto(nettoTarget, r.codice);
+  return {
+    codice: r.codice,
+    nome: r.nome,
+    ral,
+    nettoMensile: risultato.nettoMensile,
+    addizionaleRegionale: risultato.addizionaleRegionale,
+    aliquotaMedia: risultato.aliquotaMedia,
+  };
+}).sort((a, b) => a.ral - b.ral);
+
+// Detailed breakdown for default scenario
+const dettaglio = calcolaStipendio({ ral: ralDefault, regione: defaultRegione });
+const irpefDetail = calcolaIRPEF(dettaglio.imponibileFiscale - dettaglio.cuneoFiscaleSommaEsente);
+
+// Format helpers
+const fmtCur = (v: number) => v.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtCurRound = (v: number) => v.toLocaleString('it-IT', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+const fmtPct = (v: number) => (v * 100).toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+
+// Adjacent amounts for navigation
+const allAmounts = [1000, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 5000];
+const currentIndex = allAmounts.indexOf(nettoTarget);
+const prevAmount = currentIndex > 0 ? allAmounts[currentIndex - 1] : null;
+const nextAmount = currentIndex < allAmounts.length - 1 ? allAmounts[currentIndex + 1] : null;
+
+// Market context based on salary level
+function getMarketContext(netto: number): { livello: string; settori: string; contesto: string } {
+  if (netto <= 1200) return {
+    livello: 'entry-level',
+    settori: 'commercio, ristorazione, servizi alla persona, assistenza clienti',
+    contesto: 'Questo livello retributivo e\' tipico di posizioni junior o part-time nel settore terziario. Secondo i dati ISTAT, circa il 25% dei lavoratori dipendenti italiani percepisce uno stipendio netto inferiore a 1.200 euro mensili.',
+  };
+  if (netto <= 1500) return {
+    livello: 'medio-basso',
+    settori: 'impiegati amministrativi, operai specializzati, commercio organizzato, logistica',
+    contesto: 'Si tratta della fascia retributiva piu\' diffusa in Italia. Secondo ISTAT, lo stipendio mediano netto dei lavoratori dipendenti si colloca intorno ai 1.400 euro mensili. Questo livello e\' comune per impiegati con 2-5 anni di esperienza.',
+  };
+  if (netto <= 1800) return {
+    livello: 'medio',
+    settori: 'industria manifatturiera, servizi professionali, pubblica amministrazione, bancario junior',
+    contesto: 'Una retribuzione nella media nazionale per lavoratori dipendenti a tempo pieno. Questo livello e\' tipico di profili con esperienza intermedia (5-10 anni) o di ruoli specializzati nel settore industriale e dei servizi.',
+  };
+  if (netto <= 2200) return {
+    livello: 'medio-alto',
+    settori: 'IT e tecnologia, consulenza, ingegneria, settore bancario e assicurativo, farmaceutico',
+    contesto: 'Sopra la media nazionale. Questo livello retributivo e\' tipico di professionisti qualificati con esperienza significativa, quadri intermedi, o ruoli tecnici specializzati nel Nord Italia. Il costo della vita nelle grandi citta\' del Nord va tuttavia considerato.',
+  };
+  if (netto <= 3000) return {
+    livello: 'alto',
+    settori: 'management, IT senior, consulenza strategica, finanza, dirigenza PMI, medici specialisti',
+    contesto: 'Ben sopra la media nazionale, questo livello retributivo riguarda meno del 10% dei lavoratori dipendenti italiani. E\' tipico di ruoli dirigenziali, professionisti senior nel settore tecnologico e finanziario, o quadri con responsabilita\' significative.',
+  };
+  return {
+    livello: 'molto alto',
+    settori: 'top management, direzione aziendale, consulenza direzionale, finanza strutturata, medici primari',
+    contesto: 'Nella fascia piu\' alta delle retribuzioni da lavoro dipendente in Italia, questo livello riguarda meno del 3% dei lavoratori. E\' tipico di dirigenti, C-level in aziende medio-grandi, o professionisti di altissimo livello in settori ad alta remunerazione.',
+  };
+}
+
+const market = getMarketContext(nettoTarget);
+
+// FAQs
+const faqs = [
+  {
+    question: `Quanto lordo serve per guadagnare ${fmtCurRound(nettoTarget)} euro netti al mese?`,
+    answer: `Per ottenere circa ${fmtCurRound(nettoTarget)} euro netti al mese servono circa ${fmtCurRound(ralDefault)} euro di RAL (Retribuzione Annua Lorda), considerando 13 mensilita', contratto a tempo indeterminato in Lombardia, senza carichi familiari.`,
+  },
+  {
+    question: `${fmtCurRound(nettoTarget)} euro netti al mese sono un buon stipendio in Italia?`,
+    answer: `Uno stipendio di ${fmtCurRound(nettoTarget)} euro netti al mese si colloca a un livello ${market.livello} rispetto alla media nazionale. Lo stipendio mediano in Italia e' di circa 1.400 euro netti mensili (dati ISTAT). Il potere d'acquisto dipende anche dalla citta' di residenza.`,
+  },
+  {
+    question: `La RAL necessaria cambia in base alla regione?`,
+    answer: `Si', le addizionali regionali IRPEF variano significativamente tra regioni. Per ottenere ${fmtCurRound(nettoTarget)} euro netti, la RAL necessaria puo' variare di diverse centinaia di euro tra la regione piu' conveniente e quella piu' costosa. Le regioni con addizionali piu' basse sono generalmente Friuli-Venezia Giulia, Sardegna e Veneto.`,
+  },
+  {
+    question: `Come viene calcolato lo stipendio netto dal lordo?`,
+    answer: `Dallo stipendio lordo si sottraggono: contributi INPS (9,19%), IRPEF calcolata sugli scaglioni vigenti (23%, 33%, 43%), addizionali regionali e comunali. Si aggiungono poi le detrazioni per lavoro dipendente, il cuneo fiscale e l'eventuale trattamento integrativo (ex Bonus Renzi).`,
+  },
+  {
+    question: `Con 14 mensilita' il netto mensile cambia?`,
+    answer: `Con 14 mensilita' la RAL rimane la stessa, ma il netto annuo viene diviso per 14 anziche' 13, quindi il netto mensile sara' inferiore (circa il 7% in meno per singola mensilita'), compensato dalle due mensilita' aggiuntive. Il netto annuo totale resta sostanzialmente invariato.`,
+  },
+];
+
+// SEO
+const title = `Stipendio ${fmtCurRound(nettoTarget)} Euro Netti al Mese: RAL Necessaria 2026`;
+const description = `Per guadagnare ${fmtCurRound(nettoTarget)} euro netti al mese servono circa ${fmtCurRound(ralDefault)} euro di RAL. Calcolo aggiornato ${SITE.annoFiscale} con IRPEF, INPS, detrazioni e confronto per tutte le regioni.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: SITE.url },
+  { name: 'Stipendio Mensile', url: `${SITE.url}/stipendio-mensile` },
+  { name: `${fmtCurRound(nettoTarget)} €`, url: `${SITE.url}/stipendio-mensile/${slug}` },
+];
+
+const schemaString = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  faqSchema(faqs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: `${SITE.url}/stipendio-mensile/${slug}`,
+    inLanguage: SITE.locale,
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
+    dateModified: '2026-01-15',
+  },
+]);
+---
+
+<Layout
+  title={title}
+  description={description}
+  schema={schemaString}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="py-4">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        {breadcrumbs.map((crumb, index) => (
+          <li class="flex items-center gap-1.5">
+            {index > 0 && (
+              <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            )}
+            {index < breadcrumbs.length - 1 ? (
+              <a href={crumb.url} class="hover:text-brand transition-colors">
+                {crumb.name}
+              </a>
+            ) : (
+              <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">
+                {crumb.name}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <!-- H1 Hero -->
+    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-14 mb-10">
+      <div class="relative z-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          Stipendio Mensile di {fmtCurRound(nettoTarget)} &euro; Netti: Quale RAL Serve nel {SITE.annoFiscale}?
+        </h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-2xl">
+          Per guadagnare <strong class="text-white">{fmtCurRound(nettoTarget)} &euro; netti al mese</strong> servono circa <strong class="text-white">{fmtCurRound(ralDefault)} &euro; di RAL</strong> (su 13 mensilita').
+        </p>
+        <div class="mt-3">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 ring-1 ring-green-500/30">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+            </svg>
+            Aggiornato {SITE.annoFiscale}
+          </span>
+        </div>
+        <div class="mt-8">
+          <a
+            href={`/calcolo-stipendio-lordo?netto=${nettoTarget}`}
+            class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
+            Calcola il tuo caso
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand"></div>
+        <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
+      </div>
+    </section>
+
+    <!-- H2: RAL Necessaria per Regione -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        RAL Necessaria per Regione
+      </h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-4">
+        Le addizionali regionali IRPEF influenzano significativamente il netto. Ecco la RAL necessaria per ottenere circa {fmtCurRound(nettoTarget)} &euro; netti al mese in ogni regione d'Italia.
+      </p>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Regione</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">RAL Necessaria</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Netto Mensile</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Add. Regionale</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Aliquota Media</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+            {regionResults.map((r) => (
+              <tr class:list={[
+                'transition-colors',
+                r.codice === defaultRegione
+                  ? 'bg-brand/5 dark:bg-brand/10'
+                  : 'hover:bg-gray-50 dark:hover:bg-gray-800/30',
+              ]}>
+                <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                  {r.nome}
+                  {r.codice === defaultRegione && (
+                    <span class="ml-1.5 text-xs text-brand font-normal">(rif.)</span>
+                  )}
+                </td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">{fmtCurRound(r.ral)} &euro;</td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">{fmtCur(r.nettoMensile)} &euro;</td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">{fmtCur(r.addizionaleRegionale)} &euro;</td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">{fmtPct(r.aliquotaMedia)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+        * Calcoli su 13 mensilita', contratto indeterminato, senza carichi familiari. Addizionale comunale media nazionale.
+      </p>
+    </section>
+
+    <!-- H2: Dettaglio Imposte -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Dettaglio Imposte con RAL di {fmtCurRound(ralDefault)} &euro;
+      </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Colonna sinistra: breakdown -->
+        <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden">
+          <div class="bg-gray-50 dark:bg-gray-800/50 px-5 py-3 border-b border-gray-200 dark:border-gray-800">
+            <h3 class="font-semibold text-gray-900 dark:text-white">Dal Lordo al Netto</h3>
+          </div>
+          <div class="divide-y divide-gray-100 dark:divide-gray-800">
+            <div class="flex justify-between px-5 py-3">
+              <span class="text-gray-600 dark:text-gray-400">RAL (Lordo Annuo)</span>
+              <span class="font-semibold text-gray-900 dark:text-white">{fmtCur(dettaglio.ral)} &euro;</span>
+            </div>
+            <div class="flex justify-between px-5 py-3">
+              <span class="text-gray-600 dark:text-gray-400">Contributi INPS (9,19%)</span>
+              <span class="text-red-600 dark:text-red-400">-{fmtCur(dettaglio.contributiINPS)} &euro;</span>
+            </div>
+            <div class="flex justify-between px-5 py-3 bg-gray-50/50 dark:bg-gray-800/25">
+              <span class="text-gray-600 dark:text-gray-400">Imponibile Fiscale</span>
+              <span class="font-medium text-gray-900 dark:text-white">{fmtCur(dettaglio.imponibileFiscale)} &euro;</span>
+            </div>
+            {dettaglio.cuneoFiscaleSommaEsente > 0 && (
+              <div class="flex justify-between px-5 py-3">
+                <span class="text-gray-600 dark:text-gray-400">Cuneo Fiscale (somma esente)</span>
+                <span class="text-green-600 dark:text-green-400">-{fmtCur(dettaglio.cuneoFiscaleSommaEsente)} &euro;</span>
+              </div>
+            )}
+            <div class="flex justify-between px-5 py-3">
+              <span class="text-gray-600 dark:text-gray-400">IRPEF Lorda</span>
+              <span class="text-red-600 dark:text-red-400">-{fmtCur(dettaglio.irpefLorda)} &euro;</span>
+            </div>
+            <div class="flex justify-between px-5 py-3">
+              <span class="text-gray-600 dark:text-gray-400">Detrazioni Lavoro Dip.</span>
+              <span class="text-green-600 dark:text-green-400">+{fmtCur(dettaglio.detrazioneLavoroDipendente)} &euro;</span>
+            </div>
+            {dettaglio.cuneoFiscaleDetrazione > 0 && (
+              <div class="flex justify-between px-5 py-3">
+                <span class="text-gray-600 dark:text-gray-400">Cuneo Fiscale (detrazione)</span>
+                <span class="text-green-600 dark:text-green-400">+{fmtCur(dettaglio.cuneoFiscaleDetrazione)} &euro;</span>
+              </div>
+            )}
+            <div class="flex justify-between px-5 py-3">
+              <span class="text-gray-600 dark:text-gray-400">IRPEF Netta</span>
+              <span class="text-red-600 dark:text-red-400">-{fmtCur(dettaglio.irpefNetta)} &euro;</span>
+            </div>
+            <div class="flex justify-between px-5 py-3">
+              <span class="text-gray-600 dark:text-gray-400">Addizionale Regionale</span>
+              <span class="text-red-600 dark:text-red-400">-{fmtCur(dettaglio.addizionaleRegionale)} &euro;</span>
+            </div>
+            <div class="flex justify-between px-5 py-3">
+              <span class="text-gray-600 dark:text-gray-400">Addizionale Comunale</span>
+              <span class="text-red-600 dark:text-red-400">-{fmtCur(dettaglio.addizionaleComunale)} &euro;</span>
+            </div>
+            {dettaglio.trattamentoIntegrativo > 0 && (
+              <div class="flex justify-between px-5 py-3">
+                <span class="text-gray-600 dark:text-gray-400">Trattamento Integrativo</span>
+                <span class="text-green-600 dark:text-green-400">+{fmtCur(dettaglio.trattamentoIntegrativo)} &euro;</span>
+              </div>
+            )}
+            <div class="flex justify-between px-5 py-4 bg-gray-900 dark:bg-gray-800">
+              <span class="font-semibold text-white">Netto Annuo</span>
+              <span class="font-bold text-white text-lg">{fmtCur(dettaglio.nettoAnnuo)} &euro;</span>
+            </div>
+            <div class="flex justify-between px-5 py-4 bg-brand/10 dark:bg-brand/20">
+              <span class="font-semibold text-brand">Netto Mensile (x{dettaglio.mensilita})</span>
+              <span class="font-bold text-brand text-lg">{fmtCur(dettaglio.nettoMensile)} &euro;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonna destra: scaglioni IRPEF e riepilogo -->
+        <div class="space-y-6">
+          <!-- Scaglioni IRPEF -->
+          <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden">
+            <div class="bg-gray-50 dark:bg-gray-800/50 px-5 py-3 border-b border-gray-200 dark:border-gray-800">
+              <h3 class="font-semibold text-gray-900 dark:text-white">Scaglioni IRPEF Applicati</h3>
+            </div>
+            <div class="divide-y divide-gray-100 dark:divide-gray-800">
+              {irpefDetail.dettaglioScaglioni.map((s) => (
+                <div class="flex justify-between px-5 py-3">
+                  <div>
+                    <p class="text-sm text-gray-900 dark:text-white">{s.scaglione}</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Aliquota {fmtPct(s.aliquota)}</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">{fmtCur(s.impostaScaglione)} &euro;</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">su {fmtCur(s.imponibileInScaglione)} &euro;</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Riepilogo aliquote -->
+          <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5">
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-4">Riepilogo Aliquote</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600 dark:text-gray-400">Aliquota media effettiva</span>
+                <span class="text-sm font-semibold text-gray-900 dark:text-white">{fmtPct(dettaglio.aliquotaMedia)}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600 dark:text-gray-400">Aliquota marginale</span>
+                <span class="text-sm font-semibold text-gray-900 dark:text-white">{fmtPct(dettaglio.aliquotaMarginale)}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600 dark:text-gray-400">Cuneo fiscale totale</span>
+                <span class="text-sm font-semibold text-gray-900 dark:text-white">{fmtPct(dettaglio.cuneoFiscaleTotale)}</span>
+              </div>
+              <hr class="border-gray-200 dark:border-gray-700" />
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600 dark:text-gray-400">Costo azienda</span>
+                <span class="text-sm font-semibold text-gray-900 dark:text-white">{fmtCur(dettaglio.costoAzienda)} &euro;</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-sm text-gray-600 dark:text-gray-400">TFR annuo accantonato</span>
+                <span class="text-sm font-semibold text-gray-900 dark:text-white">{fmtCur(dettaglio.tfrAnnuo)} &euro;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- H2: Confronto con il Mercato -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Confronto con il Mercato del Lavoro
+      </h2>
+      <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand/10 dark:bg-brand/20 flex items-center justify-center">
+            <svg class="h-5 w-5 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M1 2.75A.75.75 0 0 1 1.75 2h16.5a.75.75 0 0 1 0 1.5H18v8.75A2.75 2.75 0 0 1 15.25 15h-1.072l.798 3.06a.75.75 0 0 1-1.452.38L13.41 18H6.59l-.114.44a.75.75 0 0 1-1.452-.38L5.822 15H4.75A2.75 2.75 0 0 1 2 12.25V3.5h-.25A.75.75 0 0 1 1 2.75Z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+              Livello retributivo: <span class="text-brand">{market.livello}</span>
+            </p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              {market.contesto}
+            </p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              <strong class="text-gray-900 dark:text-white">Settori tipici:</strong> {market.settori}.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 text-center">
+            <p class="text-xs text-gray-500 dark:text-gray-400">RAL necessaria</p>
+            <p class="text-xl font-bold text-gray-900 dark:text-white">{fmtCurRound(ralDefault)} &euro;</p>
+          </div>
+          <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 text-center">
+            <p class="text-xs text-gray-500 dark:text-gray-400">Lordo mensile</p>
+            <p class="text-xl font-bold text-gray-900 dark:text-white">{fmtCur(dettaglio.ralMensile)} &euro;</p>
+          </div>
+          <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 text-center">
+            <p class="text-xs text-gray-500 dark:text-gray-400">Netto mensile</p>
+            <p class="text-xl font-bold text-brand">{fmtCur(dettaglio.nettoMensile)} &euro;</p>
+          </div>
+        </div>
+
+        <p class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+          Fonti: elaborazioni su dati <a href="https://www.istat.it" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">ISTAT</a> e <a href="https://www.inps.it" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">INPS</a>.
+          I riferimenti al mercato del lavoro sono indicativi e possono variare in base a esperienza, settore, dimensione aziendale e area geografica.
+        </p>
+      </div>
+    </section>
+
+    <!-- H2: FAQ -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Domande Frequenti
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden">
+            <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              {faq.question}
+              <svg class="h-5 w-5 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Adjacent links -->
+    <nav aria-label="Importi mensili correlati" class="mb-16 flex flex-col sm:flex-row gap-4">
+      {prevAmount && (
+        <a
+          href={`/stipendio-mensile/${prevAmount}-euro`}
+          class="flex-1 group flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        >
+          <svg class="h-5 w-5 text-gray-400 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+          </svg>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Importo precedente</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+              {fmtCurRound(prevAmount)} &euro; netti/mese
+            </p>
+          </div>
+        </a>
+      )}
+      {nextAmount && (
+        <a
+          href={`/stipendio-mensile/${nextAmount}-euro`}
+          class="flex-1 group flex items-center justify-end gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors text-right"
+        >
+          <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Importo successivo</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+              {fmtCurRound(nextAmount)} &euro; netti/mese
+            </p>
+          </div>
+          <svg class="h-5 w-5 text-gray-400 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      )}
+    </nav>
+  </div>
+</Layout>

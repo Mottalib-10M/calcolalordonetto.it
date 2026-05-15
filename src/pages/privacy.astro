@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+
+const title = 'Informativa sulla Privacy e Trattamento Dati Personali';
+const description = 'Informativa sulla privacy ai sensi del Regolamento UE 2016/679 (GDPR) e del Codice Privacy italiano. Il sito calcolalordonetto.it non raccoglie dati personali: i calcoli avvengono lato client.';
+const lastUpdated = '15 maggio 2026';
+---
+
+<Layout title={title} description={description}>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Informativa sulla Privacy
+      </h1>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        Ai sensi del Regolamento (UE) 2016/679 (GDPR) e del D.Lgs. 196/2003 (Codice Privacy)
+      </p>
+      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+        Ultimo aggiornamento: {lastUpdated}
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>1. Titolare del Trattamento</h2>
+      <p>
+        Il titolare del trattamento dei dati personali e':
+      </p>
+      <ul>
+        <li><strong>Denominazione:</strong> {SITE.name}</li>
+        <li><strong>Sito web:</strong> {SITE.domain}</li>
+        <li><strong>Contatto:</strong> <a href="/contatti">pagina contatti</a></li>
+      </ul>
+      <p>
+        Il titolare del trattamento e' il soggetto che determina le finalita' e i mezzi del trattamento dei dati personali, ai sensi dell'art. 4, paragrafo 7, del Regolamento (UE) 2016/679. Per qualsiasi richiesta relativa al trattamento dei dati personali, l'utente puo' rivolgersi al titolare tramite la pagina contatti del Sito.
+      </p>
+
+      <h2>2. Responsabile della Protezione dei Dati (DPO)</h2>
+      <p>
+        Considerata la natura del Sito e l'assenza di trattamento di dati personali su larga scala, non e' stato nominato un Responsabile della Protezione dei Dati (DPO) ai sensi dell'art. 37 del GDPR, non ricorrendo i presupposti obbligatori previsti dalla normativa. Qualora le condizioni del trattamento dovessero mutare, il titolare provvedera' alla nomina di un DPO e ne comunichera' i dati di contatto nella presente informativa.
+      </p>
+      <p>
+        Per qualsiasi richiesta relativa alla protezione dei dati personali, l'utente puo' contattare direttamente il titolare del trattamento attraverso i recapiti sopra indicati.
+      </p>
+
+      <h2>3. Tipologie di Dati Trattati (o Non Trattati)</h2>
+      <p>
+        <strong>Il Sito non raccoglie, memorizza o trasmette dati personali degli utenti.</strong>
+      </p>
+      <p>
+        Il calcolatore dello stipendio netto funziona interamente lato client (nel browser dell'utente). I dati inseriti nel calcolatore (RAL, regione, situazione familiare, numero di mensilita', eventuali detrazioni e ogni altro parametro richiesto) non vengono mai trasmessi ai nostri server ne' a terze parti. Tutti i calcoli avvengono localmente nel dispositivo dell'utente e non lasciano il browser in alcun modo.
+      </p>
+      <p>
+        Per chiarezza, si specifica che il Sito non raccoglie ne' tratta le seguenti categorie di dati:
+      </p>
+      <ul>
+        <li><strong>Dati identificativi:</strong> nome, cognome, codice fiscale, indirizzo</li>
+        <li><strong>Dati di contatto:</strong> indirizzo email, numero di telefono (salvo quelli eventualmente comunicati volontariamente tramite la pagina contatti)</li>
+        <li><strong>Dati finanziari:</strong> informazioni bancarie, dati della carta di credito, importi retributivi specifici dell'utente</li>
+        <li><strong>Dati di navigazione identificativi:</strong> indirizzo IP, cookie di tracciamento, identificativi univoci del dispositivo</li>
+        <li><strong>Dati sensibili o categorie particolari:</strong> dati relativi alla salute, all'orientamento politico, alle convinzioni religiose o ad altre categorie di cui all'art. 9 del GDPR</li>
+      </ul>
+      <p>
+        Non sono previsti:
+      </p>
+      <ul>
+        <li>Form di registrazione o login</li>
+        <li>Newsletter o raccolta di indirizzi email</li>
+        <li>Tracciamento degli utenti tramite cookie di profilazione</li>
+        <li>Condivisione di dati con piattaforme pubblicitarie</li>
+        <li>Sistemi di commento o forum che richiedano la raccolta di dati personali</li>
+      </ul>
+
+      <h2>4. Elaborazione Lato Client</h2>
+      <p>
+        L'architettura tecnica del Sito e' stata progettata con il principio della "privacy by design" ai sensi dell'art. 25 del GDPR. Il calcolatore dello stipendio netto esegue tutte le operazioni di calcolo direttamente nel browser dell'utente, senza alcuna comunicazione con server remoti durante l'elaborazione.
+      </p>
+      <p>
+        Questo significa che i dati inseriti dall'utente nel calcolatore (importo della RAL, regione di residenza, numero di figli a carico, tipo di contratto e ogni altro parametro) non transitano mai attraverso la rete Internet e non raggiungono i server del Sito. Una volta che la pagina e' stata caricata nel browser, il calcolatore funziona in modo completamente autonomo e indipendente dalla connessione di rete.
+      </p>
+      <p>
+        L'utente puo' verificare autonomamente questo comportamento tramite gli strumenti di sviluppo del proprio browser, controllando che non vengano effettuate richieste HTTP durante l'utilizzo del calcolatore.
+      </p>
+
+      <h2>5. Dati di Navigazione e Analisi: Plausible Analytics</h2>
+      <p>
+        Il Sito utilizza <strong><a href="https://plausible.io" target="_blank" rel="noopener noreferrer">Plausible Analytics</a></strong>, un servizio di analisi del traffico web che:
+      </p>
+      <ul>
+        <li><strong>Non utilizza cookie</strong> di alcun tipo</li>
+        <li><strong>Non raccoglie dati personali</strong> identificativi</li>
+        <li><strong>Non traccia gli utenti</strong> tra sessioni o siti diversi</li>
+        <li><strong>Non utilizza fingerprinting</strong> o altre tecniche di identificazione persistente</li>
+        <li>E' conforme al GDPR senza necessita' di consenso (come confermato dalle autorita' di protezione dati di Francia, Italia, Svezia e altre nazioni UE)</li>
+        <li>I dati sono ospitati su server nell'Unione Europea</li>
+      </ul>
+      <p>
+        Plausible raccoglie esclusivamente dati aggregati e anonimi quali: pagine visitate, sorgente del traffico (referrer), paese di provenienza, tipo di dispositivo e browser. Questi dati non consentono in alcun modo l'identificazione dell'utente. Plausible non crea profili individuali, non assegna identificativi univoci agli utenti e non consente il tracciamento tra sessioni diverse.
+      </p>
+      <p>
+        Per maggiori informazioni sulla conformita' di Plausible Analytics al GDPR, si rimanda alla documentazione ufficiale: <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer">https://plausible.io/data-policy</a>.
+      </p>
+
+      <h2>6. Cookie e Tecnologie di Memorizzazione Locale</h2>
+      <p>
+        Il Sito <strong>non utilizza cookie di profilazione o di tracciamento</strong>. Per maggiori dettagli, si rimanda alla nostra <a href="/cookie-policy">Cookie Policy</a>.
+      </p>
+      <p>
+        Le preferenze dell'utente (come la modalita' scura/chiara dell'interfaccia) sono memorizzate nel <code>localStorage</code> del browser, che non e' un cookie e non viene mai trasmesso ai nostri server. Il <code>localStorage</code> e' uno strumento di memorizzazione locale previsto dallo standard HTML5 che resta confinato nel dispositivo dell'utente e puo' essere cancellato in qualsiasi momento tramite le impostazioni del browser.
+      </p>
+
+      <h2>7. Base Giuridica del Trattamento</h2>
+      <p>
+        Non effettuando alcun trattamento di dati personali identificativi, non e' necessario individuare una base giuridica specifica ai sensi dell'art. 6 del GDPR.
+      </p>
+      <p>
+        Per quanto riguarda i dati statistici anonimi raccolti da Plausible Analytics, la base giuridica applicabile e' il legittimo interesse del titolare (art. 6, paragrafo 1, lettera f, del GDPR), consistente nella necessita' di comprendere le modalita' di utilizzo del Sito al fine di migliorarne i contenuti e le funzionalita'. Tale trattamento, essendo limitato a dati anonimi e aggregati, non pregiudica i diritti e le liberta' fondamentali degli utenti.
+      </p>
+      <p>
+        Qualora in futuro venissero introdotte funzionalita' che richiedano il trattamento di dati personali, la presente informativa sara' aggiornata e sara' individuata la base giuridica appropriata tra quelle previste dall'art. 6 del GDPR: consenso dell'interessato (lettera a), esecuzione di un contratto (lettera b), obbligo legale (lettera c), legittimo interesse (lettera f) o altra base applicabile.
+      </p>
+
+      <h2>8. Servizi di Terze Parti</h2>
+      <p>
+        Il Sito si avvale dei seguenti servizi di terze parti:
+      </p>
+      <ul>
+        <li><strong>Plausible Analytics</strong> (Plausible Insights OUe, Estonia): servizio di web analytics senza cookie, conforme al GDPR. I dati raccolti sono esclusivamente anonimi e aggregati. I server sono ubicati nell'Unione Europea.</li>
+        <li><strong>Servizio di hosting:</strong> il Sito e' ospitato su infrastruttura con server nell'Unione Europea. Il servizio di hosting puo' raccogliere log tecnici (indirizzo IP, data e ora della richiesta, pagina richiesta) per finalita' di sicurezza e manutenzione, nel rispetto del GDPR.</li>
+      </ul>
+      <p>
+        Il Sito non integra servizi di terze parti che effettuino profilazione dell'utente. Non sono presenti pulsanti di social media, widget pubblicitari, servizi di remarketing o altri strumenti che consentano il tracciamento dell'utente da parte di soggetti terzi.
+      </p>
+
+      <h2>9. Trasferimento di Dati Extra-UE</h2>
+      <p>
+        Non vengono trasferiti dati personali al di fuori dell'Unione Europea o dello Spazio Economico Europeo. Tutti i servizi di terze parti utilizzati dal Sito operano con server ubicati nell'Unione Europea.
+      </p>
+      <p>
+        Qualora in futuro fosse necessario avvalersi di servizi con server al di fuori dell'UE, il titolare si impegnera' a garantire che il trasferimento avvenga nel rispetto del Capo V del GDPR (artt. 44-49), utilizzando gli strumenti giuridici previsti dalla normativa, quali decisioni di adeguatezza della Commissione Europea, clausole contrattuali tipo o altre garanzie appropriate.
+      </p>
+
+      <h2>10. Periodo di Conservazione dei Dati</h2>
+      <p>
+        Non conservando dati personali degli utenti, non si applica alcun periodo di conservazione specifico.
+      </p>
+      <p>
+        I dati statistici aggregati di Plausible Analytics vengono conservati per la durata necessaria all'analisi del traffico del Sito. Trattandosi di dati anonimi e non riconducibili a singoli utenti, non rientrano nell'ambito di applicazione delle disposizioni del GDPR relative alla conservazione dei dati personali.
+      </p>
+      <p>
+        I log tecnici del servizio di hosting, ove presenti, vengono conservati per un periodo limitato e strettamente necessario alle finalita' di sicurezza e manutenzione, nel rispetto del principio di limitazione della conservazione di cui all'art. 5, paragrafo 1, lettera e, del GDPR.
+      </p>
+
+      <h2>11. Diritti dell'Interessato</h2>
+      <p>
+        Ai sensi degli articoli 15-22 del Regolamento (UE) 2016/679 (GDPR), ogni utente ha il diritto di:
+      </p>
+      <ul>
+        <li><strong>Accesso</strong> (art. 15): ottenere conferma dell'esistenza o meno di un trattamento di dati personali che lo riguardano e, in tal caso, ottenerne copia e le informazioni previste dalla norma</li>
+        <li><strong>Rettifica</strong> (art. 16): ottenere la correzione di dati personali inesatti o l'integrazione di dati personali incompleti</li>
+        <li><strong>Cancellazione</strong> (art. 17, "diritto all'oblio"): ottenere la cancellazione dei propri dati personali quando ricorrono le condizioni previste dalla norma</li>
+        <li><strong>Limitazione del trattamento</strong> (art. 18): ottenere la limitazione del trattamento in determinati casi previsti dalla normativa</li>
+        <li><strong>Portabilita' dei dati</strong> (art. 20): ricevere i dati personali in formato strutturato, di uso comune e leggibile da dispositivo automatico, e trasmettere tali dati a un altro titolare</li>
+        <li><strong>Opposizione</strong> (art. 21): opporsi al trattamento dei propri dati personali per motivi connessi alla propria situazione particolare, nonche' opporsi al trattamento per finalita' di marketing diretto</li>
+        <li><strong>Revoca del consenso</strong> (art. 7): revocare in qualsiasi momento il consenso prestato, senza che cio' pregiudichi la liceita' del trattamento effettuato prima della revoca</li>
+      </ul>
+      <p>
+        Poiche' il Sito non raccoglie dati personali, tali diritti sono attualmente non applicabili in pratica. Tuttavia, per qualsiasi richiesta, chiarimento o esercizio dei diritti sopra elencati, l'utente puo' contattarci tramite la <a href="/contatti">pagina contatti</a>. Il titolare si impegna a rispondere a tali richieste entro 30 giorni, come previsto dall'art. 12 del GDPR.
+      </p>
+
+      <h2>12. Dati dei Minori</h2>
+      <p>
+        Il Sito non e' rivolto a minori di anni 16 e non raccoglie consapevolmente dati personali di minori. Non essendo prevista alcuna forma di registrazione o raccolta di dati personali, non si pone la necessita' di verificare l'eta' dell'utente ai sensi dell'art. 8 del GDPR.
+      </p>
+      <p>
+        Qualora in futuro il Sito dovesse introdurre funzionalita' che comportino la raccolta di dati personali, saranno implementate misure adeguate per garantire la protezione dei dati dei minori, nel rispetto dell'art. 8 del GDPR e dell'art. 2-quinquies del D.Lgs. 196/2003.
+      </p>
+
+      <h2>13. Reclamo all'Autorita' di Controllo</h2>
+      <p>
+        Ogni utente ha il diritto di proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong>, autorita' di controllo italiana ai sensi dell'art. 77 del GDPR e degli artt. 140-bis e seguenti del D.Lgs. 196/2003:
+      </p>
+      <ul>
+        <li><strong>Sito web:</strong> <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a></li>
+        <li><strong>Email:</strong> protocollo@gpdp.it</li>
+        <li><strong>PEC:</strong> protocollo@pec.gpdp.it</li>
+        <li><strong>Centralino:</strong> (+39) 06 696771</li>
+        <li><strong>Indirizzo:</strong> Piazza Venezia, 11, 00187 Roma (RM)</li>
+      </ul>
+      <p>
+        L'utente ha altresi' il diritto di proporre reclamo a qualsiasi altra autorita' di controllo dello Stato membro dell'Unione Europea in cui risiede abitualmente, lavora o in cui si e' verificata la presunta violazione, ai sensi dell'art. 77, paragrafo 1, del GDPR.
+      </p>
+
+      <h2>14. Modifiche all'Informativa</h2>
+      <p>
+        Il titolare si riserva il diritto di modificare la presente informativa in qualsiasi momento, dandone comunicazione tramite pubblicazione della versione aggiornata sul Sito. La data dell'ultimo aggiornamento e' riportata in cima alla presente pagina. Si consiglia di consultare periodicamente questa pagina per verificare eventuali aggiornamenti.
+      </p>
+      <p>
+        In caso di introduzione di nuove funzionalita' che comportino il trattamento di dati personali, la presente informativa sara' aggiornata prima dell'attivazione di tali funzionalita' e, ove necessario, sara' richiesto il consenso esplicito dell'utente. In caso di modifiche sostanziali che incidano sui diritti dell'utente, il titolare si impegnera' a fornire adeguata comunicazione delle modifiche apportate.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Vedi anche: <a href="/note-legali">Note Legali</a> | <a href="/cookie-policy">Cookie Policy</a> | <a href="/termini">Termini e Condizioni</a>
+      </p>
+    </div>
+  </div>
+</Layout>

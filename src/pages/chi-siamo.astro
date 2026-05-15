@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+
+const title = 'Chi Siamo | La Missione di Calcola Lordo Netto in Italia';
+const description =
+  'Calcola Lordo Netto offre strumenti gratuiti per calcolare stipendio netto, IRPEF e contributi in Italia. Dati ufficiali aggiornati al 2026.';
+---
+
+<Layout title={title} description={description}>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Chi Siamo
+      </h1>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        La missione di {SITE.name}: rendere la fiscalita' italiana comprensibile a tutti
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>La Nostra Missione</h2>
+      <p>
+        <strong>{SITE.name}</strong> nasce con un obiettivo semplice: offrire a ogni
+        lavoratore in Italia gli strumenti per capire quanto guadagna realmente.
+        Crediamo che comprendere la propria busta paga non debba richiedere una
+        laurea in economia. Per questo abbiamo creato una suite di calcolatori
+        gratuiti, precisi e aggiornati alla normativa fiscale vigente.
+      </p>
+      <p>
+        Ogni anno la normativa fiscale italiana cambia: nuovi scaglioni IRPEF,
+        modifiche alle detrazioni, aggiornamenti dei contributi INPS. Noi ci
+        impegniamo ad aggiornare tempestivamente tutti i nostri strumenti cosi'
+        che tu possa avere sempre un calcolo affidabile e attuale.
+      </p>
+
+      <h2>Cosa Offriamo</h2>
+      <p>
+        I nostri calcolatori coprono ogni aspetto della retribuzione del
+        lavoratore dipendente e non solo:
+      </p>
+      <ul>
+        <li>
+          <strong>Calcolo stipendio netto:</strong> dalla RAL al netto mensile,
+          con dettaglio di IRPEF, INPS, addizionali e detrazioni
+        </li>
+        <li>
+          <strong>Calcolo inverso (da netto a lordo):</strong> per scoprire quale
+          RAL richiedere per ottenere il netto desiderato
+        </li>
+        <li>
+          <strong>Simulatore busta paga:</strong> per leggere e comprendere ogni
+          voce del cedolino mensile
+        </li>
+        <li>
+          <strong>Calcolo TFR, tredicesima, quattordicesima:</strong> per non
+          avere sorprese a fine anno o a fine rapporto
+        </li>
+        <li>
+          <strong>Regime forfettario e impatriati:</strong> per chi lavora con
+          partita IVA o rientra dall'estero
+        </li>
+        <li>
+          <strong>Strumenti finanziari:</strong> calcolo inflazione, interesse
+          composto, simulatore mutuo e prestito
+        </li>
+      </ul>
+
+      <h2>Le Nostre Fonti</h2>
+      <p>
+        L'accuratezza e' la nostra priorita'. Tutti i parametri fiscali
+        utilizzati nei calcoli provengono da fonti ufficiali:
+      </p>
+      <ul>
+        <li>
+          <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">
+            Agenzia delle Entrate
+          </a>: per scaglioni IRPEF, detrazioni, trattamento integrativo e
+          normativa fiscale
+        </li>
+        <li>
+          <a href="https://www.inps.it" target="_blank" rel="noopener noreferrer">
+            INPS
+          </a>: per aliquote contributive, massimali e prestazioni
+          previdenziali
+        </li>
+        <li>
+          Delibere regionali e comunali: per le addizionali locali
+        </li>
+        <li>
+          <a href="https://www.istat.it" target="_blank" rel="noopener noreferrer">
+            ISTAT
+          </a>: per i dati sull'inflazione e gli indici dei prezzi al consumo
+        </li>
+      </ul>
+
+      <h2>Trasparenza e Limiti</h2>
+      <p>
+        Siamo trasparenti su cosa i nostri strumenti possono e non possono fare.
+        I risultati dei calcolatori sono <strong>stime indicative</strong> basate
+        su parametri generali. Ogni situazione individuale puo' presentare
+        particolarita' (detrazioni specifiche, redditi aggiuntivi, regimi
+        speciali) che solo un professionista puo' valutare.
+      </p>
+      <p>
+        <strong>Non forniamo consulenza fiscale, tributaria o legale.</strong> I
+        nostri strumenti sono un punto di partenza per orientarti, non un
+        sostituto del commercialista o del consulente del lavoro.
+      </p>
+
+      <h2>Privacy e Rispetto dell'Utente</h2>
+      <p>
+        Rispettiamo la tua privacy. Non utilizziamo cookie di profilazione, non
+        vendiamo dati personali e utilizziamo Plausible Analytics, uno
+        strumento di analisi che funziona senza cookie e rispetta il GDPR.
+        Tutti i calcoli avvengono direttamente nel tuo browser: nessun dato
+        viene inviato ai nostri server.
+      </p>
+      <p>
+        Dal punto di vista tecnico, il nostro sito non installa alcun cookie sul dispositivo dell'utente. Plausible Analytics raccoglie esclusivamente dati aggregati e anonimi sulle visite (pagine visitate, durata della sessione, provenienza geografica approssimativa) senza mai identificare il singolo visitatore. Non utilizziamo Google Analytics ne' altri strumenti che richiedono il consenso preventivo dell'utente. Questa scelta e' coerente con il nostro approccio alla privacy: riteniamo che un sito web debba poter offrire un servizio utile senza chiedere all'utente di sacrificare i propri dati personali.
+      </p>
+      <p>
+        Per maggiori dettagli, consulta la nostra
+        <a href="/privacy">Informativa sulla Privacy</a> e la
+        <a href="/cookie-policy">Cookie Policy</a>.
+      </p>
+
+      <h2>Accessibilita' e Compatibilita'</h2>
+      <p>
+        Ci impegniamo a rendere il sito accessibile al maggior numero possibile di persone. L'interfaccia e' stata progettata seguendo i principi del design responsive: tutti i calcolatori, le tabelle e i grafici si adattano automaticamente allo schermo del dispositivo utilizzato, che si tratti di uno smartphone, un tablet o un monitor desktop. Il sito supporta la modalita' scura (dark mode) per ridurre l'affaticamento visivo in condizioni di scarsa illuminazione.
+      </p>
+      <p>
+        Abbiamo testato la compatibilita' con i principali browser web: Chrome, Firefox, Safari e Edge, sia nella versione desktop che mobile. I campi di inserimento sono ottimizzati per l'utilizzo con tastiera numerica su dispositivi mobili, e le tabelle dei risultati sono leggibili anche su schermi di dimensioni ridotte. Se riscontri problemi di accessibilita' o compatibilita', ti invitiamo a <a href="/contatti">segnalarcelo</a> indicando il dispositivo e il browser utilizzati.
+      </p>
+
+      <h2>La Nostra Metodologia</h2>
+      <p>
+        Dietro ogni calcolatore c'e' un algoritmo sviluppato con attenzione ai dettagli della normativa fiscale italiana. Il nostro approccio si basa su alcuni principi fondamentali che garantiscono precisione e affidabilita' dei risultati.
+      </p>
+      <p>
+        Tutti i calcoli utilizzano i <strong>parametri ufficiali</strong> pubblicati dall'Agenzia delle Entrate, dall'INPS e dagli enti locali. Gli scaglioni IRPEF, le aliquote contributive, le detrazioni per lavoro dipendente, i coefficienti del trattamento integrativo e le soglie del cuneo fiscale vengono codificati direttamente nel motore di calcolo. Ogni parametro e' tracciabile e verificabile rispetto alla fonte normativa originale.
+      </p>
+      <p>
+        Per i calcoli inversi, come ad esempio la conversione da stipendio netto desiderato a RAL necessaria, utilizziamo un <strong>algoritmo di ricerca binaria</strong>. Questo metodo permette di trovare con estrema precisione (nell'ordine del centesimo di euro) la RAL che produce esattamente il netto desiderato, iterando rapidamente tra un valore minimo e un valore massimo fino a convergere al risultato corretto. E' lo stesso approccio utilizzato dai software professionali di elaborazione paghe.
+      </p>
+      <p>
+        Un aspetto che ci distingue e' che <strong>tutti i calcoli avvengono direttamente nel tuo browser</strong>, in tempo reale, senza che i dati vengano inviati a un server esterno. Questo significa che i risultati sono istantanei, che il sito funziona anche senza connessione a internet (una volta caricato) e che la tua privacy e' completamente protetta. Non memorizziamo nessun dato inserito dagli utenti, ne' registriamo le simulazioni effettuate.
+      </p>
+      <p>
+        I nostri calcolatori vengono <strong>aggiornati ogni anno</strong>, tipicamente tra dicembre e gennaio, quando la Legge di Bilancio viene pubblicata in Gazzetta Ufficiale e i nuovi parametri fiscali diventano effettivi. In caso di modifiche normative infrannuali (decreti legge, circolari dell'Agenzia delle Entrate), procediamo ad aggiornamenti straordinari per garantire che i risultati riflettano sempre la normativa in vigore.
+      </p>
+
+      <h2>Il Nostro Impegno per la Qualita'</h2>
+      <p>
+        La qualita' dei nostri calcolatori e' al centro di tutto cio' che facciamo. Per garantire risultati accurati, adottiamo un processo rigoroso di verifica e miglioramento continuo.
+      </p>
+      <p>
+        Ogni nuovo parametro fiscale viene <strong>verificato incrociando piu' fonti</strong>: confrontiamo i risultati dei nostri algoritmi con buste paga reali, con i simulatori messi a disposizione dall'Agenzia delle Entrate e con software professionali utilizzati dai consulenti del lavoro. Questo processo di cross-verifica ci permette di individuare e correggere eventuali discrepanze prima che raggiungano gli utenti.
+      </p>
+      <p>
+        Il <strong>feedback della community</strong> e' un elemento fondamentale del nostro processo di qualita'. Ogni segnalazione ricevuta dagli utenti viene analizzata con attenzione: se un lavoratore ci indica che il risultato del calcolatore differisce dalla sua busta paga reale, investighiamo le cause della discrepanza. Spesso si tratta di elementi specifici del CCNL o di voci retributive particolari non coperte dal calcolatore, ma in alcuni casi il feedback ci ha permesso di individuare e correggere imperfezioni negli algoritmi.
+      </p>
+      <p>
+        Crediamo nella <strong>trasparenza nella gestione degli errori</strong>. Se individuiamo un errore nei calcoli, lo correggiamo immediatamente e, quando l'impatto e' significativo, ne diamo comunicazione. Non nascondiamo i limiti dei nostri strumenti: ogni pagina di calcolatore include avvertenze chiare sulla natura indicativa dei risultati e sugli scenari in cui il calcolo potrebbe non essere perfettamente aderente alla situazione individuale.
+      </p>
+      <p>
+        Siamo <strong>sempre aperti a correzioni e suggerimenti</strong>. Se sei un commercialista, un consulente del lavoro o un esperto di diritto tributario e noti un'imprecisione, ti invitiamo a <a href="/contatti">contattarci</a>. Le segnalazioni qualificate ci aiutano a mantenere i nostri strumenti al massimo livello di precisione possibile.
+      </p>
+
+      <h2>Domande Frequenti su Calcola Lordo Netto</h2>
+
+      <p>
+        <strong>I calcolatori sono gratuiti?</strong><br />
+        Si', tutti i calcolatori disponibili su {SITE.name} sono completamente gratuiti e lo saranno sempre. Non richiediamo alcuna registrazione, non chiediamo un indirizzo email e non limitiamo il numero di simulazioni che puoi effettuare. Crediamo che l'accesso a strumenti per comprendere la propria situazione fiscale sia un diritto di ogni lavoratore, non un servizio a pagamento. Il sito si sostiene grazie a inserzioni pubblicitarie non invasive, che ci permettono di coprire i costi di sviluppo e manutenzione senza chiedere nulla agli utenti.
+      </p>
+
+      <p>
+        <strong>I miei dati sono al sicuro?</strong><br />
+        Assolutamente si'. Tutti i calcoli avvengono interamente nel tuo browser (lato client), il che significa che i dati che inserisci, come la RAL, la regione o il numero di figli a carico, non vengono mai trasmessi ai nostri server. Non memorizziamo alcuna informazione personale, non utilizziamo cookie di profilazione e non condividiamo dati con terze parti. Dal punto di vista tecnico, il motore di calcolo e' un'applicazione JavaScript che viene eseguita localmente sul tuo dispositivo. Puoi verificarlo tu stesso: dopo aver caricato la pagina, puoi disconnetterti da internet e il calcolatore continuera' a funzionare perfettamente.
+      </p>
+
+      <p>
+        <strong>Quanto sono precisi i risultati?</strong><br />
+        I nostri calcolatori offrono un livello di precisione molto elevato per la grande maggioranza delle situazioni standard. Per un lavoratore dipendente con un contratto a tempo indeterminato, senza elementi retributivi particolari, il risultato e' generalmente allineato alla busta paga reale con uno scarto minimo, spesso inferiore ai 10 euro mensili. Tuttavia, esistono situazioni in cui il risultato potrebbe discostarsi dalla realta': ad esempio in presenza di superminimi assorbibili, indennita' specifiche previste dal CCNL, benefit aziendali tassati in busta paga, trattenute per fondi pensione integrativi o cessioni del quinto. In questi casi, il calcolatore fornisce comunque un'ottima base di partenza, ma il confronto con il cedolino effettivo potrebbe mostrare differenze.
+      </p>
+
+      <p>
+        <strong>I calcolatori funzionano anche su mobile?</strong><br />
+        Si', il sito e tutti i calcolatori sono stati progettati con un approccio responsive, ovvero si adattano automaticamente a qualsiasi dimensione dello schermo. Che tu stia utilizzando uno smartphone, un tablet o un computer desktop, l'interfaccia si riorganizza per offrirti la migliore esperienza possibile. I campi di inserimento sono ottimizzati per il tocco, le tabelle si ridimensionano per schermi piccoli e i grafici sono interattivi anche su dispositivi mobili. Abbiamo testato la compatibilita' con i principali browser (Chrome, Safari, Firefox, Edge) su dispositivi iOS e Android, garantendo un funzionamento fluido su tutte le piattaforme.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Anno fiscale di riferimento: {SITE.annoFiscale} |
+        <a href="/contatti">Contattaci</a> |
+        <a href="/termini">Termini e Condizioni</a>
+      </p>
+    </div>
+  </div>
+</Layout>
