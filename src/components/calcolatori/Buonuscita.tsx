@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaBuonuscita } from '../../lib/irpef-engine';
@@ -8,6 +8,7 @@ export default function Buonuscita() {
   const [importoLordo, setImportoLordo] = useState(20_000);
   const [anniServizio, setAnniServizio] = useState(5);
   const [ralUltimoAnno, setRalUltimoAnno] = useState(35_000);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -19,10 +20,15 @@ export default function Buonuscita() {
     if (anni) setAnniServizio(parseInt(anni, 10) || 5);
     const ral = params.get('ral');
     if (ral) setRalUltimoAnno(parseInt(ral, 10) || 35_000);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('importo', String(importoLordo));
     url.searchParams.set('anni', String(anniServizio));

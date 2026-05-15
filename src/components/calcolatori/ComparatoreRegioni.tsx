@@ -26,6 +26,7 @@ export default function ComparatoreRegioni() {
   useEffect(() => {
     const params = decodeState(window.location.search);
     if (params.ral) setRal(params.ral);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   const handleRalChange = useCallback((val: number) => {

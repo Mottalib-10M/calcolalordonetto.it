@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaPagaOraria, calcolaStipendio } from '../../lib/irpef-engine';
 import { formatCurrency, formatNumber } from '../../lib/format-it';
@@ -11,6 +11,7 @@ export default function PagaOraria() {
   const [settimaneAnno, setSettimaneAnno] = useState(52);
   const [modalita, setModalita] = useState<'da-ral' | 'da-oraria'>('da-ral');
   const [tariffa, setTariffa] = useState(15);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -27,10 +28,15 @@ export default function PagaOraria() {
       const t = params.get('tariffa');
       if (t) setTariffa(parseFloat(t) || 15);
     }
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     if (modalita === 'da-ral') {
       url.searchParams.set('ral', String(ral));

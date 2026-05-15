@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
 import SelettoreMensilita from '../ui/SelettoreMensilita';
@@ -13,6 +13,7 @@ export default function CostoAziendale() {
   const [regione, setRegione] = useState('LOM');
   const [mensilita, setMensilita] = useState<12 | 13 | 14>(13);
   const [aliquotaINAIL, setAliquotaINAIL] = useState(0.4);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -26,10 +27,15 @@ export default function CostoAziendale() {
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
     const inail = params.get('inail');
     if (inail) setAliquotaINAIL(parseFloat(inail) || 0.4);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     if (regione !== 'LOM') url.searchParams.set('regione', regione);

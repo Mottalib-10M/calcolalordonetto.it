@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { calcolaStipendio, type RisultatoStipendio } from '../../lib/irpef-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
 import { decodeState, pushState } from '../../lib/url-state';
@@ -24,6 +24,7 @@ export default function StipendioNetto() {
   const [figliACarico, setFigliACarico] = useState(0);
   const [risultato, setRisultato] = useState<RisultatoStipendio | null>(null);
   const [copied, setCopied] = useState(false);
+  const isInitialMount = useRef(true);
 
   // ---- Hydrate from URL on mount -------------------------------------------
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function StipendioNetto() {
       const c = comuniBySlug.get(params.comune);
       if (c) setAliquotaComunale(c.aliquota);
     }
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   // ---- Recalculate whenever inputs change ----------------------------------
@@ -57,15 +59,19 @@ export default function StipendioNetto() {
     });
     setRisultato(res);
 
-    // Sync URL
-    pushState({
-      ral,
-      regione,
-      comune: comuneSlug || undefined,
-      mensilita,
-      coniugeACarico,
-      figli: figliACarico,
-    });
+    // Sync URL (only after first user interaction)
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      pushState({
+        ral,
+        regione,
+        comune: comuneSlug || undefined,
+        mensilita,
+        coniugeACarico,
+        figli: figliACarico,
+      });
+    }
   }, [ral, regione, aliquotaComunale, mensilita, coniugeACarico, figliACarico, comuneSlug]);
 
   // ---- Handlers ------------------------------------------------------------

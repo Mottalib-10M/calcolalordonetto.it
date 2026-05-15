@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
 import { calcolaRegimeImpatriati } from '../../lib/irpef-engine';
@@ -8,6 +8,7 @@ export default function RegimeImpatriati() {
   const [ral, setRal] = useState(50_000);
   const [regione, setRegione] = useState('LOM');
   const [percentualeEsenzione, setPercentualeEsenzione] = useState(50);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -19,10 +20,15 @@ export default function RegimeImpatriati() {
     if (reg) setRegione(reg.toUpperCase());
     const pct = params.get('esenzione');
     if (pct) setPercentualeEsenzione(parseInt(pct, 10) || 50);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     url.searchParams.set('regione', regione);

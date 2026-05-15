@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaTFRAnnuo, calcolaTFRAccumulato } from '../../lib/irpef-engine';
@@ -46,6 +46,7 @@ export default function TFR() {
   const [ral, setRal] = useState(30_000);
   const [anni, setAnni] = useState(5);
   const [tassoRivalutazione, setTassoRivalutazione] = useState(3);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -57,10 +58,15 @@ export default function TFR() {
     if (a) setAnni(Math.max(1, parseInt(a, 10) || 5));
     const t = params.get('tasso');
     if (t) setTassoRivalutazione(parseFloat(t) || 3);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     url.searchParams.set('anni', String(anni));

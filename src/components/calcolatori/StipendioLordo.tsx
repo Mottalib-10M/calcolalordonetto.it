@@ -22,6 +22,7 @@ export default function StipendioLordo() {
       const mv = parseInt(m, 10);
       if (mv === 12 || mv === 13 || mv === 14) setMensilita(mv);
     }
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   // Sync URL

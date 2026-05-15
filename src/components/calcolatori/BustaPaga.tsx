@@ -15,6 +15,7 @@ export default function BustaPaga() {
     const params = decodeState(window.location.search);
     if (params.ral) setRal(params.ral);
     if (params.regione) setRegione(params.regione);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   const handleRalChange = useCallback(

@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaIRPEF, aliquotaMarginale, calcolaContributiINPS, calcolaDetrazioneLavoroDipendente } from '../../lib/irpef-engine';
@@ -7,6 +7,7 @@ import { formatCurrency, formatRate } from '../../lib/format-it';
 export default function Tredicesima() {
   const [ral, setRal] = useState(30_000);
   const [mesiLavorati, setMesiLavorati] = useState(12);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -16,10 +17,15 @@ export default function Tredicesima() {
     if (r) setRal(parseInt(r, 10) || 30_000);
     const m = params.get('mesi');
     if (m) setMesiLavorati(Math.min(12, Math.max(1, parseInt(m, 10) || 12)));
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     if (mesiLavorati !== 12) url.searchParams.set('mesi', String(mesiLavorati));

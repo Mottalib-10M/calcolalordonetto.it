@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaForfettario } from '../../lib/irpef-engine';
@@ -21,6 +21,7 @@ export default function Forfettari() {
   const [ricavi, setRicavi] = useState(40_000);
   const [coefficienteIndex, setCoefficienteIndex] = useState(0);
   const [primiCinqueAnni, setPrimiCinqueAnni] = useState(false);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -34,10 +35,15 @@ export default function Forfettari() {
       if (idx >= 0) setCoefficienteIndex(idx);
     }
     if (params.get('startup') === '1') setPrimiCinqueAnni(true);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('ricavi', String(ricavi));
     url.searchParams.set('coeff', String(COEFFICIENTI[coefficienteIndex].value));

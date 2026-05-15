@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
 import BarraScomposizione from '../ui/BarraScomposizione';
@@ -21,6 +21,7 @@ export default function ConfrontoDipendentePIVA() {
   const [coefficienteIndex, setCoefficienteIndex] = useState(0);
   const [primiCinqueAnni, setPrimiCinqueAnni] = useState(false);
   const [regione, setRegione] = useState('LOM');
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -38,10 +39,15 @@ export default function ConfrontoDipendentePIVA() {
     if (params.get('startup') === '1') setPrimiCinqueAnni(true);
     const reg = params.get('regione');
     if (reg) setRegione(reg);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     url.searchParams.set('fatturato', String(fatturato));

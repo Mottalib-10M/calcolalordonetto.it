@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import SelettoreMensilita from '../ui/SelettoreMensilita';
 import BarraScomposizione from '../ui/BarraScomposizione';
@@ -11,6 +11,7 @@ export default function FeriePermessi() {
   const [orePermessi, setOrePermessi] = useState(16);
   const [oreSettimanali, setOreSettimanali] = useState(40);
   const [mensilita, setMensilita] = useState<12 | 13 | 14>(13);
+  const isInitialMount = useRef(true);
 
   // URL state
   useEffect(() => {
@@ -26,10 +27,15 @@ export default function FeriePermessi() {
     if (os) setOreSettimanali(parseInt(os, 10) || 40);
     const m = params.get('mensilita');
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set('ral', String(ral));
     if (giorniFerie !== 10) url.searchParams.set('ferie', String(giorniFerie));

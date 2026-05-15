@@ -24,6 +24,7 @@ export default function IRPEF() {
     const params = decodeState(window.location.search);
     if (params.ral) setReddito(params.ral);
     if (params.regione) setRegione(params.regione);
+    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
   }, []);
 
   // Sync to URL

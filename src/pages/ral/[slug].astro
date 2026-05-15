@@ -173,9 +173,9 @@ export function getStaticPaths() {
     const adjacentLinks = getAdjacentLinks(ral);
     const faqs = buildFaqs(ral, defaultResult, bestRegion, worstRegion);
 
-    const seoTitle = `RAL ${ralFormatted} € Netto: Stipendio Mensile nel 2026`;
+    const seoTitle = `RAL ${ralFormatted} Euro: Stipendio Netto Mensile e Tasse 2026`;
     const nettoPreview = formatCurrency(defaultResult.nettoMensile);
-    const seoDescription = `Con RAL ${ralFormatted} € guadagni circa ${nettoPreview} netti al mese. Calcolo aggiornato ${SITE.annoFiscale} con IRPEF, INPS e addizionali per tutte le regioni.`;
+    const seoDescription = `Con RAL ${ralFormatted} euro guadagni circa ${nettoPreview} netti al mese su 13 mensilita'. Calcolo IRPEF, INPS, addizionali regionali e confronto netto per tutte le regioni`;
 
     return {
       params: { slug },
