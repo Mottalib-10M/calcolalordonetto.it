@@ -3,13 +3,13 @@ import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
 import { SITE } from '../config';
 import ConfrontoDipendentePIVA from '../components/calcolatori/ConfrontoDipendentePIVA';
 
-const title = `Dipendente vs Partita IVA ${SITE.annoFiscale}: Confronto Netto`;
-const description = `Confronta lo stipendio netto tra lavoro dipendente e partita IVA forfettaria nel ${SITE.annoFiscale}. Calcola le differenze reali includendo TFR, tredicesima, ferie e contributi.`;
+const title = `Dipendente vs Partita IVA ${SITE.annoFiscale}: Confronto Stipendio Netto`;
+const description = `Confronta stipendio netto tra dipendente e partita IVA forfettaria nel ${SITE.annoFiscale}. Calcola le differenze reali con TFR, tredicesima, ferie e contributi INPS.`;
 
 const breadcrumbs = [
-  { name: 'Home', url: SITE.url },
-  { name: 'Calcolatori', url: SITE.url },
-  { name: 'Confronto Dipendente vs P.IVA', url: `${SITE.url}/confronto-dipendente-piva` },
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Calcolatori', url: `${SITE.url}/` },
+  { name: 'Confronto Dipendente vs P.IVA', url: `${SITE.url}/confronto-dipendente-piva/` },
 ];
 ---
 

@@ -37,11 +37,12 @@ export function validateSEO(props: SEOProps): string[] {
   return warnings;
 }
 
-/** Build canonical URL from a path */
+/** Build canonical URL from a path (always with trailing slash) */
 export function canonicalURL(path: string): string {
   const base = SITE.url.replace(/\/$/, '');
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `${base}${cleanPath}`;
+  const url = `${base}${cleanPath}`;
+  return url.endsWith('/') ? url : `${url}/`;
 }
 
 /** Build default OG image URL */

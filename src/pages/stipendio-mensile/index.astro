@@ -26,8 +26,8 @@ const pages = amounts.map((netto) => {
 });
 
 const breadcrumbs = [
-  { name: 'Home', url: SITE.url },
-  { name: 'Stipendio Mensile', url: `${SITE.url}/stipendio-mensile` },
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Stipendio Mensile', url: `${SITE.url}/stipendio-mensile/` },
 ];
 
 const schemaString = JSON.stringify([
@@ -37,9 +37,9 @@ const schemaString = JSON.stringify([
     '@type': 'CollectionPage',
     name: title,
     description,
-    url: `${SITE.url}/stipendio-mensile`,
+    url: `${SITE.url}/stipendio-mensile/`,
     inLanguage: SITE.locale,
-    isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: `${SITE.url}/` },
   },
 ]);
 

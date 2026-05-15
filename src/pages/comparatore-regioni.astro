@@ -4,13 +4,13 @@ import { SITE } from '../config';
 import { canonicalURL } from '../lib/seo';
 import ComparatoreRegioni from '../components/calcolatori/ComparatoreRegioni';
 
-const title = 'Confronto Stipendio Netto per Regione Italia 2026';
+const title = 'Confronto Stipendio Netto per Regione in Italia 2026';
 const description =
   'Confronta lo stipendio netto in tutte le 21 regioni italiane. Scopri dove il tuo netto mensile e\' piu\' alto grazie alle addizionali regionali piu\' basse.';
 const canonical = canonicalURL('/comparatore-regioni');
 
 const breadcrumbs = [
-  { name: 'Home', url: SITE.url },
+  { name: 'Home', url: `${SITE.url}/` },
   { name: 'Comparatore Regioni', url: canonical },
 ];
 ---

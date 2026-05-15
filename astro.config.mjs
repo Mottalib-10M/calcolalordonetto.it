@@ -8,6 +8,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://calcolalordonetto.it',
+  trailingSlash: 'always',
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

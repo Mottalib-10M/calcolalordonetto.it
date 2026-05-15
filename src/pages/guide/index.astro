@@ -4,11 +4,11 @@ import { SITE } from '../../config';
 import { breadcrumbSchema } from '../../lib/seo';
 
 const title = "Guide Fiscali 2026: IRPEF, Stipendio Netto e Tasse in Italia";
-const description = "Scopri come funzionano IRPEF, stipendio netto, detrazioni e tasse in Italia nel 2026. Guide complete con esempi pratici, calcoli e riferimenti normativi aggiornati.";
+const description = "Guide fiscali 2026 aggiornate: IRPEF, stipendio netto, detrazioni e tasse in Italia spiegate con esempi pratici, calcoli reali e riferimenti normativi.";
 
 const breadcrumbs = [
-  { name: 'Home', url: SITE.url },
-  { name: 'Guide', url: `${SITE.url}/guide` },
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Guide', url: `${SITE.url}/guide/` },
 ];
 
 const schema = JSON.stringify([
@@ -18,12 +18,12 @@ const schema = JSON.stringify([
     '@type': 'CollectionPage',
     name: title,
     description,
-    url: `${SITE.url}/guide`,
+    url: `${SITE.url}/guide/`,
     inLanguage: SITE.locale,
     publisher: {
       '@type': 'Organization',
       name: SITE.name,
-      url: SITE.url,
+      url: `${SITE.url}/`,
     },
   },
 ]);

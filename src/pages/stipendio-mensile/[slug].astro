@@ -122,9 +122,9 @@ const title = `Stipendio ${fmtCurRound(nettoTarget)} Euro Netti al Mese: RAL Nec
 const description = `Per guadagnare ${fmtCurRound(nettoTarget)} euro netti al mese servono circa ${fmtCurRound(ralDefault)} euro di RAL. Calcolo aggiornato ${SITE.annoFiscale} con IRPEF, INPS, detrazioni e confronto per tutte le regioni.`;
 
 const breadcrumbs = [
-  { name: 'Home', url: SITE.url },
-  { name: 'Stipendio Mensile', url: `${SITE.url}/stipendio-mensile` },
-  { name: `${fmtCurRound(nettoTarget)} €`, url: `${SITE.url}/stipendio-mensile/${slug}` },
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Stipendio Mensile', url: `${SITE.url}/stipendio-mensile/` },
+  { name: `${fmtCurRound(nettoTarget)} €`, url: `${SITE.url}/stipendio-mensile/${slug}/` },
 ];
 
 const schemaString = JSON.stringify([
@@ -135,9 +135,9 @@ const schemaString = JSON.stringify([
     '@type': 'WebPage',
     name: title,
     description,
-    url: `${SITE.url}/stipendio-mensile/${slug}`,
+    url: `${SITE.url}/stipendio-mensile/${slug}/`,
     inLanguage: SITE.locale,
-    isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: `${SITE.url}/` },
     dateModified: '2026-01-15',
   },
 ]);

@@ -257,9 +257,9 @@ const {
 const { slug } = Astro.params;
 
 const breadcrumbs = [
-  { name: 'Home', url: SITE.url },
-  { name: 'RAL', url: `${SITE.url}/ral` },
-  { name: `RAL ${ralFormatted} €`, url: `${SITE.url}/ral/${slug}` },
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'RAL', url: `${SITE.url}/ral/` },
+  { name: `RAL ${ralFormatted} €`, url: `${SITE.url}/ral/${slug}/` },
 ];
 
 const schemas = [
@@ -269,9 +269,9 @@ const schemas = [
     '@type': 'WebPage',
     name: seoTitle,
     description: seoDescription,
-    url: `${SITE.url}/ral/${slug}`,
+    url: `${SITE.url}/ral/${slug}/`,
     inLanguage: 'it-IT',
-    isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: `${SITE.url}/` },
   },
   faqSchema(faqs),
 ];
@@ -368,7 +368,7 @@ const narrative = getNarrative(rangeKey, ral, defaultResult, bestRegion, worstRe
 <Layout
   title={seoTitle}
   description={seoDescription}
-  canonical={`${SITE.url}/ral/${slug}`}
+  canonical={`${SITE.url}/ral/${slug}/`}
   schema={schemaString}
 >
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
