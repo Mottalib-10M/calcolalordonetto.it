@@ -1,0 +1,151 @@
+---
+import GuidaLayout from '../../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../../config';
+
+const lang = 'en' as const;
+const title = "How to Read an Italian Payslip: Busta Paga Line by Line";
+const description = "Understand every line of your Italian payslip (busta paga). Header, gross pay, INPS contributions, IRPEF withholding, deductions, bonuses, and net pay guide.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+  { name: 'How to Read an Italian Payslip', url: `${SITE.url}/en/guides/how-to-read-italian-payslip/` },
+];
+
+const faqs = [
+  {
+    question: 'What is the difference between busta paga, cedolino, and prospetto paga?',
+    answer: 'These are all names for the same document: your monthly payslip. <strong>Busta paga</strong> (literally "pay envelope") is the most common informal term. <strong>Cedolino</strong> (slip/stub) is used interchangeably, especially in the public sector. <strong>Prospetto paga</strong> is the more formal/legal term. Regardless of the name, the document must include the same mandatory information under Italian law (L. 4/1953): employer and employee data, pay period, gross pay, all deductions, and net pay.',
+  },
+  {
+    question: 'What does "competenze" vs "trattenute" mean on my payslip?',
+    answer: '<strong>Competenze</strong> (earnings/entitlements) is the left column of your payslip showing everything you have earned in the pay period: base salary (paga base/minimo tabellare), seniority increases (scatti di anzianita), overtime (straordinario), bonuses, and any other additions. <strong>Trattenute</strong> (withholdings/deductions) is the right column showing everything subtracted: INPS contributions, IRPEF, regional and municipal surcharges, union dues, and any salary advances recovered. Your net pay is competenze minus trattenute.',
+  },
+  {
+    question: 'Why does my net pay change from month to month even though my gross salary is fixed?',
+    answer: 'Several factors can cause monthly net pay to fluctuate: (1) <strong>Regional and municipal surcharges</strong> (addizionali) are typically spread across 11 months (January&ndash;November or March&ndash;November), so some months may have no surcharge deduction. (2) The <strong>trattamento integrativo</strong> or tax wedge bonus may be adjusted mid-year if HR recalculates your projected annual income. (3) <strong>TFR accrual</strong> and <strong>tredicesima/quattordicesima</strong> (13th/14th month bonuses) are accrued monthly but paid in specific months. (4) One-off events like overtime, bonuses, or salary advances affect individual months. Your annual total should match the expected calculation.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  lang={lang}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#payslip-overview" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Payslip Overview</a></li>
+      <li><a href="#section-1-header" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 1: Header (Intestazione)</a></li>
+      <li><a href="#section-2-earnings" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 2: Earnings (Competenze)</a></li>
+      <li><a href="#section-3-deductions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 3: Deductions (Trattenute)</a></li>
+      <li><a href="#section-4-net-pay" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 4: Net Pay (Netto in Busta)</a></li>
+      <li><a href="#section-5-summary-footer" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 5: Summary Footer</a></li>
+      <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="payslip-overview">Payslip Overview</h2>
+
+  <p>
+    The Italian payslip &mdash; known as <strong>busta paga</strong>, <strong>cedolino</strong>, or <strong>prospetto paga</strong> &mdash; is a legally required document (L. 4/1953) that your employer must provide every pay period. For most employees, this is monthly. The payslip details every component of your compensation and every deduction, resulting in the net amount (netto in busta) credited to your bank account.
+  </p>
+  <p>
+    For expats encountering an Italian payslip for the first time, it can look overwhelming: dozens of line items, cryptic abbreviations, and references to Italian legislation. This guide walks you through each section so you know exactly what you are looking at.
+  </p>
+  <p>
+    A standard Italian payslip is divided into <strong>five main sections</strong>: the header, earnings, deductions, net pay, and the cumulative summary footer.
+  </p>
+
+  <h2 id="section-1-header">Section 1: Header (Intestazione)</h2>
+
+  <p>
+    The top section of your payslip contains identification and contractual information:
+  </p>
+  <ul>
+    <li><strong>Datore di lavoro</strong> (Employer): company name, registered address, codice fiscale (tax ID), and INPS/INAIL registration numbers.</li>
+    <li><strong>Lavoratore</strong> (Employee): your full name, codice fiscale, date of hire (data di assunzione), job title (qualifica), CCNL level (livello), and work location.</li>
+    <li><strong>CCNL</strong> (Contratto Collettivo Nazionale di Lavoro): the national collective agreement that governs your employment &mdash; this determines base salary, number of pay periods (mensilita), overtime rates, and leave entitlements.</li>
+    <li><strong>Periodo di riferimento</strong> (Pay period): the month and year the payslip covers.</li>
+    <li><strong>Giorni/Ore lavorate</strong> (Days/Hours worked): actual working days and hours in the period.</li>
+  </ul>
+
+  <h2 id="section-2-earnings">Section 2: Earnings (Competenze)</h2>
+
+  <p>
+    This section lists everything you have earned in the period. The most common line items are:
+  </p>
+  <ul>
+    <li><strong>Paga base / Minimo tabellare:</strong> your base salary as set by the CCNL for your job level. This is the contractual minimum.</li>
+    <li><strong>Contingenza:</strong> a legacy cost-of-living adjustment (indennita di contingenza), now frozen but still shown as a separate line on many payslips.</li>
+    <li><strong>Superminimo:</strong> an extra amount your employer pays above the CCNL minimum. It can be "assorbibile" (absorbable into future CCNL raises) or "non assorbibile" (permanent).</li>
+    <li><strong>Scatti di anzianita:</strong> seniority increments &mdash; small automatic raises awarded every 2&ndash;3 years of service, depending on the CCNL.</li>
+    <li><strong>Straordinario:</strong> overtime pay, usually at 15&ndash;30% above the normal hourly rate.</li>
+    <li><strong>Indennita varie:</strong> various allowances (meals, travel, shifts, etc.).</li>
+    <li><strong>Rateo tredicesima / quattordicesima:</strong> the monthly accrual of your 13th or 14th-month bonus, if shown separately.</li>
+  </ul>
+  <p>
+    The sum of all earnings gives your <strong>retribuzione lorda</strong> (gross pay) for the month.
+  </p>
+
+  <h2 id="section-3-deductions">Section 3: Deductions (Trattenute)</h2>
+
+  <p>
+    The deductions section shows everything withheld from your gross pay:
+  </p>
+  <ul>
+    <li><strong>Contributi INPS c/dipendente (9.19%):</strong> your share of social security contributions. Labelled with codes like "IVS" (Invalidita, Vecchiaia, Superstiti &mdash; disability, old age, survivors).</li>
+    <li><strong>Imponibile fiscale:</strong> your taxable income for the month (gross minus INPS).</li>
+    <li><strong>IRPEF:</strong> national income tax withholding, calculated progressively on your year-to-date income and then adjusted monthly.</li>
+    <li><strong>Detrazione lavoro dipendente:</strong> the employment income deduction &mdash; shown as a credit that reduces the IRPEF withheld.</li>
+    <li><strong>Addizionale regionale IRPEF:</strong> regional income surcharge, usually spread across 11 monthly instalments.</li>
+    <li><strong>Addizionale comunale IRPEF:</strong> municipal income surcharge, also spread across the year. You may see both "acconto" (advance for current year) and "saldo" (balance for prior year).</li>
+    <li><strong>Trattamento integrativo:</strong> the supplementary benefit (if eligible), shown as a positive amount that reduces total deductions.</li>
+    <li><strong>Beneficio cuneo fiscale:</strong> the 2026 tax wedge benefit, either as a non-taxable bonus or an additional deduction.</li>
+  </ul>
+
+  <h2 id="section-4-net-pay">Section 4: Net Pay (Netto in Busta)</h2>
+
+  <p>
+    The bottom line &mdash; literally. Your <strong>netto in busta</strong> (net in envelope) or <strong>netto a pagare</strong> (net payable) is the final amount transferred to your bank account. The formula is straightforward:
+  </p>
+  <p>
+    <strong>Net pay = Total earnings (competenze) &minus; Total deductions (trattenute)</strong>
+  </p>
+  <p>
+    This is the single most important number on the payslip for your daily budgeting. If you want to verify this figure, you can use our <a href="/en/payslip-calculator/">payslip calculator</a> to simulate a complete monthly cedolino.
+  </p>
+
+  <h2 id="section-5-summary-footer">Section 5: Summary Footer</h2>
+
+  <p>
+    At the bottom of the payslip, you will usually find cumulative year-to-date (YTD) figures:
+  </p>
+  <ul>
+    <li><strong>Imponibile previdenziale progressivo:</strong> cumulative INPS taxable base for the year.</li>
+    <li><strong>Imponibile fiscale progressivo:</strong> cumulative taxable income for IRPEF purposes.</li>
+    <li><strong>IRPEF progressiva:</strong> total IRPEF withheld so far in the year.</li>
+    <li><strong>TFR maturato:</strong> your accrued severance pay (Trattamento di Fine Rapporto) to date. The TFR is roughly one month's salary per year of service, set aside by the employer.</li>
+    <li><strong>Ferie e permessi residui:</strong> remaining vacation days (ferie) and leave hours (permessi/ROL) you have not yet used.</li>
+  </ul>
+  <p>
+    These YTD figures are essential for cross-checking your payslip against the annual tax return (modello 730 or Certificazione Unica).
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" lang={lang} />
+  </div>
+
+</GuidaLayout>

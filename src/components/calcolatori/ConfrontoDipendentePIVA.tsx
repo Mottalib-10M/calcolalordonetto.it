@@ -4,8 +4,10 @@ import SelettoreRegione from '../ui/SelettoreRegione';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaStipendio, calcolaForfettario, calcolaTFRAnnuo } from '../../lib/irpef-engine';
 import { formatCurrency, formatRate } from '../../lib/format-it';
+import { t } from '../../i18n';
+import type { Lang } from '../../i18n/types';
 
-const COEFFICIENTI = [
+const COEFFICIENTI_IT = [
   { label: 'IT, consulenza, ingegneria (86%)', value: 0.86 },
   { label: 'Professionisti (78%)', value: 0.78 },
   { label: 'Attivita dei servizi (67%)', value: 0.67 },
@@ -15,7 +17,19 @@ const COEFFICIENTI = [
   { label: 'Alloggio e ristorazione (40%)', value: 0.40 },
 ];
 
-export default function ConfrontoDipendentePIVA() {
+const COEFFICIENTI_EN = [
+  { label: 'IT, consulting, engineering (86%)', value: 0.86 },
+  { label: 'Professionals (78%)', value: 0.78 },
+  { label: 'Service activities (67%)', value: 0.67 },
+  { label: 'Trade intermediaries (62%)', value: 0.62 },
+  { label: 'Non-food street vendors (54%)', value: 0.54 },
+  { label: 'Wholesale & retail (40%)', value: 0.40 },
+  { label: 'Accommodation & restaurants (40%)', value: 0.40 },
+];
+
+interface Props { lang?: Lang; }
+
+export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
   const [ral, setRal] = useState(35_000);
   const [fatturato, setFatturato] = useState(35_000);
   const [coefficienteIndex, setCoefficienteIndex] = useState(0);
@@ -56,6 +70,7 @@ export default function ConfrontoDipendentePIVA() {
     window.history.replaceState({}, '', url.toString());
   }, [ral, fatturato, coefficienteIndex, primiCinqueAnni, regione]);
 
+  const COEFFICIENTI = lang === 'en' ? COEFFICIENTI_EN : COEFFICIENTI_IT;
   const coefficiente = COEFFICIENTI[coefficienteIndex];
 
   const risultati = useMemo(() => {
@@ -87,33 +102,35 @@ export default function ConfrontoDipendentePIVA() {
       {/* Input Section */}
       <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-          Inserisci i tuoi dati
+          {lang === 'en' ? 'Enter your data' : 'Inserisci i tuoi dati'}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <CampoInput
-            label="RAL dipendente"
+            label={lang === 'en' ? 'Employee gross salary (RAL)' : 'RAL dipendente'}
             value={ral}
             onChange={setRal}
             min={0}
             max={300_000}
             suffix="&euro;"
-            helpText="Retribuzione annua lorda come dipendente"
+            helpText={lang === 'en' ? 'Gross annual salary as an employee' : 'Retribuzione annua lorda come dipendente'}
+            lang={lang}
           />
           <CampoInput
-            label="Fatturato annuo P.IVA"
+            label={lang === 'en' ? 'Annual turnover (P.IVA)' : 'Fatturato annuo P.IVA'}
             value={fatturato}
             onChange={setFatturato}
             min={0}
             max={85_000}
             suffix="&euro;"
-            helpText="Ricavi annui come partita IVA (max 85.000 &euro;)"
+            helpText={lang === 'en' ? 'Annual revenue as freelancer (max €85,000)' : 'Ricavi annui come partita IVA (max 85.000 &euro;)'}
+            lang={lang}
           />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Coefficiente di redditivita'
+              {lang === 'en' ? 'Profitability coefficient' : "Coefficiente di redditivita'"}
             </label>
             <div className="relative">
               <select
@@ -142,13 +159,13 @@ export default function ConfrontoDipendentePIVA() {
             </div>
           </div>
 
-          <SelettoreRegione value={regione} onChange={setRegione} />
+          <SelettoreRegione value={regione} onChange={setRegione} lang={lang} />
         </div>
 
         <div className="mt-6">
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Primi 5 anni di attivita' (P.IVA)?
+              {lang === 'en' ? 'First 5 years of activity (P.IVA)?' : "Primi 5 anni di attivita' (P.IVA)?"}
             </label>
             <button
               type="button"
@@ -169,7 +186,9 @@ export default function ConfrontoDipendentePIVA() {
               />
             </button>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              {primiCinqueAnni ? 'Aliquota agevolata 5%' : 'Aliquota ordinaria 15%'}
+              {primiCinqueAnni
+                ? (lang === 'en' ? 'Reduced rate 5%' : 'Aliquota agevolata 5%')
+                : (lang === 'en' ? 'Standard rate 15%' : 'Aliquota ordinaria 15%')}
             </p>
           </div>
         </div>
@@ -182,7 +201,7 @@ export default function ConfrontoDipendentePIVA() {
               <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clipRule="evenodd" />
             </svg>
             <p className="text-sm text-red-700 dark:text-red-400">
-              Attenzione: il limite di fatturato per il regime forfettario e' di <strong>85.000 &euro;</strong> annui.
+              {lang === 'en' ? 'Warning: the revenue limit for the flat-rate regime is' : "Attenzione: il limite di fatturato per il regime forfettario e' di"} <strong>85.000 &euro;</strong> {lang === 'en' ? 'per year.' : 'annui.'}
             </p>
           </div>
         </div>
@@ -201,10 +220,10 @@ export default function ConfrontoDipendentePIVA() {
                     <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
                   </svg>
                 </span>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Dipendente</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{lang === 'en' ? 'Employee' : 'Dipendente'}</h3>
               </div>
               <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                Netto annuo
+                {lang === 'en' ? 'Annual net' : 'Netto annuo'}
               </p>
               <p className="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-tight">
                 {formatCurrency(risultati.dipendente.nettoAnnuo)}
@@ -217,7 +236,7 @@ export default function ConfrontoDipendentePIVA() {
                   RAL {formatCurrency(ral)}
                 </span>
                 <span className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-300">
-                  Tassazione eff. {formatRate(risultati.dipendente.aliquotaMedia)}
+                  {lang === 'en' ? 'Effective tax' : 'Tassazione eff.'} {formatRate(risultati.dipendente.aliquotaMedia)}
                 </span>
               </div>
             </div>
@@ -230,10 +249,10 @@ export default function ConfrontoDipendentePIVA() {
                     <path fillRule="evenodd" d="M1 4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4Zm12 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM4 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm13-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM1.75 14.5a.75.75 0 0 0 0 1.5c4.417 0 8.693.603 12.749 1.73 1.111.309 2.251-.512 2.251-1.696v-.784a.75.75 0 0 0-1.5 0v.784a.272.272 0 0 1-.35.25A49.043 49.043 0 0 0 1.75 14.5Z" clipRule="evenodd" />
                   </svg>
                 </span>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Partita IVA</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{lang === 'en' ? 'Freelancer (P.IVA)' : 'Partita IVA'}</h3>
               </div>
               <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                Netto annuo
+                {lang === 'en' ? 'Annual net' : 'Netto annuo'}
               </p>
               <p className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400 tracking-tight leading-tight">
                 {formatCurrency(risultati.piva.nettoAnnuo)}
@@ -243,10 +262,10 @@ export default function ConfrontoDipendentePIVA() {
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <span className="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">
-                  Fatturato {formatCurrency(fatturato)}
+                  {lang === 'en' ? 'Turnover' : 'Fatturato'} {formatCurrency(fatturato)}
                 </span>
                 <span className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-300">
-                  Tassazione eff. {formatRate(risultati.piva.percentualeTassazione)}
+                  {lang === 'en' ? 'Effective tax' : 'Tassazione eff.'} {formatRate(risultati.piva.percentualeTassazione)}
                 </span>
               </div>
             </div>
@@ -265,7 +284,9 @@ export default function ConfrontoDipendentePIVA() {
                 ? 'text-blue-800 dark:text-blue-300'
                 : 'text-green-800 dark:text-green-300',
             ].join(' ')}>
-              A parita' di importi (RAL {formatCurrency(ral)} vs Fatturato {formatCurrency(fatturato)}):
+              {lang === 'en'
+                ? <>With equal amounts (RAL {formatCurrency(ral)} vs Turnover {formatCurrency(fatturato)}):</>
+                : <>A parita' di importi (RAL {formatCurrency(ral)} vs Fatturato {formatCurrency(fatturato)}):</>}
             </p>
             <p className={[
               'mt-1 text-lg font-bold',
@@ -274,10 +295,14 @@ export default function ConfrontoDipendentePIVA() {
                 : 'text-green-700 dark:text-green-400',
             ].join(' ')}>
               {differenzaNetto > 0
-                ? `Il dipendente guadagna ${formatCurrency(differenzaNetto)}/anno in piu' netti`
+                ? (lang === 'en'
+                    ? `The employee earns ${formatCurrency(differenzaNetto)}/year more net`
+                    : `Il dipendente guadagna ${formatCurrency(differenzaNetto)}/anno in piu' netti`)
                 : differenzaNetto < 0
-                  ? `La P.IVA guadagna ${formatCurrency(Math.abs(differenzaNetto))}/anno in piu' netti`
-                  : 'I due netti annui sono equivalenti'
+                  ? (lang === 'en'
+                      ? `The freelancer earns ${formatCurrency(Math.abs(differenzaNetto))}/year more net`
+                      : `La P.IVA guadagna ${formatCurrency(Math.abs(differenzaNetto))}/anno in piu' netti`)
+                  : (lang === 'en' ? 'Both annual net incomes are equivalent' : 'I due netti annui sono equivalenti')
               }
             </p>
           </div>
@@ -285,85 +310,85 @@ export default function ConfrontoDipendentePIVA() {
           {/* Detailed side-by-side comparison */}
           <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-              Confronto dettagliato
+              {lang === 'en' ? 'Detailed comparison' : 'Confronto dettagliato'}
             </h3>
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm">
                 <thead>
                   <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <th className="py-3 pr-4 text-left font-semibold text-gray-900 dark:text-white">Voce</th>
-                    <th className="py-3 px-4 text-right font-semibold text-blue-600 dark:text-blue-400">Dipendente</th>
+                    <th className="py-3 pr-4 text-left font-semibold text-gray-900 dark:text-white">{lang === 'en' ? 'Item' : 'Voce'}</th>
+                    <th className="py-3 px-4 text-right font-semibold text-blue-600 dark:text-blue-400">{lang === 'en' ? 'Employee' : 'Dipendente'}</th>
                     <th className="py-3 pl-4 text-right font-semibold text-green-600 dark:text-green-400">P.IVA</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Lordo / Fatturato</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Gross / Turnover' : 'Lordo / Fatturato'}</td>
                     <td className="py-3 px-4 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(ral)}</td>
                     <td className="py-3 pl-4 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(fatturato)}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Contributi previdenziali</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Social security contributions' : 'Contributi previdenziali'}</td>
                     <td className="py-3 px-4 text-right text-red-600 dark:text-red-400">- {formatCurrency(risultati.dipendente.contributiINPS)}</td>
                     <td className="py-3 pl-4 text-right text-red-600 dark:text-red-400">- {formatCurrency(risultati.piva.contributiINPS)}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Imposte (IRPEF / Sostitutiva)</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Taxes (IRPEF / Substitute)' : 'Imposte (IRPEF / Sostitutiva)'}</td>
                     <td className="py-3 px-4 text-right text-red-600 dark:text-red-400">- {formatCurrency(risultati.dipendente.irpefNetta + risultati.dipendente.totaleAddizionali)}</td>
                     <td className="py-3 pl-4 text-right text-red-600 dark:text-red-400">- {formatCurrency(risultati.piva.impostaSostitutiva)}</td>
                   </tr>
                   <tr className="bg-gray-50 dark:bg-gray-800/50">
-                    <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">Netto annuo</td>
+                    <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">{lang === 'en' ? 'Annual net' : 'Netto annuo'}</td>
                     <td className="py-3 px-4 text-right font-bold text-blue-600 dark:text-blue-400">{formatCurrency(risultati.dipendente.nettoAnnuo)}</td>
                     <td className="py-3 pl-4 text-right font-bold text-green-600 dark:text-green-400">{formatCurrency(risultati.piva.nettoAnnuo)}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Netto mensile</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Monthly net' : 'Netto mensile'}</td>
                     <td className="py-3 px-4 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(risultati.dipendente.nettoMensile)}</td>
                     <td className="py-3 pl-4 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(risultati.piva.nettoMensile)}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Tassazione effettiva</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Effective tax rate' : 'Tassazione effettiva'}</td>
                     <td className="py-3 px-4 text-right font-medium text-gray-900 dark:text-white">{formatRate(risultati.dipendente.aliquotaMedia)}</td>
                     <td className="py-3 pl-4 text-right font-medium text-gray-900 dark:text-white">{formatRate(risultati.piva.percentualeTassazione)}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Costo azienda / cliente</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Employer / client cost' : 'Costo azienda / cliente'}</td>
                     <td className="py-3 px-4 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(risultati.dipendente.costoAzienda)}</td>
                     <td className="py-3 pl-4 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(fatturato)}</td>
                   </tr>
                   <tr className="border-t-2 border-gray-200 dark:border-gray-700">
                     <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white" colSpan={3}>
-                      Voci aggiuntive dipendente
+                      {lang === 'en' ? 'Additional employee benefits' : 'Voci aggiuntive dipendente'}
                     </td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">TFR annuo accantonato</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Annual TFR (severance) accrued' : 'TFR annuo accantonato'}</td>
                     <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">+ {formatCurrency(risultati.tfrAnnuo)}</td>
                     <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">n/a</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Tredicesima</td>
-                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">Inclusa nella RAL</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? '13th-month bonus' : 'Tredicesima'}</td>
+                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? 'Included in RAL' : 'Inclusa nella RAL'}</td>
                     <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">n/a</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Ferie retribuite</td>
-                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">~26 gg/anno</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Paid vacation' : 'Ferie retribuite'}</td>
+                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? '~26 days/year' : '~26 gg/anno'}</td>
                     <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">n/a</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Malattia retribuita</td>
-                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">Si'</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Paid sick leave' : 'Malattia retribuita'}</td>
+                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? 'Yes' : "Si'"}</td>
                     <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">No</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Maternita' / Paternita'</td>
-                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">Si' (retribuita)</td>
-                    <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">Solo INPS gestione separata</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Maternity / Paternity' : "Maternita' / Paternita'"}</td>
+                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? 'Yes (paid)' : "Si' (retribuita)"}</td>
+                    <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">{lang === 'en' ? 'INPS gestione separata only' : 'Solo INPS gestione separata'}</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">Contributi datore INPS</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Employer INPS contributions' : 'Contributi datore INPS'}</td>
                     <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">+ {formatCurrency(risultati.dipendente.contributiINPSDatore)}</td>
                     <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">n/a</td>
                   </tr>
@@ -376,28 +401,30 @@ export default function ConfrontoDipendentePIVA() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                Dipendente: composizione RAL
+                {lang === 'en' ? 'Employee: RAL breakdown' : 'Dipendente: composizione RAL'}
               </h3>
               <BarraScomposizione
                 total={ral}
                 items={[
-                  { label: 'Netto', value: risultati.dipendente.nettoAnnuo, color: '#3b82f6' },
+                  { label: lang === 'en' ? 'Net' : 'Netto', value: risultati.dipendente.nettoAnnuo, color: '#3b82f6' },
                   { label: 'INPS', value: risultati.dipendente.contributiINPS, color: '#8b5cf6' },
-                  { label: 'IRPEF + Add.', value: risultati.dipendente.irpefNetta + risultati.dipendente.totaleAddizionali, color: '#E63946' },
+                  { label: lang === 'en' ? 'IRPEF + Surch.' : 'IRPEF + Add.', value: risultati.dipendente.irpefNetta + risultati.dipendente.totaleAddizionali, color: '#E63946' },
                 ]}
+                lang={lang}
               />
             </div>
             <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-                P.IVA: composizione fatturato
+                {lang === 'en' ? 'Freelancer: turnover breakdown' : 'P.IVA: composizione fatturato'}
               </h3>
               <BarraScomposizione
                 total={fatturato}
                 items={[
-                  { label: 'Netto', value: risultati.piva.nettoAnnuo, color: '#22c55e' },
+                  { label: lang === 'en' ? 'Net' : 'Netto', value: risultati.piva.nettoAnnuo, color: '#22c55e' },
                   { label: 'INPS', value: risultati.piva.contributiINPS, color: '#8b5cf6' },
-                  { label: 'Imposta sost.', value: risultati.piva.impostaSostitutiva, color: '#E63946' },
+                  { label: lang === 'en' ? 'Substitute tax' : 'Imposta sost.', value: risultati.piva.impostaSostitutiva, color: '#E63946' },
                 ]}
+                lang={lang}
               />
             </div>
           </div>
@@ -410,13 +437,12 @@ export default function ConfrontoDipendentePIVA() {
               </svg>
               <div>
                 <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                  Attenzione: RAL e fatturato non sono la stessa cosa
+                  {lang === 'en' ? 'Warning: RAL and turnover are not the same' : 'Attenzione: RAL e fatturato non sono la stessa cosa'}
                 </p>
                 <p className="mt-1 text-sm text-amber-700 dark:text-amber-400">
-                  Un dipendente con RAL 40.000 &euro; e un freelancer con fatturato 40.000 &euro;
-                  non sono equivalenti. Il dipendente riceve anche TFR, tredicesima, ferie pagate,
-                  malattia e contributi del datore. Per un confronto equo, il fatturato P.IVA
-                  dovrebbe essere almeno il 30&ndash;50% superiore alla RAL.
+                  {lang === 'en'
+                    ? <>An employee with a RAL of 40,000 &euro; and a freelancer with a turnover of 40,000 &euro; are not equivalent. The employee also receives TFR (severance), 13th-month bonus, paid vacation, sick leave, and employer contributions. For a fair comparison, the freelancer&apos;s turnover should be at least 30&ndash;50% higher than the RAL.</>
+                    : <>Un dipendente con RAL 40.000 &euro; e un freelancer con fatturato 40.000 &euro; non sono equivalenti. Il dipendente riceve anche TFR, tredicesima, ferie pagate, malattia e contributi del datore. Per un confronto equo, il fatturato P.IVA dovrebbe essere almeno il 30&ndash;50% superiore alla RAL.</>}
                 </p>
               </div>
             </div>

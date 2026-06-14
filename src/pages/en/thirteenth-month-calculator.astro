@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Tredicesima from '../../components/calcolatori/Tredicesima';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Tredicesima Calculator 2026: Net 13th Month Pay Italy";
+const description = "Calculate your net tredicesima (13th month bonus) from your RAL. See exactly how much you receive in December after INPS and IRPEF deductions are applied.";
+const canonical = canonicalURL('/en/thirteenth-month-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Tredicesima Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Tredicesima Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Tredicesima client:load lang={lang} />
+</CalcolatoreLayout>

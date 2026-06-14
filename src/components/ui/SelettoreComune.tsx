@@ -4,26 +4,33 @@ import {
   ADDIZIONALE_COMUNALE_MEDIA,
   comuniBySlug,
 } from '../../data/comuni-top200';
-import { formatPercent } from '../../lib/format-it';
+import { formatPercent as formatPercentIt } from '../../lib/format-it';
+import { formatPercent as formatPercentLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
 interface SelettoreComuneProps {
   value: string;
   onChange: (slug: string, aliquota: number) => void;
   regione?: string;
+  lang?: Lang;
 }
 
-const FALLBACK_LABEL = `Altro comune (media ${formatPercent(ADDIZIONALE_COMUNALE_MEDIA)})`;
 const MAX_SUGGESTIONS = 10;
 
 export default function SelettoreComune({
   value,
   onChange,
   regione,
+  lang = 'it',
 }: SelettoreComuneProps) {
   const inputId = useId();
   const listboxId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const fmtPercent = (v: number) => lang === 'it' ? formatPercentIt(v) : formatPercentLocale(v, 'en');
+  const fallbackLabel = `${t('ui.otherMunicipality', lang)} ${fmtPercent(ADDIZIONALE_COMUNALE_MEDIA)})`;
 
   // Display text in the input
   const [query, setQuery] = useState(() => {
@@ -149,7 +156,7 @@ export default function SelettoreComune({
         htmlFor={inputId}
         className="text-sm font-medium text-gray-700 dark:text-gray-300"
       >
-        Comune
+        {t('ui.municipality', lang)}
       </label>
       <div className="relative">
         <input
@@ -167,7 +174,7 @@ export default function SelettoreComune({
           onChange={handleInputChange}
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
-          placeholder="Cerca il tuo comune..."
+          placeholder={t('ui.searchMunicipality', lang)}
           className={[
             'w-full rounded-lg border bg-white dark:bg-gray-900 py-2.5 pl-3 pr-3',
             'text-base font-medium outline-none transition-colors',
@@ -211,7 +218,7 @@ export default function SelettoreComune({
                   </span>
                 </span>
                 <span className="text-xs text-gray-500 dark:text-gray-400 ml-2 shrink-0">
-                  {formatPercent(c.aliquota)}
+                  {fmtPercent(c.aliquota)}
                 </span>
               </li>
             ))}
@@ -233,7 +240,7 @@ export default function SelettoreComune({
               }}
               onMouseEnter={() => setActiveIndex(filtered.length)}
             >
-              <span className="italic">{FALLBACK_LABEL}</span>
+              <span className="italic">{fallbackLabel}</span>
             </li>
           </ul>
         )}

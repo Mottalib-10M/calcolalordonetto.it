@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Pensione from '../../components/calcolatori/Pensione';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Pension Calculator Italy 2026: Estimate INPS Retirement";
+const description = "Estimate your Italian INPS pension based on current salary, contribution years, and retirement age. See monthly pension amount and your income replacement rate.";
+const canonical = canonicalURL('/en/pension-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Pension Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Pension Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Pensione client:load lang={lang} />
+</CalcolatoreLayout>

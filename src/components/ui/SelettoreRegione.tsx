@@ -1,9 +1,12 @@
 import { useId } from 'react';
 import { regioni } from '../../data/regioni';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
 interface SelettoreRegioneProps {
   value: string;
   onChange: (code: string) => void;
+  lang?: Lang;
 }
 
 const regioniOrdinarie = regioni.filter((r) => !r.autonoma);
@@ -12,6 +15,7 @@ const regioniAutonome = regioni.filter((r) => r.autonoma);
 export default function SelettoreRegione({
   value,
   onChange,
+  lang = 'it',
 }: SelettoreRegioneProps) {
   const selectId = useId();
 
@@ -21,7 +25,7 @@ export default function SelettoreRegione({
         htmlFor={selectId}
         className="text-sm font-medium text-gray-700 dark:text-gray-300"
       >
-        Regione
+        {t('ui.region', lang)}
       </label>
       <div className="relative">
         <select
@@ -37,15 +41,15 @@ export default function SelettoreRegione({
             'focus:border-brand focus:ring-2 focus:ring-brand/20',
           ].join(' ')}
         >
-          <option value="">Seleziona regione</option>
-          <optgroup label="Regioni ordinarie">
+          <option value="">{t('ui.selectRegion', lang)}</option>
+          <optgroup label={t('ui.ordinaryRegions', lang)}>
             {regioniOrdinarie.map((r) => (
               <option key={r.codice} value={r.codice}>
                 {r.nome}
               </option>
             ))}
           </optgroup>
-          <optgroup label="Regioni/Province autonome">
+          <optgroup label={t('ui.autonomousRegions', lang)}>
             {regioniAutonome.map((r) => (
               <option key={r.codice} value={r.codice}>
                 {r.nome}

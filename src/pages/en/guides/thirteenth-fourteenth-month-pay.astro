@@ -1,0 +1,129 @@
+---
+import GuidaLayout from '../../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../../config';
+
+const lang = 'en' as const;
+const title = "13th and 14th Month Pay Italy: Tredicesima Explained";
+const description = "How Italy's 13th month (tredicesima) and 14th month (quattordicesima) work: payment dates, calculation method, who receives them, and how they are taxed.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+  { name: '13th & 14th Month Pay', url: `${SITE.url}/en/guides/thirteenth-fourteenth-month-pay/` },
+];
+
+const faqs = [
+  {
+    question: 'Does everyone in Italy receive the 13th and 14th month salary?',
+    answer: 'The <strong>tredicesima (13th month)</strong> is mandatory for virtually all employees in Italy -- both private and public sector -- as it is established by law (D.P.R. 1070/1960). The <strong>quattordicesima (14th month)</strong>, on the other hand, is <strong>not required by law</strong> for all workers. It is provided only if stipulated by the applicable CCNL (Contratto Collettivo Nazionale di Lavoro). Sectors that commonly include the quattordicesima are commerce (Commercio), tourism (Turismo), transport, and domestic work (Colf/Badanti). If your CCNL does not provide for it, your employer is not obligated to pay it.',
+  },
+  {
+    question: 'How is the 13th month calculated if I started working mid-year?',
+    answer: 'The tredicesima accrues proportionally based on the months worked during the calendar year. Each month of service earns 1/12 of one month\'s gross salary. If you started in July, you would have worked 6 months by December and would receive 6/12 (half) of a full monthly salary. A month is typically counted in full if you worked at least 15 days within it. Unpaid leave, extended absences, or periods of suspension from work generally reduce the accrual proportionally.',
+  },
+  {
+    question: 'Is the tredicesima taxed differently from regular monthly salary?',
+    answer: 'The tredicesima is subject to the same taxes and social security contributions as your regular salary -- INPS contributions (9.19% for private sector employees) and IRPEF withholding at your marginal rate. However, it does <strong>not</strong> benefit from the standard employment tax credit (detrazioni per lavoro dipendente), which is already fully allocated across your 12 regular monthly payments. This means the effective tax rate on your tredicesima is typically higher than on a regular payslip, resulting in a lower net-to-gross ratio.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  lang={lang}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#what-are-they" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">What Are the 13th and 14th Month?</a></li>
+      <li><a href="#tredicesima-13th-month" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tredicesima (13th Month)</a></li>
+      <li><a href="#quattordicesima-14th-month" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Quattordicesima (14th Month)</a></li>
+      <li><a href="#taxation-and-deductions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Taxation and Deductions</a></li>
+      <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="what-are-they">What Are the 13th and 14th Month?</h2>
+
+  <p>
+    Italian employees receive their annual salary split into more than 12 payments. The <strong>tredicesima mensilita</strong> (13th month pay) is a mandatory extra monthly salary paid to all employees, typically in December. The <strong>quattordicesima mensilita</strong> (14th month pay) is an additional bonus provided by certain national collective bargaining agreements (CCNL - Contratto Collettivo Nazionale di Lavoro), usually paid in June or July.
+  </p>
+  <p>
+    This system is an important difference from the salary structures common in the UK, US, or northern Europe. When an Italian employer quotes a RAL (Retribuzione Annua Lorda -- gross annual salary) of &euro;30,000, this amount already includes the tredicesima (and quattordicesima if applicable). It does not mean you receive &euro;2,500 per month for 12 months; instead, you receive a lower monthly amount (approximately &euro;2,308 on 13 payments, or &euro;2,143 on 14 payments) with the extra payments arriving as lump sums at specific times of year.
+  </p>
+  <p>
+    Understanding how these work is essential for financial planning, since your monthly take-home pay will be lower than you might expect from dividing your RAL by 12.
+  </p>
+
+  <h2 id="tredicesima-13th-month">Tredicesima (13th Month Pay)</h2>
+
+  <p>
+    The tredicesima was established by D.P.R. 1070/1960 and is a right for all Italian employees regardless of sector, contract type, or CCNL. It is typically paid together with the December payslip, just before Christmas, and is equal to <strong>one month's gross salary</strong> (or a proportional fraction if you have not worked the full calendar year).
+  </p>
+  <p>
+    The calculation is straightforward:
+  </p>
+  <ul>
+    <li><strong>Full year worked:</strong> Tredicesima = 1/12 of RAL (i.e., one full monthly salary)</li>
+    <li><strong>Partial year:</strong> Tredicesima = (months worked / 12) &times; monthly gross salary</li>
+  </ul>
+  <p>
+    A month is counted in full if the employee worked at least 15 calendar days in it. Periods of paid maternity/paternity leave, sick leave (within INPS-covered limits), and paid holidays count as worked time for accrual purposes. Extended unpaid leave reduces the accrual proportionally.
+  </p>
+  <p>
+    For example, an employee with a RAL of &euro;36,000 (monthly gross of &euro;2,769 on 13 payments) who started working on 1 April would receive a tredicesima of &euro;2,769 &times; 9/12 = <strong>&euro;2,077</strong> gross in December.
+  </p>
+
+  <h2 id="quattordicesima-14th-month">Quattordicesima (14th Month Pay)</h2>
+
+  <p>
+    The quattordicesima is not mandated by law for all workers -- it depends entirely on the applicable CCNL. The most common sectors that include a quattordicesima are:
+  </p>
+  <ul>
+    <li><strong>Commercio</strong> (retail and wholesale trade)</li>
+    <li><strong>Turismo</strong> (hotels, restaurants, tourism)</li>
+    <li><strong>Trasporti</strong> (transport and logistics)</li>
+    <li><strong>Colf e Badanti</strong> (domestic workers and caregivers)</li>
+    <li><strong>Alimentare</strong> (food industry)</li>
+  </ul>
+  <p>
+    Sectors such as Metalmeccanico (engineering/manufacturing) and Chimico (chemicals) typically do <strong>not</strong> include a quattordicesima, meaning employees in these sectors receive their RAL across 13 payments rather than 14.
+  </p>
+  <p>
+    When provided, the quattordicesima is usually paid with the June or July payslip. It accrues from July of the previous year through June of the current year (or January to December in some CCNLs), and the calculation mirrors the tredicesima: one month's gross salary for a full accrual period, or a proportional fraction for partial periods.
+  </p>
+
+  <h2 id="taxation-and-deductions">Taxation and Deductions</h2>
+
+  <p>
+    Both the tredicesima and the quattordicesima are treated as ordinary income for tax purposes. They are subject to:
+  </p>
+  <ul>
+    <li><strong>INPS contributions:</strong> the standard employee rate of 9.19% (private sector) applies to the gross amount</li>
+    <li><strong>IRPEF:</strong> the amount is added to your cumulative annual income and taxed at your applicable marginal rate</li>
+    <li><strong>Addizionali:</strong> regional and municipal surcharges apply on the combined annual taxable income</li>
+  </ul>
+  <p>
+    There is one critical difference: the standard <strong>detrazioni per lavoro dipendente</strong> (employment tax credits) are already fully distributed across your 12 ordinary monthly payments. This means the tredicesima and quattordicesima are taxed without the benefit of these credits, resulting in a higher effective tax rate on these bonus payments. Many expats are surprised to find that their tredicesima's net amount is proportionally smaller than a normal month's net pay.
+  </p>
+  <p>
+    To see the exact net value of your tredicesima or quattordicesima, including the impact of your specific tax bracket and deductions, try our <a href="/en/thirteenth-month-calculator/">13th month calculator</a> or <a href="/en/fourteenth-month-calculator/">14th month calculator</a>.
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" lang={lang} />
+  </div>
+
+</GuidaLayout>

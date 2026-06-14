@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaAffittoVsAcquisto } from '../../lib/finanz-engine';
 import { formatCurrency, formatNumber } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
-export default function AffittoVsAcquisto() {
+export default function AffittoVsAcquisto({ lang = 'it' }: { lang?: Lang }) {
   const [valoreImmobile, setValoreImmobile] = useState(250_000);
   const [anticipoAcquisto, setAnticipoAcquisto] = useState(50_000);
   const [tassoMutuoPercent, setTassoMutuoPercent] = useState(3.5);
@@ -67,6 +68,7 @@ export default function AffittoVsAcquisto() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Valore immobile"
               value={valoreImmobile}
               onChange={setValoreImmobile}
@@ -77,6 +79,7 @@ export default function AffittoVsAcquisto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Anticipo (down payment)"
               value={anticipoAcquisto}
               onChange={setAnticipoAcquisto}
@@ -88,6 +91,7 @@ export default function AffittoVsAcquisto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Tasso mutuo annuo"
               value={tassoMutuoPercent}
               onChange={setTassoMutuoPercent}
@@ -98,6 +102,7 @@ export default function AffittoVsAcquisto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Durata mutuo"
               value={durataMutuo}
               onChange={(v) => setDurataMutuo(Math.round(v))}
@@ -108,6 +113,7 @@ export default function AffittoVsAcquisto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Affitto mensile"
               value={affittoMensile}
               onChange={setAffittoMensile}
@@ -118,6 +124,7 @@ export default function AffittoVsAcquisto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Orizzonte di confronto"
               value={orizzonteAnni}
               onChange={(v) => setOrizzonteAnni(Math.round(v))}
@@ -153,6 +160,7 @@ export default function AffittoVsAcquisto() {
           {mostraAvanzate && (
             <div className="mt-4 space-y-4">
               <CampoInput
+              lang={lang}
                 label="Crescita annua affitto"
                 value={crescitaAffittoPercent}
                 onChange={setCrescitaAffittoPercent}
@@ -164,6 +172,7 @@ export default function AffittoVsAcquisto() {
               />
 
               <CampoInput
+              lang={lang}
                 label="Rivalutazione annua immobile"
                 value={crescitaValorePercent}
                 onChange={setCrescitaValorePercent}
@@ -175,6 +184,7 @@ export default function AffittoVsAcquisto() {
               />
 
               <CampoInput
+              lang={lang}
                 label="Costi di acquisto"
                 value={costiAcquistoPercent}
                 onChange={setCostiAcquistoPercent}
@@ -186,6 +196,7 @@ export default function AffittoVsAcquisto() {
               />
 
               <CampoInput
+              lang={lang}
                 label="Spese condominiali mensili"
                 value={speseCondominiali}
                 onChange={setSpeseCondominiali}
@@ -196,6 +207,7 @@ export default function AffittoVsAcquisto() {
               />
 
               <CampoInput
+              lang={lang}
                 label="IMU annuale"
                 value={imu}
                 onChange={setImu}
@@ -207,6 +219,7 @@ export default function AffittoVsAcquisto() {
               />
 
               <CampoInput
+              lang={lang}
                 label="Manutenzione annua"
                 value={manutenzioneAnnua}
                 onChange={setManutenzioneAnnua}
@@ -218,6 +231,7 @@ export default function AffittoVsAcquisto() {
               />
 
               <CampoInput
+              lang={lang}
                 label="Rendimento investimento alternativo"
                 value={rendimentoAlternativoPercent}
                 onChange={setRendimentoAlternativoPercent}

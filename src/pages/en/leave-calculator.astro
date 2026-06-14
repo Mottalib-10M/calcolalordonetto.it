@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import FeriePermessi from '../../components/calcolatori/FeriePermessi';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Leave Calculator Italy 2026: Vacation Days and Permessi";
+const description = "Calculate your Italian vacation days (ferie), paid leave hours (permessi ROL), and public holidays. Based on CCNL contract type, seniority, and company size.";
+const canonical = canonicalURL('/en/leave-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Leave Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Leave Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <FeriePermessi client:load lang={lang} />
+</CalcolatoreLayout>

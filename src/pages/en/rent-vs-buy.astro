@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import AffittoVsAcquisto from '../../components/calcolatori/AffittoVsAcquisto';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Rent vs Buy Calculator Italy 2026: Total Cost Compared";
+const description = "Should you rent or buy in Italy? Compare total costs including mortgage interest, taxes, maintenance, condo fees, and the opportunity cost of your down payment.";
+const canonical = canonicalURL('/en/rent-vs-buy/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Rent vs Buy', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Rent vs Buy Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <AffittoVsAcquisto client:load lang={lang} />
+</CalcolatoreLayout>

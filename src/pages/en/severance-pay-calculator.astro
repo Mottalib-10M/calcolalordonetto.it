@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import TFR from '../../components/calcolatori/TFR';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "TFR Calculator Italy 2026: Severance Pay Estimate";
+const description = "Calculate your Italian TFR severance (trattamento di fine rapporto). Enter RAL and years of service to see gross accrual, separate taxation, and net payout.";
+const canonical = canonicalURL('/en/severance-pay-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'TFR Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="TFR Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <TFR client:load lang={lang} />
+</CalcolatoreLayout>

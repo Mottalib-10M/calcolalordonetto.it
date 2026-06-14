@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import ISEE from '../../components/calcolatori/ISEE';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "ISEE Calculator Italy 2026: Estimate Your ISEE Score";
+const description = "Estimate your ISEE indicator based on income, assets, and family composition. Check eligibility for welfare benefits, university fees, and childcare bonuses.";
+const canonical = canonicalURL('/en/isee-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'ISEE Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="ISEE Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <ISEE client:load lang={lang} />
+</CalcolatoreLayout>

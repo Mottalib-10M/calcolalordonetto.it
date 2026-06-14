@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Quattordicesima from '../../components/calcolatori/Quattordicesima';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Quattordicesima Calculator 2026: Net 14th Month Pay";
+const description = "Calculate your net quattordicesima (14th month summer bonus). Check which CCNL contracts include it and see INPS and IRPEF deductions on your net payout.";
+const canonical = canonicalURL('/en/fourteenth-month-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Quattordicesima Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Quattordicesima Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Quattordicesima client:load lang={lang} />
+</CalcolatoreLayout>

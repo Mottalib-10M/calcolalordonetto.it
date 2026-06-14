@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaInflazione } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
-export default function Inflazione() {
+export default function Inflazione({ lang = 'it' }: { lang?: Lang }) {
   const [importo, setImporto] = useState(1_000);
   const [tassoPercent, setTassoPercent] = useState(2);
   const [durataAnni, setDurataAnni] = useState(10);
@@ -29,6 +30,7 @@ export default function Inflazione() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Importo odierno"
               value={importo}
               onChange={setImporto}
@@ -40,6 +42,7 @@ export default function Inflazione() {
             />
 
             <CampoInput
+              lang={lang}
               label="Tasso di inflazione annuo"
               value={tassoPercent}
               onChange={setTassoPercent}
@@ -51,6 +54,7 @@ export default function Inflazione() {
             />
 
             <CampoInput
+              lang={lang}
               label="Durata in anni"
               value={durataAnni}
               onChange={(v) => setDurataAnni(Math.round(v))}

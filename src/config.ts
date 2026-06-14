@@ -1,10 +1,13 @@
 /** Central site configuration — single source of truth for brand values */
 export const SITE = {
   name: 'Calcola Lordo Netto',
+  nameEn: 'Italian Tax Calculator',
   domain: 'calcolalordonetto.it',
   url: 'https://calcolalordonetto.it',
   tagline: 'Dal lordo al netto in pochi secondi',
+  taglineEn: 'From gross to net in seconds',
   locale: 'it-IT',
+  localeEn: 'en-US',
   annoFiscale: 2026,
   colors: {
     primary: '#E63946',

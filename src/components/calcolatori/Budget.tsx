@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaBudget } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
 const SALUTE_CONFIG: Record<string, { label: string; colore: string; bg: string }> = {
   ottima: {
@@ -26,7 +27,7 @@ const SALUTE_CONFIG: Record<string, { label: string; colore: string; bg: string 
   },
 };
 
-export default function Budget() {
+export default function Budget({ lang = 'it' }: { lang?: Lang }) {
   const [nettoMensile, setNettoMensile] = useState(1_800);
   const [speseNecessarie, setSpeseNecessarie] = useState(900);
   const [spesePersonali, setSpesePersonali] = useState(450);
@@ -78,6 +79,7 @@ export default function Budget() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Stipendio netto mensile"
               value={nettoMensile}
               onChange={setNettoMensile}
@@ -93,6 +95,7 @@ export default function Budget() {
                 Spese necessarie (50%)
               </p>
               <CampoInput
+              lang={lang}
                 label="Affitto/mutuo, bollette, spesa, trasporti"
                 value={speseNecessarie}
                 onChange={setSpeseNecessarie}
@@ -109,6 +112,7 @@ export default function Budget() {
                 Spese personali (30%)
               </p>
               <CampoInput
+              lang={lang}
                 label="Svago, abbigliamento, ristoranti, vacanze"
                 value={spesePersonali}
                 onChange={setSpesePersonali}
@@ -125,6 +129,7 @@ export default function Budget() {
                 Risparmio e investimenti (20%)
               </p>
               <CampoInput
+              lang={lang}
                 label="Fondo emergenza, PAC, pensione integrativa"
                 value={risparmio}
                 onChange={setRisparmio}

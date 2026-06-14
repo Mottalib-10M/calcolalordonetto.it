@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Prestito from '../../components/calcolatori/Prestito';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Loan Calculator Italy 2026: Payments, Interest & TAEG";
+const description = "Calculate personal loan monthly payments, total interest cost, and true annual rate (TAEG). Full amortization table with principal and interest for each month.";
+const canonical = canonicalURL('/en/loan-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Loan Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Loan Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Prestito client:load lang={lang} />
+</CalcolatoreLayout>

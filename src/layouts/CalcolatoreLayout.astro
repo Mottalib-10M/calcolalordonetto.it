@@ -1,6 +1,8 @@
 ---
 import Layout from './Layout.astro';
 import { SITE } from '../config';
+import type { Lang } from '../i18n/types';
+import { t } from '../i18n/index';
 import { breadcrumbSchema, webAppSchema } from '../lib/seo';
 
 interface Props {
@@ -10,6 +12,7 @@ interface Props {
   ogImage?: string;
   calculatorName: string;
   breadcrumbs: { name: string; url: string }[];
+  lang?: Lang;
 }
 
 const {
@@ -19,13 +22,14 @@ const {
   ogImage,
   calculatorName,
   breadcrumbs,
+  lang = 'it',
 } = Astro.props;
 
 const canonicalURL = canonical || Astro.url.href;
 
 const schemas = [
   breadcrumbSchema(breadcrumbs),
-  webAppSchema(calculatorName, description, canonicalURL),
+  webAppSchema(calculatorName, description, canonicalURL, lang),
 ];
 
 const schemaString = JSON.stringify(schemas);
@@ -37,6 +41,7 @@ const schemaString = JSON.stringify(schemas);
   canonical={canonical}
   ogImage={ogImage}
   schema={schemaString}
+  lang={lang}
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Breadcrumb navigation -->
@@ -69,7 +74,7 @@ const schemaString = JSON.stringify(schemas);
         <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
         </svg>
-        Aggiornato per l'anno fiscale {SITE.annoFiscale}
+        {t('calc.updatedFor', lang)} {SITE.annoFiscale}
       </span>
     </div>
 
@@ -96,7 +101,7 @@ const schemaString = JSON.stringify(schemas);
     <!-- Fonti section -->
     <aside class="mt-12 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-6">
       <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
-        Fonti
+        {t('calc.sources', lang)}
       </h2>
       <ul class="mt-3 space-y-1.5 text-sm text-gray-600 dark:text-gray-400">
         <li>
@@ -108,7 +113,7 @@ const schemaString = JSON.stringify(schemas);
           >
             Agenzia delle Entrate
           </a>
-          : aliquote IRPEF, detrazioni, normativa fiscale
+          : {t('calc.sourceAE', lang)}
         </li>
         <li>
           <a
@@ -119,7 +124,7 @@ const schemaString = JSON.stringify(schemas);
           >
             INPS
           </a>
-          : aliquote contributive, massimali, prestazioni
+          : {t('calc.sourceINPS', lang)}
         </li>
       </ul>
     </aside>

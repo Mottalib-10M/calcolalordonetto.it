@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import TassazioneInvestimenti from '../../components/calcolatori/TassazioneInvestimenti';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Investment Tax Calculator Italy 2026: Capital Gains Tax";
+const description = "Calculate Italian capital gains tax on stocks, ETFs, bonds, and crypto. Compare 26% vs 12.5% rates by instrument type and learn how to offset capital losses.";
+const canonical = canonicalURL('/en/investment-tax-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Investment Tax Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Investment Tax Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <TassazioneInvestimenti client:load lang={lang} />
+</CalcolatoreLayout>

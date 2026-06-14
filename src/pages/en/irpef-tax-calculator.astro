@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import IRPEF from '../../components/calcolatori/IRPEF';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "IRPEF Calculator 2026: Italian Income Tax by Bracket";
+const description = "Calculate your Italian income tax bracket by bracket: 23% up to €28k, 35% to €50k, 43% above. See effective rate, deductions, and net pay after all taxes.";
+const canonical = canonicalURL('/en/irpef-tax-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'IRPEF Tax Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="IRPEF Tax Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <IRPEF client:load lang={lang} />
+</CalcolatoreLayout>

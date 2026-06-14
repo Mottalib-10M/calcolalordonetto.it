@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import BustaPaga from '../../components/calcolatori/BustaPaga';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Payslip Simulator Italy 2026: Busta Paga Breakdown";
+const description = "Simulate your Italian monthly payslip line by line. See gross pay, INPS, IRPEF withholding, regional surcharges, and your exact net salary for each month.";
+const canonical = canonicalURL('/en/payslip-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Payslip Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Payslip Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <BustaPaga client:load lang={lang} />
+</CalcolatoreLayout>

@@ -1,10 +1,13 @@
 import { useId, useCallback } from 'react';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
 interface SelettoreSituazioneFamiliareProps {
   coniugeACarico: boolean;
   figli: number;
   onChangeConiuge: (b: boolean) => void;
   onChangeFigli: (n: number) => void;
+  lang?: Lang;
 }
 
 const MIN_FIGLI = 0;
@@ -15,6 +18,7 @@ export default function SelettoreSituazioneFamiliare({
   figli,
   onChangeConiuge,
   onChangeFigli,
+  lang = 'it',
 }: SelettoreSituazioneFamiliareProps) {
   const switchId = useId();
 
@@ -29,7 +33,7 @@ export default function SelettoreSituazioneFamiliare({
   return (
     <div className="flex flex-col gap-4">
       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-        Situazione familiare
+        {t('ui.familySituation', lang)}
       </span>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
@@ -62,21 +66,21 @@ export default function SelettoreSituazioneFamiliare({
             htmlFor={switchId}
             className="text-sm text-gray-700 dark:text-gray-300 cursor-pointer select-none"
           >
-            Coniuge a carico
+            {t('ui.spouseDependent', lang)}
           </label>
         </div>
 
         {/* Figli counter */}
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-700 dark:text-gray-300">
-            Figli a carico (21+ anni)
+            {t('ui.childrenDependent', lang)}
           </span>
           <div className="inline-flex items-center rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900">
             <button
               type="button"
               onClick={decrement}
               disabled={figli <= MIN_FIGLI}
-              aria-label="Riduci figli"
+              aria-label={t('ui.removeChild', lang)}
               className={[
                 'flex items-center justify-center w-9 h-9 text-lg font-medium rounded-l-lg transition-colors',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40',
@@ -94,7 +98,7 @@ export default function SelettoreSituazioneFamiliare({
               type="button"
               onClick={increment}
               disabled={figli >= MAX_FIGLI}
-              aria-label="Aggiungi figlio"
+              aria-label={t('ui.addChild', lang)}
               className={[
                 'flex items-center justify-center w-9 h-9 text-lg font-medium rounded-r-lg transition-colors',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40',
@@ -111,7 +115,7 @@ export default function SelettoreSituazioneFamiliare({
 
       {/* Note about Assegno Unico */}
       <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1">
-        Per i figli sotto i 21 anni si applica l'Assegno Unico Universale
+        {t('ui.childrenNote', lang)}
       </p>
     </div>
   );

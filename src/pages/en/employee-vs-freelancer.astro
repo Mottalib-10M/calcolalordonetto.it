@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import ConfrontoDipendentePIVA from '../../components/calcolatori/ConfrontoDipendentePIVA';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Employee vs Freelancer Italy 2026: Net Income Compared";
+const description = "Compare take-home pay as employee (dipendente) vs freelancer (P.IVA forfettario) in Italy. Side-by-side IRPEF, INPS, TFR, and total tax burden comparison.";
+const canonical = canonicalURL('/en/employee-vs-freelancer/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Employee vs Freelancer', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Employee vs Freelancer Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <ConfrontoDipendentePIVA client:load lang={lang} />
+</CalcolatoreLayout>

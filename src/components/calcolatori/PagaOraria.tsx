@@ -2,10 +2,13 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaPagaOraria, calcolaStipendio } from '../../lib/irpef-engine';
 import { formatCurrency, formatNumber } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
 const RAL_CONFRONTO = [20_000, 25_000, 30_000, 35_000, 40_000, 45_000, 50_000, 60_000, 70_000, 80_000];
 
-export default function PagaOraria() {
+export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(30_000);
   const [oreSettimanali, setOreSettimanali] = useState(40);
   const [settimaneAnno, setSettimaneAnno] = useState(52);
@@ -153,6 +156,7 @@ export default function PagaOraria() {
               max={300_000}
               suffix="€"
               helpText="Il tuo stipendio lordo annuale"
+              lang={lang}
             />
           ) : (
             <CampoInput
@@ -163,6 +167,7 @@ export default function PagaOraria() {
               max={500}
               suffix="€/h"
               helpText="La tua paga oraria lorda"
+              lang={lang}
             />
           )}
           <CampoInput
@@ -172,6 +177,7 @@ export default function PagaOraria() {
             min={1}
             max={60}
             helpText="Default: 40 ore (full-time)"
+            lang={lang}
           />
           <CampoInput
             label="Settimane lavorative/anno"
@@ -180,6 +186,7 @@ export default function PagaOraria() {
             min={1}
             max={52}
             helpText="Default: 52 settimane"
+            lang={lang}
           />
         </div>
       </div>

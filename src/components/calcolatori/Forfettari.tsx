@@ -3,8 +3,10 @@ import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaForfettario } from '../../lib/irpef-engine';
 import { formatCurrency, formatRate, formatNumber } from '../../lib/format-it';
+import { t } from '../../i18n';
+import type { Lang } from '../../i18n/types';
 
-const COEFFICIENTI = [
+const COEFFICIENTI_IT = [
   { label: 'IT, consulenza, ingegneria (86%)', value: 0.86, codice: '62, 63, 69, 70, 71, 73, 74' },
   { label: 'Professionisti (78%)', value: 0.78, codice: '69, 71, 74, 75, 85, 86' },
   { label: 'Commercio all\'ingrosso e dettaglio (40%)', value: 0.40, codice: '45, 46, 47' },
@@ -17,7 +19,22 @@ const COEFFICIENTI = [
   { label: 'Industrie alimentari e bevande (40%)', value: 0.40, codice: '10, 11' },
 ];
 
-export default function Forfettari() {
+const COEFFICIENTI_EN = [
+  { label: 'IT, consulting, engineering (86%)', value: 0.86, codice: '62, 63, 69, 70, 71, 73, 74' },
+  { label: 'Professionals (78%)', value: 0.78, codice: '69, 71, 74, 75, 85, 86' },
+  { label: 'Wholesale & retail (40%)', value: 0.40, codice: '45, 46, 47' },
+  { label: 'Food street vendors (40%)', value: 0.40, codice: '47.81, 47.82, 47.89' },
+  { label: 'Non-food street vendors (54%)', value: 0.54, codice: '47.82, 47.89' },
+  { label: 'Construction & real estate (86%)', value: 0.86, codice: '41, 42, 43, 68' },
+  { label: 'Trade intermediaries (62%)', value: 0.62, codice: '46.1' },
+  { label: 'Accommodation & restaurants (40%)', value: 0.40, codice: '55, 56' },
+  { label: 'Service activities (67%)', value: 0.67, codice: '64-66, 77, 78, 79, 80, 81, 82' },
+  { label: 'Food & beverage industry (40%)', value: 0.40, codice: '10, 11' },
+];
+
+interface Props { lang?: Lang; }
+
+export default function Forfettari({ lang = 'it' }: Props) {
   const [ricavi, setRicavi] = useState(40_000);
   const [coefficienteIndex, setCoefficienteIndex] = useState(0);
   const [primiCinqueAnni, setPrimiCinqueAnni] = useState(false);
@@ -50,6 +67,7 @@ export default function Forfettari() {
     window.history.replaceState({}, '', url.toString());
   }, [ricavi, coefficienteIndex, primiCinqueAnni]);
 
+  const COEFFICIENTI = lang === 'en' ? COEFFICIENTI_EN : COEFFICIENTI_IT;
   const coefficiente = COEFFICIENTI[coefficienteIndex];
 
   const risultato = useMemo(() => {
@@ -67,22 +85,23 @@ export default function Forfettari() {
       {/* Input Section */}
       <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-          Inserisci i tuoi dati
+          {lang === 'en' ? 'Enter your data' : 'Inserisci i tuoi dati'}
         </h2>
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <CampoInput
-              label="Fatturato annuo (ricavi)"
+              label={lang === 'en' ? 'Annual turnover (revenue)' : 'Fatturato annuo (ricavi)'}
               value={ricavi}
               onChange={setRicavi}
               min={0}
               max={85_000}
               suffix="€"
-              helpText="Limite massimo: 85.000 € per il regime forfettario"
+              helpText={lang === 'en' ? 'Maximum limit: €85,000 for the flat-rate regime' : 'Limite massimo: 85.000 € per il regime forfettario'}
+              lang={lang}
             />
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Primi 5 anni di attivita?
+                {lang === 'en' ? 'First 5 years of activity?' : 'Primi 5 anni di attivita?'}
               </label>
               <button
                 type="button"
@@ -103,14 +122,16 @@ export default function Forfettari() {
                 />
               </button>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {primiCinqueAnni ? 'Aliquota agevolata 5%' : 'Aliquota ordinaria 15%'}
+                {primiCinqueAnni
+                  ? (lang === 'en' ? 'Reduced rate 5%' : 'Aliquota agevolata 5%')
+                  : (lang === 'en' ? 'Standard rate 15%' : 'Aliquota ordinaria 15%')}
               </p>
             </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Coefficiente di redditivita (codice ATECO)
+              {lang === 'en' ? 'Profitability coefficient (ATECO code)' : 'Coefficiente di redditivita (codice ATECO)'}
             </label>
             <div className="relative">
               <select
@@ -138,7 +159,7 @@ export default function Forfettari() {
               </div>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              Codici ATECO: {coefficiente.codice}
+              {lang === 'en' ? 'ATECO codes:' : 'Codici ATECO:'} {coefficiente.codice}
             </p>
           </div>
         </div>
@@ -151,8 +172,9 @@ export default function Forfettari() {
               <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clipRule="evenodd" />
             </svg>
             <p className="text-sm text-red-700 dark:text-red-400">
-              Attenzione: il limite di fatturato per il regime forfettario e' di <strong>85.000 €</strong> annui.
-              Con ricavi superiori perdi il diritto al regime forfettario.
+              {lang === 'en'
+                ? <>{`Warning: the revenue limit for the flat-rate regime is `}<strong>€85,000</strong>{` per year. With higher revenue you lose the right to the flat-rate regime.`}</>
+                : <>{`Attenzione: il limite di fatturato per il regime forfettario e' di `}<strong>85.000 €</strong>{` annui. Con ricavi superiori perdi il diritto al regime forfettario.`}</>}
             </p>
           </div>
         </div>
@@ -164,7 +186,7 @@ export default function Forfettari() {
           {/* Hero Result */}
           <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg shadow-gray-200/50 dark:shadow-black/20 p-6 sm:p-8">
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Netto annuo stimato
+              {lang === 'en' ? 'Estimated annual net' : 'Netto annuo stimato'}
             </p>
             <p className="text-4xl sm:text-5xl font-bold text-brand tracking-tight leading-tight">
               {formatCurrency(risultato.nettoAnnuo)}
@@ -172,14 +194,14 @@ export default function Forfettari() {
             <p className="mt-2 text-base text-gray-600 dark:text-gray-400">
               {formatCurrency(risultato.nettoMensile)}/mese
               <span className="mx-2 text-gray-300 dark:text-gray-600">|</span>
-              Tassazione effettiva: {formatRate(risultato.percentualeTassazione)}
+              {lang === 'en' ? 'Effective tax rate:' : 'Tassazione effettiva:'} {formatRate(risultato.percentualeTassazione)}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="inline-flex items-center rounded-full bg-brand/10 dark:bg-brand/20 px-3 py-1 text-sm font-semibold text-brand">
-                Imposta sostitutiva: {primiCinqueAnni ? '5%' : '15%'}
+                {lang === 'en' ? 'Substitute tax:' : 'Imposta sostitutiva:'} {primiCinqueAnni ? '5%' : '15%'}
               </span>
               <span className="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/30 px-3 py-1 text-sm font-semibold text-blue-700 dark:text-blue-400">
-                Redditivita: {formatRate(coefficiente.value)}
+                {lang === 'en' ? 'Profitability:' : 'Redditivita:'} {formatRate(coefficiente.value)}
               </span>
             </div>
           </div>
@@ -187,35 +209,35 @@ export default function Forfettari() {
           {/* Breakdown */}
           <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-              Dettaglio calcolo
+              {lang === 'en' ? 'Calculation details' : 'Dettaglio calcolo'}
             </h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-800">
-                <span className="text-gray-600 dark:text-gray-400">Fatturato annuo</span>
+                <span className="text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Annual turnover' : 'Fatturato annuo'}</span>
                 <span className="font-semibold text-gray-900 dark:text-white">{formatCurrency(risultato.ricavi)}</span>
               </div>
               <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-800">
                 <span className="text-gray-600 dark:text-gray-400">
-                  Reddito imponibile ({formatRate(coefficiente.value)})
+                  {lang === 'en' ? 'Taxable income' : 'Reddito imponibile'} ({formatRate(coefficiente.value)})
                 </span>
                 <span className="font-semibold text-gray-900 dark:text-white">{formatCurrency(risultato.redditoImponibile)}</span>
               </div>
               <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-800">
-                <span className="text-gray-600 dark:text-gray-400">Contributi INPS gestione separata (26,07%)</span>
+                <span className="text-gray-600 dark:text-gray-400">{lang === 'en' ? 'INPS contributions gestione separata (26.07%)' : 'Contributi INPS gestione separata (26,07%)'}</span>
                 <span className="font-semibold text-red-600 dark:text-red-400">- {formatCurrency(risultato.contributiINPS)}</span>
               </div>
               <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-800">
                 <span className="text-gray-600 dark:text-gray-400">
-                  Imposta sostitutiva ({primiCinqueAnni ? '5%' : '15%'})
+                  {lang === 'en' ? 'Substitute tax' : 'Imposta sostitutiva'} ({primiCinqueAnni ? '5%' : '15%'})
                 </span>
                 <span className="font-semibold text-red-600 dark:text-red-400">- {formatCurrency(risultato.impostaSostitutiva)}</span>
               </div>
               <div className="flex justify-between items-center py-3 bg-green-50 dark:bg-green-900/20 -mx-6 px-6 rounded-lg">
-                <span className="font-semibold text-gray-900 dark:text-white">Netto annuo</span>
+                <span className="font-semibold text-gray-900 dark:text-white">{lang === 'en' ? 'Annual net' : 'Netto annuo'}</span>
                 <span className="text-xl font-bold text-brand">{formatCurrency(risultato.nettoAnnuo)}</span>
               </div>
               <div className="flex justify-between items-center py-3">
-                <span className="text-gray-600 dark:text-gray-400">Netto mensile (/ 12)</span>
+                <span className="text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Monthly net (/ 12)' : 'Netto mensile (/ 12)'}</span>
                 <span className="font-semibold text-gray-900 dark:text-white">{formatCurrency(risultato.nettoMensile)}</span>
               </div>
             </div>
@@ -224,15 +246,16 @@ export default function Forfettari() {
           {/* Visual Breakdown */}
           <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-              Composizione del fatturato
+              {lang === 'en' ? 'Turnover breakdown' : 'Composizione del fatturato'}
             </h3>
             <BarraScomposizione
               total={risultato.ricavi}
               items={[
-                { label: 'Netto', value: risultato.nettoAnnuo, color: '#22c55e' },
+                { label: lang === 'en' ? 'Net' : 'Netto', value: risultato.nettoAnnuo, color: '#22c55e' },
                 { label: 'INPS', value: risultato.contributiINPS, color: '#3b82f6' },
-                { label: 'Imposta sostitutiva', value: risultato.impostaSostitutiva, color: '#E63946' },
+                { label: lang === 'en' ? 'Substitute tax' : 'Imposta sostitutiva', value: risultato.impostaSostitutiva, color: '#E63946' },
               ]}
+              lang={lang}
             />
           </div>
         </>
@@ -246,12 +269,12 @@ export default function Forfettari() {
           </svg>
           <div>
             <p className="text-sm font-semibold text-blue-800 dark:text-blue-300">
-              Il netto indicato non include le spese deducibili
+              {lang === 'en' ? 'The net shown does not include deductible expenses' : 'Il netto indicato non include le spese deducibili'}
             </p>
             <p className="mt-1 text-sm text-blue-700 dark:text-blue-400">
-              Nel regime forfettario non puoi dedurre le spese effettive (affitto, attrezzature, ecc.),
-              perche la deduzione e' gia forfettizzata nel coefficiente di redditivita.
-              Il netto reale dipendera dalle tue spese vive non deducibili.
+              {lang === 'en'
+                ? 'In the flat-rate regime, you cannot deduct actual expenses (rent, equipment, etc.), because the deduction is already flat-rated into the profitability coefficient. The actual net will depend on your non-deductible expenses.'
+                : 'Nel regime forfettario non puoi dedurre le spese effettive (affitto, attrezzature, ecc.), perche la deduzione e\' gia forfettizzata nel coefficiente di redditivita. Il netto reale dipendera dalle tue spese vive non deducibili.'}
             </p>
           </div>
         </div>

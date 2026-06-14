@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import FIRE from '../../components/calcolatori/FIRE';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "FIRE Calculator Italy 2026: Years to Financial Freedom";
+const description = "Calculate your FIRE number and time to financial independence in Italy. Factors in Italian 26% capital gains tax, inflation, safe withdrawal rate, and costs.";
+const canonical = canonicalURL('/en/fire-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'FIRE Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="FIRE Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <FIRE client:load lang={lang} />
+</CalcolatoreLayout>

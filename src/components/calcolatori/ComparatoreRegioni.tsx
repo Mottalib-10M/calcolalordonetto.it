@@ -4,6 +4,7 @@ import { calcolaStipendio } from '../../lib/irpef-engine';
 import { formatCurrency, formatCurrencyRound } from '../../lib/format-it';
 import { decodeState, pushState } from '../../lib/url-state';
 import CampoInput from '../ui/CampoInput';
+import type { Lang } from '../../i18n/types';
 
 type SortKey = 'netto' | 'nome';
 
@@ -17,7 +18,7 @@ interface RegionRow {
   totaleAddizionali: number;
 }
 
-export default function ComparatoreRegioni() {
+export default function ComparatoreRegioni({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(35_000);
   const [sortBy, setSortBy] = useState<SortKey>('netto');
   const [sortAsc, setSortAsc] = useState(false);
@@ -125,6 +126,7 @@ export default function ComparatoreRegioni() {
       {/* Input */}
       <div className="max-w-sm">
         <CampoInput
+          lang={lang}
           label="RAL (Retribuzione Annua Lorda)"
           value={ral}
           onChange={handleRalChange}

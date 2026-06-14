@@ -3,8 +3,11 @@ import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaIRPEF, aliquotaMarginale, calcolaContributiINPS, calcolaDetrazioneLavoroDipendente } from '../../lib/irpef-engine';
 import { formatCurrency, formatRate } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
-export default function Tredicesima() {
+export default function Tredicesima({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(30_000);
   const [mesiLavorati, setMesiLavorati] = useState(12);
   const isInitialMount = useRef(true);
@@ -83,6 +86,7 @@ export default function Tredicesima() {
             max={300_000}
             suffix="€"
             helpText="Il tuo stipendio lordo annuale"
+            lang={lang}
           />
           <CampoInput
             label="Mesi lavorati nell'anno"
@@ -91,6 +95,7 @@ export default function Tredicesima() {
             min={1}
             max={12}
             helpText="Per la tredicesima pro-rata (1-12)"
+            lang={lang}
           />
         </div>
       </div>
@@ -156,6 +161,7 @@ export default function Tredicesima() {
               Composizione della tredicesima
             </h3>
             <BarraScomposizione
+              lang={lang}
               total={risultato.tredicesimeLorda}
               items={[
                 { label: 'Netto', value: risultato.nettoTredicesima, color: '#22c55e' },

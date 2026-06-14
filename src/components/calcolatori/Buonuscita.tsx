@@ -1,10 +1,13 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaBuonuscita } from '../../lib/irpef-engine';
 import { formatCurrency, formatRate } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
 
-export default function Buonuscita() {
+export default function Buonuscita({ lang = 'it' }: { lang?: Lang }) {
   const [importoLordo, setImportoLordo] = useState(20_000);
   const [anniServizio, setAnniServizio] = useState(5);
   const [ralUltimoAnno, setRalUltimoAnno] = useState(35_000);
@@ -59,6 +62,7 @@ export default function Buonuscita() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <CampoInput
+            lang={lang}
             label="Importo lordo incentivo"
             value={importoLordo}
             onChange={setImportoLordo}
@@ -68,6 +72,7 @@ export default function Buonuscita() {
             helpText="L'importo lordo della buonuscita offerta"
           />
           <CampoInput
+            lang={lang}
             label="Anni di servizio"
             value={anniServizio}
             onChange={(v) => setAnniServizio(Math.max(1, Math.round(v)))}
@@ -76,6 +81,7 @@ export default function Buonuscita() {
             helpText="Anni lavorati presso l'azienda"
           />
           <CampoInput
+            lang={lang}
             label="RAL ultimo anno"
             value={ralUltimoAnno}
             onChange={setRalUltimoAnno}
@@ -176,6 +182,7 @@ export default function Buonuscita() {
               Composizione con tassazione separata
             </h3>
             <BarraScomposizione
+              lang={lang}
               total={risultato.importoLordo}
               items={[
                 { label: 'Netto', value: risultato.nettoTassazioneSeparata, color: '#22c55e' },

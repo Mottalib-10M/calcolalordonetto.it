@@ -1,5 +1,7 @@
 import { useState, useRef, useCallback, useId } from 'react';
-import { formatNumber, parseItNumber } from '../../lib/format-it';
+import { formatNumber as formatIt, parseItNumber } from '../../lib/format-it';
+import { formatNumber as formatLocale, parseNumber } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
 
 interface CampoInputProps {
   label: string;
@@ -12,6 +14,7 @@ interface CampoInputProps {
   suffix?: string;
   helpText?: string;
   id?: string;
+  lang?: Lang;
 }
 
 export default function CampoInput({
@@ -25,6 +28,7 @@ export default function CampoInput({
   suffix,
   helpText,
   id: externalId,
+  lang = 'it',
 }: CampoInputProps) {
   const generatedId = useId();
   const inputId = externalId ?? generatedId;
@@ -32,7 +36,7 @@ export default function CampoInput({
   const [focused, setFocused] = useState(false);
   const [rawValue, setRawValue] = useState('');
 
-  const displayValue = focused ? rawValue : formatNumber(value);
+  const displayValue = focused ? rawValue : (lang === 'it' ? formatIt(value) : formatLocale(value, 'en'));
 
   const handleFocus = useCallback(() => {
     setFocused(true);
@@ -46,12 +50,12 @@ export default function CampoInput({
 
   const handleBlur = useCallback(() => {
     setFocused(false);
-    const parsed = parseItNumber(rawValue);
+    const parsed = lang === 'it' ? parseItNumber(rawValue) : parseNumber(rawValue, 'en');
     let clamped = parsed;
     if (min !== undefined) clamped = Math.max(min, clamped);
     if (max !== undefined) clamped = Math.min(max, clamped);
     onChange(clamped);
-  }, [rawValue, min, max, onChange]);
+  }, [rawValue, min, max, onChange, lang]);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

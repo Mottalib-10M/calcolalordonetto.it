@@ -1,4 +1,5 @@
 import { SITE } from '../config';
+import type { Lang } from '../i18n/types';
 
 export interface SEOProps {
   title: string;
@@ -89,7 +90,8 @@ export function faqSchema(
 export function webAppSchema(
   name: string,
   description: string,
-  url: string
+  url: string,
+  lang: Lang = 'it'
 ): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
@@ -99,7 +101,7 @@ export function webAppSchema(
     url,
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'All',
-    inLanguage: 'it-IT',
+    inLanguage: lang === 'en' ? SITE.localeEn : SITE.locale,
     offers: {
       '@type': 'Offer',
       price: '0',

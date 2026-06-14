@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+
+const title = 'About Us: Free Italian Tax Calculators for Expats';
+const description = 'Free online tools to calculate Italian net salary, IRPEF, TFR, and taxes. Updated with 2026 data, all calculations run in your browser with no data collected.';
+---
+
+<Layout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        About Us
+      </h1>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        The mission of {SITE.nameEn}: making Italian taxation understandable for everyone
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>Our Mission</h2>
+      <p>
+        <strong>{SITE.nameEn}</strong> was created with a simple goal: to give every
+        worker in Italy the tools to understand how much they actually earn.
+        We believe that understanding your payslip should not require a
+        degree in economics. That is why we built a suite of free, accurate
+        calculators updated to reflect current Italian tax legislation.
+      </p>
+      <p>
+        If you are an expat living and working in Italy, navigating the Italian
+        tax system can be especially challenging. Terms like IRPEF, INPS contributions,
+        addizionali regionali, trattamento integrativo and cuneo fiscale can seem
+        overwhelming. Our calculators are designed to demystify these concepts and
+        help you understand exactly what happens between your gross salary (RAL)
+        and the net amount that reaches your bank account each month.
+      </p>
+      <p>
+        Every year Italian tax rules change: new IRPEF brackets, updated
+        deductions, revised INPS contribution rates. We are committed to
+        updating all our tools promptly so that you always get a reliable
+        and current calculation.
+      </p>
+
+      <h2>What We Offer</h2>
+      <p>
+        Our calculators cover every aspect of employee compensation in Italy
+        and more:
+      </p>
+      <ul>
+        <li>
+          <strong>Net salary calculation:</strong> from RAL (gross annual salary)
+          to monthly net pay, with a detailed breakdown of IRPEF, INPS,
+          regional/municipal surcharges and deductions
+        </li>
+        <li>
+          <strong>Reverse calculation (net to gross):</strong> to find out which
+          RAL to request in order to achieve your desired net salary
+        </li>
+        <li>
+          <strong>Payslip simulator:</strong> to read and understand every line
+          of your monthly cedolino (payslip)
+        </li>
+        <li>
+          <strong>TFR, 13th and 14th month pay:</strong> so you are never
+          surprised at year-end or when your employment ends
+        </li>
+        <li>
+          <strong>Flat-rate regime and impatriati regime:</strong> for freelancers
+          with partita IVA or workers returning to Italy from abroad
+        </li>
+        <li>
+          <strong>Financial tools:</strong> inflation calculator, compound
+          interest, mortgage and loan simulators
+        </li>
+      </ul>
+
+      <h2>Our Sources</h2>
+      <p>
+        Accuracy is our top priority. All tax parameters used in our
+        calculations come from official sources:
+      </p>
+      <ul>
+        <li>
+          <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">
+            Agenzia delle Entrate
+          </a> (Italian Revenue Agency): for IRPEF brackets, deductions,
+          supplementary tax relief and tax legislation
+        </li>
+        <li>
+          <a href="https://www.inps.it" target="_blank" rel="noopener noreferrer">
+            INPS
+          </a> (National Social Security Institute): for contribution rates,
+          ceilings and social security benefits
+        </li>
+        <li>
+          Regional and municipal resolutions: for local surcharges
+        </li>
+        <li>
+          <a href="https://www.istat.it" target="_blank" rel="noopener noreferrer">
+            ISTAT
+          </a> (Italian National Institute of Statistics): for inflation data
+          and consumer price indices
+        </li>
+      </ul>
+
+      <h2>Transparency and Limitations</h2>
+      <p>
+        We are transparent about what our tools can and cannot do.
+        Calculator results are <strong>indicative estimates</strong> based
+        on general parameters. Every individual situation may have
+        specific characteristics (particular deductions, additional income,
+        special regimes) that only a qualified professional can assess.
+      </p>
+      <p>
+        <strong>We do not provide tax, accounting or legal advice.</strong> Our
+        tools are a starting point to help you understand your situation, not a
+        substitute for a commercialista (tax advisor) or consulente del lavoro
+        (labour consultant).
+      </p>
+
+      <h2>Privacy and User Respect</h2>
+      <p>
+        We respect your privacy. We do not use profiling cookies, we do not
+        sell personal data and we use Plausible Analytics, an analytics tool
+        that works without cookies and is fully GDPR compliant.
+        All calculations run directly in your browser: no data is ever
+        sent to our servers.
+      </p>
+      <p>
+        From a technical perspective, our website does not install any cookies on the user's device. Plausible Analytics collects only aggregated, anonymous data about visits (pages visited, session duration, approximate geographic origin) without ever identifying individual visitors. We do not use Google Analytics or any other tools that require prior user consent. This approach is consistent with our philosophy: we believe a website should be able to provide a useful service without asking users to sacrifice their personal data.
+      </p>
+      <p>
+        For more details, please see our
+        <a href="/en/privacy/">Privacy Policy</a> and our
+        <a href="/en/cookie-policy/">Cookie Policy</a>.
+      </p>
+
+      <h2>Accessibility and Compatibility</h2>
+      <p>
+        We are committed to making our website accessible to as many people as possible. The interface has been designed following responsive design principles: all calculators, tables and charts adapt automatically to the screen of the device being used, whether it is a smartphone, a tablet or a desktop monitor. The site supports dark mode to reduce eye strain in low-light conditions.
+      </p>
+      <p>
+        We have tested compatibility with the main web browsers: Chrome, Firefox, Safari and Edge, in both desktop and mobile versions. Input fields are optimised for numeric keyboard use on mobile devices, and result tables are readable even on smaller screens. If you encounter any accessibility or compatibility issues, please <a href="/en/contact/">let us know</a>, specifying the device and browser you are using.
+      </p>
+
+      <h2>Our Methodology</h2>
+      <p>
+        Behind every calculator there is an algorithm developed with careful attention to the details of Italian tax law. Our approach is built on several core principles that ensure the accuracy and reliability of results.
+      </p>
+      <p>
+        All calculations use <strong>official parameters</strong> published by the Agenzia delle Entrate, INPS and local authorities. IRPEF brackets, contribution rates, employee deductions, supplementary tax relief coefficients and tax wedge thresholds are coded directly into the calculation engine. Every parameter is traceable and verifiable against the original legislative source.
+      </p>
+      <p>
+        For reverse calculations, such as converting a desired net salary into the required RAL, we use a <strong>binary search algorithm</strong>. This method finds the RAL that produces exactly the desired net pay with extreme precision (to the nearest cent), iterating rapidly between a minimum and maximum value until converging on the correct result. This is the same approach used by professional payroll software.
+      </p>
+      <p>
+        A key feature that sets us apart is that <strong>all calculations run directly in your browser</strong>, in real time, without any data being sent to an external server. This means results are instant, the site works even without an internet connection (once loaded) and your privacy is fully protected. We do not store any data entered by users, nor do we log any simulations performed.
+      </p>
+      <p>
+        Our calculators are <strong>updated every year</strong>, typically between December and January, when the Budget Law is published in the Official Gazette and the new tax parameters become effective. In the event of mid-year legislative changes (decree-laws, circulars from the Agenzia delle Entrate), we carry out extraordinary updates to ensure that results always reflect the legislation in force.
+      </p>
+
+      <h2>Our Commitment to Quality</h2>
+      <p>
+        The quality of our calculators is at the heart of everything we do. To ensure accurate results, we follow a rigorous process of verification and continuous improvement.
+      </p>
+      <p>
+        Every new tax parameter is <strong>cross-verified against multiple sources</strong>: we compare the outputs of our algorithms with real payslips, with simulators provided by the Agenzia delle Entrate and with professional software used by labour consultants. This cross-checking process allows us to identify and correct any discrepancies before they reach users.
+      </p>
+      <p>
+        <strong>Community feedback</strong> is a fundamental part of our quality process. Every report received from users is carefully analysed: if a worker tells us that the calculator result differs from their actual payslip, we investigate the cause of the discrepancy. Often these are specific elements of their CCNL (national collective bargaining agreement) or particular pay items not covered by the calculator, but in some cases feedback has helped us identify and fix imperfections in the algorithms.
+      </p>
+      <p>
+        We believe in <strong>transparency in error management</strong>. If we discover an error in the calculations, we correct it immediately and, when the impact is significant, we communicate it. We do not hide the limitations of our tools: every calculator page includes clear warnings about the indicative nature of the results and the scenarios in which the calculation might not perfectly match an individual situation.
+      </p>
+      <p>
+        We are <strong>always open to corrections and suggestions</strong>. If you are an accountant, labour consultant or tax law expert and you notice an inaccuracy, please <a href="/en/contact/">contact us</a>. Qualified reports help us maintain our tools at the highest possible level of precision.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <p>
+        <strong>Are the calculators free?</strong><br />
+        Yes, all calculators on {SITE.nameEn} are completely free and always will be. We do not require any registration, we do not ask for an email address and we do not limit the number of simulations you can run. We believe that access to tools for understanding your tax situation is a right of every worker, not a paid service. The site is supported by non-intrusive advertising, which allows us to cover development and maintenance costs without asking anything of users.
+      </p>
+
+      <p>
+        <strong>Is my data safe?</strong><br />
+        Absolutely. All calculations run entirely in your browser (client-side), which means the data you enter, such as your RAL, region or number of dependent children, is never transmitted to our servers. We do not store any personal information, we do not use profiling cookies and we do not share data with third parties. From a technical standpoint, the calculation engine is a JavaScript application that runs locally on your device. You can verify this yourself: after loading the page, you can disconnect from the internet and the calculator will continue to work perfectly.
+      </p>
+
+      <p>
+        <strong>How accurate are the results?</strong><br />
+        Our calculators offer a very high level of accuracy for the vast majority of standard situations. For a permanent employee without unusual pay elements, the result is generally aligned with the actual payslip with minimal deviation, often less than 10 euros per month. However, there are situations where the result may differ from reality: for example, in the presence of absorbable super-minimums, specific CCNL allowances, company benefits taxed in the payslip, supplementary pension fund deductions or salary assignment. In these cases, the calculator still provides an excellent starting point, but comparison with the actual payslip may show differences.
+      </p>
+
+      <p>
+        <strong>Do the calculators work on mobile?</strong><br />
+        Yes, the site and all calculators have been designed with a responsive approach, meaning they automatically adapt to any screen size. Whether you are using a smartphone, a tablet or a desktop computer, the interface reorganises itself to provide the best possible experience. Input fields are optimised for touch, tables resize for small screens and charts are interactive even on mobile devices. We have tested compatibility with the major browsers (Chrome, Safari, Firefox, Edge) on iOS and Android devices, ensuring smooth operation across all platforms.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Tax year: {SITE.annoFiscale} |
+        <a href="/en/contact/">Contact us</a> |
+        <a href="/en/terms/">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</Layout>

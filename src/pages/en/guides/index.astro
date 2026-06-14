@@ -1,0 +1,298 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../config';
+import { breadcrumbSchema } from '../../../lib/seo';
+
+const title = "Italian Tax Guides for Expats 2026: IRPEF, Salary, TFR";
+const description = "Practical tax guides for living and working in Italy. IRPEF brackets, net salary calculation, TFR severance, flat-rate regime, and impatriati regime explained.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+];
+
+const schema = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: `${SITE.url}/en/guides/`,
+    inLanguage: 'en-US',
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: `${SITE.url}/`,
+    },
+  },
+]);
+
+interface Guide {
+  title: string;
+  description: string;
+  slug: string;
+  date: string;
+  available: boolean;
+}
+
+const guides: Guide[] = [
+  {
+    title: 'How to Calculate Net Salary',
+    description: 'The complete journey from gross to net pay: INPS contributions, IRPEF, deductions, regional and municipal surcharges, and the employment tax credit explained step by step.',
+    slug: 'how-to-calculate-net-salary',
+    date: '2026-01-15',
+    available: true,
+  },
+  {
+    title: 'IRPEF Tax Brackets 2026',
+    description: 'The three IRPEF tax brackets for 2026 with rates, calculation examples, comparison with previous years, and how much you save under the new rates.',
+    slug: 'irpef-tax-brackets-2026',
+    date: '2026-01-15',
+    available: true,
+  },
+  {
+    title: 'Regional & Municipal Surcharges',
+    description: 'How regional and municipal IRPEF surcharges work, how much they affect your net pay, and the differences across Italian regions.',
+    slug: 'regional-municipal-surcharges',
+    date: '2026-05-15',
+    available: true,
+  },
+  {
+    title: '13th & 14th Month Pay Explained',
+    description: 'When you are entitled to them, how they are calculated, and how the thirteenth and fourteenth month salaries impact your annual net pay.',
+    slug: 'thirteenth-fourteenth-month-pay',
+    date: '2026-05-15',
+    available: true,
+  },
+  {
+    title: 'Impatriati Tax Regime Explained',
+    description: 'Who qualifies, how much you save, and how the preferential tax regime for workers relocating to Italy actually works.',
+    slug: 'impatriati-tax-regime',
+    date: '2026-05-15',
+    available: true,
+  },
+  {
+    title: 'Flat-Rate Regime 2026',
+    description: 'Requirements, revenue limits, profitability coefficients, and the substitute tax: everything about the flat-rate regime for freelancers (Partita IVA).',
+    slug: 'flat-rate-regime-2026',
+    date: '2026-05-15',
+    available: true,
+  },
+  {
+    title: 'How TFR (Severance Pay) Works',
+    description: 'Accrual, calculation, separate taxation, and the choice between leaving TFR with your employer or moving it to a pension fund.',
+    slug: 'how-tfr-severance-works',
+    date: '2026-05-15',
+    available: true,
+  },
+  {
+    title: 'Tax Wedge 2026',
+    description: 'The new tax wedge reduction mechanism for 2026: who benefits, how much it is worth, and how it applies to your payslip.',
+    slug: 'tax-wedge-2026',
+    date: '2026-05-15',
+    available: true,
+  },
+  {
+    title: 'How to Read an Italian Payslip',
+    description: 'Every line of the Italian payslip (busta paga) explained one by one: from gross pay to contributions, tax withholdings, and net take-home pay.',
+    slug: 'how-to-read-italian-payslip',
+    date: '2026-05-15',
+    available: true,
+  },
+];
+
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout title={title} description={description} schema={schema} lang="en">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-8">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/en/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">Guides</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Page header -->
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Italian Tax Guides 2026
+      </h1>
+      <p class="mt-3 text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+        In-depth guides on IRPEF, net salary, deductions, and taxes in Italy. Each guide includes practical examples, detailed calculations, and references to current legislation.
+      </p>
+    </header>
+
+    <!-- Introductory content -->
+    <div class="mb-12 prose prose-gray dark:prose-invert max-w-none">
+      <h2>Why we created these guides</h2>
+      <p>
+        The Italian tax system is among the most complex in Europe. With over 800 tax regulations, dozens of deductions and allowances, progressive brackets, local surcharges that vary by region and municipality, and a regulatory framework that changes every year with the Budget Law (Legge di Bilancio), navigating your own tax situation is a challenge for anyone -- especially if you are an expat working in Italy for the first time. The reality is that most workers in Italy do not fully understand the items on their payslip. Many cannot explain how IRPEF is calculated, what regional and municipal surcharges are, or why net pay differs between regions for the same gross salary (RAL).
+      </p>
+      <p>
+        These guides were created to bridge that knowledge gap. They do not replace professional tax advice, nor do they claim to cover every edge case, but they serve as a bridge between our automated calculators and a genuine understanding of how employment taxation works in Italy. Every guide is written to be accessible even if you have no background in economics or tax law: we start from the basics, explain every technical term the first time it appears, and accompany explanations with concrete examples and real numbers. Our goal is that, after reading a guide, you can use the corresponding calculator with full awareness of what is happening under the hood -- and that you can read your Italian payslip without having to look up every line item online.
+      </p>
+
+      <h2>How the guides are organized</h2>
+      <p>
+        The guides are organized by topic area, following a logical path that mirrors the way gross pay is transformed into net pay. We structured the content so it can be read sequentially for a complete understanding, or individually to dive into a specific topic. Each guide is self-contained and includes all the context needed to be understood without prerequisites.
+      </p>
+      <ul>
+        <li>
+          <strong>IRPEF and tax brackets:</strong> the heart of the Italian tax system. These guides explain how personal income tax (IRPEF) works, what the 2026 brackets and rates are (23%, 33%, 43%), how the tax is calculated progressively, and how they compare to previous years. We include comparative tables, calculation examples for different income levels, and an overview of how IRPEF brackets have evolved over time.
+        </li>
+        <li>
+          <strong>Payslip mechanics:</strong> from gross annual salary (RAL) to net take-home pay, covering INPS social contributions, net IRPEF, employment tax deductions, regional and municipal surcharges, the employment tax credit (trattamento integrativo), and the 13th month bonus. These guides break down every step of the calculation, explain the meaning of each line on the payslip (cedolino), and show how each item affects your final net pay.
+        </li>
+        <li>
+          <strong>Special tax regimes:</strong> the flat-rate regime (regime forfettario) for freelancers and the impatriati regime for workers relocating to Italy have completely different rules from the standard employee tax regime. The dedicated guides explain eligibility requirements, revenue limits, reduced tax rates, profitability coefficients, and the procedures for opting in or out of these regimes.
+        </li>
+        <li>
+          <strong>TFR and severance pay:</strong> TFR (Trattamento di Fine Rapporto) is a right for every employee in Italy, but its calculation and taxation are among the least understood aspects of compensation. The TFR guides explain how it accrues, how separate taxation works, the differences between leaving it with your employer or directing it to a pension fund, and what happens if you request an early advance.
+        </li>
+        <li>
+          <strong>Tax wedge:</strong> the new mechanism introduced in 2026, which replaced the previous contribution reduction with a system of IRPEF exemptions and deductions. The dedicated guide explains in detail how it works, who benefits, how much it is worth for different income levels, and how it is concretely applied on the payslip.
+        </li>
+      </ul>
+      <p>
+        Every guide includes practical examples with real numbers, references to current legislation, and direct links to the related calculators, so you can immediately verify what you have learned with a personalized simulation.
+      </p>
+
+      <h2>How to use the guides together with the calculators</h2>
+      <p>
+        The guides and calculators on our site are designed to work together. The recommended approach is: first read the guide for the topic that interests you to understand the calculation mechanics and regulatory context, then use the corresponding calculator to get a personalized result based on your specific data (RAL, region, municipality, family situation). This approach will help you correctly interpret the calculator results and understand why your net pay is what it is.
+      </p>
+      <p>
+        For example, if you want to understand how much IRPEF you pay, first read the <a href="/en/guides/irpef-tax-brackets-2026/">guide on IRPEF tax brackets 2026</a> to understand progressive taxation and the changes introduced by the Budget Law, then enter your RAL in the <a href="/en/irpef-tax-calculator/">IRPEF calculator</a> to see the effective tax in your case. Similarly, the <a href="/en/guides/how-to-calculate-net-salary/">guide on calculating net salary</a> explains all the steps (INPS contributions, IRPEF, deductions, surcharges, employment tax credit) that the <a href="/en/">net salary calculator</a> performs automatically. Reading the guide before using the calculator will help you verify the accuracy of the result and identify any elements of your personal situation that the calculator cannot account for automatically.
+      </p>
+      <p>
+        All guides include direct links at the bottom of the page to the related calculators and a FAQ section with answers to the most frequently asked questions on each topic.
+      </p>
+
+      <h2>Regulatory sources and updates</h2>
+      <p>
+        All information in our guides comes from <strong>official sources</strong> and is updated every year when the Budget Law and implementing decrees are published. The main sources we use are:
+      </p>
+      <ul>
+        <li>
+          <strong>Agenzia delle Entrate</strong> (<a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">agenziaentrate.gov.it</a>): for IRPEF brackets, employment tax deductions, the employment tax credit, tax wedge rules, and all provisions related to personal income tax. The Agency's circulars and resolutions are the primary reference for interpreting tax regulations.
+        </li>
+        <li>
+          <strong>INPS</strong> (<a href="https://www.inps.it" target="_blank" rel="noopener noreferrer">inps.it</a>): for contribution rates, contribution ceilings and floors, social security benefits, and the operational circulars that govern how employee and employer contributions are calculated. INPS communications are essential for correctly calculating the taxable income.
+        </li>
+        <li>
+          <strong>Gazzetta Ufficiale della Repubblica Italiana</strong>: for the text of laws, legislative decrees, and decree-laws that modify the tax and contribution framework. The Budget Law (Legge di Bilancio), published by December 31 each year, is the document that introduces the main tax changes for the following year.
+        </li>
+        <li>
+          <strong>TUIR (Consolidated Income Tax Act, D.P.R. 917/1986)</strong>: the reference legislation for IRPEF, deductions, allowances, and the rules governing employment income. Articles 11, 12, 13, and 51 of the TUIR are the ones most frequently cited in our guides.
+        </li>
+        <li>
+          <strong>Regional and municipal resolutions</strong>: for local IRPEF surcharge rates. Each region and municipality sets its own rates independently, which can vary significantly from one area to another. We monitor the resolutions published on the institutional portals of each region.
+        </li>
+      </ul>
+      <p>
+        Our guides are typically updated between December and January, when new tax parameters take effect. In case of mid-year regulatory changes (decree-laws, interpretive circulars), we make extraordinary updates. The date of the last update is always indicated in each guide.
+      </p>
+
+      <h2>Who these guides are for</h2>
+      <p>
+        Our guides are designed for a broad and diverse audience, united by the need to better understand Italian employment taxation. Here are the main user profiles that can benefit from them:
+      </p>
+      <ul>
+        <li>
+          <strong>Expats and foreign workers in Italy:</strong> if you have recently moved to Italy for work, the Italian tax system can feel overwhelming. These guides walk you through every component of your compensation -- from gross salary (RAL) to social contributions, income tax, and net pay -- in plain English. Whether you are evaluating a job offer or trying to understand your first Italian payslip, these guides will give you the clarity you need.
+        </li>
+        <li>
+          <strong>Employees who want to understand their payslip:</strong> if you look at your payslip each month without really understanding why the net amount is what it is, these guides will help you decode every item, understand how much you pay in taxes and contributions, and verify that everything is calculated correctly. Knowing how to read your payslip is the first step toward negotiating your salary with confidence.
+        </li>
+        <li>
+          <strong>Job seekers evaluating offers:</strong> when you receive a job offer with a certain RAL, knowing how much you will actually take home is essential for making an informed decision. The guides help you understand not just the monthly net pay, but also the impact of the 13th month salary, TFR, and regional differences.
+        </li>
+        <li>
+          <strong>Freelancers and self-employed professionals choosing a tax regime:</strong> the flat-rate regime, the standard regime, and the impatriati regime have very different characteristics in terms of taxation, contributions, and compliance requirements. Our guides compare the different scenarios with numerical examples, helping you figure out which option is most advantageous for your specific situation.
+        </li>
+        <li>
+          <strong>Italians abroad considering a return:</strong> the impatriati regime offers significant tax benefits for those who transfer their residence to Italy after a period abroad. The dedicated guide explains the requirements, the duration of the benefit, the percentage reduction of taxable income, and the conditions for eligibility, providing all the information needed to evaluate whether returning makes financial sense.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Guide grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {guides.map((g) => (
+        <article class={`relative rounded-xl border bg-white dark:bg-gray-900 shadow-sm transition-all ${g.available ? 'border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30' : 'border-gray-100 dark:border-gray-800 opacity-70'}`}>
+          {g.available ? (
+            <a href={`/en/guides/${g.slug}/`} class="block p-6">
+              <h2 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+                {g.title}
+              </h2>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {g.description}
+              </p>
+              <div class="mt-4 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-500">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd" />
+                </svg>
+                <time datetime={g.date}>{dateFormatter.format(new Date(g.date))}</time>
+              </div>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand">
+                Read the guide
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </span>
+            </a>
+          ) : (
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h2 class="text-lg font-semibold text-gray-500 dark:text-gray-400">
+                  {g.title}
+                </h2>
+                <span class="flex-shrink-0 inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">
+                  Coming soon
+                </span>
+              </div>
+              <p class="mt-2 text-sm text-gray-500 dark:text-gray-500 leading-relaxed">
+                {g.description}
+              </p>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 text-center">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+        Want to calculate your net salary now?
+      </h2>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">
+        Use our free calculator to get an accurate result in seconds.
+      </p>
+      <a
+        href="/en/"
+        class="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-red-700 transition-colors"
+      >
+        Calculate Net Salary
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</Layout>

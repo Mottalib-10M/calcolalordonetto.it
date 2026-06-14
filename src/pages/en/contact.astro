@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+
+const title = 'Contact Us: Feedback and Bug Reports for Calculators';
+const description = 'Found an error in a calculation or want to suggest a new feature? Send us your feedback about our Italian salary and tax calculators. We reply within 48 hours.';
+---
+
+<Layout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Contact Us
+      </h1>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        Found an error? Want to suggest an improvement? Get in touch.
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>How to Reach Us</h2>
+      <p>
+        You can contact us by writing to
+        <a href="mailto:info@calcolalordonetto.it">info@calcolalordonetto.it</a>.
+        We try to respond to all messages within a few working days.
+      </p>
+
+      <h2>What You Can Report</h2>
+      <p>
+        We appreciate all types of feedback, and in particular:
+      </p>
+      <ul>
+        <li>
+          <strong>Calculation errors:</strong> if you notice a discrepancy between
+          the calculator result and your actual payslip, please let us know with
+          as many details as possible (RAL, region, contract type).
+          This helps us improve the accuracy of our algorithms
+        </li>
+        <li>
+          <strong>Suggestions for new calculators:</strong> if you need a tool
+          that we do not yet offer, let us know. Community requests guide our
+          development priorities
+        </li>
+        <li>
+          <strong>Technical issues:</strong> if the site does not work correctly
+          on your device or browser, please tell us which device and browser
+          you are using
+        </li>
+        <li>
+          <strong>Regulatory updates:</strong> if you are aware of changes to
+          Italian tax legislation that we have not yet incorporated, let us
+          know and we will update accordingly
+        </li>
+      </ul>
+
+      <h2>What We Cannot Do</h2>
+      <div class="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/30 p-5 not-prose">
+        <div class="flex items-start gap-3">
+          <svg class="h-6 w-6 flex-shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.168-.168 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.457-1.515-2.625L8.485 2.495ZM10 6a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 6Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+          </svg>
+          <div>
+            <p class="font-semibold text-amber-800 dark:text-amber-300">
+              We do not provide individual tax advice
+            </p>
+            <p class="mt-1 text-sm text-amber-700 dark:text-amber-400">
+              We cannot answer specific questions about your personal tax
+              situation, such as "how much IRPEF will I pay on my income?"
+              or "which tax regime suits me best?". For these questions we
+              recommend consulting a <strong>commercialista</strong> (tax
+              advisor), a <strong>consulente del lavoro</strong> (labour
+              consultant) or a <strong>CAF</strong> (Tax Assistance Centre)
+              in your area.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Response Times</h2>
+      <p>
+        {SITE.nameEn} is a project run by a small team. We do our
+        best to respond to all reports, but response times may vary.
+        Reports of calculation errors receive the highest priority.
+      </p>
+
+      <h2>Contributing to the Project</h2>
+      <p>
+        If you are a developer, a tax professional or simply someone
+        passionate about improving the tools we offer, please write to us.
+        We are always open to collaborations to make our calculators
+        more precise and comprehensive.
+      </p>
+
+      <h2>Useful Resources Before Contacting Us</h2>
+      <p>
+        Before writing to us, we recommend checking whether the answer to your question is already available on our site. We have dedicated considerable time to creating informative content that covers the most common questions.
+      </p>
+      <p>
+        Our <a href="/en/guides/">Guides section</a> contains detailed explanations of the main tax topics: from how IRPEF brackets work to net salary calculation, from the flat-rate regime to TFR. Each guide includes practical examples, summary tables and regulatory references that may clarify many doubts without the need to contact us directly.
+      </p>
+      <p>
+        Each calculator page also includes a <strong>dedicated FAQ section</strong> that answers the most frequently asked questions about that specific tool. For example, on the net salary calculator page you will find explanations of how deductions work, what the regional surcharges are and how the 2026 tax wedge is applied. We encourage you to read these FAQs before writing to us, as your question may already be answered there.
+      </p>
+      <p>
+        If you are unsure which calculator to use for your specific need, check the <a href="/en/">homepage</a> where you will find all available calculators with a brief description of each. We have dedicated tools for gross-to-net calculation, net-to-gross, flat-rate regime, impatriati regime, TFR and much more. In most cases, selecting the right calculator and entering the required parameters will give you the answer you are looking for in seconds.
+      </p>
+
+      <h2>Frequently Asked Questions About Using the Site</h2>
+
+      <p>
+        <strong>How do I find the right calculator for me?</strong><br />
+        Our site offers several calculators, each designed for a specific need. If you are an employee and want to know how much you will earn net, the <a href="/en/">Net Salary Calculator</a> is the tool to use: enter your RAL and immediately get your monthly and annual net pay. If you know the net salary you want and need to find out which RAL to negotiate, use the <a href="/en/gross-salary-calculator/">Net to Gross Calculator</a>. For those working with a Partita IVA under the flat-rate regime, there is the <a href="/en/flat-rate-regime-calculator/">Flat-Rate Regime Calculator</a>. For workers returning to Italy from abroad, the <a href="/en/impatriati-tax-regime/">Impatriati Regime Calculator</a> estimates the tax advantage. We also offer tools for <a href="/en/severance-pay-calculator/">TFR calculation</a>, <a href="/en/payslip-calculator/">payslip simulation</a> and <a href="/en/region-comparison/">regional comparison</a>.
+      </p>
+
+      <p>
+        <strong>Why is the result different from my actual payslip?</strong><br />
+        There are several reasons why the calculator result may differ from the actual net amount on your payslip. The most common reason relates to <strong>pay items specific to your CCNL</strong> (National Collective Bargaining Agreement): individual super-minimums, shift allowances, meal allowances, performance bonuses and other variable elements that are not included in the base RAL and that the calculator cannot account for without additional information. Another frequent cause is <strong>company benefits taxed on the payslip</strong>, such as a company car for mixed use, meal vouchers above the exempt threshold or supplementary health insurance. <strong>Voluntary deductions</strong> such as salary assignment, trade union dues, supplementary pension fund contributions or company loans also reduce the actual net compared to the theoretical calculation. Finally, in months where the payslip includes tax adjustments, back pay or one-off items, the monthly comparison may not be meaningful: in these cases it is more useful to compare the net on an annual basis.
+      </p>
+
+      <p>
+        <strong>Are the calculators updated every year?</strong><br />
+        Yes, we update all calculators every year in conjunction with the publication of the Budget Law in the Official Gazette, which typically occurs between late December and early January. The update includes a review of all tax parameters: IRPEF brackets, INPS contribution rates, employee deduction thresholds, supplementary tax relief amounts, tax wedge parameters and regional and municipal surcharge rates. In the event of legislative changes during the year (decree-laws, interpretive circulars from the Agenzia delle Entrate), we carry out extraordinary updates. The reference tax year is always clearly indicated on every calculator page, so you can verify that the parameters being used are current.
+      </p>
+
+      <p>
+        <strong>Can I use the calculators for my tax return?</strong><br />
+        Our calculators provide <strong>indicative estimates</strong> and do not in any way replace the official filing of a tax return (Modello 730 or Modello Redditi PF). The information produced by the calculators can be useful for getting a general idea of the tax due or the expected refund, but a tax return requires consideration of all income received, all applicable deductions and credits, and any specific elements of the personal situation (property income, capital income, foreign income, tax credits, etc.). For filing your return we recommend consulting an accountant, labour consultant or CAF, who can assess your overall situation and ensure compliance with the regulations.
+      </p>
+
+      <p>
+        <strong>How do I report a calculation error?</strong><br />
+        If you believe the calculator produces an incorrect result, please write to us at <a href="mailto:info@calcolalordonetto.it">info@calcolalordonetto.it</a> including as much detail as possible. The most useful information for diagnosing the issue includes: the <strong>RAL entered</strong>, the <strong>region and municipality</strong> selected, the <strong>applicable CCNL</strong> and number of monthly payments, the <strong>result obtained</strong> from the calculator and the <strong>expected result</strong> (for example, the net from your actual payslip). If possible, please also attach an anonymised copy of the payslip to facilitate comparison. Every report is handled with the highest priority and helps us continuously improve the accuracy of our algorithms.
+      </p>
+
+      <h2>Other Ways to Support Us</h2>
+      <p>
+        Beyond contacting us directly, there are other ways you can support the {SITE.nameEn} project and contribute to its continuous improvement.
+      </p>
+      <p>
+        The simplest way is to <strong>share the site</strong> with colleagues, friends and family who might find it useful. Many workers, especially expats in Italy, do not fully understand their tax situation, and a free tool for calculating net from gross can make a significant difference, particularly during salary negotiations or when changing jobs. If our calculator has helped you better understand your payslip, spread the word: word of mouth is the best way to grow a free resource.
+      </p>
+      <p>
+        You can also share the link to the specific calculator you found most useful on social networks, in work discussion groups, on personal finance forums or in colleague chat groups. Every share helps another worker understand how much they really earn and make more informed decisions about their career and salary.
+      </p>
+      <p>
+        Every <strong>piece of feedback is valuable</strong> and helps us improve. You do not need to have found an error to write to us: suggestions on how to make the interface more intuitive, requests for new features and observations about content clarity are all extremely useful. We read and consider every message, and many of the features currently available on our calculators were born directly from user feedback.
+      </p>
+      <p>
+        If you are a tax or labour professional and would like to collaborate in a more structured way, for example by contributing to the review of guide content, verifying calculation parameters or drafting thematic articles, we are open to collaboration. Write to us at <a href="mailto:info@calcolalordonetto.it">info@calcolalordonetto.it</a>, briefly introducing yourself and explaining how you would like to contribute.
+      </p>
+
+      <h2>Privacy in Communications</h2>
+      <p>
+        Emails sent to our contact address are processed in compliance with privacy regulations (GDPR, EU Regulation 2016/679). We use them exclusively to respond to your enquiry and they are not shared with third parties, added to mailing lists or used for commercial purposes. We do not send newsletters, promotional emails or unsolicited communications. For more details on personal data processing, please see our <a href="/en/privacy/">Privacy Policy</a>.
+      </p>
+      <p>
+        We remind you that all calculations performed on our site run directly in your browser and no data entered into the calculators is transmitted to our servers or recorded in any way. The only information we receive is what you choose to voluntarily communicate to us via email.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        See also: <a href="/en/about/">About Us</a> | <a href="/en/privacy/">Privacy Policy</a> | <a href="/en/terms/">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</Layout>

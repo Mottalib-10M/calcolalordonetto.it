@@ -1,14 +1,17 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
 import SelettoreMensilita from '../ui/SelettoreMensilita';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaStipendio } from '../../lib/irpef-engine';
 import { formatCurrency, formatPercent, formatNumber } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
 
 const ORE_ANNO_STANDARD = 1720;
 
-export default function CostoAziendale() {
+export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(30_000);
   const [regione, setRegione] = useState('LOM');
   const [mensilita, setMensilita] = useState<12 | 13 | 14>(13);
@@ -89,6 +92,7 @@ export default function CostoAziendale() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <CampoInput
+            lang={lang}
             label="RAL (Retribuzione Annua Lorda)"
             value={ral}
             onChange={setRal}
@@ -97,9 +101,10 @@ export default function CostoAziendale() {
             suffix="€"
             helpText="Stipendio lordo annuale del dipendente"
           />
-          <SelettoreRegione value={regione} onChange={setRegione} />
-          <SelettoreMensilita value={mensilita} onChange={setMensilita} />
+          <SelettoreRegione lang={lang} value={regione} onChange={setRegione} />
+          <SelettoreMensilita lang={lang} value={mensilita} onChange={setMensilita} />
           <CampoInput
+            lang={lang}
             label="Aliquota INAIL"
             value={aliquotaINAIL}
             onChange={setAliquotaINAIL}
@@ -169,6 +174,7 @@ export default function CostoAziendale() {
               Composizione del costo aziendale
             </h3>
             <BarraScomposizione
+              lang={lang}
               total={risultato.costoTotale}
               items={[
                 { label: 'RAL', value: ral, color: '#3b82f6' },

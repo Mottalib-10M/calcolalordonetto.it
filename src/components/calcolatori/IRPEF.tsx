@@ -10,12 +10,15 @@ import {
 } from '../../lib/irpef-engine';
 import { calcolaAddizionaleRegionale } from '../../data/regioni';
 import { formatCurrency, formatRate } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
 import { decodeState, pushState } from '../../lib/url-state';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
 import BarraScomposizione from '../ui/BarraScomposizione';
 
-export default function IRPEF() {
+export default function IRPEF({ lang = 'it' }: { lang?: Lang }) {
   const [reddito, setReddito] = useState(30_000);
   const [regione, setRegione] = useState('LOM');
 
@@ -104,8 +107,9 @@ export default function IRPEF() {
           step={500}
           suffix="€"
           helpText="Reddito lordo annuo (RAL o reddito complessivo)"
+          lang={lang}
         />
-        <SelettoreRegione value={regione} onChange={handleRegioneChange} />
+        <SelettoreRegione value={regione} onChange={handleRegioneChange} lang={lang} />
       </div>
 
       {/* Results */}
@@ -253,6 +257,7 @@ export default function IRPEF() {
               Scomposizione del reddito
             </h2>
             <BarraScomposizione
+              lang={lang}
               total={reddito}
               items={[
                 {

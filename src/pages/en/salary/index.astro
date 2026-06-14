@@ -1,0 +1,355 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../config';
+import { calcolaStipendio } from '../../../lib/irpef-engine';
+import { formatCurrency } from '../../../lib/format';
+import { breadcrumbSchema } from '../../../lib/seo';
+
+const title = `RAL to Net Salary Table Italy ${SITE.annoFiscale}: €15k to €150k`;
+const description = `Gross salary (RAL) to net monthly pay conversion table: every level from €15,000 to €150,000 with IRPEF, INPS, regional surcharges, and effective tax rate.`;
+
+const ralAmounts = [
+  15_000, 18_000, 20_000, 22_000,
+  25_000, 27_000, 28_000, 30_000, 32_000, 35_000, 38_000,
+  40_000, 42_000, 45_000, 50_000, 55_000,
+  60_000, 65_000, 70_000, 80_000, 90_000, 100_000, 120_000, 150_000,
+];
+
+interface RalPreview {
+  ral: number;
+  slug: string;
+  nettoMensile: number;
+}
+
+const ralPreviews: RalPreview[] = ralAmounts.map((ral) => {
+  const result = calcolaStipendio({ ral, regione: 'LOM', mensilita: 13 });
+  return {
+    ral,
+    slug: `${ral}-euro-net`,
+    nettoMensile: result.nettoMensile,
+  };
+});
+
+interface RalGroup {
+  label: string;
+  description: string;
+  items: RalPreview[];
+}
+
+const groups: RalGroup[] = [
+  {
+    label: 'Low Salaries',
+    description: 'RAL from \u20AC15,000 to \u20AC22,000: entry-level positions and part-time contracts',
+    items: ralPreviews.filter((r) => r.ral >= 15_000 && r.ral <= 22_000),
+  },
+  {
+    label: 'Average Salaries',
+    description: 'RAL from \u20AC25,000 to \u20AC38,000: the most common salary range in Italy',
+    items: ralPreviews.filter((r) => r.ral >= 25_000 && r.ral <= 38_000),
+  },
+  {
+    label: 'Above-Average Salaries',
+    description: 'RAL from \u20AC40,000 to \u20AC55,000: specialized roles and middle management',
+    items: ralPreviews.filter((r) => r.ral >= 40_000 && r.ral <= 55_000),
+  },
+  {
+    label: 'High Salaries',
+    description: 'RAL from \u20AC60,000 to \u20AC150,000: executives, managers, and senior roles',
+    items: ralPreviews.filter((r) => r.ral >= 60_000 && r.ral <= 150_000),
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Salary', url: `${SITE.url}/en/salary/` },
+];
+
+const schemas = [breadcrumbSchema(breadcrumbs)];
+const schemaString = JSON.stringify(schemas);
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`${SITE.url}/en/salary/`}
+  schema={schemaString}
+  lang="en"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/en/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">Salary</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <div class="mb-12">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+        Net Salary for Every Gross Salary (RAL) Level in {SITE.annoFiscale}
+      </h1>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
+        How much do you actually take home? Select your gross salary (RAL) to see the full breakdown with
+        IRPEF, INPS contributions, regional surcharges, and deductions. All values are updated to
+        {SITE.annoFiscale} tax legislation.
+      </p>
+    </div>
+
+    <!-- RAL groups -->
+    {groups.map((group) => (
+      <section class="mb-12">
+        <div class="mb-4">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{group.label}</h2>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{group.description}</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {group.items.map((item) => (
+            <a
+              href={`/en/salary/${item.slug}/`}
+              class="group flex flex-col justify-between rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand hover:shadow-md transition-all"
+            >
+              <div>
+                <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">RAL</p>
+                <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+                  {formatCurrency(item.ral, 'en')}
+                </p>
+              </div>
+              <div class="mt-4 flex items-end justify-between">
+                <div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">Monthly net</p>
+                  <p class="text-lg font-semibold text-brand">
+                    ~{formatCurrency(item.nettoMensile, 'en')}
+                  </p>
+                </div>
+                <svg class="h-5 w-5 text-gray-300 dark:text-gray-600 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Editorial content -->
+    <section class="mb-16 max-w-3xl">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        What Is RAL and Why It Matters
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none">
+        <p>
+          RAL stands for Retribuzione Annua Lorda, or Gross Annual Salary. It is the total amount that
+          an employer commits to paying an employee over one year, before any tax or social security
+          deductions. RAL includes the base salary, the thirteenth month pay (tredicesima) and the
+          fourteenth month pay (quattordicesima, if required by the applicable collective bargaining
+          agreement), seniority increments, and any fixed allowances established by the relevant national
+          collective agreement (CCNL).
+        </p>
+        <p>
+          When a company extends a job offer in Italy, the figure stated in the employment letter is almost
+          always the RAL. It is therefore the primary benchmark used in salary negotiations. The net pay,
+          the amount actually credited to your bank account each month, depends on a series of factors that
+          reduce the gross figure: INPS social security contributions paid by the employee, IRPEF income
+          tax, regional and municipal surcharges, employment tax credits, the tax wedge (cuneo fiscale),
+          and the supplementary tax relief (trattamento integrativo). The ratio between gross and net pay
+          therefore varies according to the income level, the region of residence, the municipality, and
+          the employee's family situation.
+        </p>
+
+        <h3>Components of RAL</h3>
+        <p>
+          RAL is calculated by multiplying the monthly base pay by the number of monthly payments specified
+          in the employment contract. Most Italian national collective agreements (CCNL) provide for 13
+          monthly payments: 12 regular salaries plus the thirteenth month pay (tredicesima), which is
+          typically disbursed in December. Some contracts, such as the Commerce CCNL (CCNL Commercio), the
+          Tourism CCNL (CCNL Turismo), and the Metalworking CCNL (CCNL Metalmeccanico), also provide for
+          a fourteenth month pay (quattordicesima), bringing the total to 14 annual payments.
+        </p>
+        <p>
+          In addition to the base pay, RAL includes seniority increments (scatti di anzianita), which are
+          automatic periodic raises defined by the CCNL based on years of service with the same employer.
+          Under some contracts, such as the Metalworking CCNL, the increment occurs every two years; under
+          others, such as the Commerce CCNL, every three years. Individual supplementary pay (superminimi
+          individuali), that is, additional amounts granted by the employer to a specific employee outside
+          the CCNL framework, also counts toward RAL.
+        </p>
+        <p>
+          Items that are not part of RAL include non-monetary company benefits such as meal vouchers (buoni
+          pasto), a company car for mixed use (which has a specific tax treatment based on ACI tables), corporate
+          welfare, variable performance bonuses, and the severance indemnity (TFR, Trattamento di Fine
+          Rapporto). The TFR is a form of deferred compensation that the employee accrues each year at
+          approximately 6.91% of RAL, but it is set aside and not paid out monthly.
+        </p>
+
+        <h3>RAL vs. Employer Cost: Two Different Concepts</h3>
+        <p>
+          RAL represents the employee's gross salary, but it is not the total cost the employer bears for
+          that employee. The employer cost includes, in addition to RAL, the social security and insurance
+          contributions paid by the employer, the TFR, and IRAP (regional business tax). Employer-side
+          contributions typically amount to between 30% and 32% of RAL, depending on the industry and
+          company size.
+        </p>
+        <p>
+          To give a sense of scale: with a RAL of 30,000 euros, the total employer cost is roughly
+          41,000 to 42,000 euros. With a RAL of 50,000 euros, the employer cost exceeds 68,000 euros.
+          This gap explains why companies often think in terms of a "per-position budget" rather than
+          simply the gross salary.
+        </p>
+
+        <h3>Practical Example: From Gross Salary to Monthly Net</h3>
+        <p>
+          Consider a single employee residing in Milan (Lombardy) with a RAL of 30,000 euros spread
+          over 13 monthly payments. Here is how the monthly net pay is derived.
+        </p>
+        <p>
+          <strong>Employee INPS contributions:</strong> 30,000 x 9.19% = 2,757 euros per year.
+          The taxable income becomes: 30,000 - 2,757 = 27,243 euros.
+        </p>
+        <p>
+          <strong>Gross IRPEF:</strong> the entire taxable amount falls within the first bracket (up to
+          28,000 euros, rate 23%), so the gross IRPEF is 27,243 x 23% = 6,266 euros.
+        </p>
+        <p>
+          <strong>Deductions:</strong> the employment tax credit for a taxable income of 27,243 euros
+          is approximately 1,766 euros. The tax wedge (cuneo fiscale) adds a 1,000 euro deduction for
+          incomes between 20,001 and 32,000 euros. Net IRPEF becomes: 6,266 - 1,766 - 1,000 = roughly
+          3,500 euros.
+        </p>
+        <p>
+          <strong>Surcharges:</strong> the Lombardy regional surcharge on this taxable income is
+          approximately 358 euros. The municipal surcharge (Milan, rate 0.8%) is approximately 218 euros.
+        </p>
+        <p>
+          <strong>Result:</strong> the annual net pay is approximately 30,000 - 2,757 - 3,500 - 358 - 218 =
+          23,167 euros. Divided by 13 monthly payments, the monthly net pay is approximately 1,782 euros.
+        </p>
+
+        <h3>Typical RAL by Profession in Italy</h3>
+        <p>
+          Gross salaries in Italy vary significantly by industry, experience, and geographic location. To
+          provide a realistic picture, here are typical salary ranges in the Italian market in 2026, based
+          on data from the OD&amp;M Consulting Salary Observatories and JobPricing surveys.
+        </p>
+        <p>
+          A recent graduate entering the private sector typically starts with a RAL between 22,000 and
+          26,000 euros. A clerical employee (impiegato) with 3 to 5 years of experience earns a RAL
+          between 25,000 and 32,000 euros. A junior software developer starts at 24,000 to 28,000 euros,
+          while a senior developer with 5 or more years of experience reaches 38,000 to 50,000 euros. An
+          experienced industrial engineer typically earns between 35,000 and 48,000 euros.
+        </p>
+        <p>
+          Managers and mid-level executives (quadri) earn RALs between 45,000 and 65,000 euros, while
+          senior executives (dirigenti) start from 70,000 euros and can easily exceed 120,000 euros in
+          the finance, pharmaceutical, and tech sectors. IT professionals, data engineers, and cybersecurity
+          specialists have seen their pay rise significantly in recent years, with roles such as DevOps
+          engineers and data scientists earning between 40,000 and 60,000 euros even with relatively
+          few years of experience.
+        </p>
+
+        <h3>Regional Differences in Net Pay</h3>
+        <p>
+          For the same RAL, your monthly net pay changes depending on your region of residence, due to
+          the different rates of the regional IRPEF surcharge (addizionale regionale). Lazio applies the
+          highest rates, with a progressive structure reaching up to 3.33% for high incomes. The regions
+          with the lowest surcharges are Friuli Venezia Giulia, Sardinia, and Trentino-Alto Adige.
+        </p>
+        <p>
+          The actual difference between the "best" and "worst" region depends on the RAL level. For a
+          RAL of 30,000 euros, the monthly difference is roughly 15 to 25 euros; for a RAL of 60,000
+          euros, the gap widens to 50 to 70 euros per month. Over a full year, this difference can amount
+          to several hundred euros. For those working remotely who can choose where to establish their
+          residence, the region becomes a variable worth careful consideration.
+        </p>
+        <p>
+          In addition to regional surcharges, the municipal surcharge (addizionale comunale) also affects
+          net pay. Each municipality sets its own rate within a maximum ceiling of 0.8%, and some
+          municipalities provide exemption thresholds for lower incomes. Major cities such as Rome (0.9%
+          with a special surcharge), Milan (0.8%), and Turin (0.8%) generally apply the maximum rates.
+        </p>
+
+        <h3>How to Negotiate Your RAL</h3>
+        <p>
+          RAL is the focal point of any salary negotiation, whether at the hiring stage or when asking
+          for a raise. To prepare for an effective negotiation, you need to know your market value, that
+          is, the standard salary range for your role, industry, and experience level in your geographic
+          area.
+        </p>
+        <p>
+          Useful tools for this assessment include the annual reports by JobPricing (Italian Salary
+          Report), salary surveys from Hays, Michael Page, and Mercer, and anonymous data collected by
+          Glassdoor and Indeed. ISTAT (the Italian National Institute of Statistics) periodically publishes
+          statistics on average salaries by sector and job classification (ATECO code), which can be
+          consulted free of charge at istat.it.
+        </p>
+        <p>
+          During a negotiation, focusing solely on RAL can be limiting. The total compensation package
+          also includes benefits such as meal vouchers, supplementary health insurance, pension fund
+          contributions, remote working arrangements, additional vacation days, and variable bonuses. A
+          2,000 euro increase in RAL produces a net monthly increase of roughly 90 to 110 euros (depending
+          on the income bracket), whereas a daily meal voucher of 8 euros is worth approximately 1,760
+          euros net per year for someone working 220 days, entirely tax-exempt if issued in electronic
+          format.
+        </p>
+
+        <h3>Official Sources and Legal References</h3>
+        <p>
+          The calculations presented on these pages are based on Italian tax legislation in force for
+          2026. The main sources are:
+        </p>
+        <ul>
+          <li>
+            <strong>Testo Unico delle Imposte sui Redditi (TUIR)</strong>, Presidential Decree 917/1986,
+            as amended by the 2026 Budget Law, which defines the IRPEF brackets (23%, 33%, 43%), the
+            employment tax credits, and the rules for determining taxable income.
+          </li>
+          <li>
+            <strong>INPS</strong>: the social security contribution rates for private-sector employees
+            are set at 9.19% payable by the employee. The maximum contribution ceiling for 2026 is
+            approximately 119,650 euros. Reference: annual INPS circular on contribution rates.
+          </li>
+          <li>
+            <strong>Agenzia delle Entrate</strong> (Italian Revenue Agency): the tables for regional
+            and municipal IRPEF surcharges are published annually and can be consulted on the
+            agenziaentrate.gov.it website under the local taxes section.
+          </li>
+          <li>
+            <strong>Budget Laws 2025 and 2026</strong>: made the three-bracket IRPEF structure
+            permanent, confirmed the tax wedge with the exempt sum for incomes up to 20,000 euros and
+            the 1,000 euro deduction for incomes between 20,001 and 40,000 euros, and reduced the
+            second bracket rate from 35% to 33%.
+          </li>
+          <li>
+            <strong>ISTAT</strong>: data on average and median salaries in Italy is drawn from the
+            Structure of Earnings Survey (SES), published on istat.it.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mt-16 mb-12 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 text-center">
+      <h2 class="text-2xl font-bold text-white">Your salary not listed?</h2>
+      <p class="mt-3 text-gray-300 max-w-xl mx-auto">
+        Use our calculator to enter any amount and get your personalized net salary with region, municipality, and family situation.
+      </p>
+      <a
+        href="/en/"
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+      >
+        Calculate your net salary
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </section>
+  </div>
+</Layout>

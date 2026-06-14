@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import InteresseComposto from '../../components/calcolatori/InteresseComposto';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Compound Interest Calculator: Investment Growth Projection";
+const description = "See how your money grows with compound interest. Enter initial capital, monthly contributions, and expected return to get year-by-year projections and totals.";
+const canonical = canonicalURL('/en/compound-interest-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Compound Interest Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Compound Interest Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <InteresseComposto client:load lang={lang} />
+</CalcolatoreLayout>

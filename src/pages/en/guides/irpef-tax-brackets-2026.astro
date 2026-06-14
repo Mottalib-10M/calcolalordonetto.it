@@ -1,0 +1,204 @@
+---
+import GuidaLayout from '../../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../../config';
+
+const lang = 'en' as const;
+const title = "IRPEF Tax Brackets 2026: Italian Income Tax Rates Guide";
+const description = "Italy's 2026 IRPEF brackets explained: 23% up to €28k, 35% up to €50k, 43% above. How progressive taxation works, effective rates, and practical examples.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+  { name: 'IRPEF Tax Brackets 2026', url: `${SITE.url}/en/guides/irpef-tax-brackets-2026/` },
+];
+
+const faqs = [
+  {
+    question: 'How does progressive taxation work in Italy?',
+    answer: 'Italy uses a progressive (a scaglioni) income tax system. This means that each tax bracket only applies to the portion of income that falls within it &mdash; not to your entire income. For example, if you earn &euro;35,000, you pay 23% on the first &euro;28,000 and 35% only on the remaining &euro;7,000. Your effective (average) tax rate will always be lower than the marginal rate of your highest bracket. This system is mandated by Article 53 of the Italian Constitution, which requires taxation to be proportional to one\'s ability to pay.',
+  },
+  {
+    question: 'What is the difference between effective tax rate and marginal tax rate?',
+    answer: 'The <strong>marginal rate</strong> (aliquota marginale) is the tax rate applied to the last euro you earn &mdash; i.e., the rate of the bracket your income falls into. The <strong>effective rate</strong> (aliquota media/effettiva) is the total IRPEF divided by your total taxable income, expressed as a percentage. For instance, on &euro;40,000 taxable income the marginal rate is 35%, but the effective rate is about 26.2%. The effective rate always reflects the blended impact of all lower brackets.',
+  },
+  {
+    question: 'Has the number of IRPEF brackets changed recently?',
+    answer: 'Yes. Until 2023, Italy had four IRPEF brackets (23%, 25%, 35%, 43%). Starting from 2024, the government merged the first two brackets into a single 23% bracket covering income up to &euro;28,000. This change was made permanent (structural) from 2025 onward. The result is three brackets: 23% up to &euro;28,000, 35% from &euro;28,001 to &euro;50,000, and 43% above &euro;50,000. The reform benefits taxpayers with income between &euro;15,001 and &euro;28,000, who previously paid 25% on part of their income.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  lang={lang}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#what-is-irpef" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">What Is IRPEF?</a></li>
+      <li><a href="#2026-tax-brackets" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">The 2026 Tax Brackets</a></li>
+      <li><a href="#how-progressive-taxation-works" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How Progressive Taxation Works</a></li>
+      <li><a href="#effective-vs-marginal-rate" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Effective vs Marginal Rate</a></li>
+      <li><a href="#employment-income-deductions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Employment Income Deductions</a></li>
+      <li><a href="#calculation-examples" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Calculation Examples</a></li>
+      <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="what-is-irpef">What Is IRPEF?</h2>
+
+  <p>
+    IRPEF (Imposta sul Reddito delle Persone Fisiche) is Italy's personal income tax. It applies to all residents on their worldwide income and to non-residents on Italian-source income. IRPEF is a <strong>progressive tax</strong> &mdash; the rate increases as your income rises &mdash; and it is the single largest deduction you will see on your Italian payslip (busta paga).
+  </p>
+  <p>
+    IRPEF is regulated by the Testo Unico delle Imposte sui Redditi (TUIR, DPR 917/1986) and is collected through payroll withholding (ritenuta alla fonte) by the employer, who acts as a tax substitute (sostituto d'imposta). The tax is calculated on your <strong>taxable income</strong> (imponibile fiscale), which is your gross salary minus INPS social security contributions.
+  </p>
+
+  <h2 id="2026-tax-brackets">The 2026 Tax Brackets</h2>
+
+  <p>
+    Since 2024, Italy has used <strong>three IRPEF brackets</strong> (scaglioni). This simplified structure was made permanent from 2025 and continues unchanged into 2026:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Taxable income bracket</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Rate</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Max tax in bracket</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Up to &euro;28,000</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100 font-semibold">23%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;6,440</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;28,001 &ndash; &euro;50,000</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100 font-semibold">35%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;7,700</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Above &euro;50,000</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100 font-semibold">43%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">No cap</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Note: until 2023 there were four brackets, with a separate 25% band for income between &euro;15,001 and &euro;28,000. The 2024 reform merged this into the 23% bracket, giving a tax cut to middle earners.
+  </p>
+
+  <h2 id="how-progressive-taxation-works">How Progressive Taxation Works</h2>
+
+  <p>
+    A common misconception is that moving into a higher bracket means <em>all</em> your income is taxed at the higher rate. This is incorrect. Italy's IRPEF is calculated <strong>per bracket</strong> (a scaglioni progressivi): each rate applies only to the slice of income that falls within that bracket.
+  </p>
+  <p>
+    For example, if your taxable income is &euro;35,000:
+  </p>
+  <ul>
+    <li>The first &euro;28,000 is taxed at 23% = &euro;6,440</li>
+    <li>The remaining &euro;7,000 (&euro;35,000 &minus; &euro;28,000) is taxed at 35% = &euro;2,450</li>
+    <li>Total gross IRPEF = &euro;6,440 + &euro;2,450 = <strong>&euro;8,890</strong></li>
+  </ul>
+  <p>
+    Your marginal rate is 35% (the bracket your last euro falls into), but your effective rate is &euro;8,890 / &euro;35,000 = <strong>25.4%</strong> &mdash; significantly lower than the marginal rate.
+  </p>
+
+  <h2 id="effective-vs-marginal-rate">Effective vs Marginal Rate</h2>
+
+  <p>
+    Understanding the distinction between these two rates is essential for financial planning in Italy:
+  </p>
+  <ul>
+    <li><strong>Marginal rate</strong> (aliquota marginale): the rate applied to your next euro of income. This tells you how much tax you will pay on a raise, a bonus, or overtime. If you earn &euro;40,000, your marginal rate is 35%.</li>
+    <li><strong>Effective rate</strong> (aliquota effettiva): the total IRPEF divided by total taxable income. This represents your actual average tax burden. At &euro;40,000 the effective rate is about 26.2%, because the first &euro;28,000 was taxed at only 23%.</li>
+  </ul>
+  <p>
+    The effective rate is further reduced by deductions (detrazioni), meaning the real-world bite is lower still. You can model both rates with our <a href="/en/irpef-tax-calculator/">IRPEF calculator</a>.
+  </p>
+
+  <h2 id="employment-income-deductions">Employment Income Deductions</h2>
+
+  <p>
+    After calculating gross IRPEF, employees benefit from the <strong>detrazione per lavoro dipendente</strong> (employment income deduction). This is a tax credit that directly reduces the amount of IRPEF owed. The deduction is inversely proportional to income: the lower your income, the larger the deduction.
+  </p>
+  <p>
+    For 2026, the key thresholds are:
+  </p>
+  <ul>
+    <li><strong>Income up to &euro;15,000:</strong> deduction of &euro;1,955 (with a minimum floor of &euro;690 for permanent contracts, &euro;1,380 for fixed-term)</li>
+    <li><strong>Income &euro;15,001 to &euro;28,000:</strong> &euro;1,910 + &euro;1,190 &times; (28,000 &minus; income) / 13,000</li>
+    <li><strong>Income &euro;28,001 to &euro;50,000:</strong> &euro;1,910 &times; (50,000 &minus; income) / 22,000</li>
+    <li><strong>Income above &euro;50,000:</strong> no deduction</li>
+  </ul>
+
+  <h2 id="calculation-examples">Calculation Examples</h2>
+
+  <p>Here are quick IRPEF examples at several income levels (before deductions):</p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Taxable income</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Gross IRPEF</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Effective rate</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Marginal rate</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;20,000</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;4,600</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">23.0%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">23%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;35,000</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;8,890</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">25.4%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">35%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;50,000</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;14,140</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">28.3%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">35%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;80,000</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;27,040</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">33.8%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">43%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    For a detailed, personalised calculation including deductions and surcharges, use our <a href="/en/irpef-tax-calculator/">IRPEF calculator</a>.
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" lang={lang} />
+  </div>
+
+</GuidaLayout>

@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaPlusvalenzaImmobiliare } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
 /** IRPEF 2026 marginal rates for the dropdown */
 const ALIQUOTE_IRPEF = [
@@ -10,7 +11,7 @@ const ALIQUOTE_IRPEF = [
   { label: '43% (reddito oltre 50.000 €)', value: 0.43 },
 ];
 
-export default function PlusvalenzaImmobiliare() {
+export default function PlusvalenzaImmobiliare({ lang = 'it' }: { lang?: Lang }) {
   const [prezzoVendita, setPrezzoVendita] = useState(280_000);
   const [prezzoAcquisto, setPrezzoAcquisto] = useState(200_000);
   const [costiAcquisto, setCostiAcquisto] = useState(15_000);
@@ -47,6 +48,7 @@ export default function PlusvalenzaImmobiliare() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Prezzo di vendita"
               value={prezzoVendita}
               onChange={setPrezzoVendita}
@@ -57,6 +59,7 @@ export default function PlusvalenzaImmobiliare() {
             />
 
             <CampoInput
+              lang={lang}
               label="Prezzo di acquisto originale"
               value={prezzoAcquisto}
               onChange={setPrezzoAcquisto}
@@ -67,6 +70,7 @@ export default function PlusvalenzaImmobiliare() {
             />
 
             <CampoInput
+              lang={lang}
               label="Costi di acquisto documentati"
               value={costiAcquisto}
               onChange={setCostiAcquisto}
@@ -78,6 +82,7 @@ export default function PlusvalenzaImmobiliare() {
             />
 
             <CampoInput
+              lang={lang}
               label="Costi di ristrutturazione documentati"
               value={costiRistrutturazione}
               onChange={setCostiRistrutturazione}
@@ -89,6 +94,7 @@ export default function PlusvalenzaImmobiliare() {
             />
 
             <CampoInput
+              lang={lang}
               label="Anni di possesso"
               value={anniPossesso}
               onChange={(v) => setAnniPossesso(Math.round(v))}

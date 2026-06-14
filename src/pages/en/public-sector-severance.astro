@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Buonuscita from '../../components/calcolatori/Buonuscita';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Buonuscita Calculator 2026: Italian Public Sector TFS";
+const description = "Calculate your buonuscita (TFS) as Italian public sector employee. Estimate end-of-service lump sum based on years worked, final salary, and applicable tax.";
+const canonical = canonicalURL('/en/public-sector-severance/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Buonuscita Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Buonuscita Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Buonuscita client:load lang={lang} />
+</CalcolatoreLayout>

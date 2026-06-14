@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaBonusRistrutturazione } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
 /** Bonus types with their deduction %, ceiling, and duration */
 const TIPI_BONUS = [
@@ -31,7 +32,7 @@ function stimaIRPEFAnnua(ral: number): number {
   return irpef;
 }
 
-export default function BonusRistrutturazione() {
+export default function BonusRistrutturazione({ lang = 'it' }: { lang?: Lang }) {
   const [costoLavori, setCostoLavori] = useState(40_000);
   const [tipoBonusIdx, setTipoBonusIdx] = useState(0);
   const [ral, setRal] = useState(35_000);
@@ -87,6 +88,7 @@ export default function BonusRistrutturazione() {
             </div>
 
             <CampoInput
+              lang={lang}
               label="Costo totale dei lavori"
               value={costoLavori}
               onChange={setCostoLavori}
@@ -110,6 +112,7 @@ export default function BonusRistrutturazione() {
             </div>
 
             <CampoInput
+              lang={lang}
               label="RAL (Reddito Annuo Lordo)"
               value={ral}
               onChange={setRal}

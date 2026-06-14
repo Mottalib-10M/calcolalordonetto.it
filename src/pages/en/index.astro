@@ -1,0 +1,285 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import StipendioNetto from '../../components/calcolatori/StipendioNetto';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Net Salary Calculator Italy 2026: RAL to Take-Home Pay";
+const description = "Enter your gross annual salary (RAL) and instantly see your net monthly pay. Updated 2026 IRPEF brackets, INPS, regional surcharges, and deductions included.";
+const canonical = canonicalURL('/en/');
+
+const breadcrumbs = [
+  { name: 'Home', url: canonical },
+  { name: 'Net Salary Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Italian Net Salary Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <!-- Calculator -->
+  <StipendioNetto client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      How to calculate Italian net salary from gross
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        To calculate your Italian net salary from your RAL (Retribuzione Annua Lorda, or gross annual salary), you need to subtract taxes and social security contributions. Here is the step-by-step process:
+      </p>
+      <ol>
+        <li>
+          <strong>Subtract INPS contributions:</strong> 9.19% of your gross salary goes to INPS (Istituto Nazionale della Previdenza Sociale), Italy's social security system. This funds your pension and welfare benefits. The result is your taxable income (imponibile fiscale).
+        </li>
+        <li>
+          <strong>Calculate gross IRPEF:</strong> IRPEF (Imposta sul Reddito delle Persone Fisiche) is Italy's progressive personal income tax. In 2026, there are three brackets: 23% up to €28,000, 33% from €28,001 to €50,000, and 43% above €50,000.
+        </li>
+        <li>
+          <strong>Apply deductions:</strong> Italy offers several tax deductions (detrazioni) that reduce your IRPEF. These include employment income deductions (which vary by income level), spouse and dependent children deductions, and the 2026 tax wedge (cuneo fiscale) benefit.
+        </li>
+        <li>
+          <strong>Subtract surcharges:</strong> On top of national IRPEF, you pay regional surcharges (addizionale regionale, ranging from 0.70% to 3.33% depending on your region) and municipal surcharges (addizionale comunale, averaging about 0.8%).
+        </li>
+        <li>
+          <strong>Add supplementary benefit:</strong> If your income is below €15,000, you receive the trattamento integrativo of €1,200/year (€100/month). Between €15,001 and €28,000, a reduced amount may apply.
+        </li>
+      </ol>
+      <p>
+        The final result is your <strong>annual net salary</strong>. Divide by the number of pay periods (12, 13, or 14 months) to get your <strong>monthly net pay</strong>.
+      </p>
+
+      <h3>The 2026 tax wedge: what expats need to know</h3>
+      <p>
+        Starting in 2026, Italy introduced a new tax wedge reduction mechanism (cuneo fiscale) that replaces the previous temporary INPS contribution cuts from 2023-2025. The new system works entirely on the tax side, preserving full pension contributions:
+      </p>
+      <ul>
+        <li>
+          <strong>Income up to €20,000:</strong> A percentage of your employment income (ranging from 4.8% to 7.1%) is exempt from taxation, effectively reducing your IRPEF.
+        </li>
+        <li>
+          <strong>Income from €20,001 to €32,000:</strong> You receive a fixed additional IRPEF deduction of €1,000 per year, on top of standard employment deductions.
+        </li>
+        <li>
+          <strong>Income from €32,001 to €40,000:</strong> The €1,000 deduction phases out gradually, reaching zero at €40,000. Above €40,000, no tax wedge benefit applies.
+        </li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <!-- IRPEF brackets 2026 -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      IRPEF Tax Brackets 2026
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Income bracket</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Rate</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Maximum IRPEF in bracket</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Up to &euro;28,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">23%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;6,440.00</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;28,001 to &euro;50,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">33%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;7,260.00</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Above &euro;50,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">43%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">No limit</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Italy's IRPEF system is <strong>progressive</strong>: each rate applies only to the portion of income falling within that bracket, not the entire amount. For example, with a taxable income of €35,000, you pay 23% on the first €28,000 and 33% only on the remaining €7,000.
+      </p>
+      <h3>Examples for common salary levels</h3>
+      <ul>
+        <li><strong>RAL €25,000:</strong> monthly net approximately €1,540 (13 pay periods)</li>
+        <li><strong>RAL €30,000:</strong> monthly net approximately €1,780 (13 pay periods)</li>
+        <li><strong>RAL €40,000:</strong> monthly net approximately €2,260 (13 pay periods)</li>
+        <li><strong>RAL €50,000:</strong> monthly net approximately €2,690 (13 pay periods)</li>
+        <li><strong>RAL €60,000:</strong> monthly net approximately €3,120 (13 pay periods)</li>
+      </ul>
+      <p>
+        These values are approximate, calculated using the Lombardia region. Your actual net pay depends on your region, municipality, and family situation — use the calculator above for an accurate result.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          What is RAL and where do I find it?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            RAL stands for Retribuzione Annua Lorda (Gross Annual Salary). It is the total annual compensation your employer pays you before any taxes or social security contributions are deducted. It includes your base monthly salary multiplied by the number of pay periods (typically 13 or 14 in Italy), plus any fixed allowances. You can find your RAL in your employment contract (contratto di lavoro), offer letter (lettera di assunzione), or your CU (Certificazione Unica) that your employer provides annually. Note that RAL does not include employer-side contributions, TFR, or company benefits.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          What are the 2026 IRPEF tax brackets?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            In 2026, Italy's IRPEF (personal income tax) has three progressive brackets. The first bracket taxes income up to €28,000 at 23%. The second bracket covers €28,001 to €50,000 at 33%, reduced from the previous 35% thanks to the 2026 Budget Law (Legge di Bilancio). The third bracket, for income above €50,000, has a rate of 43%. Remember the system is progressive: if you earn €60,000, the 43% rate only applies to the €10,000 exceeding €50,000, not your entire income.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          Why does my net pay vary by region and municipality?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            In addition to national IRPEF, Italy has local surcharges that vary by where you are registered as a resident (residenza). The addizionale regionale (regional surcharge) ranges from 0.70% in Friuli-Venezia Giulia (lowest bracket) to 3.33% in Lazio (highest bracket). Most regions apply progressive rates with multiple brackets, similar to national IRPEF. The addizionale comunale (municipal surcharge) varies by municipality, averaging about 0.8% but reaching up to 0.9% in some cities. Together, these surcharges can cost from a few hundred to over €1,000 per year, depending on your income and residence. This is why selecting your region and municipality in the calculator is important for an accurate result.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          What is the tredicesima and why does Italy have 13 or 14 pay periods?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            In Italy, most employment contracts include a tredicesima (13th-month salary), paid in December as a kind of year-end bonus. Some contracts (especially in commerce, tourism, and certain industries) also include a quattordicesima (14th-month salary), typically paid in June or July. These are not bonuses — they are part of your RAL, simply distributed over more pay periods. If your RAL is €30,000 with 13 pay periods, your monthly gross is €30,000 / 13 = €2,307.69 (instead of €2,500 with 12). The annual net remains the same regardless of whether you choose 12, 13, or 14 pay periods — only the monthly amount changes.
+          </p>
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
+          What is TFR (trattamento di fine rapporto)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            TFR (Trattamento di Fine Rapporto) is Italy's mandatory severance pay system. Your employer sets aside approximately 1/13.5 of your gross annual salary each year (roughly 7.4%). This money accrues throughout your employment and is paid out when you leave the company (for any reason — resignation, dismissal, or retirement). You can choose to keep TFR with your employer (where it earns a modest legally-guaranteed return) or direct it to a pension fund (fondo pensione) for potentially higher returns and tax advantages. TFR is not deducted from your paycheck — it is an additional cost to your employer on top of your RAL.
+          </p>
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/en/gross-salary-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Gross Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Find out the RAL you need to achieve a specific monthly net salary.
+        </p>
+      </a>
+
+      <a
+        href="/en/irpef-tax-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Detailed IRPEF calculation showing tax by bracket with deductions.
+        </p>
+      </a>
+
+      <a
+        href="/en/region-comparison/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Region Comparison
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Compare net salary across Italian regions to see how residence impacts your pay.
+        </p>
+      </a>
+
+      <a
+        href="/en/payslip-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Payslip Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Simulate a complete Italian monthly payslip (busta paga) with all line items.
+        </p>
+      </a>
+
+      <a
+        href="/en/severance-pay-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          TFR Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Estimate your TFR (severance pay) accrual and taxation.
+        </p>
+      </a>
+
+      <a
+        href="/en/impatriati-tax-regime/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Impatriati Tax Regime
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calculate tax savings under Italy's impatriati regime for returning workers and expats.
+        </p>
+      </a>
+    </div>
+  </Fragment>
+</CalcolatoreLayout>

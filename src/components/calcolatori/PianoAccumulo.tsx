@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaPAC } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
-export default function PianoAccumulo() {
+export default function PianoAccumulo({ lang = 'it' }: { lang?: Lang }) {
   const [versamentoMensile, setVersamentoMensile] = useState(200);
   const [rendimentoPercent, setRendimentoPercent] = useState(7);
   const [durataAnni, setDurataAnni] = useState(20);
@@ -44,6 +45,7 @@ export default function PianoAccumulo() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Versamento mensile"
               value={versamentoMensile}
               onChange={setVersamentoMensile}
@@ -54,6 +56,7 @@ export default function PianoAccumulo() {
             />
 
             <CampoInput
+              lang={lang}
               label="Rendimento annuo atteso"
               value={rendimentoPercent}
               onChange={setRendimentoPercent}
@@ -65,6 +68,7 @@ export default function PianoAccumulo() {
             />
 
             <CampoInput
+              lang={lang}
               label="Durata in anni"
               value={durataAnni}
               onChange={(v) => setDurataAnni(Math.round(v))}
@@ -75,6 +79,7 @@ export default function PianoAccumulo() {
             />
 
             <CampoInput
+              lang={lang}
               label="Capitale iniziale"
               value={capitaleIniziale}
               onChange={setCapitaleIniziale}
@@ -86,6 +91,7 @@ export default function PianoAccumulo() {
             />
 
             <CampoInput
+              lang={lang}
               label="Costo di ingresso"
               value={costoIngressoPercent}
               onChange={setCostoIngressoPercent}
@@ -97,6 +103,7 @@ export default function PianoAccumulo() {
             />
 
             <CampoInput
+              lang={lang}
               label="Costo di gestione annuo"
               value={costoGestionePercent}
               onChange={setCostoGestionePercent}

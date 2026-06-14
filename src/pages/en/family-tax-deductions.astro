@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import DetrazioniFamiliari from '../../components/calcolatori/DetrazioniFamiliari';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Family Tax Deductions Italy 2026: Spouse and Children";
+const description = "Calculate IRPEF deductions for spouse, children, and dependents in Italy. Updated 2026 thresholds, income phase-outs, and interaction with Assegno Unico.";
+const canonical = canonicalURL('/en/family-tax-deductions/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Family Tax Deductions', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Family Tax Deductions"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <DetrazioniFamiliari client:load lang={lang} />
+</CalcolatoreLayout>

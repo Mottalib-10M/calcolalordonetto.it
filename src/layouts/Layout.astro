@@ -1,6 +1,9 @@
 ---
 import '../styles/global.css';
 import { SITE } from '../config';
+import type { Lang } from '../i18n/types';
+import { getAlternatePath } from '../i18n/routes';
+import { canonicalURL } from '../lib/seo';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 
@@ -11,6 +14,7 @@ interface Props {
   ogImage?: string;
   noindex?: boolean;
   schema?: string;
+  lang?: Lang;
 }
 
 const {
@@ -20,21 +24,35 @@ const {
   ogImage = `${SITE.url}/og-default.png`,
   noindex = false,
   schema,
+  lang = 'it',
 } = Astro.props;
 
-const canonicalURL = canonical || Astro.url.href;
+const canonicalHref = canonical || Astro.url.href;
+const locale = lang === 'en' ? SITE.localeEn : SITE.locale;
+const ogLocale = lang === 'en' ? 'en_US' : 'it_IT';
+
+// Build hreflang links
+const currentPath = new URL(canonicalHref).pathname;
+const alternatePath = getAlternatePath(currentPath, lang);
+const itPath = lang === 'it' ? currentPath : alternatePath;
+const enPath = lang === 'en' ? currentPath : alternatePath;
 ---
 
 <!DOCTYPE html>
-<html lang="it-IT">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={canonicalHref} />
 
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Hreflang -->
+    {itPath && <link rel="alternate" hreflang="it" href={canonicalURL(itPath)} />}
+    {enPath && <link rel="alternate" hreflang="en" href={canonicalURL(enPath)} />}
+    {itPath && <link rel="alternate" hreflang="x-default" href={canonicalURL(itPath)} />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -48,9 +66,9 @@ const canonicalURL = canonical || Astro.url.href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:url" content={canonicalHref} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="it_IT" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content={SITE.name} />
 
     <!-- Twitter Card -->
@@ -63,11 +81,11 @@ const canonicalURL = canonical || Astro.url.href;
     {schema && <script type="application/ld+json" set:html={schema} />}
   </head>
   <body class="bg-white dark:bg-gray-950 text-charcoal dark:text-gray-100 min-h-screen flex flex-col">
-    <Header />
+    <Header lang={lang} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
 
     <!-- Dark mode detection from system preference -->
     <script is:inline>

@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import RegimeImpatriati from '../../components/calcolatori/RegimeImpatriati';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Impatriati Regime Calculator 2026: Expat Tax Savings";
+const description = "Moving to Italy? Calculate your tax savings under the impatriati regime. Compare standard vs reduced taxation with 50% income exemption and €600k annual cap.";
+const canonical = canonicalURL('/en/impatriati-tax-regime/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Impatriati Tax Regime', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Impatriati Tax Regime"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <RegimeImpatriati client:load lang={lang} />
+</CalcolatoreLayout>

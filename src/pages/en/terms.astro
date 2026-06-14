@@ -1,0 +1,263 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+
+const title = 'Terms of Service: Calculator Usage and Disclaimers';
+const description = "Terms of use for our Italian tax calculators. Results are estimates for informational purposes only and do not constitute professional tax or financial advice.";
+const lastUpdated = '15 May 2026';
+---
+
+<Layout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Terms of Service
+      </h1>
+      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+        Last updated: {lastUpdated}
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>1. Scope and Acceptance of Terms</h2>
+      <p>
+        These Terms of Service (hereinafter "Terms") govern access to and use of the website <strong>{SITE.domain}</strong> (hereinafter "the Website") and all services offered therein, including salary calculators, informational guides and comparative tables.
+      </p>
+      <p>
+        Access to and use of the Website implies full and unconditional acceptance of these Terms. If you do not accept these Terms, please do not use the Website and leave immediately.
+      </p>
+      <p>
+        These Terms constitute a legally binding agreement between the website owner and the user. The user declares that they have the legal capacity to accept these Terms and be bound by the provisions contained herein.
+      </p>
+
+      <h2>2. Definitions</h2>
+      <p>
+        For the purposes of these Terms, the following definitions apply:
+      </p>
+      <ul>
+        <li><strong>"Website":</strong> the website {SITE.domain} and all its content, services and functionality</li>
+        <li><strong>"Owner":</strong> the entity that operates the Website, as identified in the <a href="/en/legal-notice/">Legal Notice</a> section</li>
+        <li><strong>"User":</strong> any natural person who accesses the Website or uses its services</li>
+        <li><strong>"Calculator":</strong> the online tool that estimates net salary from RAL and other parameters</li>
+        <li><strong>"Services":</strong> all functionality offered by the Website, including calculators, informational guides and comparative tables</li>
+        <li><strong>"Content":</strong> all text, images, graphics, source code, algorithms, design and any other material on the Website</li>
+      </ul>
+
+      <h2>3. Description of the Service</h2>
+      <p>
+        The Website provides the following services free of charge:
+      </p>
+      <ul>
+        <li><strong>Online calculators</strong> for estimating net salary, gross salary, IRPEF, TFR and other values related to employee compensation in Italy</li>
+        <li><strong>Informational guides</strong> on employment taxation, IRPEF brackets, employee deductions and family allowances, social security contributions and other aspects of the Italian payslip</li>
+        <li><strong>Comparative tables</strong> by region, RAL amount, monthly net salary and other tax variables</li>
+      </ul>
+      <p>
+        All services are offered free of charge and without registration. The Website does not require account creation, does not have restricted areas and does not offer paid services.
+      </p>
+
+      <h2>4. Indicative Nature of Results: Not Tax Advice</h2>
+      <p>
+        <strong>The results produced by the Website's calculators are indicative and approximate estimates, provided exclusively for informational and educational purposes.</strong>
+      </p>
+      <p>
+        The user acknowledges and accepts that:
+      </p>
+      <ul>
+        <li>Calculations are based on general parameters of Italian tax legislation for the year {SITE.annoFiscale} and may not reflect specific individual circumstances</li>
+        <li>Results <strong>do not constitute tax, financial, social security or legal advice</strong> and cannot in any way substitute the opinion of a qualified professional</li>
+        <li>Results do not in any way replace the payslip prepared by the employer or labour consultant</li>
+        <li>Results have no legal, contractual, certification or evidentiary value and cannot be used for such purposes</li>
+        <li>Factors such as specific deductions, additional income, particular tax regimes (such as the flat-rate regime), additional contributions, contractual agreements, company benefits, family allowances or regional and municipal regulations may cause significant deviations between the estimate and the actual value</li>
+        <li>Legislative changes subsequent to the calculator's last update may render the parameters used obsolete</li>
+      </ul>
+      <p>
+        <strong>Users are advised to consult a commercialista (tax advisor), consulente del lavoro (labour consultant) or CAF for precise and personalised calculations.</strong> The Website owner disclaims all liability for the use of calculator results as a basis for economic, financial, contractual or other decisions.
+      </p>
+
+      <h2>5. Commitment to Accuracy</h2>
+      <p>
+        While unable to guarantee the absolute accuracy of results, the owner is committed to:
+      </p>
+      <ul>
+        <li>Using tax parameters updated to current legislation</li>
+        <li>Basing calculations on official sources (Agenzia delle Entrate, INPS, regional and municipal resolutions)</li>
+        <li>Promptly updating algorithms in the event of legislative changes</li>
+        <li>Documenting calculation methodologies and sources used</li>
+        <li>Clearly indicating any limitations or approximations in the results</li>
+        <li>Correcting errors reported by users as quickly as possible</li>
+      </ul>
+
+      <h2>6. Permitted Use</h2>
+      <p>
+        The Website and its services are intended for personal and informational use. The user agrees to:
+      </p>
+      <ul>
+        <li>Use the Website in compliance with Italian law and applicable regulations</li>
+        <li>Not use the Website for illegal, fraudulent or otherwise unlawful activities</li>
+        <li>Not attempt to compromise the security, integrity or availability of the Website</li>
+        <li>Not reproduce, modify, distribute or redistribute the Website's content without authorisation</li>
+        <li>Not use automated systems (bots, crawlers, scrapers) to access the Website's content in a massive or systematic manner</li>
+        <li>Not present calculator results as official calculations, certifications or professional opinions</li>
+      </ul>
+
+      <h2>7. Prohibited Uses</h2>
+      <p>
+        Without prejudice to the provisions of the preceding section, the following uses of the Website are expressly prohibited:
+      </p>
+      <ul>
+        <li>Unauthorised access to the Website's computer systems, servers or databases</li>
+        <li>The use of reverse engineering, decompilation or disassembly techniques on the Website's algorithms</li>
+        <li>Removal, alteration or concealment of copyright notices, trademarks or other intellectual property indications</li>
+        <li>Creation of derivative works based on the Website's content without written authorisation from the owner</li>
+        <li>Use of the Website to send unsolicited communications (spam) or to distribute malware</li>
+        <li>Attempts to overload the Website's servers with excessive requests (DDoS attacks or similar)</li>
+        <li>Use of the Website to collect information about other users</li>
+        <li>Any commercial use of the Website's content without prior written authorisation from the owner</li>
+      </ul>
+      <p>
+        The owner reserves the right to take all necessary measures to prevent and counteract prohibited uses, including blocking access to the Website and referring the matter to the competent authorities.
+      </p>
+
+      <h2>8. Intellectual Property</h2>
+      <p>
+        All Website content, including but not limited to text, guides, algorithms, source code, graphic design, logos, trademarks, layout, database structure and all other material, is protected by Italian copyright law (Law No. 633 of 22 April 1941, as amended) and international intellectual property regulations, including the Berne Convention for the Protection of Literary and Artistic Works and Directive 2001/29/EC.
+      </p>
+      <p>
+        Any reproduction, distribution, transmission, modification, adaptation, translation or commercial use of the content without prior written authorisation from the Website owner is prohibited. Users may view and print the Website's content exclusively for personal and non-commercial use.
+      </p>
+      <p>
+        Any third-party trademarks, logos and distinctive signs mentioned on the Website are the property of their respective owners and are used exclusively for informational and descriptive purposes, without implying any affiliation or endorsement.
+      </p>
+
+      <h2>9. User-Generated Content</h2>
+      <p>
+        The Website currently does not provide features allowing users to publish, upload or share their own content (comments, reviews, public feedback, etc.). Should such features be introduced in the future, these Terms will be updated to govern usage conditions, licensing, moderation and removal of inappropriate content.
+      </p>
+      <p>
+        Communications sent by users via the <a href="/en/contact/">contact page</a> are considered private and will not be published on the Website without the author's consent.
+      </p>
+
+      <h2>10. Service Availability</h2>
+      <p>
+        The Website and services are provided "as is" and "as available". The owner endeavours to ensure the availability of the Website to the extent reasonably possible, but does not guarantee that the service will be accessible continuously, without interruption or free of errors.
+      </p>
+      <p>
+        The Website may be temporarily unavailable for the following reasons:
+      </p>
+      <ul>
+        <li>Scheduled or emergency maintenance</li>
+        <li>Technical updates to infrastructure or software</li>
+        <li>Internet connectivity issues</li>
+        <li>Force majeure (natural disasters, power outages, etc.)</li>
+        <li>Cyber attacks or security breach attempts</li>
+      </ul>
+      <p>
+        The owner shall not be liable for any damage or inconvenience arising from the temporary or permanent unavailability of the Website or any part thereof.
+      </p>
+
+      <h2>11. Disclaimer of Warranties</h2>
+      <p>
+        The Website and services are provided without warranties of any kind, express or implied, including but not limited to:
+      </p>
+      <ul>
+        <li>Warranties of fitness for a particular purpose</li>
+        <li>Warranties of accuracy, completeness or timeliness of results</li>
+        <li>Warranties of continuous and uninterrupted service availability</li>
+        <li>Warranties of absence of errors, viruses or other harmful components</li>
+        <li>Warranties of compatibility with all devices, browsers or operating systems</li>
+      </ul>
+
+      <h2>12. Limitation of Liability</h2>
+      <p>
+        To the maximum extent permitted by applicable law, the Website owner shall not be liable for:
+      </p>
+      <ul>
+        <li>Direct, indirect, incidental, consequential, special or punitive damages arising from the use or inability to use the Website</li>
+        <li>Decisions made by the user based on results provided by the calculator</li>
+        <li>Errors, inaccuracies or omissions in calculations or informational content</li>
+        <li>Interruptions, delays or technical malfunctions of the Website</li>
+        <li>Any damage arising from access to external websites linked through the Website</li>
+        <li>Loss of data, lost profits, loss of business opportunities or other economic damages</li>
+      </ul>
+      <p>
+        In no event shall the owner's total liability to the user exceed the amount paid by the user for the use of the Website's services. As the services are provided free of charge, this amount is zero.
+      </p>
+
+      <h2>13. Indemnification</h2>
+      <p>
+        The user agrees to indemnify and hold harmless the Website owner, its collaborators, consultants and service providers from any claim, demand for compensation, damage, cost or expense (including legal fees) arising from or connected to:
+      </p>
+      <ul>
+        <li>The user's violation of these Terms</li>
+        <li>The user's improper or unlawful use of the Website</li>
+        <li>The user's violation of third-party rights in connection with the use of the Website</li>
+        <li>The user's violation of applicable laws or regulations</li>
+      </ul>
+      <p>
+        This indemnification obligation survives the user's cessation of use of the Website and any termination of these Terms.
+      </p>
+
+      <h2>14. Links to External Websites</h2>
+      <p>
+        The Website may contain links to third-party websites, provided exclusively for informational purposes and for the user's convenience. The owner exercises no control over the content of such websites and assumes no responsibility for the content, privacy policies, commercial practices or terms of use of third-party websites. Users access external websites at their own risk.
+      </p>
+
+      <h2>15. Changes to the Service and Terms</h2>
+      <p>
+        The owner reserves the right to:
+      </p>
+      <ul>
+        <li>Modify, suspend or discontinue any feature of the Website at any time without notice</li>
+        <li>Update these Terms at their discretion</li>
+        <li>Restrict access to the Website for technical, security or any other reasons</li>
+        <li>Introduce new features or services, including paid services, with specific terms</li>
+      </ul>
+      <p>
+        Changes to the Terms will be effective from the moment of publication on the Website. The date of the last update is indicated at the top of this page. Continued use of the Website after the publication of changes to the Terms constitutes acceptance of those changes. We recommend checking this page periodically for any updates.
+      </p>
+
+      <h2>16. Governing Law and Jurisdiction</h2>
+      <p>
+        These Terms are governed by <strong>Italian law</strong> and shall be interpreted in accordance with the provisions of the Italian legal system and directly applicable European Union law.
+      </p>
+      <p>
+        For any dispute arising from the interpretation, performance or breach of these Terms, the court of the <strong>consumer's place of residence or domicile</strong> shall have jurisdiction, pursuant to Article 66-bis of the Italian Consumer Code (Legislative Decree 206/2005). For users who do not qualify as consumers under the Consumer Code, the Court of Milan shall have exclusive jurisdiction.
+      </p>
+      <p>
+        Users are also informed of the possibility of using the <strong>ODR platform</strong> (Online Dispute Resolution) of the European Commission for the alternative resolution of online disputes: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>. The ODR platform allows consumers and professionals in the European Union to resolve disputes related to online purchases without going to court.
+      </p>
+
+      <h2>17. Severability</h2>
+      <p>
+        Should one or more clauses of these Terms be deemed invalid, void or unenforceable by a competent judicial or administrative authority, such invalidity shall not affect the validity and effectiveness of the remaining clauses, which shall remain in full force and effect.
+      </p>
+      <p>
+        In such event, the invalid clause shall be replaced by a valid provision that most closely approximates the intent and economic purpose of the original clause, to the extent permitted by applicable law.
+      </p>
+
+      <h2>18. Entire Agreement</h2>
+      <p>
+        These Terms, together with the <a href="/en/privacy/">Privacy Policy</a>, the <a href="/en/cookie-policy/">Cookie Policy</a> and the <a href="/en/legal-notice/">Legal Notice</a>, constitute the entire agreement between the Website owner and the user regarding the use of the Website and the services offered, and supersede any prior agreement, understanding or communication, oral or written, on the same subject matter.
+      </p>
+      <p>
+        The failure to exercise a right provided by these Terms does not constitute a waiver of that right. A waiver of a right must be in writing to be effective.
+      </p>
+
+      <h2>19. Contact</h2>
+      <p>
+        For any question, clarification, report or request relating to these Terms of Service, users may contact the owner via the <a href="/en/contact/">contact page</a> of the Website.
+      </p>
+      <p>
+        The owner undertakes to respond to requests as quickly as possible and in any case within the timeframes required by applicable regulations.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        See also: <a href="/en/legal-notice/">Legal Notice</a> | <a href="/en/privacy/">Privacy Policy</a> | <a href="/en/cookie-policy/">Cookie Policy</a>
+      </p>
+    </div>
+  </div>
+</Layout>

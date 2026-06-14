@@ -1,4 +1,7 @@
-import { formatCurrency } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyIt } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
 interface TabellaItem {
   label: string;
@@ -8,19 +11,22 @@ interface TabellaItem {
 
 interface TabellaDettaglioProps {
   items: TabellaItem[];
+  lang?: Lang;
 }
 
-export default function TabellaDettaglio({ items }: TabellaDettaglioProps) {
+export default function TabellaDettaglio({ items, lang = 'it' }: TabellaDettaglioProps) {
+  const fmtCurrency = (v: number) => lang === 'it' ? formatCurrencyIt(v) : formatCurrencyLocale(v, 'en');
+
   return (
     <div className="overflow-x-auto -mx-2 sm:mx-0">
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b-2 border-gray-200 dark:border-gray-700">
             <th className="py-2 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">
-              Voce
+              {t('ui.tableHeaderItem', lang)}
             </th>
             <th className="py-2 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">
-              Importo
+              {t('ui.tableHeaderAmount', lang)}
             </th>
           </tr>
         </thead>
@@ -60,7 +66,7 @@ export default function TabellaDettaglio({ items }: TabellaDettaglioProps) {
                   ].join(' ')}
                 >
                   {isNegativo && item.value > 0 ? '- ' : ''}
-                  {formatCurrency(isNegativo ? item.value : item.value)}
+                  {fmtCurrency(isNegativo ? item.value : item.value)}
                 </td>
               </tr>
             );

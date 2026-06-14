@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Inflazione from '../../components/calcolatori/Inflazione';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Inflation Calculator: Purchasing Power Loss Over Time";
+const description = "See how inflation erodes your money's value year after year. Enter any amount and time period to calculate future purchasing power and the real value of savings.";
+const canonical = canonicalURL('/en/inflation-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Inflation Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Inflation Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Inflazione client:load lang={lang} />
+</CalcolatoreLayout>

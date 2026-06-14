@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import ComparatoreRegioni from '../../components/calcolatori/ComparatoreRegioni';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Net Salary by Italian Region 2026: Tax Comparison Tool";
+const description = "Compare your take-home pay across all 21 Italian regions. See how regional and municipal surcharges change your net monthly salary for any gross income level.";
+const canonical = canonicalURL('/en/region-comparison/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Region Comparison', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Region Tax Comparison"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <ComparatoreRegioni client:load lang={lang} />
+</CalcolatoreLayout>

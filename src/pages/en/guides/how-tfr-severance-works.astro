@@ -1,0 +1,189 @@
+---
+import GuidaLayout from '../../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../../config';
+
+const lang = 'en' as const;
+const title = "TFR Severance Pay Italy: How It Works and Is Taxed";
+const description = "How TFR (trattamento di fine rapporto) accrues at RAL÷13.5 each year. Separate taxation rules, company vs pension fund, early withdrawal, and net payout.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+  { name: 'TFR Severance Pay', url: `${SITE.url}/en/guides/how-tfr-severance-works/` },
+];
+
+const faqs = [
+  {
+    question: 'When do I receive my TFR (severance pay)?',
+    answer: 'If your TFR is kept with your employer, you receive the full accumulated amount when your employment relationship ends, regardless of the reason -- resignation, dismissal, mutual agreement, retirement, or end of a fixed-term contract. There is no minimum service period. Even if you leave after a few months, you are entitled to the TFR accrued during that time. The employer must pay it with your final payslip (ultima busta paga), typically within 30-45 days of the employment end date. If your TFR is allocated to a pension fund (fondo pensione), you will access it according to the fund\'s rules, generally at retirement.',
+  },
+  {
+    question: 'Can I request an advance on my TFR while still employed?',
+    answer: 'Yes, under Art. 2120 of the Civil Code, employees who have at least <strong>8 years of continuous service</strong> with the same employer may request an advance of up to <strong>70%</strong> of the TFR accrued to that date. The advance can only be requested once during the employment relationship (some CCNLs allow a second request) and must be justified by specific needs: (1) healthcare expenses for the employee or family members; (2) purchase of a primary residence for the employee or their children. The employer is obligated to grant the advance, but only up to 10% of eligible employees (and 4% of the total workforce) may receive it in any given year.',
+  },
+  {
+    question: 'How is TFR taxed when I receive it?',
+    answer: 'TFR is subject to <strong>tassazione separata</strong> (separate taxation), meaning it is not added to your regular annual income and does not push you into a higher IRPEF bracket. Instead, it is taxed at an average rate calculated on your income over the years the TFR accrued. The formula uses your average taxable income from the last 5 years, applies the IRPEF brackets to that average, and derives a percentage that is then applied to the TFR amount. For most employees, this results in a <strong>lower effective tax rate</strong> than the marginal IRPEF rate they pay on regular income. The annual revaluation portion of the TFR is taxed separately at a flat 17% substitute tax.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  lang={lang}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#what-is-tfr" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">What Is TFR?</a></li>
+      <li><a href="#how-tfr-accrues" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How TFR Accrues</a></li>
+      <li><a href="#company-vs-pension-fund" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Company vs Pension Fund</a></li>
+      <li><a href="#how-tfr-is-taxed" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How TFR Is Taxed</a></li>
+      <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="what-is-tfr">What Is TFR?</h2>
+
+  <p>
+    TFR (Trattamento di Fine Rapporto), commonly translated as "severance pay" or "end-of-service allowance", is a form of deferred compensation that every Italian employee accrues during their employment. Governed by Art. 2120 of the Italian Civil Code (Codice Civile), TFR is a mandatory benefit -- every employer must set aside a portion of the employee's gross annual salary each year.
+  </p>
+  <p>
+    Unlike severance pay in many other countries, TFR is not a penalty or compensation for termination. It is paid whenever the employment relationship ends, regardless of the reason: voluntary resignation, dismissal for cause, redundancy, mutual agreement, retirement, or end of a fixed-term contract. In essence, it functions as forced savings that the employee accumulates throughout their career with each employer.
+  </p>
+  <p>
+    For expats moving to Italy, TFR is one of the most distinctive features of the Italian employment system. It effectively reduces your immediate take-home pay (since the employer "retains" a portion of your gross salary as TFR) but provides a lump-sum payment when you eventually leave the job.
+  </p>
+
+  <h2 id="how-tfr-accrues">How TFR Accrues</h2>
+
+  <p>
+    The annual TFR accrual is determined by a straightforward formula defined in Art. 2120 of the Civil Code:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Component</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">Formula / Value</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Annual accrual</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">RAL &divide; 13.5 (approximately 7.41% of gross annual salary)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Annual revaluation</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">1.5% fixed + 75% of ISTAT consumer price index (CPI)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">INPS contribution deduction</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">0.50% of RAL (deducted from annual accrual)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The "RAL" used in this formula includes all regular compensation: base salary, the tredicesima (13th month), the quattordicesima (14th month) if applicable, and any other recurring pay elements defined by the CCNL. Overtime, bonuses, and expense reimbursements are generally excluded.
+  </p>
+  <p>
+    For example, an employee with a RAL of &euro;35,000 accrues approximately &euro;2,593 in TFR per year (&euro;35,000 &divide; 13.5). After 10 years at this salary level, the accumulated TFR (before revaluation) would be roughly &euro;25,930. With the annual revaluation applied each year to the previously accumulated balance, the total can be significantly higher, especially during periods of elevated inflation.
+  </p>
+  <p>
+    It is important to note that a 0.50% INPS contribution (contributo INPS al Fondo di Garanzia) is deducted from the annual TFR accrual, slightly reducing the net amount set aside. This contribution funds the INPS guarantee fund that pays employees' TFR if the employer becomes insolvent.
+  </p>
+
+  <h2 id="company-vs-pension-fund">Company vs Pension Fund</h2>
+
+  <p>
+    When starting a new job in Italy, employees must make an important choice within their first six months: where to allocate their TFR. The two options are:
+  </p>
+  <ol>
+    <li><strong>Keep it with the employer (TFR in azienda):</strong> the employer retains the TFR as part of the company's balance sheet. The amount accrues and is revalued annually. For companies with more than 50 employees, the TFR is transferred to an INPS fund (Fondo di Tesoreria), but the effect for the employee is essentially the same. You receive the full accumulated amount when your employment ends.</li>
+    <li><strong>Allocate to a pension fund (fondo pensione):</strong> the TFR is transferred monthly to a complementary pension fund of your choice. The employee (and often the employer) can make additional voluntary contributions. The TFR becomes part of your supplementary retirement savings and is generally accessible only at retirement, with some exceptions.</li>
+  </ol>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Feature</th>
+          <th class="py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300">With Employer</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">Pension Fund</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Accessibility</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">At employment end</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Generally at retirement</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Return</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">1.5% + 75% of CPI</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Market-dependent</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Tax on payout</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Separate taxation (avg. rate)</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">15% (down to 9% after 15 yrs)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Advance request</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">After 8 years, up to 70%</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">After 8 years, up to 75%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Employer insolvency risk</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">Covered by INPS Guarantee Fund</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Segregated from employer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    For expats who may not stay in Italy long-term, keeping TFR with the employer is often the more practical choice, since it provides liquidity when you leave the job. If you plan to build your career in Italy until retirement, the pension fund option typically offers better tax treatment on the final payout. If no explicit choice is made within six months of hiring, the TFR is automatically allocated to the employer's default pension fund (or the INPS fund for larger companies under the "silenzio-assenso" rule).
+  </p>
+
+  <h2 id="how-tfr-is-taxed">How TFR Is Taxed</h2>
+
+  <p>
+    TFR benefits from <strong>tassazione separata</strong> (separate taxation), a favourable regime that prevents the lump-sum payment from being piled onto your regular annual income and pushing you into higher IRPEF brackets. The mechanism works as follows:
+  </p>
+  <ol>
+    <li><strong>Determine the taxable TFR:</strong> the gross TFR accumulated (excluding annual revaluation, which is taxed separately) is the base.</li>
+    <li><strong>Calculate the average annual income:</strong> the Agenzia delle Entrate takes your total taxable income over the last 5 years and computes the average.</li>
+    <li><strong>Derive the average tax rate:</strong> IRPEF is calculated on this average income using the standard brackets, and the resulting amount is expressed as a percentage of the average income.</li>
+    <li><strong>Apply to TFR:</strong> this average percentage rate is applied to the taxable TFR amount.</li>
+  </ol>
+  <p>
+    The annual revaluation portion of TFR is taxed separately at a flat <strong>17% substitute tax</strong> (imposta sostitutiva), which the employer withholds annually on the revaluation credited to the TFR fund.
+  </p>
+  <p>
+    For most employees, separate taxation results in an effective rate significantly lower than their marginal IRPEF bracket. For instance, an employee with an average taxable income of &euro;30,000 over the last 5 years would have an average IRPEF rate of roughly 21-22%, compared to a marginal rate of 33% or 43% on their current income.
+  </p>
+  <p>
+    Use our <a href="/en/severance-pay-calculator/">TFR severance pay calculator</a> to estimate the net amount you will receive based on your specific salary history and years of service.
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" lang={lang} />
+  </div>
+
+</GuidaLayout>

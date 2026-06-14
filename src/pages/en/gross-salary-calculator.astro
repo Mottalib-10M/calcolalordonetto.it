@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import StipendioLordo from '../../components/calcolatori/StipendioLordo';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Gross Salary Calculator Italy 2026: Net to RAL Reverse";
+const description = "Know your desired net monthly pay? Find the exact gross annual salary (RAL) you need. Reverse IRPEF, INPS 9.19%, and regional tax calculation for Italy 2026.";
+const canonical = canonicalURL('/en/gross-salary-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Gross Salary Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Gross Salary Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <StipendioLordo client:load lang={lang} />
+</CalcolatoreLayout>

@@ -1,4 +1,6 @@
 import { useState, useMemo } from 'react';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import {
   calcolaStipendio,
@@ -7,8 +9,9 @@ import {
   calcolaContributiINPS,
 } from '../../lib/irpef-engine';
 import { formatCurrency, formatNumber } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
 
-export default function DetrazioniFamiliari() {
+export default function DetrazioniFamiliari({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(35_000);
   const [coniugeACarico, setConiugeACarico] = useState(false);
   const [numFigli, setNumFigli] = useState(1);
@@ -78,6 +81,7 @@ export default function DetrazioniFamiliari() {
           </h2>
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="RAL (Retribuzione Annua Lorda)"
               value={ral}
               onChange={setRal}
@@ -113,6 +117,7 @@ export default function DetrazioniFamiliari() {
             </div>
 
             <CampoInput
+              lang={lang}
               label="Figli a carico (21+ anni)"
               value={numFigli}
               onChange={(v) => setNumFigli(Math.max(0, Math.min(5, Math.round(v))))}

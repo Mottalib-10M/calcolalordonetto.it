@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Budget from '../../components/calcolatori/Budget';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "50/30/20 Budget Calculator: Plan Your Monthly Spending";
+const description = "Organize your finances with the 50/30/20 budgeting rule. Enter your net monthly income to get a clear split between needs, wants, and savings with amounts.";
+const canonical = canonicalURL('/en/budget-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Budget Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Budget Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Budget client:load lang={lang} />
+</CalcolatoreLayout>

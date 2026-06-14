@@ -1,0 +1,180 @@
+---
+import GuidaLayout from '../../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../../config';
+
+const lang = 'en' as const;
+const title = "Regional and Municipal Surcharges Italy: Tax Rate Guide";
+const description = "How Italy's addizionale regionale (0.7%–3.33%) and comunale (0%–0.9%) work. Which regions cost most, how rates are set, and their impact on your net salary.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+  { name: 'Regional & Municipal Surcharges', url: `${SITE.url}/en/guides/regional-municipal-surcharges/` },
+];
+
+const faqs = [
+  {
+    question: 'Which Italian regions have the highest and lowest tax surcharges?',
+    answer: 'As of 2026, <strong>Lazio</strong> has the highest addizionale regionale at 3.33% (for incomes above approximately &euro;50,000), while several regions such as <strong>Lombardia, Veneto, and Friuli-Venezia Giulia</strong> remain among the lowest, with base rates around 1.23%. Regions with special autonomy statutes (e.g., Trentino-Alto Adige, Valle d\'Aosta) may apply different rates. For the municipal surcharge, it varies city by city -- Milan charges 0.8%, Rome charges 0.9%, and some smaller municipalities charge 0%.',
+  },
+  {
+    question: 'How are the regional and municipal surcharges calculated?',
+    answer: 'Both surcharges are calculated on your <strong>imponibile IRPEF</strong> (taxable income for IRPEF purposes) -- that is, your gross salary minus INPS contributions and any applicable deductions. The addizionale regionale applies a flat or progressive rate set by your region of residence as of 1 January of the tax year. The addizionale comunale uses the rate set by your municipality. Unlike IRPEF, these surcharges are <strong>not subject to tax credits</strong> (detrazioni) -- they are calculated directly on the full taxable base.',
+  },
+  {
+    question: 'Can I reduce the amount I pay in regional and municipal surcharges?',
+    answer: 'You cannot directly deduct or claim credits against the surcharges, but there are indirect ways to reduce them: (1) any deduction that lowers your IRPEF taxable income (such as pension fund contributions, mortgage interest, or medical expenses) will also reduce the base on which the surcharges are calculated; (2) the Impatriati regime reduces the taxable base by 50%, which proportionally lowers both surcharges; (3) in extreme cases, relocating to a municipality or region with lower rates can make a meaningful difference -- up to several hundred euros per year on a typical salary.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  lang={lang}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#what-are-the-surcharges" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">What Are the Surcharges?</a></li>
+      <li><a href="#addizionale-regionale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Regionale</a></li>
+      <li><a href="#addizionale-comunale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Comunale</a></li>
+      <li><a href="#how-they-affect-your-payslip" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How They Affect Your Payslip</a></li>
+      <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="what-are-the-surcharges">What Are the Surcharges?</h2>
+
+  <p>
+    In addition to the national income tax (IRPEF), every Italian taxpayer must pay two local surcharges: the <strong>addizionale regionale</strong> (regional surcharge) and the <strong>addizionale comunale</strong> (municipal surcharge). These are separate taxes levied by your region and municipality of residence respectively, and they are calculated on the same taxable income used for IRPEF purposes.
+  </p>
+  <p>
+    For employees, both surcharges are withheld directly from your payslip (busta paga) by your employer, who acts as a sostituto d'imposta (withholding agent). They are typically settled in the year following the tax year -- for instance, the 2026 surcharges are deducted from your monthly pay in 2027, spread across instalments from January through November. This delayed deduction is why employees who change jobs or regions may see unexpected amounts withheld.
+  </p>
+  <p>
+    Together, these surcharges can add between 1% and 4% to your effective tax rate, depending on where you live. Understanding them is essential for expats because your choice of city and region directly impacts your take-home pay.
+  </p>
+
+  <h2 id="addizionale-regionale">Addizionale Regionale (Regional Surcharge)</h2>
+
+  <p>
+    The addizionale regionale is a tax set by each of Italy's 20 regions. Since 2022, regions can set rates between a minimum of <strong>0.7%</strong> (the former base rate was 1.23% and many regions still use it) and a maximum of <strong>3.33%</strong>. Some regions apply a flat rate, while others use progressive brackets similar to IRPEF.
+  </p>
+  <p>
+    The rate that applies to you is determined by your <strong>region of residence as of 1 January</strong> of the tax year. If you move regions during the year, the rate from your region at the start of the year prevails for the entire period.
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Region</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Typical Rate Range</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Lombardia</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.23% &ndash; 1.74%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Lazio</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.73% &ndash; 3.33%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Piemonte</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.62% &ndash; 3.33%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Trentino-Alto Adige</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.23%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Campania</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.03% &ndash; 3.33%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Regions in healthcare deficit (piano di rientro), such as Lazio and Campania, tend to impose the highest rates because the surcharge is partly used to cover health system costs. Regions with autonomous statutes (Trentino-Alto Adige, Valle d'Aosta, Sardegna, Sicilia, Friuli-Venezia Giulia) can set their own rules and often have more favourable rates.
+  </p>
+
+  <h2 id="addizionale-comunale">Addizionale Comunale (Municipal Surcharge)</h2>
+
+  <p>
+    The addizionale comunale is set independently by each of Italy's roughly 7,900 municipalities. Rates range from <strong>0% to a maximum of 0.9%</strong> (0.8% was the cap before 2024 -- many municipalities still apply 0.8%). Some municipalities also define a soglia di esenzione (exemption threshold), below which the surcharge does not apply at all.
+  </p>
+  <p>
+    As with the regional surcharge, the relevant municipality is the one where you are registered as a resident on 1 January of the tax year. Here are some examples of 2026 municipal surcharge rates in major Italian cities:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Municipality</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Rate</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Roma</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">0.9%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Milano</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">0.8%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Torino</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">0.8%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Bologna</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">0.8%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Firenze</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">0.3%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    You can look up the exact rate for any municipality on the <a href="https://www.finanze.gov.it" target="_blank" rel="noopener noreferrer">Ministry of Finance website</a> or through the Agenzia delle Entrate portal.
+  </p>
+
+  <h2 id="how-they-affect-your-payslip">How They Affect Your Payslip</h2>
+
+  <p>
+    For employees, the addizionali are deducted from the busta paga in a specific way that often confuses newcomers:
+  </p>
+  <ul>
+    <li><strong>Addizionale regionale:</strong> deducted in monthly instalments from January to November of the year <em>following</em> the tax year. For example, the 2026 regional surcharge is withheld across your January-November 2027 payslips.</li>
+    <li><strong>Addizionale comunale (saldo):</strong> the balance from the previous year is deducted in monthly instalments from January to November of the following year, mirroring the regional surcharge timing.</li>
+    <li><strong>Addizionale comunale (acconto):</strong> an advance payment of 30% of the current year's estimated municipal surcharge is withheld from March to November of the current tax year.</li>
+  </ul>
+  <p>
+    This means in any given payslip, you are simultaneously paying the prior year's regional surcharge, the prior year's municipal balance, and the current year's municipal advance. When reading your busta paga, look for lines labelled "Add. Reg." and "Add. Com." to identify these deductions. Use our <a href="/en/payslip-calculator/">payslip calculator</a> to see exactly how these surcharges affect your monthly take-home pay.
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" lang={lang} />
+  </div>
+
+</GuidaLayout>

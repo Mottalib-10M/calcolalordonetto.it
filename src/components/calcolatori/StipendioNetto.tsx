@@ -1,9 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { calcolaStipendio, type RisultatoStipendio } from '../../lib/irpef-engine';
-import { formatCurrency, formatPercent } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyIt, formatPercent as formatPercentIt } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
 import { decodeState, pushState } from '../../lib/url-state';
 import { regioniByCode } from '../../data/regioni';
 import { comuniBySlug, ADDIZIONALE_COMUNALE_MEDIA } from '../../data/comuni-top200';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import PannelloRisultato from '../ui/PannelloRisultato';
 import BarraScomposizione from '../ui/BarraScomposizione';
@@ -13,7 +16,14 @@ import SelettoreMensilita from '../ui/SelettoreMensilita';
 import SelettoreSituazioneFamiliare from '../ui/SelettoreSituazioneFamiliare';
 import TabellaDettaglio from '../ui/TabellaDettaglio';
 
-export default function StipendioNetto() {
+interface Props {
+  lang?: Lang;
+}
+
+export default function StipendioNetto({ lang = 'it' }: Props) {
+  const fmtCurrency = (v: number) => lang === 'it' ? formatCurrencyIt(v) : formatCurrencyLocale(v, 'en');
+  const fmtPercent = (v: number) => lang === 'it' ? formatPercentIt(v) : formatPercentLocale(v, 'en');
+
   // ---- State ---------------------------------------------------------------
   const [ral, setRal] = useState(30_000);
   const [regione, setRegione] = useState('LOM');
@@ -115,32 +125,34 @@ export default function StipendioNetto() {
         {/* RAL input -- large, prominent */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
           <CampoInput
-            label="RAL - Retribuzione Annua Lorda"
+            label={t('stipendioNetto.ralLabel', lang)}
             value={ral}
             onChange={setRal}
             min={0}
             max={500_000}
             step={500}
             prefix="€"
-            helpText="Inserisci la tua retribuzione annua lorda (RAL) dal contratto"
+            helpText={t('stipendioNetto.ralHelp', lang)}
+            lang={lang}
           />
         </div>
 
         {/* Regione + Comune */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <SelettoreRegione value={regione} onChange={handleRegioneChange} />
+            <SelettoreRegione value={regione} onChange={handleRegioneChange} lang={lang} />
             <SelettoreComune
               value={comuneSlug}
               onChange={handleComuneChange}
               regione={regioneSlug}
+              lang={lang}
             />
           </div>
         </div>
 
         {/* Mensilita */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
-          <SelettoreMensilita value={mensilita} onChange={setMensilita} />
+          <SelettoreMensilita value={mensilita} onChange={setMensilita} lang={lang} />
         </div>
 
         {/* Family situation */}
@@ -150,6 +162,7 @@ export default function StipendioNetto() {
             figli={figliACarico}
             onChangeConiuge={setConiugeACarico}
             onChangeFigli={setFigliACarico}
+            lang={lang}
           />
         </div>
       </div>
@@ -164,6 +177,7 @@ export default function StipendioNetto() {
               nettoAnnuo={risultato.nettoAnnuo}
               mensilita={risultato.mensilita}
               ral={risultato.ral}
+              lang={lang}
             />
 
             {/* Share button */}
@@ -178,14 +192,14 @@ export default function StipendioNetto() {
                     <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-green-600 dark:text-green-400">Copiato!</span>
+                    <span className="text-green-600 dark:text-green-400">{t('stipendioNetto.copied', lang)}</span>
                   </>
                 ) : (
                   <>
                     <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M13 4.5a2.5 2.5 0 1 1 .702 1.737L6.97 9.604a2.518 2.518 0 0 1 0 .792l6.733 3.367a2.5 2.5 0 1 1-.671 1.341l-6.733-3.367a2.5 2.5 0 1 1 0-3.474l6.733-3.367A2.52 2.52 0 0 1 13 4.5Z" />
                     </svg>
-                    Condividi
+                    {t('stipendioNetto.share', lang)}
                   </>
                 )}
               </button>
@@ -194,70 +208,72 @@ export default function StipendioNetto() {
             {/* Visual breakdown bar */}
             <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
               <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                Scomposizione della RAL
+                {t('stipendioNetto.ralBreakdown', lang)}
               </h3>
               <BarraScomposizione
                 items={[
                   {
-                    label: 'Netto',
+                    label: t('stipendioNetto.net', lang),
                     value: risultato.nettoAnnuo,
                     color: '#22c55e',
                   },
                   {
-                    label: 'IRPEF',
+                    label: t('stipendioNetto.irpef', lang),
                     value: risultato.irpefNetta,
                     color: '#E63946',
                   },
                   {
-                    label: 'INPS',
+                    label: t('stipendioNetto.inps', lang),
                     value: risultato.contributiINPS,
                     color: '#3b82f6',
                   },
                   {
-                    label: 'Addizionali',
+                    label: t('stipendioNetto.surcharges', lang),
                     value: risultato.totaleAddizionali,
                     color: '#f59e0b',
                   },
                 ]}
                 total={risultato.ral}
+                lang={lang}
               />
             </div>
 
             {/* Detailed breakdown table */}
             <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
               <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                Dettaglio busta paga annuale
+                {t('stipendioNetto.annualPayslipDetail', lang)}
               </h3>
               <TabellaDettaglio
-                items={buildTabellaItems(risultato)}
+                items={buildTabellaItems(risultato, lang)}
+                lang={lang}
               />
             </div>
 
             {/* Extra info */}
             <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
               <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                Informazioni aggiuntive
+                {t('stipendioNetto.additionalInfo', lang)}
               </h3>
               <dl className="grid grid-cols-2 gap-4">
                 <InfoBox
-                  label="Costo azienda"
-                  value={formatCurrency(risultato.costoAzienda)}
-                  sublabel="Costo totale per il datore di lavoro"
+                  label={t('stipendioNetto.employerCost', lang)}
+                  value={fmtCurrency(risultato.costoAzienda)}
+                  sublabel={t('stipendioNetto.employerCostDesc', lang)}
                 />
                 <InfoBox
-                  label="TFR annuo"
-                  value={formatCurrency(risultato.tfrAnnuo)}
-                  sublabel="Accantonamento annuo del TFR"
+                  label={t('stipendioNetto.annualTfr', lang)}
+                  value={fmtCurrency(risultato.tfrAnnuo)}
+                  sublabel={t('stipendioNetto.annualTfrDesc', lang)}
                 />
                 <InfoBox
-                  label="Aliquota media"
-                  value={formatPercent(risultato.aliquotaMedia)}
-                  sublabel="Percentuale effettiva di tassazione"
+                  label={t('stipendioNetto.averageRate', lang)}
+                  value={fmtPercent(risultato.aliquotaMedia)}
+                  sublabel={t('stipendioNetto.averageRateDesc', lang)}
                 />
                 <InfoBox
-                  label="Aliquota marginale"
-                  value={formatPercent(risultato.aliquotaMarginale)}
-                  sublabel="Tassazione sull'ultimo euro guadagnato"
+                  label={t('stipendioNetto.marginalRate', lang)}
+                  value={fmtPercent(risultato.aliquotaMarginale)}
+                  sublabel={t('stipendioNetto.marginalRateDesc', lang)}
                 />
               </dl>
             </div>
@@ -266,7 +282,7 @@ export default function StipendioNetto() {
           /* Placeholder when no valid input */
           <div className="rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 p-12 text-center">
             <p className="text-gray-500 dark:text-gray-400 text-sm">
-              Inserisci la tua RAL per calcolare lo stipendio netto
+              {t('stipendioNetto.placeholder', lang)}
             </p>
           </div>
         )}
@@ -277,22 +293,22 @@ export default function StipendioNetto() {
 
 // ── Helper: build TabellaDettaglio items ───────────────────────────────────
 
-function buildTabellaItems(r: RisultatoStipendio) {
+function buildTabellaItems(r: RisultatoStipendio, lang: Lang) {
   const items: {
     label: string;
     value: number;
     tipo: 'positivo' | 'negativo' | 'neutro' | 'risultato';
   }[] = [
-    { label: 'RAL (Retribuzione Annua Lorda)', value: r.ral, tipo: 'neutro' },
-    { label: 'Contributi INPS (9,19%)', value: r.contributiINPS, tipo: 'negativo' },
-    { label: 'Imponibile fiscale', value: r.imponibileFiscale, tipo: 'neutro' },
-    { label: 'IRPEF lorda', value: r.irpefLorda, tipo: 'negativo' },
-    { label: 'Detrazione lavoro dipendente', value: r.detrazioneLavoroDipendente, tipo: 'positivo' },
+    { label: t('stipendioNetto.ral', lang), value: r.ral, tipo: 'neutro' },
+    { label: t('stipendioNetto.inpsContributions', lang), value: r.contributiINPS, tipo: 'negativo' },
+    { label: t('stipendioNetto.taxableIncome', lang), value: r.imponibileFiscale, tipo: 'neutro' },
+    { label: t('stipendioNetto.grossIrpef', lang), value: r.irpefLorda, tipo: 'negativo' },
+    { label: t('stipendioNetto.employmentDeduction', lang), value: r.detrazioneLavoroDipendente, tipo: 'positivo' },
   ];
 
   if (r.detrazioneConiuge > 0) {
     items.push({
-      label: 'Detrazione coniuge a carico',
+      label: t('stipendioNetto.spouseDeduction', lang),
       value: r.detrazioneConiuge,
       tipo: 'positivo',
     });
@@ -300,7 +316,7 @@ function buildTabellaItems(r: RisultatoStipendio) {
 
   if (r.detrazioneFigli > 0) {
     items.push({
-      label: 'Detrazione figli a carico',
+      label: t('stipendioNetto.childrenDeduction', lang),
       value: r.detrazioneFigli,
       tipo: 'positivo',
     });
@@ -308,7 +324,7 @@ function buildTabellaItems(r: RisultatoStipendio) {
 
   if (r.cuneoFiscaleDetrazione > 0) {
     items.push({
-      label: 'Cuneo fiscale (detrazione)',
+      label: t('stipendioNetto.taxWedgeDeduction', lang),
       value: r.cuneoFiscaleDetrazione,
       tipo: 'positivo',
     });
@@ -316,30 +332,30 @@ function buildTabellaItems(r: RisultatoStipendio) {
 
   if (r.cuneoFiscaleSommaEsente > 0) {
     items.push({
-      label: 'Cuneo fiscale (somma esente)',
+      label: t('stipendioNetto.taxWedgeExempt', lang),
       value: r.cuneoFiscaleSommaEsente,
       tipo: 'positivo',
     });
   }
 
   items.push(
-    { label: 'IRPEF netta', value: r.irpefNetta, tipo: 'negativo' },
-    { label: 'Addizionale regionale', value: r.addizionaleRegionale, tipo: 'negativo' },
-    { label: 'Addizionale comunale', value: r.addizionaleComunale, tipo: 'negativo' },
+    { label: t('stipendioNetto.netIrpef', lang), value: r.irpefNetta, tipo: 'negativo' },
+    { label: t('stipendioNetto.regionalSurcharge', lang), value: r.addizionaleRegionale, tipo: 'negativo' },
+    { label: t('stipendioNetto.municipalSurcharge', lang), value: r.addizionaleComunale, tipo: 'negativo' },
   );
 
   if (r.trattamentoIntegrativo > 0) {
     items.push({
-      label: 'Trattamento integrativo',
+      label: t('stipendioNetto.supplementaryBenefit', lang),
       value: r.trattamentoIntegrativo,
       tipo: 'positivo',
     });
   }
 
   items.push(
-    { label: 'NETTO ANNUO', value: r.nettoAnnuo, tipo: 'risultato' },
+    { label: t('stipendioNetto.annualNet', lang), value: r.nettoAnnuo, tipo: 'risultato' },
     {
-      label: `Netto mensile (su ${r.mensilita} mensilita)`,
+      label: t('stipendioNetto.monthlyNet', lang).replace('{n}', String(r.mensilita)),
       value: r.nettoMensile,
       tipo: 'risultato',
     },

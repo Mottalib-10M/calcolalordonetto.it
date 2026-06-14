@@ -1,0 +1,213 @@
+---
+import GuidaLayout from '../../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../../config';
+
+const lang = 'en' as const;
+const title = "How to Calculate Net Salary in Italy: Step-by-Step 2026";
+const description = "Convert gross salary (RAL) to net pay step by step: INPS 9.19%, IRPEF brackets, employment deductions, regional and municipal surcharges. Real examples inside.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+  { name: 'How to Calculate Net Salary', url: `${SITE.url}/en/guides/how-to-calculate-net-salary/` },
+];
+
+const faqs = [
+  {
+    question: 'What is the difference between RAL and net salary?',
+    answer: 'RAL (Retribuzione Annua Lorda) is your gross annual salary as stated in your employment contract, before any deductions. Net salary (stipendio netto) is the amount you actually receive in your bank account after INPS contributions, IRPEF income tax, regional and municipal surcharges have been subtracted, and any benefits like the trattamento integrativo have been added. The gap between the two typically ranges from 25% to 45%, depending on your income level and where you live in Italy.',
+  },
+  {
+    question: 'What is the INPS contribution rate for employees in Italy?',
+    answer: 'Private-sector employees pay <strong>9.19%</strong> of their gross salary as INPS social security contributions (contributi previdenziali). For salaries exceeding the first pension bracket (approximately &euro;55,000 per year in 2026), an additional 1% is charged on the excess portion. These contributions fund your future pension, unemployment insurance (NASpI), short-time work support (cassa integrazione), and sick/maternity pay. The employer also pays roughly 30% on top, but this is not deducted from your payslip.',
+  },
+  {
+    question: 'Why does net salary vary between Italian regions?',
+    answer: 'On top of national IRPEF, every Italian region and municipality levies its own surcharge (addizionale regionale and addizionale comunale). Regional rates range from 0.70% in Trentino-Alto Adige for low incomes up to 3.33% in Lazio for high incomes. Municipal surcharges vary from 0% to 0.9%. On a &euro;30,000 salary, the difference between the cheapest and most expensive region can exceed &euro;600 per year. You can use our <a href="/en/region-comparison/" class="text-brand hover:underline">region comparison tool</a> to see the exact figures.',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  lang={lang}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#what-is-net-salary" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">What Is Net Salary?</a></li>
+      <li><a href="#gross-to-net-step-by-step" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Gross to Net: Step by Step</a></li>
+      <li><a href="#step-1-inps-contributions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Step 1: INPS Contributions</a></li>
+      <li><a href="#step-2-taxable-income" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Step 2: Taxable Income</a></li>
+      <li><a href="#step-3-irpef-calculation" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Step 3: IRPEF Calculation</a></li>
+      <li><a href="#step-4-deductions-and-surcharges" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Step 4: Deductions &amp; Surcharges</a></li>
+      <li><a href="#step-5-tax-wedge-2026" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Step 5: Tax Wedge 2026</a></li>
+      <li><a href="#worked-example" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Worked Example</a></li>
+      <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="what-is-net-salary">What Is Net Salary?</h2>
+
+  <p>
+    Your net salary (stipendio netto) is the amount that actually lands in your bank account each month. It is what remains of your gross salary after your employer has withheld social security contributions, income tax, and local surcharges.
+  </p>
+  <p>
+    The key distinction is between <strong>gross</strong> (lordo) and <strong>net</strong> (netto). When you sign an employment contract in Italy, the agreed amount is almost always the <strong>RAL</strong> (Retribuzione Annua Lorda) &mdash; your total annual compensation before any withholding. The net is what you actually take home.
+  </p>
+  <p>
+    The difference can be surprising: on a RAL of &euro;30,000, for example, the annual net is roughly &euro;23,000. That means approximately 23&ndash;25% of your gross pay goes toward contributions and taxes. This percentage rises with income, because the Italian tax system is progressive as mandated by Article 53 of the Italian Constitution.
+  </p>
+
+  <h2 id="gross-to-net-step-by-step">Gross to Net: Step by Step</h2>
+
+  <p>
+    Going from gross to net is not a single subtraction &mdash; it is a multi-step process, each governed by specific rules. Here is the full sequence:
+  </p>
+  <ol>
+    <li><strong>INPS contributions</strong> paid by the employee (9.19%)</li>
+    <li><strong>Taxable income</strong> (imponibile fiscale) = RAL &minus; INPS contributions</li>
+    <li><strong>Gross IRPEF</strong> calculated using progressive tax brackets</li>
+    <li><strong>Deductions</strong> (detrazioni) for employment income and dependents</li>
+    <li><strong>Net IRPEF</strong> = gross IRPEF &minus; deductions</li>
+    <li><strong>Regional and municipal surcharges</strong> (addizionali)</li>
+    <li><strong>Trattamento integrativo</strong> (supplementary benefit, if eligible)</li>
+    <li><strong>Tax wedge benefit</strong> (cuneo fiscale 2026, if eligible)</li>
+  </ol>
+  <p>
+    The result is your annual net salary. Dividing by the number of pay periods (12, 13, or 14, depending on your national collective agreement &mdash; CCNL) gives you the monthly net that appears on your payslip (busta paga). Let us walk through each step.
+  </p>
+
+  <h2 id="step-1-inps-contributions">Step 1: INPS Contributions</h2>
+
+  <p>
+    The first deduction from your gross salary is the <strong>INPS social security contribution</strong> (contributi previdenziali) borne by the employee. For private-sector workers, the standard rate is <strong>9.19%</strong> of gross pay.
+  </p>
+  <p>
+    These contributions fund the Italian social safety net: your future pension, unemployment benefits (NASpI), short-time work schemes (cassa integrazione), and sick/maternity pay. For gross salaries above the first pension bracket (approximately &euro;55,448 in 2026), an additional 1% applies on the excess.
+  </p>
+  <p>
+    <strong>Example:</strong> on a RAL of &euro;30,000, the INPS deduction is 30,000 &times; 9.19% = <strong>&euro;2,757</strong> per year.
+  </p>
+
+  <h2 id="step-2-taxable-income">Step 2: Taxable Income</h2>
+
+  <p>
+    After subtracting INPS contributions, you get your <strong>taxable income</strong> (imponibile fiscale). This is the base on which IRPEF and local surcharges are calculated.
+  </p>
+  <p>
+    <strong>Example:</strong> &euro;30,000 &minus; &euro;2,757 = <strong>&euro;27,243</strong> taxable income.
+  </p>
+
+  <h2 id="step-3-irpef-calculation">Step 3: IRPEF Calculation</h2>
+
+  <p>
+    IRPEF (Imposta sul Reddito delle Persone Fisiche) is Italy's progressive personal income tax. Since 2024 the brackets have been simplified to three:
+  </p>
+  <ul>
+    <li><strong>23%</strong> on income up to &euro;28,000</li>
+    <li><strong>35%</strong> on income from &euro;28,001 to &euro;50,000</li>
+    <li><strong>43%</strong> on income above &euro;50,000</li>
+  </ul>
+  <p>
+    Because the tax is progressive, each bracket only applies to the income falling within its range &mdash; not to the full amount. For our &euro;27,243 taxable income, the entire amount falls within the first bracket: 27,243 &times; 23% = <strong>&euro;6,266</strong> gross IRPEF.
+  </p>
+
+  <h2 id="step-4-deductions-and-surcharges">Step 4: Deductions &amp; Surcharges</h2>
+
+  <p>
+    Italy offers a <strong>detrazione per lavoro dipendente</strong> (employment income deduction) that reduces the IRPEF you owe. The deduction amount varies inversely with income &mdash; lower earners receive a higher deduction. For a &euro;27,243 taxable income, this deduction is approximately <strong>&euro;1,979</strong>, bringing net IRPEF down to roughly &euro;4,287.
+  </p>
+  <p>
+    On top of national IRPEF, you also pay <strong>regional</strong> (addizionale regionale) and <strong>municipal</strong> (addizionale comunale) surcharges. These vary by location. For a worker in Lombardy (Milan), the regional surcharge on &euro;27,243 is about &euro;386, and the municipal surcharge at 0.8% is about &euro;218.
+  </p>
+
+  <h2 id="step-5-tax-wedge-2026">Step 5: Tax Wedge 2026</h2>
+
+  <p>
+    The 2026 Budget Law made the <strong>cuneo fiscale</strong> (tax wedge) reduction permanent. For incomes between &euro;20,001 and &euro;32,000, it provides a flat &euro;1,000 additional deduction. For incomes up to &euro;20,000, a percentage-based bonus applies instead. Above &euro;40,000, no benefit is given.
+  </p>
+  <p>
+    In our example (&euro;27,243 taxable income), the worker receives the full <strong>&euro;1,000 deduction</strong>, which directly increases net pay.
+  </p>
+
+  <h2 id="worked-example">Worked Example</h2>
+
+  <p>
+    Putting it all together for a <strong>single employee, no dependents, resident in Milan (Lombardy), RAL &euro;30,000, 13 pay periods</strong>:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Item</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Annual amount</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">RAL (Gross Annual Salary)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;30,000</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; INPS contributions (9.19%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;2,757</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= Taxable income</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;27,243</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Gross IRPEF (23%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;6,266</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Employment income deduction</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ &euro;1,979</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Regional surcharge (Lombardy)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;386</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Municipal surcharge (Milan)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;218</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Tax wedge 2026</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ &euro;1,000</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Annual net salary</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-white font-bold text-base">&asymp; &euro;23,352</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Monthly net (13 pay periods)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">&asymp; &euro;1,796</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    For a precise calculation based on your personal situation, use our <a href="/en/">net salary calculator</a>.
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" lang={lang} />
+  </div>
+
+</GuidaLayout>

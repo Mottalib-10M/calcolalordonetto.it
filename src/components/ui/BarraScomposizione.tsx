@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { formatCurrency, formatPercent } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyIt, formatPercent as formatPercentIt } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
 
 interface BarraItem {
   label: string;
@@ -10,13 +12,17 @@ interface BarraItem {
 interface BarraScomposizioneProps {
   items: BarraItem[];
   total: number;
+  lang?: Lang;
 }
 
 export default function BarraScomposizione({
   items,
   total,
+  lang = 'it',
 }: BarraScomposizioneProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const fmtCurrency = (v: number) => lang === 'it' ? formatCurrencyIt(v) : formatCurrencyLocale(v, 'en');
+  const fmtPercent = (v: number) => lang === 'it' ? formatPercentIt(v) : formatPercentLocale(v, 'en');
 
   if (total <= 0) return null;
 
@@ -54,8 +60,8 @@ export default function BarraScomposizione({
                     {item.label}
                   </p>
                   <p className="text-gray-300 dark:text-gray-600">
-                    {formatCurrency(item.value)} &middot;{' '}
-                    {formatPercent(item.value / total)}
+                    {fmtCurrency(item.value)} &middot;{' '}
+                    {fmtPercent(item.value / total)}
                   </p>
                   {/* Tooltip arrow */}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-gray-100" />
@@ -87,7 +93,7 @@ export default function BarraScomposizione({
                 {item.label}
               </span>
               <span className="font-medium text-gray-900 dark:text-gray-100">
-                {formatCurrency(item.value)}
+                {fmtCurrency(item.value)}
               </span>
             </div>
           );

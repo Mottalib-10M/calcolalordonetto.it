@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import CostoAziendale from '../../components/calcolatori/CostoAziendale';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Employer Cost Calculator Italy 2026: Total Labor Cost";
+const description = "Calculate the full cost of hiring an employee in Italy. Includes INPS employer share, INAIL, TFR accrual, 13th/14th month, and all mandatory charges on RAL.";
+const canonical = canonicalURL('/en/employer-cost-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Employer Cost Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Employer Cost Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <CostoAziendale client:load lang={lang} />
+</CalcolatoreLayout>

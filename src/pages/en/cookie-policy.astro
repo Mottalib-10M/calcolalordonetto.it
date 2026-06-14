@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+
+const title = 'Cookie Policy: No Tracking or Profiling Cookies Used';
+const description = "Cookie notice: this site uses no profiling, tracking, or third-party cookies. Cookie-free analytics via Plausible. Fully compliant with GDPR and Italian DPA.";
+const lastUpdated = '15 May 2026';
+---
+
+<Layout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Cookie Policy
+      </h1>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        Information on cookie usage pursuant to the Italian Data Protection Authority Guidelines of 10 June 2021
+      </p>
+      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+        Last updated: {lastUpdated}
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>1. What Are Cookies</h2>
+      <p>
+        Cookies are small text files that websites store on the user's device (computer, tablet, smartphone) during browsing. They serve various purposes: from storing user preferences to traffic analysis, to profiling for advertising purposes.
+      </p>
+      <p>
+        Cookies were introduced to improve the user's browsing experience, allowing websites to "remember" information between pages or between visits. Technically, a cookie is sent from the website's server to the user's browser, which stores it and sends it back to the server with every subsequent HTTP request to the same resource.
+      </p>
+      <p>
+        The <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">Garante per la Protezione dei Dati Personali</a> (Italian Data Protection Authority) issued the <strong>Guidelines on cookies and other tracking tools</strong> (Measure of 10 June 2021, published in the Official Gazette No. 163 of 9 July 2021), which regulate cookie usage and require user consent for profiling cookies.
+      </p>
+
+      <h2>2. Types of Cookies</h2>
+      <p>
+        Italian and European legislation classifies cookies into several categories based on their function and duration. Below is an overview of the main types:
+      </p>
+
+      <h3>2.1 Technical Cookies</h3>
+      <p>
+        Technical cookies are those necessary for the correct functioning of the website. They include navigation cookies, session cookies and functional cookies. These cookies do not require user consent pursuant to Article 122(1) of Italian Legislative Decree 196/2003, as they are strictly necessary for the provision of the service requested by the user. The Website currently <strong>does not use technical cookies</strong>, as the offered functionality does not require them.
+      </p>
+
+      <h3>2.2 Analytical Cookies</h3>
+      <p>
+        Analytical cookies are used to collect information about how users interact with the website, such as the number of visitors, pages visited and time spent. If configured so as not to allow user identification (for example, through IP address masking) and if used exclusively for statistical purposes, they can be treated as technical cookies and do not require user consent, according to the Data Protection Authority's guidelines.
+      </p>
+
+      <h3>2.3 Profiling Cookies</h3>
+      <p>
+        Profiling cookies are used to create user profiles and send personalised advertising messages. These cookies always require prior and informed user consent, pursuant to Article 122 of Italian Legislative Decree 196/2003 and Article 7 of the GDPR. <strong>The Website does not use profiling cookies of any kind.</strong>
+      </p>
+
+      <h3>2.4 Third-Party Cookies</h3>
+      <p>
+        Third-party cookies are those installed by domains different from the website being visited. They are typically installed by services integrated into the site, such as social media buttons, advertising widgets, analytics services or embedded content. <strong>The Website does not integrate third-party services that install cookies.</strong>
+      </p>
+
+      <h2>3. Cookies Used by the Website</h2>
+
+      <h3>3.1 Profiling Cookies</h3>
+      <p>
+        <strong>The Website does not use profiling cookies.</strong> No cookies are installed to create user profiles, monitor browsing behaviour, analyse consumption habits or display personalised advertising. No data is shared with advertising or remarketing platforms.
+      </p>
+
+      <h3>3.2 Technical Cookies</h3>
+      <p>
+        The Website currently <strong>does not use technical cookies</strong>. User preferences, such as the display mode setting (light/dark), are stored using the browser's <code>localStorage</code> mechanism, which is not a cookie and has different technical characteristics (as described in the dedicated section below).
+      </p>
+
+      <h3>3.3 Analytical Cookies</h3>
+      <p>
+        The Website uses <strong>Plausible Analytics</strong>, a web analytics service that <strong>does not use cookies of any kind</strong>. Unlike other traffic analysis tools such as Google Analytics, Plausible was designed from the ground up to work without cookies and without collecting personal data.
+      </p>
+
+      <h3>3.4 Third-Party Cookies</h3>
+      <p>
+        The Website currently <strong>does not integrate third-party services</strong> that install cookies. The following are not present:
+      </p>
+      <ul>
+        <li>Social media buttons (Facebook, Twitter/X, LinkedIn, Instagram, etc.)</li>
+        <li>External comment widgets (Disqus, etc.)</li>
+        <li>Advertising services (Google Ads, Meta Ads, etc.)</li>
+        <li>Analytics tools that use cookies (Google Analytics, Adobe Analytics, etc.)</li>
+        <li>Embedded content from external platforms (YouTube, Vimeo, Google Maps, etc.)</li>
+        <li>Remarketing or retargeting services</li>
+        <li>A/B testing tools that use cookies</li>
+      </ul>
+
+      <h2>4. Plausible Analytics: What It Does and Does Not Do</h2>
+      <p>
+        For maximum transparency, we describe the characteristics of Plausible Analytics, the only analytics service used by the Website.
+      </p>
+      <p>
+        <strong>What Plausible Analytics does:</strong>
+      </p>
+      <ul>
+        <li>Collects aggregated statistical data on Website traffic (number of visits, most viewed pages, traffic sources)</li>
+        <li>Detects the user's country of origin in aggregate form, without recording the IP address</li>
+        <li>Detects the device type (desktop, mobile, tablet) and browser used</li>
+        <li>Hosts all data on servers within the European Union</li>
+        <li>Respects the browser's "Do Not Track" signal</li>
+      </ul>
+      <p>
+        <strong>What Plausible Analytics does not do:</strong>
+      </p>
+      <ul>
+        <li>Does not install cookies on the user's device</li>
+        <li>Does not use fingerprinting or other persistent identification techniques</li>
+        <li>Does not collect or store the user's IP address</li>
+        <li>Does not track users across different sessions or websites</li>
+        <li>Does not create individual user profiles</li>
+        <li>Does not share data with advertising platforms, social media or other third parties</li>
+        <li>Does not assign unique identifiers to users</li>
+        <li>Does not collect personal data of any kind</li>
+      </ul>
+      <p>
+        In accordance with the Data Protection Authority's guidelines and the guidance of CNIL (French data protection authority), the Swedish DPA and other European authorities, Plausible Analytics does not require user consent as it does not perform profiling and the data collected is exclusively anonymous and aggregated.
+      </p>
+
+      <h2>5. Use of localStorage</h2>
+      <p>
+        The Website uses the browser's <code>localStorage</code> mechanism to store certain user preferences, such as the display mode setting (light/dark). <code>localStorage</code> is a local storage mechanism provided by the HTML5 standard with the following characteristics:
+      </p>
+      <ul>
+        <li>It is not automatically transmitted to the server with each HTTP request (unlike cookies)</li>
+        <li>It remains confined to the user's browser and is not accessible by the server</li>
+        <li>It cannot be read by websites other than the one that created it</li>
+        <li>It can be cleared by the user at any time through the browser's settings</li>
+        <li>It does not have an automatic expiry date (unlike cookies)</li>
+        <li>It is not shared between different browsers on the same device</li>
+      </ul>
+      <p>
+        Therefore, <code>localStorage</code> does not fall within the definition of cookies under current legislation and does not require user consent for its use, as it is comparable to a storage mechanism strictly necessary for the functioning of the requested service.
+      </p>
+
+      <h2>6. Need for a Cookie Banner</h2>
+      <p>
+        Since the Website does not use profiling cookies, analytical cookies with tracking or third-party cookies, <strong>a cookie banner is not currently required</strong> under the Data Protection Authority's guidelines of 10 June 2021. User consent for cookie installation is therefore not requested, as none are installed.
+      </p>
+      <p>
+        The Data Protection Authority, in its guidelines, has clarified that a cookie consent banner is mandatory only when the website uses profiling cookies or non-anonymised third-party analytical cookies. As neither of these conditions applies to this Website, the banner obligation does not apply.
+      </p>
+      <p>
+        Should services requiring the use of profiling or third-party cookies be integrated in the future, this Cookie Policy will be updated and a consent mechanism (cookie banner) will be implemented in compliance with the Data Protection Authority's provisions, with the following features: presentation on first access, the ability to accept or reject individual cookie categories, recording of expressed preferences and the ability to change choices at any time.
+      </p>
+
+      <h2>7. How to Manage Cookies in Your Browser</h2>
+      <p>
+        Although the Website does not use cookies, users can manage their cookie preferences at any time through their browser settings. Below are instructions for the main browsers.
+      </p>
+
+      <h3>7.1 Google Chrome</h3>
+      <p>
+        Go to the Settings menu, select "Privacy and security", then "Cookies and other site data". From this section you can block third-party cookies, delete existing cookies and manage exceptions for individual websites. Full guide: <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">support.google.com/chrome/answer/95647</a>.
+      </p>
+
+      <h3>7.2 Mozilla Firefox</h3>
+      <p>
+        Go to the Settings menu, select "Privacy & Security". Firefox offers Enhanced Tracking Protection with three levels (standard, strict, custom) that allows you to block tracking cookies, fingerprinting and other surveillance tools. Full guide: <a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer">support.mozilla.org</a>.
+      </p>
+
+      <h3>7.3 Safari (Apple)</h3>
+      <p>
+        Go to the Safari menu, select "Preferences", then "Privacy". Safari offers the "Prevent cross-site tracking" feature and allows you to block all cookies. You can also view and remove cookies stored for individual websites. Full guide: <a href="https://support.apple.com/en-us/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">support.apple.com</a>.
+      </p>
+
+      <h3>7.4 Microsoft Edge</h3>
+      <p>
+        Go to the Settings menu, select "Cookies and site permissions", then "Manage and delete cookies and site data". Edge offers the ability to block third-party cookies and manage exceptions for individual websites. Full guide: <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">support.microsoft.com</a>.
+      </p>
+
+      <p>
+        Please note that disabling cookies in your browser may affect the functioning of other websites you visit, but it does not affect the functioning of this Website, which does not use cookies. To clear data stored in <code>localStorage</code>, you can use your browser's "Clear browsing data" function, selecting the option related to site data.
+      </p>
+
+      <h2>8. Legal References</h2>
+      <p>
+        This Cookie Policy is drafted in compliance with the following legislative provisions:
+      </p>
+      <ul>
+        <li><strong>Regulation (EU) 2016/679</strong> (GDPR), in particular Articles 5, 6, 7 regarding processing principles, lawfulness and consent</li>
+        <li><strong>Italian Legislative Decree No. 196 of 30 June 2003</strong> (Privacy Code), as amended by Legislative Decree 101/2018, in particular Article 122 regarding information collected from the subscriber or user</li>
+        <li><strong>Directive 2002/58/EC</strong> (ePrivacy Directive), which regulates the processing of personal data and the protection of privacy in the electronic communications sector</li>
+        <li><strong>Cookie and other tracking tool guidelines</strong> from the Garante per la Protezione dei Dati Personali (Measure of 10 June 2021, published in Official Gazette No. 163 of 9 July 2021, doc. web No. 9677876)</li>
+        <li><strong>Garante measure of 8 May 2014</strong> (doc. web No. 3118884), establishing "Simplified arrangements for the privacy notice and the acquisition of consent for the use of cookies"</li>
+      </ul>
+
+      <h2>9. Updates to This Cookie Policy</h2>
+      <p>
+        This Cookie Policy may be updated periodically to reflect changes to services used by the Website, regulatory developments or guidance from supervisory authorities. The date of the last update is indicated at the top of this page.
+      </p>
+      <p>
+        We recommend checking this section regularly for any changes. Continued use of the Website after the publication of updates to this Cookie Policy constitutes acceptance of the changes made.
+      </p>
+
+      <h2>10. Contact</h2>
+      <p>
+        For any question, clarification or report relating to this Cookie Policy, cookie usage or local storage technologies used by the Website, users may contact the owner via the <a href="/en/contact/">contact page</a> of the Website. The owner undertakes to respond as quickly as possible.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        See also: <a href="/en/privacy/">Privacy Policy</a> | <a href="/en/legal-notice/">Legal Notice</a> | <a href="/en/terms/">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</Layout>

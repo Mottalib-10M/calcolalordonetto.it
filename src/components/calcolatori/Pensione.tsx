@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaPensione } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent, formatNumber } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
-export default function Pensione() {
+export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
   const [etaAttuale, setEtaAttuale] = useState(35);
   const [etaPensionamento, setEtaPensionamento] = useState(67);
   const [ralAttuale, setRalAttuale] = useState(35000);
@@ -42,6 +43,7 @@ export default function Pensione() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Eta' attuale"
               value={etaAttuale}
               onChange={(v) => setEtaAttuale(Math.round(v))}
@@ -52,6 +54,7 @@ export default function Pensione() {
             />
 
             <CampoInput
+              lang={lang}
               label="Eta' pensionamento"
               value={etaPensionamento}
               onChange={(v) => setEtaPensionamento(Math.round(v))}
@@ -63,6 +66,7 @@ export default function Pensione() {
             />
 
             <CampoInput
+              lang={lang}
               label="RAL attuale (lordo annuo)"
               value={ralAttuale}
               onChange={setRalAttuale}
@@ -74,6 +78,7 @@ export default function Pensione() {
             />
 
             <CampoInput
+              lang={lang}
               label="Crescita RAL annua"
               value={crescitaRALPercent}
               onChange={setCrescitaRALPercent}
@@ -85,6 +90,7 @@ export default function Pensione() {
             />
 
             <CampoInput
+              lang={lang}
               label="Anni di contributi gia' versati"
               value={anniContributi}
               onChange={(v) => setAnniContributi(Math.round(v))}

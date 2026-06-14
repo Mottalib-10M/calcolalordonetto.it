@@ -3,6 +3,9 @@ import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaTFRAnnuo, calcolaTFRAccumulato } from '../../lib/irpef-engine';
 import { formatCurrency, formatRate, formatNumber } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
 /**
  * TFR taxation uses "tassazione separata":
@@ -42,7 +45,7 @@ function calcolaTassazioneSeparataTFR(tfrLordo: number, anni: number): {
   return { aliquotaMedia, impostaTFR, tfrNetto };
 }
 
-export default function TFR() {
+export default function TFR({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(30_000);
   const [anni, setAnni] = useState(5);
   const [tassoRivalutazione, setTassoRivalutazione] = useState(3);
@@ -129,6 +132,7 @@ export default function TFR() {
             max={300_000}
             suffix="€"
             helpText="Il tuo stipendio lordo annuale"
+            lang={lang}
           />
           <CampoInput
             label="Anni di servizio"
@@ -137,6 +141,7 @@ export default function TFR() {
             min={1}
             max={50}
             helpText="Numero di anni lavorati"
+            lang={lang}
           />
           <CampoInput
             label="Tasso di rivalutazione (%)"
@@ -147,6 +152,7 @@ export default function TFR() {
             step={0.1}
             suffix="%"
             helpText="Default: 1,5% + 75% inflazione ISTAT"
+            lang={lang}
           />
         </div>
       </div>
@@ -287,6 +293,7 @@ export default function TFR() {
               Composizione del TFR in azienda
             </h3>
             <BarraScomposizione
+              lang={lang}
               total={risultato.tfrAccumulato}
               items={[
                 { label: 'TFR netto', value: risultato.tfrNetto, color: '#22c55e' },

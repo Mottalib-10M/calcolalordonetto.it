@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaInteresseComposto } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
 const FREQUENZE: { value: 1 | 2 | 4 | 12; label: string }[] = [
   { value: 1, label: 'Annuale' },
@@ -10,7 +11,7 @@ const FREQUENZE: { value: 1 | 2 | 4 | 12; label: string }[] = [
   { value: 12, label: 'Mensile' },
 ];
 
-export default function InteresseComposto() {
+export default function InteresseComposto({ lang = 'it' }: { lang?: Lang }) {
   const [capitaleIniziale, setCapitaleIniziale] = useState(10_000);
   const [tassoPercent, setTassoPercent] = useState(5);
   const [durataAnni, setDurataAnni] = useState(20);
@@ -48,6 +49,7 @@ export default function InteresseComposto() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Capitale iniziale"
               value={capitaleIniziale}
               onChange={setCapitaleIniziale}
@@ -58,6 +60,7 @@ export default function InteresseComposto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Tasso di interesse annuo"
               value={tassoPercent}
               onChange={setTassoPercent}
@@ -68,6 +71,7 @@ export default function InteresseComposto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Durata in anni"
               value={durataAnni}
               onChange={(v) => setDurataAnni(Math.round(v))}
@@ -78,6 +82,7 @@ export default function InteresseComposto() {
             />
 
             <CampoInput
+              lang={lang}
               label="Versamento periodico mensile"
               value={versamentoMensile}
               onChange={setVersamentoMensile}

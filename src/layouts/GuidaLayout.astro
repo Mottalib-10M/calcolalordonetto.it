@@ -1,6 +1,8 @@
 ---
 import Layout from './Layout.astro';
 import { SITE } from '../config';
+import type { Lang } from '../i18n/types';
+import { t } from '../i18n/index';
 import { breadcrumbSchema, faqSchema } from '../lib/seo';
 
 interface Props {
@@ -12,6 +14,7 @@ interface Props {
   dateModified?: string;
   breadcrumbs: { name: string; url: string }[];
   faqs?: { question: string; answer: string }[];
+  lang?: Lang;
 }
 
 const {
@@ -23,6 +26,7 @@ const {
   dateModified,
   breadcrumbs,
   faqs,
+  lang = 'it',
 } = Astro.props;
 
 const canonicalURL = canonical || Astro.url.href;
@@ -35,7 +39,7 @@ const articleSchema = {
   url: canonicalURL,
   datePublished,
   dateModified: dateModified || datePublished,
-  inLanguage: SITE.locale,
+  inLanguage: lang === 'en' ? SITE.localeEn : SITE.locale,
   author: {
     '@type': 'Organization',
     name: SITE.name,
@@ -62,7 +66,8 @@ const schemaString = JSON.stringify(schemas);
 
 const publishedDate = new Date(datePublished);
 const modifiedDate = dateModified ? new Date(dateModified) : null;
-const dateFormatter = new Intl.DateTimeFormat('it-IT', {
+const dateLocale = lang === 'en' ? 'en-US' : 'it-IT';
+const dateFormatter = new Intl.DateTimeFormat(dateLocale, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -75,6 +80,7 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
   canonical={canonical}
   ogImage={ogImage}
   schema={schemaString}
+  lang={lang}
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Breadcrumb navigation -->
@@ -107,9 +113,9 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
       <aside class="hidden lg:block">
         <div class="sticky top-24">
           <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">
-            Indice
+            {t('guide.toc', lang)}
           </h2>
-          <nav aria-label="Indice dei contenuti">
+          <nav aria-label={t('guide.tocAriaLabel', lang)}>
             <slot name="toc" />
           </nav>
         </div>
@@ -129,13 +135,13 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
               <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
               </svg>
-              Redazione {SITE.name}
+              {t('guide.editorial', lang)} {SITE.name}
             </span>
             <time datetime={datePublished} class="flex items-center gap-1.5">
               <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd" />
               </svg>
-              Pubblicato il {dateFormatter.format(publishedDate)}
+              {t('guide.publishedOn', lang)} {dateFormatter.format(publishedDate)}
             </time>
             {modifiedDate && (
               <time datetime={dateModified} class="flex items-center gap-1.5">
@@ -143,7 +149,7 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
                   <path d="m5.433 13.917 1.262-3.155A4 4 0 0 1 7.58 9.42l6.92-6.918a2.121 2.121 0 0 1 3 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 0 1-.65-.65Z" />
                   <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0 0 10 3H4.75A2.75 2.75 0 0 0 2 5.75v9.5A2.75 2.75 0 0 0 4.75 18h9.5A2.75 2.75 0 0 0 17 15.25V10a.75.75 0 0 0-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5Z" />
                 </svg>
-                Aggiornato il {dateFormatter.format(modifiedDate)}
+                {t('guide.updatedOn', lang)} {dateFormatter.format(modifiedDate)}
               </time>
             )}
           </div>

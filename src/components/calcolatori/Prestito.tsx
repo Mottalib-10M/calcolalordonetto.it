@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaPrestito } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
-export default function Prestito() {
+export default function Prestito({ lang = 'it' }: { lang?: Lang }) {
   const [importo, setImporto] = useState(10_000);
   const [tanPercent, setTanPercent] = useState(7);
   const [durataMesi, setDurataMesi] = useState(60);
@@ -31,6 +32,7 @@ export default function Prestito() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Importo del prestito"
               value={importo}
               onChange={setImporto}
@@ -41,6 +43,7 @@ export default function Prestito() {
             />
 
             <CampoInput
+              lang={lang}
               label="TAN (Tasso Annuo Nominale)"
               value={tanPercent}
               onChange={setTanPercent}
@@ -51,6 +54,7 @@ export default function Prestito() {
             />
 
             <CampoInput
+              lang={lang}
               label="Durata in mesi"
               value={durataMesi}
               onChange={(v) => setDurataMesi(Math.round(v))}
@@ -61,6 +65,7 @@ export default function Prestito() {
             />
 
             <CampoInput
+              lang={lang}
               label="Spese di istruttoria"
               value={speseIstruttoria}
               onChange={setSpeseIstruttoria}

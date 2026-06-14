@@ -2,11 +2,14 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { calcolaStipendio } from '../../lib/irpef-engine';
 import type { RisultatoStipendio } from '../../lib/irpef-engine';
 import { formatCurrency } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale } from '../../lib/format';
 import { decodeState, pushState } from '../../lib/url-state';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
 
-export default function BustaPaga() {
+export default function BustaPaga({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(30_000);
   const [regione, setRegione] = useState('LOM');
 
@@ -94,8 +97,9 @@ export default function BustaPaga() {
           max={500_000}
           step={500}
           suffix="€"
+          lang={lang}
         />
-        <SelettoreRegione value={regione} onChange={handleRegioneChange} />
+        <SelettoreRegione value={regione} onChange={handleRegioneChange} lang={lang} />
       </div>
 
       {ral > 0 && (

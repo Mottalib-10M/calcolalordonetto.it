@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaMutuo } from '../../lib/finanz-engine';
 import { formatCurrency, formatNumber, formatPercent } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
-export default function Mutuo() {
+export default function Mutuo({ lang = 'it' }: { lang?: Lang }) {
   const [importo, setImporto] = useState(200_000);
   const [tassoPercent, setTassoPercent] = useState(3.5);
   const [durataAnni, setDurataAnni] = useState(25);
@@ -72,6 +73,7 @@ export default function Mutuo() {
 
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Importo del prestito"
               value={importo}
               onChange={setImporto}
@@ -82,6 +84,7 @@ export default function Mutuo() {
             />
 
             <CampoInput
+              lang={lang}
               label="Tasso di interesse annuo"
               value={tassoPercent}
               onChange={setTassoPercent}
@@ -92,6 +95,7 @@ export default function Mutuo() {
             />
 
             <CampoInput
+              lang={lang}
               label="Durata in anni"
               value={durataAnni}
               onChange={(v) => setDurataAnni(Math.round(v))}

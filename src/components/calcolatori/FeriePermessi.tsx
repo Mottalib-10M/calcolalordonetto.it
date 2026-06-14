@@ -1,11 +1,14 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import SelettoreMensilita from '../ui/SelettoreMensilita';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaFeriePermessi } from '../../lib/irpef-engine';
 import { formatCurrency, formatNumber, formatPercent } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
 
-export default function FeriePermessi() {
+export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(30_000);
   const [giorniFerie, setGiorniFerie] = useState(10);
   const [orePermessi, setOrePermessi] = useState(16);
@@ -68,6 +71,7 @@ export default function FeriePermessi() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <CampoInput
+            lang={lang}
             label="RAL (Retribuzione Annua Lorda)"
             value={ral}
             onChange={setRal}
@@ -77,6 +81,7 @@ export default function FeriePermessi() {
             helpText="Il tuo stipendio lordo annuale"
           />
           <CampoInput
+            lang={lang}
             label="Giorni ferie non godute"
             value={giorniFerie}
             onChange={(v) => setGiorniFerie(Math.max(0, Math.round(v)))}
@@ -85,6 +90,7 @@ export default function FeriePermessi() {
             helpText="Giorni lavorativi di ferie residue"
           />
           <CampoInput
+            lang={lang}
             label="Ore permessi non goduti"
             value={orePermessi}
             onChange={(v) => setOrePermessi(Math.max(0, Math.round(v)))}
@@ -96,6 +102,7 @@ export default function FeriePermessi() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           <CampoInput
+            lang={lang}
             label="Ore settimanali"
             value={oreSettimanali}
             onChange={(v) => setOreSettimanali(Math.max(1, Math.round(v)))}
@@ -103,7 +110,7 @@ export default function FeriePermessi() {
             max={48}
             helpText="Default: 40 ore (full-time)"
           />
-          <SelettoreMensilita value={mensilita} onChange={setMensilita} />
+          <SelettoreMensilita lang={lang} value={mensilita} onChange={setMensilita} />
         </div>
       </div>
 
@@ -167,6 +174,7 @@ export default function FeriePermessi() {
                 Composizione dell'importo lordo
               </h3>
               <BarraScomposizione
+                lang={lang}
                 total={risultato.lordoTotale}
                 items={[
                   { label: 'Netto stimato', value: risultato.nettoStimato, color: '#22c55e' },

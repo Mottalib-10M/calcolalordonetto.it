@@ -1,0 +1,699 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../config';
+import { calcolaStipendio, type RisultatoStipendio } from '../../../lib/irpef-engine';
+import { regioni } from '../../../data/regioni';
+import { formatCurrency, formatRate } from '../../../lib/format';
+import { breadcrumbSchema, faqSchema } from '../../../lib/seo';
+
+/* ──────────────────────────────────────────────────────────────────────────
+   getStaticPaths — generates 24 RAL pages (English)
+   ────────────────────────────────────────────────────────────────────────── */
+
+export function getStaticPaths() {
+  const ALL_RALS = [
+    15_000, 18_000, 20_000, 22_000,
+    25_000, 27_000, 28_000, 30_000, 32_000, 35_000, 38_000,
+    40_000, 42_000, 45_000, 50_000, 55_000,
+    60_000, 65_000, 70_000, 80_000, 90_000, 100_000, 120_000, 150_000,
+  ];
+
+  function ralToSlug(ral: number): string {
+    return `${ral}-euro-net`;
+  }
+
+  function fmtRal(ral: number): string {
+    return ral.toLocaleString('en-US');
+  }
+
+  function getRangeKey(ral: number): string {
+    if (ral <= 22_000) return 'low';
+    if (ral <= 32_000) return 'lower-middle';
+    if (ral <= 45_000) return 'middle';
+    if (ral <= 70_000) return 'upper-middle';
+    return 'high';
+  }
+
+  function getAdjacentLinks(ral: number) {
+    const idx = ALL_RALS.indexOf(ral);
+    const indices: number[] = [];
+    for (let i = Math.max(0, idx - 3); i < idx; i++) indices.push(i);
+    for (let i = idx + 1; i <= Math.min(ALL_RALS.length - 1, idx + 3); i++) indices.push(i);
+
+    const anchors = [
+      'Find out how much you earn with',
+      'What\'s left net with',
+      'Net salary calculation for',
+      'See the details of',
+      'Monthly net for',
+      'Full analysis of',
+    ];
+
+    return indices.map((i, j) => ({
+      ral: ALL_RALS[i],
+      slug: ralToSlug(ALL_RALS[i]),
+      anchor: `${anchors[j % anchors.length]} RAL ${fmtRal(ALL_RALS[i])} EUR`,
+    }));
+  }
+
+  function buildFaqs(
+    ral: number,
+    result: RisultatoStipendio,
+    best: { nome: string; nettoMensile: number },
+    worst: { nome: string; nettoMensile: number },
+  ) {
+    const ralF = fmtRal(ral);
+    const nettoF = formatCurrency(result.nettoMensile, 'en');
+    const rangeKey = getRangeKey(ral);
+
+    const faqs = [
+      {
+        question: `How much do you earn net per month with a gross salary (RAL) of ${ralF} euro?`,
+        answer: `With a gross salary (RAL) of ${ralF} euro and 13 pay periods, the monthly net salary is approximately ${nettoF} for a single employee residing in Lombardy. The amount varies based on the region of residence, family situation, and municipal tax rate.`,
+      },
+      {
+        question: `Which Italian region has the highest net pay with a RAL of ${ralF} euro?`,
+        answer: `With a RAL of ${ralF} euro, the region with the highest monthly net pay is ${best.nome} (${formatCurrency(best.nettoMensile, 'en')}), thanks to lower regional surcharges (addizionale regionale). The least favorable region is ${worst.nome} (${formatCurrency(worst.nettoMensile, 'en')}), with a difference of ${formatCurrency(best.nettoMensile - worst.nettoMensile, 'en')} per month.`,
+      },
+      {
+        question: `How much tax do you pay on a RAL of ${ralF} euro in Italy?`,
+        answer: `On a RAL of ${ralF} euro, the overall effective tax rate is approximately ${formatRate(result.aliquotaMedia, 'en')} (INPS social contributions + IRPEF income tax + regional and municipal surcharges). The marginal IRPEF rate is ${formatRate(result.aliquotaMarginale, 'en')}. The annual net salary is approximately ${formatCurrency(result.nettoAnnuo, 'en')}.`,
+      },
+    ];
+
+    if (rangeKey === 'low') {
+      faqs.push({
+        question: `With a RAL of ${ralF} euro, are you entitled to the trattamento integrativo (supplementary benefit)?`,
+        answer: `Yes, with a RAL of ${ralF} euro the employee is generally entitled to the trattamento integrativo (formerly "bonus Renzi") of EUR 1,200 per year (EUR 100 per month), which is paid directly through the payslip by the employer. This bonus applies to incomes up to EUR 15,000 and, in reduced form, up to EUR 28,000.`,
+      });
+      faqs.push({
+        question: `How can you verify your payslip is correct with a RAL of ${ralF} euro?`,
+        answer: `Check that the INPS taxable base matches the RAL, that social contributions are calculated at 9.19%, that the trattamento integrativo is applied, and that the employment income deduction (detrazione lavoro dipendente) is present. With low salaries, errors are more frequent and their percentage impact is greater.`,
+      });
+    } else if (rangeKey === 'lower-middle') {
+      faqs.push({
+        question: `With a RAL of ${ralF} euro, how does the cuneo fiscale (tax wedge) work?`,
+        answer: `For incomes between EUR 20,001 and EUR 32,000, the cuneo fiscale provides an additional deduction of EUR 1,000 per year. Between EUR 32,001 and EUR 40,000, the deduction gradually decreases to zero. This benefit is in addition to the standard employment income deductions (detrazioni per lavoro dipendente).`,
+      });
+    } else if (rangeKey === 'middle') {
+      faqs.push({
+        question: `Is a pension fund (fondo pensione) worth it with a RAL of ${ralF} euro?`,
+        answer: `Yes, with a RAL of ${ralF} euro, contributions to a complementary pension fund are tax-deductible up to EUR 5,164.57 per year. With a marginal rate of ${formatRate(result.aliquotaMarginale, 'en')}, every EUR 1,000 contributed reduces your taxes by approximately ${formatCurrency(1000 * result.aliquotaMarginale, 'en')}. This is one of the most effective tax optimization strategies at this income level.`,
+      });
+      faqs.push({
+        question: `Which IRPEF tax bracket does a RAL of ${ralF} euro fall into?`,
+        answer: `With a RAL of ${ralF} euro, after deducting INPS contributions, the taxable income falls mainly in the second IRPEF bracket (23% up to EUR 28,000 and 33% from EUR 28,001 to EUR 50,000). The effective marginal rate is ${formatRate(result.aliquotaMarginale, 'en')}.`,
+      });
+    } else if (rangeKey === 'upper-middle') {
+      faqs.push({
+        question: `With a RAL of ${ralF} euro, do you pay 43% in taxes?`,
+        answer: `Not on the entire salary. With a RAL of ${ralF} euro, the 43% rate only applies to the portion of taxable income exceeding EUR 50,000. The first brackets are taxed at 23% and 33%. The effective average rate is ${formatRate(result.aliquotaMedia, 'en')}, significantly lower than 43%.`,
+      });
+    } else {
+      faqs.push({
+        question: `How does the regime impatriati (expatriate tax regime) work with a RAL of ${ralF} euro?`,
+        answer: `The regime impatriati provides a 50% exemption on taxable income for workers who transfer their tax residence to Italy. With a RAL of ${ralF} euro, the annual tax savings can exceed ${formatCurrency(ral * 0.15, 'en')} thanks to the reduced taxation. The regime is available for 5 years, extendable in certain cases.`,
+      });
+      faqs.push({
+        question: `Is there an INPS contribution ceiling for a RAL of ${ralF} euro?`,
+        answer: `Yes, for 2026 the INPS contribution ceiling (massimale contributivo) is approximately EUR 119,650. Beyond this threshold, no further INPS employee contributions are due. With a RAL of ${ralF} euro, ${ral > 119_650 ? 'the exceeding portion is not subject to INPS employee contributions' : 'the entire RAL is subject to INPS contributions'}.`,
+      });
+    }
+
+    return faqs;
+  }
+
+  return ALL_RALS.map((ral) => {
+    const slug = ralToSlug(ral);
+    const ralFormatted = fmtRal(ral);
+
+    const defaultResult = calcolaStipendio({ ral, regione: 'LOM', mensilita: 13 });
+
+    const regionResults = regioni.map((r) => {
+      const res = calcolaStipendio({ ral, regione: r.codice, mensilita: 13 });
+      return {
+        nome: r.nome,
+        codice: r.codice,
+        nettoMensile: res.nettoMensile,
+        addizionaleRegionale: res.addizionaleRegionale,
+        differenza: 0,
+      };
+    });
+
+    regionResults.sort((a, b) => b.nettoMensile - a.nettoMensile);
+
+    const bestRegion = regionResults[0];
+    const worstRegion = regionResults[regionResults.length - 1];
+
+    const regionRows = regionResults.map((r) => ({
+      ...r,
+      differenza: r.nettoMensile - bestRegion.nettoMensile,
+    }));
+
+    const familySituations = [
+      { label: 'Single', opts: {} },
+      { label: 'With dependent spouse', opts: { coniugeACarico: true } },
+      { label: 'With 1 child (21+)', opts: { figliACarico21plus: 1 } },
+      { label: 'With 2 children (21+)', opts: { figliACarico21plus: 2 } },
+      { label: 'With spouse + 1 child', opts: { coniugeACarico: true, figliACarico21plus: 1 } },
+    ];
+
+    const singleNetto = defaultResult.nettoMensile;
+
+    const familyRows = familySituations.map((sit) => {
+      const res = calcolaStipendio({ ral, regione: 'LOM', mensilita: 13, ...sit.opts });
+      return {
+        label: sit.label,
+        nettoMensile: res.nettoMensile,
+        differenza: res.nettoMensile - singleNetto,
+      };
+    });
+
+    const rangeKey = getRangeKey(ral);
+    const adjacentLinks = getAdjacentLinks(ral);
+    const faqs = buildFaqs(ral, defaultResult, bestRegion, worstRegion);
+
+    const nettoPreview = formatCurrency(defaultResult.nettoMensile, 'en');
+    const seoTitle = `€${ralFormatted} Gross Salary: Net Monthly Pay Italy ${SITE.annoFiscale}`;
+    const seoDescription = `With a gross salary (RAL) of €${ralFormatted}, you take home about ${nettoPreview} net per month over 13 pay periods. Full IRPEF, INPS, and regional breakdown.`;
+
+    return {
+      params: { slug },
+      props: {
+        ral,
+        ralFormatted,
+        defaultResult,
+        regionRows,
+        bestRegion,
+        worstRegion,
+        familyRows,
+        faqs,
+        adjacentLinks,
+        rangeKey,
+        seoTitle,
+        seoDescription,
+      },
+    };
+  });
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Page rendering
+   ────────────────────────────────────────────────────────────────────────── */
+
+interface RegionRow {
+  nome: string;
+  codice: string;
+  nettoMensile: number;
+  addizionaleRegionale: number;
+  differenza: number;
+}
+
+interface FamilyRow {
+  label: string;
+  nettoMensile: number;
+  differenza: number;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface AdjacentLink {
+  ral: number;
+  slug: string;
+  anchor: string;
+}
+
+const {
+  ral,
+  ralFormatted,
+  defaultResult,
+  regionRows,
+  bestRegion,
+  worstRegion,
+  familyRows,
+  faqs,
+  adjacentLinks,
+  rangeKey,
+  seoTitle,
+  seoDescription,
+} = Astro.props as {
+  ral: number;
+  ralFormatted: string;
+  defaultResult: RisultatoStipendio;
+  regionRows: RegionRow[];
+  bestRegion: RegionRow;
+  worstRegion: RegionRow;
+  familyRows: FamilyRow[];
+  faqs: FaqItem[];
+  adjacentLinks: AdjacentLink[];
+  rangeKey: string;
+  seoTitle: string;
+  seoDescription: string;
+};
+
+const { slug } = Astro.params;
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Salary', url: `${SITE.url}/en/salary/` },
+  { name: `RAL ${ralFormatted} EUR`, url: `${SITE.url}/en/salary/${slug}/` },
+];
+
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: seoTitle,
+    description: seoDescription,
+    url: `${SITE.url}/en/salary/${slug}/`,
+    inLanguage: 'en',
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: `${SITE.url}/en/` },
+  },
+  faqSchema(faqs),
+];
+
+const schemaString = JSON.stringify(schemas);
+
+/* ── Narrative content by range ─────────────────────────────────────────── */
+
+function formatRalLabel(ral: number): string {
+  return ral.toLocaleString('en-US');
+}
+
+function getNarrative(rk: string, ral: number, result: RisultatoStipendio, best: RegionRow, worst: RegionRow) {
+  const ralF = formatRalLabel(ral);
+  const nettoF = formatCurrency(result.nettoMensile, 'en');
+  const diffRegione = formatCurrency(best.nettoMensile - worst.nettoMensile, 'en');
+
+  if (rk === 'low') {
+    return {
+      analysisTitle: 'Income Range Analysis: Low',
+      analysisBody: `<p>With a RAL of ${ralF} euro, you fall in the low income bracket, typical of entry-level positions, part-time contracts, or early career roles. At this level, the Italian tax system provides several protective mechanisms that significantly reduce the tax burden.</p>
+<p>The <strong>trattamento integrativo</strong> (supplementary benefit, formerly "bonus Renzi") is the most relevant advantage: if your taxable income does not exceed EUR 15,000, you receive EUR 1,200 per year (EUR 100 per month) directly in your payslip. Between EUR 15,001 and EUR 28,000, the benefit is granted in reduced form, only if total deductions exceed the gross IRPEF.</p>
+<p>The <strong>no-tax area</strong> ensures that, for very low incomes, the employment income deduction (detrazione lavoro dipendente) fully absorbs the IRPEF due. The <strong>cuneo fiscale</strong> (tax wedge) provides an exempt amount that reduces the taxable base: up to EUR 8,500 the exemption is 7.1%, between EUR 8,501 and EUR 15,000 it is 5.3%, and between EUR 15,001 and EUR 20,000 it is 4.8%.</p>
+<p>For families with children under 21, the <strong>Assegno Unico Universale</strong> (AUU, Universal Child Allowance) provides important support that is added to the net salary and is not included in the calculations above. Always check your payslip: at these salary levels, an error of just a few euros per month can have a significant impact on the family budget.</p>`,
+      goodSalaryTitle: 'Is This a Good Salary?',
+      goodSalaryBody: `<p>A RAL of ${ralF} euro produces a monthly net of approximately ${nettoF}. The median salary in Italy is around EUR 29,000-30,000 gross, so this salary level is below the national average.</p>
+<p>However, the cost of living varies enormously across Italian cities. In southern cities such as Catania, Bari, or Palermo, a net salary of ${nettoF} can cover essential expenses, while in Milan or Rome it would be insufficient for independent rent.</p>
+<p>If you are at this level, check whether you are entitled to the Assegno Unico for children, utility bill bonuses, or other benefits linked to ISEE (Equivalent Economic Situation Indicator). Every euro counts when margins are tight.</p>`,
+    };
+  }
+
+  if (rk === 'lower-middle') {
+    return {
+      analysisTitle: 'Income Range Analysis: Lower-Middle',
+      analysisBody: `<p>With a RAL of ${ralF} euro, you fall in the most common salary bracket in Italy. According to ISTAT data, the median salary of Italian employees is around EUR 29,000-30,000 gross, making this bracket extremely representative of the national labor market.</p>
+<p>At this level, an important tax transition occurs: the first <strong>IRPEF bracket at 23%</strong> covers income up to EUR 28,000, while the second bracket at 33% applies to the exceeding portion. This means that every gross euro earned above EUR 28,000 of taxable income is subject to a significantly higher marginal tax rate.</p>
+<p>The <strong>cuneo fiscale</strong> (tax wedge) provides a deduction of EUR 1,000 per year for incomes between EUR 20,001 and EUR 32,000, which gradually decreases between EUR 32,001 and EUR 40,000. This benefit is added to the employment income deduction and can make a significant difference in monthly net pay.</p>
+<p>The <strong>trattamento integrativo</strong> (supplementary benefit) phases out in this bracket: above EUR 28,000 of income it is no longer granted. If your income is close to this threshold, a salary increase could paradoxically reduce your net pay due to the loss of the bonus.</p>
+<p>Regional differences start to become noticeable: between ${best.nome} and ${worst.nome} there is a difference of ${diffRegione} per month, equal to approximately ${formatCurrency((best.nettoMensile - worst.nettoMensile) * 13, 'en')} per year.</p>`,
+      goodSalaryTitle: 'Is This a Good Salary?',
+      goodSalaryBody: `<p>A RAL of ${ralF} euro produces a net of approximately ${nettoF} per month. This level is aligned with the Italian median salary and represents adequate compensation for many positions with a few years of experience.</p>
+<p>The purchasing power of ${nettoF} per month varies enormously depending on the city. In the North, especially in Milan, this salary covers necessities but leaves tight margins after rent and expenses. In central-southern Italy, it offers a decidedly better quality of life.</p>
+<p>Compared to the European average, Italian salaries in this bracket are 15-25% lower than France and Germany for equivalent roles, but the gap narrows when considering the lower cost of living in many Italian cities.</p>`,
+    };
+  }
+
+  if (rk === 'middle') {
+    return {
+      analysisTitle: 'Income Range Analysis: Middle',
+      analysisBody: `<p>With a RAL of ${ralF} euro, you fall in the middle bracket, typical of specialized professionals, junior managers, and experienced practitioners. At this level, the Italian tax system starts to weigh significantly.</p>
+<p>The <strong>second IRPEF bracket at 33%</strong> applies to a large portion of your taxable income (from EUR 28,001 to EUR 50,000). This means that for every euro of gross increase, you retain less than 60 cents after INPS, IRPEF, and surcharges.</p>
+<p>The <strong>cuneo fiscale</strong> (tax wedge) provides a deduction of EUR 1,000 up to EUR 32,000 of income, after which it gradually decreases. At EUR 40,000 of income, the deduction is completely eliminated, creating a particularly penalizing threshold effect for those just above it.</p>
+<p><strong>Regional differences</strong> become very significant at this level: between ${best.nome} and ${worst.nome} the difference is ${diffRegione} per month, or approximately ${formatCurrency((best.nettoMensile - worst.nettoMensile) * 13, 'en')} per year. For a remote worker, the choice of region of residence can have as much impact as a small salary increase.</p>
+<p>A highly effective <strong>tax optimization strategy</strong> at this level is contributing to a complementary pension fund (fondo pensione): with a marginal rate of ${formatRate(result.aliquotaMarginale, 'en')}, every EUR 1,000 contributed (up to EUR 5,164.57 per year deductible) generates a tax saving of approximately ${formatCurrency(1000 * result.aliquotaMarginale, 'en')}.</p>`,
+      goodSalaryTitle: 'Is This a Good Salary?',
+      goodSalaryBody: `<p>A RAL of ${ralF} euro, with a net of approximately ${nettoF} per month, is well above the Italian median. This salary is typical of roles with 5-10 years of experience in sectors such as IT, engineering, finance, and consulting.</p>
+<p>In cities like Milan, Turin, or Bologna, ${nettoF} per month allows for a comfortable lifestyle and the possibility of saving regularly, though without particular luxuries. In central-southern cities, the same net amount guarantees an excellent quality of life.</p>
+<p>Compared to Europe, a RAL of ${ralF} euro in Italy corresponds to relatively lower salaries than those of colleagues in Germany, France, or the Netherlands for equivalent positions. The difference is further amplified when considering Italian tax pressure.</p>`,
+    };
+  }
+
+  if (rk === 'upper-middle') {
+    return {
+      analysisTitle: 'Income Range Analysis: Upper-Middle',
+      analysisBody: `<p>With a RAL of ${ralF} euro, you enter the upper-middle bracket, characterized by crossing into the <strong>third IRPEF bracket at 43%</strong>, which applies to the portion of taxable income exceeding EUR 50,000. This is the highest marginal rate in the Italian system and weighs significantly on incomes in this bracket.</p>
+<p>At this level, all cuneo fiscale (tax wedge) benefits are exhausted: no exempt amounts, no additional deductions. The <strong>employment income deductions</strong> (detrazioni per lavoro dipendente) are completely eliminated above EUR 50,000 of income, meaning every additional euro bears the full impact of taxation.</p>
+<p><strong>Regional surcharges</strong> (addizionali regionali) reach their highest values. Lazio, with its progressive rate reaching 3.33%, can cost over ${formatCurrency(result.imponibileFiscale * 0.03, 'en')} per year, while regions such as Friuli-Venezia Giulia or Veneto maintain more contained rates. The difference between ${best.nome} and ${worst.nome} is ${diffRegione} per month.</p>
+<p>If you are a professional in this bracket, the main <strong>optimization levers</strong> are: pension fund (deduction up to EUR 5,164.57), deductible insurance policies, and negotiation of tax-exempt company benefits such as meal vouchers, company car, and corporate welfare. These tools can reduce the effective tax burden by several hundred euros per year.</p>`,
+      goodSalaryTitle: 'Is This a Good Salary?',
+      goodSalaryBody: `<p>A RAL of ${ralF} euro produces a net of approximately ${nettoF}, placing you in the top 10-15% of Italian employees. This salary allows you to live comfortably in any Italian city, to save and invest regularly.</p>
+<p>At this level, the so-called "Italian tax paradox" becomes evident: despite the high gross salary, the net is significantly eroded by the combination of INPS at 9.19%, IRPEF up to 43%, and surcharges. The effective average rate of ${formatRate(result.aliquotaMedia, 'en')} means that over one-third of your gross salary goes to taxes and contributions.</p>
+<p>In a European comparison, a salary of ${ralF} euro in Italy translates to lower purchasing power than equivalent positions in Germany, France, or the Netherlands. The gap is particularly evident in tech and finance sectors, where gross salary differentials compound with comparatively higher tax pressure.</p>`,
+    };
+  }
+
+  // high
+  return {
+    analysisTitle: 'Income Range Analysis: High',
+    analysisBody: `<p>With a RAL of ${ralF} euro, you are in the high income bracket for Italian employees. At this level, the <strong>marginal IRPEF rate of 43%</strong> applies to the entire portion of taxable income above EUR 50,000, making every gross increase particularly costly in tax terms.</p>
+<p>The <strong>regime impatriati</strong> (expatriate tax regime) represents the most powerful optimization lever for those who qualify. It provides a 50% exemption on taxable income for workers who transfer their tax residence to Italy, with savings that at this RAL level can exceed ${formatCurrency(ral * 0.15, 'en')} per year. The regime lasts 5 years and is accessible to those who have not resided in Italy in the 3 years prior to the transfer.</p>
+<p>The <strong>INPS contribution ceiling</strong> (massimale contributivo, approximately EUR 119,650 in 2026) becomes relevant${ral > 119_650 ? ': the portion of RAL exceeding this ceiling is not subject to INPS employee contributions, which slightly reduces the overall contribution burden' : ' for RAL amounts just above this figure'}. This ceiling also affects future pension benefits, limiting contribution accruals.</p>
+<p>In an <strong>international context</strong>, a RAL of ${ralF} euro in Italy compares with significantly higher salaries in countries such as Switzerland, Germany, the Netherlands, and the United Kingdom for equivalent roles. After taxes, the differential widens further: the Italian net of ${nettoF} per month corresponds to lower purchasing power than that of a professional in the same role in Zurich, London, or Amsterdam.</p>
+<p>At this wealth level, <strong>financial planning</strong> becomes essential: pension fund at maximum deductible (EUR 5,164.57), diversified investment portfolio, and evaluation of corporate structures for any additional activities (consulting, advisory) are all tools to discuss with a qualified tax advisor.</p>`,
+    goodSalaryTitle: 'Is This a Good Salary?',
+    goodSalaryBody: `<p>A RAL of ${ralF} euro, with a net of approximately ${nettoF} per month, places you in the high bracket of Italian employees, probably in the top 3-5%. This salary level is typical of executives, senior managers, and highly specialized professionals.</p>
+<p>The effective average rate of ${formatRate(result.aliquotaMedia, 'en')} highlights how much the Italian tax system weighs on high incomes. Nevertheless, ${nettoF} per month allows for a high standard of living anywhere in Italy, with ample margins for saving and investing.</p>
+<p>When comparing with abroad, it is important to consider that equivalent salaries in Switzerland, the United Kingdom, or the USA generate significantly higher net pay, but these must be weighed against local cost of living (especially real estate and healthcare) and the quality of life that Italy offers in terms of climate, culture, and public services.</p>`,
+  };
+}
+
+const narrative = getNarrative(rangeKey, ral, defaultResult, bestRegion, worstRegion);
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  canonical={`${SITE.url}/en/salary/${slug}/`}
+  schema={schemaString}
+  lang="en"
+>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/en/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <a href="/en/salary/" class="hover:text-brand transition-colors">Salary</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">RAL {ralFormatted} &euro;</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- H1 -->
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-8">
+      Gross Salary (RAL) {ralFormatted} &euro;: Your Net Monthly Pay in {SITE.annoFiscale}
+    </h1>
+
+    <!-- Hero box -->
+    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 mb-12">
+      <div class="relative z-10">
+        <p class="text-sm font-medium text-gray-400 uppercase tracking-wider mb-1">
+          RAL {ralFormatted} &euro; | Net salary {SITE.annoFiscale}
+        </p>
+        <p class="text-lg text-gray-200 mt-4">
+          With a gross salary (RAL) of <strong class="text-white">{formatCurrency(ral, 'en')}</strong>, you will earn approximately
+        </p>
+        <p class="text-4xl sm:text-5xl font-bold text-white tracking-tight mt-2">
+          {formatCurrency(defaultResult.nettoMensile, 'en')} <span class="text-brand">net/month</span>
+        </p>
+        <p class="mt-2 text-sm text-gray-400">
+          on 13 pay periods | {formatCurrency(defaultResult.nettoAnnuo, 'en')} net per year
+        </p>
+        <p class="mt-4 text-xs text-gray-500">
+          Calculated for a single employee residing in Lombardy, with average municipal tax rate
+        </p>
+        <div class="mt-6">
+          <a
+            href={`/en/?ral=${ral}`}
+            class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
+            Calculate your specific case
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Decorative -->
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand"></div>
+        <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
+      </div>
+    </section>
+
+    <!-- Region table -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Net Salary by Region with Gross Salary {ralFormatted} &euro;
+      </h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        Monthly net pay varies based on the regional IRPEF surcharge (addizionale regionale). Here is a comparison across all 21 Italian regions and autonomous provinces.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">#</th>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Region</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Monthly Net</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white hidden sm:table-cell">Regional Surcharge</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Difference</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {regionRows.map((row, idx) => {
+              const isFirst = idx === 0;
+              const isLast = idx === regionRows.length - 1;
+              const rowClass = isFirst
+                ? 'bg-green-50/50 dark:bg-green-900/10'
+                : isLast
+                  ? 'bg-red-50/50 dark:bg-red-900/10'
+                  : '';
+              return (
+                <tr class={rowClass}>
+                  <td class="px-4 py-2.5 text-gray-500 dark:text-gray-400">{idx + 1}</td>
+                  <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">
+                    {row.nome}
+                    {isFirst && <span class="ml-2 inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">Best</span>}
+                    {isLast && <span class="ml-2 inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/30 px-2 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">Worst</span>}
+                  </td>
+                  <td class="px-4 py-2.5 text-right font-semibold text-gray-900 dark:text-white">{formatCurrency(row.nettoMensile, 'en')}</td>
+                  <td class="px-4 py-2.5 text-right text-gray-600 dark:text-gray-400 hidden sm:table-cell">{formatCurrency(row.addizionaleRegionale, 'en')}/year</td>
+                  <td class={`px-4 py-2.5 text-right font-medium ${row.differenza === 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                    {row.differenza === 0 ? '---' : formatCurrency(row.differenza, 'en')}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-500">
+        Values calculated on 13 pay periods, single employee, average municipal rate. The difference is calculated relative to the region with the highest net pay.
+      </p>
+    </section>
+
+    <!-- Family table -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Net Pay by Family Situation
+      </h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        Net salary changes depending on the presence of dependent family members. Deductions for spouse and children over 21 reduce the IRPEF due.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Situation</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Monthly Net</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Difference from Single</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {familyRows.map((row) => (
+              <tr>
+                <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">{row.label}</td>
+                <td class="px-4 py-2.5 text-right font-semibold text-gray-900 dark:text-white">{formatCurrency(row.nettoMensile, 'en')}</td>
+                <td class={`px-4 py-2.5 text-right font-medium ${row.differenza > 0 ? 'text-green-600 dark:text-green-400' : row.differenza < 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-400'}`}>
+                  {row.differenza === 0 ? '---' : `+${formatCurrency(row.differenza, 'en')}`}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-500">
+        Calculated for Lombardy, 13 pay periods. For children under 21, deductions are replaced by the Assegno Unico Universale (Universal Child Allowance, not included in this calculation).
+      </p>
+    </section>
+
+    <!-- Detailed breakdown -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Tax &amp; Deduction Breakdown
+      </h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        Here is how you get from the gross RAL to the monthly net pay, line by line.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">RAL (Gross Annual Salary)</td>
+              <td class="px-4 py-3 text-right font-bold text-gray-900 dark:text-white">{formatCurrency(defaultResult.ral, 'en')}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">INPS contributions (9.19%)</td>
+              <td class="px-4 py-2.5 text-right text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.contributiINPS, 'en')}</td>
+            </tr>
+            <tr class="bg-gray-50/50 dark:bg-gray-800/30">
+              <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">Taxable income</td>
+              <td class="px-4 py-2.5 text-right font-medium text-gray-900 dark:text-white">{formatCurrency(defaultResult.imponibileFiscale, 'en')}</td>
+            </tr>
+            {defaultResult.cuneoFiscaleSommaEsente > 0 && (
+              <tr>
+                <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Tax wedge (exempt amount)</td>
+                <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">-{formatCurrency(defaultResult.cuneoFiscaleSommaEsente, 'en')} from taxable</td>
+              </tr>
+            )}
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Gross IRPEF</td>
+              <td class="px-4 py-2.5 text-right text-gray-900 dark:text-white">{formatCurrency(defaultResult.irpefLorda, 'en')}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300 pl-8">Employment income deduction</td>
+              <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">-{formatCurrency(defaultResult.detrazioneLavoroDipendente, 'en')}</td>
+            </tr>
+            {defaultResult.cuneoFiscaleDetrazione > 0 && (
+              <tr>
+                <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300 pl-8">Tax wedge (deduction)</td>
+                <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">-{formatCurrency(defaultResult.cuneoFiscaleDetrazione, 'en')}</td>
+              </tr>
+            )}
+            <tr>
+              <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-white">Net IRPEF</td>
+              <td class="px-4 py-2.5 text-right font-medium text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.irpefNetta, 'en')}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Regional surcharge</td>
+              <td class="px-4 py-2.5 text-right text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.addizionaleRegionale, 'en')}</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Municipal surcharge</td>
+              <td class="px-4 py-2.5 text-right text-red-600 dark:text-red-400">-{formatCurrency(defaultResult.addizionaleComunale, 'en')}</td>
+            </tr>
+            {defaultResult.trattamentoIntegrativo > 0 && (
+              <tr>
+                <td class="px-4 py-2.5 text-gray-700 dark:text-gray-300">Supplementary benefit (trattamento integrativo)</td>
+                <td class="px-4 py-2.5 text-right text-green-600 dark:text-green-400">+{formatCurrency(defaultResult.trattamentoIntegrativo, 'en')}</td>
+              </tr>
+            )}
+            <tr class="bg-gray-900 dark:bg-gray-700">
+              <td class="px-4 py-3 font-bold text-white">Annual Net</td>
+              <td class="px-4 py-3 text-right font-bold text-white text-lg">{formatCurrency(defaultResult.nettoAnnuo, 'en')}</td>
+            </tr>
+            <tr class="bg-gray-800 dark:bg-gray-600">
+              <td class="px-4 py-3 font-bold text-white">Monthly Net (13 pay periods)</td>
+              <td class="px-4 py-3 text-right font-bold text-brand text-lg">{formatCurrency(defaultResult.nettoMensile, 'en')}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Average rate</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatRate(defaultResult.aliquotaMedia, 'en')}</p>
+        </div>
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Marginal rate</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatRate(defaultResult.aliquotaMarginale, 'en')}</p>
+        </div>
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Employer cost</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(defaultResult.costoAzienda, 'en')}</p>
+        </div>
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-4 text-center">
+          <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Annual TFR</p>
+          <p class="mt-1 text-xl font-bold text-gray-900 dark:text-white">{formatCurrency(defaultResult.tfrAnnuo, 'en')}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis narrative -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        {narrative.analysisTitle}
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed space-y-4" set:html={narrative.analysisBody} />
+    </section>
+
+    <!-- Good salary? -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        {narrative.goodSalaryTitle}
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed space-y-4" set:html={narrative.goodSalaryBody} />
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden">
+            <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors list-none">
+              <span>{faq.question}</span>
+              <svg class="h-5 w-5 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Adjacent RAL links -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+        See Also
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {adjacentLinks.map((link) => (
+          <a
+            href={`/en/salary/${link.slug}/`}
+            class="group flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 hover:border-brand dark:hover:border-brand transition-colors"
+          >
+            <svg class="h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm text-gray-700 dark:text-gray-300 group-hover:text-brand transition-colors">
+              {link.anchor}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="mb-16 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 text-center">
+      <h2 class="text-2xl font-bold text-white">Calculate your net salary</h2>
+      <p class="mt-3 text-gray-300 max-w-xl mx-auto">
+        Enter your gross salary (RAL), select a region and municipality, and find out exactly how much you take home each month.
+      </p>
+      <a
+        href={`/en/?ral=${ral}`}
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+      >
+        Calculate with gross salary {ralFormatted} &euro;
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </section>
+  </div>
+</Layout>

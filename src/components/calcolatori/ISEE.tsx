@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaISEE } from '../../lib/finanz-engine';
 import { formatCurrency, formatNumber } from '../../lib/format-it';
+import type { Lang } from '../../i18n/types';
 
-export default function ISEE() {
+export default function ISEE({ lang = 'it' }: { lang?: Lang }) {
   const [redditoComplessivo, setRedditoComplessivo] = useState(28_000);
   const [patrimonioMobiliare, setPatrimonioMobiliare] = useState(12_000);
   const [patrimonioImmobiliare, setPatrimonioImmobiliare] = useState(120_000);
@@ -64,6 +65,7 @@ export default function ISEE() {
           </h2>
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Reddito complessivo del nucleo"
               value={redditoComplessivo}
               onChange={setRedditoComplessivo}
@@ -74,6 +76,7 @@ export default function ISEE() {
               helpText="Somma di tutti i redditi dei componenti del nucleo (da lavoro, pensione, autonomo, ecc.)"
             />
             <CampoInput
+              lang={lang}
               label="Canone di affitto annuo"
               value={affittoAnnuo}
               onChange={setAffittoAnnuo}
@@ -93,6 +96,7 @@ export default function ISEE() {
           </h2>
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Patrimonio mobiliare"
               value={patrimonioMobiliare}
               onChange={setPatrimonioMobiliare}
@@ -103,6 +107,7 @@ export default function ISEE() {
               helpText="Conti correnti, depositi, titoli, fondi, azioni, obbligazioni, polizze vita, ecc."
             />
             <CampoInput
+              lang={lang}
               label="Patrimonio immobiliare (valore catastale)"
               value={patrimonioImmobiliare}
               onChange={setPatrimonioImmobiliare}
@@ -113,6 +118,7 @@ export default function ISEE() {
               helpText="Valore catastale degli immobili di proprieta' del nucleo (per la prima casa, inserire il valore catastale rivalutato)"
             />
             <CampoInput
+              lang={lang}
               label="Mutuo residuo prima casa"
               value={mutuoResiduo}
               onChange={setMutuoResiduo}
@@ -132,6 +138,7 @@ export default function ISEE() {
           </h2>
           <div className="space-y-4">
             <CampoInput
+              lang={lang}
               label="Componenti del nucleo"
               value={componentiFamiglia}
               onChange={(v) => setComponentiFamiglia(Math.max(1, Math.round(v)))}
@@ -141,6 +148,7 @@ export default function ISEE() {
               helpText="Numero totale di persone nel nucleo familiare"
             />
             <CampoInput
+              lang={lang}
               label="Figli minorenni"
               value={figliMinorenni}
               onChange={(v) => setFigliMinorenni(Math.max(0, Math.round(v)))}
@@ -149,6 +157,7 @@ export default function ISEE() {
               step={1}
             />
             <CampoInput
+              lang={lang}
               label="Figli maggiorenni conviventi"
               value={figliMaggioriConviventi}
               onChange={(v) => setFigliMaggioriConviventi(Math.max(0, Math.round(v)))}
@@ -157,6 +166,7 @@ export default function ISEE() {
               step={1}
             />
             <CampoInput
+              lang={lang}
               label="Componenti con disabilita'"
               value={disabili}
               onChange={(v) => setDisabili(Math.max(0, Math.round(v)))}

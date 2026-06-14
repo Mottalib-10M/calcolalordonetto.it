@@ -1,0 +1,357 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { SITE } from '../../../config';
+import { calcolaLordoDaNetto } from '../../../lib/irpef-engine';
+import { breadcrumbSchema } from '../../../lib/seo';
+
+const title = `Monthly Net Salary to Gross RAL Table Italy ${SITE.annoFiscale}`;
+const description = `What gross salary (RAL) do you need for €1,000 to €5,000 net per month? Updated ${SITE.annoFiscale} table with IRPEF, INPS, surcharges, and exact RAL required per amount.`;
+
+const amounts = [
+  1000, 1200, 1300, 1400, 1500, 1600, 1700, 1800,
+  2000, 2200, 2500, 2800, 3000, 3500, 4000, 5000,
+];
+
+const defaultRegione = 'LOM';
+
+const pages = amounts.map((netto) => {
+  const { ral, risultato } = calcolaLordoDaNetto(netto, defaultRegione);
+  return {
+    netto,
+    slug: `${netto}-euro`,
+    ral,
+    nettoEffettivo: risultato.nettoMensile,
+    aliquotaMedia: risultato.aliquotaMedia,
+  };
+});
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Monthly Salary', url: `${SITE.url}/en/monthly-salary/` },
+];
+
+const schemaString = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: `${SITE.url}/en/monthly-salary/`,
+    inLanguage: 'en',
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: `${SITE.url}/` },
+  },
+]);
+
+const formatCurrency = (value: number) =>
+  value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+const formatPercent = (value: number) =>
+  (value * 100).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+
+// Group by income level
+const groups = [
+  { label: 'Basic Salaries (€1,000 - €1,400)', items: pages.filter(p => p.netto <= 1400) },
+  { label: 'Average Salaries (€1,500 - €2,000)', items: pages.filter(p => p.netto >= 1500 && p.netto <= 2000) },
+  { label: 'Above-Average Salaries (€2,200 - €3,000)', items: pages.filter(p => p.netto >= 2200 && p.netto <= 3000) },
+  { label: 'High Salaries (€3,500 - €5,000)', items: pages.filter(p => p.netto >= 3500) },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  schema={schemaString}
+  lang="en"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="py-4">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        {breadcrumbs.map((crumb, index) => (
+          <li class="flex items-center gap-1.5">
+            {index > 0 && (
+              <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            )}
+            {index < breadcrumbs.length - 1 ? (
+              <a href={crumb.url} class="hover:text-brand transition-colors">
+                {crumb.name}
+              </a>
+            ) : (
+              <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">
+                {crumb.name}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-14 mb-10">
+      <div class="relative z-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          Monthly Net Salary: What Gross Salary Do You Need in {SITE.annoFiscale}?
+        </h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-2xl">
+          How much gross salary do you need to take home the net pay you want? Find the required RAL (gross annual salary) for every amount, with calculations updated to {SITE.annoFiscale} tax rules.
+        </p>
+        <div class="mt-4">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium text-green-400 ring-1 ring-green-500/30">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+            </svg>
+            16 amounts analyzed | Updated {SITE.annoFiscale}
+          </span>
+        </div>
+      </div>
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand"></div>
+        <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
+      </div>
+    </section>
+
+    <!-- Summary Table -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Summary Table: Monthly Net to Required Gross Salary
+      </h2>
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Monthly Net</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Required RAL</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Actual Net</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Average Rate</th>
+              <th class="px-4 py-3 text-center font-semibold text-gray-900 dark:text-white">Detail</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+            {pages.map((page) => (
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors">
+                <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">
+                  {formatCurrency(page.netto)} &euro;
+                </td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
+                  {formatCurrency(page.ral)} &euro;
+                </td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
+                  {page.nettoEffettivo.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} &euro;
+                </td>
+                <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">
+                  {formatPercent(page.aliquotaMedia)}
+                </td>
+                <td class="px-4 py-3 text-center">
+                  <a
+                    href={`/en/monthly-salary/${page.slug}/`}
+                    class="inline-flex items-center gap-1 text-brand hover:underline font-medium"
+                  >
+                    View
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+        * Calculations based on: 13 monthly payments, Lombardy region, single employee with no dependents. The actual amount may vary depending on your region and municipality of residence.
+      </p>
+    </section>
+
+    <!-- Sections by income level -->
+    {groups.map((group) => (
+      <section class="mb-12">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">{group.label}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {group.items.map((page) => (
+            <a
+              href={`/en/monthly-salary/${page.slug}/`}
+              class="group flex flex-col rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+            >
+              <p class="text-sm text-gray-500 dark:text-gray-400">Monthly net</p>
+              <p class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+                {formatCurrency(page.netto)} &euro;
+              </p>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                Required RAL: <span class="font-semibold text-gray-900 dark:text-white">{formatCurrency(page.ral)} &euro;</span>
+              </p>
+              <p class="mt-auto pt-3 text-xs text-brand font-medium flex items-center gap-1">
+                See full details
+                <svg class="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Methodology -->
+    <section class="mb-12 max-w-3xl">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How We Calculate the Required Gross Salary</h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none">
+        <p>
+          For each desired monthly net amount, our calculator determines the required RAL (Retribuzione Annua Lorda, or gross annual salary) through a binary search algorithm that accounts for:
+        </p>
+        <ul>
+          <li><strong>INPS contributions</strong> paid by the employee (9.19%)</li>
+          <li><strong>IRPEF</strong> with the tax brackets in effect for {SITE.annoFiscale} (23%, 33%, 43%)</li>
+          <li><strong>Employment income deductions</strong> (detrazioni per lavoro dipendente)</li>
+          <li><strong>Tax wedge</strong> (cuneo fiscale, as per the {SITE.annoFiscale} Budget Law)</li>
+          <li><strong>Supplementary allowance</strong> (trattamento integrativo, formerly Bonus Renzi)</li>
+          <li><strong>Regional and municipal surcharges</strong> (addizionali regionali e comunali)</li>
+        </ul>
+        <p>
+          Results are indicative and based on 13 monthly payments, a permanent employment contract, and no dependents. For a personalized calculation, use our <a href="/en/gross-salary-calculator/" class="text-brand hover:underline">gross salary calculator</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Editorial content -->
+    <section class="mb-12 max-w-3xl">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        How Monthly Net Salary Is Calculated from Gross
+      </h2>
+      <div class="prose prose-gray dark:prose-invert max-w-none">
+        <p>
+          The monthly net salary is the amount an employee actually receives in their bank account each month. To derive it from the RAL (Retribuzione Annua Lorda, or gross annual salary), several steps are required: first, social security contributions (INPS) are subtracted, then IRPEF income tax is calculated along with the relevant deductions, regional and municipal surcharges are added, and finally the annual net is divided by the number of monthly payments specified in the employment contract.
+        </p>
+        <p>
+          The number of monthly payments is a crucial factor, as it directly affects the amount deposited into your account each month. With 13 monthly payments, the annual net is divided by 13: twelve regular paychecks plus the thirteenth-month bonus (tredicesima), which is typically paid in December. With 14 monthly payments (provided by collective agreements such as the CCNL Commercio, Turismo, and Metalmeccanico), the annual net is divided by 14, reducing each individual paycheck but adding an extra payment, usually disbursed in June or July.
+        </p>
+        <p>
+          A point that often causes confusion: the annual gross salary (RAL) does not change between employees receiving 13 or 14 monthly payments. An employee with a RAL of 30,000 euros on 13 payments and one with the same RAL on 14 payments earn the same gross annual amount. The difference lies solely in the monthly distribution. With 14 payments, each individual paycheck will be lower (roughly 7% less compared to 13 payments), but the employee receives two "extra" months over the course of the year.
+        </p>
+
+        <h3>The Impact of Pay Periods on Monthly Net</h3>
+        <p>
+          To understand the difference in practice, let us take a RAL of 35,000 euros for a single employee in Lombardy. The annual net remains identical whether on 13 or 14 monthly payments, because taxes are calculated on total annual income. With 13 payments, the monthly net comes to approximately 2,040 euros. With 14 payments, it drops to around 1,894 euros per month, but the employee receives two additional payments (tredicesima and quattordicesima) that exactly compensate for the difference.
+        </p>
+        <p>
+          Some employees prefer 13 monthly payments because the monthly paycheck is higher, making it easier to manage regular expenses. Others appreciate 14 payments because the thirteenth month (in December) and the fourteenth month (in June/July) act as a form of "forced savings" useful for extraordinary expenses: summer holidays, Christmas gifts, condominium fees. There is no objectively better choice; it depends on personal budgeting habits.
+        </p>
+
+        <h3>Example: From a Gross Salary of 25,000 Euros to Monthly Net</h3>
+        <p>
+          Let us look in detail at what happens with a RAL of 25,000 euros, a very common level for office workers with a few years of experience. The employee is single, residing in Milan, on a 13-payment contract.
+        </p>
+        <p>
+          <strong>INPS contributions:</strong> 25,000 x 9.19% = 2,297.50 euros. The taxable income (imponibile fiscale) comes to 22,702.50 euros.
+        </p>
+        <p>
+          <strong>Tax wedge exemption (somma esente per cuneo fiscale):</strong> for income between 15,001 and 20,000 euros, the Budget Law provides a 4.8% exemption on the taxable base. Between 8,501 and 15,000 euros, the exemption rises to 5.3%. Up to 8,500 euros, it is 7.1%. These benefits reduce the base on which IRPEF is calculated.
+        </p>
+        <p>
+          <strong>Gross IRPEF (IRPEF lorda):</strong> on the taxable base reduced by the tax wedge, falling entirely within the first bracket at 23%, gross IRPEF amounts to approximately 4,950 euros.
+        </p>
+        <p>
+          <strong>Deductions:</strong> the employment income deduction (detrazione per lavoro dipendente) for this income level is worth approximately 1,910 euros. The tax wedge adds a further deduction of 1,000 euros (provided for income between 20,001 and 32,000 euros). Net IRPEF drops to approximately 2,040 euros.
+        </p>
+        <p>
+          <strong>Surcharges (addizionali):</strong> the Lombardy regional surcharge comes to approximately 310 euros, and the Milan municipal surcharge to approximately 182 euros.
+        </p>
+        <p>
+          <strong>Supplementary allowance (trattamento integrativo):</strong> for income around the 22,000-25,000 euro range, the supplementary allowance may be partially available if total deductions exceed gross IRPEF. The exact amount varies case by case.
+        </p>
+        <p>
+          <strong>Annual net:</strong> approximately 25,000 - 2,297 - 2,040 - 310 - 182 = 20,171 euros. Over 13 monthly payments: approximately <strong>1,551 euros net per month</strong>.
+        </p>
+
+        <h3>Regional Differences in Monthly Net Salary</h3>
+        <p>
+          For the same RAL and family situation, the monthly net varies depending on the region of residence. The regional IRPEF surcharge (addizionale regionale IRPEF) is an additional tax that each region sets independently within limits established by national law. The differences, while not enormous in absolute terms, accumulate over time.
+        </p>
+        <p>
+          Lazio has historically been the region with the highest surcharges, due to an extraordinary contribution linked to the healthcare debt recovery plan. For an employee with a RAL of 40,000 euros, the Lazio regional surcharge amounts to approximately 1,050 euros per year, compared to 560 euros in Friuli Venezia Giulia or 490 euros in Sardinia. On a monthly basis, the difference between Lazio and Friuli can reach 40 euros.
+        </p>
+        <p>
+          Lombardy sits in an intermediate position, with a regional surcharge that applies a flat rate of 1.73% up to 28,000 euros and 1.73% above that as well. Piedmont has a progressive system similar to Lazio but with more contained rates. Regions such as Veneto, Liguria, and Emilia Romagna fall in the middle range.
+        </p>
+        <p>
+          For those who work remotely and can choose where to establish residency, these regional differences deserve careful analysis. On a RAL of 50,000 euros, choosing the region with the lowest surcharge instead of the highest can save 500-700 euros per year, or roughly 40-55 euros more net each month.
+        </p>
+
+        <h3>Reading Your Payslip: Key Items to Check</h3>
+        <p>
+          The payslip (busta paga, or cedolino) is the document that summarizes all the components of your salary each month. Knowing how to read it is essential for verifying that your net pay matches what is owed. The main items to check are:
+        </p>
+        <p>
+          <strong>Gross monthly salary (retribuzione lorda mensile):</strong> this is the RAL divided by the number of monthly payments. With a RAL of 30,000 euros on 13 payments, the regular monthly gross will be approximately 2,308 euros. On the thirteenth-month payslip, the same amount appears as a separate line item.
+        </p>
+        <p>
+          <strong>INPS contributions (contributi INPS):</strong> calculated at 9.19% of the monthly gross. On a gross of 2,308 euros, the monthly INPS contributions amount to approximately 212 euros. This item appears in the "deductions" (trattenute) section of the payslip.
+        </p>
+        <p>
+          <strong>Taxable income (imponibile fiscale):</strong> this is the gross minus INPS contributions. IRPEF withholdings are applied monthly on this base. The employer acts as a tax withholding agent (sostituto d'imposta) and withholds IRPEF each month, applying the rates based on the projected annual income.
+        </p>
+        <p>
+          <strong>Deductions (detrazioni):</strong> the payslip shows the employment income deductions, already applied monthly by the employer. If there are dependent family members (spouse or children over 21), the relevant deductions appear as a separate line. The tax wedge appears as an "additional deduction" (ulteriore detrazione) or similar wording, depending on the payroll software used.
+        </p>
+        <p>
+          <strong>Regional and municipal surcharges (addizionali regionali e comunali):</strong> these are withheld in installments from January (or March) through November of the year following the tax year. This means that on your February 2026 payslip, you might find an installment of the surcharge for 2025. The advance payment of the current year's municipal surcharge is withheld from March to November.
+        </p>
+        <p>
+          <strong>Supplementary allowance (trattamento integrativo):</strong> for those entitled to it, this appears as a positive item (approximately 100 euros per month for income up to 15,000 euros). This is the amount the employer advances on behalf of the State, which is then reconciled at year-end or when filing the annual tax return.
+        </p>
+
+        <h3>Monthly Net for the Most Common Salaries in Italy</h3>
+        <p>
+          According to data from ISTAT surveys on earnings structure and JobPricing reports, the median RAL in Italy for private-sector employees is around 29,000-30,000 euros. 50% of workers earn less than this figure and 50% earn more.
+        </p>
+        <p>
+          With a RAL of 25,000 euros (lower bracket, typical of junior positions or full-time contracts in low-paying sectors), the monthly net on 13 payments is approximately 1,550-1,600 euros, depending on the region. With a RAL of 30,000 euros (mid-range, in line with the national median), the monthly net is approximately 1,780-1,850 euros.
+        </p>
+        <p>
+          Moving up to a RAL of 40,000 euros (upper-mid range, typical of professionals with 5-8 years of experience in sectors such as IT, consulting, and engineering), the monthly net reaches approximately 2,250-2,350 euros. At 50,000 euros RAL, the monthly net rises to approximately 2,700-2,800 euros. At this level, the tax burden becomes noticeable: the 33% marginal rate applies to a significant portion of taxable income above 28,000 euros.
+        </p>
+        <p>
+          For RAL above 55,000 euros, you progressively enter the third IRPEF bracket at 43%. With a RAL of 70,000 euros, the monthly net sits at approximately 3,500-3,600 euros, while at 100,000 euros RAL, it reaches approximately 4,800-5,000 euros net per month. The effective average tax rate at these levels exceeds 35%, meaning more than a third of the gross is absorbed by taxes and contributions.
+        </p>
+
+        <h3>Practical Tips for Managing Your Monthly Net</h3>
+        <p>
+          Once you know your monthly net, it is useful to plan your expenses on both a monthly and annual basis. The 50/30/20 rule of thumb (50% for essential expenses, 30% for personal spending, 20% for savings and investments) works well as a starting point, but it should be adapted to your city's cost of living and personal circumstances.
+        </p>
+        <p>
+          Those who receive a thirteenth or fourteenth month payment can treat these extra payments as a reserve for extraordinary expenses (car maintenance, medical costs, annual insurance premiums) or to build an emergency fund. An emergency fund equal to 3-6 months of fixed expenses provides concrete protection against unexpected events.
+        </p>
+        <p>
+          For those with a RAL in the 28,000-50,000 euro range, contributing to a supplementary pension fund (fondo pensione complementare) is one of the most effective strategies for optimizing net pay: contributions (up to 5,164.57 euros per year) are fully deductible from IRPEF taxable income. With a marginal rate of 33%, every 1,000 euros contributed reduces taxes by 330 euros, generating an immediate tax return on top of the capital appreciation over time.
+        </p>
+
+        <h3>Sources and Legal References</h3>
+        <p>
+          The calculations presented on this page are based on Italian tax legislation in force for {SITE.annoFiscale}. The main sources are:
+        </p>
+        <ul>
+          <li>
+            <strong>TUIR (D.P.R. 917/1986)</strong>, as amended by the 2025 and 2026 Budget Laws, for IRPEF tax brackets (23%, 33%, 43%), employment income deductions, and the rules governing employment income determination (articles 49-52).
+          </li>
+          <li>
+            <strong>INPS</strong>: the employee contribution rate for private-sector workers is 9.19%. The annual contribution ceiling for 2026 is set at approximately 119,650 euros. Reference: annual INPS circulars on contribution rates.
+          </li>
+          <li>
+            <strong>Agenzia delle Entrate</strong> (Italian Revenue Agency): tables for regional and municipal surcharges are available on the agenziaentrate.gov.it portal under "Services" &gt; "Local taxes" (Tributi locali).
+          </li>
+          <li>
+            <strong>2025 and 2026 Budget Laws</strong>: confirmation of the three-bracket structure, reduction of the second bracket rate from 35% to 33%, and stabilization of the tax wedge with the exempt amount for income up to 20,000 euros and the additional 1,000 euro deduction for income between 20,001 and 40,000 euros.
+          </li>
+          <li>
+            <strong>ISTAT</strong>: data on median wages and salary distribution come from the SES (Structure of Earnings Survey) and are available at istat.it.
+          </li>
+          <li>
+            <strong>JobPricing</strong>: the annual Italian Salary Report provides salary data by sector, qualification, and geographic area, based on a sample of over 500,000 profiles.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>

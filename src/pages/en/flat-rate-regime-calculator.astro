@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import Forfettari from '../../components/calcolatori/Forfettari';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Regime Forfettario Calculator 2026: Flat Tax for P.IVA";
+const description = "Calculate your taxes under Italy's flat-rate regime for freelancers. 5% or 15% substitute tax, INPS contributions, profitability coefficients, and net income.";
+const canonical = canonicalURL('/en/flat-rate-regime-calculator/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Flat-Rate Regime Calculator', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Flat-Rate Regime Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <Forfettari client:load lang={lang} />
+</CalcolatoreLayout>

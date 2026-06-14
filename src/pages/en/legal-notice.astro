@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+
+const title = 'Legal Notice: Disclaimer and Limitation of Liability';
+const description = "Legal notice per Italian Decree 70/2003: calculation accuracy disclaimer, intellectual property rights, limitation of liability, and applicable Italian law.";
+const lastUpdated = '15 May 2026';
+---
+
+<Layout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Legal Notice
+      </h1>
+      <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+        Last updated: {lastUpdated}
+      </p>
+    </header>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
+
+      <h2>1. Website Owner</h2>
+      <p>
+        This website <strong>{SITE.domain}</strong> (hereinafter "the Website") is operated by:
+      </p>
+      <ul>
+        <li><strong>Name:</strong> {SITE.name}</li>
+        <li><strong>Domain:</strong> {SITE.domain}</li>
+        <li><strong>Contact:</strong> <a href="/en/contact/">contact page</a></li>
+      </ul>
+      <p>
+        Pursuant to Article 7 of Italian Legislative Decree No. 70 of 9 April 2003 (implementing Directive 2000/31/EC on electronic commerce), the mandatory information regarding the provider of information society services is hereby provided. This legal notice sets out the general conditions for accessing and using the Website and constitutes a binding agreement between the Website owner and any person who accesses or uses its services.
+      </p>
+
+      <h2>2. Nature of the Service and Calculator Results Disclaimer</h2>
+      <p>
+        The Website offers free calculation tools for simulating net salary from gross annual salary (RAL), as well as informational guides on employment taxation in Italy.
+      </p>
+      <p>
+        <strong>The results provided by the calculator are purely indicative and serve exclusively informational and educational purposes.</strong> They do not constitute in any way:
+      </p>
+      <ul>
+        <li>Professional tax, financial or social security advice</li>
+        <li>Legal or accounting opinions</li>
+        <li>Official certification of net salary amounts</li>
+        <li>A substitute for the payslip prepared by the employer</li>
+        <li>A declaration or certification usable for administrative, banking or insurance purposes</li>
+      </ul>
+      <p>
+        The calculations are based on current tax legislation for the year {SITE.annoFiscale} and use general parameters that may not reflect each user's specific situation. Individual factors such as particular deductions, additional income, special tax regimes, voluntary contributions, specific contractual agreements, company benefits or particular family circumstances may significantly affect the final result.
+      </p>
+      <p>
+        The calculator does not account for any legislative changes subsequent to the last algorithm update date. It is therefore possible that the parameters used may not correspond to the legislation in force at the time of use, especially during periods of legislative transition or following corrective measures.
+      </p>
+      <p>
+        <strong>Users are strongly advised to always consult a commercialista (tax advisor), consulente del lavoro (labour consultant) or CAF for their specific situation.</strong> Any user who relies on calculator results to make economic, financial or career decisions does so at their own exclusive risk.
+      </p>
+
+      <h2>3. Data Accuracy and Sources</h2>
+      <p>
+        The tax parameters used in the calculations are derived from official sources:
+      </p>
+      <ul>
+        <li><a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate</a> (Italian Revenue Agency): IRPEF brackets, employee deductions, family deductions</li>
+        <li><a href="https://www.inps.it" target="_blank" rel="noopener noreferrer">INPS</a> (National Social Security Institute): contribution rates, ceilings and minimums</li>
+        <li><a href="https://www.istat.it" target="_blank" rel="noopener noreferrer">ISTAT</a> (Italian National Institute of Statistics): reference statistical data on wages</li>
+        <li>Regional resolutions: regional IRPEF surcharges for each region and autonomous province</li>
+        <li>Municipal resolutions: municipal IRPEF surcharges, where available</li>
+      </ul>
+      <p>
+        Despite efforts to keep parameters up to date, the Website owner does not guarantee that information is always complete, accurate or updated to the latest regulatory change. Regional and municipal surcharges, in particular, are subject to annual variations decided by individual local administrations, and the Website may not promptly incorporate all changes. Users are encouraged to verify the parameters used by consulting the official sources listed above directly.
+      </p>
+
+      <h2>4. Client-Side Processing</h2>
+      <p>
+        All calculations performed through the Website's calculator take place entirely in the user's browser (client-side). Data entered by the user, such as the RAL amount, region of residence, family situation and other information required by the calculator, is never transmitted to the Website's servers or to third parties. This architecture ensures that information entered by the user remains confined to their own device and is not accessible to the Website owner or third parties.
+      </p>
+
+      <h2>5. Intellectual Property</h2>
+      <p>
+        All Website content, including text, graphics, layout, source code, calculation algorithms, logos and trademarks, is the exclusive property of the Website owner or is used under licence, and is protected by Italian and international copyright and intellectual property law (Law No. 633 of 22 April 1941, as amended, as well as Directive 2001/29/EC and Directive 2019/790/EU).
+      </p>
+      <p>
+        In particular, the following are protected:
+      </p>
+      <ul>
+        <li>The algorithms and calculation formulas implemented on the Website</li>
+        <li>The software architecture and source code</li>
+        <li>The text of informational guides and articles</li>
+        <li>The graphic design, logos and visual layout of the Website</li>
+        <li>The databases of tax parameters organised and structured for the Website</li>
+        <li>The trademarks and distinctive signs used</li>
+      </ul>
+      <p>
+        Any reproduction, distribution, modification, adaptation, translation or commercial use of the Website's content without prior written authorisation from the owner is prohibited, except to the extent permitted by law. Users may use the Website's content exclusively for personal and non-commercial purposes. Any unauthorised use of the Website's content may be pursued through the competent courts under applicable legislation.
+      </p>
+
+      <h2>6. Limitation of Liability</h2>
+      <p>
+        The Website owner:
+      </p>
+      <ul>
+        <li>Does not guarantee the accuracy, completeness or currency of the information and calculations provided</li>
+        <li>Assumes no liability for any direct, indirect, incidental, consequential or punitive damages arising from the use of calculator results or information on the Website</li>
+        <li>Is not responsible for any interruptions, technical errors, malfunctions of the Website or data loss</li>
+        <li>Is not responsible for the content of external websites linked to from the Website</li>
+        <li>Is not responsible for economic, financial, career or other decisions made by the user based on calculator results</li>
+        <li>Reserves the right to modify, update or remove content and features of the Website at any time without notice</li>
+      </ul>
+      <p>
+        The user acknowledges and accepts that use of the Website is at their own risk. In no event shall the Website owner be held liable for an amount exceeding what the user has paid for the use of the service (which, being free, equals zero).
+      </p>
+
+      <h2>7. User Responsibility</h2>
+      <p>
+        The user undertakes to use the Website lawfully, correctly and in accordance with this legal notice. In particular, the user agrees to:
+      </p>
+      <ul>
+        <li>Not use the Website for illegal, fraudulent or otherwise unlawful purposes</li>
+        <li>Not attempt to access non-public sections of the Website or the owner's computer systems</li>
+        <li>Not use automated systems (bots, crawlers, scrapers) to access the Website's content in a massive or systematic manner</li>
+        <li>Not disseminate calculator results by presenting them as official calculations, certifications or professional opinions</li>
+        <li>Independently verify results obtained before making any decision based on them</li>
+        <li>Not compromise the security, integrity or availability of the Website</li>
+      </ul>
+      <p>
+        The user is solely responsible for the use they make of the information and results obtained through the Website. The owner reserves the right to block access to the Website for any user who violates these provisions.
+      </p>
+
+      <h2>8. Links to Third-Party Websites</h2>
+      <p>
+        The Website may contain links to third-party websites, provided exclusively for informational purposes and for the user's convenience. The owner exercises no control over the content of such websites and assumes no responsibility for the content, privacy policies, commercial practices or terms of use of third-party websites.
+      </p>
+      <p>
+        The presence of a link to an external website does not imply approval, endorsement or partnership by the Website owner with the linked website or its content. Users access external websites at their own risk and are advised to carefully read the terms of use and privacy notices of visited websites.
+      </p>
+
+      <h2>9. GDPR Compliance and Data Processing</h2>
+      <p>
+        The Website is designed in compliance with Regulation (EU) 2016/679 (GDPR) and Italian Legislative Decree 196/2003 (Privacy Code), as amended by Legislative Decree 101/2018. The Website does not collect, store or transmit personal data of users. All calculations take place entirely client-side and no data entered by the user reaches the Website's servers.
+      </p>
+      <p>
+        The Website uses Plausible Analytics as a traffic analysis service, which does not use cookies and does not collect identifying personal data, making it GDPR compliant without requiring prior consent. For detailed information on data processing and data subject rights, please refer to the <a href="/en/privacy/">Privacy Policy</a>.
+      </p>
+
+      <h2>10. Age Requirements</h2>
+      <p>
+        The Website is accessible to all users without age restrictions. However, the Website's content is primarily aimed at an adult audience interested in Italian employment taxation. Use of the Website by minors does not pose particular risks as the Website does not collect personal data and does not require registration.
+      </p>
+      <p>
+        Parents and guardians are nonetheless recommended to monitor the online activity of minors in their care, as a general best practice for digital safety.
+      </p>
+
+      <h2>11. Service Availability</h2>
+      <p>
+        The owner endeavours to ensure the availability of the Website to the extent reasonably possible, but does not guarantee that the service will be accessible continuously, without interruption or free of errors. The Website may be temporarily unavailable due to scheduled maintenance, technical updates, connectivity issues or force majeure.
+      </p>
+      <p>
+        The owner shall not be liable for any damage or inconvenience arising from the temporary or permanent unavailability of the Website or any part thereof.
+      </p>
+
+      <h2>12. Governing Law and Jurisdiction</h2>
+      <p>
+        This legal notice is governed by <strong>Italian law</strong> and shall be interpreted in accordance with the provisions of the Italian legal system and directly applicable European Union law.
+      </p>
+      <p>
+        For any dispute relating to the use of the Website, the interpretation or performance of this legal notice, the court of the consumer's place of residence or domicile shall have jurisdiction, pursuant to Article 66-bis of the Italian Consumer Code (Legislative Decree 206/2005). For users who do not qualify as consumers, the Court of Milan shall have exclusive jurisdiction.
+      </p>
+      <p>
+        Users are also informed of the possibility of using the ODR platform (Online Dispute Resolution) of the European Commission for the alternative resolution of disputes, accessible at: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.
+      </p>
+
+      <h2>13. Severability</h2>
+      <p>
+        Should one or more provisions of this legal notice be declared invalid, void or unenforceable by a competent judicial or administrative authority, such invalidity shall not affect the validity and effectiveness of the remaining provisions, which shall remain in full force and effect.
+      </p>
+      <p>
+        In such event, the invalid provision shall be replaced by a valid provision that most closely approximates the original intent of the replaced clause, to the extent permitted by applicable law.
+      </p>
+
+      <h2>14. Changes to This Legal Notice</h2>
+      <p>
+        The owner reserves the right to modify this legal notice at any time, at their discretion and without obligation of prior notice. Changes shall be effective from the moment of publication on the Website. The date of the last update is indicated at the top of this page.
+      </p>
+      <p>
+        We recommend checking this page periodically for any updates. Continued use of the Website after the publication of changes constitutes implicit acceptance of those changes.
+      </p>
+
+      <h2>15. Contact for Legal Matters</h2>
+      <p>
+        For any request, clarification or report relating to this legal notice, intellectual property, limitation of liability or other legal aspects connected to the use of the Website, users may contact the owner via the <a href="/en/contact/">contact page</a> of the Website.
+      </p>
+      <p>
+        The owner undertakes to respond to requests as quickly as possible and in any case within the timeframes required by applicable regulations.
+      </p>
+
+      <hr />
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        For further information, see our <a href="/en/privacy/">Privacy Policy</a>, <a href="/en/cookie-policy/">Cookie Policy</a> and <a href="/en/terms/">Terms of Service</a>.
+      </p>
+    </div>
+  </div>
+</Layout>

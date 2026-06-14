@@ -1,0 +1,170 @@
+---
+import GuidaLayout from '../../../layouts/GuidaLayout.astro';
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
+import { SITE } from '../../../config';
+
+const lang = 'en' as const;
+const title = "Impatriati Tax Regime Italy: Expat Tax Break Explained";
+const description = "Complete guide to Italy's impatriati regime: who qualifies, 50% income exemption, €600k cap, old vs new rules, how to apply, and mistakes to avoid in 2026.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Guides', url: `${SITE.url}/en/guides/` },
+  { name: 'Impatriati Tax Regime', url: `${SITE.url}/en/guides/impatriati-tax-regime/` },
+];
+
+const faqs = [
+  {
+    question: 'Who qualifies for the Impatriati tax regime in 2026?',
+    answer: 'To qualify under the new regime (D.Lgs. 209/2023), you must: (1) not have been a tax resident in Italy for the <strong>three tax years</strong> before your move; (2) commit to maintaining Italian tax residency for at least <strong>four years</strong>; (3) perform your work primarily in Italy; and (4) hold a high qualification or specialisation as defined by Italian law. Both Italian citizens returning from abroad and foreign nationals can apply, provided they meet all requirements.',
+  },
+  {
+    question: 'How long does the Impatriati tax benefit last?',
+    answer: 'Under the new regime (applicable to transfers from 2024 onward), the benefit lasts exactly <strong>5 tax years</strong> starting from the year you establish Italian tax residency. Unlike the old regime, there are no extensions or renewals. For example, if you move to Italy in 2026, you benefit for 2026 through 2030, and from 2031 your income is taxed at the standard rates.',
+  },
+  {
+    question: 'How do I apply for the Impatriati regime as an employee?',
+    answer: 'No prior approval from the Agenzia delle Entrate (Italian Revenue Agency) is required. As an employee, you submit a written self-certification to your employer declaring that you meet all eligibility requirements. Your employer then applies the 50% exemption directly in your payslip (busta paga). You must also report the subsidised income correctly in your annual tax return (Modello 730 or Modello Redditi PF). Keep documentation proving your foreign residence during the preceding years (foreign employment contracts, utility bills, rental agreements).',
+  },
+];
+---
+
+<GuidaLayout
+  title={title}
+  description={description}
+  datePublished="2026-01-15"
+  dateModified="2026-05-01"
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  lang={lang}
+>
+
+  <!-- Table of Contents -->
+  <Fragment slot="toc">
+    <ul class="space-y-2 text-sm">
+      <li><a href="#what-is-the-impatriati-regime" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">What Is the Impatriati Regime?</a></li>
+      <li><a href="#eligibility-requirements" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Eligibility Requirements</a></li>
+      <li><a href="#old-vs-new-regime" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Old vs New Regime</a></li>
+      <li><a href="#how-the-exemption-works" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How the 50% Exemption Works</a></li>
+      <li><a href="#how-to-apply" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How to Apply</a></li>
+      <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
+    </ul>
+  </Fragment>
+
+  <!-- Article content -->
+
+  <h2 id="what-is-the-impatriati-regime">What Is the Impatriati Regime?</h2>
+
+  <p>
+    The Regime Impatriati (impatriate workers' tax regime) is an Italian tax incentive designed to attract skilled workers to Italy by offering a substantial reduction in income tax. Under the current rules, qualifying individuals pay IRPEF (Imposta sul Reddito delle Persone Fisiche) on only <strong>50% of their Italian-source income</strong>, effectively halving their income tax bill for five consecutive years.
+  </p>
+  <p>
+    The scheme applies equally to Italian citizens returning from abroad and to foreign nationals (both EU and non-EU) who transfer their tax residence to Italy. It was originally introduced by D.Lgs. 147/2015 as part of Italy's effort to reverse the "brain drain" and has been significantly reformed by D.Lgs. 209/2023, which tightened eligibility criteria and reduced the exemption percentage. The current version applies to anyone establishing Italian tax residency from 1 January 2024 onward.
+  </p>
+
+  <h2 id="eligibility-requirements">Eligibility Requirements</h2>
+
+  <p>
+    To access the Impatriati regime for a transfer in 2026, all of the following conditions must be met cumulatively:
+  </p>
+  <ol>
+    <li><strong>Three-year non-residency:</strong> you must not have been an Italian tax resident in the three tax years preceding your move. If you relocate in 2026, you must not have been resident in Italy in 2023, 2024, or 2025.</li>
+    <li><strong>Four-year commitment:</strong> you must commit to maintaining Italian tax residency for at least four years. If you leave Italy before this period ends, the benefit is retroactively revoked and you will owe the full taxes plus interest and penalties.</li>
+    <li><strong>Work primarily performed in Italy:</strong> the majority of your working activity must take place on Italian territory during each tax year in which you claim the benefit.</li>
+    <li><strong>High qualification or specialisation:</strong> the new regime requires possession of a high qualification or specialisation as defined by D.Lgs. 108/2012 and D.Lgs. 206/2007.</li>
+  </ol>
+  <p>
+    An important restriction under the new rules: workers who return to Italy to work for the same employer (or a company in the same corporate group) they worked for abroad are excluded, unless the original posting or transfer abroad occurred before 1 January 2024.
+  </p>
+
+  <h2 id="old-vs-new-regime">Old vs New Regime</h2>
+
+  <p>
+    The Impatriati regime has changed significantly over the years. If you transferred your residency to Italy before 31 December 2023, the old rules still apply for the remaining duration of your benefit period. For transfers from 2024 onward, the new regime applies. Here is a side-by-side comparison:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Feature</th>
+          <th class="py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300">Old Regime (pre-2024)</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">New Regime (from 2024)</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Tax exemption</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">70% (only 30% taxed)</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">50% (50% taxed)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Southern Italy bonus</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">90% exemption</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Eliminated</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Income cap</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">No limit</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">&euro;600,000 per year</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Duration</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">5 years (extendable to 10)</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">5 years (no extension)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">Prior non-residency</td>
+          <td class="py-3 px-4 text-gray-900 dark:text-gray-100">2 tax years</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">3 tax years</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Despite the reduced benefit, the new regime still offers substantial savings. Paying IRPEF on half your income for five years means significant tax relief, especially for medium-to-high earners. The &euro;600,000 annual cap only affects very high salaries -- income above this threshold is taxed in full at ordinary rates.
+  </p>
+
+  <h2 id="how-the-exemption-works">How the 50% Exemption Works</h2>
+
+  <p>
+    The exemption applies exclusively to IRPEF (income tax) and the related addizionali (regional and municipal surcharges). It does <strong>not</strong> reduce your INPS (social security) contributions, which are always calculated on your full gross salary (RAL - Retribuzione Annua Lorda). Here is how the calculation flows:
+  </p>
+  <ol>
+    <li><strong>INPS contributions:</strong> calculated on full RAL at 9.19% for private-sector employees (no discount)</li>
+    <li><strong>Ordinary taxable income:</strong> RAL minus INPS employee contributions</li>
+    <li><strong>Apply the 50% exemption:</strong> the taxable base for IRPEF is halved (up to the &euro;600,000 cap)</li>
+    <li><strong>IRPEF lorda (gross tax):</strong> computed using standard progressive brackets on the reduced base</li>
+    <li><strong>Detrazioni (tax credits):</strong> standard employment deductions apply based on the reduced taxable income</li>
+    <li><strong>IRPEF netta (net tax):</strong> gross IRPEF minus deductions</li>
+  </ol>
+  <p>
+    For a practical illustration: on a RAL of &euro;60,000, a standard taxpayer pays approximately &euro;15,600 in IRPEF, while an impatriate worker pays roughly &euro;4,300 -- an annual saving of over &euro;11,000. Over the five-year benefit period, the cumulative savings can exceed &euro;55,000. Use our <a href="/en/impatriati-tax-regime/">Impatriati tax calculator</a> to simulate your specific scenario.
+  </p>
+
+  <h2 id="how-to-apply">How to Apply</h2>
+
+  <p>
+    The application process does not require pre-approval from the Agenzia delle Entrate (Italian Revenue Agency). The steps are:
+  </p>
+  <ol>
+    <li><strong>Transfer your residency:</strong> register with the Anagrafe della Popolazione Residente (APR) at your Italian municipality. If you are an Italian citizen, cancel your AIRE (Anagrafe degli Italiani Residenti all'Estero) registration.</li>
+    <li><strong>Notify your employer:</strong> submit a written self-certification declaring that you satisfy all the eligibility requirements. Your employer will then apply the 50% exemption directly in your monthly payslip (busta paga).</li>
+    <li><strong>File your annual tax return:</strong> report the subsidised income in your Modello 730 or Modello Redditi PF, completing the sections specific to the Impatriati regime.</li>
+  </ol>
+  <p>
+    Self-employed workers or those without a sostituto d'imposta (withholding agent) apply the exemption directly when filing their annual tax return, declaring 50% of their Italian-source professional income as the taxable base.
+  </p>
+  <p>
+    It is strongly recommended to preserve all documentation proving your foreign residence for the three years preceding your move: foreign employment contracts, rental agreements, bank statements, utility bills, and certificates of residence from foreign authorities. The Agenzia delle Entrate may request these documents during an audit (accertamento).
+  </p>
+
+  <!-- FAQ Section -->
+  <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+  <div class="not-prose">
+    <FAQFisarmonica faqs={faqs} titolo="" lang={lang} />
+  </div>
+
+</GuidaLayout>

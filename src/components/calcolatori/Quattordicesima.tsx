@@ -3,6 +3,9 @@ import CampoInput from '../ui/CampoInput';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaIRPEF, aliquotaMarginale, calcolaContributiINPS } from '../../lib/irpef-engine';
 import { formatCurrency, formatRate } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 
 const CCNL_CON_QUATTORDICESIMA = [
   { nome: 'Commercio (Terziario)', descrizione: 'Confcommercio, CCNL Commercio e Terziario' },
@@ -15,7 +18,7 @@ const CCNL_CON_QUATTORDICESIMA = [
   { nome: 'Chimico-farmaceutico', descrizione: 'Industria chimica e farmaceutica' },
 ];
 
-export default function Quattordicesima() {
+export default function Quattordicesima({ lang = 'it' }: { lang?: Lang }) {
   const [ral, setRal] = useState(30_000);
   const [mesiLavorati, setMesiLavorati] = useState(12);
   const isInitialMount = useRef(true);
@@ -92,6 +95,7 @@ export default function Quattordicesima() {
             max={300_000}
             suffix="€"
             helpText="Il tuo stipendio lordo annuale"
+            lang={lang}
           />
           <CampoInput
             label="Mesi lavorati nell'anno"
@@ -100,6 +104,7 @@ export default function Quattordicesima() {
             min={1}
             max={12}
             helpText="Per la quattordicesima pro-rata (1-12)"
+            lang={lang}
           />
         </div>
       </div>
@@ -165,6 +170,7 @@ export default function Quattordicesima() {
               Composizione della quattordicesima
             </h3>
             <BarraScomposizione
+              lang={lang}
               total={risultato.quattordicesimaLorda}
               items={[
                 { label: 'Netto', value: risultato.nettoQuattordicesima, color: '#22c55e' },

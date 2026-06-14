@@ -2,8 +2,12 @@ import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaFIRE } from '../../lib/finanz-engine';
 import { formatCurrency, formatPercent } from '../../lib/format-it';
+import { t } from '../../i18n';
+import type { Lang } from '../../i18n/types';
 
-export default function FIRE() {
+interface Props { lang?: Lang; }
+
+export default function FIRE({ lang = 'it' }: Props) {
   const [speseMensili, setSpeseMensili] = useState(2000);
   const [patrimonioAttuale, setPatrimonioAttuale] = useState(50000);
   const [risparmioMensile, setRisparmioMensile] = useState(1000);
@@ -63,68 +67,73 @@ export default function FIRE() {
       <div className="space-y-6">
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-5">
-            I tuoi dati
+            {lang === 'en' ? 'Your data' : 'I tuoi dati'}
           </h2>
 
           <div className="space-y-4">
             <CampoInput
-              label="Spese mensili"
+              lang={lang}
+              label={lang === 'en' ? 'Monthly expenses' : 'Spese mensili'}
               value={speseMensili}
               onChange={setSpeseMensili}
               min={200}
               max={20000}
               step={100}
               prefix="€"
-              helpText="Quanto spendi al mese (affitto, bollette, cibo, svago...)"
+              helpText={lang === 'en' ? 'How much you spend per month (rent, bills, food, leisure...)' : 'Quanto spendi al mese (affitto, bollette, cibo, svago...)'}
             />
 
             <CampoInput
-              label="Patrimonio attuale"
+              lang={lang}
+              label={lang === 'en' ? 'Current savings' : 'Patrimonio attuale'}
               value={patrimonioAttuale}
               onChange={setPatrimonioAttuale}
               min={0}
               max={10_000_000}
               step={1000}
               prefix="€"
-              helpText="Risparmi e investimenti gia' accumulati"
+              helpText={lang === 'en' ? 'Savings and investments already accumulated' : "Risparmi e investimenti gia' accumulati"}
             />
 
             <CampoInput
-              label="Risparmio mensile"
+              lang={lang}
+              label={lang === 'en' ? 'Monthly savings' : 'Risparmio mensile'}
               value={risparmioMensile}
               onChange={setRisparmioMensile}
               min={0}
               max={50000}
               step={100}
               prefix="€"
-              helpText="Quanto riesci a mettere da parte ogni mese"
+              helpText={lang === 'en' ? 'How much you can save each month' : 'Quanto riesci a mettere da parte ogni mese'}
             />
 
             <CampoInput
-              label="Rendimento atteso"
+              lang={lang}
+              label={lang === 'en' ? 'Expected return' : 'Rendimento atteso'}
               value={rendimentoPercent}
               onChange={setRendimentoPercent}
               min={0}
               max={20}
               step={0.5}
               suffix="%"
-              helpText="Rendimento nominale lordo annuo degli investimenti"
+              helpText={lang === 'en' ? 'Nominal gross annual return on investments' : 'Rendimento nominale lordo annuo degli investimenti'}
             />
 
             <CampoInput
-              label="Tasso di prelievo (SWR)"
+              lang={lang}
+              label={lang === 'en' ? 'Withdrawal rate (SWR)' : 'Tasso di prelievo (SWR)'}
               value={tassoPrelievoPercent}
               onChange={setTassoPrelievoPercent}
               min={1}
               max={10}
               step={0.25}
               suffix="%"
-              helpText="Safe Withdrawal Rate (regola del 4% = standard)"
+              helpText={lang === 'en' ? 'Safe Withdrawal Rate (4% rule = standard)' : 'Safe Withdrawal Rate (regola del 4% = standard)'}
             />
           </div>
 
           <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 p-3 text-xs text-blue-700 dark:text-blue-300">
-            Ipotesi fisse: inflazione 2%, tassazione rendimenti 26% (aliquota italiana standard).
+            {lang === 'en' ? 'Fixed assumptions: 2% inflation, 26% tax on returns (Italian standard rate).' : 'Ipotesi fisse: inflazione 2%, tassazione rendimenti 26% (aliquota italiana standard).'}
           </div>
         </div>
       </div>
@@ -134,24 +143,24 @@ export default function FIRE() {
         {/* FIRE number prominente */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg shadow-gray-200/50 dark:shadow-black/20 p-6 sm:p-8">
           <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-            Il tuo FIRE Number
+            {lang === 'en' ? 'Your FIRE Number' : 'Il tuo FIRE Number'}
           </p>
           <p className="text-4xl sm:text-5xl font-bold text-brand tracking-tight leading-tight">
             {formatCurrency(risultato.patrimonioObiettivo)}
           </p>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            Il patrimonio necessario per vivere di rendita
+            {lang === 'en' ? 'The wealth needed to live off investments' : 'Il patrimonio necessario per vivere di rendita'}
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-4 border-t border-gray-200 dark:border-gray-700 pt-5">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Anni al FIRE</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{lang === 'en' ? 'Years to FIRE' : 'Anni al FIRE'}</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {risultato.anniAlFIRE > 80 ? '80+' : risultato.anniAlFIRE}
               </p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Rendita mensile stimata</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{lang === 'en' ? 'Estimated monthly income' : 'Rendita mensile stimata'}</p>
               <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                 {formatCurrency(risultato.renditaMensile)}
               </p>
@@ -166,7 +175,7 @@ export default function FIRE() {
               </p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Rendimento reale netto</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{lang === 'en' ? 'Real net return' : 'Rendimento reale netto'}</p>
               <p className="text-lg font-semibold text-gray-900 dark:text-white">
                 {formatPercent(risultato.rendimentoRealeNetto)}
               </p>
@@ -177,7 +186,7 @@ export default function FIRE() {
         {/* Chart: evoluzione patrimonio vs obiettivo */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
-            Crescita del patrimonio vs obiettivo FIRE
+            {lang === 'en' ? 'Wealth growth vs FIRE target' : 'Crescita del patrimonio vs obiettivo FIRE'}
           </h3>
           <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
             {risultato.evoluzione.map((e) => {
@@ -194,14 +203,14 @@ export default function FIRE() {
                       <div
                         className={`h-full transition-all duration-300 ${raggiunto ? 'bg-green-500 dark:bg-green-400' : 'bg-brand'}`}
                         style={{ width: patriPct + '%' }}
-                        title={`Patrimonio: ${formatCurrency(e.patrimonio)}`}
+                        title={`${lang === 'en' ? 'Wealth' : 'Patrimonio'}: ${formatCurrency(e.patrimonio)}`}
                       />
                     </div>
                     {/* Target line */}
                     <div
                       className="absolute top-0 h-full w-0.5 bg-gray-900 dark:bg-white opacity-40"
                       style={{ left: obietPct + '%' }}
-                      title={`Obiettivo: ${formatCurrency(e.obiettivo)}`}
+                      title={`${lang === 'en' ? 'Target' : 'Obiettivo'}: ${formatCurrency(e.obiettivo)}`}
                     />
                   </div>
                   <span className="w-24 text-right text-gray-700 dark:text-gray-300 shrink-0">
@@ -214,11 +223,11 @@ export default function FIRE() {
           <div className="mt-3 flex gap-4 text-xs text-gray-500 dark:text-gray-400">
             <span className="flex items-center gap-1.5">
               <span className="inline-block h-2.5 w-2.5 rounded-sm bg-brand" />
-              Patrimonio
+              {lang === 'en' ? 'Wealth' : 'Patrimonio'}
             </span>
             <span className="flex items-center gap-1.5">
               <span className="inline-block h-2.5 w-2.5 rounded-sm bg-green-500 dark:bg-green-400" />
-              Obiettivo raggiunto
+              {lang === 'en' ? 'Target reached' : 'Obiettivo raggiunto'}
             </span>
             <span className="flex items-center gap-1.5">
               <span className="inline-block h-2.5 w-0.5 bg-gray-900 dark:bg-white opacity-40" />
@@ -234,7 +243,7 @@ export default function FIRE() {
             onClick={() => setTabellaSavingsAperta(!tabellaSavingsAperta)}
             className="flex w-full items-center justify-between text-sm font-semibold text-gray-900 dark:text-white"
           >
-            Impatto del savings rate sugli anni al FIRE
+            {lang === 'en' ? 'Impact of savings rate on years to FIRE' : 'Impatto del savings rate sugli anni al FIRE'}
             <svg
               className={`h-5 w-5 transition-transform ${tabellaSavingsAperta ? 'rotate-180' : ''}`}
               viewBox="0 0 20 20"
@@ -254,9 +263,9 @@ export default function FIRE() {
                 <thead>
                   <tr className="border-b border-gray-200 dark:border-gray-700 text-left text-gray-500 dark:text-gray-400">
                     <th className="pb-2 pr-3 font-medium">Savings Rate</th>
-                    <th className="pb-2 pr-3 font-medium text-right">Spese/mese</th>
+                    <th className="pb-2 pr-3 font-medium text-right">{lang === 'en' ? 'Expenses/month' : 'Spese/mese'}</th>
                     <th className="pb-2 pr-3 font-medium text-right">FIRE Number</th>
-                    <th className="pb-2 font-medium text-right">Anni al FIRE</th>
+                    <th className="pb-2 font-medium text-right">{lang === 'en' ? 'Years to FIRE' : 'Anni al FIRE'}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -273,8 +282,7 @@ export default function FIRE() {
                 </tbody>
               </table>
               <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                Basato sul tuo reddito totale di {formatCurrency((speseMensili + risparmioMensile) * 12)}/anno
-                con patrimonio iniziale di {formatCurrency(patrimonioAttuale)}.
+                {lang === 'en' ? 'Based on your total income of' : 'Basato sul tuo reddito totale di'} {formatCurrency((speseMensili + risparmioMensile) * 12)}{lang === 'en' ? '/year with initial wealth of' : '/anno con patrimonio iniziale di'} {formatCurrency(patrimonioAttuale)}.
               </p>
             </div>
           )}
@@ -287,7 +295,7 @@ export default function FIRE() {
             onClick={() => setTabellaAperta(!tabellaAperta)}
             className="flex w-full items-center justify-between text-sm font-semibold text-gray-900 dark:text-white"
           >
-            Tabella evoluzione annuale
+            {lang === 'en' ? 'Annual evolution table' : 'Tabella evoluzione annuale'}
             <svg
               className={`h-5 w-5 transition-transform ${tabellaAperta ? 'rotate-180' : ''}`}
               viewBox="0 0 20 20"
@@ -306,10 +314,10 @@ export default function FIRE() {
               <table className="w-full text-xs">
                 <thead>
                   <tr className="border-b border-gray-200 dark:border-gray-700 text-left text-gray-500 dark:text-gray-400">
-                    <th className="pb-2 pr-3 font-medium">Anno</th>
-                    <th className="pb-2 pr-3 font-medium text-right">Patrimonio</th>
-                    <th className="pb-2 pr-3 font-medium text-right">Obiettivo</th>
-                    <th className="pb-2 font-medium text-right">Differenza</th>
+                    <th className="pb-2 pr-3 font-medium">{lang === 'en' ? 'Year' : 'Anno'}</th>
+                    <th className="pb-2 pr-3 font-medium text-right">{lang === 'en' ? 'Wealth' : 'Patrimonio'}</th>
+                    <th className="pb-2 pr-3 font-medium text-right">{lang === 'en' ? 'Target' : 'Obiettivo'}</th>
+                    <th className="pb-2 font-medium text-right">{lang === 'en' ? 'Difference' : 'Differenza'}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-800">

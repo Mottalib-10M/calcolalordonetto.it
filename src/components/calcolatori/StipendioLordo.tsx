@@ -1,11 +1,14 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { calcolaLordoDaNetto } from '../../lib/irpef-engine';
 import { formatCurrency, formatRate } from '../../lib/format-it';
+import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
 import BarraScomposizione from '../ui/BarraScomposizione';
 
-export default function StipendioLordo() {
+export default function StipendioLordo({ lang = 'it' }: { lang?: Lang }) {
   const [nettoTarget, setNettoTarget] = useState(2_000);
   const [regione, setRegione] = useState('LOM');
   const [mensilita, setMensilita] = useState<12 | 13 | 14>(13);
@@ -98,8 +101,9 @@ export default function StipendioLordo() {
           step={50}
           suffix="€"
           helpText="Lo stipendio netto che vorresti in busta paga"
+          lang={lang}
         />
-        <SelettoreRegione value={regione} onChange={handleRegioneChange} />
+        <SelettoreRegione value={regione} onChange={handleRegioneChange} lang={lang} />
         <div className="flex flex-col gap-1.5">
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Mensilita
@@ -248,6 +252,7 @@ export default function StipendioLordo() {
               Scomposizione della RAL
             </h2>
             <BarraScomposizione
+              lang={lang}
               total={r.ral}
               items={[
                 {

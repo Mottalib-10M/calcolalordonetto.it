@@ -1,35 +1,36 @@
+import type { Lang } from '../../i18n/types';
+import { t } from '../../i18n/index';
+
 interface SelettoreMensilitaProps {
   value: 12 | 13 | 14;
   onChange: (m: 12 | 13 | 14) => void;
+  lang?: Lang;
 }
-
-const OPTIONS: { value: 12 | 13 | 14; label: string; tooltip: string }[] = [
-  { value: 12, label: '12 mensilita', tooltip: 'Solo stipendio base' },
-  { value: 13, label: '13 mensilita', tooltip: 'Con tredicesima' },
-  {
-    value: 14,
-    label: '14 mensilita',
-    tooltip: 'Con tredicesima e quattordicesima',
-  },
-];
 
 export default function SelettoreMensilita({
   value,
   onChange,
+  lang = 'it',
 }: SelettoreMensilitaProps) {
+  const options: { value: 12 | 13 | 14; labelKey: string; tooltipKey: string }[] = [
+    { value: 12, labelKey: 'ui.months12', tooltipKey: 'ui.months12Tip' },
+    { value: 13, labelKey: 'ui.months13', tooltipKey: 'ui.months13Tip' },
+    { value: 14, labelKey: 'ui.months14', tooltipKey: 'ui.months14Tip' },
+  ];
+
   return (
     <div className="flex flex-col gap-1.5">
       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-        Mensilita
+        {t('ui.monthlyPayments', lang)}
       </span>
       <div className="inline-flex rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 p-0.5">
-        {OPTIONS.map((opt) => {
+        {options.map((opt) => {
           const isActive = value === opt.value;
           return (
             <button
               key={opt.value}
               type="button"
-              title={opt.tooltip}
+              title={t(opt.tooltipKey, lang)}
               onClick={() => onChange(opt.value)}
               className={[
                 'relative rounded-md px-3 py-2 text-sm font-medium transition-all duration-150',
@@ -39,7 +40,7 @@ export default function SelettoreMensilita({
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200',
               ].join(' ')}
             >
-              {opt.label}
+              {t(opt.labelKey, lang)}
             </button>
           );
         })}

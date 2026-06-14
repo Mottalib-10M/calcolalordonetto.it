@@ -1,0 +1,27 @@
+---
+import CalcolatoreLayout from '../../layouts/CalcolatoreLayout.astro';
+import PlusvalenzaImmobiliare from '../../components/calcolatori/PlusvalenzaImmobiliare';
+import { SITE } from '../../config';
+import { canonicalURL } from '../../lib/seo';
+
+const lang = 'en' as const;
+const title = "Property Capital Gains Tax Italy 2026: Sale Calculator";
+const description = "Selling property in Italy? Calculate capital gains tax (plusvalenza): 26% flat rate or IRPEF option, 5-year exemption rule, and allowed cost deductions.";
+const canonical = canonicalURL('/en/property-capital-gains/');
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Property Capital Gains', url: canonical },
+];
+---
+
+<CalcolatoreLayout
+  title={title}
+  description={description}
+  calculatorName="Property Capital Gains Calculator"
+  breadcrumbs={breadcrumbs}
+  canonical={canonical}
+  lang={lang}
+>
+  <PlusvalenzaImmobiliare client:load lang={lang} />
+</CalcolatoreLayout>
