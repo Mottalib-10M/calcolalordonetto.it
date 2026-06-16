@@ -224,7 +224,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
                   <li>{lang === 'en' ? 'Work activity predominantly carried out in Italy' : 'Attivita lavorativa prevalentemente svolta in Italia'}</li>
                   <li>{lang === 'en' ? 'Must possess highly qualified or specialized skills (from 2024)' : 'Possesso di requisiti di elevata qualificazione o specializzazione (dal 2024)'}</li>
                   <li>{lang === 'en' ? 'Employment, assimilated, or self-employment income' : 'Reddito da lavoro dipendente, assimilato o autonomo'}</li>
-                  <li>{lang === 'en' ? 'Maximum eligible income: \u20AC600,000 per year (from 2024)' : 'Limite massimo di reddito agevolabile: 600.000 euro annui (dal 2024)'}</li>
+                  <li>{lang === 'en' ? 'Maximum eligible income: €600,000 per year (from 2024)' : 'Limite massimo di reddito agevolabile: 600.000 euro annui (dal 2024)'}</li>
                 </ul>
                 <p className="mt-3 text-xs text-amber-600 dark:text-amber-500">
                   {lang === 'en' ? 'This calculation is indicative. Consult a commercialista (tax advisor) to verify your specific situation and the current impatriati regime requirements.' : 'Questo calcolo e\' indicativo. Consulta un commercialista per verificare la tua situazione specifica e i requisiti aggiornati del regime impatriati.'}

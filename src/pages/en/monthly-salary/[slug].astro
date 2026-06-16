@@ -63,17 +63,17 @@ function getMarketContext(netto: number): { livello: string; settori: string; co
   if (netto <= 1200) return {
     livello: 'entry-level',
     settori: 'retail, hospitality, personal services, customer support',
-    contesto: 'This salary level is typical of junior or part-time positions in the service sector in Italy. According to ISTAT data, approximately 25% of Italian employees earn a net salary below \u20AC1,200 per month.',
+    contesto: 'This salary level is typical of junior or part-time positions in the service sector in Italy. According to ISTAT data, approximately 25% of Italian employees earn a net salary below €1,200 per month.',
   };
   if (netto <= 1500) return {
     livello: 'lower-middle',
     settori: 'administrative staff, skilled workers, organized retail, logistics',
-    contesto: 'This is the most common salary range in Italy. According to ISTAT, the median net salary for Italian employees is around \u20AC1,400 per month. This level is typical for employees with 2\u20135 years of experience.',
+    contesto: 'This is the most common salary range in Italy. According to ISTAT, the median net salary for Italian employees is around €1,400 per month. This level is typical for employees with 2–5 years of experience.',
   };
   if (netto <= 1800) return {
     livello: 'middle',
     settori: 'manufacturing, professional services, public administration, junior banking',
-    contesto: 'A salary in line with the national average for full-time employees in Italy. This level is typical of profiles with intermediate experience (5\u201310 years) or specialized roles in the industrial and service sectors.',
+    contesto: 'A salary in line with the national average for full-time employees in Italy. This level is typical of profiles with intermediate experience (5–10 years) or specialized roles in the industrial and service sectors.',
   };
   if (netto <= 2200) return {
     livello: 'upper-middle',
@@ -97,16 +97,16 @@ const market = getMarketContext(nettoTarget);
 // FAQs
 const faqs = [
   {
-    question: `What gross salary do you need to earn \u20AC${fmtCurRound(nettoTarget)} net per month?`,
-    answer: `To take home approximately \u20AC${fmtCurRound(nettoTarget)} net per month in Italy, you need a gross annual salary (RAL) of about \u20AC${fmtCurRound(ralDefault)}, based on 13 pay periods, a permanent employment contract in Lombardy, with no dependent family members.`,
+    question: `What gross salary do you need to earn €${fmtCurRound(nettoTarget)} net per month?`,
+    answer: `To take home approximately €${fmtCurRound(nettoTarget)} net per month in Italy, you need a gross annual salary (RAL) of about €${fmtCurRound(ralDefault)}, based on 13 pay periods, a permanent employment contract in Lombardy, with no dependent family members.`,
   },
   {
-    question: `Is \u20AC${fmtCurRound(nettoTarget)} net per month a good salary in Italy?`,
-    answer: `A net salary of \u20AC${fmtCurRound(nettoTarget)} per month is at a ${market.livello} level compared to the Italian national average. The median net salary in Italy is approximately \u20AC1,400 per month (ISTAT data). Purchasing power also depends on the city of residence.`,
+    question: `Is €${fmtCurRound(nettoTarget)} net per month a good salary in Italy?`,
+    answer: `A net salary of €${fmtCurRound(nettoTarget)} per month is at a ${market.livello} level compared to the Italian national average. The median net salary in Italy is approximately €1,400 per month (ISTAT data). Purchasing power also depends on the city of residence.`,
   },
   {
     question: `Does the required gross salary change by region?`,
-    answer: `Yes, regional IRPEF surcharges vary significantly across Italian regions. To earn \u20AC${fmtCurRound(nettoTarget)} net, the required gross salary (RAL) can differ by several hundred euros between the most and least tax-favorable regions. Regions with the lowest surcharges are generally Friuli-Venezia Giulia, Sardinia, and Veneto.`,
+    answer: `Yes, regional IRPEF surcharges vary significantly across Italian regions. To earn €${fmtCurRound(nettoTarget)} net, the required gross salary (RAL) can differ by several hundred euros between the most and least tax-favorable regions. Regions with the lowest surcharges are generally Friuli-Venezia Giulia, Sardinia, and Veneto.`,
   },
   {
     question: `How is net salary calculated from gross in Italy?`,
@@ -125,7 +125,7 @@ const description = `To earn €${fmtCurRound(nettoTarget)} net monthly you need
 const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/en/` },
   { name: 'Monthly Salary', url: `${SITE.url}/en/monthly-salary/` },
-  { name: `\u20AC${fmtCurRound(nettoTarget)}`, url: `${SITE.url}/en/monthly-salary/${slug}/` },
+  { name: `€${fmtCurRound(nettoTarget)}`, url: `${SITE.url}/en/monthly-salary/${slug}/` },
 ];
 
 const schemaString = JSON.stringify([

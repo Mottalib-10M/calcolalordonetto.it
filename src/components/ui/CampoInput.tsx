@@ -110,7 +110,7 @@ export default function CampoInput({
             'text-gray-900 dark:text-gray-100',
             'placeholder:text-gray-400 dark:placeholder:text-gray-500',
             prefix ? 'pl-1.5' : 'pl-3',
-            suffix ? 'pr-1.5' : 'pr-3',
+            suffix ? 'pr-14' : 'pr-3',
           ].join(' ')}
         />
         {suffix && (
