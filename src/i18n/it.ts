@@ -43,6 +43,8 @@ const it = {
   // ── Layout: CalcolatoreLayout ──────────────────────────────────────────────
   calc: {
     updatedFor: "Aggiornato per l'anno fiscale",
+    by: 'Di',
+    verifiedFor: 'Verificato per il',
     sources: 'Fonti',
     sourceAE: 'aliquote IRPEF, detrazioni, normativa fiscale',
     sourceINPS: 'aliquote contributive, massimali, prestazioni',

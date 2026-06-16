@@ -45,6 +45,8 @@ const en: Dictionary = {
   // ── Layout: CalcolatoreLayout ──────────────────────────────────────────────
   calc: {
     updatedFor: 'Updated for fiscal year',
+    by: 'By',
+    verifiedFor: 'Verified for',
     sources: 'Sources',
     sourceAE: 'IRPEF rates, deductions, tax legislation',
     sourceINPS: 'contribution rates, ceilings, benefits',

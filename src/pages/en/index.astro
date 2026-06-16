@@ -13,6 +13,39 @@ const breadcrumbs = [
   { name: 'Home', url: canonical },
   { name: 'Net Salary Calculator', url: canonical },
 ];
+
+const homeSchema = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: `${SITE.url}/`,
+    logo: `${SITE.url}/og-default.png`,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'contact@calcolalordonetto.it',
+      contactType: 'customer support',
+      availableLanguage: ['Italian', 'English'],
+    },
+    founder: {
+      '@type': 'Person',
+      name: SITE.author.name,
+      jobTitle: 'Founder & Editor',
+      image: `${SITE.url}/team/mottalib-radif.jpg`,
+      alumniOf: { '@type': 'CollegeOrUniversity', name: 'INSEAD' },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: SITE.author.name,
+    jobTitle: 'Founder & Editor',
+    image: `${SITE.url}/team/mottalib-radif.jpg`,
+    url: SITE.author.url,
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'INSEAD' },
+    worksFor: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },
+  },
+]);
 ---
 
 <CalcolatoreLayout
@@ -23,6 +56,8 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <script type="application/ld+json" set:html={homeSchema} />
+
   <!-- Calculator -->
   <StipendioNetto client:load lang={lang} />
 

@@ -9,6 +9,12 @@ export const SITE = {
   locale: 'it-IT',
   localeEn: 'en-US',
   annoFiscale: 2026,
+  author: {
+    name: 'Mottalib Radif',
+    title: 'MBA INSEAD, Finance Expert',
+    url: 'https://calcolalordonetto.it/chi-siamo/',
+    email: 'contact@calcolalordonetto.it',
+  },
   colors: {
     primary: '#E63946',
     white: '#FFFFFF',

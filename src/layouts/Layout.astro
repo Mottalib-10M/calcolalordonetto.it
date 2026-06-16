@@ -45,6 +45,7 @@ const enPath = lang === 'en' ? currentPath : alternatePath;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={SITE.author.name} />
     <link rel="canonical" href={canonicalHref} />
 
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -57,7 +58,8 @@ const enPath = lang === 'en' ? currentPath : alternatePath;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- Theme color -->
     <meta name="theme-color" content="#E63946" />

@@ -5,6 +5,40 @@ import { SITE } from '../config';
 
 const title = "Calcolo Stipendio Netto 2026: da RAL a Netto in Busta Paga";
 const description = "Inserisci la RAL e scopri il netto mensile in busta paga. IRPEF 2026, INPS 9,19%, addizionali regionali e comunali, cuneo fiscale e detrazioni lavoro dipendente";
+
+
+const homeSchema = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: `${SITE.url}/`,
+    logo: `${SITE.url}/og-default.png`,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'contact@calcolalordonetto.it',
+      contactType: 'customer support',
+      availableLanguage: ['Italian', 'English'],
+    },
+    founder: {
+      '@type': 'Person',
+      name: SITE.author.name,
+      jobTitle: 'Fondatore & Editore',
+      image: `${SITE.url}/team/mottalib-radif.jpg`,
+      alumniOf: { '@type': 'CollegeOrUniversity', name: 'INSEAD' },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: SITE.author.name,
+    jobTitle: 'Fondatore & Editore',
+    image: `${SITE.url}/team/mottalib-radif.jpg`,
+    url: SITE.author.url,
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'INSEAD' },
+    worksFor: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },
+  },
+]);
 ---
 
 <CalcolatoreLayout
@@ -16,6 +50,8 @@ const description = "Inserisci la RAL e scopri il netto mensile in busta paga. I
     { name: 'Calcolo Stipendio Netto', url: `${SITE.url}/` },
   ]}
 >
+  <script type="application/ld+json" set:html={homeSchema} />
+
   <!-- Calculator -->
   <StipendioNetto client:load />
 

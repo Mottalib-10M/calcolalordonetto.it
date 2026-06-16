@@ -78,6 +78,14 @@ const schemaString = JSON.stringify(schemas);
       </span>
     </div>
 
+    <!-- Author byline -->
+    <div class="mb-6 flex items-center gap-3">
+      <img src="/team/mottalib-radif.jpg" alt={SITE.author.name} class="h-8 w-8 rounded-full object-cover" width="32" height="32" loading="lazy" />
+      <p class="text-xs text-gray-500 dark:text-gray-400">
+        {t('calc.by', lang)} <a href={SITE.author.url} class="font-medium text-gray-700 dark:text-gray-300 hover:text-brand transition-colors">{SITE.author.name}</a> &middot; {SITE.author.title} &middot; {t('calc.verifiedFor', lang)} {SITE.annoFiscale}
+      </p>
+    </div>
+
     <!-- Calculator slot -->
     <section>
       <slot />

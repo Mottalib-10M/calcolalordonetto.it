@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
 
-const title = 'About Us: Free Italian Tax Calculators for Expats';
+const title = 'About Us: Free Italian Tax & Salary Calculators 2026';
 const description = 'Free online tools to calculate Italian net salary, IRPEF, TFR, and taxes. Updated with 2026 data, all calculations run in your browser with no data collected.';
 ---
 
@@ -16,6 +16,29 @@ const description = 'Free online tools to calculate Italian net salary, IRPEF, T
         The mission of {SITE.nameEn}: making Italian taxation understandable for everyone
       </p>
     </header>
+
+    <!-- Author card -->
+    <div class="mb-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-6">
+      <img
+        src="/team/mottalib-radif.jpg"
+        alt="Mottalib Radif"
+        class="h-32 w-32 rounded-full object-cover ring-2 ring-white dark:ring-gray-700 shadow-md"
+        width="128"
+        height="128"
+        loading="eager"
+      />
+      <div class="text-center sm:text-left">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white">{SITE.author.name}</h2>
+        <p class="mt-1 text-sm font-medium text-brand">Founder & Editor</p>
+        <p class="mt-0.5 text-sm text-gray-600 dark:text-gray-400">{SITE.author.title}</p>
+        <p class="mt-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed max-w-lg">
+          Passionate about personal finance and Italian taxation, he created {SITE.nameEn} to make net salary calculation and payslip comprehension accessible to everyone.
+        </p>
+        <p class="mt-3 text-sm text-gray-500 dark:text-gray-400">
+          <a href="mailto:contact@calcolalordonetto.it" class="text-brand hover:underline">contact@calcolalordonetto.it</a>
+        </p>
+      </div>
+    </div>
 
     <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white">
 
