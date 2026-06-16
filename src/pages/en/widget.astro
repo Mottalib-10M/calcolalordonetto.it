@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+
+const title = 'Free Net Salary Calculator Widget: Embed on Your Website';
+const description = "Embed the Italian net salary calculator on your website or blog for free. Copy the embed code, responsive design, updated 2026, no user data collected.";
+
+const embedCode = `<iframe src="https://calcolalordonetto.it/embed/" width="100%" height="520" style="border:none;max-width:400px" loading="lazy" title="Italian Net Salary Calculator"></iframe>`;
+---
+
+<Layout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        Free Net Salary Calculator Widget
+      </h1>
+      <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">
+        Embed our Italian net salary calculator on your website, blog, or company intranet for free.
+      </p>
+    </header>
+
+    <!-- Preview -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Preview</h2>
+      <div class="flex justify-center rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-6">
+        <iframe
+          src="/embed/"
+          width="100%"
+          height="520"
+          style="border:none;max-width:400px"
+          loading="lazy"
+          title="Italian Net Salary Calculator"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Embed code -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Embed code</h2>
+      <div class="relative">
+        <pre class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-900 p-5 text-sm text-green-400 leading-relaxed"><code id="embed-code">{embedCode}</code></pre>
+        <button
+          id="copy-btn"
+          class="absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-lg bg-brand px-3 py-1.5 text-xs font-medium text-white shadow hover:bg-red-700 transition-colors"
+        >
+          <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M7 3.5A1.5 1.5 0 0 1 8.5 2h3.879a1.5 1.5 0 0 1 1.06.44l3.122 3.12A1.5 1.5 0 0 1 17 6.622V12.5a1.5 1.5 0 0 1-1.5 1.5h-1v-3.379a3 3 0 0 0-.879-2.121L10.5 5.379A3 3 0 0 0 8.379 4.5H7v-1Z" />
+            <path d="M4.5 6A1.5 1.5 0 0 0 3 7.5v9A1.5 1.5 0 0 0 4.5 18h7a1.5 1.5 0 0 0 1.5-1.5v-5.879a1.5 1.5 0 0 0-.44-1.06L9.44 6.439A1.5 1.5 0 0 0 8.378 6H4.5Z" />
+          </svg>
+          Copy
+        </button>
+      </div>
+    </section>
+
+    <!-- Advantages -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why use this widget</h2>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3">
+          <svg class="h-5 w-5 flex-shrink-0 text-green-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" /></svg>
+          <span class="text-gray-700 dark:text-gray-300"><strong>Free forever</strong> — no cost, no registration, no usage limits</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="h-5 w-5 flex-shrink-0 text-green-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" /></svg>
+          <span class="text-gray-700 dark:text-gray-300"><strong>Auto-updated</strong> — {SITE.annoFiscale} tax parameters always current</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="h-5 w-5 flex-shrink-0 text-green-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" /></svg>
+          <span class="text-gray-700 dark:text-gray-300"><strong>No data collected</strong> — all calculations run in the user's browser</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="h-5 w-5 flex-shrink-0 text-green-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" /></svg>
+          <span class="text-gray-700 dark:text-gray-300"><strong>Responsive</strong> — adapts automatically to any container width</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="h-5 w-5 flex-shrink-0 text-green-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" /></svg>
+          <span class="text-gray-700 dark:text-gray-300"><strong>Zero dependencies</strong> — inline HTML, CSS and JS, no external libraries</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Questions or customisation requests? Email us at
+        <a href="mailto:contact@calcolalordonetto.it" class="text-brand hover:underline">contact@calcolalordonetto.it</a>
+      </p>
+    </section>
+  </div>
+
+  <script is:inline>
+    document.getElementById('copy-btn').addEventListener('click', function() {
+      var code = document.getElementById('embed-code').textContent;
+      navigator.clipboard.writeText(code).then(function() {
+        var btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+      });
+    });
+  </script>
+</Layout>
