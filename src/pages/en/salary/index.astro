@@ -5,7 +5,7 @@ import { calcolaStipendio } from '../../../lib/irpef-engine';
 import { formatCurrency } from '../../../lib/format';
 import { breadcrumbSchema } from '../../../lib/seo';
 
-const title = `RAL to Net Salary Table Italy ${SITE.annoFiscale}: €15k to €150k`;
+const title = `RAL to Net Salary Table Italy ${SITE.annoFiscale}: From €15k to €150k`;
 const description = `Gross salary (RAL) to net monthly pay conversion table: every level from €15,000 to €150,000 with IRPEF, INPS, regional surcharges, and effective tax rate.`;
 
 const ralAmounts = [
@@ -39,22 +39,22 @@ interface RalGroup {
 const groups: RalGroup[] = [
   {
     label: 'Low Salaries',
-    description: 'RAL from \u20AC15,000 to \u20AC22,000: entry-level positions and part-time contracts',
+    description: 'RAL from €15,000 to €22,000: entry-level positions and part-time contracts',
     items: ralPreviews.filter((r) => r.ral >= 15_000 && r.ral <= 22_000),
   },
   {
     label: 'Average Salaries',
-    description: 'RAL from \u20AC25,000 to \u20AC38,000: the most common salary range in Italy',
+    description: 'RAL from €25,000 to €38,000: the most common salary range in Italy',
     items: ralPreviews.filter((r) => r.ral >= 25_000 && r.ral <= 38_000),
   },
   {
     label: 'Above-Average Salaries',
-    description: 'RAL from \u20AC40,000 to \u20AC55,000: specialized roles and middle management',
+    description: 'RAL from €40,000 to €55,000: specialized roles and middle management',
     items: ralPreviews.filter((r) => r.ral >= 40_000 && r.ral <= 55_000),
   },
   {
     label: 'High Salaries',
-    description: 'RAL from \u20AC60,000 to \u20AC150,000: executives, managers, and senior roles',
+    description: 'RAL from €60,000 to €150,000: executives, managers, and senior roles',
     items: ralPreviews.filter((r) => r.ral >= 60_000 && r.ral <= 150_000),
   },
 ];
