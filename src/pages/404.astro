@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+---
+
+<Layout title="404 — Pagina non trovata" description="La pagina richiesta non esiste." noindex={true}>
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:py-24 text-center">
+    <p class="text-8xl font-bold text-brand">404</p>
+    <h1 class="mt-4 text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
+      Pagina non trovata / Page not found
+    </h1>
+    <p class="mt-3 text-gray-600 dark:text-gray-400">
+      La pagina che cerchi non esiste o e' stata spostata.<br />
+      The page you are looking for does not exist or has been moved.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-red-700 transition-colors"
+      >
+        Home &mdash; Italiano
+      </a>
+      <a
+        href="/en/"
+        class="inline-flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 px-5 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+      >
+        Home &mdash; English
+      </a>
+    </div>
+
+    <!-- Popular calculators -->
+    <div class="mt-16 text-left">
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        Calcolatori popolari / Popular calculators
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/" class="rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-brand transition-colors">
+          <p class="font-medium text-gray-900 dark:text-white text-sm">Calcolo Stipendio Netto</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Net Salary Calculator</p>
+        </a>
+        <a href="/calcolo-stipendio-lordo/" class="rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-brand transition-colors">
+          <p class="font-medium text-gray-900 dark:text-white text-sm">Da Netto a Lordo</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Net to Gross Calculator</p>
+        </a>
+        <a href="/calcolo-irpef/" class="rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-brand transition-colors">
+          <p class="font-medium text-gray-900 dark:text-white text-sm">Calcolo IRPEF</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">IRPEF Tax Calculator</p>
+        </a>
+        <a href="/calcolo-busta-paga/" class="rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-brand transition-colors">
+          <p class="font-medium text-gray-900 dark:text-white text-sm">Calcolo Busta Paga</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Payslip Calculator</p>
+        </a>
+        <a href="/calcolo-tfr/" class="rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-brand transition-colors">
+          <p class="font-medium text-gray-900 dark:text-white text-sm">Calcolo TFR</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Severance Pay Calculator</p>
+        </a>
+        <a href="/calcolo-forfettari/" class="rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-brand transition-colors">
+          <p class="font-medium text-gray-900 dark:text-white text-sm">Regime Forfettario</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Flat Rate Regime Calculator</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Report broken link -->
+    <p class="mt-12 text-sm text-gray-500 dark:text-gray-400">
+      Hai trovato un link rotto? / Found a broken link?<br />
+      <a href="mailto:contact@calcolalordonetto.it" class="text-brand hover:underline">contact@calcolalordonetto.it</a>
+    </p>
+  </div>
+</Layout>

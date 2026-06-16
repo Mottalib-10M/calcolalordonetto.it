@@ -1,0 +1,14 @@
+{
+  "name": "Calcola Lordo Netto",
+  "short_name": "CalcolaLordoNetto",
+  "description": "Calcolatori gratuiti per stipendio netto, IRPEF, TFR e tasse in Italia. Dati aggiornati, calcoli nel browser, nessun dato raccolto.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#E63946",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
