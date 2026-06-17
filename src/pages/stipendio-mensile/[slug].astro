@@ -455,7 +455,7 @@ const schemaString = JSON.stringify([
     <nav aria-label="Importi mensili correlati" class="mb-16 flex flex-col sm:flex-row gap-4">
       {prevAmount && (
         <a
-          href={`/stipendio-mensile/${prevAmount}-euro`}
+          href={`/stipendio-mensile/${prevAmount}-euro/`}
           class="flex-1 group flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
         >
           <svg class="h-5 w-5 text-gray-400 group-hover:text-brand transition-colors" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -471,7 +471,7 @@ const schemaString = JSON.stringify([
       )}
       {nextAmount && (
         <a
-          href={`/stipendio-mensile/${nextAmount}-euro`}
+          href={`/stipendio-mensile/${nextAmount}-euro/`}
           class="flex-1 group flex items-center justify-end gap-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors text-right"
         >
           <div>

@@ -236,7 +236,7 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
       {guide.map((g) => (
         <article class={`relative rounded-xl border bg-white dark:bg-gray-900 shadow-sm transition-all ${g.disponibile ? 'border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30' : 'border-gray-100 dark:border-gray-800 opacity-70'}`}>
           {g.disponibile ? (
-            <a href={`/guide/${g.slug}`} class="block p-6">
+            <a href={`/guide/${g.slug}/`} class="block p-6">
               <h2 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
                 {g.titolo}
               </h2>
