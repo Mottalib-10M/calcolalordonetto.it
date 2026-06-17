@@ -30,7 +30,7 @@ const canonicalURL = canonical || Astro.url.href;
 const schemas = [
   breadcrumbSchema(breadcrumbs),
   webAppSchema(
-    `Calcolo Netto per RAL ${ral.toLocaleString('it-IT')}\u00A0€`,
+    `Calcolo Netto per RAL ${ral.toLocaleString('it-IT')} €`,
     description,
     canonicalURL,
   ),
