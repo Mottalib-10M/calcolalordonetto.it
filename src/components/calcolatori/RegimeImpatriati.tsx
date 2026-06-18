@@ -56,7 +56,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
           {lang === 'en' ? 'Enter your data' : 'Inserisci i tuoi dati'}
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <CampoInput
             label={lang === 'en' ? 'RAL (Gross Annual Salary)' : 'RAL (Retribuzione Annua Lorda)'}
             value={ral}
@@ -72,7 +72,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
             onChange={setRegione}
             lang={lang}
           />
-          <div className="flex flex-col gap-1.5">
+          <div className="sm:col-span-2 flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {lang === 'en' ? 'Exemption percentage' : 'Percentuale esenzione'}
             </label>
