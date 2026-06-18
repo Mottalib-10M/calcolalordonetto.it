@@ -11,7 +11,7 @@ export const SITE = {
   annoFiscale: 2026,
   author: {
     name: 'Mottalib Radif',
-    title: 'MBA INSEAD, Esperto di finanza personale e fiscalità',
+    title: 'MBA INSEAD, Appassionato di finanza personale e fiscalità',
     url: 'https://calcolalordonetto.it/chi-siamo/',
     email: 'contact@calcolalordonetto.it',
   },
