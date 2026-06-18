@@ -18,10 +18,366 @@ const breadcrumbs = [
 <CalcolatoreLayout
   title={title}
   description={description}
-  calculatorName="Impatriati Tax Regime"
+  calculatorName="Impatriati Tax Regime Calculator"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
   lang={lang}
 >
   <RegimeImpatriati client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How the regime impatriati (inbound workers tax regime) works
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The <strong>regime impatriati</strong> (officially known as the "regime fiscale per i lavoratori impatriati") is Italy's flagship tax incentive designed to attract skilled professionals and workers to the country. Under the current rules, <strong>50% of your employment or self-employment income is exempt from IRPEF</strong> (Imposta sul Reddito delle Persone Fisiche, Italy's personal income tax). In practical terms, if your RAL (Retribuzione Annua Lorda, i.e. gross annual salary) is 60,000 euros, income tax is calculated on just 30,000 euros, resulting in very substantial tax savings that can amount to tens of thousands of euros per year.
+      </p>
+      <p>
+        This calculator allows you to compare two scenarios side by side: your tax burden under standard Italian taxation versus your tax burden under the impatriati regime. The difference represents your annual tax savings. Whether you are an expat considering a move to Italy, an Italian citizen returning after years abroad, or a foreign professional receiving a job offer from an Italian company, this tool helps you understand the real financial impact of this incentive on your take-home pay.
+      </p>
+
+      <h3>Who can access the regime impatriati</h3>
+      <p>
+        To qualify for the regime impatriati, you must meet several fundamental requirements established by Italian tax law. The regime applies to both <strong>lavoratori dipendenti</strong> (employees) and <strong>lavoratori autonomi</strong> (self-employed workers and freelance professionals), making it broadly accessible to different types of workers relocating to Italy.
+      </p>
+      <p>
+        The core eligibility criteria are:
+      </p>
+      <ul>
+        <li><strong>Non-residence requirement:</strong> you must not have been a tax resident in Italy (residenza fiscale) for the three tax periods preceding the transfer. This is the minimum requirement for individuals who have never been Italian tax residents before. Different rules apply if you were previously an Italian tax resident (see the detailed section below).</li>
+        <li><strong>Commitment to stay:</strong> you must commit to maintaining your residenza fiscale (tax residence) in Italy for at least four years. If you leave before the four-year period, the tax benefits are clawed back with interest and penalties.</li>
+        <li><strong>Work predominantly in Italy:</strong> you must carry out your work activity predominantly within Italian territory. For employees, this means the majority of your working days must be spent physically in Italy. For self-employed workers, the criterion refers to where the professional activity is actually performed, not where clients are located.</li>
+        <li><strong>No previous use:</strong> under the current rules, you cannot access the regime if you have already benefited from it in any prior tax year. This prevents the practice known as "round-tripping" (transferring abroad and then returning to claim the benefit again).</li>
+      </ul>
+
+      <h3>How the calculation works</h3>
+      <p>
+        The calculator compares two scenarios: <strong>standard taxation</strong> applied to your full income, and <strong>preferential taxation</strong> calculated on the reduced taxable base (50% of your gross income). The difference between the net pay under standard rules and the net pay under the impatriati regime represents your annual tax savings. INPS social security contributions (contributi previdenziali) remain unchanged in both scenarios, because the tax incentive applies exclusively to IRPEF income tax and the regional and municipal surcharges (addizionali regionali e comunali), not to the social security base.
+      </p>
+      <p>
+        Italy uses a progressive income tax system with three brackets (scaglioni) in 2026: 23% on income up to 28,000 euros, 35% on income between 28,001 and 50,000 euros, and 43% on income above 50,000 euros. By halving your taxable income, the regime impatriati effectively keeps more of your income in the lower brackets, generating savings that grow more than proportionally as your salary increases. A worker earning 100,000 euros benefits far more in percentage terms than one earning 40,000 euros, because the halved income avoids the 43% top bracket entirely.
+      </p>
+
+      <h3>Detailed requirements for the regime impatriati 2026</h3>
+      <p>
+        The rules currently in force were introduced by Legislative Decree 209/2023 (D.Lgs. 209/2023), which implemented the broader Italian fiscal reform (riforma fiscale) and substantially rewrote the impatriati regime compared to its previous version. The requirements for anyone transferring to Italy from 2024 onward are stricter and must be carefully verified.
+      </p>
+      <p>
+        <strong>Non-residence requirement (detailed):</strong> the worker must not have been a tax resident in Italy for the three tax periods preceding the transfer. However, if the worker was previously an Italian tax resident before their time abroad, the requirement increases to <strong>six tax periods</strong> of non-residence. Furthermore, if the worker does not primarily carry out their activity for a different employer (or entities belonging to a different corporate group) than the one they worked for before leaving Italy, the requirement increases to <strong>seven tax periods</strong>. This distinction is critical and represents one of the most significant changes introduced by the reform, specifically designed to prevent abuse and to ensure that the incentive genuinely rewards new inflows of human capital rather than temporary relocations.
+      </p>
+      <p>
+        <strong>Commitment to stay (impegno di permanenza):</strong> the worker must commit to maintaining tax residence in Italy for at least four years. This is not a formal registration but a substantive condition: if you transfer your residenza fiscale abroad before completing the four-year period, you forfeit the benefit retroactively and must repay all the tax savings already enjoyed, plus legal interest and penalties for insufficient tax payment. The Agenzia delle Entrate (Italian Revenue Agency) can issue assessments within the standard statute of limitations. It is therefore essential to be genuinely committed to staying in Italy for at least four years before opting into the regime.
+      </p>
+      <p>
+        <strong>Predominant activity in Italy (prevalenza dell'attivita'):</strong> the work activity must be carried out predominantly in Italian territory. For employees, this means the majority of working days must be physically spent in Italy. Occasional business trips abroad are fine, but sustained remote work from another country could jeopardize the benefit. For self-employed professionals, the criterion refers to the place where the activity is actually carried out, not the location of clients or customers.
+      </p>
+      <p>
+        <strong>No previous use and income cap:</strong> under the new rules, anyone who has already benefited from the regime in a prior tax year cannot access it again. Additionally, the maximum eligible income is capped at <strong>600,000 euros per year</strong>. Any income above this threshold is taxed under standard rules.
+      </p>
+
+      <h3>The old rules: 5-to-10-year extension (pre-2024 transfers)</h3>
+      <p>
+        Under the previous version of the regime impatriati (applicable to those who transferred to Italy before January 1, 2024, i.e. before D.Lgs. 209/2023 took effect), the rules were considerably more generous. The base exemption was <strong>70% of income</strong> (not 50% as under the current rules), and the regime could last for up to <strong>ten years</strong> rather than five.
+      </p>
+      <p>
+        The conditions for obtaining the additional five-year extension were: purchasing a residential property in Italy (even within the 12 months preceding the transfer), or having at least one dependent minor child. Workers who met either of these conditions could enjoy a <strong>90% income exemption</strong> for the additional five years, bringing the total benefit period to ten years with extraordinarily high tax savings.
+      </p>
+      <p>
+        It is important to note that this extension option is no longer available for anyone transferring to Italy from 2024 onward. However, workers who activated the regime under the old rules and are still within their benefit period retain the original conditions. Someone who returned in 2022 with the extension may enjoy 90% exemption through 2031, while someone who moved to Italy in 2024 under the new rules will have 50% exemption through 2028. This creates a significant difference in treatment between "old" and "new" impatriati.
+      </p>
+
+      <h3>Practical examples: how much you actually save</h3>
+      <p>
+        To illustrate the real-world impact of the regime impatriati, let us walk through a concrete example: an employee with a RAL (gross annual salary) of 60,000 euros, no dependents, tax resident in Lombardy (regional surcharge approximately 1.73%, municipal surcharge for Milan approximately 0.8%).
+      </p>
+      <p>
+        <strong>Standard scenario (without the incentive):</strong> on a RAL of 60,000 euros, the IRPEF taxable income equals the full RAL minus employee-side INPS contributions (approximately 5,508 euros at the IVS rate of 9.19%), resulting in roughly 54,492 euros. Gross IRPEF, calculated bracket by bracket, amounts to approximately 15,098 euros. After the employment income deduction (detrazione per lavoro dipendente, approximately 336 euros at this income level), net IRPEF is roughly 14,762 euros. Adding regional surcharges (~943 euros) and municipal surcharges (~436 euros), total taxes come to approximately 16,141 euros.
+      </p>
+      <p>
+        <strong>Impatriati scenario (50% exemption):</strong> under the regime impatriati, IRPEF is calculated on 50% of the taxable income, i.e. approximately 27,246 euros. Gross IRPEF on this reduced base drops to roughly 6,349 euros. The employment income deduction is higher (approximately 1,486 euros, because it is calculated on the lower income), bringing net IRPEF to approximately 4,863 euros. Regional and municipal surcharges also decrease proportionally (~471 euros and ~218 euros respectively), for a total tax burden of approximately 5,552 euros.
+      </p>
+      <p>
+        <strong>The savings:</strong> the difference between the two scenarios is approximately <strong>10,589 euros per year</strong>. Over five years of the regime, the cumulative savings exceed <strong>50,000 euros</strong>. INPS contributions remain identical in both cases (approximately 5,508 euros employee-side and approximately 17,898 euros employer-side), because the incentive does not affect the contribution base. The monthly net payslip increases from roughly 2,900 euros (standard) to roughly 3,782 euros (with the regime), an increase of approximately <strong>882 euros per month</strong>.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Tax savings under the regime impatriati: reference table by salary level
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The following table shows the comparison between standard IRPEF and reduced IRPEF under the regime impatriati (50% exemption), for an employee tax resident in Lombardy with no dependents. Values are approximate and take into account the 2026 IRPEF brackets, employment income deductions (detrazioni per lavoro dipendente), and regional and municipal surcharges (addizionali regionali e comunali).
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-600">
+              <th class="text-left py-2 pr-4 font-semibold">RAL (Gross Salary)</th>
+              <th class="text-right py-2 px-4 font-semibold">Standard IRPEF</th>
+              <th class="text-right py-2 px-4 font-semibold">Impatriati IRPEF</th>
+              <th class="text-right py-2 pl-4 font-semibold">Annual Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">40,000 &euro;</td>
+              <td class="text-right py-2 px-4">~6,200 &euro;</td>
+              <td class="text-right py-2 px-4">~3,600 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~2,600 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">50,000 &euro;</td>
+              <td class="text-right py-2 px-4">~9,100 &euro;</td>
+              <td class="text-right py-2 px-4">~4,800 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~4,300 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">60,000 &euro;</td>
+              <td class="text-right py-2 px-4">~13,100 &euro;</td>
+              <td class="text-right py-2 px-4">~6,200 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~6,900 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">80,000 &euro;</td>
+              <td class="text-right py-2 px-4">~21,700 &euro;</td>
+              <td class="text-right py-2 px-4">~9,100 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~12,600 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">100,000 &euro;</td>
+              <td class="text-right py-2 px-4">~30,300 &euro;</td>
+              <td class="text-right py-2 px-4">~13,100 &euro;</td>
+              <td class="text-right py-2 pl-4 font-semibold text-green-600 dark:text-green-400">~17,200 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Important note on INPS social security contributions:</strong> employee-side INPS contributions (at the IVS rate of 9.19% up to the annual ceiling) and employer-side contributions (~29.9%) are calculated on the <strong>full gross salary</strong>, with no reduction from the regime impatriati. The tax incentive affects only IRPEF and the regional/municipal surcharges. This means that the employer's total labour cost does not change, and your pension contribution record (anzianita' contributiva) is not penalized by the preferential regime. Your future pension entitlements remain the same as they would be under standard taxation.
+      </p>
+      <p>
+        As the table shows, the savings grow more than proportionally as the RAL increases. This happens because Italian IRPEF rates are progressive: higher incomes are taxed at higher marginal rates (up to 43% on the portion exceeding 50,000 euros). By halving the taxable base, you avoid falling into the upper brackets, generating an ever-larger percentage saving. For a RAL of 100,000 euros, the annual saving of approximately 17,200 euros translates to an increase in monthly net pay of over 1,430 euros, an extremely significant boost to your disposable income and savings capacity.
+      </p>
+      <p>
+        Over the five-year duration of the regime, cumulative savings for a RAL of 60,000 euros amount to approximately 34,500 euros. For a RAL of 100,000 euros, the five-year saving exceeds 86,000 euros. These figures make the regime impatriati one of the most generous tax incentives available in Italy, and explain why it is a decisive factor in the decision of many skilled professionals to relocate to or return to the country. For expats evaluating a move to Italy, these savings can largely offset the adjustment costs of relocation, including housing deposits, moving expenses, and the first months of settling in.
+      </p>
+      <h3>Understanding Italian tax terminology for expats</h3>
+      <p>
+        If you are new to the Italian tax system, here is a quick glossary of terms you will encounter on your payslip (busta paga) and tax returns:
+      </p>
+      <ul>
+        <li><strong>RAL (Retribuzione Annua Lorda)</strong> &mdash; your gross annual salary before any deductions.</li>
+        <li><strong>IRPEF (Imposta sul Reddito delle Persone Fisiche)</strong> &mdash; Italy's personal income tax, calculated on progressive brackets (scaglioni).</li>
+        <li><strong>INPS</strong> &mdash; Italy's national social security institute. Contributions fund your pension, unemployment insurance, and other welfare benefits.</li>
+        <li><strong>Addizionale regionale / comunale</strong> &mdash; regional and municipal income tax surcharges, varying by where you live.</li>
+        <li><strong>Detrazione per lavoro dipendente</strong> &mdash; an employment income tax credit that reduces your IRPEF, calculated inversely to income.</li>
+        <li><strong>Residenza fiscale</strong> &mdash; tax residence, determined by civil registry enrollment (iscrizione anagrafica), domicile, or physical presence in Italy for more than 183 days in a tax year.</li>
+        <li><strong>Codice fiscale</strong> &mdash; your Italian tax identification number, required for employment, banking, and all official dealings.</li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently asked questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How much can I save with the regime impatriati?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The savings depend on your RAL (gross annual salary) and your marginal tax rate. With a RAL of 50,000 euros, you can expect to save approximately 4,000 to 8,000 euros per year in IRPEF. Higher incomes benefit from even greater absolute savings because Italy's marginal tax rates are progressive, reaching 43% above 50,000 euros. Use the calculator above to get a precise estimate tailored to your specific situation, including your region of residence and family status.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How many years does the regime impatriati last?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Under the current rules (D.Lgs. 209/2023, applicable to transfers from 2024 onward), the regime impatriati lasts for <strong>five tax years</strong>. In the past, extensions up to ten years were available for those who purchased residential property in Italy or had dependent minor children, with a 90% income exemption during the extension period. However, these extension options are no longer available for new applicants. If you activated the regime under the old rules and are still within your benefit period, you retain the original conditions. Always verify the applicable rules with a qualified tax advisor (commercialista) or check the latest guidance from the Agenzia delle Entrate.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Do INPS social security contributions change under the regime?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No. INPS social security contributions are calculated on your full gross salary, with no reduction whatsoever. The regime impatriati only reduces the IRPEF income tax and the regional and municipal surcharges (addizionali regionali e comunali). This means the savings are purely on the income tax side, while your pension contributions, unemployment insurance, and other social security benefits continue to accrue at the standard rate. Your future Italian pension will not be reduced as a result of using this tax regime.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Do I need to inform my employer to apply the regime?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes. To have the benefit applied directly to your monthly payslip (busta paga), you must submit a written request to your employer with a self-certification (autocertificazione) declaring that you meet all the eligibility requirements. Your employer will then apply the reduced withholding tax each month, so you enjoy higher net pay immediately. Alternatively, if you do not inform your employer, you can still claim the benefit when filing your annual tax return (dichiarazione dei redditi, either the 730 or Modello Redditi form), receiving the overpaid taxes as a refund. However, informing your employer from the start is strongly recommended so you benefit from the higher monthly take-home pay rather than waiting for a lump-sum refund.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can the regime impatriati be combined with other tax benefits?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          As a general rule, the regime impatriati cannot be combined with other preferential tax regimes, such as the regime forfettario (flat-rate regime for freelancers). However, it can coexist with standard employment income deductions (detrazioni per lavoro dipendente) and the trattamento integrativo (supplementary tax credit, formerly known as the "bonus Renzi"), both of which are calculated on the reduced taxable base. You can also still claim standard deductions for mortgage interest, medical expenses, renovation bonuses, and similar items. For complex situations, always consult a qualified Italian tax advisor (commercialista).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Does the regime apply to freelancers and self-employed workers?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes. The regime impatriati applies to both employment income (redditi da lavoro dipendente) and self-employment income (redditi da lavoro autonomo). Freelance professionals with a partita IVA (VAT number) operating under the ordinary tax regime (regime ordinario) can benefit from the 50% exemption, paying IRPEF on only half of their taxable self-employment income. However, the regime impatriati is <strong>not compatible with the regime forfettario</strong> (flat-rate regime), because the forfettario already replaces IRPEF with a flat substitute tax. Self-employed workers relocating to Italy must therefore carefully evaluate which regime is more advantageous for their specific situation, comparing the overall tax burden under each option. For many high-earning professionals, the impatriati regime applied to the ordinary tax system can be significantly more beneficial than the forfettario.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What happens if I leave Italy before the 4-year commitment period?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          If you transfer your residenza fiscale (tax residence) out of Italy before completing the minimum four-year period, you lose the benefit retroactively. This means you will be required to repay the Italian tax authorities (Erario) all the taxes that were waived under the preferential regime &mdash; i.e. the full difference between what you would have paid under standard taxation and what you actually paid. On top of the principal amount, you will owe legal interest accrued since the original due dates and penalties for insufficient tax payment. The Agenzia delle Entrate can issue assessments within the standard statute of limitations. The financial consequences of early departure can be very severe, potentially amounting to tens of thousands of euros. It is therefore crucial to be genuinely certain of your intention to remain in Italy for at least four years before opting into the regime.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How does the regime work for dual citizens or EU nationals?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Dual citizenship does not prevent access to the regime impatriati. The key requirement is <strong>tax residence (residenza fiscale)</strong>, not citizenship or nationality. An Italian citizen with dual citizenship who has lived abroad for at least three tax periods (or six/seven if previously resident in Italy) can access the regime upon returning, under the same conditions as any other taxpayer. Similarly, a foreign national moving to Italy for the first time can benefit from the regime as long as they were not an Italian tax resident in the preceding periods. EU citizens, non-EU citizens with work permits, and Italian nationals abroad are all eligible on equal terms. Tax residence in Italy is determined by civil registry enrollment (iscrizione anagrafica), civil domicile (domicilio), or physical presence in Italy for more than 183 days in a tax year.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What documents do I need to apply for the regime impatriati?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          To apply the regime through your employer, you need to submit a written self-certification (autocertificazione or dichiarazione sostitutiva di atto di notorieta') stating that you meet all the eligibility requirements. Key information to include: your full name and codice fiscale (tax ID), the country of previous residence, the years you were not tax resident in Italy, confirmation of your commitment to remain an Italian tax resident for at least four years, and a declaration that you have not previously benefited from the regime. You should also keep documentation supporting your claim, such as proof of foreign tax residence (e.g. foreign tax returns, employment contracts, utility bills, or AIRE registration records for Italian citizens). While there is no formal application to the Agenzia delle Entrate, having thorough documentation is essential in case of a future tax audit (accertamento).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can I use the regime if I work remotely for a foreign company?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          This is a common question among digital nomads and remote workers considering Italy. The regime impatriati requires that the work activity be carried out <strong>predominantly in Italian territory</strong>. If you are physically working from Italy (even for a foreign employer or client), this requirement can be met. However, the tax and social security implications of working for a foreign company while being an Italian tax resident are complex. The foreign employer may need to register a permanent establishment or use an employer-of-record service in Italy. For self-employed professionals invoicing foreign clients, the situation may be simpler, but the "predominant activity in Italy" requirement still applies. In all cases, it is strongly recommended to consult an Italian tax advisor (commercialista) experienced with international employment arrangements before making decisions.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Related calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/en/irpef-tax-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          See the bracket-by-bracket breakdown of Italian income tax on your earnings
+        </p>
+      </a>
+      <a
+        href="/en/payslip-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Payslip Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simulate your monthly Italian payslip with all deductions and withholdings
+        </p>
+      </a>
+      <a
+        href="/en/gross-salary-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Gross Salary Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Find the gross annual salary (RAL) you need to reach your desired net pay
+        </p>
+      </a>
+      <a
+        href="/en/flat-rate-regime-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Flat-Rate Regime Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Compare the regime forfettario vs ordinary tax regime for freelancers in Italy
+        </p>
+      </a>
+      <a
+        href="/en/employer-cost-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Employer Cost Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate the full cost of hiring an employee in Italy including all contributions
+        </p>
+      </a>
+      <a
+        href="/en/employee-vs-freelancer/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Employee vs Freelancer
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Compare net income as an employee versus a freelancer (partita IVA) in Italy
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

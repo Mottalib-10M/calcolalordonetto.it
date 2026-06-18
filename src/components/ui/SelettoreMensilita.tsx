@@ -23,17 +23,19 @@ export default function SelettoreMensilita({
       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
         {t('ui.monthlyPayments', lang)}
       </span>
-      <div className="inline-flex rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 p-0.5">
+      <div className="flex rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 p-0.5" role="radiogroup" aria-label={t('ui.monthlyPayments', lang)}>
         {options.map((opt) => {
           const isActive = value === opt.value;
           return (
             <button
               key={opt.value}
               type="button"
+              role="radio"
+              aria-checked={isActive}
               title={t(opt.tooltipKey, lang)}
               onClick={() => onChange(opt.value)}
               className={[
-                'relative rounded-md px-3 py-2 text-sm font-medium transition-all duration-150',
+                'flex-1 relative rounded-md px-3 py-3 text-sm font-medium transition-all duration-150',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40',
                 isActive
                   ? 'bg-brand text-white shadow-sm'

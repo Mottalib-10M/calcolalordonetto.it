@@ -23,5 +23,656 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Italian Pension Calculator: INPS Contributory System Simulator
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Estimate your future INPS pension based on your age, gross annual salary (RAL), and years of contributions.
+  </p>
+
   <Pensione client:load lang={lang} />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How the Italian contributory pension system works
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The Italian public pension system is managed by <strong>INPS</strong> (Istituto Nazionale della
+        Previdenza Sociale), the National Social Security Institute. For anyone who started working after
+        1 January 1996, pensions are calculated entirely under the <strong>sistema contributivo</strong>
+        (contributory method), introduced by the Dini Reform (Law 335/1995) and subsequently reinforced by
+        the Maroni Reform (2004), the Prodi Reform (2007), and the landmark Fornero Reform (2011, Law 214/2011).
+        Under this system, your pension does not depend on your final salary (as it did under the old
+        <em>sistema retributivo</em>, or earnings-related method), but rather on the total amount of
+        contributions paid throughout your entire working life, revalued over time and converted into an
+        annuity using actuarial coefficients.
+      </p>
+      <p>
+        For workers who began contributing before 1996, the calculation is "mixed" (<em>sistema misto</em>):
+        an earnings-related portion covers contributions up to 1995 (or 2011, depending on seniority), while
+        a contributory portion applies to contributions from that date forward. Our simulator uses the
+        <strong>pure contributory method</strong>, which applies in full to the majority of younger and
+        mid-career workers in Italy today, including most expats who arrived after 1996.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The IVS contribution rate: 33% for employees
+      </h3>
+      <p>
+        The IVS contribution rate (<em>aliquota IVS</em> &mdash; Invalidita', Vecchiaia e Superstiti, meaning
+        Disability, Old Age, and Survivors) for employees is <strong>33% of gross annual salary</strong>
+        (known in Italy as RAL, <em>Retribuzione Annua Lorda</em>). This rate is split between the employer
+        and the employee:
+      </p>
+      <ul>
+        <li><strong>23.81%</strong> paid by the employer (<em>a carico del datore di lavoro</em>)</li>
+        <li><strong>9.19%</strong> deducted from the employee's payslip (<em>a carico del dipendente</em>)</li>
+      </ul>
+      <p>
+        For pension calculation purposes, the full 33% counts: every year, your notional pension pot
+        (<em>montante contributivo</em>) grows by an amount equal to 33% of your gross annual salary.
+        For example, on a RAL of &euro;35,000, approximately &euro;11,550 per year is virtually "set aside"
+        in your individual contribution account. It is important to understand that this is a
+        <strong>notional account</strong>, not real money invested in financial markets &mdash; Italy operates
+        a pay-as-you-go system (<em>sistema a ripartizione</em>), where current workers' contributions fund
+        current retirees' pensions.
+      </p>
+      <p>
+        Different contribution rates apply to other categories of workers. Freelancers registered with the
+        <em>Gestione Separata INPS</em> (Separate Management Fund) pay 26.07% if they already have other
+        pension coverage, or 33.72% if they do not. Self-employed artisans (<em>artigiani</em>) and
+        traders (<em>commercianti</em>) pay 24%. These lower rates for the self-employed result in
+        significantly smaller pensions, which is a crucial factor for expats considering freelance work in Italy.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The montante contributivo and annual revaluation
+      </h3>
+      <p>
+        The <strong>montante contributivo</strong> (contribution pot or notional capital) is essentially
+        a virtual savings account that grows throughout your working life. Each year, the existing pot is
+        revalued based on the five-year moving average of Italy's nominal GDP growth rate, as calculated by
+        ISTAT (the Italian National Institute of Statistics). The pot is not invested in stocks, bonds, or
+        any financial instrument: it is a purely accounting figure, managed by INPS under the pay-as-you-go
+        principle.
+      </p>
+      <p>
+        The revaluation rate (<em>tasso di rivalutazione</em>) is critical for the growth of your pot. Over
+        the past 20 years, the average revaluation rate has been approximately 1.5% per year, reflecting
+        Italy's historically weak economic growth. Our simulator uses a conservative assumption of 1.5%.
+        During recessions (such as 2009 or 2020), the revaluation rate can drop close to zero, though the
+        law guarantees a floor of 1% (meaning the pot cannot shrink in nominal terms).
+      </p>
+      <p>
+        The annual formula for the <em>montante</em> is:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        M<sub>t</sub> = M<sub>t-1</sub> &times; (1 + GDP rate) + RAL<sub>t</sub> &times; 33%
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Transformation coefficients (<em>coefficienti di trasformazione</em>)
+      </h3>
+      <p>
+        At the moment of retirement, your accumulated <em>montante</em> is converted into an annual pension
+        using the <strong>coefficienti di trasformazione</strong> (transformation coefficients), which depend
+        on your age at retirement. The higher your age, the higher the coefficient, because the expected
+        payout period is shorter and therefore each annual payment can be larger.
+      </p>
+      <p>
+        These coefficients are updated every two years by the MEF (Ministero dell'Economia e delle Finanze,
+        the Ministry of Economy and Finance) based on life expectancy data published by ISTAT. The most
+        recent update, valid for the 2024-2025 biennium, was issued with the MEF Decree of 20 November 2023.
+        As life expectancy increases over time, the coefficients tend to decrease, meaning future retirees
+        will receive a lower annual pension for the same accumulated pot.
+      </p>
+    </div>
+
+    <!-- Full coefficients table -->
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Retirement age</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Coefficient</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Annual pension per &euro;100,000 pot</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">57 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.270%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;4,270/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">58 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.382%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;4,382/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">59 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.504%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;4,504/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.636%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;4,636/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">61 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.781%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;4,781/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">62 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.940%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;4,940/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">63 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.115%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;5,115/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">64 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.308%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;5,308/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">65 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.523%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;5,523/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">66 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.723%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;5,723/year</td>
+          </tr>
+          <tr class="bg-brand/5 dark:bg-brand/10">
+            <td class="px-4 py-3 font-semibold text-brand">67 years (old-age pension)</td>
+            <td class="px-4 py-3 font-semibold text-brand">5.931%</td>
+            <td class="px-4 py-3 font-semibold text-brand">&euro;5,931/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">68 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.154%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;6,154/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">69 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.395%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;6,395/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">70 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.655%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;6,655/year</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">71 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.938%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;6,938/year</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Requirements for the pensione di vecchiaia (old-age pension)
+      </h3>
+      <p>
+        The standard <strong>pensione di vecchiaia</strong> (old-age pension) requires meeting two
+        simultaneous conditions:
+      </p>
+      <ul>
+        <li><strong>Age requirement</strong>: 67 years (fixed until 2026, subject to adjustment based
+          on life expectancy starting from 2027)</li>
+        <li><strong>Contribution requirement</strong>: at least 20 years of contributions paid
+          (<em>anzianita' contributiva</em>)</li>
+      </ul>
+      <p>
+        For workers under the pure contributory system (first contribution from 1 January 1996 onwards),
+        there is an additional threshold: the calculated pension must be at least 1.5 times the <em>assegno
+        sociale</em> (social allowance), which is approximately &euro;534/month in 2026 &mdash; meaning your
+        pension must be at least roughly &euro;801/month. If your calculated pension falls below this
+        threshold, you must wait until age 71 to retire, at which point only 5 years of contributions
+        are required. This rule is particularly important for expats who may have started contributing
+        to INPS later in life.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Pensione anticipata (early retirement)
+      </h3>
+      <p>
+        The <strong>pensione anticipata</strong> (early retirement pension) does not depend on age but
+        solely on the length of your contribution history:
+      </p>
+      <ul>
+        <li><strong>Men</strong>: 42 years and 10 months of contributions</li>
+        <li><strong>Women</strong>: 41 years and 10 months of contributions</li>
+      </ul>
+      <p>
+        There is also a mandatory waiting period (<em>finestra</em>) of 3 months between meeting the
+        requirement and the actual start date of pension payments. Additional early retirement channels
+        include Quota 103 (age 62 + 41 years of contributions, but with penalties under the contributory
+        method) and APE Sociale, a social early retirement scheme for specific categories of workers
+        facing hardship (caregivers, disabled workers, workers made redundant, and those in physically
+        demanding jobs).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Practical example: a 30-year-old expat earning &euro;32,000 gross
+      </h3>
+      <p>
+        Consider the case of an expat who arrived in Italy at age 25 and started working with a gross
+        salary of about &euro;27,000, now earning &euro;32,000 per year at age 30. They have 5 years of
+        INPS contributions. Let us assume annual salary growth of 2% and a pot revaluation rate of 1.5%.
+      </p>
+      <p>
+        Each year, their <em>montante</em> grows by &euro;32,000 &times; 33% = &euro;10,560 in new
+        contributions (increasing over time as salary grows), plus the revaluation of the existing pot.
+        By age 67, after 42 years of total contributions, the estimated pot is approximately
+        &euro;480,000&ndash;520,000.
+      </p>
+      <p>
+        Applying the transformation coefficient at age 67 (5.931%), the gross annual pension is
+        approximately &euro;28,500&ndash;30,800, corresponding to roughly &euro;2,190&ndash;2,370 gross
+        per month over 13 monthly payments (Italian pensions include a <em>tredicesima</em>, or 13th-month
+        payment, in December). After IRPEF income tax and regional/municipal surcharges, the net monthly
+        pension is around &euro;1,680&ndash;1,820.
+      </p>
+      <p>
+        The <strong>replacement rate</strong> (<em>tasso di sostituzione</em> &mdash; the ratio of net
+        pension to last net salary) is approximately 55&ndash;65% for an employee under the pure
+        contributory system. This means your pension will cover just over half of your working-life
+        standard of living, making supplementary pension planning essential.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The replacement rate: the truth about contributory pensions
+      </h3>
+      <p>
+        The <strong>replacement rate</strong> (<em>tasso di sostituzione</em>) is the ratio between
+        your first net pension payment and your last net salary. It is the single most important
+        indicator for understanding how much your standard of living will change at retirement. Under the
+        old earnings-related system, the replacement rate could reach 80% of final salary. Under the
+        contributory system, values are significantly lower:
+      </p>
+      <ul>
+        <li><strong>55&ndash;65%</strong> for an employee with continuous career and average salary</li>
+        <li><strong>45&ndash;55%</strong> for a worker with career gaps or periods of unemployment</li>
+        <li><strong>35&ndash;45%</strong> for self-employed workers (lower contribution rate than 33%)</li>
+      </ul>
+      <p>
+        The Ragioneria Generale dello Stato (State General Accounting Office) estimates that the
+        replacement rate for a "typical" employee (continuous career, average growing salary) will
+        stabilize at around 60% in the coming decades. This gap compared to working income makes it
+        indispensable to plan supplementary retirement savings. For expats, the gap may be even wider
+        if you started contributing to INPS at a later age or have gaps due to international transfers.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Supplementary pension funds (<em>fondi pensione complementari</em>): why they matter
+      </h3>
+      <p>
+        <strong>Fondi pensione complementari</strong> (supplementary pension funds) are the primary tool
+        for topping up the public pension. In Italy, there are several types:
+      </p>
+      <ul>
+        <li><strong>Fondi negoziali</strong> (negotiated/closed funds): reserved for specific categories
+          of workers based on their national collective bargaining agreement (e.g., Cometa for metalworkers,
+          Fonte for retail workers). They have very low management fees and often include an additional
+          employer contribution that you only receive if you join.</li>
+        <li><strong>Fondi aperti</strong> (open funds): accessible to anyone, managed by banks, insurance
+          companies, and asset management firms. Fees are slightly higher than negotiated funds.</li>
+        <li><strong>PIP (Piani Individuali Pensionistici)</strong>: individual pension plans, typically
+          insurance products with generally higher fees. Most independent financial advisors recommend
+          avoiding PIPs in favor of negotiated or open funds.</li>
+      </ul>
+      <p>
+        The tax advantages of Italian pension funds are substantial:
+      </p>
+      <ul>
+        <li><strong>Tax-deductible contributions</strong>: up to &euro;5,164.57 per year can be deducted
+          from taxable income, yielding a tax saving of 23% to 43% depending on your IRPEF bracket.</li>
+        <li><strong>Reduced tax on investment returns</strong>: 20% (versus 26% on standard investments),
+          and 12.5% on the portion invested in government bonds.</li>
+        <li><strong>Favorable taxation on payouts</strong>: maximum rate of 15%, reducing to as low as
+          9% for those enrolled for more than 15 years.</li>
+        <li><strong>Employer matching contribution</strong>: for <em>fondi negoziali</em>, the employer
+          contributes an additional amount (typically 1&ndash;2% of RAL) that is activated only if the
+          employee joins and contributes their share. Not enrolling means forfeiting compensation you are
+          entitled to.</li>
+        <li><strong>TFR (severance pay) to the pension fund</strong>: directing your TFR (<em>Trattamento
+          di Fine Rapporto</em>) to a pension fund allows you to benefit from market returns (historically
+          higher than the statutory TFR revaluation in the employer's hands) and the favorable tax treatment
+          on payouts.</li>
+      </ul>
+      <p>
+        For an employee with a RAL of &euro;35,000 and a marginal tax rate of 35%, contributing
+        &euro;5,164 per year to a pension fund generates an immediate tax saving of approximately
+        &euro;1,807. Over 30 years, factoring in fund returns, this translates into a supplementary annuity
+        that can raise the replacement rate from 60% to 75&ndash;80%, effectively closing the gap with
+        the old earnings-related system.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Special considerations for expats and international workers
+      </h3>
+      <p>
+        If you are an expat working in Italy, there are several important points to keep in mind regarding
+        your INPS pension:
+      </p>
+      <ul>
+        <li><strong>EU/EEA bilateral agreements</strong>: contribution periods in other EU/EEA countries
+          can be aggregated (<em>totalizzazione</em>) to meet Italy's minimum contribution requirements
+          (20 years for old-age pension), though the pension amount from each country is based only on
+          contributions paid there.</li>
+        <li><strong>Non-EU bilateral agreements</strong>: Italy has social security agreements with many
+          non-EU countries (USA, Canada, Australia, Japan, and others). These typically allow you to
+          count foreign contribution years toward meeting eligibility requirements.</li>
+        <li><strong>Minimum contribution periods</strong>: even with totalisation, you generally need
+          at least 1 year (52 weeks) of contributions in Italy to receive an Italian pension.</li>
+        <li><strong>Impatriati regime impact</strong>: if you benefit from the <em>regime impatriati</em>
+          (tax incentives for workers moving to Italy), be aware that the reduced taxable base does
+          <strong>not</strong> affect your pension contributions &mdash; INPS contributions are still
+          calculated on the full gross salary.</li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Reference pension parameters (2026)
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The simulator uses the following official parameters and assumptions for pension calculation:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Parameter</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Value</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Source</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">IVS rate for employees (<em>aliquota IVS</em>)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">33% (9.19% + 23.81%)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">INPS</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Pot revaluation rate (<em>tasso di rivalutazione</em>)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">1.5% (assumption)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Historical average nominal GDP</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Coefficient at age 67</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.931%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">MEF Decree 20/11/2023</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Old-age pension age (<em>pensione di vecchiaia</em>)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">67 years + 20 years contributions</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Law 214/2011 (Fornero)</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Early retirement &mdash; men (<em>pensione anticipata</em>)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">42 years and 10 months contributions</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Law 214/2011</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Early retirement &mdash; women</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">41 years and 10 months contributions</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Law 214/2011</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Contribution ceiling 2026 (<em>massimale contributivo</em>)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~&euro;120,607</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">INPS (ISTAT-adjusted)</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Pension fund deductibility</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Up to &euro;5,164.57/year</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">D.Lgs. 252/2005</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently asked questions about Italian INPS pensions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How is the pension calculated under the contributory system?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The calculation is based on three elements: (1) the <em>montante contributivo</em> (contribution
+          pot), which is the sum of all contributions paid (33% of RAL for employees) revalued annually
+          based on GDP growth; (2) the <em>coefficiente di trasformazione</em> (transformation coefficient),
+          which depends on your age at retirement; (3) the gross annual pension = pot &times; coefficient.
+          The net pension is obtained by subtracting IRPEF income tax, regional and municipal surcharges,
+          while accounting for pensioner-specific tax deductions. Italian pensions are paid over 13 monthly
+          installments, with the 13th-month payment (<em>tredicesima</em>) arriving in December.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How much will my pension be compared to my salary?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The replacement rate (<em>tasso di sostituzione</em>: net pension divided by last net salary)
+          for an employee under the pure contributory system is around 55&ndash;65% with a continuous career.
+          This means your pension will cover approximately 60% of your working-life standard of living.
+          For self-employed workers the rate is even lower (35&ndash;45%) due to the lower contribution
+          rate. This is why enrolling in a supplementary pension fund (<em>fondo pensione complementare</em>)
+          is strongly recommended, especially for expats who may have fewer years of Italian contributions.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What are the coefficienti di trasformazione (transformation coefficients)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The <em>coefficienti di trasformazione</em> convert the accumulated contribution pot into an
+          annual pension annuity. They are calculated by the MEF (Ministry of Economy and Finance) based
+          on life expectancy data and updated every two years. The higher your retirement age, the higher
+          the coefficient: at 57 it is 4.270%, at 67 it is 5.931%, and at 71 it is 6.938%. This is
+          because retiring later means a shorter expected payout period, so each annual payment is larger.
+          The coefficients tend to decrease over time as life expectancy increases, meaning future retirees
+          will need a larger pot to achieve the same pension level.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Should I enroll in a supplementary pension fund (fondo pensione)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In the vast majority of cases, yes. The benefits are substantial: tax-deductible contributions
+          up to &euro;5,164/year (saving 23% to 43% on IRPEF), additional employer matching (for
+          <em>fondi negoziali</em>), reduced tax on investment returns (20% vs 26%), and favorable taxation
+          on payouts (9&ndash;15% vs ordinary IRPEF rates). Not joining your sector's negotiated fund means
+          forfeiting the employer's matching contribution, which is effectively lost compensation. This is
+          especially important for workers under the contributory system, where the public pension replacement
+          rate is significantly lower than under the old earnings-related system.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Where can I check my actual contribution pot (montante contributivo)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          You can check your contribution history and accumulated pot through the "La mia pensione futura"
+          (My Future Pension) service on the INPS portal (inps.it), accessible with SPID (digital identity),
+          CIE (electronic ID card), or CNS (national services card). The service shows all contributions
+          paid, the revalued pot, and provides a pension estimate based on various career scenarios. It is
+          the most reliable source for verifying your actual pension situation. As a foreign national working
+          in Italy, you will need to obtain a SPID identity to access this service &mdash; the process
+          typically requires a valid Italian <em>codice fiscale</em> and a residence permit.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          When can I take early retirement (pensione anticipata)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The standard <em>pensione anticipata</em> (early retirement pension) requires 42 years and 10
+          months of contributions for men and 41 years and 10 months for women, regardless of age.
+          Someone who started working at age 20 could theoretically take early retirement around age 63.
+          Additional channels include Quota 103 (age 62 + 41 years of contributions), Opzione Donna (for
+          female workers meeting specific criteria), and APE Sociale (for workers in hardship conditions).
+          Each channel has different requirements and potential penalties, so it is advisable to consult a
+          <em>patronato</em> (free social assistance office) or the INPS website to evaluate your specific
+          situation. Note that for most expats, the high contribution years required make early retirement
+          through the Italian system unlikely unless combined with foreign contribution periods via
+          bilateral agreements.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How are Italian pensions taxed?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          INPS pensions are subject to IRPEF income tax at the same rates as employment income: 23% up to
+          &euro;28,000, 35% from &euro;28,001 to &euro;50,000, and 43% above &euro;50,000. Pensioners
+          benefit from specific tax deductions (<em>detrazioni per pensionati</em>), which are different
+          from employee deductions and reduce the effective tax rate. Regional (<em>addizionale regionale</em>)
+          and municipal (<em>addizionale comunale</em>) surcharges also apply. Pensions are paid over 13
+          monthly installments, with the 13th arriving in December. Low pensions (below approximately
+          &euro;8,500/year) pay no IRPEF thanks to deductions. If you retire and move abroad, Italy may
+          or may not retain the right to tax your pension depending on the double taxation treaty with
+          your country of residence.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I combine Italian and foreign contribution periods?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, under EU Regulation 883/2004, contribution periods in any EU/EEA country or Switzerland
+          can be aggregated (<em>totalizzazione</em>) to meet Italy's minimum contribution requirements.
+          However, each country pays its own portion of the pension based only on contributions made there.
+          For non-EU countries, Italy has bilateral social security agreements with over 20 nations including
+          the USA, Canada, Australia, Brazil, and Japan. These agreements typically allow you to count
+          foreign years toward eligibility. To initiate the process, you or your <em>patronato</em> must
+          file a claim with INPS, which then coordinates with the foreign institution. Keep in mind that
+          the pension amount from Italy will reflect only the years actually worked and contributed in Italy.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How accurate is this simulator's estimate?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          This simulator provides an indicative estimate based on simplifying assumptions: constant salary
+          growth, a fixed GDP revaluation rate of 1.5%, and current transformation coefficients (which will
+          be updated in the future). The actual outcome will differ because salary does not grow linearly,
+          GDP varies from year to year, coefficients change with life expectancy, and pension regulations
+          may be reformed. For an official estimate, use the "La mia pensione futura" service on inps.it,
+          which is based on your actual contribution records. Our tool is best used for quick scenario
+          planning and understanding how different variables (retirement age, salary growth, contribution
+          years) affect your expected pension.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/fire-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          FIRE Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate your path to financial independence and early retirement
+        </p>
+      </a>
+      <a href="/en/severance-pay-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Severance Pay (TFR) Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate your accrued TFR and its taxation
+        </p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate Italian income tax brackets and deductions
+        </p>
+      </a>
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC) Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate returns on periodic investment plans
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay in Italy
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

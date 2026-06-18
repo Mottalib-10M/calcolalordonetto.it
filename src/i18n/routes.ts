@@ -36,6 +36,9 @@ export const itToEn: Record<string, string> = {
   '/calcolo-piano-accumulo/': '/en/savings-plan-calculator/',
   '/calcolo-inflazione/': '/en/inflation-calculator/',
 
+  // Hub pages
+  '/calcolatori/': '/en/calculators/',
+
   // RAL / Salary landing pages
   '/ral/': '/en/salary/',
   '/ral/15000-euro-netto/': '/en/salary/15000-euro-net/',

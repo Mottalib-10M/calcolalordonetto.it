@@ -23,5 +23,697 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    50/30/20 Budget Calculator
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Enter your monthly net salary and compare the ideal 50/30/20 split with your actual spending across needs, wants, and savings.
+  </p>
+
   <Budget client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      The 50/30/20 rule: how it works
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The <strong>50/30/20 rule</strong> is a budgeting framework created by US Senator
+        <strong>Elizabeth Warren</strong> and her daughter Amelia Warren Tyagi in the book
+        <em>&quot;All Your Worth: The Ultimate Lifetime Money Plan&quot;</em> (2005). The idea
+        is straightforward: divide your after-tax monthly income into three broad categories,
+        each with a target percentage.
+      </p>
+      <p>
+        The power of this method lies in its simplicity. You do not need to track every single
+        transaction or maintain complex spreadsheets. You simply split your net pay into three
+        "buckets" and periodically check that the distribution is consistent with the targets.
+        It is an excellent starting point if you have never managed a budget before, and a useful
+        framework even if you are already experienced with personal finance. For expats living in
+        Italy, where taxes, cost structures, and financial products differ from your home country,
+        the 50/30/20 rule provides a universal language for thinking about money management.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Adapting the rule to the Italian context
+      </h3>
+      <p>
+        The 50/30/20 rule was developed for the US market and needs careful adaptation when
+        applied to life in Italy. Here, the cost of living and spending patterns are quite
+        different. In major cities like Milan, Rome, or Florence, rent alone can absorb 35-50%
+        of a young worker's net income, making it difficult to keep all needs under 50%.
+        At the same time, Italy's welfare system &mdash; universal public healthcare (SSN),
+        mandatory pension contributions (INPS), and severance pay (TFR) &mdash; provides a
+        safety net that largely does not exist in the United States. This reduces the urgency
+        of building a very large emergency fund compared to the American context.
+      </p>
+      <p>
+        For these reasons, the 50/30/20 rule should be treated as a <strong>flexible
+        guideline</strong>, not a rigid constraint. If you live in Milan with rent of
+        800-1,200 &euro;/month, it may be more realistic to aim for a 55/25/20 or even
+        60/25/15 split in your first years. The goal is to move gradually toward the 50/30/20
+        ideal as your income grows. What matters most is that you are saving consistently
+        &mdash; even 10-15% is far better than nothing.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        50% Needs: essential living expenses
+      </h3>
+      <p>
+        Half of your net salary should cover all essential expenses &mdash; those you cannot
+        eliminate without seriously compromising your basic quality of life:
+      </p>
+      <ul>
+        <li><strong>Rent or mortgage payment</strong>: the largest expense for most people
+        in Italy. A practical rule suggests it should not exceed 30% of net income on its
+        own. Expats should note that Italian rental contracts (contratto a canone concordato
+        or canone libero) often require a security deposit of 2-3 months upfront.</li>
+        <li><strong>Utilities</strong>: electricity (luce), gas, water (acqua), waste
+        collection (TARI), and internet. A single person in Italy typically spends
+        120-200 &euro;/month on utilities. Heating costs vary significantly between
+        northern and southern regions.</li>
+        <li><strong>Groceries</strong>: supermarket spending for daily meals, excluding
+        restaurants and food delivery (those fall under wants). For a single person:
+        200-350 &euro;/month; for a couple: 350-500 &euro;/month. Shopping at discount
+        chains (Eurospin, Lidl, Aldi) versus premium supermarkets (Esselunga, Coop)
+        can make a noticeable difference.</li>
+        <li><strong>Transportation</strong>: public transit passes (35-50 &euro;/month in
+        major cities), fuel, car insurance (RC auto), road tax (bollo auto). If you rely
+        solely on public transit, this category can be quite affordable in Italian cities.</li>
+        <li><strong>Insurance</strong>: car liability insurance (RC auto), supplementary
+        health insurance (polizza sanitaria integrativa), and life insurance if required
+        for a mortgage.</li>
+        <li><strong>Healthcare expenses</strong>: doctor visits, prescriptions, co-pays
+        (ticket sanitario). While Italy's public healthcare covers a great deal, long
+        waiting lists push many people toward private care for non-urgent matters.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        30% Wants: discretionary spending
+      </h3>
+      <p>
+        This category includes everything that improves your quality of life but that you
+        could do without if necessary:
+      </p>
+      <ul>
+        <li><strong>Restaurants and food delivery</strong>: dining out, bar lunches,
+        aperitivo. For many people in Italy, this is a significant spending category &mdash;
+        the Italian culture of eating out, especially aperitivo and weekend dinners, makes
+        it easy to overspend here.</li>
+        <li><strong>Clothing and personal care</strong>: beyond the bare minimum, including
+        fashion, shoes, hairdresser, and cosmetics.</li>
+        <li><strong>Gym and sports</strong>: gym memberships (typically 40-80 &euro;/month
+        in Italy), sports equipment, and club fees.</li>
+        <li><strong>Entertainment and subscriptions</strong>: Netflix, Spotify, cinema,
+        concerts, books, video games. Streaming services in Italy are similarly priced to
+        other European countries.</li>
+        <li><strong>Holidays and travel</strong>: monthly set-asides for vacations. Italy's
+        generous holiday allowance (typically 26 paid days plus public holidays) means you
+        likely have ample time for travel &mdash; budget accordingly.</li>
+        <li><strong>Hobbies</strong>: any recreational activity you enjoy, from cooking
+        classes to sailing lessons.</li>
+        <li><strong>Lifestyle upgrades</strong>: the premium phone plan instead of the
+        basic one, the nicer car instead of the functional one, branded goods versus
+        generic alternatives.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        20% Savings and investments
+      </h3>
+      <p>
+        One-fifth of your income dedicated to the future is the most important part of
+        long-term wealth building. For expats in Italy, understanding local savings and
+        investment vehicles is crucial:
+      </p>
+      <ul>
+        <li><strong>Emergency fund</strong>: the absolute priority. It should cover
+        3-6 months of essential expenses, held in a savings account (conto deposito) or
+        easily accessible current account. For someone with a net salary of 1,800 &euro;/month
+        and 900 &euro; in fixed expenses, the target fund is 2,700-5,400 &euro;.</li>
+        <li><strong>PAC (Piano di Accumulo Capitale)</strong>: a systematic investment plan
+        that invests a fixed amount each month into ETFs or funds, building wealth through
+        compound growth. This is the Italian equivalent of dollar-cost averaging and is
+        widely available through Italian banks and online brokers.</li>
+        <li><strong>Supplementary pension fund (fondo pensione)</strong>: beyond the
+        mandatory INPS pension, supplementary pension funds offer significant tax advantages
+        &mdash; contributions are deductible up to 5,164.57 &euro;/year. For expats planning
+        to stay in Italy long-term, this is one of the best tax-advantaged savings vehicles
+        available.</li>
+        <li><strong>TFR (severance pay)</strong>: your employer automatically sets aside
+        about 7.4% of your gross salary as TFR. You can choose to direct it to a pension
+        fund for additional tax benefits. While TFR is not deducted from your paycheck, it
+        is an important piece of your overall savings picture.</li>
+        <li><strong>Debt repayment</strong>: if you carry consumer debt (personal loans,
+        car financing, credit card balances), prioritize paying it off quickly. Interest
+        rates on consumer debt (8-20% annually) almost always exceed investment returns,
+        making repayment the best guaranteed "return" you can get.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Sample budget for common net salaries
+      </h3>
+      <div class="overflow-x-auto mt-4">
+        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+          <thead class="bg-gray-50 dark:bg-gray-800">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Category</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">1,400 &euro;</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">1,800 &euro;</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">2,200 &euro;</th>
+              <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">2,800 &euro;</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+            <tr>
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Needs (50%)</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">700 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">900 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">1,100 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">1,400 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-500 dark:text-gray-400 pl-8">of which rent/mortgage</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~420 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~540 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~660 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~840 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-gray-500 dark:text-gray-400 pl-8">of which utilities + groceries</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~280 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~360 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~440 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-500 dark:text-gray-400">~560 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Wants (30%)</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">420 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">540 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">660 &euro;</td>
+              <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">840 &euro;</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Savings (20%)</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">280 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">360 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">440 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">560 &euro;</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Annual savings</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">3,360 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">4,320 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">5,280 &euro;</td>
+              <td class="px-4 py-3 text-right font-semibold text-green-600 dark:text-green-400">6,720 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Alternatives to the 50/30/20 rule
+      </h3>
+      <p>
+        The 50/30/20 is not the only budgeting rule. Here are some variants suited to
+        different situations, particularly relevant for life in Italy:
+      </p>
+      <ul>
+        <li>
+          <strong>60/20/20 rule</strong>: ideal for anyone living in expensive Italian cities
+          (Milan, Rome, Florence) where fixed costs are inevitably higher. 60% goes to needs,
+          20% to wants, and 20% to savings. This is a more realistic version for many
+          people earning a typical Italian salary in a major city.
+        </li>
+        <li>
+          <strong>70/20/10 rule</strong>: suitable for lower incomes or those with debt to
+          repay. 70% covers needs and wants combined (without distinction), 20% goes to
+          savings, and 10% to debt repayment. Once the debt is cleared, the extra 10%
+          flows into savings, bringing you to a 70/30 split.
+        </li>
+        <li>
+          <strong>"Pay Yourself First" method</strong>: instead of saving whatever is left
+          over, you immediately transfer 20% (or more) to savings the moment your salary
+          arrives, via an automatic standing order (bonifico automatico). Then you live on
+          the remaining 80%. This approach eliminates the risk of spending everything and
+          saving nothing, which is especially useful if you find it hard to control
+          discretionary spending.
+        </li>
+        <li>
+          <strong>Envelope system (sistema a buste)</strong>: allocate money physically or
+          virtually to specific categories at the start of each month. When an envelope is
+          empty, you stop spending in that category. This is the most rigorous method for
+          those who struggle with spending control. Several Italian banking apps (like Fineco
+          or Revolut) support virtual "pots" or sub-accounts that replicate this system
+          digitally.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The emergency fund: how much to keep
+      </h3>
+      <p>
+        An emergency fund is the foundation of any solid financial plan. The standard
+        recommendation is to maintain <strong>3-6 months of essential expenses</strong> in
+        an easily accessible account (a conto deposito svincolabile or a remunerated current
+        account). The exact size depends on your situation:
+      </p>
+      <ul>
+        <li><strong>3 months</strong>: sufficient if you have stable employment (contratto
+        a tempo indeterminato), no debt, and a secondary income source in the household.</li>
+        <li><strong>6 months or more</strong>: recommended if you are self-employed (partita
+        IVA), on a fixed-term contract (contratto a tempo determinato), the sole earner in
+        your family, or have recurring medical expenses. Expats without an extended family
+        network in Italy should generally lean toward the higher end.</li>
+      </ul>
+      <p>
+        With a net salary of 1,800 &euro;/month and 900 &euro; in essential expenses, the
+        ideal emergency fund is between 2,700 &euro; (3 months) and 5,400 &euro; (6 months).
+        At a savings rate of 20% (360 &euro;/month), it takes roughly 8-15 months to build
+        from scratch &mdash; this should be your first financial goal before you start
+        investing in a PAC or other instruments.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Practical example: 1,800 &euro;/month net salary
+      </h3>
+      <p>
+        Sarah is a British expat working in Bologna with a net salary of 1,800 &euro; per month
+        on a permanent contract (tempo indeterminato). Here is how she distributes her budget
+        following the 50/30/20 rule:
+      </p>
+      <ul>
+        <li><strong>Needs (900 &euro;)</strong>: rent 550 &euro;, utilities 120 &euro;,
+        groceries 180 &euro;, bus pass 39 &euro;, supplementary health insurance 11 &euro;.</li>
+        <li><strong>Wants (540 &euro;)</strong>: restaurants and aperitivo 150 &euro;, gym
+        40 &euro;, clothing 80 &euro;, streaming subscriptions 30 &euro;, social outings
+        100 &euro;, holiday savings 140 &euro;.</li>
+        <li><strong>Savings (360 &euro;)</strong>: PAC in a global equity ETF 200 &euro;,
+        emergency fund 100 &euro; (until reaching 5,000 &euro;), supplementary pension
+        fund 60 &euro;.</li>
+      </ul>
+      <p>
+        With 360 &euro; per month in savings (4,320 &euro;/year) invested in a PAC earning an
+        average gross return of 7% annually, after 20 years Sarah would have accumulated
+        roughly 190,000 &euro; before tax. After Italy's 26% capital gains tax on investment
+        profits, the net capital would be approximately 157,000 &euro;. That is a remarkable
+        result from what seems like a modest monthly savings amount &mdash; a powerful
+        illustration of how compound growth works over time.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tips for expats managing a budget in Italy
+      </h3>
+      <p>
+        Moving to Italy introduces financial variables that may not exist in your home
+        country. Here are some practical considerations for budgeting effectively as an
+        expat:
+      </p>
+      <ul>
+        <li><strong>Understand your busta paga</strong>: the Italian payslip contains many
+        deductions (INPS, IRPEF, regional and municipal surcharges) that you may not be
+        familiar with. Use our <a href="/en/">net salary calculator</a> to verify that your
+        payslip is correct and to understand exactly what arrives in your bank account.</li>
+        <li><strong>Account for the tredicesima and quattordicesima</strong>: Italian
+        contracts typically pay over 13 or 14 months. This means your regular monthly
+        paycheck is lower than simply dividing the RAL by 12. Plan your budget around
+        the actual monthly amount, and treat the extra months as a bonus for savings
+        goals.</li>
+        <li><strong>Factor in currency considerations</strong>: if you send money home or
+        maintain savings in another currency, exchange rate fluctuations can impact your
+        actual purchasing power. Consider this when setting savings targets.</li>
+        <li><strong>Tax obligations abroad</strong>: depending on your home country, you
+        may still have tax filing obligations even while living in Italy. The US, for
+        example, requires worldwide income reporting for citizens. Budget for any
+        professional tax advice you may need.</li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Average spending in Italy: reference data
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The following figures are based on the <strong>Bank of Italy's Household Budget
+        Survey</strong> and ISTAT consumer spending data. They serve as a useful benchmark
+        to evaluate whether your own expenses are in line with the national average. Keep
+        in mind that costs vary significantly by city &mdash; Milan and Rome are 20-40%
+        more expensive than smaller cities in the south.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Spending category</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Monthly average (single person)</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">% of average net income</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Housing (rent/mortgage)</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">500-900 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">28-50%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Groceries and essentials</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">200-350 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">11-19%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Utilities (electricity, gas, water, internet)</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">120-200 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">7-11%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Transportation</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">100-250 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">6-14%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Restaurants and eating out</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">100-200 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">6-11%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Clothing</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">50-100 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">3-6%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Leisure and entertainment</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">80-150 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">4-8%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Healthcare</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">30-80 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">2-4%</td>
+          </tr>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Average Italian savings rate</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">-</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">~10%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        According to the Bank of Italy, the average household savings rate is approximately
+        10% of disposable income &mdash; well below the 20% recommended by the 50/30/20 rule.
+        Households in northern Italy tend to save more (12-15%) than those in the south
+        (6-8%), and the savings rate increases with age until 55-60, then declines during
+        retirement. This data confirms that for the majority of people living in Italy,
+        there is significant room for improvement in budget management. Expats who come from
+        countries with a stronger savings culture often find they can outperform the local
+        average simply by applying basic budgeting discipline.
+      </p>
+    </div>
+
+    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+      Cost of living comparison across Italian cities
+    </h3>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">City</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">1-bed rent (center)</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">1-bed rent (outside)</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Monthly groceries</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Milan</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">900-1,400 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">650-950 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">250-350 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Rome</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">800-1,200 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">550-800 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">230-330 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Florence</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">750-1,100 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">500-750 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">220-310 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Bologna</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">650-1,000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">450-700 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">210-300 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Naples</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">500-800 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">350-550 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">200-280 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Palermo</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">400-650 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">300-450 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-700 dark:text-gray-300">190-270 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        These ranges illustrate why the 50/30/20 rule must be adjusted based on where you
+        live. In Milan, a single person earning 1,800 &euro;/month may need to spend 55-65%
+        on needs just to cover rent and essentials, while the same salary in Palermo could
+        leave 40% of income for needs and allow for a higher savings rate.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          My rent alone exceeds 50% of my net income. What should I do?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          This is common in Italy's major cities, especially Milan and Rome. In this case,
+          adapt the rule: try a 55/25/20 or 60/20/20 split. The minimum goal should be to
+          maintain savings at 10-15%, even if needs exceed 50%. Consider whether there are
+          ways to reduce rent (flatmates, a less central neighbourhood, a contratto a canone
+          concordato for lower regulated rent) or increase your income. If rent alone exceeds
+          40% of net income, it may be a sign that the housing is not sustainable long-term
+          on your current salary.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does TFR (severance pay) count as part of the 20% savings?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          TFR is technically a form of forced savings set aside by your employer (roughly
+          6.9% of gross salary). However, since it never passes through your bank account
+          and is not available until you leave the company, most financial advisors recommend
+          <strong>not counting it</strong> in your 50/30/20 budget. Think of TFR as a future
+          "bonus" that will arrive when you change jobs or retire. The 20% savings target
+          refers to money you actively set aside each month from the net pay that lands in
+          your account. That said, knowing your TFR exists can give you extra peace of mind
+          about your overall financial safety net.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How large should my emergency fund be?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The standard recommendation is 3-6 months of essential expenses (not your full
+          salary). If your necessary expenses are 900 &euro;/month, the emergency fund
+          should be between 2,700 &euro; and 5,400 &euro;. A permanent employee (contratto
+          indeterminato) can lean toward the lower end; a freelancer (partita IVA) or
+          fixed-term worker should aim for 6 months or more. Keep the fund in liquid
+          instruments: a conto deposito svincolabile (withdrawable savings account),
+          short-term government bonds (BOT), or simply in your current account. As an expat,
+          also consider whether you might need to relocate unexpectedly &mdash; this could
+          justify a slightly larger emergency fund.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How do I handle irregular expenses like holidays?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Periodic expenses (holidays, Christmas gifts, annual car insurance) should be
+          "monthly-ized": calculate the annual cost and divide by 12. If you plan to spend
+          1,800 &euro; on holidays per year, set aside 150 &euro; each month under "wants."
+          The same applies to annual costs that fall under "needs" (such as car insurance):
+          estimate the annual total and spread it across 12 months. This prevents budget
+          "surprises" that throw off certain months. Many Italian banks let you set up
+          automatic sub-accounts or standing orders that make this easy to automate.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Should I save first or pay off debts first?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The absolute priority is a minimum emergency fund (1,000-2,000 &euro;) to avoid
+          taking on new debt in case of unexpected expenses. Then, focus your resources on
+          paying off consumer debt (personal loans, revolving credit cards) because their
+          interest rates (8-20% per year) far exceed any returns you could earn by investing.
+          Only after clearing high-interest debt should you begin investing and building the
+          full emergency fund (3-6 months). A home mortgage is an exception: with rates at
+          3-4%, it generally does not make sense to pay it off early if you can earn higher
+          returns by investing. This principle applies equally whether your debt is in Italy
+          or in your home country.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How should I handle the tredicesima and quattordicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          There are two approaches. The first: apply the 50/30/20 rule to these extra pay
+          periods as well, allocating 50% to needs (pay bills ahead, stock up on essentials),
+          30% to wants (gifts, holiday travel), and 20% to savings. The second, more
+          aggressive approach: use the tredicesima and quattordicesima entirely for financial
+          goals &mdash; boost the emergency fund, make an extra contribution to your PAC, or
+          pay down debt. Many financial experts recommend the second approach because your
+          regular monthly expenses are already covered by the ordinary 12 monthly payments.
+          For expats who are not accustomed to 13 or 14 pay periods, the extra months can
+          feel like "bonus" money &mdash; channel that psychology into savings rather than
+          lifestyle inflation.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does the 50/30/20 rule work for couples?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, and it often works even better because couples benefit from economies of
+          scale on fixed costs (one rent payment, shared utilities, shared groceries). Simply
+          add both net monthly incomes together and apply the same percentages. With two
+          salaries of 1,800 &euro;, the combined net is 3,600 &euro;: 1,800 &euro; for
+          needs, 1,080 &euro; for wants, and 720 &euro; for savings. Couples typically manage
+          to save a higher proportion than singles thanks to shared fixed costs. In Italy,
+          where one-income households face particular pressure from high housing costs, a
+          dual-income household can achieve the 50/30/20 targets much more comfortably.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What net salary should I use: based on 12, 13, or 14 months?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          For monthly budgeting, use the net amount that actually arrives in your bank
+          account each month &mdash; which is typically based on 13 (or 14) pay periods.
+          If your annual net is 21,600 &euro; paid over 13 months, your regular monthly net
+          is approximately 1,662 &euro; (not 1,800 &euro;). Build your 50/30/20 budget
+          around this actual monthly figure. The tredicesima (and quattordicesima, if
+          applicable) should then be handled separately, either following the same rule or
+          directed entirely to savings goals.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate your Italian net monthly pay from gross salary (RAL)
+        </p>
+      </a>
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC) Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Project how monthly investments grow with compound returns over time
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          See how inflation erodes your purchasing power over time
+        </p>
+      </a>
+      <a href="/en/rent-vs-buy/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Rent vs Buy Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Compare the total cost of renting versus buying property in Italy
+        </p>
+      </a>
+      <a href="/en/investment-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Investment Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate Italian capital gains tax on your investment returns
+        </p>
+      </a>
+      <a href="/en/fire-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          FIRE Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate your FIRE number and years to financial independence in Italy
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

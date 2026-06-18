@@ -76,14 +76,16 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {lang === 'en' ? 'Exemption percentage' : 'Percentuale esenzione'}
             </label>
-            <div className="inline-flex rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 p-0.5">
+            <div className="flex rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 p-0.5" role="radiogroup" aria-label={lang === 'en' ? 'Exemption percentage' : 'Percentuale esenzione'}>
               {[50, 70].map((pct) => (
                 <button
                   key={pct}
                   type="button"
+                  role="radio"
+                  aria-checked={percentualeEsenzione === pct}
                   onClick={() => setPercentualeEsenzione(pct)}
                   className={[
-                    'relative rounded-md px-4 py-2.5 text-sm font-medium transition-all duration-150',
+                    'flex-1 relative rounded-md px-4 py-3 text-sm font-medium transition-all duration-150',
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40',
                     percentualeEsenzione === pct
                       ? 'bg-brand text-white shadow-sm'

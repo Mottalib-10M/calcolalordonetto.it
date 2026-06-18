@@ -23,5 +23,521 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Personal Loan Calculator Italy
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Calculate the monthly payment, TAEG (APR), and total cost of a personal loan in Italy.
+  </p>
+
   <Prestito client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How is the monthly payment on an Italian personal loan calculated?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Personal loans in Italy (prestiti personali) use the same <strong>French amortization</strong>
+        (ammortamento alla francese) formula used for mortgages. Each monthly payment is a fixed amount
+        that includes both principal repayment and interest, with the proportion shifting over time:
+        early payments are mostly interest, while later payments are mostly principal. The key difference
+        from a mortgage lies in the calculation of the <strong>TAEG</strong> (Tasso Annuo Effettivo
+        Globale), which is the Italian equivalent of the Annual Percentage Rate (APR). The TAEG captures
+        all mandatory costs associated with the loan, giving you the true cost of borrowing.
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        R = C &times; r &times; (1 + r)<sup>n</sup> / [(1 + r)<sup>n</sup> &minus; 1]
+      </div>
+      <p>
+        In this formula, <strong>R</strong> is the monthly payment (rata mensile), <strong>C</strong>
+        is the loan principal (capitale), <strong>r</strong> is the monthly interest rate (the annual
+        TAN divided by 12), and <strong>n</strong> is the total number of monthly payments. For example,
+        a loan of 10,000 euros at a TAN of 7% over 60 months would use r = 0.07 / 12 = 0.005833 and
+        n = 60, yielding a monthly payment of approximately 198 euros.
+      </p>
+      <p>
+        The <strong>TAN</strong> (Tasso Annuo Nominale - nominal annual rate) represents only the pure
+        interest cost charged on the outstanding balance. It does not include any fees or charges. The
+        <strong>TAEG</strong> (Tasso Annuo Effettivo Globale - effective annual percentage rate), on the
+        other hand, includes all mandatory costs: origination fees (spese di istruttoria), monthly
+        collection charges (spese di incasso rata), and any compulsory insurance premiums. To compare
+        different loan offers accurately, you should always look at the TAEG rather than the TAN.
+      </p>
+      <p>
+        Our calculator computes the TAEG using the <strong>Newton-Raphson iterative method</strong>. It
+        finds the interest rate that equates the present value of all future payments (including fees
+        built into each payment) to the net amount actually disbursed to the borrower (i.e., the loan
+        amount minus any upfront origination fees). This is the same methodology mandated by the Bank
+        of Italy and the European Consumer Credit Directive 2008/48/EC.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        TAN vs TAEG: the fundamental difference every borrower must understand
+      </h3>
+      <p>
+        When evaluating a personal loan in Italy, understanding the difference between <strong>TAN</strong>
+        and <strong>TAEG</strong> is absolutely essential, yet these two indicators are frequently
+        confused. The TAN (Tasso Annuo Nominale, or nominal annual rate) represents exclusively the cost
+        of pure interest applied to the borrowed capital. It is a "bare" rate that does not account for
+        any ancillary expenses tied to the loan. For instance, a loan advertised with a TAN of 6%
+        means the interest calculated on the outstanding balance is 6% per year, nothing more.
+      </p>
+      <p>
+        The TAEG (Tasso Annuo Effettivo Globale, or effective annual percentage rate) is a far more
+        comprehensive indicator that represents the true cost of the loan. The TAEG includes all
+        mandatory expense items associated with the financing: <strong>spese di istruttoria</strong>
+        (origination or processing fees, the commission the bank charges to review and open the loan
+        file), <strong>spese di incasso rata</strong> (payment collection fees, a fixed charge applied
+        to each monthly payment, typically between 1 and 3 euros), <strong>compulsory insurance
+        premiums</strong> (such as life insurance or job-loss insurance, when required as a condition
+        for loan approval), and any other contractual commissions.
+      </p>
+      <p>
+        Under Italian and European banking transparency regulations, the TAEG must always be displayed
+        clearly and prominently in any advertising and contractual documentation related to a loan. This
+        legal requirement exists precisely because the TAEG is the only indicator that enables a genuine
+        comparison between different financing offers. A loan with a TAN of 5% but high origination
+        fees might carry a TAEG higher than a loan with a TAN of 6% and no additional charges. This is
+        why, when comparing loan quotes (preventivi di prestito), you should always focus exclusively
+        on the TAEG. If a bank advertises only the TAN in large print, look for the TAEG in the fine
+        print before making any decision.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Cessione del quinto: salary-backed loans in Italy
+      </h3>
+      <p>
+        The <strong>cessione del quinto</strong> (literally "cession of one-fifth") is a distinctive
+        form of personal loan regulated by Presidential Decree (DPR) 180/1950 and its subsequent
+        amendments. It has unique characteristics that set it apart from standard personal loans. In
+        a cessione del quinto, the monthly payment is deducted directly from the borrower's paycheck
+        by their employer (or from their pension by the pension authority, in the case of retirees).
+        The employer then remits the amount to the lending bank or finance company. The maximum
+        instalment cannot exceed one-fifth (20%) of the borrower's net monthly salary, which gives
+        this loan type its name.
+      </p>
+      <p>
+        This type of loan offers several significant advantages, particularly for expats and foreign
+        workers in Italy. First, it is accessible even to individuals who have had credit issues in
+        the past, such as negative entries in <strong>CRIF</strong> (Italy's main credit bureau,
+        Centrale Rischi di Intermediazione Finanziaria) or protested bills, because the primary
+        guarantee is not the borrower's credit score but the fact that the payment is withheld at
+        source from the salary. Second, the loan is further secured by the borrower's <strong>TFR</strong>
+        (Trattamento di Fine Rapporto, the mandatory severance pay fund): if the employee is
+        dismissed or resigns, the accumulated TFR is used to pay off the remaining debt. This double
+        guarantee (payroll deduction plus TFR) allows banks to offer interest rates that are often
+        more competitive than those of standard personal loans.
+      </p>
+      <p>
+        The maximum duration of a cessione del quinto is 120 months (10 years), and the loan can be
+        renewed before its natural maturity. Eligible borrowers include public sector employees,
+        private sector employees with permanent contracts (contratto a tempo indeterminato), and
+        retirees. Workers on fixed-term contracts (tempo determinato) may obtain a cessione del
+        quinto only for a duration that does not exceed their employment contract's expiration date.
+        For expats who have secured a permanent position in Italy, the cessione del quinto can be an
+        attractive borrowing option worth exploring.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Early repayment: your rights and costs under Italian law
+      </h3>
+      <p>
+        Italian legislation, implementing European Directive 2008/48/EC on consumer credit, guarantees
+        the borrower the <strong>right to repay a personal loan early</strong> at any time, without
+        needing to provide any justification. This right is irrevocable and cannot be excluded by
+        contractual clauses. Early repayment can be total (you repay the entire outstanding balance)
+        or partial (you make an additional lump-sum payment that reduces the remaining principal and,
+        consequently, either the future monthly payments or the remaining duration of the loan).
+      </p>
+      <p>
+        Regarding the costs of early repayment, Italian law sets a very precise maximum cap. If more
+        than 12 months remain until the loan's natural maturity at the time of early repayment, the
+        maximum penalty the lender can charge is <strong>1% of the outstanding balance</strong>. If
+        fewer than 12 months remain, the penalty drops to <strong>0.5% of the outstanding balance</strong>.
+        In no case can the penalty exceed the amount of interest the borrower would have paid during
+        the remaining period. This consumer protection is stronger than in many other European
+        countries and provides borrowers with considerable flexibility.
+      </p>
+      <p>
+        It is worth knowing that many banks and finance companies in Italy, for competitive reasons,
+        offer loans with <strong>zero early repayment penalty</strong> (zero penale di estinzione
+        anticipata). This condition should be carefully verified in the information sheet (foglio
+        informativo) and the contract before signing. In any case, even when a penalty applies, early
+        repayment is almost always financially advantageous if you have the available cash, because the
+        savings on future interest far outweigh the penalty cost, especially during the early stages of
+        the loan when the interest portion of each payment is at its highest. As a rule of thumb, if
+        you are in the first half of your loan's duration and receive a windfall, paying down the loan
+        early will save you significant money over the remaining term.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Practical tips for expats applying for a personal loan in Italy
+      </h3>
+      <p>
+        If you are a foreign national living and working in Italy, obtaining a personal loan is entirely
+        possible but requires some preparation. Banks will typically require proof of Italian tax
+        residency (residenza fiscale), a valid codice fiscale, a regular income documented through
+        recent payslips (buste paga) or tax returns (dichiarazione dei redditi), and an Italian bank
+        account (conto corrente) where the loan will be disbursed and payments debited. Having a stable
+        employment history in Italy, ideally with a permanent contract, significantly improves your
+        chances and can secure better rates. If you have been in Italy for less than two years, some
+        lenders may require additional documentation or a guarantor (garante). Shopping around is
+        essential: rates and conditions can vary dramatically between traditional banks, online lenders,
+        and finance companies (finanziarie). Always request the SECCI (Standard European Consumer
+        Credit Information) form from each lender before committing, as it standardizes the
+        presentation of all costs and makes comparison straightforward.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Personal loan monthly payments: examples by amount and duration
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table below shows concrete examples of monthly payments, TAEG, and total interest for
+        various combinations of loan amount and duration, calculated using a fixed TAN of 7% and
+        origination fees (spese di istruttoria) equal to 2% of the financed amount. These values
+        are indicative and serve as a reference to help you gauge the approximate cost of a personal
+        loan in Italy before you approach a bank or finance company for a formal quote.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Amount</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Duration</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Monthly payment</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">TAEG (APR)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Total interest</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">24 months</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">224 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">8.9%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">374 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">10,000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">36 months</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">309 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">8.3%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">1,112 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">10,000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60 months</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">198 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">8.1%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">1,881 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">20,000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60 months</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">396 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">7.9%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">3,762 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">30,000 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">84 months</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">459 &euro;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">7.8%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">8,571 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        The table clearly illustrates a fundamental principle of consumer credit: extending the loan
+        duration reduces the monthly payment but significantly increases the total cost of borrowing
+        in terms of interest paid. For example, a 10,000 euro loan over 36 months has a monthly
+        payment of 309 euros and total interest of 1,112 euros. The same amount over 60 months drops
+        to a monthly payment of 198 euros, but total interest rises to 1,881 euros, an increase of
+        approximately 770 euros. This happens because, with a longer term, the outstanding principal
+        is repaid more slowly and interest accrues over a longer period.
+      </p>
+      <p>
+        When choosing the right loan term, you need to balance two competing priorities: keeping the
+        monthly payment sustainable relative to your net income (ideally the total of all your debt
+        payments should not exceed 30-35% of your net monthly salary), and minimizing the total
+        cost of the loan. A practical approach is to choose the shortest term where the monthly
+        payment remains comfortably affordable, leaving room for unexpected expenses in your budget.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">
+        Average personal loan rates in Italy (2026 reference)
+      </h3>
+      <p>
+        While rates vary considerably depending on the borrower's profile, the loan amount, and the
+        lender, the following ranges provide a general orientation for personal loans in Italy in
+        2026:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Loan type</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Typical TAN range</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Typical TAEG range</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Max duration</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Standard personal loan</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.5% - 10.0%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.5% - 12.0%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">120 months</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Cessione del quinto (employees)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.0% - 8.0%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.0% - 9.5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">120 months</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Cessione del quinto (retirees)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.5% - 8.5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.5% - 10.0%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">120 months</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Finalised loan (prestito finalizzato)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">0.0% - 9.0%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">0.0% - 11.0%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60 months</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        <strong>Note:</strong> Finalised loans (prestiti finalizzati) are loans tied to the purchase
+        of a specific product or service (e.g., electronics, furniture, vehicles) and are arranged
+        directly at the point of sale. Retailers often subsidise the interest rate, which is why
+        "zero-interest" or "TAN 0%" promotions are common. However, always check the TAEG on these
+        offers, as processing fees and mandatory insurance can still result in a non-trivial overall
+        cost. These rates are indicative only and do not constitute a financial offer. Always request
+        personalised quotes from multiple lenders.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the difference between TAN and TAEG?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The TAN (Tasso Annuo Nominale - nominal annual rate) represents the pure interest cost
+          without any ancillary expenses. The TAEG (Tasso Annuo Effettivo Globale - effective annual
+          percentage rate, equivalent to APR) includes all costs tied to the loan: origination fees
+          (spese di istruttoria), payment collection fees (spese di incasso rata), compulsory insurance
+          premiums, and other commissions. When comparing loan offers from different banks or finance
+          companies, always look at the TAEG, as it reflects the true total cost of borrowing.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How much can I borrow with a personal loan in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Personal loans in Italy generally range from 1,000 to 75,000 euros, with repayment terms
+          from 12 to 120 months. The maximum amount you can borrow depends primarily on your income
+          and the debt-to-income ratio: your total monthly debt payments (including the new loan)
+          should not exceed approximately one-third of your net monthly salary (stipendio netto
+          mensile). Banks and finance companies also consider your employment type, credit history
+          with CRIF, and existing financial obligations when determining the approved amount.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What are spese di istruttoria (origination fees)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Spese di istruttoria are one-time fees that the bank or finance company charges for
+          reviewing your application, running credit checks, and processing the loan file. They can
+          be a fixed amount (e.g., 200-500 euros) or a percentage of the loan amount (commonly 1-3%).
+          These fees are typically deducted from the disbursed amount or charged upfront, and they are
+          always included in the TAEG calculation. Some lenders, particularly online banks, offer loans
+          with zero origination fees as a competitive advantage.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I repay my loan early in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, Italian law (implementing EU Directive 2008/48/EC) guarantees your right to repay a
+          personal loan early at any time without needing to provide a reason. The maximum penalty is
+          1% of the outstanding balance if more than 12 months remain until maturity, or 0.5% if fewer
+          than 12 months remain. The penalty can never exceed the amount of interest you would have
+          paid in the remaining period. Many Italian lenders offer loans with zero early repayment
+          penalty (zero penale di estinzione anticipata), so always check this condition in the
+          contract before signing.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the difference between a personal loan and a cessione del quinto?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          A standard personal loan (prestito personale) is a fixed-rate financing repaid through
+          monthly instalments debited from the borrower's bank account (conto corrente). The cessione
+          del quinto, by contrast, involves the monthly payment being deducted directly from the
+          borrower's salary or pension, with a maximum instalment of one-fifth (20%) of net monthly
+          income. The cessione del quinto is secured by the borrower's TFR (severance pay fund) and
+          is accessible even to people with negative credit history (segnalazioni in CRIF), whereas a
+          standard personal loan requires a positive credit profile. The cessione del quinto has a
+          maximum term of 120 months and often features lower rates due to the stronger guarantees
+          provided to the lender.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How do Italian banks evaluate my loan application?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Italian banks and finance companies evaluate loan applications through a credit scoring
+          process that considers several factors. The debt-to-income ratio (rapporto rata/reddito) is
+          the primary parameter: the monthly instalment, combined with any existing loan payments,
+          should not exceed 30-35% of your net salary. They also consult CRIF (Centrale Rischi di
+          Intermediazione Finanziaria), Italy's main credit bureau, which records the applicant's
+          full credit history, including past loans, payment delays, and any defaults. Additional
+          factors include length of employment, type of contract (permanent vs. fixed-term), income
+          stability, and the presence of any guarantors (garanti). For foreign residents, a minimum
+          period of residency and employment in Italy may also be required.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I get a loan in Italy with a fixed-term contract?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, it is possible to obtain a personal loan in Italy with a fixed-term contract (contratto
+          a tempo determinato), although the conditions may be more restrictive. Typically, the loan
+          duration cannot exceed the remaining term of your employment contract, and the approved
+          amounts tend to be lower than those offered to permanent employees. Some lenders require a
+          guarantor (garante) or a longer employment history. Alternatively, workers on fixed-term
+          contracts can consider the cessione del quinto, which allows borrowing for a period no longer
+          than the employment contract's expiration, with the advantage of automatic payroll deduction.
+          If you are an expat on a fixed-term contract, it helps to have documentation showing your
+          contract has been renewed at least once, as this demonstrates employment stability.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What documents do I need to apply for a personal loan in Italy as a foreigner?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Foreign nationals applying for a personal loan in Italy typically need: a valid identity
+          document (passport or ID card) and, for non-EU citizens, a valid permesso di soggiorno
+          (residence permit); codice fiscale (Italian tax identification number); proof of residence
+          in Italy (certificato di residenza or a recent utility bill); recent payslips (buste paga,
+          usually the last 2-3 months); your most recent CU (Certificazione Unica, the annual income
+          certificate from your employer) or tax return (modello 730 or modello Redditi); and an
+          active Italian bank account (conto corrente). Some lenders may also request your employment
+          contract (contratto di lavoro) and, for non-EU citizens, proof that the residence permit
+          has a validity extending beyond the loan term.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/mortgage-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Mortgage Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate your Italian mortgage monthly payment and full amortization schedule
+        </p>
+      </a>
+      <a href="/en/compound-interest-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Compound Interest Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate the growth of your capital with compound interest over time
+        </p>
+      </a>
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC) Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the projected return of a systematic investment plan
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the impact of inflation on your purchasing power over the years
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross (RAL) to net: calculate your Italian take-home monthly pay
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

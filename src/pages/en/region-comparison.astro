@@ -24,4 +24,367 @@ const breadcrumbs = [
   lang={lang}
 >
   <ComparatoreRegioni client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How the Regional Salary Difference Is Calculated
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        For the same gross annual salary (RAL, or <em>Retribuzione Annua Lorda</em>), an employee's net take-home pay varies depending on the region where they are officially resident. The primary reason is the <strong>addizionale regionale IRPEF</strong> (regional income tax surcharge), a local tax that each of Italy's 21 regions sets independently. This page explains how the mechanism works, why regions differ, and what it means in practice for anyone living and working in Italy &mdash; whether you are an Italian citizen or an expat.
+      </p>
+
+      <h3>Why Italian Regions Have Different Tax Rates</h3>
+      <p>
+        The addizionale regionale IRPEF (regional surcharge on personal income tax) was introduced in 1998. Italian law allows each region to set its own rate within a corridor of <strong>1.23% to 3.33%</strong> of taxable income. Some regions apply a single flat rate, while others adopt a progressive bracket system similar to national IRPEF. The five <em>regioni a statuto speciale</em> (autonomous regions) &mdash; Friuli-Venezia Giulia, Sardegna, Sicilia, Trentino-Alto Adige (which operates through the Provincia Autonoma di Trento and Provincia Autonoma di Bolzano), and Valle d'Aosta &mdash; enjoy greater fiscal autonomy and tend to levy lower surcharges because they retain a larger share of national tax revenue and do not need to raise as much through regional surcharges.
+      </p>
+      <p>
+        The result is a patchwork of regional tax rates across the country. As an expat or a remote worker considering where to establish your <em>residenza</em> (official residence), understanding these differences can meaningfully affect your annual take-home pay &mdash; especially at higher salary levels.
+      </p>
+
+      <h3>Which Regions Are the Most and Least Expensive</h3>
+      <p>
+        Historically, <strong>Lazio</strong> (the region containing Rome) and <strong>Campania</strong> (the region containing Naples) impose the highest regional surcharges, with rates climbing to 3.33% for top earners. Both regions have been forced to raise surcharges to maximum levels due to long-standing <em>piani di rientro del debito sanitario</em> (healthcare deficit recovery plans) mandated by the national government. At the other end of the spectrum, regions like <strong>Friuli-Venezia Giulia</strong>, <strong>Veneto</strong>, <strong>Sardegna</strong>, and the <strong>autonomous provinces of Trento and Bolzano</strong> apply rates at or very near the legal minimum of 1.23%. For median salaries, the annual gap between the cheapest and most expensive region can exceed 500 euros.
+      </p>
+
+      <h3>How to Read the Calculator Results</h3>
+      <p>
+        Our calculator displays the net monthly salary computed over 13 monthly payments (<em>mensilita</em> &mdash; standard in Italian employment contracts, where the 13th month is the <em>tredicesima</em>) for each of Italy's 21 regions, including the autonomous provinces of Trento and Bolzano counted separately. To keep the comparison fair across regions, the <strong>addizionale comunale</strong> (municipal surcharge) is estimated using the national average rate of 0.8%, since the municipal surcharge varies at the <em>comune</em> (municipality) level rather than the regional level.
+      </p>
+
+      <h3>Complete Regional Ranking by Tax Burden</h3>
+      <p>
+        By analyzing the current addizionale regionale IRPEF rates in detail, it is possible to rank all Italian regions from the least to the most costly for a salaried employee. The ranking takes into account not just the nominal top rate, but also the bracket structure and any exemptions for lower incomes.
+      </p>
+      <p>
+        In first place is the <strong>Provincia Autonoma di Bolzano</strong> (Autonomous Province of Bolzano, also known as South Tyrol), which applies a flat rate of 1.23% &mdash; the lowest permitted by law. This minimal surcharge, combined with world-class public services funded by the province's special fiscal autonomy, makes Bolzano the most tax-advantageous territory in Italy for regional surcharges. An employee with a taxable income of 35,000 euros pays roughly 430 euros per year in regional surcharge here.
+      </p>
+      <p>
+        Second place goes to the <strong>Provincia Autonoma di Trento</strong> (Autonomous Province of Trento), which also applies the minimum 1.23% flat rate and benefits from the same special autonomy of the Trentino-Alto Adige region. In third place is <strong>Friuli-Venezia Giulia</strong>, another <em>regione a statuto speciale</em> (autonomous region) that uses a highly favorable bracket system: 0.70% on income up to 15,000 euros, then 1.23% for higher brackets. In practice, for the vast majority of salaried workers, the effective rate stays close to the minimum.
+      </p>
+      <p>
+        Fourth comes <strong>Sardegna</strong> (Sardinia), another autonomous region, applying a flat 1.23% across all income levels. Fifth place goes to <strong>Veneto</strong>, which at 1.23% flat is the most affordable <em>regione a statuto ordinario</em> (ordinary-statute region). The middle ranks include <strong>Basilicata</strong> (1.23% flat), <strong>Lombardia</strong> (brackets from 1.23% to 1.74%), <strong>Piemonte</strong> (from 1.62% to 2.33%), <strong>Liguria</strong> (1.23% flat), <strong>Toscana</strong> (from 1.42% to 1.73%), <strong>Emilia-Romagna</strong> (from 1.33% to 2.03%), and <strong>Umbria</strong> (from 1.23% to 1.83%).
+      </p>
+      <p>
+        At the bottom of the ranking sit the regions with the steepest surcharges. <strong>Marche</strong> ranges from 1.23% to 1.73%, <strong>Puglia</strong> from 1.33% to 2.33%, and <strong>Sicilia</strong> from 1.23% to 1.73% with certain peculiarities linked to its autonomous statute. <strong>Calabria</strong> and <strong>Molise</strong> are among the most expensive, with top rates reaching 2.03&ndash;2.33%. Closing out the ranking are <strong>Campania</strong> and <strong>Lazio</strong>. Campania applies rates that can reach 3.33% for the highest incomes &mdash; one of the steepest in all of Italy, imposed as part of its mandatory healthcare debt recovery plan. Lazio likewise peaks at 3.33% for incomes above 50,000 euros, burdened by years of accumulated regional healthcare deficits that the national government requires it to repay.
+      </p>
+
+      <h3>Impact of Regional Surcharges at Different Salary Levels</h3>
+      <p>
+        The effect of regional surcharges on net pay is not uniform: it changes significantly depending on salary level, and this is especially true for regions using a progressive bracket system.
+      </p>
+      <p>
+        For a worker earning a <strong>RAL of 25,000 euros</strong> (taxable income of approximately 22,700 euros after INPS social security contributions), the gap between the cheapest and most expensive region amounts to roughly 300&ndash;400 euros per year, or about 23&ndash;30 euros per month over 13 pay periods. A noticeable difference, but not a game-changer.
+      </p>
+      <p>
+        The picture shifts for a worker with a <strong>RAL of 50,000 euros</strong> (taxable income of roughly 45,400 euros). At this level, the annual difference can exceed 700&ndash;900 euros, which translates to 54&ndash;69 euros per month. This happens because regions with progressive rates apply higher brackets that hit elevated incomes proportionally harder, while flat-rate regions maintain the same percentage regardless of earnings.
+      </p>
+      <p>
+        For <strong>incomes above 75,000 euros</strong> (executives, senior managers, experienced professionals), the gap can reach and exceed 1,200&ndash;1,500 euros per year. At these figures, the choice of region of residence becomes a genuine financial planning factor &mdash; particularly for those who work remotely and enjoy the flexibility to choose where they live without being tied to a physical office location.
+      </p>
+      <p>
+        It is worth highlighting that the progressive system used by some regions creates an amplification effect as income grows. Lombardia, for example, with its moderate bracket system (1.23% to 1.74%), remains relatively competitive even at high incomes. Meanwhile, Lazio and Campania, with surcharges reaching 3.33%, become progressively more punishing for higher earners.
+      </p>
+
+      <h3>Italy's Fiscal Map: North vs Centre vs South</h3>
+      <p>
+        Analyzing the geographic distribution of regional surcharges reveals some general patterns, but also important exceptions that debunk common assumptions about Italy's territorial taxation.
+      </p>
+      <p>
+        <strong>Northern Italy</strong> generally presents the lowest surcharges. The autonomous provinces of Trento and Bolzano, Veneto, Lombardia, and Friuli-Venezia Giulia offer the most favorable fiscal conditions. This stems partly from the greater fiscal autonomy of the <em>regioni a statuto speciale</em> (Trentino-Alto Adige, Friuli-Venezia Giulia) and partly from better management of regional healthcare budgets, which avoids the need to raise surcharges to cover deficits. Liguria and Piemonte sit in the mid-range, with Piemonte slightly more expensive due to its progressive system reaching 2.33%.
+      </p>
+      <p>
+        <strong>Central Italy</strong> shows a mixed picture. Toscana and Umbria have moderate rates; Emilia-Romagna (often considered Northern but geographically central) also falls in the mid-range; Marche is essentially at the national average. The glaring exception is <strong>Lazio</strong>, which, due to the heavy healthcare debt accumulated over years and the consequent recovery plan imposed by the central government, applies some of the highest surcharges in Italy &mdash; a paradox for a region that hosts the capital city and has above-average GDP per capita.
+      </p>
+      <p>
+        <strong>Southern Italy and the islands</strong> present a varied picture that defies simplification. Sardegna, thanks to its autonomous statute and prudent financial management, ranks among the most affordable regions with the minimum 1.23% flat rate. Sicilia, another autonomous region, sits in the middle range. Basilicata applies the minimum flat rate of 1.23%. By contrast, <strong>Campania</strong> confirms its position among the most expensive regions: like Lazio, it suffers from a historic healthcare deficit that has led to maximum surcharges of 3.33% &mdash; a fiscal burden that compounds an already challenging economic environment. Puglia, Calabria, and Molise fall in the medium-to-high range.
+      </p>
+      <p>
+        A finding that surprises many expats is that the common assumption "the South is cheaper" does not hold true for regional surcharges. On the contrary, some southern regions (Campania above all) are among the most expensive in Italy, creating an additional penalty for workers in these areas who already face lower average salaries and a cost of living that, in major cities like Naples, is not significantly different from some northern cities.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Annual Net Salary Difference by Region: Examples at RAL 35,000 Euros
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The following table illustrates how the annual net salary of a single employee with no dependants changes depending on the region of residence, assuming a gross annual salary (RAL) of 35,000 euros. The calculations include INPS employee contributions (9.19%), 2026 IRPEF with standard employment deductions (<em>detrazioni da lavoro dipendente</em>), the specific regional surcharge (<em>addizionale regionale</em>) for each region, and a municipal surcharge (<em>addizionale comunale</em>) estimated at the national average of 0.8%. The "Difference vs average" column shows the annual saving (+) or extra cost (-) compared to the national average across all 21 regions.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-600">
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Region</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Regional surcharge</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Est. annual net</th>
+              <th class="py-3 px-4 text-left font-semibold text-gray-900 dark:text-white">Difference vs average</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Veneto</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1.23% flat</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;26,420</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+&euro;250</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Friuli-Venezia Giulia</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">0.70%&ndash;1.23%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;26,430</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+&euro;260</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Lombardia</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1.23%&ndash;1.74%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;26,310</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+&euro;140</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Toscana</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1.42%&ndash;1.73%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;26,260</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+&euro;90</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Piemonte</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1.62%&ndash;2.33%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;26,120</td>
+              <td class="py-3 px-4 text-red-600 dark:text-red-400">-&euro;50</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Sicilia</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">1.23%&ndash;1.73%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;26,270</td>
+              <td class="py-3 px-4 text-green-600 dark:text-green-400">+&euro;100</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Campania</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">up to 3.33%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;25,810</td>
+              <td class="py-3 px-4 text-red-600 dark:text-red-400">-&euro;360</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-900 dark:text-white font-medium">Lazio</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">up to 3.33%</td>
+              <td class="py-3 px-4 text-gray-600 dark:text-gray-400">~&euro;25,830</td>
+              <td class="py-3 px-4 text-red-600 dark:text-red-400">-&euro;340</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        As the table shows, at a RAL of 35,000 euros the <strong>difference between the most affordable region (Friuli-Venezia Giulia) and the most expensive (Campania) reaches approximately 620 euros per year</strong>, equivalent to roughly 48 euros per month over 13 pay periods. While this figure alone rarely justifies a move, it represents a tangible factor in personal financial planning.
+      </p>
+      <p>
+        It is worth noting that northern regions with low surcharges (Veneto, Friuli-Venezia Giulia, Lombardia) also tend to offer higher average salaries, further widening the purchasing-power gap compared to southern regions with high surcharges. For anyone who works remotely for a northern employer and can freely choose their residence, this is a meaningful consideration: relocating to a low-surcharge region can be the equivalent of a small pay raise &mdash; without any change in job or responsibilities.
+      </p>
+      <p>
+        For expats evaluating where to settle in Italy, the regional surcharge is just one piece of the puzzle. You should also factor in the <em>addizionale comunale</em> (which varies from 0% to 0.9% depending on the specific municipality), the local cost of living (rent, groceries, utilities), the quality of public services, and any special tax regimes you may qualify for, such as the <em>regime impatriati</em> (inbound workers tax regime) which can reduce your taxable base by up to 50&ndash;70%.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How much can my net salary change from one region to another?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          For a RAL of 35,000 euros, the difference between the most expensive region (typically Lazio or Campania) and the cheapest (Friuli-Venezia Giulia or the autonomous provinces) can amount to roughly 30&ndash;50 euros per month, or 400&ndash;650 euros per year. For higher salaries the gap widens further: at a RAL of 75,000 euros, the annual difference can exceed 1,200 euros.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Does the surcharge depend on where I work or where I live?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Both the addizionale regionale (regional surcharge) and addizionale comunale (municipal surcharge) are determined by your official <em>residenza</em> (residence) as of 1 January of the tax year &mdash; not by the location of your employer or workplace. If you work in Milan but are officially resident in Lazio, you will pay the Lazio surcharges. This is a critical detail for expats registering their residence for the first time: your choice of <em>comune</em> directly affects your tax bill.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Are regional surcharges progressive like national IRPEF?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          It depends on the region. Some regions (such as Veneto, Sardegna, Liguria, and Basilicata) apply a single flat rate to all income levels. Others (such as Lombardia, Lazio, Campania, Piemonte, and Emilia-Romagna) use a progressive bracket system where the marginal rate increases as income rises &mdash; similar in concept to national IRPEF, but with different thresholds and rates. Our calculator uses the exact bracket structure of each region for accurate results.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Why does Friuli-Venezia Giulia have the lowest surcharges?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Friuli-Venezia Giulia is a <em>regione a statuto speciale</em> (autonomous region) with broad fiscal self-governance. For incomes up to 15,000 euros it applies a reduced rate of just 0.70%, one of the lowest in all of Italy. The autonomous provinces of Trento and Bolzano enjoy similar advantages thanks to the special statute of the Trentino-Alto Adige region. These territories retain a larger share of nationally collected taxes, which allows them to fund public services without relying heavily on regional surcharges.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Is the municipal surcharge (addizionale comunale) included in the comparison?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes. The addizionale comunale (municipal surcharge) is included in the net salary calculation using the national average rate of 0.8%. Since this surcharge varies at the municipal level (not the regional level) &mdash; each of Italy's roughly 7,900 <em>comuni</em> sets its own rate between 0% and 0.9% &mdash; it is held constant to ensure a fair region-to-region comparison. If you want a precise calculation using the actual rate for your specific municipality, use our <a href="/en/payslip-calculator/" class="underline hover:text-brand">payslip calculator</a>.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Is it really worth moving to a different region to pay lower taxes?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          From a purely fiscal standpoint, the savings on regional surcharges for an average income (RAL 35,000 euros) range between 300 and 600 euros per year &mdash; a sum that rarely justifies relocating on its own. However, several factors deserve consideration. First, the savings increase substantially for higher incomes (above 50,000&ndash;60,000 euros), where the annual difference can exceed 1,000 euros. Second, your residence also determines the addizionale comunale, which adds another 0% to 0.9% depending on your municipality. Third, you must weigh the overall cost of living (rent, services, transport) that varies enormously across Italy and can cancel out or amplify the fiscal advantage. In short, moving purely for regional surcharges makes financial sense mainly for high earners who can work remotely, while for most workers the fiscal benefit is too modest to justify such a significant life change on its own.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Do regional surcharge rates change every year?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Regional surcharge rates can legally be changed every year through regional legislation, but in practice changes are infrequent. Most regions keep the same rates for several consecutive years. The most significant shifts occur when a region enters or exits a <em>piano di rientro del debito sanitario</em> (healthcare deficit recovery plan, as with Lazio and Campania), which can trigger mandatory rate increases. The <em>regioni a statuto speciale</em> (autonomous regions) and autonomous provinces tend to have the greatest stability, thanks to their financial independence from national budget pressures. Our calculator is updated at the beginning of each fiscal year with the rates in force, verified against the official deliberations published by the Department of Finance of the Ministry of Economy and Finance (MEF).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How are surcharges calculated if I change region during the year?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The rule is simple but often misunderstood: the addizionale regionale is paid entirely to the region where you are officially resident on <strong>1 January of the tax year</strong>. There is no pro-rata split across the months spent in each region. If on 1 January 2026 you are resident in Campania and you move to Veneto in March, you will pay Campania's surcharge (the most expensive) for the entire 2026 tax year. The move only takes fiscal effect from the following year (2027), when you will pay Veneto's surcharge. For this reason, anyone planning a move for fiscal purposes should complete it by 31 December of the preceding year, so that they are already registered as resident in the new region on 1 January. The addizionale comunale follows the same rule, based on your fiscal domicile on 1 January.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          I am an expat using the regime impatriati. Do regional surcharges still apply?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes, regional and municipal surcharges still apply if you benefit from the <em>regime impatriati</em> (inbound workers tax regime). However, because the regime reduces your taxable income (by 50% or 70% depending on the applicable version), the base on which the surcharges are calculated is also reduced proportionally. This means the absolute impact of regional surcharges becomes smaller in euro terms, though the relative advantage of cheaper regions still holds. For a detailed simulation of the <em>regime impatriati</em> including regional surcharges, try our <a href="/en/impatriati-tax-regime/" class="underline hover:text-brand">impatriati tax regime calculator</a>.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the difference between regioni a statuto speciale and ordinary regions?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Italy has five <em>regioni a statuto speciale</em> (autonomous regions): Friuli-Venezia Giulia, Sardegna, Sicilia, Trentino-Alto Adige (operating as the two autonomous provinces of Trento and Bolzano), and Valle d'Aosta. These regions were granted special autonomy by the Italian Constitution, primarily due to linguistic minorities, border location, or historical reasons. They retain a much larger share of taxes collected within their territory (in some cases up to 90% of certain taxes), which allows them to fund public services locally without needing to impose high regional surcharges. The remaining 15 <em>regioni a statuto ordinario</em> (ordinary-statute regions) have more limited fiscal autonomy and are more exposed to national budget constraints, which can lead to higher surcharges &mdash; especially when healthcare deficits accumulate.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Related Calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/en/irpef-tax-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          See the bracket-by-bracket breakdown of Italian income tax on your earnings
+        </p>
+      </a>
+      <a
+        href="/en/payslip-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Payslip Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simulate your monthly payslip with all deductions and contributions
+        </p>
+      </a>
+      <a
+        href="/en/gross-salary-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Gross from Net Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Find out the RAL (gross annual salary) you need to reach your desired net pay
+        </p>
+      </a>
+      <a
+        href="/en/impatriati-tax-regime/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Impatriati Tax Regime
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate your tax savings under Italy's special inbound workers regime
+        </p>
+      </a>
+      <a
+        href="/en/employer-cost-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Employer Cost Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          See the total cost to the company for hiring an employee in Italy
+        </p>
+      </a>
+      <a
+        href="/en/guides/regional-municipal-surcharges/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Guide: Regional &amp; Municipal Surcharges
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          In-depth guide to how Italian local tax surcharges work and affect your salary
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

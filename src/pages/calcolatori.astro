@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+import { t } from '../i18n/index';
+import { breadcrumbSchema } from '../lib/seo';
+
+const lang = 'it';
+const title = t('calcolatori.title', lang);
+const description = t('calcolatori.description', lang);
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Calcolatori', url: `${SITE.url}/calcolatori/` },
+];
+
+const schema = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: `${SITE.url}/calcolatori/`,
+    inLanguage: SITE.locale,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: `${SITE.url}/`,
+    },
+  },
+]);
+
+const calcolatoriLavoro = [
+  { name: t('nav.netSalary', lang), href: '/', desc: t('calcolatori.netSalaryDesc', lang) },
+  { name: t('nav.grossSalary', lang), href: '/calcolo-stipendio-lordo/', desc: t('calcolatori.grossSalaryDesc', lang) },
+  { name: t('nav.irpef', lang), href: '/calcolo-irpef/', desc: t('calcolatori.irpefDesc', lang) },
+  { name: t('nav.payslip', lang), href: '/calcolo-busta-paga/', desc: t('calcolatori.payslipDesc', lang) },
+  { name: t('nav.regionComparison', lang), href: '/comparatore-regioni/', desc: t('calcolatori.regionComparisonDesc', lang) },
+  { name: t('nav.thirteenth', lang), href: '/calcolo-tredicesima/', desc: t('calcolatori.thirteenthDesc', lang) },
+  { name: t('nav.tfr', lang), href: '/calcolo-tfr/', desc: t('calcolatori.tfrDesc', lang) },
+  { name: t('nav.hourlyRate', lang), href: '/calcolo-paga-oraria/', desc: t('calcolatori.hourlyRateDesc', lang) },
+  { name: t('nav.employerCost', lang), href: '/costo-aziendale/', desc: t('calcolatori.employerCostDesc', lang) },
+  { name: t('nav.leaveCalc', lang), href: '/calcolo-ferie-permessi/', desc: t('calcolatori.leaveDesc', lang) },
+  { name: t('nav.severance', lang), href: '/calcolo-buonuscita/', desc: t('calcolatori.severanceDesc', lang) },
+  { name: t('nav.familyDeductions', lang), href: '/calcolo-detrazioni-familiari/', desc: t('calcolatori.familyDeductionsDesc', lang) },
+];
+
+const calcolatoriFinanza = [
+  { name: t('nav.flatRate', lang), href: '/calcolo-forfettari/', desc: t('calcolatori.flatRateDesc', lang) },
+  { name: t('nav.impatriati', lang), href: '/regime-impatriati-calcolatore/', desc: t('calcolatori.impatriatiDesc', lang) },
+  { name: t('nav.employeeVsFreelancer', lang), href: '/confronto-dipendente-piva/', desc: t('calcolatori.employeeVsFreelancerDesc', lang) },
+  { name: t('nav.isee', lang), href: '/calcolo-isee/', desc: t('calcolatori.iseeDesc', lang) },
+  { name: t('nav.mortgage', lang), href: '/calcolo-mutuo/', desc: t('calcolatori.mortgageDesc', lang) },
+  { name: t('nav.compoundInterest', lang), href: '/calcolo-interesse-composto/', desc: t('calcolatori.compoundInterestDesc', lang) },
+  { name: t('nav.pension', lang), href: '/calcolo-pensione/', desc: t('calcolatori.pensionDesc', lang) },
+  { name: t('nav.fire', lang), href: '/calcolo-fire/', desc: t('calcolatori.fireDesc', lang) },
+  { name: t('nav.investmentTax', lang), href: '/calcolo-tassazione-investimenti/', desc: t('calcolatori.investmentTaxDesc', lang) },
+  { name: t('nav.rentVsBuy', lang), href: '/confronto-affitto-acquisto/', desc: t('calcolatori.rentVsBuyDesc', lang) },
+  { name: t('nav.renovationBonus', lang), href: '/calcolo-bonus-ristrutturazione/', desc: t('calcolatori.renovationBonusDesc', lang) },
+  { name: t('nav.propertyGains', lang), href: '/calcolo-plusvalenza-immobiliare/', desc: t('calcolatori.propertyGainsDesc', lang) },
+  { name: t('nav.budget', lang), href: '/calcolo-budget/', desc: t('calcolatori.budgetDesc', lang) },
+  { name: t('nav.loan', lang), href: '/calcolo-prestito/', desc: t('calcolatori.loanDesc', lang) },
+  { name: t('nav.savingsPlan', lang), href: '/calcolo-piano-accumulo/', desc: t('calcolatori.savingsPlanDesc', lang) },
+  { name: t('nav.inflation', lang), href: '/calcolo-inflazione/', desc: t('calcolatori.inflationDesc', lang) },
+];
+---
+
+<Layout title={title} description={description} schema={schema}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-8">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">{t('calcolatori.heading', lang)}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Page header -->
+    <header class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+        {t('calcolatori.heading', lang)}
+      </h1>
+      <p class="mt-3 text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+        {t('calcolatori.intro', lang)}
+      </p>
+    </header>
+
+    <!-- Lavoro & Tasse section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        {t('calcolatori.workAndTaxes', lang)}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {calcolatoriLavoro.map((calc) => (
+          <a
+            href={calc.href}
+            class="group relative rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30 transition-all"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+              {calc.name}
+            </h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              {calc.desc}
+            </p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand">
+              Calcola
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Finanza & Investimenti section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        {t('calcolatori.financeAndInvestments', lang)}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {calcolatoriFinanza.map((calc) => (
+          <a
+            href={calc.href}
+            class="group relative rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30 transition-all"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+              {calc.name}
+            </h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              {calc.desc}
+            </p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand">
+              Calcola
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA to guides -->
+    <div class="rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 text-center">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+        {t('calcolatori.ctaTitle', lang)}
+      </h2>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">
+        {t('calcolatori.ctaDescription', lang)}
+      </p>
+      <a
+        href="/guide/"
+        class="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-red-700 transition-colors"
+      >
+        {t('calcolatori.ctaButton', lang)}
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</Layout>

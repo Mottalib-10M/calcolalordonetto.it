@@ -23,5 +23,609 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Family Tax Deductions Calculator Italy 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Calculate IRPEF deductions for your dependent spouse and children aged 21 or older, and see how they affect your monthly take-home pay.
+  </p>
+
   <DetrazioniFamiliari client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How do detrazioni per familiari a carico (dependent family member deductions) work?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        <strong>Detrazioni per familiari a carico</strong> (dependent family member deductions) are reductions of
+        IRPEF (Imposta sul Reddito delle Persone Fisiche &mdash; Italy's personal income tax) established by
+        <strong>Article 12 of the TUIR</strong> (Testo Unico delle Imposte sui Redditi, D.P.R. 917/1986) for
+        taxpayers who support economically dependent family members. These deductions reduce the tax itself (not
+        the taxable income), which means they translate into a concrete increase in your monthly take-home pay
+        (busta paga) if you are an employee. For expats living and working in Italy, understanding these deductions
+        is essential to maximise your net salary, especially if your spouse does not work or earns a very low income.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Who qualifies as a dependent family member (familiare a carico)?
+      </h3>
+      <p>
+        A family member is considered <strong>fiscally dependent</strong> (fiscalmente a carico) when their gross
+        annual income does not exceed <strong>&euro;2,840.51</strong>, before any deductible expenses. For
+        <strong>children aged 24 or younger</strong>, the income threshold is raised to <strong>&euro;4,000</strong>.
+        This higher limit for younger dependents recognises that many children between 21 and 24 may earn small
+        amounts from part-time jobs, internships, or freelance work without causing the family to lose the right
+        to deductions.
+      </p>
+      <p>
+        The following family members can be claimed as dependents: the <strong>spouse</strong> (coniuge &mdash; not
+        legally and effectively separated), <strong>children</strong> (figli &mdash; including natural, recognised,
+        adopted, fostered, or affiliated children), and <strong>other relatives</strong> (altri familiari &mdash;
+        parents, sons- and daughters-in-law, parents-in-law, brothers and sisters) provided they live with the
+        taxpayer or receive alimony not resulting from court orders. Our calculator focuses on the two main
+        deductions: the spouse deduction and the deduction for children aged 21 and older.
+      </p>
+      <p>
+        <strong>Important for expats:</strong> If you are tax-resident in Italy (you spend more than 183 days per
+        year in the country, have your domicile or habitual abode registered here, or are enrolled in the anagrafe
+        of an Italian municipality), you are subject to IRPEF on your worldwide income and are entitled to claim
+        family deductions just like any Italian citizen. Your dependent spouse does not need to be Italian or resident
+        in Italy, but you must be able to document their income level if requested by the Agenzia delle Entrate.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Spouse deduction (detrazione per il coniuge a carico)
+      </h3>
+      <p>
+        The deduction for a dependent spouse is calculated using a <strong>tiered formula system</strong> that
+        varies based on the taxpayer's gross income (not the spouse's income). The mechanism is designed to provide
+        a higher deduction for lower incomes, with a progressive reduction as income increases, until it reaches
+        zero for incomes above &euro;80,000.
+      </p>
+      <p>
+        <strong>Income up to &euro;15,000:</strong> The deduction is calculated using the formula
+        <code>800 &minus; 110 &times; (income / 15,000)</code>, with a guaranteed minimum of
+        <strong>&euro;690</strong>. This means that even at very low income levels, the deduction never falls
+        below &euro;690 per year. For example, at an income of &euro;10,000, the formula yields
+        800 &minus; 110 &times; (10,000 / 15,000) = 800 &minus; 73.33 = &euro;726.67.
+      </p>
+      <p>
+        <strong>Income between &euro;15,001 and &euro;40,000:</strong> A system of <strong>fixed amounts per
+        sub-bracket</strong> applies, with a characteristic "hump" in the central brackets that rewards
+        middle-low incomes. The amounts range between &euro;690 and &euro;720 depending on the specific
+        sub-bracket:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Income bracket</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Spouse deduction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">&euro;15,001 &ndash; &euro;29,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;690</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">&euro;29,001 &ndash; &euro;29,200</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;700</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">&euro;29,201 &ndash; &euro;34,700</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;710</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">&euro;34,701 &ndash; &euro;35,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;720</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">&euro;35,001 &ndash; &euro;35,100</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;710</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">&euro;35,101 &ndash; &euro;35,200</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;700</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">&euro;35,201 &ndash; &euro;40,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;690</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Income between &euro;40,001 and &euro;80,000:</strong> The deduction decreases linearly using
+        the formula <code>690 &times; (80,000 &minus; income) / 40,000</code>. At an income of &euro;60,000,
+        the deduction would be 690 &times; (80,000 &minus; 60,000) / 40,000 = 690 &times; 0.5 = &euro;345.
+      </p>
+      <p>
+        <strong>Income above &euro;80,000:</strong> The deduction is zero. No spouse deduction applies at all
+        for high earners above this threshold.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Deduction for dependent children aged 21 and older (detrazione per figli a carico di 21 anni o piu')
+      </h3>
+      <p>
+        Since <strong>1 March 2022</strong>, with the introduction of the <strong>Assegno Unico Universale
+        (AUU)</strong> &mdash; the Universal Child Allowance paid by INPS &mdash; the traditional IRPEF
+        deductions for dependent children apply exclusively to <strong>children who have turned 21</strong>.
+        For children under 18 and those aged 18 to 20, financial support is provided entirely through the
+        Assegno Unico, which is a direct monthly cash transfer based on the household's ISEE indicator
+        (Indicatore della Situazione Economica Equivalente).
+      </p>
+      <p>
+        For children aged 21 and older who are fiscally dependent (annual income &le; &euro;2,840.51, or
+        &le; &euro;4,000 if under 24), the IRPEF deduction is calculated with the following formula:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        Deduction = 950 &times; (95,000 &minus; taxpayer's gross income) / 95,000
+      </div>
+      <p>
+        The formula produces a deduction that decreases linearly: at an income of &euro;0, the deduction is
+        &euro;950 per child; at an income of &euro;47,500, it is &euro;475; and it reaches zero when income
+        hits &euro;95,000. When there are <strong>multiple dependent children</strong>, the reference income
+        threshold (&euro;95,000) increases by <strong>&euro;15,000 for each child after the first</strong>,
+        making the deduction more generous for larger families. For instance, with two dependent children
+        over 21, the reference threshold becomes &euro;110,000, and with three it becomes &euro;125,000.
+      </p>
+      <p>
+        The child deduction is normally <strong>split 50/50 between the two parents</strong>. However, it is
+        possible to assign 100% of the deduction to the higher-earning parent if both parents agree and
+        doing so allows the household to fully utilise the deduction &mdash; for example, when the
+        lower-earning parent does not have enough IRPEF liability (capienza fiscale) to absorb their share.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The Assegno Unico Universale for children under 21
+      </h3>
+      <p>
+        The <strong>Assegno Unico Universale (AUU)</strong>, introduced by Legislative Decree 230/2021 and
+        operational since March 2022, is the welfare measure that replaced the previous IRPEF deductions for
+        minor children, the family allowances (ANF &mdash; Assegni al Nucleo Familiare), the baby bonus (bonus
+        bebe'), and the birth premium. The AUU is a monthly cash transfer paid by INPS directly into the
+        beneficiary's bank account, from the seventh month of pregnancy until the child turns 21 (with reduced
+        amounts for children aged 18 to 20).
+      </p>
+      <p>
+        The AUU amount varies based on the household's <strong>ISEE</strong>: for ISEE up to &euro;17,090.61,
+        the maximum amount per minor child is approximately &euro;199.40 per month; for ISEE above
+        &euro;45,574.96 (or if no ISEE is submitted), the minimum is approximately &euro;57 per month per
+        child. Additional top-ups are available for large families (3 or more children), children with
+        disabilities, mothers under 21, and households where both parents are employed. The application must
+        be submitted to INPS (online, through a patronato, or via the contact centre), and the allowance is
+        paid monthly. Expats who are tax-resident in Italy are eligible for the AUU, provided they meet the
+        residency and ISEE requirements.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Worked example: &euro;35,000 income with spouse and one 22-year-old child
+      </h3>
+      <p>
+        Let us consider an employee with a RAL (Retribuzione Annua Lorda, gross annual salary) of &euro;35,000,
+        a dependent spouse (spouse's income below &euro;2,840.51), and one 22-year-old dependent child claimed
+        at 50%. We will calculate the deductions step by step.
+      </p>
+      <p>
+        <strong>Taxable income (imponibile fiscale):</strong> The RAL of &euro;35,000, after deducting the
+        INPS social security contribution (9.19% = &euro;3,216.50), produces a taxable income of approximately
+        &euro;31,783.50.
+      </p>
+      <p>
+        <strong>Spouse deduction (detrazione coniuge):</strong> With an income of &euro;31,783.50, we fall
+        within the &euro;29,201 &ndash; &euro;34,700 bracket, which provides a fixed amount of
+        <strong>&euro;710</strong>.
+      </p>
+      <p>
+        <strong>Child deduction at 50% (detrazione figlio 22 anni al 50%):</strong> The formula is
+        950 &times; (95,000 &minus; 31,783.50) / 95,000 = 950 &times; 0.6654 = &euro;632.17. At 50%, the
+        deduction is 632.17 &times; 50% = <strong>&euro;316.09</strong>.
+      </p>
+      <p>
+        <strong>Total family deductions:</strong> 710 + 316.09 = <strong>&euro;1,026.09 per year</strong>.
+        Divided across 13 pay periods (monthly salary plus tredicesima), this amounts to approximately
+        <strong>&euro;78.93 more per month</strong> in your pay packet compared to a taxpayer with no
+        dependent family members.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Summary table: deductions by income level
+      </h3>
+      <p>
+        The table below shows the annual deductions for a dependent spouse and one dependent child aged 21+
+        claimed at 50%, at different taxable income levels. Values are calculated using the formulas from
+        Article 12 of the TUIR.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Income</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Spouse deduction</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Child 21+ (50%)</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Annual total</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Per month (/13)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">&euro;15,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;690</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;400</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">&euro;1,090</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;84</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">&euro;25,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;690</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;350</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">&euro;1,040</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;80</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">&euro;35,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;710</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;300</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">&euro;1,010</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;78</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">&euro;50,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;517</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;225</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">&euro;742</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;57</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">&euro;70,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;172</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;125</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">&euro;297</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;23</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">&euro;80,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;0</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;75</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">&euro;75</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;6</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The table highlights how family deductions are most significant for low-to-middle incomes: a taxpayer
+        earning &euro;25,000 receives approximately &euro;1,040 per year in deductions (&euro;80 per month),
+        while a taxpayer earning &euro;70,000 receives only &euro;297 per year (&euro;23 per month). Above
+        &euro;80,000 in income, the spouse deduction disappears entirely, and only a residual child deduction
+        remains until &euro;95,000.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        How to notify your employer about dependent family members
+      </h3>
+      <p>
+        To receive the deductions in your monthly pay, you must inform your employer (or the HR/payroll
+        department) about your dependent family members by filling in a specific declaration form (modulo di
+        richiesta detrazioni). This notification must be made when you start a new job and whenever changes
+        occur &mdash; birth of a child, change in your spouse's income, a child turning 21, and so on. The
+        employer, acting as your tax withholding agent (sostituto d'imposta), applies the deductions monthly
+        in your pay slip by dividing the annual amount by the number of pay periods (usually 12, with a
+        year-end adjustment in the conguaglio). It is your responsibility to report changes promptly: if a
+        dependent exceeds the income threshold during the year, the deduction is no longer due, and any
+        amount already received will be clawed back during the year-end adjustment or in your annual tax
+        return (dichiarazione dei redditi).
+      </p>
+      <p>
+        <strong>Tip for expats:</strong> When you start employment in Italy, your employer will typically
+        provide the "modulo detrazioni" form. If your spouse remains abroad and does not work (or earns
+        below the threshold in Italy), make sure to declare them as a dependent. You may need to provide
+        their Italian codice fiscale (tax identification number), which non-residents can obtain at the
+        Italian consulate in their home country or at the local Agenzia delle Entrate office.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tax capacity (capienza fiscale): when you cannot use the full deduction
+      </h3>
+      <p>
+        A key concept to understand is <strong>capienza fiscale</strong> (tax capacity). Deductions can
+        reduce your IRPEF liability down to zero, but they cannot generate a tax credit &mdash; if your
+        gross IRPEF is less than the total deductions you are entitled to, the excess portion is lost. This
+        is particularly relevant for low incomes, where the combination of the employment income deduction
+        (detrazione per lavoro dipendente), the 2026 tax wedge benefit (cuneo fiscale), and family deductions
+        could exceed the gross IRPEF due. In these situations, assigning 100% of the child deduction to the
+        higher-earning parent can be the optimal strategy for the household, because that parent will have
+        sufficient tax capacity to absorb the full deduction amount.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Key thresholds and reference values for 2026
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The main parameters governing family deductions for the 2026 tax year, as defined by the TUIR and
+        confirmed by the 2026 Budget Law (Legge di Bilancio 2026):
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Parameter</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">2026 value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Dependent family member income threshold (general)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">&euro;2,840.51</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Income threshold for dependent children under 24</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">&euro;4,000.00</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Maximum spouse deduction (low income)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">&euro;800</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Spouse deduction in middle brackets</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">&euro;690 &ndash; &euro;720</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Income above which spouse deduction = 0</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">&euro;80,000</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Base deduction per child aged 21+</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">&euro;950</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reference income for child deduction (1 child)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">&euro;95,000</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reference income increase per additional child</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">+&euro;15,000 per child</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Standard allocation between parents</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">50% each</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Minimum child age for IRPEF deduction</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">21 years (under 21: AUU)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Note for civil unions:</strong> Since the entry into force of Italy's Civil Union Act (Legge
+        Cirinna', Law 76/2016), partners in a civil union (unione civile) are treated identically to married
+        spouses for all tax purposes, including family deductions. The same income thresholds and deduction
+        formulas apply. Cohabiting partners (conviventi di fatto) who are not in a civil union or marriage,
+        however, do not qualify for the spouse deduction.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Do children under 21 still qualify for IRPEF deductions?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No. Since 1 March 2022, IRPEF deductions for dependent children apply only to children who have
+          turned 21. For children under 18 and those aged 18 to 20, financial support is provided through
+          the Assegno Unico Universale (AUU), a monthly cash transfer from INPS whose amount depends on the
+          household's ISEE score. The AUU must be applied for separately through INPS. This change unified
+          multiple previous benefits into a single instrument, simplifying the system but also meaning that
+          families with young children no longer see a deduction line on their pay slip &mdash; they receive
+          a bank transfer from INPS instead.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is it better to assign 100% of the child deduction to one parent?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          It depends on your specific situation. If both parents have sufficient income to fully utilise the
+          deductions, the standard 50/50 split is generally equivalent in total tax savings. However, if one
+          parent has a very low income (with limited IRPEF liability, i.e., low capienza fiscale), assigning
+          100% to the higher-earning parent can be advantageous because it prevents the lower-earning parent's
+          share from going to waste. The choice must be communicated to the employer and agreed upon between
+          both parents. Use our calculator above to compare both scenarios and see which option maximises your
+          household's total net pay.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does an unmarried cohabiting partner qualify for the spouse deduction?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The spouse deduction (detrazione per il coniuge a carico) is available only to legally married
+          couples or partners in a civil union (unione civile) registered under Law 76/2016 (the Legge
+          Cirinna'). A cohabiting partner (convivente di fatto) who is not in a civil union does not qualify
+          for the spouse deduction, even if they live together and earn below the income threshold. This is
+          one reason why couples in Italy with asymmetric incomes may consider marriage or a civil union also
+          from a tax perspective, as the deduction can be worth up to &euro;800 per year.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What happens if my spouse exceeds the income threshold during the year?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          If your spouse's annual gross income exceeds &euro;2,840.51, the deduction is lost for the
+          <strong>entire year</strong> &mdash; it is not pro-rated by month. You must promptly inform your
+          employer to stop applying the deduction in your pay slip. If the deduction has already been applied
+          during the year, the amount will be clawed back during the year-end adjustment (conguaglio di fine
+          anno) or in your annual tax return (dichiarazione dei redditi, typically the Modello 730). To avoid
+          an unpleasant surprise, it is advisable to estimate your spouse's annual income with reasonable
+          anticipation, particularly if they take on part-time or temporary work during the year.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Do family deductions apply to self-employed workers and freelancers?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Family deductions apply to all taxpayers subject to IRPEF, including self-employed workers and
+          freelancers operating under the ordinary regime (regime ordinario). However, workers under the
+          <strong>regime forfettario</strong> (flat-rate regime) pay a substitute tax instead of IRPEF and
+          therefore cannot claim any IRPEF deductions, including family deductions. This is an important
+          factor to consider when choosing your tax regime, especially if you have dependents. If you are in
+          the forfettario regime and cannot use the deductions, the other parent (if they are an employee or
+          self-employed under the ordinary regime) can claim 100% of the child deduction instead of the
+          standard 50%.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How do I declare dependent family members in the Modello 730?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In the Modello 730 (Italy's standard tax return for employees and retirees), dependent family
+          members are declared in the <strong>Prospetto dei familiari a carico</strong> (Dependent Family
+          Members section) at the beginning of the form. For each dependent, you must indicate: their codice
+          fiscale (tax ID number), the type of relationship (C for coniuge/spouse, F for figlio/child, A for
+          altro familiare/other relative), the number of months they were dependent during the year, and the
+          applicable deduction percentage (50% or 100% for children). The pre-filled 730 (730 precompilato)
+          available on the Agenzia delle Entrate website already contains much of this information, but it
+          is your responsibility to verify its accuracy and update any changes that occurred during the year.
+          Deductions already received through your monthly pay are automatically reconciled.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can expats claim family deductions for a spouse living abroad?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, if you are a tax resident in Italy (residente fiscale), you can claim the spouse deduction
+          even if your spouse lives abroad, provided they meet the income threshold requirement
+          (&euro;2,840.51 annual gross income). The spouse's foreign income must be considered for this
+          test. You will need to ensure your spouse has an Italian codice fiscale, which can be obtained at
+          the Italian consulate or embassy in their country of residence. Be prepared to provide documentation
+          of their income if requested by the Agenzia delle Entrate, particularly income certifications from
+          the relevant foreign tax authority.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How do family deductions interact with the impatriati tax regime?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          If you benefit from the impatriati tax regime (regime degli impatriati), which exempts a portion
+          of your income from taxation, the family deductions are calculated on your reduced taxable income
+          (i.e., only the portion that is subject to IRPEF). Since the impatriati regime already significantly
+          lowers your tax burden, the effective value of family deductions may be smaller than for a regular
+          taxpayer at the same gross salary, because the deduction formulas use the lower taxable income as
+          input. Nonetheless, you are fully entitled to claim them. Use our
+          <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati Tax Regime
+          calculator</a> to see the combined effect.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/isee-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          ISEE Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Estimate your ISEE score to check eligibility for welfare benefits and the Assegno Unico
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay in Italy
+        </p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate gross and net IRPEF bracket by bracket with all deductions
+        </p>
+      </a>
+      <a href="/en/payslip-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Payslip Simulator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          View a detailed Italian pay slip (busta paga) line by line
+        </p>
+      </a>
+      <a href="/en/flat-rate-regime-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Flat-Rate Regime Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate taxes and net income under the regime forfettario
+        </p>
+      </a>
+      <a href="/en/impatriati-tax-regime/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Impatriati Tax Regime
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate tax savings under Italy's special regime for returning workers and expats
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

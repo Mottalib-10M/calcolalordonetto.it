@@ -24,4 +24,596 @@ const breadcrumbs = [
   lang={lang}
 >
   <Buonuscita client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      How the Buonuscita and Severance Incentive Are Calculated
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The <strong>buonuscita</strong>, also known as the <strong>indennita' di buonuscita</strong> or
+        <strong>TFS (Trattamento di Fine Servizio)</strong>, is Italy's end-of-service lump-sum payment
+        for public sector employees. In the broader Italian labour market, the term "buonuscita" is also
+        used informally to describe severance incentive packages (incentivo all'esodo) offered by private
+        employers to encourage voluntary resignation. While the underlying calculation mechanics differ
+        slightly between the public TFS and private exit incentives, the tax treatment follows the same
+        framework: both can benefit from Italy's favourable <strong>separate taxation</strong>
+        (tassazione separata) regime, which typically results in a lower tax bill than ordinary IRPEF
+        taxation.
+      </p>
+      <p>
+        If you are an expat working in Italy's public administration, a state school teacher, a
+        healthcare worker in the SSN (Servizio Sanitario Nazionale), or employed by any other entity
+        governed by public employment law, this calculator helps you estimate how much you will actually
+        receive after tax when your employment ends. For private sector workers negotiating an exit
+        package, the tool is equally useful: enter the gross incentive amount, your years of service,
+        and your most recent RAL (Retribuzione Annua Lorda, or gross annual salary), and the calculator
+        instantly shows the net payout under both separate and ordinary taxation.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Buonuscita vs TFR vs Exit Incentive: Key Differences
+      </h3>
+      <p>
+        Three Italian end-of-employment payments are frequently confused. Here is how they differ:
+      </p>
+      <ul>
+        <li>
+          <strong>TFR (Trattamento di Fine Rapporto)</strong> &mdash; This is the statutory severance
+          pay that every employee in Italy accrues automatically, governed by Article 2120 of the
+          Italian Civil Code. Each year, roughly 6.91% of the gross annual salary (RAL / 13.5) is set
+          aside. The TFR is paid out when the employment relationship ends, regardless of the reason
+          (resignation, dismissal, or contract expiry). It is always owed and its taxation follows
+          specific separate-tax rules based on the average rate over the final five years of service.
+          TFR applies to private sector workers and to public employees hired after 1 January 2001.
+        </li>
+        <li>
+          <strong>TFS / Buonuscita (Trattamento di Fine Servizio / Indennita' di Buonuscita)</strong>
+          &mdash; This is the public sector equivalent of the TFR, applicable to civil servants and
+          state employees hired before 1 January 2001 under permanent public employment contracts. The
+          TFS is calculated as 1/12 of 80% of the final annual salary, multiplied by the years of
+          service. It is managed and paid out by INPS (the National Social Security Institute). The
+          buonuscita is a legal entitlement, not a negotiable amount &mdash; its formula is fixed by law
+          (Presidential Decree 1032/1973).
+        </li>
+        <li>
+          <strong>Incentivo all'esodo (Exit incentive / Golden handshake)</strong> &mdash; This is an
+          additional lump sum offered by the employer (public or private) to encourage voluntary
+          resignation. It is not a legal right; the amount is entirely negotiable. It is common during
+          corporate restructurings, voluntary redundancy programmes, and organisational changes. Exit
+          incentives can benefit from separate taxation under Articles 17 and 19 of the TUIR (Testo
+          Unico delle Imposte sui Redditi), making them significantly more tax-efficient than ordinary
+          income.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Separate Taxation vs Ordinary Taxation: How It Works
+      </h3>
+      <p>
+        The tax treatment of the buonuscita and exit incentive is governed by Articles 17 and 19 of the
+        <strong>TUIR (Testo Unico delle Imposte sui Redditi)</strong>, Italy's consolidated income tax
+        act. The severance payment can benefit from separate taxation (tassazione separata) when it is
+        connected to the termination of an employment relationship and the payment occurs in a tax year
+        subsequent to the one in which the entitlement arose. In practice, separate taxation applies in
+        the vast majority of cases.
+      </p>
+      <p>
+        <strong>Separate taxation (tassazione separata)</strong> works as follows:
+      </p>
+      <ol>
+        <li>
+          The <strong>average IRPEF rate</strong> is calculated based on the last two tax years: the
+          total income for those two years is taken, the corresponding gross IRPEF is computed, and the
+          result is divided by the taxable income. In simplified terms (as our calculator does), the
+          most recent year's RAL is used as the reference.
+        </li>
+        <li>
+          This average rate is then applied to the gross severance amount. The resulting tax is almost
+          always lower than what would be owed under ordinary taxation, because the average rate is by
+          definition lower than the marginal rate that would apply to the additional income.
+        </li>
+        <li>
+          The Agenzia delle Entrate (Italy's Revenue Agency) reserves the right to
+          <strong>re-assess</strong> (riliquidare) the tax within the statute of limitations, applying
+          the effective average rate calculated on the comprehensive income from the last two tax years.
+          If the effective rate is higher than what the employer withheld, the taxpayer receives a
+          payment notice for the difference. If it is lower, a refund is issued.
+        </li>
+      </ol>
+      <p>
+        <strong>Ordinary taxation (tassazione ordinaria)</strong>, by contrast, adds the severance
+        payment to the employee's regular income for the year. Since Italian IRPEF is progressive, a
+        substantial lump sum pushes total income into higher brackets, with marginal rates of 35% or
+        even 43%. The result is a significantly higher tax burden.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Calculation Formula and Worked Example
+      </h3>
+      <p>
+        <strong>Separate taxation formula:</strong><br />
+        Tax = Gross severance amount &times; Average IRPEF rate (based on last 2 years of income)
+      </p>
+      <p>
+        <strong>Example:</strong> Suppose the gross severance incentive is <strong>&euro;30,000</strong>
+        with a final-year RAL of <strong>&euro;40,000</strong> and <strong>8 years of service</strong>.
+      </p>
+      <ol>
+        <li>
+          RAL = &euro;40,000. Employee INPS contributions (9.19%) = &euro;3,676. Taxable income =
+          &euro;36,324.
+        </li>
+        <li>
+          Gross IRPEF on &euro;36,324: first &euro;28,000 at 23% = &euro;6,440 + remaining &euro;8,324
+          at 35% = &euro;2,913. Total IRPEF = &euro;9,353.
+        </li>
+        <li>
+          Average rate = 9,353 / 36,324 = approximately <strong>25.75%</strong>.
+        </li>
+        <li>
+          Tax under separate taxation = 30,000 &times; 25.75% = <strong>&euro;7,725</strong>.
+          Net payout = 30,000 &minus; 7,725 = <strong>&euro;22,275</strong>.
+        </li>
+        <li>
+          Under ordinary taxation, the &euro;30,000 would be added to regular income: total taxable
+          income would rise to &euro;66,324, with IRPEF at 43% on the portion exceeding &euro;50,000.
+          The incremental tax would be approximately &euro;10,050. Net payout = &euro;19,950.
+        </li>
+        <li>
+          <strong>Saving with separate taxation: approximately &euro;2,325</strong>.
+        </li>
+      </ol>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        How Much Should You Ask For? Negotiation Benchmarks
+      </h3>
+      <p>
+        There is no fixed rule set by Italian law, but in common practice severance incentives are
+        negotiated based on several factors:
+      </p>
+      <ul>
+        <li>
+          <strong>Length of service</strong>: The more years you have worked, the stronger your
+          bargaining position. A common rule of thumb is 1 to 2 monthly salaries per year of service.
+        </li>
+        <li>
+          <strong>Role and seniority</strong>: Executives (dirigenti) and senior managers (quadri) with
+          significant responsibilities can negotiate higher amounts, often between 12 and 24 total
+          monthly salaries.
+        </li>
+        <li>
+          <strong>Organisational context</strong>: If the employer is closing an office, restructuring
+          a department, or implementing a voluntary redundancy programme, the willingness to offer
+          generous packages tends to increase.
+        </li>
+        <li>
+          <strong>Employee protections</strong>: Workers with strong protections (Article 18 of the
+          Workers' Statute, open-ended contracts, proximity to retirement age) have more leverage, as
+          the employer may need to offer more to make voluntary departure attractive.
+        </li>
+        <li>
+          <strong>Expat considerations</strong>: If you are a foreign worker in Italy on a specific
+          visa or under the impatriati tax regime (regime impatriati), the tax implications of a
+          severance package may differ. It is advisable to consult a tax professional familiar with
+          cross-border employment situations before accepting any offer.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Legal and Social Security Considerations
+      </h3>
+      <p>
+        The buonuscita and exit incentive come with several important legal characteristics that every
+        worker in Italy should understand:
+      </p>
+      <ul>
+        <li>
+          <strong>Voluntary nature</strong>: The employee is never obligated to accept an exit
+          incentive. Resignation must always be voluntary. Any form of pressure or coercion can render
+          the agreement void under Italian labour law.
+        </li>
+        <li>
+          <strong>INPS contributions</strong>: Exit incentives are exempt from INPS social security
+          contributions when classified as sums incentivising the consensual termination of the
+          employment relationship, as clarified by INPS Circular no. 263/1997 and consolidated case
+          law. This exemption is a significant advantage over ordinary salary, where employee INPS
+          contributions amount to 9.19%.
+        </li>
+        <li>
+          <strong>Written agreement</strong>: The consensual termination agreement must be formalised
+          in writing, and the resignation must be validated electronically through the Ministry of
+          Labour's portal (mandatory since 2016). It is strongly recommended to seek the assistance of
+          an employment lawyer (avvocato del lavoro) or a trade union (sindacato) when drafting the
+          agreement.
+        </li>
+        <li>
+          <strong>NASpI unemployment benefit</strong>: In the case of consensual termination with an
+          exit incentive, the employee may be entitled to NASpI (Italy's unemployment benefit) only if
+          the termination takes place in a "protected venue" (sede protetta) &mdash; such as
+          conciliation at the Territorial Labour Inspectorate (Ispettorato Territoriale del Lavoro), a
+          trade union office, or a certification commission. Simply signing a private agreement between
+          employer and employee does not automatically guarantee NASpI entitlement.
+        </li>
+        <li>
+          <strong>Dismissal ticket (ticket di licenziamento)</strong>: The employer is required to pay
+          INPS a "dismissal ticket" (contributo di recesso), equal to 41% of the maximum monthly NASpI
+          allowance for each year of service, up to a maximum of 3 years. This cost is borne entirely
+          by the employer and does not reduce the employee's payout.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Public Sector TFS: Specific Rules for Civil Servants
+      </h3>
+      <p>
+        If you are a public sector employee (dipendente pubblico) hired before 1 January 2001, your
+        end-of-service benefit is the <strong>TFS (Trattamento di Fine Servizio)</strong>, commonly
+        called "buonuscita" in everyday Italian. The TFS has its own specific calculation formula and
+        payment rules:
+      </p>
+      <ul>
+        <li>
+          <strong>Formula</strong>: TFS = (80% of final annual salary / 12) &times; years of service.
+          Only the "base salary" plus certain fixed allowances are included in the calculation; variable
+          bonuses and overtime are typically excluded.
+        </li>
+        <li>
+          <strong>Payment timeline</strong>: Unlike the private sector TFR (which must be paid promptly),
+          the public sector TFS is subject to significant delays. For retirement due to age limits, the
+          first instalment is paid 12 months after the termination date. For voluntary resignation, the
+          waiting period is 24 months. Amounts above &euro;50,000 are paid in two or three annual
+          instalments.
+        </li>
+        <li>
+          <strong>Tax treatment</strong>: The TFS benefits from a &euro;309.87 deduction for each year
+          of service before calculating the applicable tax. The remaining amount is then taxed using
+          separate taxation, with the average IRPEF rate from the last two tax years.
+        </li>
+        <li>
+          <strong>INPS management</strong>: The TFS is managed and paid by INPS (formerly INPDAP for
+          public employees). You can check your accrued TFS position through the INPS online portal
+          (MyINPS).
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Indicative Table: Net Severance by Gross Amount
+      </h3>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Gross severance</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Reference RAL</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Average rate</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Separate tax</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Estimated net</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;10,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro;30,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~23.0%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;2,300</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~&euro;7,700</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;20,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro;35,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~24.5%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;4,900</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~&euro;15,100</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;30,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro;40,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~25.8%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;7,725</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~&euro;22,275</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;50,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro;50,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~28.1%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;14,050</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~&euro;35,950</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;80,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro;60,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~31.2%</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;24,960</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~&euro;55,040</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        The values in the table above are estimates based on separate taxation with the average IRPEF
+        rate calculated on the reference RAL. The effective rate applied by the Agenzia delle Entrate
+        may vary slightly upon re-assessment (riliquidazione), as it takes into account the
+        comprehensive income (not just employment income) from the last two tax years. For a
+        personalised estimate, use the calculator above by entering your specific gross amount and RAL.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Legal References and {SITE.annoFiscale} Tax Rates
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The tax treatment of the buonuscita, TFS, and exit incentive is primarily governed by the
+        following Italian legal provisions:
+      </p>
+      <ul>
+        <li>
+          <strong>Article 17(1)(a) of the TUIR</strong>: Provides for separate taxation of "lump sums
+          received in connection with the termination of employment relationships," which includes exit
+          incentives and buonuscita payments.
+        </li>
+        <li>
+          <strong>Article 19 of the TUIR</strong>: Governs the determination of tax under the separate
+          taxation regime for TFR/TFS and equivalent sums, defining the criteria for calculating the
+          reference average rate.
+        </li>
+        <li>
+          <strong>Presidential Decree 1032/1973</strong>: The foundational legislation governing the
+          TFS (Trattamento di Fine Servizio) for public sector employees, establishing the calculation
+          formula and eligibility criteria.
+        </li>
+        <li>
+          <strong>Agenzia delle Entrate Circular no. 29/E of 2001</strong>: Provides operational
+          guidance on the separate taxation of sums paid upon termination of employment.
+        </li>
+        <li>
+          <strong>INPS Circular no. 263/1997</strong>: Clarifies the exclusion from the social
+          security contribution base of sums paid as exit incentives.
+        </li>
+      </ul>
+      <p>
+        For {SITE.annoFiscale}, the IRPEF tax brackets used to calculate the average rate are:
+      </p>
+      <ul>
+        <li>Up to &euro;28,000: <strong>23%</strong></li>
+        <li>From &euro;28,001 to &euro;50,000: <strong>35%</strong></li>
+        <li>Over &euro;50,000: <strong>43%</strong></li>
+      </ul>
+      <p>
+        The resulting average rate, applied to the buonuscita under separate taxation, will always be
+        lower than or equal to the marginal rate. For incomes around &euro;35,000 the average rate is
+        approximately 24&ndash;26%, compared with a marginal rate of 35%. For incomes above
+        &euro;55,000 the average rate reaches approximately 32&ndash;34%, compared with the 43%
+        marginal rate. This difference is what makes separate taxation significantly more favourable
+        for lump-sum severance payments.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Public Sector TFS Payment Schedule
+      </h3>
+      <p>
+        Public sector employees should be aware that the TFS (buonuscita) is paid according to a
+        specific instalment schedule set by law:
+      </p>
+      <ul>
+        <li>
+          <strong>Amounts up to &euro;50,000</strong>: Paid in a single instalment after the mandatory
+          waiting period (12 months for age-related retirement, 24 months for voluntary resignation).
+        </li>
+        <li>
+          <strong>Amounts between &euro;50,001 and &euro;100,000</strong>: Paid in two annual
+          instalments. The first instalment (up to &euro;50,000) is paid after the waiting period; the
+          remainder is paid 12 months after the first instalment.
+        </li>
+        <li>
+          <strong>Amounts exceeding &euro;100,000</strong>: Paid in three annual instalments. The
+          third instalment is paid 24 months after the first.
+        </li>
+      </ul>
+      <p>
+        Additionally, INPS adds a 90-day processing period on top of the mandatory waiting periods.
+        In practice, this means the first payment typically arrives 15 to 27 months after the
+        termination date. Planning for this delay is essential for financial planning, particularly
+        for expats who may be relocating after leaving Italian public service.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions About the Buonuscita
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is the exit incentive (incentivo all'esodo) mandatory?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No. The exit incentive is the result of a negotiation between employer and employee. There is
+          no legal obligation for the employer to offer one, nor for the employee to accept it. You have
+          every right to refuse the proposal and continue your employment. It is always advisable to
+          carefully evaluate the offer &mdash; ideally with the assistance of an employment lawyer
+          (avvocato del lavoro) or a trade union representative &mdash; before making a decision. In the
+          public sector, the TFS (buonuscita) itself is a legal entitlement and does not require
+          negotiation; it is paid automatically upon termination according to the statutory formula.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is the buonuscita subject to INPS social security contributions?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No. Exit incentives are exempt from INPS social security contributions when classified as sums
+          incentivising the consensual termination of the employment relationship, as established by INPS
+          Circular no. 263/1997. This represents a significant advantage over ordinary salary, where
+          employee INPS contributions amount to 9.19%. The exemption applies to both the employee's share
+          and the employer's share of contributions. For the statutory TFS in the public sector, the
+          contributions have already been paid during the employment period &mdash; no additional
+          contributions are deducted from the lump-sum payment itself.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I receive NASpI unemployment benefits after accepting an exit incentive?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          It depends on how the termination is formalised. NASpI (Nuova Assicurazione Sociale per
+          l'Impiego, Italy's unemployment insurance) is available for consensual terminations that take
+          place in a "protected venue" (sede protetta) &mdash; specifically at the Territorial Labour
+          Inspectorate (Ispettorato Territoriale del Lavoro), a trade union office, or a certification
+          commission. If the termination is recorded simply as voluntary resignation (dimissioni
+          volontarie), NASpI entitlement does not arise. This is a critical distinction: structuring the
+          agreement correctly can mean the difference between receiving up to 24 months of unemployment
+          benefits or receiving none at all. Expats should be especially aware of this, as NASpI
+          eligibility also requires at least 13 weeks of INPS contributions in the four years preceding
+          the termination.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How is the buonuscita taxed: separate or ordinary taxation?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The exit incentive and TFS normally benefit from separate taxation (tassazione separata) under
+          Article 17 of the TUIR. The applicable rate is the average IRPEF rate calculated on income from
+          the last two fiscal years. The employer (as tax withholding agent, or sostituto d'imposta)
+          initially applies a provisional rate based on the most recent available income data.
+          Subsequently, the Agenzia delle Entrate may re-assess (riliquidare) the tax using the effective
+          average rate. Ordinary taxation applies only if the employee expressly requests it or in
+          specific circumstances provided by law. In almost all cases, separate taxation results in lower
+          taxes, so there is rarely a reason to opt for ordinary taxation.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How many months' salary can I negotiate as severance?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          There is no legal minimum or maximum. In Italian practice, amounts vary considerably depending
+          on seniority, role, and context. As a general benchmark: 1 to 2 monthly salaries per year of
+          service for employees (impiegati) and middle managers (quadri), and up to 24 or more total
+          monthly salaries for executives (dirigenti) with long tenure. The key factor is negotiating
+          leverage: the stronger the employee's position (contractual protections, seniority, specialised
+          skills, proximity to retirement), the higher the negotiable amount. Note that for the public
+          sector TFS (buonuscita), the amount is fixed by law and is not subject to negotiation.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does the buonuscita affect my TFR?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No. The buonuscita and exit incentive are separate from the TFR (Trattamento di Fine Rapporto).
+          The TFR is calculated exclusively on the salary earned during the employment relationship, and
+          the exit incentive is not included in its calculation base. Upon termination, the worker
+          receives both the accrued TFR and the agreed exit incentive as two distinct items. Both can
+          benefit from separate taxation, but the calculation methods differ. In the public sector, if
+          you are entitled to TFS (rather than TFR), the same principle applies: the TFS is calculated on
+          your service record and final salary, independently of any additional exit incentive that may
+          have been negotiated.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What happens if the Agenzia delle Entrate re-assesses the tax?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The Agenzia delle Entrate (Italy's Revenue Agency) has the authority to recalculate
+          (riliquidare) the tax on the buonuscita, applying the effective average rate computed on the
+          comprehensive income from the two years preceding the end of the employment relationship. If
+          the effective rate turns out to be higher than what the employer withheld, the taxpayer receives
+          a payment notice (comunicazione) with an invitation to pay the difference. If the effective rate
+          is lower, the taxpayer is entitled to a refund. The re-assessment can occur within the standard
+          statute of limitations for tax assessments (five years from the date of filing). It is possible
+          to request instalment payments for any additional tax due. Expats who have left Italy should be
+          aware that these notices may arrive at their last registered Italian address, so maintaining an
+          active PEC (certified email) or appointing a fiscal representative is advisable.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How long does it take to receive the public sector TFS (buonuscita)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Public sector TFS payments are subject to legally mandated waiting periods. If your employment
+          ended due to reaching the statutory retirement age, the first instalment is paid 12 months
+          after your last day. If you resigned voluntarily, the waiting period is 24 months. On top of
+          these periods, INPS adds an administrative processing time of approximately 90 days. For
+          amounts exceeding &euro;50,000, payment is split into two or three annual instalments. In
+          practice, former public employees often wait 15 to 27 months for the first payment. It is
+          possible to request an advance on the TFS through a bank loan arrangement facilitated by INPS
+          (the so-called "anticipo TFS"), though this involves interest charges that reduce the net
+          amount received.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/en/severance-pay-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">TFR Severance Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calculate your accrued TFR and compare destination options (company vs pension fund)</p>
+      </a>
+      <a href="/en/payslip-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Payslip Simulator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Simulate your full Italian payslip month by month, from gross to net</p>
+      </a>
+      <a href="/en/employee-vs-freelancer/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Employee vs Freelancer</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Compare net income between employee status and partita IVA flat-rate regime</p>
+      </a>
+      <a href="/en/pension-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Pension Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Estimate your Italian pension based on contributions, salary, and retirement age</p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">IRPEF Tax Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calculate your Italian income tax with all brackets, deductions, and surcharges</p>
+      </a>
+      <a href="/en/impatriati-tax-regime/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Impatriati Tax Regime</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Estimate tax savings under Italy's regime impatriati for returning workers and expats</p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

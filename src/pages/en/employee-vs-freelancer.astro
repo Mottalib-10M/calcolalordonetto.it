@@ -11,6 +11,7 @@ const canonical = canonicalURL('/en/employee-vs-freelancer/');
 
 const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Calculators', url: `${SITE.url}/en/` },
   { name: 'Employee vs Freelancer', url: canonical },
 ];
 ---
@@ -24,4 +25,589 @@ const breadcrumbs = [
   lang={lang}
 >
   <ConfrontoDipendentePIVA client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      When is freelancing better than employment in Italy &mdash; and when is it not?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Choosing between <strong>permanent employment</strong> (<em>lavoro dipendente</em>) and
+        <strong>freelancing with a Partita IVA</strong> (VAT number / freelancer registration) is one
+        of the most consequential financial decisions you will face while working in Italy. There is no
+        universal answer: the right choice depends on your income level, your professional sector, your
+        risk tolerance, and personal factors such as the need for stability versus the desire for
+        flexibility. This calculator helps you compare the real numbers side by side, but the final
+        decision must also account for non-monetary benefits that are difficult to quantify.
+      </p>
+      <p>
+        From a purely fiscal standpoint, the <strong>regime forfettario</strong> (flat-rate tax regime)
+        for freelancers tends to be more tax-efficient at low-to-medium revenue levels (up to roughly
+        &euro;50,000&ndash;60,000 in annual billings), thanks to the reduced substitute tax of 5% for
+        the first five years and 15% thereafter, plus the absence of progressive IRPEF brackets.
+        However, Italian employees enjoy a suite of protections and supplementary compensation
+        components that carry real economic value &mdash; and these must be factored into any honest
+        comparison.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        The hidden value of Italian employment (lavoro dipendente)
+      </h3>
+      <p>
+        When comparing an employee's net salary with a freelancer's take-home pay, it is a common
+        mistake to look only at the monthly net figure on the payslip (<em>busta paga</em>). The total
+        compensation package of an Italian employee includes several additional components with tangible
+        economic value:
+      </p>
+      <ul>
+        <li>
+          <strong>TFR (Trattamento di Fine Rapporto &mdash; severance pay)</strong>: equal to roughly
+          6.91% of the gross annual salary or RAL (calculated as RAL&nbsp;/&nbsp;13.5). The employer
+          sets aside this amount each year, and it is paid out when the employment relationship ends.
+          For a RAL of &euro;40,000, this amounts to approximately &euro;2,963 per year. Freelancers
+          have no equivalent benefit and must save independently for their own financial safety net.
+        </li>
+        <li>
+          <strong>Tredicesima (13th-month salary)</strong>: already included in the RAL, this
+          represents an extra monthly payment that freelancers simply do not receive. A RAL of
+          &euro;40,000 is spread across 13 monthly payments (approximately &euro;3,077 gross each),
+          not 12.
+        </li>
+        <li>
+          <strong>Paid holidays (ferie retribuite)</strong>: Italian employees are entitled to at least
+          26 working days of paid leave per year (four weeks minimum by law, plus public holidays and
+          additional leave under the applicable CCNL &mdash; the national collective labour agreement).
+          This is equivalent to roughly 10% of annual working time that is paid without working. A
+          freelancer who does not work does not bill.
+        </li>
+        <li>
+          <strong>Paid sick leave (malattia retribuita)</strong>: when an employee falls ill, they
+          continue to receive their salary (under the terms of their CCNL and INPS rules). A
+          freelancer who is sick simply earns nothing. The INPS <em>gestione separata</em> (separate
+          management fund) provides a sickness allowance, but only in the case of hospitalisation
+          and at very limited amounts.
+        </li>
+        <li>
+          <strong>Maternity and paternity leave</strong>: female employees are entitled to 5 months of
+          mandatory maternity leave paid at 80% of salary (with many CCNLs topping this up to 100%),
+          plus optional parental leave. Male employees are entitled to 10 days of mandatory paternity
+          leave paid at 100%. For holders of a Partita IVA enrolled in the INPS <em>gestione
+          separata</em>, a maternity allowance exists but is calculated on a conventional basis and
+          is usually lower than what employees receive.
+        </li>
+        <li>
+          <strong>INAIL coverage (workplace injury insurance)</strong>: the employer pays INAIL
+          contributions covering workplace accidents and occupational diseases. This cost is borne
+          entirely by the company. A freelancer must arrange and pay for private insurance if they
+          want similar protection.
+        </li>
+        <li>
+          <strong>Employer pension contributions (contributi previdenziali del datore)</strong>: the
+          employer pays approximately 23.81% of the RAL in INPS pension contributions on top of the
+          employee's salary. These contributions translate into a higher future pension for the
+          employee. A freelancer enrolled in the <em>gestione separata</em> pays 26.07% of taxable
+          income &mdash; which is already reduced by the profitability coefficient (<em>coefficiente
+          di redditivit&agrave;</em>), resulting in lower lifetime pension accrual.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        The regime forfettario (flat-rate tax regime): advantages and limitations
+      </h3>
+      <p>
+        The <strong>regime forfettario</strong> is Italy's simplified tax regime for freelancers and
+        sole proprietors with annual revenues up to <strong>&euro;85,000</strong>. Its key advantages
+        are:
+      </p>
+      <ul>
+        <li>
+          <strong>Reduced substitute tax (imposta sostitutiva)</strong>: 5% for the first 5 years of
+          activity (subject to specific eligibility criteria), rising to 15% thereafter. This single
+          tax replaces IRPEF, regional and municipal surcharges, and IRAP.
+        </li>
+        <li>
+          <strong>Simplified bookkeeping</strong>: no obligation to charge VAT on invoices (invoices
+          are VAT-exempt under Art. 1, para. 58, Law 190/2014), no VAT registers required, and no
+          periodic VAT settlement filings.
+        </li>
+        <li>
+          <strong>No withholding tax (ritenuta d'acconto)</strong> applied on invoices issued.
+        </li>
+      </ul>
+      <p>
+        However, the <strong>limitations</strong> of the regime forfettario are equally important to
+        understand:
+      </p>
+      <ul>
+        <li>
+          <strong>No deduction of actual expenses</strong>: business expenses are determined on a
+          lump-sum basis using the profitability coefficient (<em>coefficiente di
+          redditivit&agrave;</em>). If your real expenses exceed the flat-rate percentage, the regime
+          becomes financially disadvantageous.
+        </li>
+        <li>
+          <strong>Revenue cap of &euro;85,000</strong>: once you exceed this threshold, you exit the
+          regime (from the following year if you stay below &euro;100,000, or immediately if you
+          exceed &euro;100,000).
+        </li>
+        <li>
+          <strong>INPS gestione separata at 26.07%</strong>: the social security contribution rate is
+          substantial and applies to the taxable income (not to total revenue). For those registered
+          with professional pension funds (<em>casse previdenziali</em> such as INARCASSA for
+          engineers or Cassa Forense for lawyers), the rates may differ.
+        </li>
+        <li>
+          <strong>No IRPEF deductions or credits</strong>: under the regime forfettario, you cannot
+          claim tax deductions for medical expenses, mortgage interest, home renovations, energy
+          efficiency bonuses, or other standard personal deductions. This can be a significant
+          drawback for anyone with substantial deductible expenses.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        The comparison trap: RAL &euro;40,000 vs revenue &euro;40,000
+      </h3>
+      <p>
+        One of the most common mistakes is to compare a RAL (<em>Retribuzione Annua Lorda</em> &mdash;
+        gross annual salary) of &euro;40,000 with freelance revenue of &euro;40,000 as though they were
+        equivalent. <strong>They are not.</strong> The employee's RAL already includes the 13th-month
+        salary (it is split across 13 payments), and on top of the RAL the employee also receives TFR,
+        paid holidays, sick leave, and the employer's pension contributions. The <strong>total employer
+        cost</strong> (<em>costo azienda</em>) for an employee with a RAL of &euro;40,000 is
+        approximately <strong>&euro;52,000&ndash;54,000</strong> (RAL + employer INPS contributions +
+        TFR + INAIL).
+      </p>
+      <p>
+        This means that for a fair like-for-like comparison, a freelancer would need to bill at least
+        <strong>&euro;52,000&ndash;55,000</strong> to achieve a total compensation package equivalent
+        to that of an employee with a RAL of &euro;40,000. And even then, the freelancer would not
+        have protections in case of illness, maternity, or termination.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Comparison table: employee RAL vs equivalent freelance revenue
+      </h3>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Employee RAL</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Employee net/year</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Equiv. P.IVA revenue</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">P.IVA net/year</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;25,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;20,500</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;33,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;24,600</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, tax rate 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;30,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;23,800</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;40,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;29,200</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, tax rate 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;40,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;30,200</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;55,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;39,400</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, tax rate 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;50,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;36,100</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;68,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;48,700</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, tax rate 15%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro;60,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;41,500</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;82,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">~&euro;58,700</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-500 text-xs">Coeff. 78%, tax rate 15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        The table above shows that to achieve the same annual net income as an employee, a freelancer
+        must bill significantly more. For example, to match an employee earning a RAL of &euro;40,000,
+        an IT consultant operating under the regime forfettario (with a 78% profitability coefficient)
+        would need to invoice approximately &euro;55,000. And this calculation does not even account
+        for the economic value of the employee's additional protections (TFR severance, paid leave,
+        sick pay, maternity and paternity rights).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Worked example: RAL &euro;40,000 vs freelance revenue &euro;55,000
+      </h3>
+      <p>
+        Let us take an <strong>IT consultant</strong> who must choose between an employment offer at
+        &euro;40,000 RAL and continuing as a freelancer billing &euro;55,000 per year.
+      </p>
+      <p>
+        <strong>As an employee (RAL &euro;40,000)</strong>:
+      </p>
+      <ul>
+        <li>Employee INPS contributions (9.19%): ~&euro;3,676</li>
+        <li>Net IRPEF (after deductions and tax wedge relief): ~&euro;6,100</li>
+        <li>Regional and municipal surcharges: ~&euro;600</li>
+        <li><strong>Annual net pay: ~&euro;30,200</strong> (~&euro;2,323/month across 13 payments)</li>
+        <li>TFR accrued: ~&euro;2,963/year</li>
+        <li>Employer INPS contributions: ~&euro;9,524</li>
+        <li>Total employer cost: ~&euro;52,500</li>
+      </ul>
+      <p>
+        <strong>As a freelancer in regime forfettario (revenue &euro;55,000, coeff. 78%)</strong>:
+      </p>
+      <ul>
+        <li>Taxable income (78% of revenue): &euro;42,900</li>
+        <li>INPS gestione separata contributions (26.07%): ~&euro;11,184</li>
+        <li>Tax base for substitute tax: &euro;31,716</li>
+        <li>Substitute tax (imposta sostitutiva at 15%): ~&euro;4,757</li>
+        <li><strong>Annual net income: ~&euro;39,059</strong> (~&euro;3,255/month across 12 payments)</li>
+        <li>TFR accrued: &euro;0</li>
+        <li>Paid holidays: 0 days</li>
+      </ul>
+      <p>
+        At first glance, the freelancer earns more (&euro;39,059 vs &euro;30,200). But once you add
+        the employee's annual TFR (~&euro;2,963) and the economic value of 26 days of paid holiday
+        (~&euro;4,000), the gap narrows significantly. Furthermore, the freelancer must cover
+        professional expenses out of pocket &mdash; accountant fees (<em>commercialista</em>),
+        software subscriptions, coworking spaces, professional insurance &mdash; none of which are
+        deductible under the regime forfettario. When all these factors are taken into account, the
+        two compensation packages become much closer than a simple net-to-net comparison would
+        suggest.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Non-monetary factors to consider
+      </h3>
+      <p>
+        Beyond the numbers, the choice between employment and freelancing involves important
+        qualitative factors that every expat in Italy should weigh carefully:
+      </p>
+      <ul>
+        <li>
+          <strong>Flexibility</strong>: freelancers generally have more control over their schedule
+          and choice of projects. They can work remotely, choose their clients, and organise their
+          time as they see fit. Employees tend to have more rigid schedules but also benefit from a
+          structure that many find reassuring.
+        </li>
+        <li>
+          <strong>Financial security</strong>: employees receive a guaranteed fixed salary, have
+          protections in case of termination (notice period and NASpI unemployment benefit), paid
+          sick leave, and predictable pension contributions. Freelancers are exposed to the risk of
+          losing clients, late payments, and dry spells without assignments.
+        </li>
+        <li>
+          <strong>Career growth</strong>: within a company, employees can grow through promotions,
+          pay rises, and employer-funded training. As a freelancer, career progression depends
+          entirely on your ability to win new clients and develop new skills. On the other hand,
+          freelancers can diversify their experience by working with multiple companies
+          simultaneously.
+        </li>
+        <li>
+          <strong>Access to credit</strong>: obtaining a mortgage (<em>mutuo</em>) or a personal loan
+          is generally much easier for an employee with a permanent contract (<em>contratto a tempo
+          indeterminato</em>). Holders of a Partita IVA typically need to show at least 2&ndash;3
+          years of stable revenues, and the terms offered by Italian banks are often less
+          favourable.
+        </li>
+        <li>
+          <strong>Administrative burden</strong>: freelancers must manage their own invoicing,
+          bookkeeping, tax filings, and interactions with INPS and the Agenzia delle Entrate
+          (revenue agency). Even under the simplified regime forfettario, the annual cost of an
+          accountant (<em>commercialista</em>) ranges from roughly &euro;600 to &euro;1,500.
+        </li>
+        <li>
+          <strong>Residency and immigration considerations</strong>: for non-EU expats, employment
+          with an Italian company often provides a simpler path to residency permits. Opening a
+          Partita IVA as a non-EU citizen requires a specific self-employment visa and additional
+          bureaucratic steps. EU citizens can freely choose either route but should still consider
+          how each status interacts with local residency registration (<em>residenza</em>).
+        </li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Tax and contribution parameters for {SITE.annoFiscale}
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The comparison between employment (lavoro dipendente) and freelancing under the regime
+        forfettario is based on the following fiscal and social security parameters in force for the
+        {SITE.annoFiscale} tax year:
+      </p>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">
+        Employment (lavoro dipendente)
+      </h3>
+      <ul>
+        <li>Employee INPS contributions: <strong>9.19%</strong> of RAL</li>
+        <li>IRPEF brackets: 23% up to &euro;28,000 &bull; 35% from &euro;28,001 to &euro;50,000 &bull; 43% above &euro;50,000</li>
+        <li>Employment tax deductions (<em>detrazioni lavoro dipendente</em>): up to &euro;1,955 per year</li>
+        <li>Tax wedge relief (<em>cuneo fiscale</em>): contribution reduction / deduction for incomes up to &euro;40,000</li>
+        <li>TFR severance accrual: approximately 6.91% of RAL (RAL&nbsp;/&nbsp;13.5)</li>
+        <li>Employer INPS contributions: approximately 23.81% of RAL</li>
+      </ul>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">
+        Freelancing under the regime forfettario (flat-rate regime)
+      </h3>
+      <ul>
+        <li>Revenue cap: <strong>&euro;85,000</strong> per year</li>
+        <li>Substitute tax (<em>imposta sostitutiva</em>): <strong>5%</strong> for the first 5 years, <strong>15%</strong> thereafter</li>
+        <li>INPS gestione separata contributions: <strong>26.07%</strong> of taxable income</li>
+        <li>Taxable income: revenue &times; profitability coefficient (<em>coefficiente di redditivit&agrave;</em>), which varies by ATECO sector code</li>
+        <li>Tax base for substitute tax: taxable income &minus; INPS contributions</li>
+        <li>No IRPEF deductions available, no regional or municipal surcharges</li>
+      </ul>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">
+        Profitability coefficients by sector
+      </h3>
+      <p>
+        The most common profitability coefficients (<em>coefficienti di redditivit&agrave;</em>) for
+        workers in the services and technology sectors are: <strong>86%</strong> for IT and technical
+        consulting, <strong>78%</strong> for intellectual professions (consulting, freelance
+        professionals), and <strong>67%</strong> for general service activities. For retail trade and
+        food services, the coefficients drop to <strong>40%</strong>, reflecting higher operating
+        costs. The coefficient determines what percentage of your gross revenue is considered taxable
+        income &mdash; a lower coefficient means a larger portion of revenue is treated as expenses.
+      </p>
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">
+        Key Italian tax terms for expats
+      </h3>
+      <p>
+        If you are new to the Italian tax system, here are the key terms you will encounter:
+      </p>
+      <ul>
+        <li><strong>RAL</strong> (<em>Retribuzione Annua Lorda</em>): gross annual salary, the standard benchmark for employment offers in Italy</li>
+        <li><strong>IRPEF</strong> (<em>Imposta sul Reddito delle Persone Fisiche</em>): personal income tax, applied in progressive brackets</li>
+        <li><strong>INPS</strong> (<em>Istituto Nazionale della Previdenza Sociale</em>): the national social security institute managing pensions and benefits</li>
+        <li><strong>TFR</strong> (<em>Trattamento di Fine Rapporto</em>): mandatory severance pay accrued during employment</li>
+        <li><strong>CCNL</strong> (<em>Contratto Collettivo Nazionale di Lavoro</em>): national collective labour agreement, which sets minimum pay, working hours, leave, and other conditions by sector</li>
+        <li><strong>Commercialista</strong>: a chartered accountant / tax advisor, essential for anyone operating with a Partita IVA</li>
+        <li><strong>Gestione separata</strong>: the INPS fund for freelancers and independent workers without a dedicated professional pension fund</li>
+        <li><strong>Codice ATECO</strong>: the activity classification code assigned when you open a Partita IVA, which determines your profitability coefficient</li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently asked questions: employee vs freelancer in Italy
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is it better to be an employee or a freelancer (Partita IVA) in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          There is no universal answer. From a strictly fiscal perspective, the Partita IVA under the
+          regime forfettario (flat-rate regime) can be more tax-efficient at low-to-medium revenue
+          levels thanks to the reduced substitute tax. However, employees benefit from TFR severance,
+          the 13th-month salary, paid holidays, sick pay, maternity/paternity leave, and employer
+          pension contributions. For a fair comparison, your freelance revenue should be at least
+          30&ndash;50% higher than the equivalent employee RAL. The choice also depends on
+          non-monetary factors such as flexibility, financial security, and personal risk tolerance.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How much do I need to invoice as a freelancer to earn the same as an employee?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          As a general rule, to achieve a net income equivalent to that of an employee (including TFR
+          and the value of employment protections), your Partita IVA revenue should be roughly
+          30&ndash;50% higher than the employee RAL. For example, to match a RAL of &euro;40,000 you
+          would need to bill approximately &euro;55,000&ndash;60,000 as a consultant under the regime
+          forfettario. Use the calculator above for a precise estimate based on your specific
+          profitability coefficient (<em>coefficiente di redditivit&agrave;</em>).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What happens if my freelance revenue exceeds &euro;85,000?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          If your revenues exceed &euro;85,000 but remain below &euro;100,000, you exit the regime
+          forfettario starting from the following calendar year and transition to the <em>regime
+          ordinario</em> (standard tax regime) with progressive IRPEF, VAT obligations, and full
+          double-entry bookkeeping. If you exceed &euro;100,000, the exit is immediate &mdash;
+          effective in the current year. Under the regime ordinario, the tax burden is significantly
+          higher: progressive IRPEF (up to 43%), regional and municipal surcharges, and VAT to
+          charge and remit.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does a freelancer under the regime forfettario really pay less tax than an employee?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In terms of the marginal tax rate, yes: the substitute tax of 5&ndash;15% is much lower
+          than the progressive IRPEF which reaches 43%. However, the comparison is not
+          straightforward. The forfettario freelancer pays 26.07% in INPS contributions on taxable
+          income (compared to 9.19% for the employee, with the employer adding another 23.81%).
+          Moreover, the forfettario cannot claim tax deductions for medical costs, mortgage interest,
+          home renovations, or other standard reliefs. When you consider all factors &mdash; taxes,
+          contributions, lost deductions, and the absence of employment protections &mdash; the real
+          difference is much smaller than the headline rates suggest.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I be employed and have a Partita IVA at the same time?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, it is possible to be employed and simultaneously hold a Partita IVA, provided there is
+          no exclusivity clause in your employment contract and no conflict of interest with your
+          employer. From a tax perspective, you can still access the regime forfettario as an
+          employee, on the condition that your employment income does not exceed &euro;30,000 gross
+          per year (this is an additional requirement for those who also have an employment
+          relationship). If your employee income exceeds this threshold, the regime forfettario is
+          not available and your Partita IVA must operate under the standard regime ordinario.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How does the pension work for a freelancer in the INPS gestione separata?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Holders of a Partita IVA enrolled in the INPS gestione separata (separate management fund)
+          contribute 26.07% of their taxable income towards their pension. These contributions
+          accumulate in a notional contribution pot (<em>montante contributivo</em>) and determine
+          the future pension amount, calculated under Italy's contribution-based system (<em>sistema
+          contributivo</em>). Because the forfettario taxable income is reduced by the profitability
+          coefficient, the contributions actually paid &mdash; and therefore the future pension &mdash;
+          will generally be lower than those of an employee with an equivalent RAL, whose employer
+          pays an additional 23.81% on top. For this reason, many freelancers choose to supplement
+          their state pension with private pension plans (<em>fondi pensione aperti</em> or
+          <em>piani individuali pensionistici</em>).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does a freelancer in the regime forfettario need to charge VAT?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No. Freelancers operating under the regime forfettario issue invoices without VAT, pursuant
+          to Art. 1, paragraph 58, of Law 190/2014. The invoice must include a specific exemption
+          statement (<em>dicitura di esenzione</em>). This greatly simplifies accounting, but it has
+          a flip side: the forfettario cannot deduct VAT on purchases. For private clients (B2C)
+          this is an advantage because your prices are more competitive; for business clients (B2B)
+          the effect is neutral because those clients cannot reclaim the input VAT on invoices
+          received from a forfettario supplier.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          I am an expat moving to Italy &mdash; should I start as an employee or open a Partita IVA?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          For most expats arriving in Italy, starting as an employee is generally the simpler and
+          safer path. Employment provides a steady income, immediate access to the Italian healthcare
+          system (SSN), a straightforward residency process, and familiarity with the tax system
+          through your employer's payroll. Opening a Partita IVA requires choosing the right codice
+          ATECO, registering with INPS, hiring a commercialista, and managing quarterly tax
+          obligations &mdash; all in a foreign language and legal system. If you are considering
+          freelancing, it is worth exploring the <em>regime impatriati</em> (expat tax incentive),
+          which can reduce your taxable income by 50&ndash;70% for qualifying new residents.
+          Use our <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati
+          calculator</a> to estimate potential savings.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the 5% reduced tax rate and who qualifies?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          New Partita IVA holders who meet certain requirements can pay a reduced substitute tax of
+          just 5% for the first 5 years of activity, instead of the standard 15%. To qualify, you
+          must not have held a Partita IVA in the same sector in the three years prior to opening,
+          you must not be continuing a previously existing business activity (unless it was an
+          apprenticeship or training period), and your annual revenues must remain below &euro;85,000.
+          This reduced rate applies automatically if the conditions are met at the time of opening
+          your Partita IVA. After 5 years, the rate increases to 15%.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/en/flat-rate-regime-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Flat-Rate Regime Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calculate your net income under Italy's regime forfettario with all ATECO profitability coefficients</p>
+      </a>
+      <a href="/en/payslip-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Payslip Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Simulate your full Italian payslip (busta paga) from gross to net, month by month</p>
+      </a>
+      <a href="/en/severance-pay-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">TFR Severance Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calculate the net payout of your TFR (trattamento di fine rapporto) with separate taxation</p>
+      </a>
+      <a href="/en/employer-cost-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Employer Cost Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">See the full cost your employer pays for your salary, including INPS, TFR, and INAIL</p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">IRPEF Tax Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calculate your Italian income tax (IRPEF) across all progressive brackets for {SITE.annoFiscale}</p>
+      </a>
+      <a href="/en/impatriati-tax-regime/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Impatriati Tax Regime</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Estimate tax savings under Italy's special tax regime for new residents and returning Italians</p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

@@ -23,5 +23,585 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Italian Mortgage Calculator
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Simulate your monthly mortgage payment and view the full amortization schedule for an Italian mutuo.
+  </p>
+
   <Mutuo client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How is the monthly mortgage payment calculated?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        In Italy, the vast majority of home loans (mutui ipotecari) use the <strong>French amortization method</strong>
+        (ammortamento alla francese), which produces a fixed monthly payment for the entire duration of the loan.
+        The mathematical formula used to calculate the monthly instalment is:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        R = C &times; r &times; (1 + r)<sup>n</sup> / [(1 + r)<sup>n</sup> &minus; 1]
+      </div>
+      <p>Where:</p>
+      <ul>
+        <li><strong>R</strong> = monthly instalment (rata mensile)</li>
+        <li><strong>C</strong> = principal amount (the total loan amount, or capitale)</li>
+        <li><strong>r</strong> = monthly interest rate (annual rate divided by 12)</li>
+        <li><strong>n</strong> = total number of payments (years &times; 12)</li>
+      </ul>
+      <p>
+        Under this method, the payment amount stays the same every month throughout the life of the loan.
+        However, the internal composition of each payment changes dramatically over time. In the early years,
+        the interest portion (quota interessi) makes up the majority of the payment, while the principal
+        portion (quota capitale) is relatively small. As the outstanding balance decreases, this ratio
+        gradually reverses: towards the end of the loan, nearly the entire payment goes towards repaying
+        principal with very little going to interest.
+      </p>
+      <p>
+        For a <strong>variable-rate mortgage</strong> (mutuo a tasso variabile), the monthly payment is
+        recalculated periodically based on movements in the Euribor or another reference rate chosen by
+        the lender. Our calculator shows the initial payment based on the current rate you enter, but keep
+        in mind that with a variable-rate loan, your actual payment will fluctuate over the years depending
+        on European Central Bank monetary policy and interbank lending rates.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        French amortization vs Italian amortization: which is better?
+      </h3>
+      <p>
+        Italy has two main amortization methods for home loans, and understanding the difference is
+        important for expats making what is likely the largest financial commitment of their lives
+        in a new country.
+      </p>
+      <p>
+        The <strong>French amortization</strong> (ammortamento alla francese) is by far the most
+        common, used in over 95% of Italian mortgages. Its main advantage is the constant monthly
+        payment, which makes household budgeting straightforward and predictable. However, the
+        internal split between principal and interest changes considerably over the life of the loan.
+        In the early instalments, the interest component can represent 60-70% of the total payment,
+        while the principal repayment is small. This means that in the first years you are repaying
+        very little of the actual debt and mostly paying interest. For example, on a mortgage of
+        &euro;200,000 over 25 years at 3%, the first monthly payment of &euro;948 consists of
+        approximately &euro;500 in interest and only &euro;448 in principal. Around payment number
+        150 (after 12.5 years), the proportions invert. This has a significant practical implication:
+        if you repay the mortgage early in the first few years, you will have already paid the bulk
+        of the total interest costs.
+      </p>
+      <p>
+        The <strong>Italian amortization</strong> (ammortamento all'italiana, or constant principal
+        repayment) works differently: the principal component remains identical in every payment,
+        while the interest portion decreases progressively because it is calculated on the declining
+        outstanding balance. The result is a higher initial payment compared to the French method,
+        which then decreases over time. For the same &euro;200,000 mortgage over 25 years at 3%,
+        the first payment would be approximately &euro;1,167 (&euro;667 principal + &euro;500 interest),
+        while the final payment would be only about &euro;669. The main benefit is that the total
+        interest paid over the life of the loan is lower than with the French method, because the
+        outstanding balance decreases more rapidly. The drawback is that the initial payments are
+        heavier, requiring greater income capacity at the start. Very few Italian banks actively
+        offer Italian amortization for residential mortgages, so in practice you will almost
+        certainly encounter French amortization.
+      </p>
+      <p>
+        The choice between the two methods depends on your personal situation: if you have a stable
+        income and prefer predictability, French amortization is the safer choice. If you expect your
+        income to grow over time or want to minimize total interest costs and can afford the higher
+        initial payments, Italian amortization could be more economical, although it remains difficult
+        to find banks that offer it.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        LTV (Loan to Value) and its impact on your mortgage
+      </h3>
+      <p>
+        The <strong>Loan to Value (LTV)</strong> ratio is the relationship between the mortgage amount
+        requested and the appraised value of the property being purchased, expressed as a percentage.
+        It is one of the most critical parameters in a mortgage application and directly influences
+        the interest rate the bank will offer you.
+      </p>
+      <p>
+        Italian banks generally grant mortgages with a <strong>maximum LTV of 80%</strong>, in line
+        with guidelines from the Bank of Italy (Banca d'Italia). This means that to purchase a
+        property valued at &euro;250,000, the bank will finance at most &euro;200,000, and the buyer
+        must have at least &euro;50,000 as a down payment (anticipo). On top of the down payment,
+        you should budget for closing costs (notary fees, stamp duty, appraisal fees, and estate
+        agent commission) which can amount to an additional 8-10% of the property value. For expats,
+        this is a critical consideration: you typically need to have at least 28-30% of the property
+        value available in cash before you can complete a purchase.
+      </p>
+      <p>
+        A lower LTV is generally rewarded by banks with <strong>better interest rates</strong>. The
+        difference between a 60% LTV mortgage and an 80% LTV mortgage can be 0.2-0.5 percentage
+        points on the rate, which over a 20-year &euro;200,000 mortgage translates to several
+        thousand euros in saved interest. The typical LTV bands in Italy are: up to 50% (best
+        conditions), 50-70% (good conditions), 70-80% (standard conditions), and above 80%
+        (more restrictive conditions, where available at all).
+      </p>
+      <p>
+        For <strong>buyers under 36 years of age</strong> with an ISEE (household income indicator)
+        below &euro;40,000 per year, the Fondo di Garanzia per la Prima Casa (First Home Guarantee
+        Fund, managed by Consap) makes it possible to access mortgages up to <strong>100% of the
+        property value</strong>, effectively eliminating the need for a down payment. The fund
+        guarantees the bank up to 80% of the portion exceeding the normal 80% LTV threshold,
+        reducing the lender's risk. This mechanism has enabled thousands of young Italians to
+        purchase their first home without having significant savings, although the interest rates
+        on these guaranteed mortgages may be slightly higher than average. Expats who are tax
+        residents in Italy and meet the age and ISEE requirements can also apply for this scheme.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tax deductions on mortgage interest (detrazioni fiscali)
+      </h3>
+      <p>
+        Purchasing your primary residence (prima casa) with a mortgage in Italy entitles you to
+        important <strong>tax benefits</strong> under Italian law. The main benefit is an IRPEF tax
+        deduction of 19% on mortgage interest payments and related accessory charges, up to a
+        maximum of <strong>&euro;4,000 per year</strong> in eligible expenses. This translates to
+        a maximum annual tax saving of <strong>&euro;760</strong>.
+      </p>
+      <p>
+        The deductible accessory charges include not only the interest on the principal but also
+        the bank's processing fee (spese di istruttoria), the mortgage disbursement commission,
+        the property appraisal fee (spese di perizia), the substitute tax on the mortgage (imposta
+        sostitutiva), and the notary fees related to the mortgage contract itself (but not the fees
+        for the property purchase deed). In the early years of the mortgage, when the interest
+        portion of each payment is particularly high, the deduction often reaches the full
+        &euro;760 annual ceiling.
+      </p>
+      <p>
+        To qualify for this deduction, several <strong>key conditions</strong> must be met: the
+        property must be used as your primary residence (abitazione principale) within 12 months
+        of purchase; the mortgage must have been taken out specifically for the acquisition of the
+        property (different rules apply for renovation or construction loans); the property must
+        be located in Italy; and the borrower must transfer their official residence (residenza)
+        to the municipality where the property is located within 12 months of purchase. This last
+        requirement is particularly relevant for expats who may still have their residency registered
+        elsewhere. The deduction also applies to the purchase of pertinenze (ancillary spaces such
+        as garages and storage rooms), provided they are purchased at the same time as the main
+        property.
+      </p>
+      <p>
+        An important detail: the &euro;4,000 cap applies to the total across all borrowers. If the
+        mortgage is jointly held by two spouses, each can deduct 19% of their share of the interest,
+        but the combined ceiling remains &euro;4,000 (so &euro;2,000 each, for a maximum saving of
+        &euro;380 per person). In the case of surroga (mortgage portability, or refinancing with a
+        different bank) or renegotiation, the right to the deduction is maintained under the same
+        conditions as the original mortgage. Expats who are Italian tax residents and file an Italian
+        tax return (Modello 730 or Modello Redditi PF) can claim this deduction in the same way as
+        Italian citizens.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Getting a mortgage in Italy as an expat: what to know
+      </h3>
+      <p>
+        Foreign nationals can obtain a mortgage in Italy, but the process involves additional
+        considerations compared to what Italian citizens face. Most Italian banks will require you
+        to be an official resident (residente) in Italy, have a codice fiscale (Italian tax ID), and
+        hold an Italian bank account. Some banks specializing in non-resident lending may offer
+        mortgages to foreigners who live abroad, but these typically come with lower LTV ratios
+        (50-60%) and higher interest rates.
+      </p>
+      <p>
+        The documentation requirements for expats are generally more extensive. In addition to the
+        standard documents (identity card, codice fiscale, property details), you will likely need
+        to provide: your employment contract translated into Italian, tax returns from your country
+        of origin for the past two to three years, bank statements demonstrating steady income, proof
+        of funds for the down payment, and in some cases a letter from your employer confirming your
+        role and salary. If you are self-employed (libero professionista or partita IVA), expect even
+        more scrutiny, as banks require evidence of at least two to three years of stable Italian
+        income.
+      </p>
+      <p>
+        Processing times for expat mortgage applications tend to be longer than for Italian citizens.
+        While a straightforward application might take 30-45 days for an Italian national, expats
+        should plan for 60-90 days from application to disbursement. It is advisable to secure a
+        mortgage pre-approval (delibera) before making a binding offer on a property, so you know
+        exactly how much you can borrow and at what rate.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Monthly mortgage payments by amount and duration: reference table
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table below shows the <strong>monthly instalment</strong> and the <strong>total interest
+        paid</strong> for a &euro;200,000 mortgage using French amortization, at various interest
+        rates and loan durations. These figures are purely indicative and serve as a quick reference
+        for an initial assessment.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Duration</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Interest Rate</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Monthly Payment</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Total Interest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">20 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3.00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;1,109</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;66,207</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">20 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">4.00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;1,212</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;90,871</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">25 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3.00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;948</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;84,486</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">25 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">4.00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;1,056</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;116,702</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">30 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3.00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;843</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;103,554</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">30 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">4.00%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;955</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;143,739</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The data reveals a fundamental trade-off between monthly affordability and the total cost
+        of the mortgage. By extending the duration from 20 to 30 years at a 3% interest rate, the
+        monthly payment drops from &euro;1,109 to &euro;843 (a reduction of &euro;266 per month),
+        but the total interest paid rises from &euro;66,207 to &euro;103,554 &mdash; an additional
+        &euro;37,347. The effect is even more pronounced at higher rates: at 4%, moving from 20 to
+        30 years saves &euro;257 per month on the instalment but costs an extra &euro;52,868 in
+        total interest over the life of the loan.
+      </p>
+      <p>
+        Even a single percentage point difference in the interest rate has a dramatic impact. On the
+        same &euro;200,000 mortgage over 30 years, moving from 3% to 4% adds over &euro;40,000 in
+        total interest. This is why it is essential to compare offers from multiple Italian banks
+        (using tools like MutuiOnline.it or Facile.it) and to carefully weigh the mortgage duration
+        against your monthly spending capacity and long-term financial goals. As a general rule,
+        Italian banks recommend that your mortgage payment should not exceed 30-35% of your net
+        monthly household income.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">
+        Fixed vs variable rates in Italy: a quick comparison
+      </h3>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Feature</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Fixed Rate (Tasso Fisso)</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Variable Rate (Tasso Variabile)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Reference index</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">IRS (Interest Rate Swap)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Euribor (typically 3-month)</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Monthly payment</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Constant for entire duration</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Changes periodically</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Initial rate</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Usually higher</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Usually lower</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Risk profile</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">No rate risk for borrower</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Rate risk borne by borrower</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Best suited for</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Stability seekers, long durations</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Short durations, falling-rate environments</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        In Italy, the fixed rate is benchmarked to the IRS (Interest Rate Swap) for the corresponding
+        maturity, plus the bank's spread. The variable rate is typically benchmarked to the 3-month
+        Euribor plus the bank's spread. The spread represents the bank's margin and is the main lever
+        you can negotiate when comparing mortgage offers.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Should I choose a fixed or variable rate mortgage in 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The decision depends on your risk tolerance and market outlook. A tasso fisso (fixed rate)
+          guarantees the same monthly payment for the entire duration of the loan, which is ideal if
+          you value certainty and plan to hold the mortgage for many years. A tasso variabile (variable
+          rate) may start lower, but your payment will fluctuate with movements in the Euribor. In a
+          falling-rate environment, variable rates can save you money; in a rising-rate environment,
+          your costs can increase substantially. For expats with income in a different currency, a
+          fixed rate provides additional protection against the compounded risk of exchange rate and
+          interest rate volatility. Most Italian borrowers (around 70-80%) currently opt for fixed rates.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the ideal mortgage duration in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The average mortgage duration in Italy is between 20 and 30 years, with 25 years being
+          the most common choice. A longer duration reduces the monthly payment but significantly
+          increases the total interest paid over the life of the loan. A shorter duration means
+          higher monthly payments but substantial savings on total interest. The general rule
+          recommended by Italian banks and financial advisors is that the monthly mortgage instalment
+          should not exceed 30-35% of your net monthly household income. Most banks will not approve
+          a mortgage where the payment-to-income ratio exceeds this threshold, and some are even
+          stricter at 30%.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What does the amortization schedule (piano di ammortamento) show?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The piano di ammortamento (amortization schedule) is a detailed table showing the breakdown
+          of each monthly payment into the principal component (quota capitale, the part that reduces
+          your outstanding debt) and the interest component (quota interessi). It also shows the
+          debito residuo (remaining balance) after each payment. With French amortization, the early
+          payments are predominantly composed of interest, while towards the end of the loan the
+          principal portion becomes dominant. This schedule is a valuable tool for understanding how
+          much of your money goes towards actually building equity in the property versus paying the
+          bank for the cost of borrowing.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I deduct mortgage interest from my Italian taxes?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, if the mortgage is for your prima casa (primary residence). Italian tax law allows a
+          19% IRPEF deduction on mortgage interest and related accessory charges, up to a maximum of
+          &euro;4,000 per year in eligible expenses. This means a maximum annual tax saving of
+          &euro;760. Deductible expenses include interest payments, the bank's processing fee, the
+          appraisal fee, the substitute tax, and the notary fees for the mortgage contract. The
+          deduction must be claimed in your annual tax return (Modello 730 or Modello Redditi PF).
+          To qualify, you must use the property as your primary residence and transfer your residenza
+          to the relevant municipality within 12 months of purchase.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How does the down payment (anticipo) affect my mortgage?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Italian banks generally finance up to 80% of the property's appraised value (LTV, or
+          Loan to Value). A larger down payment reduces the loan amount needed, lowering both
+          the monthly instalment and the total interest paid over the life of the mortgage.
+          Furthermore, a lower LTV ratio often qualifies you for better interest rates from the
+          bank, as you represent a lower risk borrower. For expats, building a substantial down
+          payment is particularly important, as some banks apply stricter LTV limits (60-70%)
+          for non-Italian borrowers or those with shorter employment histories in Italy.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is surroga (mortgage portability) and when does it make sense?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Surroga (also called portabilita') is the transfer of your mortgage from one bank to
+          another in order to obtain better terms, at absolutely no cost to the borrower. This
+          right was established by the Bersani Law of 2007, which guarantees that the original
+          bank cannot oppose the transfer or charge any penalties. It makes sense to consider
+          surroga when market rates have dropped significantly compared to your current mortgage
+          rate. As a general guideline, a difference of at least 0.5-1 percentage point makes
+          the operation worthwhile, especially if you are still in the first half of the mortgage
+          term (when the interest component of your payments is highest). You can also use surroga
+          to switch from a variable rate to a fixed rate, or vice versa. There is no limit to how
+          many times you can do a surroga during the life of your mortgage, and the new bank bears
+          all costs including notary fees, appraisal, and processing.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How much mortgage interest can I deduct on my tax return?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The IRPEF deduction on prima casa mortgage interest is 19% of the interest paid during
+          the year, up to a ceiling of &euro;4,000 in qualifying interest and charges (yielding
+          a maximum tax saving of &euro;760 per year). The deduction is reported in Section E of
+          the Modello 730 or Section RP of the Modello Redditi PF, on the line dedicated to
+          mortgage interest for the primary residence. Deductible charges also include one-time
+          costs incurred at the time of mortgage signing: appraisal fees, notary fees for the
+          mortgage deed, bank commissions, and the substitute tax. Important: if the property
+          ceases to be your primary residence (for example, if you rent it out or move your
+          residenza elsewhere), the right to the deduction lapses, with limited exceptions such
+          as permanent hospitalization or a work-related transfer. For jointly held mortgages,
+          the &euro;4,000 ceiling is shared between all borrowers.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What happens if I cannot pay my mortgage instalments?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Failing to pay your mortgage triggers a series of escalating consequences. After the first
+          late payment (generally beyond 30 days), the bank will send a formal reminder and apply
+          default interest (interessi di mora). If the delay exceeds 90 days, the borrower is
+          reported to the Centrale Rischi of the Bank of Italy and to credit information systems
+          (CRIF, CTC), which severely damages your ability to obtain any future financing in Italy.
+          After at least 7 missed instalments (even non-consecutive) or an equivalent unpaid amount,
+          the bank can initiate foreclosure proceedings (escussione dell'ipoteca), leading to the
+          forced sale of the property at judicial auction. Before reaching this extreme scenario,
+          there are protective measures available: the Fondo Gasparrini allows you to suspend
+          mortgage payments for up to 18 months in cases of job loss, redundancy (cassa integrazione),
+          death, or severe disability of a borrower. You can also request the bank to renegotiate the
+          mortgage terms, such as extending the duration or temporarily reducing the payment amount,
+          to get through a period of financial difficulty.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can foreigners and expats get a mortgage in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, foreign nationals can obtain a mortgage (mutuo) in Italy. EU citizens generally face
+          the same conditions as Italian nationals, provided they are registered as residents and
+          have a codice fiscale. Non-EU citizens may need a valid permesso di soggiorno (residence
+          permit) and will find that some banks are more willing to lend than others. Requirements
+          typically include an Italian bank account, proof of stable income (employment contract or
+          at least 2-3 years of self-employment history in Italy), and evidence of the down payment
+          funds. Processing times for expats tend to be longer (60-90 days vs 30-45 for Italian
+          citizens), and some banks may apply a lower maximum LTV (60-70%) for foreign borrowers.
+          It is strongly recommended to get a mortgage pre-approval (delibera) before committing to
+          a property purchase.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/loan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Loan Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate monthly payments, total interest, and TAEG for an Italian personal loan
+        </p>
+      </a>
+      <a href="/en/compound-interest-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Compound Interest Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Project the growth of your savings and investments with compound interest
+        </p>
+      </a>
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC) Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Estimate returns from a regular savings and investment plan
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          See how inflation erodes your purchasing power over time in Italy
+        </p>
+      </a>
+      <a href="/en/rent-vs-buy/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Rent vs Buy Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Compare the total cost of renting versus buying property in Italy
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate your Italian net monthly pay from your gross annual salary (RAL)
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

@@ -23,5 +23,535 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Italy Investment Tax Calculator 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Calculate capital gains (plusvalenza) and taxes on your investments in Italy: stocks, ETFs, government bonds (BTP), crypto, and mutual funds.
+  </p>
+
   <TassazioneInvestimenti client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How investment taxation works in Italy
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Taxation of investment income in Italy is governed by the <strong>Testo Unico delle Imposte
+        sui Redditi (TUIR)</strong> &mdash; the Consolidated Income Tax Act &mdash; specifically Articles 44
+        (redditi da capitale, or capital income) and 67 (redditi diversi, or miscellaneous income).
+        When an investor realizes a gain from selling financial instruments &mdash; the so-called
+        <strong>plusvalenza (capital gain)</strong> &mdash; that gain is subject to a flat-rate
+        substitute tax known as <strong>imposta sostitutiva</strong>. The applicable rate depends on
+        the type of financial instrument and the nature of the income generated.
+      </p>
+      <p>
+        The Italian tax system draws a crucial distinction between two broad categories of financial
+        income, each subject to very different offset rules. Understanding this distinction is
+        essential for effective tax planning and for avoiding unpleasant surprises when filing your
+        annual tax return (dichiarazione dei redditi) or liquidating investments.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        26% vs 12.5% rate: which instruments, and why the difference
+      </h3>
+      <p>
+        The standard tax rate on investment returns in Italy is <strong>26%</strong>. This rate applies
+        to the majority of financial instruments: Italian and foreign stocks, equity and bond ETFs,
+        corporate bonds (issued by private companies), mutual funds, bank deposit accounts (conti
+        deposito), repurchase agreements (pronti contro termine), and cryptocurrencies. The tax is
+        levied on the realized capital gain &mdash; that is, the difference between the selling price
+        and the purchase price (the so-called prezzo di carico, or weighted average cost).
+      </p>
+      <p>
+        However, a <strong>reduced rate of 12.5%</strong> applies to returns derived from Italian
+        government bonds (BTP, BOT, CCT, CTZ), government bonds issued by EU "white list" countries,
+        and postal savings certificates (buoni fruttiferi postali) issued by Cassa Depositi e Prestiti.
+        The rationale behind this preferential rate is to incentivize the financing of public debt,
+        making government securities more tax-efficient for savers compared to private instruments.
+      </p>
+      <p>
+        For funds and ETFs that partially invest in government bonds, taxation is proportional: the
+        share of returns attributable to government securities is taxed at 12.5%, while the remaining
+        portion is taxed at 26%. For example, a bond ETF that invests 40% in BTP and 60% in corporate
+        bonds will have a blended effective tax rate of roughly 20.6% (40% &times; 12.5% + 60% &times; 26%).
+        The percentage of the preferential share is periodically reported by the fund management company.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Regime dichiarativo vs regime amministrato: two tax regimes
+      </h3>
+      <p>
+        In Italy, investors can choose between two tax regimes for managing investment taxes. This
+        choice has significant practical implications, especially for expats and anyone using
+        international brokers:
+      </p>
+      <ul>
+        <li>
+          <strong>Regime del risparmio amministrato (managed savings regime)</strong> &mdash; Article 6
+          of Legislative Decree 461/1997: this is the most common regime. The bank or online broker
+          acts as a <strong>sostituto d'imposta (withholding agent)</strong>, automatically calculating
+          and remitting the taxes owed at the time the instrument is sold. The investor does not need
+          to report these gains in their annual tax return. This regime also automatically handles the
+          offsetting of capital losses within the 4-year carryforward period prescribed by law.
+        </li>
+        <li>
+          <strong>Regime dichiarativo (declarative regime)</strong> &mdash; Article 5 of Legislative
+          Decree 461/1997: the investor is responsible for reporting all financial income in section RT
+          (Quadro RT) of the annual tax return (Modello Redditi PF). This regime is <strong>mandatory
+          for anyone using foreign brokers</strong> that do not act as withholding agents in Italy
+          &mdash; for example, Interactive Brokers, DEGIRO, Trading 212, or Revolut. It requires more
+          complex tax management but potentially offers greater flexibility in offsetting capital losses.
+        </li>
+      </ul>
+      <p>
+        The choice of regime has important practical consequences: under the regime amministrato, the
+        tax is deducted immediately at the time of sale, whereas under the regime dichiarativo, taxes
+        are paid with the following year's tax return (by June 30), providing a temporary liquidity
+        advantage. For expats using non-Italian brokers, the regime dichiarativo is the only option,
+        and you will typically need an Italian tax advisor (commercialista) to handle the filing.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Redditi da capitale vs redditi diversi: capital income vs miscellaneous income
+      </h3>
+      <p>
+        This is one of the most important &mdash; and most frequently misunderstood &mdash;
+        distinctions in the Italian investment tax system. The TUIR classifies financial income into
+        two categories:
+      </p>
+      <ul>
+        <li>
+          <strong>Redditi da capitale (capital income)</strong> &mdash; Article 44 TUIR: this includes
+          dividends, interest on bonds and deposit accounts, and proceeds from harmonized mutual funds
+          and ETFs (OICR UCITS). These returns <strong>cannot be offset</strong> against capital losses.
+        </li>
+        <li>
+          <strong>Redditi diversi (miscellaneous income)</strong> &mdash; Article 67 TUIR: this includes
+          capital gains from the sale of individual stocks, bonds, derivatives, cryptocurrencies, and
+          non-harmonized instruments. These gains <strong>can be offset</strong> against capital losses
+          realized in the previous 4 years.
+        </li>
+      </ul>
+      <p>
+        The fundamental rule is: capital losses (minusvalenze) can only offset miscellaneous income
+        (redditi diversi &mdash; i.e., capital gains), not capital income (redditi da capitale). This
+        means that if you realized losses selling stocks and have gains from a mutual fund, <strong>you
+        cannot use the former to reduce the tax on the latter</strong>.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        ETFs: the Italian fiscal trap
+      </h3>
+      <p>
+        Harmonized ETFs &mdash; those compliant with the UCITS directive, which represent the vast
+        majority of ETFs listed in Europe &mdash; generate <strong>exclusively capital income (redditi
+        da capitale)</strong>. This has a critical consequence: capital gains realized from selling an
+        ETF <strong>cannot be offset against prior capital losses (minusvalenze)</strong>.
+      </p>
+      <p>
+        Practical example: an investor sells stocks at a loss of 5,000 euros, generating a capital loss.
+        Later, they sell an ETF at a gain of 5,000 euros. Despite the overall result being zero, the
+        investor will still owe 26% tax on the ETF gain (1,300 euros), because the ETF gain is classified
+        as capital income, which cannot be offset against the capital loss (miscellaneous income).
+      </p>
+      <p>
+        This fiscal asymmetry &mdash; known in Italy as the "trappola fiscale degli ETF" (ETF fiscal
+        trap) &mdash; leads some Italian investors to favor offsetting strategies that use instruments
+        generating miscellaneous income (such as ETCs on commodities, certificates, or individual
+        stocks) to recover capital losses before the 4-year expiration. If you are building a portfolio
+        in Italy, this quirk is essential to understand, as it can materially affect your after-tax
+        returns.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Cryptocurrency taxation from 2026: the current rules
+      </h3>
+      <p>
+        Cryptocurrency taxation in Italy was formally regulated by <strong>Budget Law 2023
+        (L. 197/2022)</strong>, which introduced a 26% tax rate on capital gains from crypto-assets.
+        The law also established an annual exemption threshold of 2,000 euros: gains below this
+        threshold in a given tax year are not taxed.
+      </p>
+      <p>
+        From a classification standpoint, cryptocurrency capital gains fall under <strong>redditi
+        diversi (miscellaneous income)</strong> &mdash; Article 67, paragraph 1, letter c-sexies of
+        the TUIR &mdash; meaning they <strong>can be offset</strong> against capital losses of the
+        same category. The law also offered a one-time opportunity to revalue cryptocurrency holdings
+        as of January 1, 2023, by paying a 14% substitute tax on their total value, effectively
+        resetting any embedded unrealized gains accumulated in prior years.
+      </p>
+      <p>
+        Importantly, cryptocurrencies must be declared in <strong>Quadro RW</strong> of the tax
+        return (for fiscal monitoring purposes), in addition to Quadro RT for capital gains. There is
+        also a 0.2% stamp duty (IVAFE) on the total value of crypto held. Failure to declare crypto
+        holdings can result in significant penalties, ranging from 3% to 15% of the undeclared amount.
+        For expats, this is a critical compliance requirement that is often overlooked.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Double taxation and international treaties
+      </h3>
+      <p>
+        When an investor who is tax-resident in Italy receives income from foreign sources &mdash;
+        such as dividends on US stocks, interest on foreign bonds, etc. &mdash; the income may be
+        taxed both in the country of origin and in Italy. To prevent double taxation, Italy has
+        signed <strong>double taxation treaties (convenzioni contro le doppie imposizioni)</strong>
+        with over 100 countries.
+      </p>
+      <p>
+        For example, dividends from US stocks are subject to a 15% withholding tax at source in the
+        United States (reduced from 30% thanks to the Italy-US tax treaty, provided you file the
+        correct W-8BEN form). In Italy, the dividend is then taxed at 26%, but with a foreign tax
+        credit for the amount already paid abroad. However, the foreign tax credit mechanism does
+        not always allow full recovery, especially under the regime amministrato, where the Italian
+        bank applies the 26% rate on the gross amount and recovering the double tax requires filing
+        a tax return. Under the regime dichiarativo, the offset is handled directly in your annual
+        filing, which is more straightforward but requires proper documentation.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Worked example: mixed portfolio of 100,000 euros
+      </h3>
+      <p>
+        Consider an investor with a portfolio of 100,000 euros composed as follows:
+      </p>
+      <ul>
+        <li><strong>&euro;60,000</strong> in a global equity ETF (MSCI World), purchased at &euro;48,000 &mdash; capital gain: &euro;12,000</li>
+        <li><strong>&euro;40,000</strong> in BTP Italia (Italian government bonds), purchased at &euro;38,000 &mdash; capital gain: &euro;2,000</li>
+      </ul>
+      <p>If the investor sells everything:</p>
+      <ul>
+        <li>ETF: capital gain &euro;12,000 &times; 26% = <strong>&euro;3,120 tax</strong> (reddito da capitale &mdash; capital income)</li>
+        <li>BTP: capital gain &euro;2,000 &times; 12.5% = <strong>&euro;250 tax</strong> (reddito diverso &mdash; miscellaneous income)</li>
+        <li><strong>Total tax: &euro;3,370</strong></li>
+        <li><strong>Net proceeds: &euro;96,630</strong> on a &euro;86,000 investment (net gain: &euro;10,630)</li>
+      </ul>
+      <p>
+        If the investor also had &euro;5,000 in prior capital losses from stocks sold at a loss, they
+        could offset those losses against the BTP gain (miscellaneous income), saving &euro;250 in
+        tax on the BTP. But they <strong>could not offset those losses against the ETF gain</strong>,
+        because the ETF gain is classified as capital income. The stock losses would remain available
+        to offset future miscellaneous income gains for up to 4 years.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Reference rates -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Tax rates by financial instrument (2026)
+    </h2>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Instrument</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Tax rate</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Income type</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Loss offset?</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Stocks (Italian and foreign)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso (miscellaneous)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Yes</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Harmonized ETFs (UCITS)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale (capital income)</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Mutual funds (fondi comuni)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale (capital income)</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Corporate bonds</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso (miscellaneous)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Yes</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">BTP, BOT, CCT (Italian gov. bonds)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">12.5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso (miscellaneous)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Yes</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">EU government bonds (white list)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">12.5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso (miscellaneous)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Yes</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Postal savings certificates (buoni postali)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">12.5%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale (capital income)</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Bank deposit accounts (conti deposito)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito da capitale (capital income)</td>
+            <td class="px-4 py-3 font-semibold text-red-600 dark:text-red-400">No</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Cryptocurrencies</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso (miscellaneous)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Yes</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Certificates (certificati)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso (miscellaneous)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Yes</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">ETCs (commodity trackers)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Reddito diverso (miscellaneous)</td>
+            <td class="px-4 py-3 font-semibold text-green-600 dark:text-green-400">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        The table above highlights a crucial difference: the most popular instruments among Italian
+        savers &mdash; ETFs and mutual funds &mdash; generate capital income (redditi da capitale),
+        which <strong>cannot be offset against capital losses</strong>. This characteristic makes it
+        particularly important to plan the sequence of selling instruments carefully, especially when
+        you have expiring capital losses (remember: they expire 4 years after realization).
+      </p>
+      <p>
+        A common approach among tax-aware investors is to maintain some instruments that generate
+        miscellaneous income (redditi diversi) in their portfolio &mdash; such as individual stocks,
+        corporate bonds, or ETCs &mdash; so they can offset accumulated capital losses before
+        selling ETFs or mutual funds. However, this strategy must be evaluated on a case-by-case
+        basis, also taking into account transaction costs and the overall diversification of the
+        portfolio.
+      </p>
+      <p>
+        For expats in Italy who hold investments in both Italian and foreign brokerages, the picture
+        is more complex. Foreign-held investments typically fall under the regime dichiarativo and
+        must be reported in Quadro RW (for monitoring) and Quadro RT (for capital gains). Keeping
+        track of cost bases, currency conversions, and loss carryforwards across multiple brokers
+        requires careful record-keeping. We strongly recommend working with a commercialista who
+        specializes in international tax matters.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently asked questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          When do I have to pay taxes on my investments in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Capital gains tax is due only at the <strong>moment of realization</strong> &mdash; that
+          is, when you sell the financial instrument. Unrealized gains (paper profits) are not taxed.
+          Under the regime amministrato (managed savings regime), the bank automatically withholds
+          the tax at the time of sale. Under the regime dichiarativo (declarative regime), taxes must
+          be paid with your annual tax return by June 30 of the following year (with the option to
+          pay in installments). For expats using foreign brokers, the declarative regime applies by
+          default, meaning you will settle the tax when filing your Modello Redditi PF.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I offset capital losses from ETFs?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          This is one of the most common questions, and the answer is nuanced. If you sell an ETF
+          <strong>at a loss</strong>, you generate a minusvalenza (capital loss) that can be used to
+          offset future redditi diversi (miscellaneous income) &mdash; such as gains from stocks,
+          bonds, ETCs, or certificates &mdash; within 4 years. However, if you sell an ETF
+          <strong>at a gain</strong>, the profit is classified as reddito da capitale (capital income)
+          and <strong>cannot be offset</strong> against prior capital losses. This asymmetry is a
+          well-known and frequently criticized feature of the Italian system.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How are dividends taxed in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Dividends are taxed at 26% as redditi da capitale (capital income). Under the regime
+          amministrato, the withholding is applied directly by the Italian bank. For foreign
+          dividends, there may be a withholding tax in the country of origin (e.g., 15% for US
+          stocks under the Italy-US tax treaty). Italy then applies 26% on top, but you can claim a
+          foreign tax credit (credito d'imposta) to avoid double taxation &mdash; this requires filing
+          a tax return. For dividends from "qualified participations" (partecipazioni qualificate),
+          above certain thresholds, different rules apply and the income is taxed progressively
+          through IRPEF brackets.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Are cryptocurrencies taxed in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes. Since 2023, cryptocurrencies are taxed at 26% on realized capital gains, with an
+          annual exemption threshold of &euro;2,000. Crypto gains are classified as redditi diversi
+          (miscellaneous income), so they can offset capital losses from the same category. Crypto
+          holdings must also be declared in <strong>Quadro RW</strong> for fiscal monitoring purposes,
+          and they are subject to a 0.2% annual stamp duty (IVAFE) on total value. Failure to declare
+          crypto can result in penalties of 3% to 15% of the undeclared amount. This applies even if
+          you hold your crypto on foreign exchanges or in self-custody wallets.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does this calculator include the stamp duty (imposta di bollo)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, this calculator focuses exclusively on the capital gain (plusvalenza) and the
+          corresponding imposta sostitutiva (substitute tax). In Italy, there is also a proportional
+          stamp duty of 0.2% per year on the value of securities accounts &mdash; called
+          <strong>imposta di bollo</strong> for domestically held securities and <strong>IVAFE</strong>
+          for securities held abroad. For government bonds and postal savings certificates, the stamp
+          duty is capped at &euro;14,000 per taxpayer. The stamp duty is calculated on market value,
+          not on capital gains, and is a separate cost from the capital gains tax.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How long can I carry forward capital losses (minusvalenze)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Capital losses (minusvalenze) can be carried forward and used to offset gains for a
+          maximum of <strong>4 years</strong> from the date they were realized (Article 68,
+          paragraph 5 of the TUIR). For example, a capital loss realized in 2024 can be used to
+          offset capital gains through December 31, 2028. After that date, the loss expires and
+          can no longer be used. This is why it is important to track your expiring losses and
+          consider offsetting strategies before they lapse &mdash; especially given the ETF trap
+          discussed above.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How is the average purchase price (prezzo di carico) calculated?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The prezzo di carico (cost basis, or weighted average purchase price) is calculated by
+          dividing the total purchase cost by the total number of shares or units held. For example,
+          if you bought 100 shares at &euro;10 and then another 50 shares at &euro;12, the weighted
+          average cost is (100 &times; 10 + 50 &times; 12) / 150 = &euro;10.67. Note that the LIFO
+          (last-in-first-out) method has not been used in Italy since 2012 &mdash; the weighted
+          average cost method always applies. Transaction fees (commissioni) can be added to your
+          cost basis, slightly reducing your taxable gain.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          I use a foreign broker &mdash; what are my tax obligations?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          If you use a broker that is not established in Italy (e.g., Interactive Brokers, DEGIRO,
+          Trading 212, Revolut, eToro), you are automatically under the <strong>regime dichiarativo
+          (declarative regime)</strong>. This means you must: (1) report all financial assets in
+          <strong>Quadro RW</strong> of your tax return for fiscal monitoring, (2) declare and pay
+          capital gains tax in <strong>Quadro RT</strong>, (3) pay the 0.2% IVAFE on the value of
+          foreign-held securities, and (4) declare any foreign dividends and interest. All of this
+          must be done in your annual Modello Redditi PF filing. Most expats engage a commercialista
+          (Italian tax advisor) to handle this, as the calculations can be complex.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC) Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Project returns on your PAC including the 26% capital gains tax
+        </p>
+      </a>
+      <a href="/en/compound-interest-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Compound Interest Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate how your capital grows with compound interest over time
+        </p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate Italian income tax brackets and deductions on employment income
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Measure the impact of inflation on your purchasing power over the years
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay in Italy
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

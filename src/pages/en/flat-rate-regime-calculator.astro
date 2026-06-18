@@ -24,4 +24,509 @@ const breadcrumbs = [
   lang={lang}
 >
   <Forfettari client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How taxes are calculated under the regime forfettario (flat-rate tax regime)
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The <strong>regime forfettario</strong> (flat-rate tax regime) is Italy's
+        simplified and preferential tax scheme designed for freelancers, sole
+        proprietors, and self-employed professionals (holders of a Partita IVA,
+        i.e. a VAT number / freelancer registration) whose annual revenues do
+        not exceed 85,000 euros. If you are an expat working as a freelancer in
+        Italy or considering opening a Partita IVA, this regime is very likely
+        the most tax-efficient option available to you in the first years of
+        your activity.
+      </p>
+      <p>
+        Unlike the regime ordinario (standard tax regime), where taxable income
+        is calculated analytically by subtracting actual documented expenses from
+        revenues, the regime forfettario uses a <strong>coefficiente di
+        redditivita'</strong> (profitability coefficient) to determine your
+        taxable base. This coefficient is a fixed percentage set by law,
+        assigned according to your codice ATECO (the Italian classification code
+        for economic activities). It represents the presumed share of your
+        revenue that constitutes profit. The remaining portion (100% minus the
+        coefficient) is automatically treated as deductible costs -- you do not
+        need to document or justify these costs individually. On the taxable
+        income determined in this way, an <strong>imposta sostitutiva</strong>
+        (substitute tax) is applied, which replaces IRPEF (personal income tax),
+        regional and municipal surcharges, and IRAP (regional production tax).
+      </p>
+      <h3>Imposta sostitutiva (substitute tax): 5% or 15%</h3>
+      <p>
+        The standard rate of the imposta sostitutiva is <strong>15%</strong>.
+        However, for the first five years of a new business activity, a reduced
+        rate of <strong>5%</strong> applies, provided that the taxpayer has not
+        carried out the same or a substantially similar activity as a
+        self-employed person in the three years preceding the start of the new
+        activity. This "startup" benefit is particularly attractive for expats
+        who are beginning their freelance career in Italy for the first time.
+        After the five-year period expires, the rate automatically reverts to
+        15%. There is no application or approval process -- the rate change
+        happens by operation of law.
+      </p>
+      <h3>Contributi previdenziali (social security contributions)</h3>
+      <p>
+        In addition to the imposta sostitutiva, every Partita IVA holder in Italy
+        must pay mandatory social security contributions to INPS (the Italian
+        national social security institute). The amount you pay depends on which
+        INPS fund you belong to. Most freelancers and professionals without a
+        dedicated professional pension fund (cassa previdenziale) are enrolled in
+        the <strong>Gestione Separata INPS</strong>, where the contribution rate
+        for 2026 is <strong>26.07%</strong> of taxable income (for those not
+        enrolled in any other pension scheme). Artisans (artigiani) and traders
+        (commercianti) pay contributions to their respective INPS funds, which
+        have different rates and include a mandatory minimum annual contribution
+        regardless of income. An important detail: social security contributions
+        paid during the year are the <strong>only deduction</strong> allowed
+        under the regime forfettario -- they reduce the taxable income on which
+        the substitute tax is calculated the following year.
+      </p>
+      <h3>Profitability coefficients by ATECO code</h3>
+      <p>
+        The coefficiente di redditivita' (profitability coefficient) is the
+        cornerstone of the regime forfettario: it determines what percentage of
+        your gross revenue is treated as taxable income. The remaining share
+        (100% minus the coefficient) represents the flat-rate deduction for
+        costs that the law presumes you incur. The Italian legislature
+        established differentiated coefficients for each economic sector, based
+        on statistical analyses of average cost structures. Below are the main
+        coefficients grouped by activity type:
+      </p>
+      <ul>
+        <li><strong>Trade intermediaries (intermediari del commercio): 86%.</strong> This is the highest coefficient because intermediation activities involve very low operating costs -- no warehousing, no inventory of goods. Only 14% of revenue is recognized as a flat-rate cost deduction.</li>
+        <li><strong>Professionals (lawyers, consultants, IT, engineers): 78%.</strong> This is the standard coefficient for those working in professional services and intellectual activities. It covers software developers, business consultants, accountants, and all professions classified under ATECO groups 69-74. For most expat freelancers in tech, design, marketing, or consulting, this is the coefficient that applies.</li>
+        <li><strong>Personal services (hairdressers, beauticians): 67%.</strong> A mid-range coefficient reflecting higher costs compared to pure professional services, due to consumable products, equipment, and premises rental.</li>
+        <li><strong>Wholesale and retail trade: 40%.</strong> The lowest coefficient, reflecting the high cost of goods sold. However, for non-food wholesale trade, the coefficient rises to 62%.</li>
+        <li><strong>Construction and real estate: 62%.</strong> A value accounting for the costs of materials, subcontracting, and equipment typical of the construction sector and property management activities.</li>
+        <li><strong>Accommodation and food services (restaurants, hotels): 40%.</strong> The low coefficient recognizes the significant costs related to food raw materials, premises rental, utilities, and staff in the hospitality sector.</li>
+      </ul>
+      <p>
+        Choosing the correct codice ATECO when registering your Partita IVA is
+        critical, because the coefficient directly affects your tax burden. An
+        incorrect classification can lead to paying more tax than necessary or,
+        worse, to disputes with the Agenzia delle Entrate (Italian Revenue
+        Agency). If your activity spans multiple ATECO codes, the coefficient
+        applied is the one corresponding to the activity that generates the
+        majority of your revenue.
+      </p>
+      <h3>Flat-rate regime vs. standard regime: which is better?</h3>
+      <p>
+        The choice between the regime forfettario and the regime ordinario
+        (standard tax regime) is one of the most important tax decisions for
+        anyone holding a Partita IVA in Italy. There is no universal answer --
+        the optimal choice depends on the actual cost structure of your business
+        and your personal circumstances. Here are the key scenarios.
+      </p>
+      <p>
+        <strong>When the flat-rate regime is more advantageous:</strong> the
+        regime forfettario is beneficial when your actual business costs are
+        lower than the flat-rate deduction recognized by the coefficient. For
+        example, if you are an IT professional with a 78% coefficient, the tax
+        system recognizes 22% of your revenue as costs. If your real expenses
+        (software subscriptions, hardware, training courses, coworking space)
+        amount to less than 22% of your revenue, the flat-rate regime is the
+        better choice. Furthermore, the 15% substitute tax rate (or 5% for
+        startups) is typically much lower than the marginal IRPEF rate under
+        the standard regime, which can reach 43% for income exceeding 50,000
+        euros. For a freelancer with low expenses and average revenue, the
+        annual savings can exceed 5,000 to 10,000 euros compared to the
+        standard regime.
+      </p>
+      <p>
+        <strong>When the standard regime is more advantageous:</strong> the
+        regime ordinario becomes preferable when you have significant real costs
+        that exceed the flat-rate deduction. If you manage a business with
+        employees, rent an expensive office, purchase merchandise or machinery,
+        the analytical deduction of actual costs can reduce the taxable base far
+        more than the profitability coefficient does. Additionally, under the
+        standard regime you can benefit from all personal tax deductions
+        (detrazioni) -- medical expenses, mortgage interest, dependent children
+        allowances, home renovation bonuses -- which are <strong>not
+        available</strong> under the regime forfettario. This aspect is often
+        underestimated but can make a difference of thousands of euros,
+        especially if you have a mortgage on your primary residence or
+        dependent children.
+      </p>
+      <p>
+        <strong>The break-even analysis:</strong> the break-even point is
+        calculated by comparing the total tax burden under both regimes. Take
+        your gross revenue, compute the flat-rate taxable income (revenue times
+        the coefficient) and the standard taxable income (revenue minus actual
+        costs minus deductions). Then apply the respective taxes: the substitute
+        tax for the forfettario, and IRPEF brackets plus surcharges for the
+        ordinario. For a professional with a 78% coefficient, the break-even
+        point generally occurs when actual costs exceed 35-40% of revenue, but
+        this figure varies depending on income level and applicable personal
+        deductions.
+      </p>
+      <h3>Electronic invoicing obligation (fatturazione elettronica)</h3>
+      <p>
+        Since January 1, 2024, the obligation to issue electronic invoices
+        (fatturazione elettronica) has been extended to <strong>all</strong>
+        taxpayers under the regime forfettario, with no remaining exemption
+        thresholds. Previously, forfettari with revenues below 25,000 euros were
+        exempt, but this exemption has been permanently removed.
+      </p>
+      <p>
+        Electronic invoicing is carried out through the Sistema di Interscambio
+        (SDI), the platform managed by the Agenzia delle Entrate that receives,
+        validates, and forwards invoices in XML format to the recipient. To issue
+        electronic invoices, you must use compatible invoicing software. Free
+        options exist (such as the "Fatture e Corrispettivi" portal provided by
+        the Agenzia delle Entrate), alongside commercial paid solutions that
+        offer additional features like automatic numbering, digital archiving
+        (archiviazione sostitutiva), and accounting integration. Popular
+        third-party services used by expats include Finom, Fatture in Cloud, and
+        Fiscozen, which often provide English-language interfaces.
+      </p>
+      <p>
+        The electronic invoice format is FatturaPA (with an .xml extension),
+        conforming to the technical specifications defined by the Agenzia delle
+        Entrate. Each invoice must contain the recipient's SDI destination code
+        (codice destinatario) or certified email address (PEC), the tax details
+        of both the sender and recipient, the nature of the transaction (N2.2
+        for operations under the regime forfettario, as they are VAT-exempt),
+        the amount, and the description of the service or good provided. For
+        forfettari, the invoice must include the mandatory wording prescribed by
+        Article 1, paragraph 63 of Law 190/2014, indicating that no VAT is
+        charged and no withholding tax (ritenuta d'acconto) applies.
+      </p>
+      <p>
+        Penalties for failure to issue an electronic invoice or for late
+        issuance range from 5% to 10% of the undocumented amounts, with a
+        minimum of 500 euros per violation. For late issuance (beyond 12 days
+        from the date of the transaction), the penalty is reduced if the
+        taxpayer voluntarily regularizes within the deadlines allowed by
+        ravvedimento operoso (voluntary correction with reduced penalties). It
+        is therefore essential to have a reliable invoicing system in place and
+        to respect issuance deadlines.
+      </p>
+      <h3>Key considerations for expats and non-Italian freelancers</h3>
+      <p>
+        If you are relocating to Italy and plan to work as a freelancer, there
+        are several practical points to keep in mind regarding the regime
+        forfettario. First, to access this regime you must be a <strong>tax
+        resident in Italy</strong> -- meaning you spend more than 183 days per
+        year in Italy or have your primary domicile or center of vital interests
+        here. Second, the regime forfettario <strong>cannot be combined</strong>
+        with the regime impatriati (the special tax regime for inbound workers),
+        so you must choose one or the other. The impatriati regime may be more
+        beneficial for employees or high-earning freelancers, while the
+        forfettario is generally better for freelancers with moderate income and
+        low actual costs. Third, even though you operate under the flat-rate
+        regime and do not charge VAT on your invoices, when you invoice clients
+        in other EU countries you still need to be aware of reverse charge
+        mechanisms and may need to register for VIES (VAT Information Exchange
+        System) to perform intra-EU transactions. Consulting with an Italian
+        commercialista (chartered accountant) who has experience with
+        international clients is strongly recommended before making your choice.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Taxes under the flat-rate regime: practical examples by revenue level
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table below provides a summary of the tax calculation for a
+        professional enrolled in the Gestione Separata INPS (profitability
+        coefficient of 78%, contribution rate of 26.07%) with an imposta
+        sostitutiva (substitute tax) rate of 15%. The INPS contribution amounts
+        shown are calculated on the flat-rate taxable income and do not account
+        for the deduction of prior-year contributions, for simplicity of
+        presentation.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300 dark:border-gray-600">
+              <th class="text-left py-2 pr-4 font-semibold">Annual revenue</th>
+              <th class="text-right py-2 px-4 font-semibold">Taxable income (78%)</th>
+              <th class="text-right py-2 px-4 font-semibold">Tax at 15%</th>
+              <th class="text-right py-2 px-4 font-semibold">Tax at 5% (startup)</th>
+              <th class="text-right py-2 pl-4 font-semibold">INPS (26.07%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">30,000 &euro;</td>
+              <td class="text-right py-2 px-4">23,400 &euro;</td>
+              <td class="text-right py-2 px-4">3,510 &euro;</td>
+              <td class="text-right py-2 px-4">1,170 &euro;</td>
+              <td class="text-right py-2 pl-4">~6,100 &euro;</td>
+            </tr>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <td class="py-2 pr-4">50,000 &euro;</td>
+              <td class="text-right py-2 px-4">39,000 &euro;</td>
+              <td class="text-right py-2 px-4">5,850 &euro;</td>
+              <td class="text-right py-2 px-4">1,950 &euro;</td>
+              <td class="text-right py-2 pl-4">~10,168 &euro;</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">85,000 &euro;</td>
+              <td class="text-right py-2 px-4">66,300 &euro;</td>
+              <td class="text-right py-2 px-4">9,945 &euro;</td>
+              <td class="text-right py-2 px-4">3,315 &euro;</td>
+              <td class="text-right py-2 pl-4">~17,284 &euro;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Comparison: 15% rate vs. 5% startup rate:</strong> the
+        difference between the two rates becomes increasingly significant as
+        revenue grows. At 30,000 euros of revenue, the difference is 2,340 euros
+        per year (3,510 minus 1,170). At 85,000 euros of revenue, the startup
+        savings reach 6,630 euros per year. Over the five years that the reduced
+        rate applies, a professional with average revenue of 50,000 euros can
+        save approximately 19,500 euros in total compared to the standard 15%
+        rate.
+      </p>
+      <p>
+        <strong>Effective tax rate analysis:</strong> the overall tax burden
+        (imposta sostitutiva plus INPS contributions) takes a substantial share
+        of gross revenue. At 50,000 euros of revenue with the 15% rate, the
+        total of substitute tax (5,850 euros) plus INPS contributions (~10,168
+        euros) amounts to approximately 16,018 euros, equivalent to roughly 32%
+        of gross revenue. With the 5% startup rate, the total drops to
+        approximately 12,118 euros, or about 24.2% of gross revenue. These
+        figures do not include the cost of mandatory professional pension funds
+        (casse previdenziali) for regulated professions (lawyers, engineers,
+        architects), which replace the Gestione Separata with their own rates
+        and rules. For an unregulated professional with revenue of 85,000 euros,
+        the net disposable income after taxes and contributions is approximately
+        57,771 euros with the 15% rate, and approximately 64,401 euros with the
+        5% startup rate.
+      </p>
+      <h3>Understanding the numbers: a step-by-step worked example</h3>
+      <p>
+        To make the calculation fully transparent, here is a step-by-step
+        example for an expat freelance software developer invoicing 60,000 euros
+        per year, enrolled in the Gestione Separata INPS, in their second year
+        of activity (qualifying for the 5% startup rate), and assuming they paid
+        8,000 euros in INPS contributions the previous year:
+      </p>
+      <ul>
+        <li><strong>Step 1 -- Flat-rate taxable income:</strong> 60,000 euros x 78% = 46,800 euros.</li>
+        <li><strong>Step 2 -- Deduct prior-year INPS contributions:</strong> 46,800 - 8,000 = 38,800 euros (adjusted taxable income).</li>
+        <li><strong>Step 3 -- Imposta sostitutiva at 5%:</strong> 38,800 x 5% = 1,940 euros.</li>
+        <li><strong>Step 4 -- Current-year INPS contributions (Gestione Separata at 26.07%):</strong> 46,800 x 26.07% = approximately 12,201 euros.</li>
+        <li><strong>Step 5 -- Total tax and contributions for the year:</strong> 1,940 + 12,201 = 14,141 euros.</li>
+        <li><strong>Step 6 -- Net income:</strong> 60,000 - 14,141 = approximately 45,859 euros, or about 76.4% of gross revenue.</li>
+      </ul>
+      <p>
+        This example illustrates why the regime forfettario is so popular among
+        freelancers in Italy: even with social security contributions factored
+        in, the effective tax rate is significantly lower than what most
+        employees face under the standard IRPEF brackets.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently asked questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the revenue limit for the regime forfettario?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The annual revenue (ricavi or compensi) limit to access and remain in the regime forfettario is 85,000 euros. If you exceed this threshold but stay below 100,000 euros, you exit the flat-rate regime starting from the following calendar year. If you exceed 100,000 euros during the current year, the exit is immediate: you must switch to the standard tax regime (regime ordinario) and apply VAT, IRPEF, and full accounting obligations from that point onward.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What are the coefficienti di redditivita' (profitability coefficients)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The coefficienti di redditivita' are fixed percentages established by Italian law that determine what portion of your gross revenue is treated as taxable income. For example, the coefficient for professionals is 78%, meaning that on 50,000 euros of revenue, the taxable income will be 39,000 euros. The remaining 22% is automatically recognized as business costs without requiring documentation. Coefficients range from 40% (food retail) to 86% (trade intermediaries), depending on the ATECO code assigned to your business activity.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Is the flat-rate regime better than the standard regime (regime ordinario)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          It depends on your specific situation. The regime forfettario is advantageous when your actual business costs are lower than the flat-rate deduction (i.e., 100% minus the profitability coefficient). If you have substantial costs (office rent, employees, merchandise purchases), the standard regime may result in lower taxes because you can deduct actual expenses. Additionally, under the flat-rate regime you cannot claim personal tax deductions (detrazioni) such as mortgage interest, medical expenses, or dependent family member allowances, which can represent significant savings under the standard regime.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can I deduct INPS contributions under the flat-rate regime?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes. Mandatory social security contributions (contributi previdenziali obbligatori) paid during the year are the only deduction permitted under the regime forfettario. They are subtracted from the flat-rate taxable income before the imposta sostitutiva (substitute tax) is applied. In practice, this means the INPS contributions you paid in the previous year reduce the taxable base for the current year, resulting in a lower substitute tax bill.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Do I need to charge VAT on my invoices under the flat-rate regime?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No. Taxpayers under the regime forfettario do not charge VAT (IVA) on their invoices and do not have the right to deduct VAT on purchases. Invoices must include the specific exemption wording required by law (referencing Article 1, paragraph 63 of Law 190/2014). However, you are still required to issue electronic invoices (fatturazione elettronica) through the Sistema di Interscambio (SDI). This means your clients receive invoices without VAT, which can be either an advantage (lower prices for end consumers) or a disadvantage (business clients in the standard regime cannot reclaim VAT on your invoices).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What are the requirements to access the regime forfettario in 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          To access the regime forfettario in 2026, you must meet several requirements. Your revenue in the previous year must not exceed 85,000 euros. You must not have incurred expenses for employees or collaborators exceeding 20,000 euros gross per year. You must not hold ownership interests (partecipazioni) in partnerships (societa' di persone), professional associations, or SRLs (limited liability companies) carrying out activities related to yours. You must not have received employment income or similar income (redditi da lavoro dipendente o assimilati) exceeding 35,000 euros in the previous year, unless the employment relationship has ended. Finally, you must not use special VAT schemes and must not exclusively sell real estate or building land.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How does the transition from flat-rate to standard regime work?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The transition depends on how much you exceed the revenue threshold. If your revenues surpass 85,000 euros but remain below 100,000 euros, you exit the regime forfettario starting from the following year -- for the current year, you continue to apply the flat-rate rules normally. If, however, you exceed 100,000 euros during the current year, the exit is immediate: from that point onward you must apply the standard regime with VAT, IRPEF, and full double-entry bookkeeping. In both cases, you will need to update your invoicing (adding VAT), open accounting books, and comply with all the obligations of the regime ordinario. You may re-enter the regime forfettario in subsequent years if you once again meet all the eligibility requirements.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can INPS contributions be reduced under the flat-rate regime?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          A 35% reduction in INPS contributions is available exclusively for artisans (artigiani) and traders (commercianti) enrolled in their respective INPS funds. This benefit reduces both the fixed minimum contributions and the contributions calculated on income exceeding the minimum threshold. The reduction must be explicitly requested through the INPS online portal by February 28 of each year. Important: freelancers enrolled in the Gestione Separata INPS (which includes most professionals without a dedicated pension fund) are not eligible for this reduction. Furthermore, the contribution reduction results in proportionally reduced pension credit accrual -- you accumulate less contributory seniority, which may negatively impact your future pension entitlement.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can I use the regime forfettario if I also have employment income?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes, but with limitations. You can hold a Partita IVA under the regime forfettario while also being employed, provided your employment income (redditi da lavoro dipendente o assimilati) did not exceed 35,000 euros gross in the previous year. If the employment relationship has ceased, this limit does not apply. This makes the flat-rate regime accessible to many expats who have a part-time employment contract while freelancing on the side, as long as their salary stays below the threshold. Note that your employment income and your freelance income are taxed separately: employment income follows the standard IRPEF rules, while freelance income follows the flat-rate regime rules.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can I combine the regime forfettario with the regime impatriati?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No, the two regimes are mutually exclusive. The regime impatriati (inbound workers tax regime) provides a partial exemption on IRPEF for individuals who transfer their tax residence to Italy, but it operates within the standard tax regime. Since the regime forfettario replaces IRPEF with the imposta sostitutiva, the IRPEF exemption offered by the impatriati regime has no effect. If you qualify for both, you must carefully evaluate which regime results in a lower overall tax burden for your specific income level and cost structure. Generally, the forfettario is better for lower incomes with few costs, while the impatriati regime is more advantageous for higher incomes or when you have significant deductible expenses.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Related calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/en/irpef-tax-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Detailed bracket-by-bracket IRPEF calculation on your income
+        </p>
+      </a>
+      <a
+        href="/en/impatriati-tax-regime/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Impatriati Tax Regime
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate your tax savings under the inbound workers regime
+        </p>
+      </a>
+      <a
+        href="/en/hourly-rate-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Hourly Rate Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Convert your gross annual salary into hourly rates, gross and net
+        </p>
+      </a>
+      <a
+        href="/en/inflation-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          See how inflation erodes your purchasing power over time
+        </p>
+      </a>
+      <a
+        href="/en/employee-vs-freelancer/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Employee vs. Freelancer
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Compare net income as an employee versus a Partita IVA freelancer
+        </p>
+      </a>
+      <a
+        href="/en/gross-salary-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Gross Salary Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Convert gross (lordo) to net (netto) salary for Italian employees
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

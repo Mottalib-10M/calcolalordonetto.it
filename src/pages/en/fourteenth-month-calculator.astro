@@ -11,6 +11,7 @@ const canonical = canonicalURL('/en/fourteenth-month-calculator/');
 
 const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Calculators', url: `${SITE.url}/en/` },
   { name: 'Quattordicesima Calculator', url: canonical },
 ];
 ---
@@ -24,4 +25,466 @@ const breadcrumbs = [
   lang={lang}
 >
   <Quattordicesima client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      How to Calculate Your Net Quattordicesima (14th-Month Bonus)
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The <strong>quattordicesima</strong> (literally "fourteenth") is a 14th-month bonus salary paid by
+        certain Italian employers, typically in June or July, ahead of the summer holidays. Unlike the
+        <a href="/en/thirteenth-month-calculator/">tredicesima (13th-month bonus)</a>, which is guaranteed by
+        law to every employee in Italy, the quattordicesima is <strong>not a legal entitlement</strong>. It
+        exists only when the applicable CCNL (contratto collettivo nazionale di lavoro &mdash; the national
+        collective bargaining agreement for your sector) explicitly provides for it.
+      </p>
+      <p>
+        If you are an expat working in Italy, understanding whether your contract includes the quattordicesima
+        is crucial for accurate financial planning. The gross amount, deductions, and net payout follow the
+        same mechanism as the tredicesima. Here is the step-by-step calculation:
+      </p>
+      <ol>
+        <li>
+          <strong>Gross quattordicesima</strong> = RAL (Retribuzione Annua Lorda, your gross annual salary) &divide; 12.
+          If you have not worked the full accrual period, a pro-rata reduction applies based on the months
+          actually worked.
+        </li>
+        <li>
+          <strong>INPS social-security contributions</strong>: the standard employee rate of 9.19% is applied to
+          the gross amount, exactly as it is applied to your ordinary monthly payslip.
+        </li>
+        <li>
+          <strong>IRPEF income tax</strong>: the quattordicesima is taxed at your <em>marginal</em> IRPEF rate
+          (the highest bracket your total annual income falls into). Critically, no employment-income deductions
+          (detrazioni da lavoro dipendente) and no trattamento integrativo (the EUR&nbsp;100/month supplement
+          for lower incomes) are applied. This is why the net quattordicesima feels more heavily taxed than a
+          regular monthly salary.
+        </li>
+        <li>
+          <strong>Net quattordicesima</strong> = Gross quattordicesima &minus; INPS contributions &minus; IRPEF.
+        </li>
+      </ol>
+      <p>
+        The quattordicesima is generally paid between June and July, just in time for the summer break. Always
+        check your specific CCNL and employment contract to confirm whether you are entitled to it and the
+        exact payment date.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Which CCNL Contracts Include the Quattordicesima
+      </h3>
+      <p>
+        While the tredicesima is guaranteed by law (DPR 1070/1960) for every subordinate employee in Italy,
+        the quattordicesima is entirely a product of collective bargaining. Your right to receive it depends
+        on the CCNL applied to your employment relationship. Below is a detailed overview of the main sectors.
+      </p>
+      <p>
+        <strong>CCNLs that DO include the quattordicesima:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Commercio e Terziario (Commerce &amp; Services &mdash; Confcommercio)</strong>: one of the most
+          widely applied contracts in Italy, covering millions of workers in retail, wholesale, corporate services,
+          and distribution. The quattordicesima equals one full month of actual overall pay and is disbursed by
+          July&nbsp;1 of each year.
+        </li>
+        <li>
+          <strong>Turismo (Tourism &mdash; Federalberghi / Confcommercio)</strong>: covers hotels, restaurants,
+          catering, beach establishments, and travel agencies. The quattordicesima accrues from July&nbsp;1 to
+          June&nbsp;30 of the following year and is typically paid with the July payslip.
+        </li>
+        <li>
+          <strong>Banche e Credito (Banking &mdash; ABI)</strong>: the banking-sector CCNL includes the
+          quattordicesima, traditionally paid in June. Some banks may offer additional bonus months under
+          company-level supplementary agreements (contratti integrativi aziendali).
+        </li>
+        <li>
+          <strong>Assicurazioni (Insurance &mdash; ANIA)</strong>: the insurance-sector CCNL provides for a
+          quattordicesima, generally paid in June. The insurance sector is historically among those with the
+          highest overall compensation packages in Italy.
+        </li>
+        <li>
+          <strong>Alimentari Industria (Food &amp; Beverage Manufacturing)</strong>: the food-industry CCNL
+          includes the quattordicesima, calculated on the fixed elements of pay and usually disbursed by July.
+        </li>
+        <li>
+          <strong>Autotrasporto e Logistica (Transport &amp; Logistics)</strong>: the CCNL for logistics, freight
+          transport, and shipping includes the quattordicesima, paid in the June&ndash;July period.
+        </li>
+        <li>
+          <strong>Studi Professionali (Professional Firms &mdash; Confprofessioni)</strong>: employees of law
+          firms, accounting firms, notary offices, and labour-consultancy practices are covered by a CCNL that
+          includes the quattordicesima, typically paid with the June salary.
+        </li>
+        <li>
+          <strong>Chimico-Farmaceutico (Chemicals &amp; Pharmaceuticals &mdash; Federchimica)</strong>: the
+          chemical and pharmaceutical CCNL includes the quattordicesima, disbursed by July. This contract is
+          widely regarded as one of the most comprehensive in Italy's collective-bargaining landscape.
+        </li>
+      </ul>
+      <p>
+        <strong>CCNLs that do NOT include the quattordicesima:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Metalmeccanico (Metalworking &amp; Engineering &mdash; Federmeccanica / Fiom-Fim-Uilm)</strong>:
+          one of Italy's most widely applied contracts. Pay is distributed over 13 monthly instalments only.
+          Individual company-level agreements may provide performance bonuses, but these are separate from the
+          quattordicesima.
+        </li>
+        <li>
+          <strong>Edilizia (Construction &mdash; ANCE)</strong>: the construction sector does not provide a
+          quattordicesima. Construction workers instead receive holiday pay and a Christmas bonus through the
+          Cassa Edile (construction workers' fund), which operates a specific accrual mechanism.
+        </li>
+        <li>
+          <strong>Pubblico Impiego (Public Sector)</strong>: civil servants and public employees across all
+          government branches &mdash; ministries, local authorities, healthcare (SSN), schools, and universities
+          &mdash; receive only the tredicesima. The quattordicesima does not exist in any branch of Italian public
+          employment.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Pro-Rata Calculation of the Quattordicesima
+      </h3>
+      <p>
+        When an employee has not worked during the entire accrual period (usually July to June, or January to
+        December, depending on the CCNL), the quattordicesima is reduced proportionally to the months actually
+        worked. The formula is:
+      </p>
+      <p>
+        <strong>Pro-rata quattordicesima</strong> = (Monthly gross salary) &times; (months worked &divide; 12)
+      </p>
+      <p>
+        The standard "15-day rule" applies: a calendar month is counted as fully worked if you were employed for
+        more than 15 calendar days in that month. If you worked 15 days or fewer, the month is not counted. This
+        is the same rule used for the tredicesima and for TFR (trattamento di fine rapporto &mdash; severance pay)
+        accrual.
+      </p>
+      <p>
+        Let us look at some <strong>practical examples</strong>. Consider an employee with a RAL of
+        EUR&nbsp;30,000 distributed over 14 monthly payments (monthly gross salary of approximately EUR&nbsp;2,143)
+        who starts work on April&nbsp;1. By the time the quattordicesima is due (July), they will have accrued
+        only 4 out of 12 months. Their pro-rata quattordicesima will be: 2,143 &times; 4/12 = approximately
+        EUR&nbsp;714 gross. INPS contributions (9.19%) and IRPEF at the marginal rate are then deducted to
+        arrive at the net amount.
+      </p>
+      <p>
+        Another example: an employee who resigns on September&nbsp;20, having worked 9 full months in the
+        accrual period, will receive the pro-rata quattordicesima in their final payslip: monthly salary &times;
+        9/12. If the full-year quattordicesima had already been paid in July, the employer will make an
+        adjustment (conguaglio) in the final payslip, clawing back the unearned portion corresponding to the
+        remaining 3 months (October&ndash;December, i.e., 3/12).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+        Differences Between the Tredicesima and the Quattordicesima
+      </h3>
+      <p>
+        Although both the tredicesima and the quattordicesima are additional monthly payments calculated in a
+        similar way, there are fundamental differences that every employee &mdash; especially expats navigating
+        the Italian payroll system for the first time &mdash; should understand.
+      </p>
+      <p>
+        The <strong>legal basis</strong> is fundamentally different. The tredicesima is a statutory right
+        established by law (DPR 1070/1960) and is owed to every subordinate employee without exception. The
+        quattordicesima, on the other hand, is a contractual benefit: the right arises only from the applicable
+        CCNL or, in its absence, from an individual or company-level agreement. If the contract does not provide
+        for it, the employer has no obligation whatsoever to pay it.
+      </p>
+      <p>
+        The <strong>payment period</strong> differs: the tredicesima is paid in December, around the Christmas
+        holidays, while the quattordicesima is paid between June and July, before the summer break. The accrual
+        periods may also differ: the tredicesima accrues over the calendar year (January&ndash;December), while
+        the quattordicesima accrual period varies by CCNL (often July&ndash;June).
+      </p>
+      <p>
+        From a <strong>taxation</strong> standpoint, the treatment is identical: both the tredicesima and the
+        quattordicesima are subject to INPS contributions at 9.19% and IRPEF calculated at the marginal rate,
+        with no employment-income deductions and no trattamento integrativo. Consequently, for the same gross
+        amount, the net payout is the same for both additional monthly payments.
+      </p>
+      <p>
+        A final difference concerns the <strong>impact on your monthly take-home pay</strong>. With 14 monthly
+        payments, the same gross annual salary (RAL) is spread over more instalments, reducing each monthly
+        payslip. For a RAL of EUR&nbsp;30,000 on 13 payments, the gross monthly pay is approximately
+        EUR&nbsp;2,308; with 14 payments, it drops to approximately EUR&nbsp;2,143. The total gross annual amount
+        remains unchanged, but the monthly cash flow is different. Many workers appreciate the two lump-sum
+        "bonus" payments (December and June/July) for managing extraordinary expenses or building savings.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Net Quattordicesima by Salary Bracket: 2026 Reference Table
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table below shows the estimated net quattordicesima for the main RAL brackets in 2026, assuming a
+        full 12-month accrual period and the current IRPEF rates. The calculation is identical to that of the
+        tredicesima, since the taxation mechanism for additional monthly payments is the same. Remember: the
+        quattordicesima does <strong>not</strong> benefit from employment deductions (detrazioni da lavoro
+        dipendente) or the trattamento integrativo, which is why the effective tax bite is higher than on
+        your regular monthly salary.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL (Gross Annual)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Gross Quattordicesima</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">INPS (9.19%)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">IRPEF (marginal rate)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Net Quattordicesima</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro; 20,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 1,538</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 141</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 321 (23%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~ &euro; 1,076</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro; 25,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 1,923</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 177</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 402 (23%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~ &euro; 1,344</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro; 30,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 2,308</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 212</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 692 (33%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~ &euro; 1,404</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro; 40,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 3,077</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 283</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 922 (33%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~ &euro; 1,872</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-900 dark:text-white font-medium">&euro; 50,000</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 3,846</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 354</td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-400">&euro; 1,502 (43%)</td>
+            <td class="px-4 py-3 text-green-700 dark:text-green-400 font-semibold">~ &euro; 1,990</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        It is important to understand that contracts with 14 monthly payments distribute the same gross annual
+        salary (RAL) across 14 instalments instead of 12 or 13. This means your <strong>regular monthly net
+        salary</strong> is proportionally lower than it would be for someone with the same RAL on 13 payments.
+        For instance, with a RAL of EUR&nbsp;30,000 and 14 monthly payments, the gross monthly salary drops from
+        EUR&nbsp;2,308 (on 13 payments) to approximately EUR&nbsp;2,143. In return, you receive two extra
+        lump-sum payments during the year &mdash; the tredicesima in December and the quattordicesima in
+        June/July &mdash; which can be useful for managing extraordinary expenses, holiday budgets, or
+        boosting your savings. The overall annual net total remains substantially the same, with only minor
+        differences arising from the distribution of tax deductions across the ordinary monthly payslips.
+      </p>
+      <p>
+        <strong>Tip for expats:</strong> if you are comparing a job offer in Italy with one abroad, always look
+        at the total annual compensation (RAL) rather than the monthly payslip figure. An Italian contract on 14
+        monthly payments may show a lower monthly gross than a 12-payment contract elsewhere, but the annual
+        totals could be identical. Use our <a href="/en/gross-salary-calculator/">gross salary calculator</a> to
+        compare accurately.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions About the Quattordicesima
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Which employment contracts (CCNLs) include the quattordicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          The main CCNLs that include the quattordicesima (14th-month bonus salary) are: Commercio e Terziario
+          (Commerce and Services, via Confcommercio), Turismo (Tourism &mdash; hotels, restaurants, travel agencies),
+          Banche e Credito (Banking), Assicurazioni (Insurance), Alimentari Industria (Food Manufacturing),
+          Autotrasporto e Logistica (Transport and Logistics), Studi Professionali (Professional Firms), and
+          Chimico-Farmaceutico (Chemicals and Pharmaceuticals). It is <em>not</em> included in the Metalmeccanico
+          (Metalworking), Edilizia (Construction), or Pubblico Impiego (Public Sector) contracts.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Is the quattordicesima mandatory in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          No. Unlike the tredicesima (13th-month bonus), which is required by law for all subordinate employees,
+          the quattordicesima is an additional payment established only by specific CCNLs (national collective
+          bargaining agreements). If the CCNL applied to your employment does not provide for it, your employer
+          has no legal obligation to pay it &mdash; unless it is explicitly written into your individual employment
+          contract (contratto individuale di lavoro).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          When is the quattordicesima paid?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          The quattordicesima is generally paid with the June or July payslip, ahead of the summer holidays. The
+          exact date depends on the applicable CCNL and company practices. Some contracts specify disbursement by
+          July&nbsp;1, while others pay it with the June payslip. Check your employment contract and most recent
+          payslip (cedolino) for the specific date applicable to your situation.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Is it calculated on the base salary or on the full RAL?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          The quattordicesima is generally calculated on the retribuzione globale mensile (total monthly
+          compensation), which includes the base salary (paga base), cost-of-living allowance (contingenza),
+          seniority increments (scatti di anzianit&agrave;), and other fixed pay elements. In this calculator we
+          use RAL&nbsp;&divide;&nbsp;12 as a simplified approximation. For an exact figure, refer to your payslip
+          (cedolino) and the specific provisions of your CCNL.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Do I earn more with 14 monthly payments?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          No, your RAL (gross annual salary) remains the same regardless of whether it is split into 12, 13, or
+          14 payments. With 14 monthly payments, each individual payslip will be smaller (RAL&nbsp;&divide;&nbsp;14
+          instead of RAL&nbsp;&divide;&nbsp;12 or RAL&nbsp;&divide;&nbsp;13), but you receive two extra lump-sum
+          payments during the year. The total gross annual amount is always the same. However, the distribution of
+          tax deductions across the monthly payslips can cause minor differences in the overall annual net, so the
+          effect is purely one of cash-flow timing rather than total compensation.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Does the quattordicesima accrue during the probation period?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Yes. The quattordicesima accrues normally during the probation period (periodo di prova), because the
+          employment relationship is treated as a fully subordinate one from day one. If the probation period is
+          not passed and the relationship ends, the employee is entitled to the pro-rata quattordicesima for the
+          months worked, calculated in the final payslip using the standard 15-day rule (a month counts as full
+          if more than 15 calendar days were worked).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          How is the quattordicesima taxed compared to the tredicesima?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          The quattordicesima is taxed exactly the same way as the tredicesima: INPS social-security contributions
+          at 9.19% are applied to the gross amount, followed by IRPEF at the marginal rate, with no employment-income
+          deductions (detrazioni da lavoro dipendente) and no trattamento integrativo. As a result, for the same
+          gross amount, the net quattordicesima is identical to the net tredicesima. Both additional monthly
+          payments are taxed more heavily than the ordinary monthly salary, where you do benefit from tax deductions
+          and the supplementary treatment.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Can I waive the quattordicesima in exchange for higher monthly pay?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          In principle, you cannot unilaterally waive the quattordicesima if the applicable CCNL provides for it,
+          as it is a right established by the collective agreement. However, it is possible to agree with your
+          employer on "mensilizzazione" &mdash; spreading the quattordicesima amount across the 12 ordinary monthly
+          payslips. This way, each monthly payment is slightly higher, but you do not receive the separate
+          June/July lump sum. This arrangement must be formalised in writing and does not change the total gross
+          annual amount or the overall tax burden &mdash; it only affects the timing of payments throughout the year.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          What happens to the quattordicesima if I resign or am dismissed mid-year?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          If your employment ends before the quattordicesima has been paid, you are entitled to the pro-rata
+          amount for the months you have worked, which will be included in your final payslip (ultima busta paga).
+          If the full quattordicesima was already paid earlier in the year (e.g., in July) and you leave before
+          completing the full accrual period, your employer will deduct the unearned portion through a
+          conguaglio (adjustment) in the final payslip. The same applies whether you resign voluntarily,
+          are dismissed, or your fixed-term contract expires.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
+          Does the quattordicesima affect my TFR severance pay?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
+          Yes. The TFR (trattamento di fine rapporto &mdash; Italian severance pay) is calculated on your total
+          annual compensation, which includes the quattordicesima if your CCNL provides for it. The TFR annual
+          accrual formula is: total annual gross pay &divide; 13.5. Since the quattordicesima is part of your
+          total annual gross pay, it increases the TFR accrual slightly compared to an identical RAL on 13
+          payments where no quattordicesima is paid. Use our
+          <a href="/en/severance-pay-calculator/" class="underline hover:text-brand transition-colors">TFR severance calculator</a>
+          for a detailed estimate.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a href="/en/thirteenth-month-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Tredicesima Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calculate the net 13th-month bonus from your RAL</p>
+      </a>
+      <a href="/en/severance-pay-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">TFR Severance Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Estimate your accrued TFR and compare company vs pension fund</p>
+      </a>
+      <a href="/en/hourly-rate-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Hourly Rate Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Convert your RAL into gross and net hourly pay</p>
+      </a>
+      <a href="/en/payslip-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Payslip Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Full RAL-to-net breakdown with all INPS and IRPEF details</p>
+      </a>
+      <a href="/en/gross-salary-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Gross Salary Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Reverse-calculate the RAL you need from your desired net pay</p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">IRPEF Tax Calculator</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">See how Italy's progressive tax brackets apply to your income</p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

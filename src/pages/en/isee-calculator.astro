@@ -23,5 +23,639 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    ISEE Calculator Italy 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Estimate your ISEE by entering your household income, assets, and family composition. This is a simplified simulation: the official ISEE requires filing a DSU (Dichiarazione Sostitutiva Unica) through a CAF or INPS.
+  </p>
+
   <ISEE client:load lang={lang} />
+
+  <!-- How it is calculated -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      What is the ISEE and how is it calculated?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The <strong>ISEE (Indicatore della Situazione Economica Equivalente)</strong>, or Equivalent Economic
+        Situation Indicator, is the primary tool used in Italy to assess the economic condition of households
+        applying for subsidised public services and welfare benefits. Originally introduced by Legislative
+        Decree 109/1998 and comprehensively reformed by <strong>DPCM 159/2013</strong>, the ISEE takes into
+        account both household income and assets, weighting them against family size and composition through
+        an equivalence scale (scala di equivalenza). If you are an expat living in Italy, understanding the
+        ISEE is essential because it determines your access to virtually every means-tested public benefit,
+        from reduced university tuition to utility bill discounts.
+      </p>
+      <p>
+        The ISEE is required to access a wide range of benefits and services, including: <strong>university
+        fee reductions</strong> (tuition waivers, scholarships, subsidised housing), <strong>reduced nursery
+        and school meal fees</strong>, the <strong>social bonus for utility bills</strong> (electricity, gas,
+        and water), <strong>national health service concessions</strong> (reduced or waived co-payments known
+        as "ticket sanitari"), income support measures such as the <strong>Assegno di Inclusione</strong>,
+        the <strong>Assegno Unico Universale</strong> (universal child allowance), and eligibility for
+        <strong>public housing programmes</strong> (edilizia residenziale pubblica). In practice, nearly every
+        publicly funded benefit tied to economic need in Italy requires a valid ISEE certificate.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The three core components of the ISEE
+      </h3>
+      <p>
+        The ISEE calculation rests on three key indicators that combine to produce the final value:
+      </p>
+      <p>
+        The <strong>ISR (Indicatore della Situazione Reddituale)</strong>, or Income Indicator, represents
+        the household's total income. It includes the sum of all income earned by every member of the
+        household unit (nucleo familiare): employment income, self-employment income, pensions, rental
+        income from property, social assistance payments, alimony received, and any other form of taxable
+        income. Certain deductions are subtracted from the ISR, such as alimony paid to a separated spouse
+        and specific social or disability allowances up to set thresholds. In our simulator, for simplicity,
+        the ISR corresponds to the total declared household income after the main deductions.
+      </p>
+      <p>
+        The <strong>ISP (Indicatore della Situazione Patrimoniale)</strong>, or Asset Indicator, measures
+        the accumulated wealth of the household. It consists of two parts: <em>movable assets</em>
+        (patrimonio mobiliare) including bank accounts, savings deposits, government bonds, corporate bonds,
+        shares, mutual funds, capitalisation life insurance policies, company stakes, and any other financial
+        instrument; and <em>immovable assets</em> (patrimonio immobiliare), i.e., land and buildings owned
+        by household members, valued at their cadastral value (rendita catastale) multiplied by the
+        revaluation coefficients established by law. Both components are subject to allowances (franchigie)
+        that reduce the amount taken into account.
+      </p>
+      <p>
+        The <strong>ISE (Indicatore della Situazione Economica)</strong>, or Economic Situation Indicator,
+        is the intermediate value that combines the two previous components with the formula:
+        <strong>ISE = ISR + 20% &times; ISP</strong>. Assets therefore carry a 20% weight relative to
+        income when determining the overall economic situation. This weighting was introduced to prevent
+        households with low incomes but significant assets (or vice versa) from obtaining benefits that
+        do not correspond to their actual economic condition.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Asset allowances (franchigie patrimoniali)
+      </h3>
+      <p>
+        The allowances are thresholds below which assets are not counted towards the ISP calculation.
+        They exist to ensure that a basic level of savings and ownership of a primary residence do not
+        unduly penalise families.
+      </p>
+      <p>
+        For <strong>movable assets</strong>, the base allowance is <strong>&euro;15,493.71</strong> for
+        a single-person household, increased by <strong>&euro;1,000 for each dependent child</strong>
+        in the household (starting from the first). This means a couple with two children has a movable
+        asset allowance of &euro;17,493.71. Only the amount exceeding this threshold is included in the
+        ISP. For example, if a four-person family with two children holds &euro;25,000 in movable assets,
+        the net movable assets counted will be 25,000 &minus; 17,493.71 = &euro;7,506.29.
+      </p>
+      <p>
+        For <strong>immovable assets</strong>, a specific allowance applies to the <strong>primary
+        residence</strong> (prima casa) of up to <strong>&euro;52,500</strong>. If the household has an
+        outstanding mortgage on the primary residence, the allowance equals the lesser of &euro;52,500
+        and the remaining mortgage balance. After subtracting the allowance, the residual value of
+        immovable assets is counted at <strong>two-thirds (2/3)</strong> of its value. This further
+        reduction acknowledges that real estate is less liquid than financial assets.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The equivalence scale (DPCM 159/2013)
+      </h3>
+      <p>
+        The equivalence scale (scala di equivalenza) is the factor that "normalises" the ISE based on
+        the size and characteristics of the household. A family of four needs a higher income than a
+        single person to achieve the same standard of living: the equivalence scale accounts for this
+        difference. The base parameters set by DPCM 159/2013 are as follows:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Household members</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Scale parameter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">1</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.00</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">2</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.57</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">3</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2.04</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">4</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2.46</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">5</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2.85</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Each additional member</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">+0.35</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        On top of the base parameter, <strong>additional increments</strong> (maggiorazioni) apply for
+        specific situations: <strong>+0.2 for each minor child</strong>, <strong>+0.35 if there are
+        three or more minor children</strong>, <strong>+0.5 for each household member with a medium,
+        severe, or non-self-sufficient disability</strong>, and <strong>+0.2 for single-parent
+        households</strong> (one parent with at least one minor child). These increments are added to
+        the base parameter. For example, a household of four (a couple with two minor children) will
+        have an equivalence scale of 2.46 + 0.2 + 0.2 = 2.86.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        ISEE brackets and corresponding benefits
+      </h3>
+      <p>
+        The final ISEE value determines the household's bracket (fascia) and, consequently, the benefits
+        it is entitled to. The main thresholds used in 2026 are the following:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">ISEE bracket</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Main benefits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Up to &euro;6,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Social bonuses (electricity, gas, water), carta acquisti, maximum nursery bonus, health ticket exemption</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Up to &euro;9,530</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Social subsidies, Supporto Formazione e Lavoro, rent contributions, reduced tariffs</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Up to &euro;15,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Maximum university fee reductions (full exemption), reduced school meal fees, various bonuses</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Up to &euro;20,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Partial university fee reductions, transport fare discounts, regional grant programmes</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Up to &euro;40,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Reduced university fee discounts, First Home Guarantee Fund for under-36s</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Over &euro;40,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">No ISEE-specific benefits. Standard tax deductions and credits still apply</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Worked example: family of 4 with a property
+      </h3>
+      <p>
+        Consider a typical family composed of two parents and two minor children, living in an apartment
+        they own. The family's data: total household income &euro;35,000 (&euro;25,000 from the first
+        parent + &euro;10,000 from the second), movable assets &euro;20,000 (bank accounts and small
+        investments), cadastral value of the property &euro;130,000, remaining mortgage &euro;70,000.
+      </p>
+      <p>
+        <strong>ISR calculation:</strong> &euro;35,000 (total household income).
+      </p>
+      <p>
+        <strong>ISP calculation:</strong> For movable assets, the allowance is 15,493.71 + 2,000
+        (2 children) = &euro;17,493.71. Net movable assets: 20,000 &minus; 17,493.71 = &euro;2,506.29.
+        For immovable assets, the primary residence allowance is the lesser of &euro;52,500 and the
+        remaining mortgage of &euro;70,000, so &euro;52,500. Immovable assets after the allowance:
+        130,000 &minus; 52,500 = &euro;77,500. Of this, two-thirds are counted: 77,500 &times; 2/3
+        = &euro;51,666.67. Total ISP: 2,506.29 + 51,666.67 = &euro;54,172.96.
+      </p>
+      <p>
+        <strong>ISE calculation:</strong> 35,000 + 20% &times; 54,172.96 = 35,000 + 10,834.59
+        = &euro;45,834.59.
+      </p>
+      <p>
+        <strong>Equivalence scale:</strong> 4 members = 2.46 (base) + 0.2 (minor child 1) + 0.2
+        (minor child 2) = 2.86.
+      </p>
+      <p>
+        <strong>ISEE:</strong> 45,834.59 / 2.86 = <strong>&euro;16,025.38</strong>.
+      </p>
+      <p>
+        With an ISEE of approximately &euro;16,025, this family would qualify for partial university
+        fee reductions, reduced school meal tariffs, and could apply for several regional grant programmes.
+        However, it would not fall within the lowest brackets for social bonuses or complete exemptions.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Types of ISEE
+      </h3>
+      <p>
+        In addition to the <strong>ISEE ordinario</strong> (standard ISEE), which is the one calculated
+        by our simulator and required for most benefits, several other specific types exist under DPCM
+        159/2013:
+      </p>
+      <p>
+        The <strong>ISEE universitario</strong> (university ISEE) is required for student financial aid
+        (tuition reductions, scholarships, subsidised housing). Its key feature is that the student's
+        household unit is determined by special rules: even if the student no longer lives with their
+        parents, the ISEE household includes the parents unless the student can demonstrate full economic
+        independence (an independent residence for at least 2 years and sufficient personal income).
+        Special documentation rules apply to foreign students regarding income and assets held abroad.
+      </p>
+      <p>
+        The <strong>ISEE sociosanitario</strong> (health and social care ISEE) applies to social welfare
+        services of a care nature (home care, residential care for the elderly, disability benefits). In
+        this case, the household unit may be restricted to the beneficiary, their spouse, and minor
+        children only, excluding other cohabitants. Disability increments are higher, and asset evaluation
+        criteria differ slightly.
+      </p>
+      <p>
+        The <strong>ISEE minorenni</strong> (minor children ISEE) is used for subsidised benefits aimed
+        at minors, such as the Assegno Unico Universale (universal child allowance). When the minor's
+        parents are not married and do not cohabit, the non-cohabiting parent may or may not be included
+        in the household unit depending on specific conditions set out in the legislation.
+      </p>
+      <p>
+        Finally, the <strong>ISEE corrente</strong> (current ISEE) is an "updated" version of the standard
+        ISEE that takes into account significant changes in the economic situation that have occurred after
+        the reference period of the original DSU. It can be requested in the event of job loss, reduction
+        in working hours, cessation of a pension or welfare payment, or a change in assets exceeding 20%.
+        The ISEE corrente is valid for 6 months (as opposed to one year for the standard ISEE) and can be
+        requested at any time during the year.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        How to file the DSU to obtain an official ISEE
+      </h3>
+      <p>
+        The <strong>DSU (Dichiarazione Sostitutiva Unica)</strong>, or Single Substitute Declaration, is
+        the document that the household must complete and submit to obtain the official ISEE certificate.
+        The DSU contains personal, income, and asset data for every member of the household and refers
+        to income earned two years prior (for 2026, the reference year is 2024) and assets held as of
+        31 December of the previous year (31 December 2025).
+      </p>
+      <p>
+        The DSU can be filed through several channels. The most common method is through a
+        <strong>CAF (Centro di Assistenza Fiscale)</strong>, or Tax Assistance Centre, or through a
+        <strong>patronato</strong> (welfare advisory office): the service is free of charge, and staff
+        will help you complete the form. Alternatively, you can complete the <strong>pre-filled DSU</strong>
+        (DSU precompilata) directly on the INPS portal (www.inps.it) by logging in with your SPID
+        (digital identity), CIE (electronic ID card), or CNS (national services card). The pre-filled
+        DSU already contains many data points retrieved automatically from the Agenzia delle Entrate
+        (Revenue Agency) and INPS, making the process faster and reducing the risk of errors. Once the
+        DSU is submitted, INPS processes the ISEE certificate within 10 working days, and it becomes
+        available in your reserved area on the INPS portal.
+      </p>
+      <p>
+        The ISEE is valid for one calendar year: a DSU filed in 2026 is valid until 31 December 2026.
+        It is important to renew your ISEE early in January each year if you need the benefits, as some
+        programmes (such as the Assegno Unico) require a valid, current-year ISEE to disburse the full
+        amount. Without a valid ISEE, you may receive only the minimum payment.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        ISEE for expats: what foreign residents need to know
+      </h3>
+      <p>
+        If you are a foreign national living and working in Italy, the ISEE applies to you in the same
+        way as Italian citizens, provided you are a legal resident. There are, however, some additional
+        considerations. Any income and assets held abroad must be declared in the DSU. Foreign income
+        is generally converted to euros using the exchange rate set by the Agenzia delle Entrate for the
+        relevant tax year. If you own property abroad, you will need to determine its equivalent cadastral
+        value, which can require documentation from the country where the property is located. Bank
+        accounts held in foreign banks are included in your movable assets and must be declared with
+        their balance as of 31 December and average annual balance (giacenza media). If you have recently
+        moved to Italy and do not yet have a full year of Italian tax returns, the CAF operator can guide
+        you on how to document your foreign income.
+      </p>
+      <p>
+        For EU citizens, the process is relatively straightforward because of mutual agreements on data
+        sharing. Non-EU citizens may need to provide consular certificates or sworn translations of
+        financial documents. In both cases, it is strongly recommended to use a CAF rather than
+        attempting the online DSU independently, at least for your first ISEE filing, as the staff can
+        navigate the specific documentation requirements.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      ISEE reference values by household type
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The following table shows the estimated ISEE for different household profiles, assuming movable
+        assets of &euro;15,000 and immovable assets of &euro;120,000 (primary residence with a remaining
+        mortgage of &euro;60,000). These values are purely indicative.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Household</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Income</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Equiv. scale</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Estimated ISEE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Single person</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;20,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.00</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;28,907</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Couple without children</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;30,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.57</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;24,682</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Couple + 1 minor child</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;35,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2.24</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;19,823</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Couple + 2 minor children</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;35,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">2.86</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;15,526</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Couple + 3 minor children</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;40,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">3.60</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;13,837</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Single parent + 1 minor child</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;18,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">1.97</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;13,737</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        As the table shows, the ISEE varies significantly depending on household composition, even with
+        the same income and assets. A couple with two minor children and a total income of &euro;35,000
+        has an estimated ISEE of around &euro;15,500, which qualifies them for most university fee
+        reductions and family bonuses. A single person with the same income would have an ISEE nearly
+        twice as high, excluding them from many benefits.
+      </p>
+      <p>
+        These reference values can help you quickly gauge whether your household might fall within the
+        thresholds for the benefits you are interested in. However, keep in mind that the official ISEE
+        considers many additional variables (average bank balances, specific cadastral values, income
+        from foreign sources, etc.) that may shift the result.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How long does it take to get an official ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          After submitting the DSU (through a CAF, patronato, or the INPS portal), the ISEE certificate
+          is issued by INPS within 10 working days. If you use the pre-filled DSU online, processing
+          times can be shorter. Once issued, the ISEE is valid until 31 December of the current year.
+          It is advisable to submit the DSU at the beginning of the year to avoid missing months of
+          benefit payments.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What documents are needed for the DSU?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          To complete the DSU you will need: identity documents and codice fiscale (tax code) for all
+          household members, the latest tax return (Modello 730 or Redditi PF), income certificates (CU),
+          bank account balances and average annual balances (giacenza media) as of 31 December of the
+          previous year, cadastral records (visure catastali) for any owned property, mortgage
+          documentation, and details of any vehicles owned (registration plates and values). With the
+          pre-filled DSU, much of this data is already populated automatically from government databases.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Do bank accounts affect the ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, movable assets (which include bank accounts) affect the ISEE, but only to the extent that
+          they exceed the allowance (&euro;15,493.71 base + &euro;1,000 per child). The higher of the
+          balance as of 31 December and the average annual balance (giacenza media) is considered for
+          each financial account. For example, if you have a balance of &euro;20,000 but an average
+          annual balance of &euro;25,000, the value of &euro;25,000 is used. If total movable assets
+          fall below the allowance threshold, they have no impact on the ISEE whatsoever.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the difference between ISEE ordinario and ISEE corrente?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The ISEE ordinario (standard ISEE) is based on income from two years prior and assets from
+          the previous year. The ISEE corrente (current ISEE), on the other hand, reflects significant
+          changes that have occurred since then: job loss, reduced working hours, cessation of pension
+          payments, or asset changes exceeding 20%. The ISEE corrente is valid for 6 months and serves
+          to "snapshot" the household's current financial situation in cases of worsening circumstances.
+          It can be requested at any time during the year, provided the standard ISEE has already been
+          obtained.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Who is included in the household unit (nucleo familiare) for ISEE purposes?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The ISEE household unit (nucleo familiare) generally coincides with the family registered at
+          the same address in the anagrafe (municipal registry), meaning all persons who cohabit and are
+          linked by marriage, kinship, affinity, adoption, guardianship, or emotional bonds. Spouses
+          always belong to the same household unit, even if they have different registered addresses
+          (unless legally separated). Minor children follow the parent they live with. Adult children
+          who do not live with the parents are included in the parents' household if they are under 26,
+          unmarried, have no children of their own, are still claimed as dependents for IRPEF purposes,
+          and are registered at the same address. Detailed rules for every situation are set out in
+          DPCM 159/2013.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does owning a house increase the ISEE significantly?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The impact of property ownership on the ISEE depends on the cadastral value, the remaining
+          mortgage, and the applicable allowance. For the primary residence (prima casa), an allowance
+          of up to &euro;52,500 is subtracted (or the remaining mortgage balance, if lower), and only
+          two-thirds of the residual value is counted. This significantly reduces the impact: a property
+          with a cadastral value of &euro;120,000 and a remaining mortgage of &euro;60,000 contributes
+          approximately &euro;45,000 to the ISP, which in turn adds 20% of that figure to the ISE,
+          divided by the equivalence scale. For a family of four, the net effect is roughly
+          &euro;3,000-4,000 added to the ISEE.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does this simulator give the same result as the official ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, this simulator provides a simplified estimate. The official ISEE calculated by INPS from
+          the DSU takes into account many more variables: imputed income, welfare payments, specific
+          cadastral values for each property, average annual bank balances, assets held abroad, and
+          numerous other components. Furthermore, the official ISEE is produced by cross-referencing
+          declared data with the databases of the Agenzia delle Entrate and INPS. Our simulator is
+          useful for getting a rough idea of your bracket, but it does not replace the official ISEE
+          certificate issued by INPS.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I legally reduce my ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          There are no "tricks" to lower the ISEE, and making false declarations in the DSU is a
+          criminal offence. However, there are legitimate strategies: using savings to pay off debts
+          (reducing movable assets), ensuring that bank account balances are not artificially high at
+          year-end, contributing to a supplementary pension fund (which reduces taxable income), and
+          verifying that your household composition is correctly defined. If you have experienced a
+          significant change in economic circumstances (job loss, income reduction), you can request
+          the ISEE corrente, which reflects your updated situation and may result in a lower figure.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          I am a foreign resident in Italy. Can I get an ISEE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, all legal residents in Italy can obtain an ISEE, regardless of nationality. You will
+          need a valid codice fiscale (tax code) and residency registration. If you hold income or
+          assets abroad, these must be declared in the DSU. Foreign property values are assessed
+          differently from Italian ones, so it is strongly recommended to use a CAF for your first
+          filing. EU citizens generally have a smoother process thanks to data-sharing agreements,
+          while non-EU citizens may need to provide additional documentation such as consular
+          certificates or sworn translations.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is a CAF and how do I find one?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          A CAF (Centro di Assistenza Fiscale) is a Tax Assistance Centre authorised by the Italian
+          government to help citizens with tax returns and welfare applications, including the ISEE.
+          The service for ISEE/DSU filing is free. Major CAF networks include CAF CGIL, CAF CISL,
+          CAF UIL, CAF ACLI, and CAF 50&amp;Piu'. You can find the nearest office by searching online
+          for "CAF" followed by your city name, or by asking at your local comune (town hall). Many
+          CAF offices require an appointment, so it is best to call ahead.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/family-tax-deductions/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Family Tax Deductions
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate IRPEF deductions for spouse and dependent children
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay
+        </p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate gross and net IRPEF tax bracket by bracket
+        </p>
+      </a>
+      <a href="/en/mortgage-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Mortgage Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate monthly mortgage payments and amortisation schedule
+        </p>
+      </a>
+      <a href="/en/flat-rate-regime-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Flat-Rate Regime (Forfettario)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate taxes and net income under the regime forfettario
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

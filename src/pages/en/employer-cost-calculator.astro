@@ -24,4 +24,548 @@ const breadcrumbs = [
   lang={lang}
 >
   <CostoAziendale client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      What is the costo aziendale (total employer cost) and how is it calculated
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The <strong>costo aziendale</strong> (total employer cost, or total cost of labor) is the
+        full amount an Italian company spends to employ a worker. This concept is essential for
+        business owners, HR managers, tax consultants, and expats who are negotiating a job offer
+        in Italy, because the employer cost is always significantly higher than the
+        <strong>RAL (Retribuzione Annua Lorda)</strong> -- the gross annual salary stated in the
+        employment contract. Understanding this gap is critical whether you are hiring someone
+        in Italy or evaluating the true cost behind your own compensation package.
+      </p>
+      <p>
+        The difference between the costo aziendale and the RAL can be striking: for an employee
+        earning a RAL of 30,000 euros, the total employer cost typically exceeds 39,000 euros,
+        with a multiplier of roughly 1.32x. In practical terms, for every euro of gross salary
+        the company pays, it must spend an additional 32 cents or more on mandatory social
+        security contributions and accruals. This is one of the reasons Italy is frequently cited
+        as having one of the highest "tax wedges" (cuneo fiscale) in Europe, according to OECD
+        statistics.
+      </p>
+
+      <h3>The components of the total employer cost</h3>
+      <p>
+        The costo aziendale of an employee in Italy is made up of four main components, each
+        governed by specific legislation and with rates that can vary depending on the industry
+        sector, the size of the company, and the type of national collective labor agreement
+        (CCNL -- Contratto Collettivo Nazionale di Lavoro) applied.
+      </p>
+
+      <h4>1. RAL -- Retribuzione Annua Lorda (Gross Annual Salary)</h4>
+      <p>
+        The RAL is the primary and largest component of the employer cost. It corresponds to the
+        gross annual salary agreed upon in the employment contract. It includes the monthly base
+        salary multiplied by the number of pay periods established by the applicable CCNL
+        (typically 13 or 14 monthly payments per year), plus any superminimo (supplementary pay),
+        fixed allowances, and other recurring compensation elements. On average, the RAL accounts
+        for approximately 70-75% of the total employer cost, depending on the industry and salary level.
+      </p>
+
+      <h4>2. INPS employer contributions (23.81%)</h4>
+      <p>
+        The employer's social security contributions paid to <strong>INPS (Istituto Nazionale della
+        Previdenza Sociale)</strong> -- Italy's national social security agency -- represent the
+        most significant additional cost beyond the RAL. The standard rate for private-sector
+        employees is <strong>23.81%</strong> of the gross taxable salary. This rate is actually an
+        aggregate of several sub-components: the IVS (Invalidita', Vecchiaia, Superstiti --
+        disability, old age, and survivors' pension) contribution at 23.81%, plus smaller
+        contributions for CUAF (family allowance fund), maternity, unemployment insurance
+        (NASpI -- Nuova Assicurazione Sociale per l'Impiego), and sickness. The effective overall
+        rate may vary slightly by sector and worker classification, but 23.81% is the reference
+        value for the vast majority of private-sector employees, as published annually in the
+        INPS contribution tables circular at the beginning of each year.
+      </p>
+
+      <h4>3. TFR -- Trattamento di Fine Rapporto / Severance Pay (7.41%)</h4>
+      <p>
+        The <strong>TFR (Trattamento di Fine Rapporto)</strong> is a mandatory severance accrual
+        governed by Article 2120 of the Italian Civil Code. Each year, the employer must set aside
+        a portion equal to the annual gross salary divided by 13.5, which corresponds to
+        approximately <strong>7.41%</strong> of the RAL. After deducting the 0.50% contribution
+        earmarked for the INPS Pension Adjustment Fund (Fondo Adeguamento Pensioni), the net
+        accrual is approximately <strong>6.91%</strong>. Although the TFR is not immediately "paid out"
+        like INPS contributions -- it accumulates as a liability on the employer's balance sheet --
+        it is a certain and quantifiable debt owed to the employee, payable upon termination of
+        employment. For companies with more than 50 employees, the TFR must be transferred
+        monthly to the INPS Treasury Fund (Fondo Tesoreria), effectively turning it into a
+        regular cash outflow. If the employee has elected to direct their TFR to a supplementary
+        pension fund (fondo pensione), the employer remits the accrual directly to the fund each month.
+      </p>
+
+      <h4>4. INAIL premium -- occupational insurance (variable by sector)</h4>
+      <p>
+        The <strong>INAIL (Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro)</strong>
+        insurance premium covers workplace accidents and occupational diseases and is borne
+        entirely by the employer. The rate varies considerably based on the risk classification of
+        the business activity, as defined by the Premium Tariff (Tariffa dei Premi) approved by
+        Ministerial Decree of 27 February 2019. For office and service-sector activities, the
+        rate is very low (approximately <strong>0.3-0.5%</strong>), while for high-risk sectors
+        such as construction (edilizia), it can exceed <strong>5%</strong>. The premium is
+        calculated on the INAIL-taxable remuneration and paid via annual self-assessment
+        (autoliquidazione) by 16 February each year.
+      </p>
+
+      <h3>The complete formula for calculating the employer cost</h3>
+      <p>
+        The summary formula for computing the costo aziendale is:
+      </p>
+      <p>
+        <strong>Total Employer Cost = RAL + INPS Employer Contributions + TFR + INAIL Premium</strong>
+      </p>
+      <p>
+        Expressed as percentages of the RAL:
+      </p>
+      <ul>
+        <li>INPS employer share: +23.81%</li>
+        <li>TFR: +7.41% (gross) or +6.91% (net of the 0.50% contribution)</li>
+        <li>INAIL: from +0.3% to +5% or more, depending on the sector</li>
+      </ul>
+      <p>
+        For an office-based business with an INAIL rate of 0.4%, the total multiplier is
+        approximately <strong>1.32x</strong>. For a metalworking or manufacturing business with
+        an INAIL rate of 2.5%, the multiplier rises to approximately <strong>1.34x</strong>. For
+        construction with an INAIL rate of 5%, it reaches roughly <strong>1.36x</strong>.
+      </p>
+
+      <h3>Detailed example: RAL of 35,000 euros</h3>
+      <p>
+        Let us walk through the full employer cost breakdown for an employee with a RAL of
+        35,000 euros, working in an office environment (INAIL rate 0.4%):
+      </p>
+      <ul>
+        <li><strong>RAL:</strong> 35,000.00 &euro;</li>
+        <li><strong>INPS employer (23.81%):</strong> 35,000 x 0.2381 = 8,333.50 &euro;</li>
+        <li><strong>TFR (RAL / 13.5 - 0.50%):</strong> 35,000 / 13.5 - (35,000 / 13.5 x 0.005) = 2,580.25 &euro;</li>
+        <li><strong>INAIL (0.4%):</strong> 35,000 x 0.004 = 140.00 &euro;</li>
+        <li><strong>Total employer cost:</strong> 46,053.75 &euro;</li>
+      </ul>
+      <p>
+        The multiplier in this case is 46,053.75 / 35,000 = <strong>1.316x</strong>. The
+        monthly cost to the employer is approximately <strong>3,837.81 &euro;</strong>, while the
+        hourly cost (based on the standard 1,720 annual working hours) is approximately
+        <strong>26.78 &euro;</strong>. If we consider that the employee's net take-home pay
+        (netto in busta paga) with this RAL is roughly 1,870 euros per month (with 13 pay
+        periods, in Lombardy), the company spends more than double what the employee actually
+        receives -- a figure that illustrates the full impact of Italy's so-called
+        <strong>cuneo fiscale (tax wedge)</strong>.
+      </p>
+
+      <h3>Why this matters for expats and international companies</h3>
+      <p>
+        If you are an expat negotiating a salary in Italy, or an international company planning to
+        hire Italian-based employees, the employer cost multiplier is a vital budgeting factor.
+        Unlike in many other countries where employer-side social security contributions are lower,
+        the Italian system imposes substantial mandatory charges. When comparing job offers across
+        countries, always look at the total cost of employment, not just the headline gross salary.
+        Additionally, Italy offers targeted tax incentives for inbound workers (the
+        <strong>regime impatriati</strong>), which reduce the employee's income tax but do not
+        affect the employer-side social contributions calculated here.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Total employer cost by RAL level: {SITE.annoFiscale} reference table
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table below shows the estimated total employer cost for various RAL levels, assuming
+        the standard INPS employer rate of 23.81%, TFR calculated per Article 2120 of the Civil
+        Code, and an INAIL rate of 0.4% (office/service sector). For industries with a different
+        INAIL rate, the total cost will vary accordingly -- use the calculator above for a
+        personalized estimate.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-6">
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">RAL</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">INPS employer</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">TFR</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">INAIL</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Total cost</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Multipl.</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">25,000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">5,953 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,843 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">100 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">32,896 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">30,000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">7,143 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2,211 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">120 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">39,474 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">35,000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">8,334 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2,580 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">140 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">46,054 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">40,000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">9,524 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2,948 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">160 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">52,632 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">50,000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">11,905 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">3,686 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">200 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">65,791 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.32x</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">60,000 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">14,286 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">4,423 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">240 &euro;</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">78,949 &euro;</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.32x</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        <strong>Note:</strong> the multiplier remains constant at 1.32x because all contributions
+        are calculated as a percentage of the RAL. The ratio only changes when the INAIL rate
+        differs or when the gross salary exceeds the annual INPS contribution ceiling (for
+        {SITE.annoFiscale}, approximately 119,650 euros), above which INPS contributions no
+        longer increase proportionally.
+      </p>
+
+      <h3>INAIL rates by sector: how the insurance premium affects employer cost</h3>
+      <p>
+        The INAIL premium varies enormously depending on the Premium Tariff (Tariffa dei Premi)
+        and the risk class assigned to the business activity. Below are indicative values for the
+        main industry sectors in Italy:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-6">
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Sector</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Indicative INAIL rate</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Cost for RAL 35,000 &euro;</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Office / Services (Terziario)</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">0.3% - 0.5%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">105 - 175 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Retail / Commerce (Commercio)</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">0.5% - 1.0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">175 - 350 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Hospitality / Tourism (Ristorazione)</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1.0% - 2.0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">350 - 700 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Metalworking / Manufacturing (Metalmeccanico)</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">2.0% - 3.0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">700 - 1,050 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Construction (Edilizia)</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">4.0% - 6.0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,400 - 2,100 &euro;</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Freight Transport (Trasporto merci)</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">3.0% - 5.0%</td>
+            <td class="px-4 py-3 text-right text-gray-600 dark:text-gray-400">1,050 - 1,750 &euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <p>
+        The actual rates depend on the specific tariff code (voce di tariffa) assigned by INAIL
+        to the company and can be further reduced or increased based on the company's accident
+        record through the rate oscillation mechanism (oscillazione del tasso, or OT). Companies
+        with a low injury rate can obtain significant discounts by submitting an application using
+        the <strong>OT23 form</strong>. This incentivizes workplace safety investments and can
+        meaningfully lower the overall employer cost.
+      </p>
+
+      <h3>Additional labor costs not included in the base calculation</h3>
+      <p>
+        Beyond the components covered by our calculator, the effective cost of an employee may
+        include several additional items that employers in Italy should budget for:
+      </p>
+      <ul>
+        <li>
+          <strong>Mandatory training:</strong> workplace safety courses required by Legislative
+          Decree 81/2008 (Testo Unico sulla Sicurezza), professional development, and training
+          hours mandated for apprenticeships. These are a legal obligation and carry real costs
+          in terms of both fees and lost productive time.
+        </li>
+        <li>
+          <strong>Meal vouchers and welfare benefits (buoni pasto e welfare):</strong> if required
+          by the applicable CCNL or company-level agreements, meal vouchers (up to 8 euros per
+          day for electronic vouchers, tax-exempt up to this threshold) and corporate welfare
+          plans represent an additional expense. Many CCNLs in the service sector mandate
+          these benefits.
+        </li>
+        <li>
+          <strong>Administrative costs:</strong> payroll processing fees (consulente del lavoro --
+          labor consultant), attendance management systems, HR software subscriptions, and
+          compliance reporting.
+        </li>
+        <li>
+          <strong>Indirect costs:</strong> workstation setup, equipment, utilities, and
+          proportional share of office space or co-working fees.
+        </li>
+      </ul>
+      <p>
+        For a comprehensive estimate of the "total cost of employment," these ancillary costs can
+        add between <strong>5% and 15%</strong> to the base cost calculated by our tool. A
+        thorough labor cost analysis should always account for these when budgeting for headcount
+        expansion, especially when comparing the cost of hiring employees in Italy versus other
+        European countries.
+      </p>
+
+      <h3>How Italy compares internationally</h3>
+      <p>
+        Italy's employer-side social security burden is among the highest in the OECD. The
+        combined employer contribution rate of approximately 31% (INPS + TFR + INAIL) compares
+        to roughly 13% in the UK, 20% in Germany, and 30-40% in France. This is a key factor
+        that international companies must weigh when deciding whether to establish an Italian
+        subsidiary, use an Employer of Record (EOR) service, or hire freelance collaborators
+        with <strong>Partita IVA (VAT number)</strong> instead. However, the Italian system
+        also provides employees with robust protections including universal healthcare coverage,
+        substantial pension accruals, and mandatory severance reserves -- benefits that in other
+        jurisdictions might need to be privately funded.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently asked questions about employer costs in Italy
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How much does it cost a company to employ someone with a RAL of 30,000 euros?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          For an employee with a RAL of 30,000 euros working in an office environment (INAIL rate 0.4%), the total annual employer cost is approximately 39,474 euros. This breaks down as follows: RAL 30,000 euros + INPS employer contributions 7,143 euros (23.81%) + TFR accrual 2,211 euros (RAL / 13.5, net of the 0.50% deduction) + INAIL premium 120 euros (0.4%). The monthly cost to the employer is approximately 3,290 euros, and the hourly cost is roughly 22.95 euros (based on the standard 1,720 annual working hours).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the multiplier to convert RAL into total employer cost?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The multiplier depends on the industry sector, but a useful rule of thumb is: for office and service activities (low INAIL rate), multiply the RAL by approximately 1.32x; for industrial and metalworking sectors, by approximately 1.34x; for construction, by approximately 1.37x. These figures include the INPS employer share (23.81%), TFR (~6.91%), and INAIL (variable). They do not include ancillary costs such as meal vouchers, welfare benefits, training, and administrative expenses, which can add a further 5-15% on top.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Is the TFR (severance pay) considered a cost for the employer?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes, the TFR (Trattamento di Fine Rapporto) is a genuine employer cost. Even when it is accrued internally rather than paid out monthly (in companies with up to 50 employees that retain it in-house), it represents a certain and determinable liability owed to the employee. In accounting terms, it is recorded as the "TFR fund" (fondo TFR) under liabilities on the balance sheet. For companies with more than 50 employees, the TFR must be paid monthly to the INPS Treasury Fund (Fondo Tesoreria), making it an actual cash disbursement. If the employee has chosen to direct their TFR to a pension fund (fondo pensione), the employer pays the accrual directly to the fund on a monthly basis.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How do you calculate the hourly cost of an employee in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The hourly cost is calculated by dividing the total annual employer cost by the number of annual working hours. The standard convention -- also used across Europe for public tenders -- is 1,720 hours per year, which corresponds to approximately 215 working days of 8 hours each, already net of holidays (ferie), public holidays (festivita'), and paid leave (permessi retribuiti or ROL). The actual "productive" hourly cost may be higher when factoring in absences due to illness, additional leave, and non-productive training hours.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Are there incentives that reduce the employer cost in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes, several contribution relief programs (agevolazioni contributive) can reduce the employer's INPS burden: the contribution exemption for new permanent hires (esonero contributivo), which varies by year and in 2026 can reach up to 100% for young workers under 36 or disadvantaged women under certain conditions; the decontribution for hires in Southern Italy (Mezzogiorno); reduced rates for professional apprenticeships (apprendistato professionalizzante), where the INPS rate drops to as low as 10% for companies with up to 9 employees; and the INAIL discount via the OT23 form for companies with a good safety record. Additionally, labor costs are fully deductible for IRES (corporate income tax) and IRAP (regional business tax) purposes, with the important provision that employee costs have been fully deductible from the IRAP tax base since 2015.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Is the employer cost different for apprentices (apprendisti)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes, the apprendistato professionalizzante (professional apprenticeship) enjoys a preferential contribution regime. For companies with fewer than 10 employees, the employer INPS rate is reduced to 3.11% for the first year, 4.61% for the second year, and then rises to 11.61% from the third year onward. For companies with 10 or more employees, the rate is 11.61% for the entire duration of the apprenticeship. These rates are significantly lower than the standard 23.81%, making apprenticeship one of the most cost-effective hiring tools available to Italian employers. Upon completion of the training period, contributions revert to the full rate.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Does the 14th month payment (quattordicesima) affect the employer cost?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The quattordicesima (14th month payment) does not change the total annual employer cost when reasoning in terms of RAL. The RAL already includes all pay periods provided by the contract (12, 13, or 14 monthly payments). What changes is only the distribution of payments throughout the year: with 14 pay periods, each individual monthly payment will be smaller compared to 13 pay periods, for the same RAL. The total annual employer cost remains identical because INPS contributions, TFR, and INAIL are all calculated on the annual RAL, regardless of how it is split across the months. For expats, this is an important concept: the "13th" and "14th" months are not bonuses but simply a different way of distributing the same annual salary.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the difference between "costo aziendale" and "cuneo fiscale" (tax wedge)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The cuneo fiscale (tax wedge) is the total gap between what the company spends (the costo aziendale) and what the employee actually takes home as net pay (netto in busta paga). It includes both employer-side charges (INPS employer contributions, TFR, INAIL) and employee-side deductions (INPS employee contributions at 9.19%, IRPEF income tax, and regional/municipal surcharges -- addizionali regionali e comunali). In Italy, the tax wedge is among the highest in Europe: for a single worker without dependents earning an average salary, the OECD estimates the tax wedge at around 45-47% of total labor costs. The 2025 Budget Law (Legge di Bilancio 2025) introduced structural measures to reduce the tax wedge for incomes up to 40,000 euros, through a combination of a tax-exempt amount and an additional tax deduction.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can the employer cost be reduced by using a flat-rate freelancer (Partita IVA forfettaria) instead?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          From a pure cost perspective, engaging a freelancer with a Partita IVA (VAT number) under the regime forfettario (flat-rate tax regime) eliminates the employer's obligation to pay INPS contributions, TFR, and INAIL on that worker. However, Italian labor law strictly prohibits disguised employment relationships (lavoro subordinato mascherato). If a freelance arrangement is found to effectively constitute dependent employment -- for example, the worker has fixed hours, uses the company's equipment exclusively, and reports to a single client -- the company risks severe penalties including back-payment of all unpaid contributions plus sanctions. Use our <a href="/en/employee-vs-freelancer/" class="text-brand hover:underline">Employee vs. Freelancer Comparison calculator</a> to understand the cost difference between the two arrangements.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How does the impatriati tax regime affect employer costs for hiring expats?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The regime impatriati (inbound workers tax regime) provides a significant income tax exemption for qualifying individuals who transfer their tax residence to Italy. Under the current rules, up to 50% of employment income (up to a cap of 600,000 euros) can be exempt from IRPEF for five tax years. However, this tax benefit applies exclusively to the employee's personal income tax calculation -- it does not reduce the employer-side social security contributions (INPS, TFR, INAIL) calculated by this tool. The costo aziendale remains the same whether or not the employee qualifies for the impatriati regime. What changes is that the employee's net take-home pay is significantly higher, making it possible to negotiate a lower RAL while still offering an attractive net salary. Use our <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati Tax Regime calculator</a> to simulate the combined effect.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Related calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/en/payslip-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate your net take-home pay from your gross annual salary (RAL)
+        </p>
+      </a>
+      <a
+        href="/en/severance-pay-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          TFR Severance Pay Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Estimate your accrued TFR (Trattamento di Fine Rapporto)
+        </p>
+      </a>
+      <a
+        href="/en/hourly-rate-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Hourly Rate Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Find your gross and net hourly rate from your RAL
+        </p>
+      </a>
+      <a
+        href="/en/flat-rate-regime-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Flat-Rate Regime Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Compare the cost of an employee with a Partita IVA forfettaria
+        </p>
+      </a>
+      <a
+        href="/en/irpef-tax-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          See bracket-by-bracket IRPEF income tax breakdown
+        </p>
+      </a>
+      <a
+        href="/en/leave-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Unused Leave Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate the payout for accrued unused holidays and ROL
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

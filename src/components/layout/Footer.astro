@@ -29,6 +29,10 @@ const calculatorLinks = lang === 'en'
       { name: 'FIRE', href: '/en/fire-calculator/' },
       { name: 'Rent vs Buy', href: '/en/rent-vs-buy/' },
       { name: 'Budget', href: '/en/budget-calculator/' },
+      { name: 'Loan', href: '/en/loan-calculator/' },
+      { name: 'Savings Plan', href: '/en/savings-plan-calculator/' },
+      { name: 'Inflation', href: '/en/inflation-calculator/' },
+      { name: t('header.allCalculators', 'en'), href: '/en/calculators/', bold: true },
     ]
   : [
       { name: 'Stipendio Netto', href: '/' },
@@ -49,6 +53,10 @@ const calculatorLinks = lang === 'en'
       { name: 'FIRE', href: '/calcolo-fire/' },
       { name: 'Affitto vs Acquisto', href: '/confronto-affitto-acquisto/' },
       { name: 'Budget', href: '/calcolo-budget/' },
+      { name: 'Prestito', href: '/calcolo-prestito/' },
+      { name: 'Piano Accumulo', href: '/calcolo-piano-accumulo/' },
+      { name: 'Inflazione', href: '/calcolo-inflazione/' },
+      { name: 'Tutti i Calcolatori', href: '/calcolatori/', bold: true },
     ];
 
 const resourceLinks = lang === 'en'
@@ -58,7 +66,11 @@ const resourceLinks = lang === 'en'
       { name: 'Tax Wedge 2026', href: '/en/guides/tax-wedge-2026/' },
       { name: 'Payslip Guide', href: '/en/guides/how-to-read-italian-payslip/' },
       { name: 'Flat-Rate Regime', href: '/en/guides/flat-rate-regime-2026/' },
-      { name: t('footer.allGuides', 'en'), href: '/en/guides/' },
+      { name: 'Regional Surcharges', href: '/en/guides/regional-municipal-surcharges/' },
+      { name: '13th & 14th Month', href: '/en/guides/thirteenth-fourteenth-month-pay/' },
+      { name: 'TFR Severance', href: '/en/guides/how-tfr-severance-works/' },
+      { name: 'Impatriati Regime', href: '/en/guides/impatriati-tax-regime/' },
+      { name: t('footer.allGuides', 'en'), href: '/en/guides/', bold: true },
       { name: 'Free Widget', href: '/en/widget/' },
     ]
   : [
@@ -67,7 +79,11 @@ const resourceLinks = lang === 'en'
       { name: 'Cuneo Fiscale 2026', href: '/guide/cuneo-fiscale-2026/' },
       { name: 'Busta Paga', href: '/guide/busta-paga-come-leggerla/' },
       { name: 'Regime Forfettario', href: '/guide/regime-forfettario-2026/' },
-      { name: 'Tutte le Guide', href: '/guide/' },
+      { name: 'Addizionali Regionali', href: '/guide/addizionali-regionali-comunali/' },
+      { name: 'Tredicesima e 14esima', href: '/guide/tredicesima-quattordicesima/' },
+      { name: 'TFR', href: '/guide/tfr-come-funziona/' },
+      { name: 'Regime Impatriati', href: '/guide/regime-impatriati/' },
+      { name: 'Tutte le Guide', href: '/guide/', bold: true },
       { name: 'Widget Gratuito', href: '/widget/' },
     ];
 
@@ -125,7 +141,7 @@ const homeHref = lang === 'en' ? '/en/' : '/';
               <li>
                 <a
                   href={link.href}
-                  class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand transition-colors"
+                  class={`text-sm hover:text-brand dark:hover:text-brand transition-colors ${link.bold ? 'font-semibold text-brand' : 'text-gray-600 dark:text-gray-400'}`}
                 >
                   {link.name}
                 </a>
@@ -144,7 +160,7 @@ const homeHref = lang === 'en' ? '/en/' : '/';
               <li>
                 <a
                   href={link.href}
-                  class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand transition-colors"
+                  class={`text-sm hover:text-brand dark:hover:text-brand transition-colors ${link.bold ? 'font-semibold text-brand' : 'text-gray-600 dark:text-gray-400'}`}
                 >
                   {link.name}
                 </a>

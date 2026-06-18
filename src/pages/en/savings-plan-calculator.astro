@@ -5,8 +5,8 @@ import { SITE } from '../../config';
 import { canonicalURL } from '../../lib/seo';
 
 const lang = 'en' as const;
-const title = "PAC Savings Plan Calculator: Monthly Investment Returns";
-const description = "Project how monthly investments grow over time with a PAC (Piano di Accumulo). See total invested, projected returns, capital gains tax, and final portfolio.";
+const title = "PAC Savings Plan Calculator Italy 2026: Investment Returns";
+const description = "Simulate your PAC (Piano di Accumulo) monthly investment returns after Italian 26% capital gains tax. Project growth, compare ETFs vs funds, and plan ahead.";
 const canonical = canonicalURL('/en/savings-plan-calculator/');
 
 const breadcrumbs = [
@@ -23,5 +23,466 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    PAC Savings Plan Calculator
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Simulate the net return of your PAC (Piano di Accumulo del Capitale) after Italian taxes and management fees.
+  </p>
+
   <PianoAccumulo client:load lang={lang} />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How is the return of a PAC calculated?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        A <strong>PAC (Piano di Accumulo del Capitale)</strong>, often translated as a "systematic
+        investment plan" or "savings accumulation plan", is the standard Italian term for a
+        dollar-cost-averaging investment strategy. It involves making regular, fixed contributions
+        &mdash; typically on a monthly basis &mdash; into a mutual fund or an ETF. The calculation
+        performed by this simulator takes into account:
+      </p>
+      <ul>
+        <li><strong>Monthly contribution</strong> net of any entry fees (commissioni di ingresso)</li>
+        <li><strong>Expected annual return</strong> net of the annual management fee (TER &mdash; Total Expense Ratio)</li>
+        <li><strong>Compound capitalisation</strong> of returns month after month</li>
+      </ul>
+      <p>The iterative formula applied for each month is:</p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        C<sub>m</sub> = (C<sub>m-1</sub> + V<sub>net</sub>) &times; (1 + r<sub>monthly</sub>)
+      </div>
+      <p>Where:</p>
+      <ul>
+        <li><strong>C<sub>m</sub></strong> = capital at month m</li>
+        <li><strong>V<sub>net</sub></strong> = monthly contribution net of the entry fee</li>
+        <li><strong>r<sub>monthly</sub></strong> = (annual return &minus; annual management cost) / 12</li>
+      </ul>
+      <p>
+        On the gross gain (final capital minus total invested), the Italian tax system applies a
+        <strong>26% flat-rate substitute tax (imposta sostitutiva)</strong> on capital gains, as
+        established by Italian fiscal regulations. For Italian government bonds (BTP, BOT, CCT)
+        and bonds from "white list" countries, a reduced rate of <strong>12.5%</strong> applies.
+        This calculator uses the standard 26% rate by default, which covers the vast majority of
+        equity and corporate bond investments that expats typically hold.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        DCA (Dollar Cost Averaging) vs Lump-Sum Investing (PIC)
+      </h3>
+      <p>
+        When you have capital to invest, two fundamental strategies present themselves: <strong>DCA
+        (Dollar Cost Averaging)</strong>, which underpins the PAC approach, and <strong>PIC (Piano
+        di Investimento di Capitale)</strong>, the Italian term for lump-sum investing, where you
+        deploy the entire amount at once. Understanding the trade-offs between these two approaches
+        is essential for choosing the one that best matches your risk profile and financial goals.
+      </p>
+      <p>
+        DCA involves investing a fixed amount at regular intervals, typically every month. The primary
+        advantage of this strategy is <strong>price averaging</strong>: when markets fall, the same
+        contribution buys more fund units; when markets rise, it buys fewer. This automatic mechanism
+        significantly reduces timing risk &mdash; the danger of investing your entire capital at an
+        unfavourable moment, such as a market peak just before a downturn. DCA is particularly suited
+        for people who receive a monthly salary and want to build wealth gradually, without having to
+        make market-timing decisions that even professional fund managers struggle to get right
+        consistently. For expats in Italy who earn a regular stipendio (salary), the PAC structure
+        aligns naturally with the monthly pay cycle.
+      </p>
+      <p>
+        Lump-sum investing (PIC), on the other hand, means deploying all available capital in a single
+        transaction. Historical data shows that, over long time horizons, lump-sum investing tends to
+        produce higher returns than DCA, because the capital is exposed to market growth for a longer
+        period. However, lump-sum investing carries a <strong>much higher timing risk</strong>: if
+        you invest everything just before a significant market correction, the initial losses can be
+        substantial and may take years to recover. For this reason, lump-sum investing is generally
+        recommended only for investors with a high risk tolerance and a very long time horizon, or
+        for those investing at a point when market valuations appear reasonable.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        ETFs vs Actively-Managed Funds: Which to Choose for a PAC
+      </h3>
+      <p>
+        The choice of financial instrument for your PAC is a critical factor that significantly
+        affects your net return over time. The two main options are <strong>ETFs (Exchange Traded
+        Funds)</strong> and <strong>actively-managed mutual funds (fondi comuni di investimento a
+        gestione attiva)</strong>. The cost differences between these two categories can have an
+        enormous impact over the long term.
+      </p>
+      <p>
+        ETFs are passively-managed funds listed on stock exchanges that faithfully replicate a market
+        index such as the MSCI World, the S&P 500, or the FTSE MIB (the main Italian stock index).
+        Their primary advantage is their extremely low cost: the <strong>TER (Total Expense Ratio)</strong>
+        for global equity ETFs typically ranges from 0.1% to 0.5% per year. They have no entry fees,
+        no exit fees, and no performance fees. They can be bought and sold in real time during market
+        hours, offering maximum transparency and liquidity. Most online brokers operating in Italy
+        &mdash; including Directa, Fineco, Degiro, and Interactive Brokers &mdash; allow you to set
+        up automated monthly ETF purchases at very low transaction costs or even for free.
+      </p>
+      <p>
+        Actively-managed mutual funds, by contrast, are run by a team of professionals who select
+        securities with the goal of outperforming a benchmark index. This service comes at a
+        significantly higher cost: the TER generally ranges from <strong>1.5% to 2.5% per year</strong>,
+        often with additional entry fees (1% to 3% of each contribution) and, in some cases,
+        performance fees on top. Despite promises of outperformance, historical data consistently
+        shows that the vast majority of active funds (over 80&ndash;90% on a ten-year horizon) fail
+        to beat their benchmark index after costs. The TER difference between a low-cost ETF (0.2%)
+        and an actively-managed fund (2.0%) may seem modest in a single year, but over a 20&ndash;30
+        year PAC it translates into tens of thousands of euros in lost returns due to compounding fees.
+        This is why most independent financial advisors in Italy now recommend ETF-based PAC strategies
+        over traditional bank-distributed funds.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Capital Gains Tax in Italy (Tassazione del Capital Gain)
+      </h3>
+      <p>
+        The taxation of investment income in Italy is a crucial aspect to consider when calculating
+        the net return of a PAC. The standard <strong>imposta sostitutiva (substitute tax)</strong>
+        on capital gains &mdash; the profit realised when selling fund units at a higher price than
+        they were purchased &mdash; is <strong>26%</strong>. This rate applies to most financial
+        instruments: shares, equity ETFs, mutual funds, corporate bonds, and deposit accounts (conti
+        deposito). As an expat, this is the rate you will encounter on virtually all mainstream
+        investment products available through Italian brokers.
+      </p>
+      <p>
+        There is, however, a reduced rate of <strong>12.5%</strong> that applies to income derived
+        from Italian government bonds (BTP, BOT, CCT) and bonds issued by countries on the so-called
+        "white list" (a list of cooperating nations maintained by the Italian Ministry of Finance).
+        For funds and ETFs that partially invest in government bonds, the portion of the return
+        attributable to those bonds is taxed at 12.5%, while the remainder is taxed at 26%. The exact
+        percentage of the preferential portion is periodically communicated by the fund management
+        company.
+      </p>
+      <p>
+        An important aspect concerns the <strong>offsetting of capital losses (compensazione delle
+        minusvalenze)</strong>. If you realise losses from the sale of financial instruments in a
+        given year, these losses can be used to offset future capital gains, thereby reducing your
+        tax burden. Capital losses can be carried forward for a maximum of <strong>4 years</strong>
+        from the year in which they were realised. However, it is essential to know that income from
+        UCITS-compliant funds and ETFs is classified as "redditi da capitale" (capital income) and
+        <strong>cannot</strong> be offset with capital losses, which fall under "redditi diversi"
+        (miscellaneous income). This fiscal asymmetry is an important element to consider when
+        planning your investment strategy in Italy.
+      </p>
+      <p>
+        Finally, regarding the tax regime, most investors in Italy use the <strong>regime del risparmio
+        amministrato (administered savings regime)</strong>, in which the bank or broker acts as a
+        withholding agent (sostituto d'imposta) and automatically calculates and remits the taxes
+        owed on your behalf. The alternative is the <strong>regime dichiarativo (declarative regime)</strong>,
+        in which you must declare your investment income yourself in your annual tax return
+        (dichiarazione dei redditi). For most expats, the administered regime is simpler and more
+        convenient. If you use a foreign broker such as Interactive Brokers or Degiro, you will
+        typically be in the declarative regime and will need to report your investment income via the
+        Modello Redditi PF and the Quadro RW for foreign asset reporting (monitoraggio fiscale).
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      PAC: Estimated Net Returns by Duration
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table below illustrates the estimated net return of a PAC with a monthly contribution
+        of &euro;200, assuming a gross annual return of 7% (the long-term historical average for a
+        globally diversified equity portfolio), a TER of 0.2% (typical of a low-cost global ETF),
+        and the Italian 26% capital gains tax. All figures are net of taxes and management fees.
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Duration</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Total Invested</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Gross Capital</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Net Capital</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;12,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~&euro;14,300</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~&euro;13,700</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">10 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;24,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~&euro;34,600</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~&euro;31,800</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">20 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;48,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~&euro;104,000</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~&euro;89,400</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">30 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;72,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~&euro;243,000</td>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">~&euro;198,400</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        These figures vividly illustrate the extraordinary power of compound capitalisation over
+        the long term, even after accounting for Italian taxation. With a 5-year PAC, the net gain
+        is modest: on &euro;12,000 invested, the net profit is approximately &euro;1,700. But it is
+        over longer time horizons that compound interest truly reveals its potential.
+      </p>
+      <p>
+        At 20 years, the net capital (&euro;89,400) is nearly double the total amount invested
+        (&euro;48,000), yielding a net gain of over &euro;41,000. At 30 years, the result is
+        remarkable: against &euro;72,000 in total contributions, the net capital exceeds
+        &euro;198,000, with a net gain of approximately &euro;126,000 &mdash; nearly triple the
+        total amount paid in. This exponential effect occurs because each month the returns
+        accumulate not only on the contributions made, but also on the returns already earned in
+        previous months.
+      </p>
+      <p>
+        The longer the time horizon, the more the "interest on interest" component dominates over
+        direct contributions. This is precisely why starting a PAC as early as possible, even with
+        modest amounts, is one of the most effective financial decisions you can make. For expats
+        who have recently relocated to Italy, setting up a PAC promptly means maximising the years
+        of compound growth available to you, regardless of whether you eventually repatriate or
+        remain in Italy long-term.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is a PAC (Piano di Accumulo) and how does it work?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          A PAC (Piano di Accumulo del Capitale) is a systematic investment plan widely used in
+          Italy. It involves making regular, fixed contributions &mdash; typically monthly &mdash;
+          into a mutual fund or an ETF. Thanks to dollar cost averaging, you automatically buy more
+          units when prices are low and fewer when prices are high, averaging out your purchase price
+          over time and reducing the impact of market volatility. You can set up a PAC through any
+          Italian bank or online broker (such as Fineco, Directa, or Degiro).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How much tax do I pay on investment returns in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Italy applies a 26% flat-rate substitute tax (imposta sostitutiva) on capital gains &mdash;
+          the difference between the final value and the total amount invested. For funds that invest
+          in Italian or European government bonds, a portion of the return may be taxed at a
+          preferential rate of 12.5%. The tax is typically withheld at the time of redemption or sale
+          of fund units, so you do not need to make separate tax payments if you are in the regime
+          amministrato (administered savings regime).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What are the entry fee and TER?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The entry fee (commissione di ingresso) is a charge applied on each contribution and can
+          range from 0% to 3&ndash;5% for actively-managed funds sold through traditional Italian
+          banks. The TER (Total Expense Ratio) is the annual management cost of the fund, which
+          reduces the effective return. ETFs generally have very low TERs (0.1&ndash;0.5%), while
+          actively-managed funds can charge 1.5&ndash;2.5% per year. When setting up a PAC, always
+          check both costs, as they have a compounding effect over time.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What annual return should I realistically expect?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Historically, a globally diversified equity portfolio has returned an average of 7&ndash;8%
+          per year gross over the long term (20+ years). A balanced portfolio (a mix of equities and
+          bonds) typically returns 4&ndash;6%. Remember that past returns do not guarantee future
+          performance and that short-term volatility can be significant. A conservative projection
+          for planning purposes would use 5&ndash;6% for an equity-heavy portfolio, accounting for
+          the possibility that future decades may underperform historical averages.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I pause, reduce, or increase my monthly contributions?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, in most cases you can suspend, reduce, or increase your PAC contributions without
+          penalty. The degree of flexibility depends on the product you have chosen. With ETFs
+          purchased through an online broker, you have maximum freedom &mdash; you simply adjust
+          the standing order or recurring buy instruction. PAC plans set up through traditional
+          Italian banks on actively-managed funds may have specific contractual terms, so always
+          review the conditions (condizioni contrattuali) before signing up.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How much should I invest monthly in a PAC?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          There is no universal amount: the ideal monthly contribution is one that you can sustain
+          over the long term without depleting your emergency fund (typically 3&ndash;6 months of
+          living expenses). A common guideline is to allocate 10&ndash;20% of your net monthly
+          income to the PAC after covering essential expenses. Many online brokers in Italy allow
+          you to start with minimum contributions of &euro;25&ndash;50 per month, so even small
+          amounts can start an effective accumulation path thanks to compound interest. Consistency
+          over time matters far more than the initial amount. If you are an expat adjusting to
+          Italian living costs, start with a comfortable figure and increase it as you settle in.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is a PAC suitable for a short-term goal (3&ndash;5 years)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          An equity-based PAC over a 3&ndash;5 year horizon carries significant risk, because stock
+          markets can experience prolonged negative phases. For short-term goals, it is preferable
+          to look at less volatile instruments: short-duration bond ETFs, fixed-term deposit accounts
+          (conti deposito vincolati), or short-term Italian government bonds (BOT). If you
+          nevertheless wish to run a short-term PAC, consider a balanced portfolio with a reduced
+          equity component (30&ndash;40%) and a majority allocation to bonds, accepting a lower
+          expected return in exchange for more contained volatility.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How do I choose the right ETF for my PAC?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The right ETF depends on several factors. For maximum diversification, an ETF tracking the
+          MSCI World or the FTSE All-World index covers thousands of companies across the globe.
+          Check that the TER is low (below 0.3%), that the fund has a large asset base (over
+          &euro;500 million, to ensure liquidity and reduce closure risk), and that it is
+          accumulating (ad accumulazione &mdash; automatically reinvests dividends) rather than
+          distributing, to maximise the compound interest effect. Finally, choose an ETF domiciled
+          in Ireland or Luxembourg, which offer the best tax efficiency for investors in Italy
+          thanks to double-taxation treaties. Popular choices among Italian investors include the
+          Vanguard FTSE All-World UCITS ETF (VWCE) and the iShares Core MSCI World UCITS ETF (SWDA).
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Do I need to declare my PAC investments in my Italian tax return?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          If you hold your PAC through an Italian bank or broker using the regime amministrato
+          (administered savings regime), taxes are automatically withheld and you generally do not
+          need to declare investment income separately. However, if you use a foreign broker (such
+          as Interactive Brokers, Degiro, or Trade Republic), you are in the regime dichiarativo
+          and must declare all investment income in your annual tax return (Modello Redditi PF). You
+          will also need to complete Quadro RW for foreign asset reporting (monitoraggio fiscale) and
+          pay the IVAFE tax (0.2% annually on the value of foreign financial assets). Consulting a
+          commercialista (Italian accountant) is highly recommended for expats using foreign brokers.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/compound-interest-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Compound Interest
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Project the growth of your capital with compound interest over time
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate how inflation erodes your purchasing power over time
+        </p>
+      </a>
+      <a href="/en/mortgage-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Mortgage Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate your Italian mortgage payment and full amortisation schedule
+        </p>
+      </a>
+      <a href="/en/loan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Personal Loan Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate monthly payments and total cost of a personal loan in Italy
+        </p>
+      </a>
+      <a href="/en/investment-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Investment Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Compute the 26% capital gains tax on your Italian investment profits
+        </p>
+      </a>
+      <a href="/en/fire-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          FIRE Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Find out when you can reach financial independence and retire early
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

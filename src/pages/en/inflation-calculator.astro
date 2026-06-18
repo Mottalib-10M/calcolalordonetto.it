@@ -23,5 +23,512 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Inflation Calculator &amp; Purchasing Power Erosion
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Find out how much your money will really be worth in the future and how much purchasing power you stand to lose due to inflation.
+  </p>
+
   <Inflazione client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How is the impact of inflation calculated?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Inflation erodes the purchasing power of money over time. To calculate
+        the <strong>future real value</strong> of a given sum, the following formula is used:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        V<sub>real</sub> = V<sub>nominal</sub> / (1 + i)<sup>n</sup>
+      </div>
+      <p>Where:</p>
+      <ul>
+        <li><strong>V<sub>real</sub></strong> = real value (actual purchasing power)</li>
+        <li><strong>V<sub>nominal</sub></strong> = nominal value (the amount in today's money)</li>
+        <li><strong>i</strong> = annual inflation rate (expressed as a decimal)</li>
+        <li><strong>n</strong> = number of years</li>
+      </ul>
+      <p>
+        In practical terms, if you have &euro;1,000 today and the annual inflation rate is 2%, in
+        10 years those &euro;1,000 will have purchasing power equivalent to roughly &euro;820 in
+        today's money. The nominal value stays the same on paper, but you can buy fewer goods
+        and services with it. This is the silent erosion that makes inflation one of the most
+        important financial forces to understand, especially for anyone living and working in Italy
+        on a fixed salary or with savings sitting in a low-interest bank account.
+      </p>
+      <p>
+        The <strong>loss of purchasing power</strong> is simply the difference between the
+        nominal value and the real value. The effect is cumulative and amplifies over time, in
+        a mechanism that works like compound interest in reverse. Each year, inflation acts not
+        only on the original sum but on the already-diminished value, accelerating the erosion
+        progressively.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        A brief history of inflation in Italy
+      </h3>
+      <p>
+        To fully understand the impact of inflation on savings and salaries, it helps to look at
+        Italy's economic history over the past several decades. Inflation is not a constant
+        phenomenon: it has gone through very different phases, each with profound consequences
+        for the purchasing power of Italian households and, by extension, anyone living in Italy.
+      </p>
+      <p>
+        During the <strong>1970s and 1980s</strong>, Italy experienced a period of double-digit inflation, with
+        peaks exceeding 20% per year in 1980. This era was driven by the oil crises of 1973 and
+        1979, the wage-price spiral fuelled by the <em>scala mobile</em> (automatic wage indexation
+        mechanism), and expansionary fiscal policies. Anyone holding cash savings or fixed-rate
+        instruments during this period saw the real value of their wealth devastated. In those years
+        the purchasing power of money could halve in fewer than five years. For expats who had moved
+        to Italy in that era, the lira's constant devaluation added another layer of complexity when
+        converting back to their home currencies.
+      </p>
+      <p>
+        With <strong>convergence towards the euro in the 1990s and 2000s</strong>, Italy embarked on
+        a path of price stabilisation. The Maastricht criteria required inflation close to that of
+        the best-performing EU member states, and the Banca d'Italia (Bank of Italy) initially, then
+        the ECB (European Central Bank), adopted restrictive monetary policies. Inflation fell
+        gradually from around 6% in 1990 to 2&ndash;3% by the late 1990s, eventually stabilising
+        near 2% after the adoption of the euro in 2002. This represented a period of relative stability
+        for Italian savers and for foreign workers sending remittances or planning long-term stays
+        in the country.
+      </p>
+      <p>
+        The <strong>2008 financial crisis</strong> and the subsequent European sovereign debt crisis
+        ushered in a period of very low inflation, sometimes hovering near zero or even turning
+        negative (deflation). Between 2014 and 2016, Italian inflation was frequently below 0.5%,
+        with some months in negative territory. While deflation may appear beneficial for consumers
+        at first glance, it actually slows the economy because people postpone purchases in
+        anticipation of even lower prices, creating a vicious cycle of stagnation that suppresses
+        wages and employment.
+      </p>
+      <p>
+        The <strong>energy shock of 2022&ndash;2023</strong> was an abrupt wake-up call after years
+        of low inflation. Russia's invasion of Ukraine, post-pandemic disruptions to global supply
+        chains, and surging natural gas prices caused Italian inflation to spike between 8% and 12%,
+        reaching levels not seen since the 1980s. Energy costs rose by more than 50% year-on-year,
+        pulling the entire consumer price basket upward. Italian households suffered an estimated
+        average loss of purchasing power exceeding &euro;2,500 per year. Expats and foreign workers
+        in Italy were particularly affected if their salaries were negotiated in fixed euro terms, as
+        real take-home pay fell sharply while the cost of rent, utilities, and groceries surged.
+      </p>
+      <p>
+        From the second half of 2023 through <strong>2024&ndash;2026</strong>, inflation has gradually
+        returned under control, falling back within the 2% range thanks to the ECB's restrictive
+        monetary policy (which pushed the benchmark rate to 4.5% in 2023) and the normalisation of
+        energy prices. Currently, inflation in Italy stands at approximately 1.5&ndash;2%, in line
+        with the ECB's medium-term target. For anyone planning their finances in Italy today, this
+        relatively stable environment makes forward projections more reliable, though it is always
+        wise to stress-test your savings plan against higher scenarios.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        How ISTAT measures inflation in Italy
+      </h3>
+      <p>
+        <strong>ISTAT</strong> (Istituto Nazionale di Statistica &mdash; the Italian National
+        Institute of Statistics) is the government agency responsible for measuring inflation in
+        Italy. The process is sophisticated and relies on monitoring a <strong>basket of goods and
+        services</strong> (known in Italian as the <em>paniere</em>) that is representative of the
+        average consumption patterns of Italian households. This basket comprises hundreds of
+        products and services, divided into 12 main categories: food and beverages, clothing,
+        housing and utilities, transport, communications, education, health, leisure, restaurants
+        and accommodation, and other goods and services. Understanding these categories is
+        particularly useful for expats, as your personal inflation rate may differ significantly
+        from the official figure depending on how much you spend on rent versus food versus transport.
+      </p>
+      <p>
+        ISTAT calculates three distinct <strong>consumer price indices</strong>, each designed for
+        a specific purpose:
+      </p>
+      <ul>
+        <li>
+          <strong>NIC (Nazionale per l'Intera Collettivit&agrave;)</strong>: measures inflation
+          for all consumers on Italian territory, including foreign residents. This is the most
+          widely used index for general economic analysis and the one you will most often see
+          cited in the Italian media when they report on price trends.
+        </li>
+        <li>
+          <strong>FOI (per le Famiglie di Operai e Impiegati)</strong>: this index tracks
+          consumption by households whose head of household is a blue-collar or white-collar
+          employee. It is the index used for the revaluation of monetary debts, rental
+          adjustments, maintenance payments (<em>assegni di mantenimento</em>), and many private
+          contracts. It is also the benchmark for the automatic indexation of pensions
+          (<em>perequazione automatica delle pensioni</em>). If you have a rental contract in
+          Italy, your annual rent increase is almost certainly tied to the FOI index.
+        </li>
+        <li>
+          <strong>HICP / IPCA (Indice dei Prezzi al Consumo Armonizzato)</strong>: calculated
+          using a harmonised methodology common to all EU countries, this index allows for
+          cross-border comparisons of inflation. It is the ECB's reference index for monetary
+          policy decisions and is also used in Italy's national collective bargaining agreements
+          (<em>CCNL</em>) for wage adjustments. If you are comparing your salary's purchasing
+          power against what you might earn in Germany or France, the HICP is the appropriate
+          benchmark.
+        </li>
+      </ul>
+      <p>
+        The basket is <strong>reviewed annually</strong> by ISTAT to reflect evolving consumption
+        habits. In recent years, for example, products such as video streaming subscriptions,
+        electric scooter sharing, e-bikes, and rapid diagnostic tests have been added, while
+        products whose consumption has become marginal are removed. Each product in the basket
+        carries a specific weight that reflects its share of average household spending: housing
+        and transport costs, for instance, carry more weight than clothing or recreational goods.
+        This weighting system means that sharp rises in energy or housing costs have a
+        disproportionately large effect on the headline inflation figure.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Strategies to protect your purchasing power in Italy
+      </h3>
+      <p>
+        Protecting your savings from inflationary erosion requires a conscious and diversified
+        strategy. Leaving money idle in a current account (Italian: <em>conto corrente</em>) at
+        zero or near-zero interest means accepting a guaranteed loss of purchasing power every
+        year. Here are the main strategies available to savers and expats living in Italy:
+      </p>
+      <p>
+        <strong>Investment diversification</strong> is the first fundamental principle. Spreading
+        your capital across different asset classes (equities, bonds, real estate, commodities)
+        reduces your portfolio's overall risk and increases the probability of achieving a positive
+        real return over the long term. A globally diversified portfolio has historically generated
+        average annual returns of 5&ndash;7%, well above the average inflation rate of approximately
+        2%. For expats, diversification across currencies can also hedge against euro-specific risks.
+      </p>
+      <p>
+        <strong>BTP Italia and inflation-linked BTP bonds</strong> are instruments specifically
+        designed by the Italian Treasury to protect against inflation. BTP Italia bonds pay a
+        semi-annual coupon composed of a fixed real rate plus the revaluation linked to Italian
+        inflation (FOI index). BTP-i bonds (linked to eurozone HICP inflation) work similarly but
+        are pegged to the harmonised European index. Both guarantee that your capital and coupon
+        payments maintain their real value regardless of how prices move, offering direct and
+        transparent protection. These are particularly attractive for conservative investors or
+        retirees who want to preserve purchasing power without equity market risk.
+      </p>
+      <p>
+        <strong>Real estate investment</strong> has historically been considered a solid inflation
+        hedge in Italy, as property values and rents tend to rise with general price levels over
+        the long run. However, Italian property ownership comes with significant costs: IMU
+        (municipal property tax), <em>cedolare secca</em> (flat-rate rental tax), maintenance,
+        insurance, and low liquidity. It is a viable strategy when integrated into a broader
+        portfolio, but it should not be your sole form of investment. For foreign buyers,
+        additional considerations include navigating Italian notary requirements and understanding
+        the <em>catasto</em> (land registry) system.
+      </p>
+      <p>
+        <strong>Equity investments</strong>, especially through ETFs (Exchange-Traded Funds) and
+        globally diversified index funds, represent the asset class with the highest historical
+        real returns. Over long horizons of 20&ndash;30 years, global equity markets have delivered
+        average nominal returns of 7&ndash;8% per year, comfortably outpacing inflation. Companies
+        can pass rising input costs through to their selling prices, thereby protecting margins and
+        dividends. A <em>PAC</em> (Piano di Accumulo &mdash; a systematic savings plan or
+        dollar-cost averaging approach) in global equity ETFs is one of the most effective tools
+        available to long-term savers in Italy. Note that investment gains in Italy are subject
+        to the 26% <em>imposta sostitutiva</em> (capital gains tax), which should be factored into
+        your net return calculations.
+      </p>
+      <p>
+        Finally, <strong>salary adjustment</strong> is a crucial but often overlooked component.
+        Negotiating pay rises that at least keep pace with inflation is essential for maintaining
+        your standard of living. In Italy, national collective bargaining agreements
+        (<em>CCNL &mdash; Contratti Collettivi Nazionali di Lavoro</em>) include periodic renewals
+        that factor in projected inflation (HICP/IPCA index), but these adjustments frequently lag
+        behind actual inflation. Workers &mdash; and especially expats who may be less familiar with
+        the Italian bargaining system &mdash; should monitor their real salary over time and, where
+        possible, negotiate individual adjustments that compensate for any purchasing power loss.
+        Investing in professional development and in-demand skills further strengthens your
+        bargaining position in a competitive labour market.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Impact of inflation over time: reference table
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table below shows how the purchasing power of <strong>&euro;1,000</strong> declines over
+        time at different annual inflation rates. The values indicate how much you will actually be
+        able to buy in real terms with that sum &mdash; that is, its equivalent in today's euros.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Time period</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">2% inflation</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">3% inflation</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">5% inflation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">After 5 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;906</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;863</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;784</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">After 10 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;820</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;744</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;614</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">After 20 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;673</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;554</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;377</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">After 30 years</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;552</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;412</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;231</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The numbers tell a compelling story: even a seemingly moderate inflation rate of 2% per
+        year erodes nearly half of your purchasing power over 30 years, reducing &euro;1,000 to
+        just &euro;552 in real terms. At 3%, the damage is even more pronounced &mdash; after
+        thirty years the real value drops to &euro;412, a loss of 59%. With inflation at 5%, your
+        &euro;1,000 is worth less than &euro;400 in real terms after just twenty years, and a mere
+        &euro;231 after three decades.
+      </p>
+      <p>
+        This devastating effect is driven by the <strong>compounding nature of inflation</strong>,
+        which acts year after year on the already-devalued sum, progressively accelerating the
+        erosion of your wealth. It is the mirror image of compound interest working against you
+        rather than for you. This is precisely why it is critical not simply to save, but to
+        <strong>actively invest</strong> to generate returns that match or exceed inflation,
+        thereby preserving the real value of your capital over the long term. For anyone living in
+        Italy on a euro-denominated salary, these figures underscore why a proactive financial
+        strategy is essential &mdash; letting cash sit idle in a <em>conto corrente</em> is, in
+        real terms, a guaranteed way to lose money every single year.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the average inflation rate in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The ECB's (European Central Bank) target is to maintain inflation at around 2% per year
+          over the medium term. In Italy, the average inflation rate over the last 20 years has been
+          approximately 1.8% per year, although in 2022&ndash;2023 it spiked to 8&ndash;12% due to
+          the energy crisis triggered by the conflict in Ukraine. For long-term financial projections,
+          a 2% annual rate is a reasonable baseline assumption. You can check the most up-to-date
+          figures on the ISTAT (Italian National Institute of Statistics) website or the ECB's
+          inflation dashboard.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How can I protect myself from inflation in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          To protect the purchasing power of your savings, you can invest in instruments that
+          offer returns above the inflation rate: equities (historically 7&ndash;8% annually),
+          inflation-linked bonds (BTP Italia, BTP-i), real estate, or diversified funds and ETFs.
+          Keeping money in a standard Italian bank account (<em>conto corrente</em>) at zero
+          interest means losing purchasing power every year. For expats, it is also worth
+          considering currency diversification if you hold assets in multiple countries.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does inflation affect everyone in Italy equally?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, inflation does not affect everyone equally. The ISTAT index measures an average
+          basket, but your actual experienced inflation depends on your individual spending
+          patterns. Someone who spends heavily on energy and food may face an effective inflation
+          rate well above the national average. Retirees (<em>pensionati</em>) and households on
+          fixed incomes are generally the hardest hit, because their earnings do not adjust
+          immediately to rising prices. Expats whose spending patterns differ from the typical
+          Italian household &mdash; for example, those who spend more on international travel or
+          import goods &mdash; may also experience a different personal inflation rate.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What happens during deflation?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Deflation (negative inflation) is a sustained general decrease in the price level.
+          In theory it increases the purchasing power of cash, but in practice it is considered
+          dangerous for the economy because consumers and businesses tend to delay spending in
+          anticipation of even lower prices, creating a vicious cycle that depresses growth, wages,
+          and employment. Italy experienced brief deflationary episodes in 2015&ndash;2016 and
+          again in 2020 during the early pandemic lockdowns. The ECB actively works to prevent
+          prolonged deflation, viewing it as at least as harmful as excessive inflation.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How do inflation and salary interact in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          If your salary does not increase at least as fast as inflation, your purchasing power
+          declines. With 2% annual inflation and a stagnant salary, after 10 years you lose
+          roughly 18% of your real purchasing power. In Italy, wages are typically adjusted
+          through CCNL (national collective bargaining agreements) renewals, which reference
+          projected IPCA/HICP inflation. However, these adjustments often arrive with a delay
+          of one to three years relative to actual price increases. It is important to negotiate
+          pay rises that at least keep pace with inflation. Use our net salary calculator to
+          track your real income over time.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the difference between inflation and cost of living?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Although often used interchangeably, inflation and cost of living are distinct concepts.
+          Inflation measures the average price change of a standardised basket of goods and services
+          (as calculated by ISTAT). The cost of living, on the other hand, is a broader and more
+          subjective concept that accounts for the actual expenses borne by a specific person or
+          family, including changes in the quality of goods, consumption patterns, and housing
+          conditions. For example, official inflation might be 2%, but the cost of living for a
+          family with young children could rise by 4&ndash;5% if school fees and childcare costs
+          increase faster than the average. This is why perceived inflation (<em>inflazione
+          percepita</em>) is often higher than the official figures &mdash; and why tracking your
+          own personal spending is the most accurate way to gauge the real impact on your finances.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How are Italian pensions adjusted for inflation?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Italian pensions are subject to <em>perequazione automatica</em> (automatic indexation),
+          a mechanism that adjusts pension amounts for inflation to protect retirees' purchasing
+          power. The adjustment is based on the FOI (Famiglie di Operai e Impiegati) index
+          published by ISTAT and is applied annually from 1 January. However, the indexation is
+          not equal for all pension amounts: pensions up to 4 times the INPS minimum benefit
+          receive 100% indexation, while higher amounts receive progressively reduced percentages
+          (e.g., 90% for the bracket from 4 to 5 times the minimum, 75% for the next bracket,
+          and so on). This tiered system means that retirees with higher pensions experience a
+          gradual erosion of purchasing power over time, even though they nominally receive an
+          adjustment. For expats planning retirement in Italy, understanding this mechanism is
+          essential for accurate long-term financial planning.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does inflation affect TFR (Italian severance pay)?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, the TFR (Trattamento di Fine Rapporto &mdash; Italian severance pay) is directly
+          linked to inflation. TFR accrued with the employer is revalued each year using a composite
+          rate: a fixed component of 1.5% plus 75% of the ISTAT FOI inflation index. For example,
+          with 2% inflation, the TFR revaluation rate would be 1.5% + (75% &times; 2%) = 3%.
+          This mechanism provides partial but not complete inflation protection: in years of high
+          inflation (such as 2022, when inflation exceeded 8%), the TFR return falls short of the
+          price increase, resulting in a real loss of value. Employees who have redirected their
+          TFR to a supplementary pension fund (<em>fondo pensione</em>) may achieve different
+          returns &mdash; potentially higher over the long term &mdash; depending on the chosen
+          investment line (guaranteed, bond, balanced, or equity). Understanding how your TFR is
+          managed is critical for expats working in Italy, as it represents a significant portion
+          of your total compensation package.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/compound-interest-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Compound Interest
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate how your capital grows with compound interest over time
+        </p>
+      </a>
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the net return of a systematic investment plan in Italy
+        </p>
+      </a>
+      <a href="/en/mortgage-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Mortgage Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate your monthly mortgage payment and full amortisation schedule
+        </p>
+      </a>
+      <a href="/en/loan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Loan Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the instalment and APR of a personal loan in Italy
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay in Italy
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

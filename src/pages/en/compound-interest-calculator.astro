@@ -23,5 +23,588 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Compound Interest Calculator
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Discover how your capital grows over time thanks to compound interest and regular contributions.
+  </p>
+
   <InteresseComposto client:load lang={lang} />
+
+  <!-- Come si calcola -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How Is Compound Interest Calculated?
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Compound interest is calculated by applying interest not only to your initial capital but
+        also to the interest that has already accumulated in previous periods. Unlike simple
+        interest, which grows linearly, compound interest produces <strong>exponential growth</strong>
+        because each period's earnings become part of the base for the next period's calculation.
+        This snowball effect is what makes compound interest one of the most powerful concepts in
+        personal finance and long-term investing.
+      </p>
+      <p>The standard compound interest formula is:</p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        A = P &times; (1 + r/n)<sup>n&times;t</sup>
+      </div>
+      <p>Where:</p>
+      <ul>
+        <li><strong>A</strong> = final amount (principal + interest)</li>
+        <li><strong>P</strong> = initial principal (starting capital)</li>
+        <li><strong>r</strong> = annual interest rate (as a decimal, e.g. 0.07 for 7%)</li>
+        <li><strong>n</strong> = number of compounding periods per year</li>
+        <li><strong>t</strong> = investment duration in years</li>
+      </ul>
+      <p>
+        When you add <strong>regular contributions</strong> (such as monthly deposits), the capital
+        grows even faster because each new contribution also benefits from the compounding effect.
+        Albert Einstein is often credited with calling compound interest "the eighth wonder of the
+        world" precisely because of its ability to grow capital exponentially over long time horizons.
+        Whether or not Einstein actually said this, the underlying truth remains: compound interest
+        rewards patience and consistency above all else.
+      </p>
+      <p>
+        The <strong>compounding frequency</strong> (annual, semi-annual, quarterly, monthly) also
+        affects the final result. More frequent compounding means interest is calculated and added
+        to the principal more often, which produces a slightly higher effective return. For instance,
+        monthly compounding at a 6% nominal annual rate yields more than annual compounding at the
+        same 6% nominal rate, because the interest earned in each month starts generating its own
+        interest sooner.
+      </p>
+
+      <h3>The Rule of 72</h3>
+      <p>
+        The <strong>Rule of 72</strong> is a simple and widely used mental shortcut that allows you
+        to quickly estimate how many years it will take for an investment to double in value. The
+        calculation is straightforward: divide the number 72 by the expected annual rate of return.
+        The result gives you an approximate number of years needed for the initial capital to
+        multiply by two, thanks to the compounding effect.
+      </p>
+      <p>
+        For example, if your investment yields <strong>3% per year</strong>, your capital will
+        double in approximately 72 / 3 = <strong>24 years</strong>. With a <strong>5% annual
+        return</strong>, the time drops to 72 / 5 = <strong>14.4 years</strong>. If the rate
+        increases to <strong>7%</strong>, it takes only 72 / 7 = <strong>10.3 years</strong>,
+        while at a <strong>10% annual return</strong>, doubling occurs in just 72 / 10 =
+        <strong>7.2 years</strong>.
+      </p>
+      <p>
+        Although the Rule of 72 is an approximation, it proves surprisingly accurate for interest
+        rates between 2% and 15%. It is a tool frequently used by financial advisors and investors
+        to quickly assess the attractiveness of an investment without resorting to complex
+        calculations. Keep in mind that the rule does not account for inflation, taxes, or
+        management fees, so the actual time needed to double your <em>purchasing power</em> will
+        generally be longer than what the rule suggests.
+      </p>
+
+      <h3>Comparing Compounding Frequencies</h3>
+      <p>
+        The frequency at which interest is compounded has a direct impact on the final return of
+        your investment. Given the same nominal rate and duration, more frequent compounding
+        produces a higher final amount. This occurs because accrued interest is reinvested sooner,
+        and in turn begins generating additional interest earlier.
+      </p>
+      <p>
+        Consider a concrete example: an initial capital of <strong>&euro;10,000</strong> invested
+        at <strong>5% per year</strong> for <strong>10 years</strong>, with different compounding
+        frequencies:
+      </p>
+      <ul>
+        <li><strong>Annual</strong> (1 time/year): 10,000 &times; (1 + 0.05)<sup>10</sup> = <strong>&euro;16,288.95</strong></li>
+        <li><strong>Semi-annual</strong> (2 times/year): 10,000 &times; (1 + 0.025)<sup>20</sup> = <strong>&euro;16,386.16</strong></li>
+        <li><strong>Quarterly</strong> (4 times/year): 10,000 &times; (1 + 0.0125)<sup>40</sup> = <strong>&euro;16,436.19</strong></li>
+        <li><strong>Monthly</strong> (12 times/year): 10,000 &times; (1 + 0.00417)<sup>120</sup> = <strong>&euro;16,470.09</strong></li>
+      </ul>
+      <p>
+        As you can see, the difference between annual and monthly compounding in this example is
+        approximately <strong>&euro;181</strong> over 10 years. While this may seem modest, the
+        difference grows significantly with larger amounts, higher rates, and longer time horizons.
+        For long-term investments, choosing financial products with more frequent compounding can
+        translate into a meaningful advantage, especially when combined with regular contributions
+        over decades.
+      </p>
+
+      <h3>Taxation on Investment Returns in Italy</h3>
+      <p>
+        In Italy, returns from financial investments are subject to several levels of taxation that
+        reduce the effective return perceived by the investor. It is essential to account for these
+        taxes when planning long-term investments based on compound interest, especially if you
+        are an expat or foreign professional working in Italy.
+      </p>
+      <p>
+        The <strong>substitute tax on financial income</strong> (capital gains tax) is set at
+        <strong>26%</strong> for most financial instruments, including stocks, ETFs, mutual funds,
+        corporate bonds, and deposit accounts. However, <strong>Italian and European government
+        bonds</strong> (such as BTP, BOT, and CCT) benefit from a reduced rate of
+        <strong>12.5%</strong>, as do Italian postal savings bonds (<em>buoni fruttiferi postali</em>).
+      </p>
+      <p>
+        In addition to the tax on returns, there is a <strong>stamp duty</strong> (<em>imposta di
+        bollo</em>) of <strong>0.2% per year</strong> applied to the market value of financial
+        instruments held as of December 31 of each year (or at the closing date of the account).
+        This tax applies to securities accounts, deposit accounts, mutual funds, and investment
+        insurance policies, further reducing the net return.
+      </p>
+      <p>
+        In practice, a gross annual return of 7% translates, after the 26% capital gains tax and
+        the 0.2% stamp duty, to a net return of approximately <strong>4.98%</strong>. This
+        reduction has a very significant impact on compound interest over the long term: over 30
+        years, the difference between the gross and net final amount can exceed 30-40% of the
+        total capital. For this reason, in financial planning it is always advisable to think in
+        terms of net returns and to consider tax-efficient instruments such as government bonds,
+        pension funds (<em>fondi pensione</em>) which benefit from favorable taxation, or
+        accumulating ETFs that defer the capital gains event.
+      </p>
+
+      <h3>Compound Interest and the Power of Starting Early</h3>
+      <p>
+        One of the most compelling demonstrations of compound interest is comparing two investors
+        who contribute the same total amount but start at different times. Consider Investor A, who
+        starts investing <strong>&euro;200 per month</strong> at age 25 and stops at age 35 (10
+        years of contributions, totaling &euro;24,000). Investor B starts at age 35 and invests the
+        same &euro;200 per month until age 65 (30 years of contributions, totaling &euro;72,000).
+        Assuming a 7% annual return, by age 65 Investor A will have approximately
+        <strong>&euro;329,000</strong> while Investor B will have about
+        <strong>&euro;243,000</strong>.
+      </p>
+      <p>
+        Despite investing only one-third of the total amount, Investor A ends up with a larger
+        balance. This dramatic result illustrates the core principle: <strong>time in the market
+        beats timing the market</strong>. The earlier you start, even with smaller amounts, the
+        more compounding cycles your money goes through. This is why financial literacy experts
+        universally recommend starting to invest as early as possible, even if the initial amounts
+        are modest.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Valori -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Compound Interest: How Capital Grows Over Time
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Duration</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Final Capital</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Interest Earned</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">5 years</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">&euro;14,026</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+&euro;4,026</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">10 years</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">&euro;19,672</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+&euro;9,672</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">15 years</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">&euro;27,590</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+&euro;17,590</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">20 years</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">&euro;38,697</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+&euro;28,697</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">30 years</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">&euro;76,123</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">+&euro;66,123</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+      Initial capital: &euro;10,000 | Annual return: 7% | Annual compounding | No additional contributions
+    </p>
+
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <h3>The Power of Regular Contributions</h3>
+      <p>
+        Compound interest becomes even more powerful when you add <strong>regular recurring
+        contributions</strong>. Starting from the same initial capital of &euro;10,000 at 7%
+        annual return, but adding <strong>&euro;200 per month</strong>, the results change
+        dramatically: after 10 years the capital rises to approximately <strong>&euro;54,130</strong>
+        (of which &euro;34,000 comes from contributions and &euro;10,130 from interest earned),
+        after 20 years it reaches approximately <strong>&euro;142,400</strong> (with &euro;58,000
+        in contributions and &euro;74,400 in interest alone), and after 30 years the total exceeds
+        <strong>&euro;319,000</strong>, of which over &euro;237,000 comes exclusively from
+        compound interest.
+      </p>
+      <p>
+        These numbers illustrate a fundamental principle: over the long term, the contribution from
+        compound interest far exceeds that of the actual deposits made. At 30 years, interest
+        represents nearly <strong>75%</strong> of the final capital. This means that time is the
+        most valuable asset for any investor: the sooner you start investing consistently, the
+        greater the multiplying effect of your money. Even small monthly amounts, maintained with
+        discipline over long horizons, can generate substantial wealth.
+      </p>
+
+      <h3>Compound Interest Growth With &euro;200/Month Contributions</h3>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Duration</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Total Deposited</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Interest Earned</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Final Amount</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">5 years</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;22,000</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;5,475</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">&euro;27,475</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">10 years</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;34,000</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;20,130</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">&euro;54,130</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">20 years</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;58,000</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;84,400</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">&euro;142,400</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">30 years</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;82,000</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">&euro;237,000</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">&euro;319,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+      Initial capital: &euro;10,000 | Monthly contribution: &euro;200 | Annual return: 7% | Annual compounding | Gross of taxes
+    </p>
+
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <h3>Rule of 72: Quick Doubling Time Reference</h3>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Annual Return</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Years to Double</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Net Return (after 26% tax)</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">2%</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">36.0 years</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">1.28%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">3%</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">24.0 years</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">2.02%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">5%</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">14.4 years</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">3.50%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">7%</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">10.3 years</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">4.98%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">10%</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">7.2 years</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">7.20%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">12%</td>
+            <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">6.0 years</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">8.68%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+      Net return calculated after 26% Italian capital gains tax and 0.2% annual stamp duty (imposta di bollo). Government bonds taxed at 12.5% instead.
+    </p>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the difference between simple interest and compound interest?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          With simple interest, interest is calculated only on the original principal. With compound
+          interest, interest is calculated on both the principal and the previously accumulated
+          interest. This difference becomes increasingly significant over time, creating exponential
+          growth rather than linear growth. For example, &euro;10,000 at 7% simple interest earns
+          &euro;700 every year (always on the original &euro;10,000), while with compound interest
+          the earnings increase each year as the base grows. After 30 years, simple interest yields
+          &euro;31,000 total, while compound interest yields over &euro;76,000.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What does compounding frequency mean?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Compounding frequency indicates how many times per year interest is calculated and added
+          to the principal. With monthly compounding, interest is calculated 12 times a year; with
+          quarterly compounding, 4 times; with semi-annual, twice; and with annual compounding,
+          once. Given the same nominal rate, a higher compounding frequency produces a slightly
+          higher effective return. Most savings accounts and deposit accounts in Italy use annual
+          or quarterly compounding, while investment funds typically compound daily.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How long does it take to double my capital?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          You can use the "Rule of 72": divide 72 by the annual interest rate to get the approximate
+          number of years needed to double your capital. For example, with a 7% annual return it
+          takes roughly 72/7 = 10.3 years. With 5% it takes about 14.4 years. Remember that this
+          is a gross estimate; after Italian taxes (26% capital gains + 0.2% stamp duty), the net
+          doubling time will be longer. At 7% gross (approximately 4.98% net), the actual doubling
+          time is closer to 14.5 years.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Why is it important to start investing early?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Compound interest rewards time more than any other variable. Starting to invest 10 years
+          earlier can make an enormous difference in the final capital, even with smaller
+          contributions. The exponential growth curve means that the last years of an investment
+          are the ones where the capital grows the most in absolute terms. Someone who invests
+          &euro;200/month from age 25 to 35 and then stops can end up with more at 65 than
+          someone who invests &euro;200/month from 35 to 65. This is the power of giving your
+          money more time to compound.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does this calculator account for taxes?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          This calculator shows the gross return before taxes. In Italy, financial returns are
+          subject to a 26% substitute tax (12.5% for government bonds). There is also a 0.2%
+          annual stamp duty on the value of financial instruments. For a calculation that includes
+          the full tax impact, use our
+          <a href="/en/savings-plan-calculator/" class="text-brand hover:underline">Savings Plan (PAC) Calculator</a>,
+          which automatically computes the capital gains tax and shows both gross and net results.
+          You can also check our
+          <a href="/en/investment-tax-calculator/" class="text-brand hover:underline">Investment Tax Calculator</a>
+          for detailed tax breakdowns on different asset classes.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How does inflation affect my real return?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Inflation erodes the purchasing power of money over time, reducing the real value of the
+          returns you earn. The real return is calculated by subtracting the inflation rate from the
+          nominal return: for example, an investment yielding 7% per year with 2% inflation offers
+          a real return of approximately 5%. This means that, although your capital grows in nominal
+          terms, its actual purchasing power increases at a lower rate. To protect your capital from
+          inflation, it is important to choose investments with returns that consistently exceed the
+          average inflation rate over the long term. You can use our
+          <a href="/en/inflation-calculator/" class="text-brand hover:underline">Inflation Calculator</a>
+          to see how inflation impacts your purchasing power over time.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the difference between nominal rate and effective rate?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The nominal rate (TAN - <em>Tasso Annuo Nominale</em> in Italian) is the stated interest
+          rate without accounting for compounding frequency. The effective rate, on the other hand,
+          represents the actual return obtained when considering the effect of intra-year
+          compounding. For example, a nominal rate of 6% with monthly compounding produces an
+          effective annual rate of 6.17%, because the monthly interest is reinvested and in turn
+          generates its own interest. The formula for calculating the effective rate is:
+          (1 + r/n)<sup>n</sup> - 1, where r is the nominal rate and n is the number of
+          compounding periods per year. The higher the compounding frequency, the greater the
+          difference between the nominal and effective rate. In Italy, banks are required to
+          disclose both the TAN and the TAEG (effective annual rate including fees) for loans
+          and mortgages.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does compound interest also apply to debts?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, compound interest also applies to debts, and in this case it works against the
+          borrower. With mortgages, personal loans, and especially revolving credit on credit cards,
+          unpaid interest is capitalized and added to the remaining balance, generating interest on
+          interest. This is why credit card debt can grow very rapidly if it is not paid in full
+          each month. For fixed-rate mortgages in Italy, the French amortization system
+          (<em>ammortamento alla francese</em>) uses constant installments where the interest
+          portion decreases progressively, but the total cost of interest over the long term remains
+          significant: on a 30-year mortgage, the total interest paid can equal or exceed the
+          original principal borrowed. Use our
+          <a href="/en/mortgage-calculator/" class="text-brand hover:underline">Mortgage Calculator</a>
+          to see the full amortization schedule.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is a realistic annual return for long-term investing?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Historically, global equity markets have delivered an average annual return of approximately
+          7-10% before inflation over long periods (20+ years). A diversified global ETF portfolio
+          has returned roughly 7-8% per year on average. However, bond-only portfolios have
+          typically returned 2-4%. For a balanced portfolio (60% equities, 40% bonds), a reasonable
+          long-term expectation is 5-6% gross per year. After Italian taxes (26% on capital gains
+          and 0.2% stamp duty) and an assumed 2% inflation, the real net return may be around 2-3%.
+          It is important to remember that past performance does not guarantee future results, and
+          actual returns vary significantly from year to year. The key to benefiting from compound
+          interest is staying invested through market volatility rather than trying to time the
+          market.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How can I use compound interest for retirement planning in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Compound interest is the foundation of effective retirement planning. In Italy, you can
+          leverage it through several vehicles: <strong>fondi pensione</strong> (pension funds)
+          offer tax-deductible contributions up to &euro;5,164.57/year and benefit from a reduced
+          capital gains tax rate (20% instead of 26%, dropping to 9% after 35 years of
+          participation). You can also invest in <strong>PIR</strong> (Piani Individuali di
+          Risparmio), which are completely tax-exempt on capital gains if held for at least 5
+          years. Regular investments in low-cost global ETFs through a savings plan (PAC) are
+          another popular approach. Use our
+          <a href="/en/pension-calculator/" class="text-brand hover:underline">Pension Calculator</a>
+          or <a href="/en/fire-calculator/" class="text-brand hover:underline">FIRE Calculator</a>
+          to estimate how much you need to accumulate for a comfortable retirement.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Calcolatori correlati -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the net return of a systematic investment plan
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate how inflation impacts your purchasing power over time
+        </p>
+      </a>
+      <a href="/en/mortgage-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Mortgage Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate your mortgage payment and full amortization schedule
+        </p>
+      </a>
+      <a href="/en/loan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Personal Loan Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the installment and APR of a personal loan
+        </p>
+      </a>
+      <a href="/en/investment-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Investment Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate Italian taxes on stocks, ETFs, bonds, and funds
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay in Italy
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

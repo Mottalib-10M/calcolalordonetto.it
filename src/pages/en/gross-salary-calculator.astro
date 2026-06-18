@@ -24,4 +24,502 @@ const breadcrumbs = [
   lang={lang}
 >
   <StipendioLordo client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How to Calculate Gross Salary from Net Pay in Italy
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The reverse calculation (from net to gross) does not have a direct formula
+        because the Italian tax system is progressive, with deductions that vary
+        based on the income level itself. Our calculator uses a binary search
+        algorithm to find the RAL (Retribuzione Annua Lorda &mdash; gross annual salary)
+        that produces your desired monthly net pay.
+      </p>
+      <h3>Why you need the reverse calculation</h3>
+      <p>
+        When evaluating a new job offer in Italy, you likely think in terms of
+        monthly take-home pay: "how much do I need in my busta paga (payslip) to
+        cover my living expenses?" This calculator helps you translate that figure
+        into the RAL you should request during salary negotiations. This is
+        especially valuable for expats relocating to Italy, where salary offers are
+        almost always expressed as RAL rather than net monthly figures.
+      </p>
+      <h3>Factors that affect the result</h3>
+      <ul>
+        <li>
+          <strong>Region of residence (regione di residenza):</strong> the
+          addizionale regionale (regional income tax surcharge) can vary by more
+          than 2 percentage points between regions. For example, Lazio charges over
+          3%, while Trentino-Alto Adige charges around 1.23%. This alone can mean
+          several hundred euros per year of difference in your net pay.
+        </li>
+        <li>
+          <strong>Number of monthly payments (mensilita):</strong> with 14 monthly
+          payments the net per month is lower than with 13 payments, because the
+          same annual net is divided by a larger number. Italian employment
+          contracts commonly provide either 13 or 14 payments per year, depending
+          on the CCNL (Contratto Collettivo Nazionale di Lavoro &mdash; national
+          collective bargaining agreement) that applies to the company.
+        </li>
+        <li>
+          <strong>Deductions and bonuses (detrazioni e bonus):</strong> the cuneo
+          fiscale (tax wedge) reduction and the trattamento integrativo
+          (supplementary tax credit, formerly known as "bonus Renzi") can
+          significantly increase the net pay for incomes up to approximately
+          &euro;40,000.
+        </li>
+      </ul>
+      <h3>Calculation precision</h3>
+      <p>
+        The calculator rounds the RAL to the nearest &euro;100 in order to provide a
+        realistic figure you can use in negotiations. The actual net pay may differ
+        by a few euros from the target you entered. In practice, salary
+        negotiations in Italy always revolve around round RAL figures (e.g.
+        &euro;30,000, &euro;35,000, &euro;40,000), so this rounding makes the result
+        immediately usable.
+      </p>
+      <h3>The reverse calculation method explained</h3>
+      <p>
+        Unlike the standard gross-to-net calculation, where you sequentially apply
+        INPS social security contributions, IRPEF income tax brackets, and regional
+        or municipal surcharges, the reverse path cannot be solved with a closed
+        formula. The reason lies in the progressive nature of the Italian tax
+        system: IRPEF rates change according to the income bracket, employment
+        income deductions (detrazioni da lavoro dipendente) decrease as taxable
+        income rises, and the trattamento integrativo (supplementary tax credit)
+        only applies below certain thresholds. All these interdependent variables
+        make it impossible to simply "invert" the formula with a straightforward
+        algebraic operation.
+      </p>
+      <p>
+        Our calculator solves the problem using a <strong>binary search</strong>
+        algorithm (also known as bisection). In practice, the system starts with a
+        wide range of possible RAL values (for instance, between &euro;0 and
+        &euro;200,000) and at each iteration computes the net pay corresponding to the
+        midpoint of the range. If the resulting net is lower than the desired
+        target, the system raises the lower bound; if it is higher, it lowers the
+        upper bound. This process repeats rapidly (typically 20&ndash;30 iterations
+        suffice) until it converges on the RAL that produces the net pay closest to
+        the requested value. The result is then rounded to the nearest &euro;100 to
+        offer a practical and easily negotiable figure.
+      </p>
+      <h3>Common mistakes in Italian salary negotiations</h3>
+      <p>
+        Confusion between gross and net salary is at the root of many
+        misunderstandings during job negotiations in Italy, especially for
+        foreigners who are unfamiliar with how the Italian payroll system works.
+        Here are the most frequent mistakes to avoid:
+      </p>
+      <ul>
+        <li>
+          <strong>Confusing RAL with take-home pay:</strong> many candidates,
+          particularly those at the start of their career or recently arrived in
+          Italy, mistake the RAL for the net annual amount. A RAL of &euro;30,000
+          does not mean you will receive &euro;30,000 in your bank account: the
+          annual net will be approximately &euro;22,000&ndash;23,000, depending on
+          your region of residence and applicable deductions. Before accepting an
+          offer, always verify the monthly net pay you will actually receive by
+          using this calculator.
+        </li>
+        <li>
+          <strong>Ignoring regional differences:</strong> the addizionale regionale
+          IRPEF (regional income tax surcharge) varies significantly from region to
+          region. For example, Lazio applies rates that can exceed 3%, while other
+          regions like Trentino-Alto Adige stay around 1.23%. For the same RAL,
+          this can translate into a difference of several hundred euros per year in
+          your net pay. If you are considering relocating within Italy, be sure to
+          factor in this difference.
+        </li>
+        <li>
+          <strong>Not accounting for the number of monthly payments:</strong> the
+          CCNL (national collective bargaining agreement) applied by the company
+          determines whether you will receive 13 or 14 monthly payments. The RAL
+          stays the same, but the monthly net pay changes noticeably: with 14
+          payments each individual monthly payslip will be lower, even though the
+          annual total remains unchanged. During negotiations, always clarify
+          whether the net pay you have in mind refers to 13 or 14 monthly
+          installments.
+        </li>
+        <li>
+          <strong>Overlooking non-monetary benefits:</strong> when comparing two
+          job offers, do not focus solely on the RAL. Buoni pasto (meal vouchers),
+          assicurazione sanitaria integrativa (supplementary health insurance),
+          auto aziendale (company car), welfare aziendale (corporate welfare), and
+          smart working (remote work) can be worth several thousand euros per year.
+          An offer with a lower RAL but generous benefits might be more advantageous
+          overall.
+        </li>
+      </ul>
+      <h3>The role of the tax wedge (cuneo fiscale) in 2026</h3>
+      <p>
+        The <strong>cuneo fiscale</strong> (tax wedge) represents the gap between
+        the total cost borne by the employer and the net pay received by the
+        employee. In Italy, the tax wedge is historically among the highest in
+        Europe, standing at approximately 45&ndash;47% for the average worker. This
+        means that for every &euro;100 of total employer cost (costo azienda), the
+        employee takes home only about &euro;53&ndash;55.
+      </p>
+      <p>
+        In 2026, the Italian government has confirmed and made structural the
+        reduction in the contribution wedge (riduzione del cuneo contributivo)
+        introduced in prior years. This measure reduces the INPS social security
+        contributions payable by the employee for incomes up to &euro;35,000,
+        generating an increase in monthly net pay that can amount to approximately
+        &euro;100 per month. The benefit gradually decreases for incomes between
+        &euro;25,000 and &euro;35,000 and disappears entirely above this threshold.
+      </p>
+      <p>
+        For the reverse calculation, the tax wedge has a direct impact: thanks to
+        the contribution reduction, for low-to-medium incomes the RAL needed to
+        reach a given net pay target is lower than it would be without this relief.
+        In other words, if you want &euro;1,500 net per month, today you need a
+        lower RAL than you would have needed a few years ago. However, this effect
+        disappears once you exceed &euro;35,000 in income: above that threshold, the
+        net-to-gross ratio reverts to the standard rules, with full contribution
+        rates and only IRPEF progressivity determining the net pay.
+      </p>
+      <p>
+        Understanding how the tax wedge works is essential for negotiating with
+        confidence. If your target net monthly pay falls within the bracket covered
+        by the contribution reduction, you may achieve your desired result with a
+        reasonably accessible RAL. If, on the other hand, you are aiming for a
+        higher net pay, you will need to account for the combined effect of higher
+        IRPEF rates and full contributions, which make the gross-to-net conversion
+        increasingly less favorable as income rises.
+      </p>
+      <h3>Understanding Italian payroll as an expat</h3>
+      <p>
+        If you are moving to Italy for work, the payroll system may seem complex at
+        first. Here is a quick overview of the key deductions that reduce your RAL
+        to arrive at net pay. First, <strong>INPS contributions</strong> (contributi
+        INPS a carico del lavoratore) are deducted at a rate of approximately 9.19%
+        of your gross salary &mdash; these fund pension, unemployment, and sickness
+        insurance. Next, <strong>IRPEF</strong> (Imposta sul Reddito delle Persone
+        Fisiche &mdash; personal income tax) is applied progressively on your taxable
+        income after the INPS deduction. The 2026 IRPEF brackets are: 23% on income
+        up to &euro;28,000; 35% on income from &euro;28,001 to &euro;50,000; and 43%
+        on income above &euro;50,000. Finally, <strong>addizionali regionali e
+        comunali</strong> (regional and municipal surcharges) are added on top,
+        varying by your place of residence. The resulting figure, after all these
+        deductions and any applicable tax credits, is your net pay (stipendio netto).
+      </p>
+      <p>
+        Expats who qualify for the <strong>regime impatriati</strong> (impatriate tax
+        regime) enjoy a significant exemption: up to 50% of employment income can be
+        excluded from taxation for up to five years. If this applies to you, the RAL
+        needed for a given net pay target will be substantially lower. Note that
+        this calculator does not factor in the impatriati regime by default &mdash;
+        for that specific scenario, use our dedicated
+        <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati Tax Regime Calculator</a>.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Net-to-Gross Conversion Table: Practical Examples
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Desired monthly net</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">RAL needed (13 payments)</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">RAL needed (14 payments)</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;1,200</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~&euro;21,000</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~&euro;21,000</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;1,500</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~&euro;26,000</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~&euro;27,000</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;1,800</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~&euro;31,000</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~&euro;32,000</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;2,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~&euro;36,000</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~&euro;37,000</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;2,500</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~&euro;47,000</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~&euro;48,000</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;3,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">~&euro;58,000</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">~&euro;60,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        This table highlights a fundamental aspect of the Italian tax system: the
+        <strong>non-linear relationship</strong> between net and gross pay. Going
+        from &euro;1,200 to &euro;1,500 net per month requires a RAL increase of
+        approximately &euro;5,000, but going from &euro;2,500 to &euro;3,000 net
+        requires an increment of over &euro;11,000 in RAL. This effect is caused by
+        the progressivity of IRPEF: as income rises, you enter brackets with higher
+        rates, and each additional euro of gross salary produces a smaller increment
+        of net pay.
+      </p>
+      <p>
+        Furthermore, for lower incomes (up to approximately &euro;28,000 RAL), the
+        cuneo contributivo reduction and the trattamento integrativo (supplementary
+        tax credit) amplify the net pay, making the net-to-gross ratio particularly
+        favorable. Once you exceed this threshold, the ratio deteriorates
+        progressively.
+      </p>
+      <h3>IRPEF Brackets 2026 &mdash; Quick Reference</h3>
+      <table class="w-full text-sm border-collapse mt-4">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Taxable income bracket</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">IRPEF rate</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Tax on bracket</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Up to &euro;28,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">23%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;6,440</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;28,001 &ndash; &euro;50,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">35%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;7,700</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Over &euro;50,000</td>
+            <td class="py-3 px-4 text-center font-semibold text-brand">43%</td>
+            <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">No cap</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-4">
+        <strong>Note on regional variations:</strong> the values shown in the
+        net-to-gross table above are approximate and assume residence in Lombardy
+        (Lombardia) with an average municipal surcharge. The actual net pay can
+        vary by &euro;30&ndash;80 per month depending on the region. For example,
+        residing in Lazio instead of Lombardia can reduce your monthly net pay by
+        approximately &euro;40&ndash;60 for the same RAL, due to the higher regional
+        surcharge. Always use the calculator above for a personalized result based
+        on your specific region and municipality of residence.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What RAL do I need for &euro;2,000 net per month in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          It depends on your region of residence and the number of monthly payments. As a general guideline, to receive approximately &euro;2,000 net per month on 13 monthly payments, you will need a RAL of around &euro;35,000&ndash;37,000. Use the calculator above with your specific region selected for a precise figure. Keep in mind that the 2026 tax wedge reduction can lower the RAL needed for incomes that fall below the &euro;35,000 threshold.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the difference between 12, 13, and 14 monthly payments (mensilita)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The number of monthly payments determines how your annual net is distributed. With 13 payments (the most common arrangement in Italy), you receive 12 regular monthly salaries plus the tredicesima (thirteenth-month bonus) in December. With 14 payments, you also receive the quattordicesima (fourteenth-month bonus), which is typical of certain CCNL sectors such as commerce (commercio) and tourism (turismo). The annual net stays the same, but the net per individual month is lower because the total is spread across more payments. When negotiating, always specify whether the net pay you have in mind is based on 13 or 14 installments.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Does the RAL include employer social security contributions?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          No. The RAL (Retribuzione Annua Lorda &mdash; gross annual salary) is your gross salary before deductions charged to you (employee INPS contributions and IRPEF income tax). The costo azienda (total employer cost) is considerably higher because it also includes the employer's INPS contributions (approximately 23.81%) and the TFR accrual (Trattamento di Fine Rapporto &mdash; severance pay, approximately 6.91%). In total, the employer cost is roughly 30&ndash;35% higher than the RAL. The calculator shows the employer cost in the detailed breakdown section.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Why might the actual net pay differ slightly from my target?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The calculator rounds the RAL to the nearest &euro;100 in order to suggest a realistic and negotiable figure. This rounding may cause a difference of a few euros in the resulting monthly net pay. In practice, salary negotiations in Italy always deal in rounded RAL figures, so this rounding actually makes the result more useful. Additionally, real-world payslips may differ slightly due to exact municipal surcharge rates, specific CCNL provisions, or any personal deductions you may be entitled to.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Can I use this calculator to evaluate a job offer?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Absolutely. If you know how much you need each month to cover your expenses, you can calculate the minimum RAL to accept. Keep in mind that for a comprehensive evaluation you should also consider company benefits such as buoni pasto (meal vouchers, up to &euro;8/day tax-free), auto aziendale (company car), welfare aziendale (corporate welfare), and smart working arrangements. Also factor in the TFR (Trattamento di Fine Rapporto &mdash; severance pay) that accrues each year at roughly 6.91% of your gross salary, and any career growth prospects. For expats, do not forget to check whether you qualify for the impatriati tax regime, which could significantly reduce your tax burden.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How does the 2026 tax wedge (cuneo fiscale) affect the reverse calculation?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The 2026 tax wedge includes a structural reduction in the employee's INPS contributions for gross annual incomes up to &euro;35,000. This means that, for incomes within this bracket, the monthly net pay is higher compared to a standard calculation without the relief. Consequently, the reverse calculation returns a lower required RAL: to obtain, for instance, &euro;1,500 net per month, you need a lower RAL than would have been necessary without the cuneo reduction. However, be aware of the &euro;35,000 cliff: once your income exceeds this limit, the benefit disappears entirely and the net-to-gross ratio reverts to the standard rules, with a significant jump in the RAL required. Our calculator automatically accounts for this relief when determining the necessary RAL.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the difference between costo azienda (employer cost) and RAL?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The RAL (Retribuzione Annua Lorda) is the employee's gross salary &mdash; the amount on which employee-side deductions are calculated (INPS employee contributions, IRPEF, and regional/municipal surcharges). The costo azienda (employer cost), on the other hand, is the total expense the employer incurs for that employee: it includes the RAL, the employer's INPS contributions (approximately 23.81% of RAL), the accrued TFR severance (approximately 6.91%), INAIL workplace insurance, and other ancillary charges. In practice, the employer cost is on average 30&ndash;35% higher than the RAL. For example, a RAL of &euro;30,000 corresponds to an employer cost of approximately &euro;39,000&ndash;40,000. This distinction matters in negotiations: the company thinks in terms of employer cost, while the candidate thinks in terms of RAL or monthly net pay.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How should I negotiate salary in Italy using the reverse calculation?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The reverse calculation is an invaluable tool for preparing your salary negotiation. Here is how to use it effectively: first, calculate your fixed monthly expenses (rent, utilities, groceries, transportation, savings) to determine the minimum net pay you need. Then, use the calculator to translate that net into the corresponding RAL, selecting your region of residence and the number of monthly payments as specified by the company's CCNL. Add a 5&ndash;10% margin to the resulting RAL to give yourself negotiation room. During the interview, always present your request in terms of RAL (not net pay), because that is the language Italian companies use. Finally, remember to evaluate benefits as well: if the company offers buoni pasto of &euro;8 per day, this is equivalent to approximately &euro;1,760 in additional tax-free income per year, which you can subtract from your net pay requirement before calculating the necessary RAL.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Do expats qualify for special tax regimes that affect this calculation?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes. Italy offers the regime impatriati (impatriate tax regime), which allows qualifying workers who transfer their tax residence to Italy to exclude up to 50% of their employment income from taxation for up to five years. To qualify, you generally must not have been a tax resident in Italy for the two years prior to your transfer, and you must commit to remaining a tax resident for at least two years. If you qualify, the RAL required for a given net pay target will be significantly lower than what this standard calculator shows. We recommend using our dedicated <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati Tax Regime Calculator</a> for an accurate estimate under that regime. Additionally, researchers, academics, and certain highly skilled workers may qualify for even more favorable conditions.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is TFR and how does it affect my total compensation?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          TFR (Trattamento di Fine Rapporto) is Italy's mandatory severance pay. Each year, the employer sets aside approximately 6.91% of your gross annual salary. This money is paid out as a lump sum when your employment ends, regardless of the reason for termination. You can choose to keep it with the employer (where it earns a legally guaranteed return) or direct it to a pension fund (fondo pensione). While TFR does not affect your monthly net pay, it is an important part of your total compensation. For a RAL of &euro;30,000, the TFR accrual is approximately &euro;2,073 per year. You can estimate your TFR using our dedicated <a href="/en/severance-pay-calculator/" class="text-brand hover:underline">Severance Pay Calculator</a>.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Related Calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/en/irpef-tax-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          See your Italian income tax calculated bracket by bracket
+        </p>
+      </a>
+      <a
+        href="/en/payslip-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Payslip Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simulate your monthly busta paga with all deductions line by line
+        </p>
+      </a>
+      <a
+        href="/en/region-comparison/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Region Comparison
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Compare net monthly pay across all 21 Italian regions
+        </p>
+      </a>
+      <a
+        href="/en/employer-cost-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Employer Cost Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate the total cost your employer pays for your salary
+        </p>
+      </a>
+      <a
+        href="/en/impatriati-tax-regime/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Impatriati Tax Regime
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Estimate your tax savings under Italy's expat tax incentive
+        </p>
+      </a>
+      <a
+        href="/en/severance-pay-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Severance Pay (TFR) Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate your Trattamento di Fine Rapporto accrual and payout
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

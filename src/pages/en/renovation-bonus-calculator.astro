@@ -23,5 +23,588 @@ const breadcrumbs = [
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    Italian Renovation Bonus Calculator 2026
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Simulate the tax deduction for home renovation, ecobonus, sismabonus, and bonus mobili.
+    Check your IRPEF tax capacity and see your effective year-by-year savings.
+  </p>
+
   <BonusRistrutturazione client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Italian renovation tax credits in 2026: a complete overview
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        Italy's system of <strong>bonus edilizi</strong> (building and renovation tax credits) has undergone
+        sweeping changes in recent years. After the high-profile Superbonus 110% experiment, introduced by the
+        Decreto Rilancio (Decree-Law 34/2020) and then progressively scaled back, the government has reshaped
+        the entire framework of fiscal incentives for property improvements. The 2025 Budget Law
+        (Legge di Bilancio 2025, Law 207/2024) confirmed the regulatory framework that also applies in 2026,
+        with several important updates compared to previous years. The most significant change is the
+        <strong>distinction between primary residence and other properties</strong>: for standard renovation
+        works, the 50% deduction rate now applies exclusively to the <strong>abitazione principale</strong>
+        (primary residence), while for second homes and other properties the rate drops to 36%.
+        This is a major departure from the old system, when 50% applied uniformly to all residential properties.
+      </p>
+      <p>
+        Another fundamental change concerns the <strong>cessione del credito</strong> (tax credit transfer) and
+        <strong>sconto in fattura</strong> (invoice discount). Since 17 February 2023 (effective date of
+        Decree-Law 11/2023, converted by Law 38/2023), these options have been essentially abolished for new
+        projects, with very few exceptions tied to works already started or to properties damaged by earthquakes.
+        This means that in 2026, the only way to benefit from renovation tax credits is, in almost all cases,
+        through a <strong>direct IRPEF deduction</strong> on your annual tax return, split into equal annual
+        instalments. It is therefore essential to verify that you have sufficient IRPEF tax liability to take
+        full advantage of the deduction, because any excess portion that exceeds your tax due is
+        <strong>permanently lost</strong> -- it cannot be carried forward to subsequent years or refunded.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Bonus ristrutturazione (renovation bonus) at 50%: requirements, limits, and eligible works
+      </h3>
+      <p>
+        The <strong>bonus ristrutturazione</strong> (renovation tax credit) is governed by Article 16-bis
+        of the TUIR (Testo Unico delle Imposte sui Redditi, the Consolidated Income Tax Act, Presidential Decree
+        917/1986) and by Decree-Law 63/2013. For 2026, the deduction equals <strong>50%</strong> of expenses
+        incurred for renovation works on the taxpayer's <strong>primary residence</strong> (abitazione principale),
+        up to a maximum eligible expenditure of <strong>EUR 96,000</strong> per property unit. For other
+        properties (second homes, rented-out flats, etc.), the rate drops to <strong>36%</strong> with the same
+        EUR 96,000 cap. The deduction is split into <strong>10 equal annual instalments</strong>.
+      </p>
+      <p>
+        Eligible works cover a broad range of interventions, including: extraordinary maintenance
+        (manutenzione straordinaria) such as window and door replacement, bathroom renovation, replacement of
+        electrical or plumbing systems; restoration and conservative rehabilitation; full-scale renovation;
+        works needed to rebuild or restore a property damaged by natural disasters; removal of architectural
+        barriers for accessibility; construction of garages or parking spaces annexed to the property; and
+        asbestos removal. For <strong>common areas of condominiums</strong> (parti comuni condominiali), even
+        ordinary maintenance works (such as repainting, replacement of flooring, gutters, etc.) qualify for the
+        deduction.
+      </p>
+      <p>
+        To claim the deduction, specific procedural requirements must be met. Payment must be made via a
+        <strong>bonifico parlante</strong> (a special "talking" bank transfer) that includes the payment
+        reason referencing the relevant law (Article 16-bis TUIR), the codice fiscale (tax identification
+        number) of the beneficiary claiming the deduction, and the codice fiscale or partita IVA (VAT number)
+        of the payee. You must also keep all invoices and receipts, documentation related to building permits
+        (CILA, SCIA, or permesso di costruire depending on the type of work), and, where required by
+        workplace safety regulations, a notification to the local ASL (health authority).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Ecobonus: energy efficiency works at 50% and 65%
+      </h3>
+      <p>
+        The <strong>ecobonus</strong> is the tax deduction for energy-efficiency upgrades to existing buildings,
+        governed by Article 1, paragraphs 344-349 of Law 296/2006 and subsequent amendments. The deduction
+        rates vary depending on the type of intervention:
+      </p>
+      <p>
+        The <strong>50% rate</strong> applies to: replacement of windows and frames (infissi), solar shading
+        systems (schermature solari), biomass boilers, and class-A condensing boilers. The maximum eligible
+        expenditure varies: EUR 60,000 for windows, EUR 60,000 for solar shading, and EUR 30,000 for class-A
+        condensing boilers.
+      </p>
+      <p>
+        The <strong>65% rate</strong> applies to: thermal insulation of the building envelope (cappotto termico),
+        installation of solar thermal panels for hot water, replacement of heating systems with high-efficiency
+        heat pumps or geothermal systems, installation of class-A condensing boilers with advanced
+        thermoregulation systems (class V, VI, or VIII), purchase and installation of micro-cogeneration units,
+        and installation of remote-control devices for heating systems (building automation). The maximum
+        eligible expenditure is EUR 100,000 for comprehensive energy requalification and varying amounts for
+        individual interventions.
+      </p>
+      <p>
+        To qualify for the ecobonus, it is mandatory to submit a <strong>communication to ENEA</strong>
+        (Agenzia Nazionale per le Nuove Tecnologie, l'Energia e lo Sviluppo Economico Sostenibile -- the
+        Italian National Agency for New Technologies, Energy, and Sustainable Development) within 90 days
+        of the completion of the works. The submission is done through a dedicated online portal and must
+        include data on the property, the type of intervention, and the energy savings achieved, as certified
+        by the technical data sheet or the APE (Attestato di Prestazione Energetica, Energy Performance
+        Certificate) issued after the works.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Sismabonus and bonus mobili: specific rules
+      </h3>
+      <p>
+        The <strong>sismabonus</strong> is the tax deduction for seismic retrofitting and earthquake-proofing
+        works, established by Article 16, paragraphs 1-bis through 1-septies of Decree-Law 63/2013. The
+        deduction rates depend on the effectiveness of the intervention in reducing seismic risk:
+        <strong>70%</strong> for works that achieve a one-class reduction in seismic risk, and
+        <strong>80%</strong> for a two-class reduction. For interventions on <strong>common areas of
+        condominiums</strong>, the rates increase to 75% and 85%, respectively. The maximum eligible
+        expenditure is EUR 96,000 per property unit and the deduction is split into <strong>5 annual
+        instalments</strong> (not 10, as with standard renovation). Properties must be located in seismic
+        zones 1, 2, or 3 as defined by the seismic classification under PCM Order 3519/2006.
+      </p>
+      <p>
+        The <strong>bonus mobili</strong> (furniture and appliance bonus) allows a 50% deduction on expenses
+        for the purchase of furniture and large household appliances with high energy ratings (not lower than
+        class A for ovens, E for washing machines, washer-dryers, and dishwashers, F for refrigerators and
+        freezers), intended to furnish the property undergoing renovation. The maximum eligible expenditure
+        for 2026 is <strong>EUR 5,000</strong>. Crucially, the bonus mobili is tied to an ongoing renovation
+        project: you cannot claim it independently. The start date of the renovation works must precede the
+        date of purchase of the furniture and appliances. Payment can be made by bank or postal transfer,
+        debit card, or credit card; cheques, cash, and other non-traceable methods are not accepted.
+      </p>
+      <p>
+        The <strong>bonus verde</strong> (green spaces bonus) provides a 36% deduction on expenses for
+        landscaping private open areas of existing buildings, including irrigation systems, wells, green
+        roofs, and rooftop gardens. The maximum eligible expenditure is EUR 5,000 per property unit,
+        yielding a maximum deduction of EUR 1,800 spread over 10 annual instalments.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        How the deduction works: annual instalments explained
+      </h3>
+      <p>
+        The building-bonus deduction works by reducing the IRPEF (Imposta sul Reddito delle Persone Fisiche,
+        Italy's personal income tax) that the taxpayer owes. The total deduction amount is divided into
+        <strong>equal annual instalments</strong>: 10 for the renovation bonus, ecobonus, bonus mobili, and
+        bonus verde; 5 for the sismabonus. Each year, the taxpayer enters the annual instalment on their tax
+        return (Modello 730 or Modello Redditi PF) and subtracts it from their gross IRPEF liability.
+      </p>
+      <p>
+        Here is a concrete example: on a <strong>EUR 40,000</strong> expenditure for a primary-residence
+        renovation at 50%, the total deduction is EUR 20,000, divided into 10 annual instalments of
+        EUR 2,000 each. Every year, the taxpayer reduces their IRPEF bill by EUR 2,000 on their tax return.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tax capacity (capienza fiscale): why sufficient IRPEF liability is essential
+      </h3>
+      <p>
+        One of the most critical -- and most misunderstood -- aspects of Italian renovation bonuses is the
+        concept of <strong>capienza fiscale</strong> (tax capacity). The annual deduction can only be used
+        up to the amount of the taxpayer's gross IRPEF liability for that year, net of other deductions
+        already claimed (employment deductions, family dependant deductions, etc.). If the annual instalment
+        exceeds the net IRPEF due, <strong>the excess amount is permanently lost</strong>: it cannot be
+        carried forward to the next year, nor can it be refunded.
+      </p>
+      <p>
+        This particularly penalises taxpayers with low incomes or with many other deductions that already
+        substantially reduce their IRPEF. For instance, a taxpayer with a RAL (gross annual salary) of
+        EUR 15,000 has a gross IRPEF of approximately EUR 2,262, which after the employment income
+        deduction (about EUR 1,955 for incomes up to EUR 15,000) and the supplementary benefit (trattamento
+        integrativo) drops to nearly zero. In this scenario, the renovation deduction would be essentially
+        unusable. Our calculator automatically checks your IRPEF tax capacity and flags any situation
+        where deduction amounts would be wasted.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Tax credit transfer and invoice discount: current status
+      </h3>
+      <p>
+        <strong>Decree-Law 11/2023</strong> (converted by Law 38/2023) marked a turning point in Italy's
+        renovation bonus system by banning the transfer of tax credits (cessione del credito) and the invoice
+        discount option (sconto in fattura) for virtually all new projects from 17 February 2023 onward.
+        The only remaining exceptions relate to: projects already underway before that date for which a CILAS
+        or other building permit had been filed; demolition-and-rebuild projects in seismic zones for which the
+        building permit application had already been submitted; and works on properties damaged by earthquakes
+        in designated disaster areas. For all other cases, in 2026 the sole option is a direct IRPEF deduction
+        on your tax return, making the issue of tax capacity discussed above even more crucial.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Worked example: bathroom and kitchen renovation, EUR 40,000 cost, EUR 35,000 RAL
+      </h3>
+      <p>
+        Let us walk through a very common real-world scenario. Marco, an expat working in Italy, decides
+        to renovate the bathroom and kitchen of his apartment (his primary residence) at a total cost of
+        <strong>EUR 40,000</strong>. His RAL (gross annual salary) is <strong>EUR 35,000</strong>.
+      </p>
+      <p>
+        <strong>Calculating the deduction:</strong> the 50% renovation bonus on EUR 40,000 yields a total
+        deduction of EUR 20,000, divided into 10 annual instalments of EUR 2,000 each.
+      </p>
+      <p>
+        <strong>Checking IRPEF capacity:</strong> with a RAL of EUR 35,000, INPS social security
+        contributions borne by the employee amount to approximately EUR 3,217 (9.19%), bringing taxable
+        income to about EUR 31,783. Gross IRPEF is roughly EUR 7,648 (EUR 28,000 x 23% + EUR 3,783 x 33%).
+        The employment income deduction is approximately EUR 1,561. Net IRPEF is therefore around EUR 6,087,
+        which is more than enough to cover the annual EUR 2,000 instalment. Marco will benefit from the
+        full bonus with no waste.
+      </p>
+      <p>
+        <strong>Effective cost:</strong> the works cost EUR 40,000 upfront, but with the bonus Marco
+        recovers EUR 20,000 over 10 years. The <strong>real effective cost</strong> is EUR 20,000 -- equivalent
+        to a 50% discount on the renovation.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Documents required to claim the deduction
+      </h3>
+      <p>
+        To benefit from renovation tax credits you must keep -- and, if audited, be able to produce -- the
+        following documentation: the <strong>bonifico parlante</strong> (talking bank transfer) with the payment
+        reason referencing the relevant law (e.g., Art. 16-bis TUIR or the ecobonus legislation), the codice
+        fiscale of the person claiming the deduction, and the codice fiscale or partita IVA of the payee;
+        <strong>invoices and receipts</strong> for all expenses incurred; <strong>building permits</strong>
+        (CILA, SCIA, or permesso di costruire) or, alternatively, a sworn self-declaration (dichiarazione
+        sostitutiva dell'atto di notorieta) attesting to the start date of the works and their compliance
+        with building regulations; the <strong>ASL notification</strong>, where required by workplace safety
+        rules on construction sites; the <strong>ENEA communication</strong> within 90 days of the end of
+        works, mandatory for the ecobonus and for certain renovation works that produce energy savings (boiler
+        replacement, window replacement, solar panel installation); the <strong>condominium assembly
+        resolution</strong> (delibera assembleare) for works on common areas, together with the expense-sharing
+        table based on millesimal proportions; the cadastral survey (visura catastale) of the property or
+        proof of the cadastral registration application; receipts for IMU (municipal property tax) payments
+        if applicable; and for the bonus mobili, purchase invoices showing the nature, quality, and quantity
+        of the goods, plus proof of payment by traceable means.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Summary table: Italian building bonuses 2026
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The following table summarises the main <strong>bonus edilizi</strong> (building tax credits) available
+        in 2026, with their respective deduction rates, expenditure caps, and instalment periods. All amounts
+        refer to the maximum eligible expenditure per property unit.
+      </p>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Bonus</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Rate</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Expenditure cap</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Annual instalments</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Legal basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Renovation (primary residence)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">50%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;96,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Art. 16-bis TUIR</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Renovation (other properties)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">36%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;96,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">Art. 16-bis TUIR</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Ecobonus (windows, class-A boilers)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">50%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;60,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">L. 296/2006</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Ecobonus (insulation, heat pump)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">65%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;100,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">L. 296/2006</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Sismabonus (1 risk-class reduction)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">70%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;96,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">5</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">D.L. 63/2013</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Sismabonus (2 risk-class reduction)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">80%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;96,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">5</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">D.L. 63/2013</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Bonus mobili (furniture &amp; appliances)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">50%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;5,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">D.L. 63/2013</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Bonus verde (green spaces)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">36%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;5,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">10</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">L. 205/2017</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        These values are subject to annual confirmation through the Budget Law (Legge di Bilancio). We
+        recommend always verifying the rules in force at the time your works begin, either by consulting the
+        Agenzia delle Entrate (Italian Revenue Agency) website or by engaging a qualified tax professional
+        (commercialista).
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Maximum deduction amounts at a glance
+      </h3>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-gray-800">
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-left font-semibold">Bonus type</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Max deduction (total)</th>
+              <th class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-semibold">Max annual instalment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Renovation 50% (primary residence)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;48,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;4,800</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Renovation 36% (other properties)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;34,560</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;3,456</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Ecobonus 65% (insulation, global)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;65,000</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;6,500</td>
+            </tr>
+            <tr class="bg-gray-50 dark:bg-gray-800/50">
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Sismabonus 80% (2-class reduction)</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;76,800</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;15,360</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 font-medium">Bonus mobili 50%</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;2,500</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center">&euro;250</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Note: the maximum annual instalment represents the minimum IRPEF liability you need each year to
+        fully utilise the deduction. If your net IRPEF is below this amount, part of the bonus will be wasted.
+        Use our calculator above to verify your specific situation.
+      </p>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently asked questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Who can claim the Italian renovation bonus?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          All IRPEF taxpayers -- whether resident in Italy or not -- who own or hold the property on a
+          valid legal basis can claim the deduction. This includes: owners, bare owners (nudo proprietario),
+          holders of real rights (usufruct, use, habitation, surface rights), tenants, borrowers under a
+          free-loan agreement (comodatari), members of housing cooperatives, and sole traders (for
+          non-business properties). Importantly for expats, even a cohabiting family member who pays
+          for the works can claim the deduction, provided the bank transfers (bonifici) and invoices
+          are in their name or jointly named. Non-residents who pay Italian income tax can also benefit,
+          making this relevant for foreign nationals who own property in Italy.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What happens if renovation costs exceed the maximum cap?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The deduction is calculated only on expenditure up to the statutory cap. For example, if your
+          renovation costs EUR 120,000 and the cap is EUR 96,000, the 50% deduction applies only to
+          EUR 96,000 (yielding a total deduction of EUR 48,000), and the remaining EUR 24,000 of
+          expenditure is entirely at your own cost with no tax relief. The cap applies per property
+          unit (unita immobiliare), so if you own multiple properties, each one has its own separate cap.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Can I combine multiple bonuses on the same property?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes, you can combine multiple bonuses on the same property, provided they relate to different
+          types of work and the expenses are not the same. For instance, you can simultaneously claim the
+          renovation bonus for a bathroom refit, the ecobonus for window replacement, and the bonus
+          mobili for new furniture and appliances. However, you cannot apply two different deductions to
+          the same expense: if you replace windows, you must choose either the renovation bonus or the
+          ecobonus for that specific cost -- not both. Strategic planning of which bonus to use for each
+          type of work can significantly optimise your overall tax savings.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is a bonifico parlante and how do I fill it in?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          A <strong>bonifico parlante</strong> (literally, a "talking bank transfer") is a special type of
+          bank or postal transfer that must include three mandatory pieces of information: the payment
+          reason with a reference to the law (for example, "Payment of invoice no. XX dated XX/XX/XXXX
+          for renovation works pursuant to Art. 16-bis of D.P.R. 917/1986"), the codice fiscale (tax ID)
+          of the person claiming the deduction, and the codice fiscale or partita IVA (VAT number) of the
+          payee (the contractor or professional). Most Italian banks and post offices offer pre-filled
+          forms specifically for renovation-bonus bank transfers, which also automatically apply the
+          legally required 8% withholding tax. If you bank online, look for the option labelled "bonifico
+          per agevolazioni fiscali" or "bonifico per ristrutturazione" in your transfer menu.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Do I lose the deduction if I sell the property before 10 years?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          When you sell a property, the remaining deduction instalments automatically transfer to the buyer,
+          unless the sale contract explicitly states otherwise. The deed of sale (atto di compravendita) can
+          specify that the seller retains the right to the remaining instalments. In the case of a donation,
+          the recipient (donatario) takes over the deduction rights. In the case of inheritance following
+          death, the deduction transfers to the heir who maintains "material and direct possession" of the
+          property (detenzione materiale e diretta) -- meaning the heir who actually lives in or directly
+          uses the property, not one who rents it out. This is an important consideration for estate
+          planning around renovated Italian properties.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is tax credit transfer (cessione del credito) still possible in 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          No, with very few exceptions. Decree-Law 11/2023, converted by Law 38/2023, blocked the tax
+          credit transfer (cessione del credito) and invoice discount (sconto in fattura) for new projects
+          from 17 February 2023. The residual exceptions relate to applications already in progress at
+          the date of the decree and works on properties in earthquake-affected zones. For the vast
+          majority of taxpayers in 2026, the only option is the direct IRPEF deduction on their annual
+          tax return, divided into the annual instalments prescribed for each bonus type. This is why
+          verifying your IRPEF tax capacity before committing to renovation expenses is absolutely crucial.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Which building permits are needed: CILA vs SCIA?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          A <strong>CILA</strong> (Comunicazione di Inizio Lavori Asseverata -- Certified Communication of
+          Start of Works) is required for extraordinary maintenance works that do not involve changes to
+          the building volume or structural modifications: for example, bathroom renovation, replacement
+          of systems, or reflooring with changes to the subfloor. A <strong>SCIA</strong> (Segnalazione
+          Certificata di Inizio Attivita -- Certified Notice of Start of Activity) is required for works
+          involving structural changes: opening or closing wall openings, moving load-bearing walls, or
+          seismic retrofitting. For "free building" works (edilizia libera) such as interior painting,
+          replacing sanitary fixtures without modifying the plumbing layout, or replacing flooring without
+          changing floor levels, no building permit is needed -- a simple sworn self-declaration
+          (dichiarazione sostitutiva dell'atto di notorieta) is sufficient. Your architect or geometra
+          can advise on the correct permit for your specific project.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is there a reduced VAT rate on renovation works?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Yes. For ordinary and extraordinary maintenance works on residential buildings, Italy's VAT
+          (IVA) is charged at the reduced rate of <strong>10%</strong> instead of the standard 22%. This
+          reduced rate applies to both labour and materials, with one caveat for so-called "beni
+          significativi" (significant goods) such as lifts, windows and frames, boilers, and sanitary
+          fixtures: on these items, the 10% VAT applies only up to the value of the labour component of
+          the invoice. The reduced 10% VAT is a separate and additional benefit on top of the IRPEF
+          renovation deduction -- they are not mutually exclusive. This effectively means you benefit
+          twice: you pay less VAT upfront and then recover part of the total cost through the tax
+          deduction over the following 10 years.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/property-capital-gains/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Property Capital Gains Tax
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the tax on selling a property in Italy
+        </p>
+      </a>
+      <a href="/en/mortgage-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Mortgage Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate your monthly mortgage payment and amortisation schedule
+        </p>
+      </a>
+      <a href="/en/irpef-tax-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          IRPEF Tax Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate gross and net IRPEF with the 2026 tax brackets
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate the impact of inflation on your purchasing power
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

@@ -18,10 +18,651 @@ const breadcrumbs = [
 <CalcolatoreLayout
   title={title}
   description={description}
-  calculatorName="FIRE Calculator"
+  calculatorName="FIRE Calculator - Financial Independence"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
   lang={lang}
 >
+  <!-- Calculator -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    FIRE Calculator: Financial Independence in Italy
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Find out how much wealth you need to live off your investments and how many years it will take to get there.
+  </p>
+
   <FIRE client:load lang={lang} />
+
+  <!-- How it works -->
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      What is FIRE and how to calculate financial independence in Italy
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        <strong>FIRE (Financial Independence, Retire Early)</strong> is a movement that originated in the United States
+        with a goal that is simple to state yet demanding to achieve: accumulate enough invested wealth so that
+        the returns from your portfolio can replace your employment income, giving you the freedom to choose how
+        you spend your time. The concept was popularised by the blog "Mr. Money Mustache" and the book
+        "Your Money or Your Life" by Vicki Robin. In recent years, FIRE has gained a growing following across
+        Europe, including a vibrant community in Italy. For expats and English-speaking professionals living in
+        Italy, understanding how FIRE works within the Italian tax and pension system is essential to building
+        a realistic plan.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        The 4% Rule and the Trinity Study
+      </h3>
+      <p>
+        The cornerstone of the FIRE strategy is the so-called <strong>4% rule</strong>, derived from the landmark
+        <strong>Trinity Study</strong> (Cooley, Hubbard, and Walz, 1998). The study analysed historical US stock
+        and bond market data from 1926 to 1995 and concluded that a portfolio composed of 50-75% equities and
+        25-50% bonds could sustain an annual withdrawal of 4% of the initial balance (adjusted for inflation)
+        for at least 30 years in 95% of the historical scenarios tested.
+      </p>
+      <p>
+        In practical terms, the 4% rule means that your <strong>FIRE number</strong> &mdash; the portfolio size
+        needed to reach financial independence &mdash; is simply:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        FIRE Number = Annual Expenses / Withdrawal Rate = Annual Expenses &times; 25
+      </div>
+      <p>
+        If your annual expenses are &euro;24,000 (&euro;2,000 per month), your FIRE number is &euro;600,000.
+        Once you have accumulated this amount in invested assets, you can theoretically withdraw &euro;24,000
+        per year without depleting your capital over the long term.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Does the 4% rule work in Italy?
+      </h3>
+      <p>
+        The 4% rule is based on US market data, which historically delivered above-average global returns. For
+        an investor in Italy, there are several important considerations. The most significant is
+        <strong>taxation</strong>: in Italy, investment returns (capital gains, dividends, interest) are subject
+        to a flat substitute tax (<em>imposta sostitutiva</em>) of <strong>26%</strong> on most instruments
+        (stocks, equity ETFs, mutual funds, corporate bonds, deposit accounts). Italian government bonds (BTP,
+        BOT, CCT) and bonds from countries on the EU/EEA "white list" benefit from a reduced rate of
+        <strong>12.5%</strong>. This taxation significantly reduces the net return available.
+      </p>
+      <p>
+        Our calculator accounts for this by computing a <strong>real net return</strong> using the formula:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        Real Net Return = (Nominal Return - Inflation) &times; (1 - Tax Rate)
+      </div>
+      <p>
+        With a nominal return of 7%, inflation at 2%, and a tax rate of 26%, the real net return is approximately
+        3.7%. Many European financial planners suggest that a withdrawal rate of 3&ndash;3.5% is more prudent than
+        the American 4%, especially given higher taxation and historically lower European market returns. On the
+        upside, Italy's universal healthcare system (SSN, <em>Servizio Sanitario Nazionale</em>) eliminates one of
+        the largest expense risks that American FIRE followers face.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        How to calculate your personal FIRE number
+      </h3>
+      <p>
+        Calculating your FIRE number starts with an honest assessment of your <strong>annual expenses</strong>.
+        These should not be your current spending as a working professional, but rather the expenses you expect
+        to have once you reach financial independence. Include every category: rent or mortgage payments, utilities,
+        groceries, transportation, health insurance (if supplementary), entertainment, travel, home maintenance,
+        and a buffer for unexpected costs. According to ISTAT (Italy's national statistics institute), the average
+        monthly spending for a two-person household in Italy is around &euro;2,200&ndash;2,800, with significant
+        regional variation &mdash; Milan and Rome are substantially more expensive than smaller cities in the south.
+      </p>
+      <p>
+        Once you have established your annual expenses, divide by your chosen withdrawal rate. With a 4% rate,
+        multiply by 25. With a more conservative 3.5%, multiply by approximately 28.6. For example, monthly expenses
+        of &euro;2,500 (&euro;30,000/year) at a 4% withdrawal rate yield a FIRE number of &euro;750,000, while at
+        3.5% you would need approximately &euro;857,000.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Savings rate: why it matters more than investment returns
+      </h3>
+      <p>
+        The <strong>savings rate</strong> (<em>tasso di risparmio</em>) is the percentage of your income that you
+        save and invest. It is the single most important factor on the path to FIRE &mdash; far more impactful than
+        the rate of return on your investments. The reason is twofold: a high savings rate simultaneously means
+        (1) more money invested each year and (2) lower expenses to cover once you reach independence, which
+        translates to a lower FIRE number.
+      </p>
+      <p>
+        The impact of the savings rate on the number of years to FIRE is dramatic. Below is an indicative table
+        assuming a real net return of 3.7% and zero starting capital:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Savings Rate</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Years to FIRE</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">10%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~51 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Standard retirement timeline</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">20%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~37 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Good starting point</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">30%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~28 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Realistic goal</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">40%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~22 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Highly ambitious</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">50%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~17 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Accelerated FIRE</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~13 years</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Extremely frugal</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
+      <p>
+        As the table shows, going from a 20% savings rate to 50% cuts the years to FIRE from 37 to 17 &mdash;
+        more than halving them. By contrast, increasing your nominal investment return from 5% to 9% only
+        shaves off around 5&ndash;8 years. Doubling your savings rate is far more powerful than chasing higher
+        returns, which is why FIRE practitioners focus relentlessly on the gap between income and spending.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Italian investment tax rules for FIRE seekers
+      </h3>
+      <p>
+        Taxation is a critical factor for anyone pursuing FIRE in Italy. The <em>imposta sostitutiva</em>
+        (substitute tax) on investment income applies at the following rates:
+      </p>
+      <ul>
+        <li><strong>26%</strong> on stocks, equity ETFs, mutual funds, corporate bonds, and deposit accounts</li>
+        <li><strong>12.5%</strong> on Italian government bonds (BTP, BOT, CCT) and bonds from EU/EEA "white list" countries</li>
+        <li><strong>26%</strong> on dividends and coupons (excluding government securities)</li>
+      </ul>
+      <p>
+        For ETFs that hold government bonds, the portion of returns attributable to those bonds is taxed at the
+        reduced 12.5% rate, lowering the overall tax burden. For instance, a European government bond ETF might
+        have an effective tax rate of around 14&ndash;16%.
+      </p>
+      <p>
+        It is also important to account for the <strong>imposta di bollo</strong> (stamp duty on investments),
+        which is 0.2% per year on the total market value of your portfolio. On a &euro;500,000 portfolio, this
+        amounts to &euro;1,000 per year &mdash; a non-trivial drag, especially during the accumulation phase.
+        Italy uses the <em>regime del risparmio amministrato</em> (administered savings regime), where your
+        broker automatically calculates and withholds taxes on gains when you sell, making tax compliance
+        relatively straightforward.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        FIRE variations explained
+      </h3>
+      <p>
+        Over time, the FIRE movement has developed several "flavours" that cater to different lifestyles and
+        risk tolerances:
+      </p>
+      <ul>
+        <li>
+          <strong>Lean FIRE</strong>: achieving financial independence on a very frugal budget, typically below
+          &euro;1,500 per month for a single person in Italy. This requires a relatively low FIRE number (under
+          &euro;450,000) but demands an essential, no-frills lifestyle. It works best in lower-cost areas of
+          Italy such as southern regions or smaller cities.
+        </li>
+        <li>
+          <strong>Fat FIRE</strong>: financial independence with an elevated standard of living, with monthly
+          spending above &euro;4,000&ndash;5,000. This requires substantial wealth (over &euro;1.2&ndash;1.5
+          million) but allows you to maintain comforts and even luxuries.
+        </li>
+        <li>
+          <strong>Barista FIRE</strong>: accumulating enough wealth to cover most of your expenses, while
+          supplementing with a light part-time job or a passion project that generates some income. This is a
+          pragmatic middle ground that significantly reduces the required FIRE number. In Italy, this could mean
+          teaching English, freelance consulting, or running a small online business.
+        </li>
+        <li>
+          <strong>Coast FIRE</strong>: saving and investing aggressively in your younger years so that, thanks
+          to compound interest, your portfolio will grow on its own to reach the full FIRE number by standard
+          retirement age &mdash; without any further contributions. You continue working, but only to cover
+          current expenses, free from the pressure of saving. This approach is well-suited to younger professionals
+          in Italy who have decades of compounding ahead.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Investment vehicles available in Italy for FIRE
+      </h3>
+      <p>
+        Those pursuing FIRE in Italy have access to several effective investment tools:
+      </p>
+      <ul>
+        <li>
+          <strong>ETFs on Borsa Italiana</strong>: ETFs are the preferred instrument of the Italian FIRE
+          community. Products tracking the MSCI World or FTSE All-World index provide global diversification
+          at minimal cost (TER of 0.1&ndash;0.3%). They are available through Italian brokers such as Directa
+          and Fineco, or international platforms like Degiro and Interactive Brokers. Accumulating (ad accumulazione)
+          ETFs are generally preferred over distributing ones, as they avoid triggering annual dividend tax events.
+        </li>
+        <li>
+          <strong>BTP and government bonds</strong>: these offer predictable returns with the advantageous 12.5%
+          tax rate. BTP Italia (inflation-linked government bonds) can protect purchasing power during inflationary
+          periods. They are useful for the "safe" or "bond" portion of a FIRE portfolio.
+        </li>
+        <li>
+          <strong>Conti deposito (deposit accounts)</strong>: suitable for an emergency fund or short-term
+          liquidity. Returns are modest but capital is guaranteed up to &euro;100,000 per depositor per bank
+          by the FITD (Fondo Interbancario di Tutela dei Depositi), Italy's deposit guarantee scheme.
+        </li>
+        <li>
+          <strong>Fondi pensione complementari (supplementary pension funds)</strong>: these offer significant
+          tax advantages, with contributions deductible up to &euro;5,164 per year from taxable income. While
+          the money is locked until retirement age, pension funds can serve as a valuable complement to a FIRE
+          plan for covering expenses in later decades, when the INPS state pension may also begin paying out.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Worked example: net salary of &euro;2,500 per month
+      </h3>
+      <p>
+        Consider Marco, 30 years old, with a net monthly salary of &euro;2,500. His monthly expenses total
+        &euro;1,500 (rent &euro;600, utilities &euro;150, groceries &euro;300, transport &euro;100, leisure
+        &euro;200, miscellaneous &euro;150). He saves &euro;1,000 per month, for a savings rate of 40%.
+        He has already accumulated &euro;30,000 invested in an MSCI World ETF.
+      </p>
+      <p>
+        Using our default assumptions (7% nominal return, 2% inflation, 26% tax), his FIRE number is:
+      </p>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
+        FIRE Number = &euro;1,500 &times; 12 / 0.04 = &euro;450,000
+      </div>
+      <p>
+        Plugging these figures into the calculator, Marco would reach his FIRE number in approximately
+        <strong>21&ndash;22 years</strong>, at age 51&ndash;52. If he could increase his monthly savings to
+        &euro;1,300 (a savings rate of about 52%), he could reach FIRE in 16&ndash;17 years, by age 46&ndash;47.
+      </p>
+      <p>
+        Importantly, Marco could also consider Barista FIRE: at age 45, with a portfolio of around &euro;350,000,
+        he could take a part-time job covering just &euro;500 per month of his expenses, significantly reducing
+        withdrawals from his portfolio and making the plan far more sustainable. In Italy, with its strong
+        culture of freelancing and part-time work, this is a particularly attractive option.
+      </p>
+
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+        Risks and limitations of FIRE
+      </h3>
+      <p>
+        The FIRE path is not without risks and uncertainties that must be carefully considered:
+      </p>
+      <ul>
+        <li>
+          <strong>Sequence-of-returns risk</strong>: if markets crash in the first few years after you reach
+          FIRE and begin withdrawing, the impact on your portfolio is far more severe than a crash mid-journey.
+          This is the most insidious risk and can be mitigated by holding 2&ndash;3 years of expenses in cash
+          or low-risk instruments, allowing you to avoid selling equities during downturns.
+        </li>
+        <li>
+          <strong>Inflation</strong>: periods of high inflation (as experienced in Italy during 2022&ndash;2023,
+          with peaks of 8&ndash;11%) can rapidly erode the purchasing power of your withdrawal income. A
+          portfolio with a significant equity component offers natural long-term protection, but short-term
+          impacts can be harsh. BTP Italia and other inflation-linked instruments can help hedge this risk.
+        </li>
+        <li>
+          <strong>Healthcare costs</strong>: Italy's SSN provides universal healthcare, which is an enormous
+          advantage compared to the US. However, once you stop working, you may lose access to employer-provided
+          supplementary health insurance (<em>polizza sanitaria integrativa</em>). Budget for private health
+          insurance or a health emergency fund if you plan to rely on private care.
+        </li>
+        <li>
+          <strong>Longevity risk</strong>: the Trinity Study was based on a 30-year time horizon. Someone
+          reaching FIRE at 40 may need their portfolio to last 50&ndash;60 years. For such long horizons, a
+          withdrawal rate of 3&ndash;3.5% is considerably more prudent. Updated research (such as the Bengen
+          study updates and the ERN Safe Withdrawal Rate series) confirms that lower rates provide better
+          survival probabilities over extended periods.
+        </li>
+        <li>
+          <strong>Regulatory changes</strong>: tax rates, pension rules, and fiscal incentives can and do
+          change over time. Italian tax law has been reformed multiple times in recent decades. A FIRE plan
+          spanning 20+ years must remain flexible and regularly reviewed. What is taxed at 26% today could
+          be subject to a different rate in the future.
+        </li>
+      </ul>
+    </div>
+  </Fragment>
+
+  <!-- Reference values -->
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      FIRE Reference Parameters for Italy (2026)
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The calculator uses the following default parameters, reflecting current Italian economic and fiscal
+        conditions:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Parameter</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Value</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Source</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Safe Withdrawal Rate (SWR)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Trinity Study (1998)</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Expected nominal return</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">7%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">MSCI World historical average</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Expected inflation</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">2%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">ECB target</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Capital gains tax rate</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">26%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">D.Lgs. 461/1997</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Real net return</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~3.7%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Calculated</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Average household spending (ISTAT)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~&euro;2,600/month</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">ISTAT 2024</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Portfolio stamp duty (imposta di bollo)</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">0.2%/year</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">D.P.R. 642/1972</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-4 mb-3">
+        FIRE number benchmarks by monthly spending
+      </h3>
+      <p>
+        The table below shows FIRE numbers for different monthly expense levels, calculated at both the standard
+        4% withdrawal rate and a more conservative 3.5% rate suitable for the Italian tax environment:
+      </p>
+    </div>
+    <div class="overflow-x-auto mt-4">
+      <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Monthly Expenses</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">Annual Expenses</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">FIRE Number (4%)</th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">FIRE Number (3.5%)</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;1,200</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;14,400</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;360,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;411,429</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;1,500</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;18,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;450,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;514,286</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;2,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;24,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;600,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;685,714</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;2,500</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;30,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;750,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;857,143</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;3,500</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;42,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;1,050,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;1,200,000</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;5,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;60,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;1,500,000</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&euro;1,714,286</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Fragment>
+
+  <!-- FAQ -->
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions about FIRE in Italy
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is a FIRE number and how is it calculated?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Your FIRE number is the total invested portfolio needed to live off your investments without
+          employment income. It is calculated by dividing your annual expenses by the Safe Withdrawal Rate
+          (SWR). Using the 4% rule, the FIRE number equals 25 times your annual expenses. For example,
+          if your monthly expenses are &euro;2,000 (&euro;24,000 per year), your FIRE number is
+          &euro;600,000. This means that once you accumulate &euro;600,000 in invested assets, you can
+          theoretically withdraw &euro;24,000 per year indefinitely without depleting the principal.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Does the 4% rule work in Italy, or should I use a lower rate?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The 4% rule is based on US market data, which historically outperformed global averages. For
+          Italy, the higher tax burden (26% on capital gains vs. approximately 15% in the US) and
+          historically lower returns from European markets suggest using a more conservative rate of
+          3&ndash;3.5%. However, by investing in a globally diversified portfolio (such as an MSCI World
+          ETF), you capture world market returns rather than just European ones. A significant advantage
+          for FIRE in Italy is the SSN (universal healthcare), which drastically reduces healthcare costs
+          compared to the US, where medical expenses are one of the biggest risks for early retirees.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How much do I need to save each month to reach FIRE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          There is no fixed amount &mdash; it depends on your expenses, current portfolio, and expected
+          investment returns. The key metric is your savings rate (the percentage of income you invest).
+          With a 50% savings rate, you can reach FIRE in roughly 17 years. At 30%, it takes about 28
+          years. The most effective approach is to maximise the gap between income and spending, both by
+          increasing earnings and reducing costs. Use the calculator above to simulate your specific
+          scenario with Italian tax rates.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What is the difference between Lean FIRE, Fat FIRE, and Barista FIRE?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          Lean FIRE means reaching independence on a frugal budget (under &euro;1,500/month in Italy),
+          requiring a lower FIRE number but a no-frills lifestyle. Fat FIRE targets a comfortable lifestyle
+          (over &euro;4,000/month), requiring a much larger portfolio. Barista FIRE is a practical
+          middle ground: you accumulate enough to cover most expenses and supplement with part-time or
+          freelance work. Coast FIRE involves saving aggressively while young so that compound interest
+          grows your portfolio to the full FIRE number by standard retirement age, without needing further
+          contributions.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          How are investment portfolio withdrawals taxed in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          In Italy, when you sell investments at a profit, you pay 26% imposta sostitutiva (substitute tax)
+          on the capital gain &mdash; the difference between the sale price and the purchase price, not the
+          full amount sold. For government bonds (BTP, BOT, CCT), the rate is reduced to 12.5%. Additionally,
+          you pay 0.2% per year as imposta di bollo (stamp duty) on the total market value of your portfolio.
+          Under the regime del risparmio amministrato (administered savings regime), which most Italian
+          brokers offer, these taxes are automatically calculated and withheld, simplifying compliance.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Is FIRE realistic on an average Italian salary?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          With the average Italian net salary of around &euro;1,600&ndash;1,800 per month, traditional FIRE
+          (stopping work entirely at 40&ndash;50) is very challenging because the savings margin is tight.
+          However, Barista FIRE and Coast FIRE are more attainable. Strategies to accelerate include:
+          boosting income (career progression, job changes, side income), cutting fixed costs (moving to
+          less expensive cities, eliminating a car if possible), and investing efficiently using low-cost
+          ETFs. The lower cost of living in southern Italy can make FIRE considerably more accessible
+          compared to Milan or Rome. Expats with higher international salaries may find FIRE in Italy
+          particularly attractive due to the favourable cost-of-living-to-salary ratio.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          What happens to my INPS pension if I stop working early?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          If you stop working and contributing to INPS (Italy's social security institute), the montante
+          contributivo (accumulated pension pot) you built up will continue to be revalued annually based
+          on a rolling GDP average, but it will not grow with new contributions. The resulting pension will
+          be significantly lower. To access the standard pensione di vecchiaia (old-age pension), you need
+          at least 20 years of contributions. Those who reach FIRE early should consider making voluntary
+          INPS contributions (contributi volontari, approximately &euro;5,000&ndash;8,000 per year) to
+          maintain pension coverage, or directing part of their wealth into a fondo pensione complementare
+          (supplementary pension fund) to bridge the gap.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
+        <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
+          Where should I invest for FIRE in Italy?
+          <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+          The most tax-efficient strategy for FIRE in Italy centres on a diversified portfolio of low-cost
+          ETFs. The core holding is typically a global equity ETF (MSCI World or FTSE All-World, TER
+          0.1&ndash;0.2%), paired with European government bond ETFs for stability (which benefit from the
+          reduced 12.5% tax rate). For short-term liquidity, deposit accounts (conti deposito) and BOT
+          (short-term government bonds) work well. Use Italian brokers like Directa or Fineco, or
+          international platforms such as Degiro or Interactive Brokers. Avoid actively managed funds with
+          high TER fees and insurance-linked financial products (unit-linked), which carry substantial
+          hidden costs that severely impact long-term returns.
+        </p>
+      </details>
+    </div>
+  </Fragment>
+
+  <!-- Related calculators -->
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Related Calculators
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/en/savings-plan-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Savings Plan (PAC)
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Simulate the returns of a monthly investment plan with costs and Italian taxes
+        </p>
+      </a>
+      <a href="/en/compound-interest-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Compound Interest
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Calculate how your capital grows over time with compound interest
+        </p>
+      </a>
+      <a href="/en/pension-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          INPS Pension Estimate
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Estimate your future INPS pension under the contributory system
+        </p>
+      </a>
+      <a href="/en/inflation-calculator/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Inflation Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          See how inflation erodes purchasing power over time
+        </p>
+      </a>
+      <a href="/en/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 transition-colors hover:border-brand/50 hover:bg-brand/5 dark:hover:bg-brand/10">
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Net Salary Calculator
+        </h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          From gross to net: calculate your monthly take-home pay in Italy
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>

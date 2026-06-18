@@ -6,7 +6,7 @@ import { canonicalURL } from '../../lib/seo';
 
 const lang = 'en' as const;
 const title = "IRPEF Calculator 2026: Italian Income Tax by Bracket";
-const description = "Calculate your Italian income tax bracket by bracket: 23% up to €28k, 35% to €50k, 43% above. See effective rate, deductions, and net pay after all taxes.";
+const description = "Calculate your Italian income tax bracket by bracket: 23% up to 28k, 33% to 50k, 43% above. See effective rate, deductions, and net pay after all taxes.";
 const canonical = canonicalURL('/en/irpef-tax-calculator/');
 
 const breadcrumbs = [
@@ -18,10 +18,496 @@ const breadcrumbs = [
 <CalcolatoreLayout
   title={title}
   description={description}
-  calculatorName="IRPEF Tax Calculator"
+  calculatorName="IRPEF Tax Calculator 2026"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
   lang={lang}
 >
   <IRPEF client:load lang={lang} />
+
+  <Fragment slot="come-si-calcola">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      How IRPEF Is Calculated
+    </h2>
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        IRPEF (Imposta sul Reddito delle Persone Fisiche &mdash; personal income tax) is the main
+        direct tax in Italy. If you work in Italy as an employee, freelancer, or self-employed
+        professional, IRPEF is the single largest deduction from your earnings. It is calculated
+        using a progressive bracket system known as <em>scaglioni</em>: each portion of your
+        income is taxed at a different rate, and only the income falling within that bracket is
+        subject to that specific rate. This mechanism ensures that higher earners contribute a
+        greater share of their income, in line with the principle of progressive taxation
+        enshrined in Article 53 of the Italian Constitution.
+      </p>
+      <p>
+        Understanding IRPEF is essential for expats and foreign workers in Italy. Unlike
+        flat-tax systems found in some countries, Italy's progressive structure means your
+        <strong>effective tax rate</strong> (the average percentage of your total income paid in
+        tax) is always lower than the <strong>marginal rate</strong> (the rate applied to your
+        last euro of income). This distinction is crucial when evaluating job offers, negotiating
+        salary packages, or planning your finances in Italy.
+      </p>
+
+      <h3>IRPEF Tax Brackets (Scaglioni) for 2026</h3>
+      <p>
+        Since 2024, confirmed as permanent for 2025 and 2026, Italy uses a simplified system of
+        three tax brackets:
+      </p>
+      <ul>
+        <li><strong>Up to &euro;28,000:</strong> 23% rate</li>
+        <li><strong>From &euro;28,001 to &euro;50,000:</strong> 33% rate</li>
+        <li><strong>Above &euro;50,000:</strong> 43% rate</li>
+      </ul>
+      <p>
+        These rates apply to your <em>reddito imponibile</em> (taxable income), not your gross
+        salary. Taxable income is calculated after deducting mandatory social security
+        contributions (INPS) from your gross annual salary (RAL &mdash; Retribuzione Annua Lorda).
+      </p>
+
+      <h3>From Gross Salary to Net Pay: The Complete Path</h3>
+      <p>
+        The calculation starts with your <strong>RAL</strong> (gross annual salary) if you are
+        an employee (<em>lavoratore dipendente</em>). Here is the step-by-step process that
+        determines how much tax you actually owe:
+      </p>
+      <p>
+        First, INPS social security contributions at the employee's rate of 9.19% are deducted
+        from the RAL to arrive at the <em>imponibile fiscale</em> (taxable income). Then, IRPEF
+        lorda (gross IRPEF) is computed by applying the progressive bracket rates to this taxable
+        income. From the gross IRPEF, you subtract applicable <em>detrazioni</em> (tax credits):
+        employment income deduction, tax wedge deduction, and family dependents deduction. The
+        result is the <em>IRPEF netta</em> (net IRPEF) &mdash; the actual income tax withheld
+        from your pay.
+      </p>
+      <p>
+        On top of net IRPEF, you must also pay <em>addizionali regionali e comunali</em>
+        (regional and municipal surcharges), which vary depending on your city and region of
+        residence. For lower incomes, the <em>trattamento integrativo</em> (supplementary
+        allowance, formerly known as the "Bonus Renzi") may provide an additional &euro;100 per
+        month in your paycheck.
+      </p>
+
+      <h3>Historical Evolution of IRPEF Brackets</h3>
+      <p>
+        Italy's IRPEF system has undergone significant transformations over the years, reflecting
+        the fiscal policies of successive governments. Understanding this history helps expats
+        appreciate the current system and anticipate possible future changes.
+      </p>
+      <p>
+        Until 2021, the system featured <strong>five brackets</strong> with rates of 23%, 27%,
+        38%, 41%, and 43%. This structure, largely unchanged since 2007, created a particularly
+        steep jump between the second bracket (27%) and the third (38%), penalizing middle-income
+        earners who crossed the &euro;28,000 threshold.
+      </p>
+      <p>
+        The 2022 tax reform (Legislative Decree 230/2021) reduced the brackets to
+        <strong>four</strong>: 23% up to &euro;15,000, 25% from &euro;15,001 to &euro;28,000,
+        35% from &euro;28,001 to &euro;50,000, and 43% above &euro;50,000. This change
+        introduced meaningful relief for low-to-middle incomes by eliminating the 27% and 41%
+        rates.
+      </p>
+      <p>
+        The most significant shift came in 2024, when the government merged the first two
+        brackets into one, creating the current <strong>three-bracket system</strong>: 23% up
+        to &euro;28,000, 35% from &euro;28,001 to &euro;50,000, and 43% above. Initially
+        introduced as a temporary measure, this structure was made permanent. With the 2025
+        Budget Law (Legge di Bilancio 2025), the second bracket rate was further reduced from
+        35% to 33%, delivering a concrete benefit to workers earning between &euro;28,000 and
+        &euro;50,000. This three-bracket configuration with rates of 23%, 33%, and 43% is the
+        one currently in force for 2025 and 2026.
+      </p>
+
+      <h3>Step-by-Step IRPEF Calculation Example</h3>
+      <p>
+        To illustrate concretely how IRPEF works, let us walk through a detailed example for an
+        employee earning a <strong>RAL of &euro;35,000</strong> per year.
+      </p>
+      <p>
+        <strong>Step 1 &mdash; Determine Taxable Income:</strong> subtract the employee's INPS
+        contributions from the RAL. For a private-sector employee, the contribution rate is
+        9.19% of gross pay. So: &euro;35,000 &times; 9.19% = &euro;3,216.50 in contributions.
+        The taxable income is therefore: &euro;35,000 &minus; &euro;3,216.50 =
+        <strong>&euro;31,783.50</strong>.
+      </p>
+      <p>
+        <strong>Step 2 &mdash; Apply the IRPEF Brackets:</strong> gross IRPEF is calculated by
+        applying the progressive rates to the taxable income. On the first bracket (up to
+        &euro;28,000), you pay 23%: &euro;28,000 &times; 23% = &euro;6,440. On the portion
+        exceeding &euro;28,000 (&euro;31,783.50 &minus; &euro;28,000 = &euro;3,783.50), you
+        pay 33%: &euro;3,783.50 &times; 33% = &euro;1,248.56. The <strong>total gross
+        IRPEF</strong> is: &euro;6,440 + &euro;1,248.56 = <strong>&euro;7,688.56</strong>.
+      </p>
+      <p>
+        <strong>Step 3 &mdash; Apply Tax Deductions (<em>Detrazioni</em>):</strong> the gross
+        IRPEF is reduced by the applicable tax credits. For an employee with &euro;31,783.50
+        taxable income, the employment income deduction (<em>detrazione per lavoro
+        dipendente</em>) for the &euro;28,000&ndash;&euro;50,000 range is calculated as:
+        &euro;1,910 &times; (&euro;50,000 &minus; &euro;31,783.50) / &euro;22,000 &asymp;
+        &euro;1,581. Additionally, the tax wedge deduction (<em>detrazione cuneo fiscale</em>)
+        of &euro;1,000 applies for incomes between &euro;20,001 and &euro;32,000. Net IRPEF
+        is therefore: &euro;7,688.56 &minus; &euro;1,581 &minus; &euro;1,000 &asymp;
+        <strong>&euro;5,107.56</strong>.
+      </p>
+      <p>
+        <strong>Step 4 &mdash; Add Regional and Municipal Surcharges:</strong> on top of net
+        IRPEF, regional and municipal surcharges (<em>addizionali</em>) are added, varying by
+        place of residence. Assuming a region with an average rate of 1.73% and a municipality
+        at 0.8%, the surcharges amount to roughly &euro;550 + &euro;254 = &euro;804. The total
+        annual tax burden comes to approximately &euro;5,912.
+      </p>
+
+      <h3>The 2026 Tax Wedge (Cuneo Fiscale) and Its Impact on IRPEF</h3>
+      <p>
+        Starting from 2025, the previous INPS contribution cut (the 6&ndash;7% social security
+        exemption) was replaced by a new structural mechanism that interacts directly with the
+        IRPEF calculation. This <em>cuneo fiscale</em> (tax wedge) system operates on two
+        distinct levels based on the employee's total income.
+      </p>
+      <p>
+        For <strong>incomes up to &euro;20,000</strong>, a non-taxable bonus is paid directly
+        in the payslip, calculated as a percentage of employment income. The percentage varies
+        by income band: 7.1% for incomes up to &euro;8,500, 5.3% for incomes from &euro;8,501
+        to &euro;15,000, and 4.8% for incomes from &euro;15,001 to &euro;20,000. This amount
+        does not form part of taxable income for IRPEF purposes, so it benefits the worker in
+        full without any tax being applied to it.
+      </p>
+      <p>
+        For <strong>incomes between &euro;20,001 and &euro;40,000</strong>, the benefit takes
+        the form of an additional tax deduction that directly reduces the IRPEF owed. In the
+        &euro;20,001&ndash;&euro;32,000 range, the deduction is a flat &euro;1,000 per year. In
+        the &euro;32,001&ndash;&euro;40,000 range, the deduction phases out progressively using
+        the formula: &euro;1,000 &times; (&euro;40,000 &minus; income) / &euro;8,000, reaching
+        zero at &euro;40,000. This gradual phase-out (<em>decalage</em>) avoids the so-called
+        "cliff effect" (<em>effetto scalone</em>), ensuring a smooth transition.
+      </p>
+      <p>
+        The interaction between the tax wedge and IRPEF is particularly important because the
+        new system, unlike the previous contribution cut, does not reduce the social security
+        base used for pension calculations. This means your future pension entitlement is not
+        affected &mdash; a significant improvement over the temporary contribution exemptions
+        of previous years. The cost of the benefit is borne entirely by the state through
+        general taxation.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="valori">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      IRPEF 2026: Tax Calculation Examples by Income Level
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+            <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Taxable Income</th>
+            <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Gross IRPEF</th>
+            <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Effective Average Rate</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;15,000</td>
+            <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;3,450</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">23.00%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;20,000</td>
+            <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;4,600</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">23.00%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;28,000</td>
+            <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;6,440</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">23.00%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;35,000</td>
+            <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;8,750</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">25.00%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;50,000</td>
+            <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;13,700</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">27.40%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;75,000</td>
+            <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;24,450</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">32.60%</td>
+          </tr>
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+            <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;100,000</td>
+            <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;35,200</td>
+            <td class="py-3 pl-4 text-right font-semibold text-brand">35.20%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
+      <p>
+        The table above clearly illustrates the <strong>progressive nature</strong> of Italy's
+        IRPEF system. For incomes that fall entirely within the first bracket (up to &euro;28,000),
+        the effective average rate equals the marginal rate of 23%. As income rises and crosses
+        into higher brackets, the average rate increases gradually but always remains below the
+        marginal rate applied to the last euro earned. For example, at a taxable income of
+        &euro;50,000 the effective average rate is 27.40% &mdash; well below the 33% marginal
+        rate applicable to the &euro;28,001&ndash;&euro;50,000 bracket. Even at &euro;100,000,
+        the average rate of 35.20% stays significantly below the top marginal rate of 43%.
+      </p>
+      <p>
+        This distinction matters greatly when evaluating a raise or a new job offer. If your
+        taxable income is &euro;45,000 and you receive a &euro;5,000 raise, only the additional
+        &euro;5,000 is taxed at the 33% marginal rate &mdash; not your entire income. Your
+        effective rate barely changes, and you keep roughly &euro;3,350 of that raise (before
+        surcharges). Many expats mistakenly believe that crossing a bracket threshold means their
+        entire income is taxed at the higher rate, but this is not how the Italian system works.
+      </p>
+
+      <h3>IRPEF Brackets: Historical Comparison 2022&ndash;2026</h3>
+      <div class="overflow-x-auto mt-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+              <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Income Range</th>
+              <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">2022&ndash;2023</th>
+              <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">2024</th>
+              <th class="py-3 pl-4 text-center font-semibold text-gray-700 dark:text-gray-300">2025&ndash;2026</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+              <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Up to &euro;15,000</td>
+              <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">23%</td>
+              <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100" rowspan="2">23%</td>
+              <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100" rowspan="2">23%</td>
+            </tr>
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+              <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;15,001 &ndash; &euro;28,000</td>
+              <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">25%</td>
+            </tr>
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+              <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&euro;28,001 &ndash; &euro;50,000</td>
+              <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">35%</td>
+              <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">35%</td>
+              <td class="py-3 pl-4 text-center font-semibold text-brand">33%</td>
+            </tr>
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+              <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Above &euro;50,000</td>
+              <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">43%</td>
+              <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">43%</td>
+              <td class="py-3 pl-4 text-center text-gray-900 dark:text-gray-100">43%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>How Does IRPEF Compare to Other European Countries?</h3>
+      <p>
+        In a European comparison, Italy's IRPEF system occupies a middle position. Germany
+        applies a continuously progressive income tax with a top marginal rate of 45%.
+        France uses a five-bracket system with a top rate of 45% but features a generous
+        first bracket that is completely exempt up to approximately &euro;11,000. Spain has
+        six brackets with a combined top marginal rate of 47% (adding the national and
+        regional components). The Scandinavian countries, such as Sweden, reach marginal
+        rates exceeding 50%, but offer a far more extensive welfare state in return. The
+        United Kingdom, with just three rates (20%, 40%, and 45%), provides a personal
+        allowance of &pound;12,570 that is entirely tax-free. Italy's system, with its
+        <em>no tax area</em> and deduction mechanism, aims to achieve a similar outcome but
+        through a more complex structure. For expats comparing net take-home pay across
+        countries, the IRPEF rates alone are not sufficient &mdash; you must also consider
+        INPS contributions (9.19%), regional and municipal surcharges (typically 1.5%&ndash;3%
+        combined), and the various deductions and credits that reduce the actual tax burden.
+      </p>
+    </div>
+  </Fragment>
+
+  <Fragment slot="faq">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the difference between IRPEF lorda and IRPEF netta?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          <em>IRPEF lorda</em> (gross IRPEF) is the tax computed by applying the progressive bracket rates to your taxable income, before any deductions. <em>IRPEF netta</em> (net IRPEF) is the amount you actually owe after subtracting all applicable tax credits (<em>detrazioni</em>), including the employment income deduction, tax wedge deduction, and family dependents deduction. It is the IRPEF netta that is actually withheld from your monthly payslip (<em>busta paga</em>). The difference between the two amounts can be substantial &mdash; for a typical employee earning &euro;30,000, deductions may reduce the gross IRPEF by &euro;2,500 or more.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the marginal tax rate and why does it matter?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The marginal tax rate (<em>aliquota marginale</em>) is the percentage of tax applied to the last euro you earn. For example, if your taxable income exceeds &euro;28,000, every additional euro is taxed at 33%. This is crucial when evaluating the real net impact of a salary increase, a bonus, or overtime pay. A common misconception among expats is that crossing into a higher bracket means all your income is taxed at the higher rate &mdash; this is not the case. Only the income within each bracket is taxed at that bracket's rate. Knowing your marginal rate helps you make informed decisions about whether to negotiate for higher base pay, additional benefits, or other forms of compensation.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What are the regional and municipal surcharges (addizionali)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          <em>Addizionali regionali e comunali</em> are additional taxes levied on top of IRPEF by your region and municipality of residence. The regional surcharge (<em>addizionale regionale</em>) ranges from 1.23% to 3.33%, depending on the region &mdash; Lazio and Campania are among the most expensive, while regions like Lombardia and Trentino-Alto Adige tend to have lower rates. The municipal surcharge (<em>addizionale comunale</em>) ranges from 0% to 0.9%. Both are calculated on your taxable income and are withheld in 11 monthly instalments, typically from March to January. These surcharges can add &euro;500&ndash;&euro;1,500 or more to your annual tax bill, making your choice of residence city financially significant.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How does the cuneo fiscale (tax wedge) work in 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          From 2025 onward, the previous INPS contribution cut has been replaced by a two-tier structural system. For incomes up to &euro;20,000, a portion of employment income becomes tax-exempt (ranging from 4.8% to 7.1% depending on the income band), paid as a non-taxable bonus in the payslip. For incomes between &euro;20,001 and &euro;32,000, employees receive a flat &euro;1,000/year IRPEF deduction. Between &euro;32,001 and &euro;40,000, this deduction phases out gradually until it reaches zero. Unlike the old contribution cut, this new system does not reduce the social security base used for pension calculations, so your future pension is not affected.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Who is entitled to the trattamento integrativo (ex Bonus Renzi)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The <em>trattamento integrativo</em> (supplementary allowance) of &euro;1,200/year (&euro;100/month) is available to employees with taxable income up to &euro;15,000 who have a positive gross IRPEF liability. For incomes between &euro;15,001 and &euro;28,000, the bonus is available in a reduced amount only if the sum of certain deductions exceeds the gross IRPEF. Above &euro;28,000, the allowance is not available at all. This benefit applies to all employees, including expats, regardless of nationality &mdash; what matters is that you are an employee (<em>lavoratore dipendente</em>) and meet the income threshold. The allowance is paid automatically by your employer in your monthly payslip.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How have IRPEF brackets changed from 2024 to 2026?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The simplification of Italy's IRPEF system has been a gradual process. In 2023, four brackets were still in effect (23%, 25%, 35%, 43%). From 2024, the system was reduced to three brackets: 23% up to &euro;28,000, 35% from &euro;28,001 to &euro;50,000, and 43% above &euro;50,000. With the 2025 Budget Law, confirmed for 2026, the second bracket rate was lowered from 35% to 33%, bringing the current three brackets to 23%, 33%, and 43%. For an employee with &euro;40,000 taxable income, this reduction translates to annual savings of &euro;240 compared to 2024. The government has announced its intention to continue the reform path toward a two-rate system (progressive flat tax) in future legislatures.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          What is the "no tax area" and how does it work?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          The <em>no tax area</em> is the income threshold below which no IRPEF is effectively owed, thanks to the deduction mechanism that fully offsets the gross tax. For employees (<em>lavoratori dipendenti</em>), the no tax area is set at &euro;8,500 per year: up to this amount, the employment income deduction (<em>detrazione per lavoro dipendente</em>) of &euro;1,955 is sufficient to cover the entire gross IRPEF (&euro;8,500 &times; 23% = &euro;1,955). For retirees (<em>pensionati</em>), the threshold is also &euro;8,500 (equalized with employees since 2024). For self-employed workers, it is &euro;5,500, as the deduction for "other income" is lower. It is important to understand that the no tax area is not a tax-free allowance (<em>franchigia</em>): once your income exceeds the threshold, IRPEF applies to the entire taxable income, with the deduction decreasing progressively as income rises.
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          How is IRPEF calculated for self-employed income (Partita IVA)?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          For self-employed workers with a <em>Partita IVA</em> (VAT number) under the ordinary tax regime (<em>regime ordinario</em>), IRPEF is calculated using the same progressive bracket system as for employees, but with key differences. Taxable income is determined by subtracting deductible business expenses (office rent, equipment, collaborators, etc.) and social security contributions paid to the relevant fund or INPS <em>gestione separata</em> from total gross fees. The available deductions differ: instead of the employment income deduction, self-employed workers receive the "other income" deduction (&euro;1,265 for incomes up to &euro;5,500, decreasing up to &euro;50,000). The <em>trattamento integrativo</em> and the tax wedge benefits are not available to the self-employed &mdash; these are reserved exclusively for employees. Additionally, self-employed workers must pay IRPEF advance payments (<em>acconti</em>) equal to 100% of the previous year's tax, split into two instalments in June and November, and file the annual income tax return via the Redditi PF form. Those with annual revenue up to &euro;85,000 may opt for the <em>regime forfettario</em> (flat-rate regime), which replaces IRPEF with a flat substitute tax of 15% (or 5% for the first five years of business).
+        </div>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+        <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
+          Do expats benefit from the impatriati tax regime on IRPEF?
+          <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </summary>
+        <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
+          Yes. The <em>regime impatriati</em> (also known as the "inbound workers regime") is one of the most attractive tax incentives for qualified expats moving to Italy. Under the current rules (D.Lgs. 209/2023), workers who transfer their tax residence to Italy and have not been Italian tax residents for the previous two years can benefit from a 50% reduction in taxable income for IRPEF purposes, up to a ceiling of &euro;600,000 per year. This effectively halves the IRPEF burden for qualifying individuals. The regime lasts for five tax years and requires a minimum annual income of &euro;20,000. For example, an expat earning &euro;80,000 would only be taxed on &euro;40,000, resulting in an IRPEF lorda of just &euro;10,360 instead of &euro;22,350. You can explore this in detail using our <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati Tax Regime Calculator</a>.
+        </div>
+      </details>
+    </div>
+  </Fragment>
+
+  <Fragment slot="correlati">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Related Calculators
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/en/payslip-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Payslip Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Simulate your Italian monthly payslip with all withholdings line by line
+        </p>
+      </a>
+      <a
+        href="/en/region-comparison/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Region Comparison
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Compare net monthly salary across all 21 Italian regions
+        </p>
+      </a>
+      <a
+        href="/en/gross-salary-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Gross Salary Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Find the RAL (gross annual salary) needed to reach your desired net pay
+        </p>
+      </a>
+      <a
+        href="/en/impatriati-tax-regime/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Impatriati Tax Regime
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate your tax savings under Italy's expat tax incentive (50% IRPEF reduction)
+        </p>
+      </a>
+      <a
+        href="/en/flat-rate-regime-calculator/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Flat-Rate Regime Calculator
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Compare the regime forfettario (5%/15% flat tax) vs. ordinary IRPEF regime
+        </p>
+      </a>
+      <a
+        href="/en/family-tax-deductions/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Family Tax Deductions
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Calculate IRPEF deductions for dependent spouse, children, and other family members
+        </p>
+      </a>
+    </div>
+  </Fragment>
 </CalcolatoreLayout>
