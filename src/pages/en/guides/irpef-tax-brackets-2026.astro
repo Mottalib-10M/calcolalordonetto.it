@@ -26,6 +26,14 @@ const faqs = [
     question: 'Has the number of IRPEF brackets changed recently?',
     answer: 'Yes. Until 2023, Italy had four IRPEF brackets (23%, 25%, 35%, 43%). Starting from 2024, the government merged the first two brackets into a single 23% bracket covering income up to &euro;28,000. This change was made permanent (structural) from 2025 onward. The result is three brackets: 23% up to &euro;28,000, 35% from &euro;28,001 to &euro;50,000, and 43% above &euro;50,000. The reform benefits taxpayers with income between &euro;15,001 and &euro;28,000, who previously paid 25% on part of their income.',
   },
+  {
+    question: 'How is IRPEF calculated on the tredicesima (13th month pay)?',
+    answer: 'The <strong>tredicesima</strong> (13th-month salary) is treated as ordinary employment income for IRPEF purposes. Your employer calculates the IRPEF withholding on the tredicesima by considering your cumulative annual income up to that point. Because the tredicesima is typically paid in December, it is added to your year-to-date earnings, and the progressive IRPEF rates apply to the total. In practice, the marginal rate on your tredicesima is often higher than your average monthly rate because it pushes your cumulative income further into a higher bracket. For example, if your monthly salary keeps you within the 23% bracket but the tredicesima pushes you past &euro;28,000, the portion above &euro;28,000 is taxed at 35%. Note that the employment income deduction (detrazione per lavoro dipendente) is already fully accounted for in the 12 regular months, so the tredicesima typically has <strong>no additional deduction</strong> applied, resulting in a higher effective tax rate on that payment.',
+  },
+  {
+    question: 'How does IRPEF work for dual-income households in Italy?',
+    answer: 'Italy does not offer joint taxation for married couples or partners. IRPEF is calculated <strong>individually</strong> &mdash; each spouse or partner files and is taxed on their own income. There is no option to file jointly or split income between partners, as exists in some other countries (e.g., the German Ehegattensplitting or the US joint return). However, tax deductions for dependent family members (detrazioni per carichi di famiglia) can be allocated between partners. For example, if one spouse earns significantly more than the other, the higher earner can claim 100% of the deductions for dependent children, or the couple can split them 50/50. Since each person is taxed individually, a household where two people each earn &euro;30,000 will pay less total IRPEF than a household where one person earns &euro;60,000, because the progressive brackets are applied separately to each income.',
+  },
 ];
 ---
 
@@ -48,6 +56,9 @@ const faqs = [
       <li><a href="#effective-vs-marginal-rate" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Effective vs Marginal Rate</a></li>
       <li><a href="#employment-income-deductions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Employment Income Deductions</a></li>
       <li><a href="#calculation-examples" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Calculation Examples</a></li>
+      <li><a href="#surcharges-on-top-of-irpef" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Surcharges on Top of IRPEF</a></li>
+      <li><a href="#irpef-for-non-residents" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">IRPEF for Non-Residents</a></li>
+      <li><a href="#how-to-optimise-your-irpef" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How to Optimise Your IRPEF</a></li>
       <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -192,6 +203,62 @@ const faqs = [
 
   <p>
     For a detailed, personalised calculation including deductions and surcharges, use our <a href="/en/irpef-tax-calculator/">IRPEF calculator</a>.
+  </p>
+
+  <h2 id="surcharges-on-top-of-irpef">Surcharges on Top of IRPEF</h2>
+
+  <p>
+    The IRPEF brackets described above represent only the <strong>national</strong> component of Italian income tax. On top of IRPEF, every taxpayer must also pay two local surcharges: the <strong>addizionale regionale</strong> (regional surcharge) and the <strong>addizionale comunale</strong> (municipal surcharge). These are calculated on the same taxable income (imponibile IRPEF) but are separate levies set by your region and municipality of residence.
+  </p>
+  <p>
+    The regional surcharge ranges from <strong>0.7% to 3.33%</strong> depending on the region. Some regions, such as Lombardia, apply relatively low flat rates (around 1.23%), while others, notably Lazio and Campania, impose progressive rates that can reach the legal maximum of 3.33% for higher incomes. The municipal surcharge ranges from <strong>0% to 0.9%</strong>, set independently by each of Italy's approximately 7,900 municipalities. Major cities such as Rome (0.9%) and Milan (0.8%) apply rates near the maximum (source: <a href="https://www.finanze.gov.it" target="_blank" rel="noopener noreferrer">Ministero dell'Economia e delle Finanze</a>).
+  </p>
+  <p>
+    In practice, these surcharges can add between <strong>1.5% and 4%</strong> to your effective tax rate. For example, consider Giulia, a teacher in Rome earning a taxable income of &euro;30,000. Her national IRPEF is &euro;7,140 (effective rate 23.8%). On top of this, she pays approximately &euro;690 in regional surcharge (Lazio progressive rate ~2.3%) and &euro;270 in municipal surcharge (Rome at 0.9%), bringing her total income tax burden to approximately &euro;8,100 &mdash; an effective rate of <strong>27.0%</strong>. To understand exactly how surcharges affect your pay, see our detailed <a href="/en/guides/regional-municipal-surcharges/">guide to regional and municipal surcharges</a>.
+  </p>
+
+  <h2 id="irpef-for-non-residents">IRPEF for Non-Residents</h2>
+
+  <p>
+    Italian tax law distinguishes between <strong>residents</strong> and <strong>non-residents</strong> for IRPEF purposes (Art. 2 and Art. 3 of the TUIR, DPR 917/1986 &mdash; see <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">normattiva.it</a>). A person is considered tax resident in Italy if, for the greater part of the tax year (more than 183 days), they are registered in the anagrafe (civil registry), have their domicile (domicilio) in Italy, or have their habitual residence (residenza) in Italy.
+  </p>
+  <p>
+    Non-residents are taxed only on <strong>Italian-source income</strong> (redditi prodotti in Italia). For employment income, this means wages earned for work performed on Italian territory. The same IRPEF brackets (23%, 35%, 43%) apply to non-residents, but there are important restrictions:
+  </p>
+  <ul>
+    <li><strong>No employment income deduction:</strong> non-residents are generally not entitled to the detrazione per lavoro dipendente (Art. 13 TUIR), unless they are residents of an EU/EEA country and earn at least 75% of their worldwide income in Italy.</li>
+    <li><strong>No family deductions:</strong> deductions for dependent family members (detrazioni per carichi di famiglia) are not available to non-residents under the same conditions.</li>
+    <li><strong>No cuneo fiscale benefit:</strong> the tax wedge benefit applies only to employment income of resident dependent employees.</li>
+    <li><strong>Regional and municipal surcharges:</strong> non-residents who earn income in Italy must still pay the addizionale regionale (typically at the rate of the region where the income is produced) and may be subject to the municipal surcharge as well.</li>
+  </ul>
+  <p>
+    For example, Thomas, a German consultant who works three months per year at a client office in Milan but remains a tax resident of Germany, would pay IRPEF on his Italian-source employment income at the standard progressive rates, but without the benefit of the employment income deduction. On &euro;20,000 of Italian income, Thomas would owe &euro;4,600 in gross IRPEF with no deduction to offset it, compared to an Italian resident who might owe as little as &euro;2,645 after the detrazione per lavoro dipendente. Double taxation relief may be available under the Italy-Germany tax treaty (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate &mdash; Convenzioni contro le doppie imposizioni</a>).
+  </p>
+
+  <h2 id="how-to-optimise-your-irpef">How to Optimise Your IRPEF</h2>
+
+  <p>
+    While IRPEF rates are fixed by law, there are several <strong>legitimate strategies</strong> to reduce your taxable income or the tax owed. Italian tax law provides a range of deductions (deduzioni, which reduce the tax base) and credits (detrazioni, which reduce the tax owed) that can significantly lower your effective IRPEF burden.
+  </p>
+
+  <h3>Deductions that reduce your taxable income (deduzioni)</h3>
+  <ul>
+    <li><strong>Supplementary pension fund contributions (fondi pensione complementari):</strong> contributions to an approved pension fund are deductible up to <strong>&euro;5,164.57 per year</strong> (Art. 10, comma 1, lett. e-bis TUIR). For example, if Roberto earns &euro;40,000 and contributes &euro;3,000 to a pension fund, his taxable income drops to &euro;37,000, saving him &euro;1,050 in IRPEF (at his marginal rate of 35%). This is one of the most powerful deductions available to employees (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate</a>).</li>
+    <li><strong>Mandatory social security contributions (INPS):</strong> the employee's share of INPS contributions (9.19%) is automatically deducted from gross salary before IRPEF is calculated. This is already applied by your employer, so no action is needed on your part.</li>
+    <li><strong>Alimony payments:</strong> periodic alimony payments to a former spouse are deductible from taxable income (not lump-sum settlements).</li>
+  </ul>
+
+  <h3>Tax credits that reduce your IRPEF bill (detrazioni)</h3>
+  <ul>
+    <li><strong>Medical expenses:</strong> you can claim a <strong>19% tax credit</strong> on medical and healthcare expenses exceeding a &euro;129.11 annual threshold. This includes doctor visits, specialist consultations, prescription medications, dental work, and physiotherapy. The expenses must be documented and, since 2020, paid via traceable methods (card, bank transfer) except for medications and medical devices (Art. 15, comma 1, lett. c TUIR).</li>
+    <li><strong>Mortgage interest on primary residence:</strong> a 19% tax credit applies to mortgage interest payments up to a maximum of <strong>&euro;4,000 per year</strong> on loans taken to purchase your primary residence (prima casa). On the full &euro;4,000, this yields a credit of &euro;760 per year.</li>
+    <li><strong>Education expenses:</strong> university tuition fees (both public and private, up to a cap set annually by the Ministry of Education), nursery school fees (up to &euro;632 per child), and certain school-related expenses qualify for a 19% tax credit.</li>
+    <li><strong>Home renovation and energy efficiency:</strong> the Superbonus, ecobonus, and bonus ristrutturazione provide tax credits of 36% to 65% on qualifying renovation and energy-efficiency works. These credits are spread over 10 annual instalments and can substantially reduce IRPEF owed each year.</li>
+    <li><strong>Donations:</strong> donations to recognised non-profit organisations (ONLUS, APS, ODV) qualify for either a 30% tax credit (up to &euro;30,000) or a full deduction from taxable income, depending on the type of entity.</li>
+  </ul>
+
+  <p>
+    A practical example: Anna, a project manager in Bologna, earns a taxable income of &euro;45,000. Her gross IRPEF before deductions is &euro;12,390. She contributes &euro;4,000 to a supplementary pension fund (reducing her taxable income to &euro;41,000 and her gross IRPEF to &euro;10,990), has &euro;2,500 in medical expenses (yielding a 19% credit on &euro;2,371 after the threshold = &euro;450), and pays &euro;3,200 in mortgage interest (19% credit = &euro;608). After the employment income deduction and these credits, her net IRPEF drops to approximately <strong>&euro;8,200</strong> &mdash; an effective rate of just <strong>18.2%</strong> on her original &euro;45,000, compared to a headline marginal rate of 35%. This demonstrates how proactive tax planning can meaningfully reduce the IRPEF burden within the bounds of the law (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate &mdash; Detrazioni e deduzioni</a>).
   </p>
 
   <!-- FAQ Section -->

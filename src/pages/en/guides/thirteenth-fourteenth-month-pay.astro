@@ -26,6 +26,14 @@ const faqs = [
     question: 'Is the tredicesima taxed differently from regular monthly salary?',
     answer: 'The tredicesima is subject to the same taxes and social security contributions as your regular salary -- INPS contributions (9.19% for private sector employees) and IRPEF withholding at your marginal rate. However, it does <strong>not</strong> benefit from the standard employment tax credit (detrazioni per lavoro dipendente), which is already fully allocated across your 12 regular monthly payments. This means the effective tax rate on your tredicesima is typically higher than on a regular payslip, resulting in a lower net-to-gross ratio.',
   },
+  {
+    question: 'Can an employer delay payment of the tredicesima beyond December?',
+    answer: 'No. The tredicesima must be paid by the end of December, typically with the December payslip or shortly before Christmas. This obligation is established by <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1960-12-28;1070" class="text-brand hover:underline">D.P.R. 1070/1960</a> and reinforced by most CCNLs, which specify exact payment dates (often by 24 December). If your employer delays or withholds the tredicesima, it constitutes a breach of contract and you have the right to claim it, including interest for late payment. You can file a complaint through the <strong>Ispettorato Nazionale del Lavoro</strong> (INL) or pursue the claim through a labour court (tribunale del lavoro). In cases of employer insolvency, the <a href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-servizi.fondo-di-garanzia-tfr-e-crediti-di-lavoro-50601.fondo-di-garanzia-tfr-e-crediti-di-lavoro.html" class="text-brand hover:underline">INPS Fondo di Garanzia</a> may cover the unpaid tredicesima.',
+  },
+  {
+    question: 'How does the tredicesima work with part-time contracts?',
+    answer: 'Part-time employees are fully entitled to receive the tredicesima, but the amount is calculated <strong>proportionally (pro-rata)</strong> based on their contracted hours relative to full-time hours. For instance, if a full-time employee works 40 hours per week with a monthly gross of &euro;2,308 (RAL &euro;30,000 on 13 payments), a part-time colleague working 20 hours per week (50%) would receive a tredicesima of approximately &euro;1,154 gross. Vertical part-time workers (who work full days but fewer days per week) and horizontal part-time workers (who work every day but fewer hours) are treated equally for accrual purposes: the key factor is the percentage of full-time hours, not the schedule pattern. This principle is established in <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-06-15;81" class="text-brand hover:underline">D.Lgs. 81/2015</a> on part-time employment.',
+  },
 ];
 ---
 
@@ -46,6 +54,9 @@ const faqs = [
       <li><a href="#tredicesima-13th-month" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tredicesima (13th Month)</a></li>
       <li><a href="#quattordicesima-14th-month" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Quattordicesima (14th Month)</a></li>
       <li><a href="#taxation-and-deductions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Taxation and Deductions</a></li>
+      <li><a href="#worked-example-tredicesima" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Worked Example: Tredicesima Net Calculation</a></li>
+      <li><a href="#impact-on-financial-planning" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Impact on Financial Planning</a></li>
+      <li><a href="#tredicesima-special-situations" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tredicesima During Maternity, Sick Leave, and Probation</a></li>
       <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -117,6 +128,118 @@ const faqs = [
   </p>
   <p>
     To see the exact net value of your tredicesima or quattordicesima, including the impact of your specific tax bracket and deductions, try our <a href="/en/thirteenth-month-calculator/">13th month calculator</a> or <a href="/en/fourteenth-month-calculator/">14th month calculator</a>.
+  </p>
+
+  <h2 id="worked-example-tredicesima">Worked Example: Tredicesima Net Calculation</h2>
+
+  <p>
+    To truly understand how the tredicesima works in practice, let us walk through a detailed example. Meet <strong>Maria</strong>, a private-sector employee in Milan with a <strong>RAL of &euro;30,000</strong> on 13 pay periods, no dependents, employed under the CCNL Commercio at level 3. Her monthly gross salary is &euro;30,000 / 13 = <strong>&euro;2,308 gross</strong>. Since she has worked the entire calendar year (January to December), she accrues a full tredicesima equal to one month's gross salary.
+  </p>
+
+  <p>
+    Here is how her tredicesima is calculated step by step, compared with a regular monthly payslip:
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Item</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Tredicesima</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Regular month</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Gross amount</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;2,308</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;2,308</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; INPS (9.19%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;212</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;212</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">= Taxable amount</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;2,096</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;2,096</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; IRPEF (23%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;482</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;482</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">+ Detrazione lavoro dipendente</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-400 dark:text-gray-500">&euro;0</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">+ &euro;165</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale regionale</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-400 dark:text-gray-500">&euro;0</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;35</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">&minus; Addizionale comunale</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-400 dark:text-gray-500">&euro;0</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;18</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Net amount</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">&asymp; &euro;1,614</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">&asymp; &euro;1,726</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Net-to-gross ratio</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">69.9%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">74.8%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The key takeaway: Maria's tredicesima nets approximately <strong>&euro;112 less</strong> than a regular month even though the gross amounts are identical. This is because the tredicesima does not benefit from the <strong>detrazione per lavoro dipendente</strong> (approximately &euro;1,979 per year, distributed across the 12 ordinary months), nor do regional or municipal surcharges typically apply to it (they are already calculated on the 12 regular payments). The IRPEF on the tredicesima is calculated at the marginal rate without any offsetting deduction, making the effective tax bite higher. You can verify Maria's figures using the <a href="https://www.agenziaentrate.gov.it/portale/web/guest/irpef" class="text-brand hover:underline">Agenzia delle Entrate IRPEF reference</a> and the <a href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-servizi.contributi-previdenziali-lavoratori-dipendenti-702.contributi-previdenziali-lavoratori-dipendenti.html" class="text-brand hover:underline">INPS contribution tables</a>.
+  </p>
+
+  <h2 id="impact-on-financial-planning">Impact on Financial Planning</h2>
+
+  <p>
+    The 13-payment (or 14-payment) system has significant implications for how you budget your personal finances in Italy. If you are coming from a country where salaries are paid in 12 equal monthly instalments, you need to adjust your expectations and planning.
+  </p>
+  <p>
+    <strong>Monthly take-home is lower than you might expect.</strong> When you divide your RAL by 12 in your head, you get a number that is higher than what will actually appear on your monthly payslip. For Maria's case above, dividing &euro;30,000 by 12 suggests a monthly gross of &euro;2,500, but her actual monthly gross is &euro;2,308 (the remaining &euro;192/month is effectively "saved" toward her December tredicesima). This means roughly <strong>&euro;112 less net per month</strong> compared to a hypothetical 12-payment structure, but with a lump sum of approximately &euro;1,614 net arriving in December.
+  </p>
+  <p>
+    <strong>Mortgage and rent planning.</strong> Italian banks and landlords are well aware of this system. When assessing your ability to pay a mortgage, banks typically look at your RAL and calculate your monthly affordability based on 13 (or 14) payments, not 12. This means your debt-to-income ratio is assessed on the actual monthly amount. If you are applying for a <em>mutuo</em> (mortgage), the bank will use your regular monthly net (not the higher figure you would get by dividing annual net by 12) as the reference for the one-third rule (your monthly payment should not exceed roughly one-third of your monthly net income). Plan accordingly and do not count on the tredicesima for regular monthly obligations.
+  </p>
+  <p>
+    <strong>When to expect payments.</strong> The tredicesima is typically paid between 15 and 24 December, depending on the employer and the applicable CCNL. Some companies pay it with the regular December payslip (credited at the end of December), while others pay it as a separate transfer in mid-December. The quattordicesima, where applicable, is usually paid with the June or July payslip. Check your CCNL and company policy for exact dates.
+  </p>
+  <p>
+    <strong>Budgeting strategy.</strong> Many Italian workers treat the tredicesima as a form of forced savings, using it for Christmas expenses, annual insurance premiums, car tax (<em>bollo auto</em>), or property tax (<em>IMU</em>) payments that fall due in December. Financial advisors in Italy often recommend <em>not</em> factoring the tredicesima into your regular monthly budget, but instead earmarking it for specific annual expenses or savings goals. If you are paid on 14 payments, the quattordicesima in June/July serves a similar function for summer holiday expenses or mid-year bills.
+  </p>
+
+  <h2 id="tredicesima-special-situations">Tredicesima During Maternity, Sick Leave, and Probation</h2>
+
+  <p>
+    Several special employment situations affect how the tredicesima accrues. Understanding these rules is important, particularly for expat workers who may not be familiar with Italian labour protections.
+  </p>
+  <p>
+    <strong>Maternity leave (congedo di maternita).</strong> During the mandatory 5-month maternity leave period (typically 2 months before and 3 months after the expected due date, as per <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-26;151" class="text-brand hover:underline">D.Lgs. 151/2001</a>), the tredicesima continues to accrue in full. This is because mandatory maternity leave is treated as equivalent to active work for all purposes, including tredicesima and quattordicesima accrual. The same applies to mandatory paternity leave (congedo di paternita). However, during <strong>optional parental leave</strong> (congedo parentale), the accrual depends on the CCNL: many contracts provide for full or partial accrual during the first months, but extended optional leave at 30% pay may reduce the tredicesima proportionally. INPS pays the maternity allowance directly, but the employer often advances it and then claims reimbursement, so the accrual appears seamless on your payslip. Refer to the <a href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-servizi.indennita-di-maternita-per-lavoratrici-dipendenti-702.indennita-di-maternita-per-lavoratrici-dipendenti.html" class="text-brand hover:underline">INPS maternity benefit page</a> for current entitlements.
+  </p>
+  <p>
+    <strong>Sick leave (malattia).</strong> During periods of illness covered by INPS (up to 180 days per year for most employees), the tredicesima continues to accrue. The general principle under Italian law is that <em>malattia</em> is a protected period and counts toward seniority and bonus accrual. Most CCNLs explicitly state that sick leave within the <em>periodo di comporto</em> (the maximum protected sick leave period, typically 180 days over 12 months in the private sector) does not reduce tredicesima entitlements. Only unpaid sick leave beyond the <em>comporto</em> limit, or leave without pay (aspettativa non retribuita), would reduce the accrual.
+  </p>
+  <p>
+    <strong>Probation period (periodo di prova).</strong> Employees on probation are fully entitled to the tredicesima. The probation period is regular employment in all respects &mdash; it simply allows either party to terminate the relationship without notice. If the employment is terminated during probation, the worker receives a pro-rata tredicesima for the months worked, calculated in the same way as for any other partial-year employee. For example, if Marco starts a new job on 1 September with a RAL of &euro;26,000 (monthly gross &euro;2,000 on 13 payments) and is terminated on 30 November during a 3-month probation, he would receive a tredicesima of &euro;2,000 &times; 3/12 = <strong>&euro;500 gross</strong>, paid with his final payslip.
+  </p>
+  <p>
+    <strong>Apprenticeship contracts (contratto di apprendistato).</strong> Apprentices under <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-06-15;81" class="text-brand hover:underline">D.Lgs. 81/2015</a> are entitled to the tredicesima on the same terms as regular employees. Their lower salary level (which can be up to two CCNL levels below the target role) simply means a proportionally smaller tredicesima, but the right is the same.
+  </p>
+  <p>
+    <strong>Fixed-term contracts (contratto a tempo determinato).</strong> Workers on fixed-term contracts receive the tredicesima pro-rata for the months worked, included in the final payslip when the contract ends. If the contract spans the December payment date, the tredicesima is paid normally. If the contract ends before December, the accrued portion is paid with the final settlement (<em>competenze di fine rapporto</em>). This is regulated by <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-06-15;81" class="text-brand hover:underline">D.Lgs. 81/2015</a> and the applicable CCNL.
   </p>
 
   <!-- FAQ Section -->

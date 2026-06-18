@@ -26,6 +26,14 @@ const faqs = [
     question: 'How do I apply for the Impatriati regime as an employee?',
     answer: 'No prior approval from the Agenzia delle Entrate (Italian Revenue Agency) is required. As an employee, you submit a written self-certification to your employer declaring that you meet all eligibility requirements. Your employer then applies the 50% exemption directly in your payslip (busta paga). You must also report the subsidised income correctly in your annual tax return (Modello 730 or Modello Redditi PF). Keep documentation proving your foreign residence during the preceding years (foreign employment contracts, utility bills, rental agreements).',
   },
+  {
+    question: 'Can I combine the Impatriati regime with the flat-rate regime (forfettario)?',
+    answer: 'No, you <strong>cannot combine</strong> the two regimes. The Impatriati regime (D.Lgs. 209/2023) applies a 50% income exemption to employment and self-employment income taxed under the ordinary IRPEF system. The regime forfettario (Legge 190/2014) replaces IRPEF entirely with a flat substitute tax of 5% or 15%. Since the Impatriati benefit works by reducing the IRPEF taxable base, it requires that your income actually be subject to IRPEF &mdash; which forfettario income is not. The Agenzia delle Entrate has confirmed this incompatibility in multiple rulings (see <a href="https://www.agenziaentrate.gov.it/portale/web/guest/interpello" target="_blank" rel="noopener">Interpello rulings</a>). If you qualify for both, you must choose one. In most cases, the Impatriati regime is more advantageous for incomes above &euro;30,000&ndash;35,000, while the forfettario may be better for lower-revenue freelancers who value simplicity.',
+  },
+  {
+    question: 'What happens if my employer is based outside Italy?',
+    answer: 'You can still benefit from the Impatriati regime if your employer is based outside Italy, provided you are an Italian tax resident and the work is <strong>performed primarily on Italian territory</strong>. In this case, since there is no Italian withholding agent (sostituto d\'imposta), you cannot have the 50% exemption applied in your payslip. Instead, you must apply the exemption yourself when filing your annual Italian tax return (Modello Redditi PF), declaring only 50% of your qualifying income as the IRPEF taxable base. You are also responsible for making advance IRPEF payments (acconti) and settling any balance due. Be aware that you may also face tax obligations in the country where your employer is based, so it is essential to verify the applicable <strong>double taxation treaty</strong> (convenzione contro le doppie imposizioni) between Italy and that country to avoid being taxed twice on the same income (see <a href="https://www.agenziaentrate.gov.it/portale/web/guest/convenzioni-internazionali" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; Convenzioni internazionali</a>).',
+  },
 ];
 ---
 
@@ -47,6 +55,8 @@ const faqs = [
       <li><a href="#old-vs-new-regime" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Old vs New Regime</a></li>
       <li><a href="#how-the-exemption-works" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How the 50% Exemption Works</a></li>
       <li><a href="#how-to-apply" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How to Apply</a></li>
+      <li><a href="#worked-example-savings-over-5-years" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Worked Example: Savings Over 5 Years</a></li>
+      <li><a href="#common-pitfalls-and-risks" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Common Pitfalls and Risks</a></li>
       <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -158,6 +168,96 @@ const faqs = [
   </p>
   <p>
     It is strongly recommended to preserve all documentation proving your foreign residence for the three years preceding your move: foreign employment contracts, rental agreements, bank statements, utility bills, and certificates of residence from foreign authorities. The Agenzia delle Entrate may request these documents during an audit (accertamento).
+  </p>
+
+  <h2 id="worked-example-savings-over-5-years">Worked Example: Savings Over 5 Years</h2>
+
+  <p>
+    To appreciate the full impact of the Impatriati regime, let us walk through a detailed five-year projection. Consider <strong>Elena</strong>, a software engineer who relocates from Berlin to Milan in January 2026 with a RAL (Retribuzione Annua Lorda) of <strong>&euro;60,000</strong>. She qualifies for the new Impatriati regime: she has not been an Italian tax resident in 2023, 2024, or 2025, she commits to staying at least four years, and she holds a recognised qualification. We assume a 2% annual salary increase and use the 2026 IRPEF brackets: 23% on income up to &euro;28,000, 35% on &euro;28,001&ndash;&euro;50,000, and 43% above &euro;50,000 (source: <a href="https://www.agenziaentrate.gov.it/portale/irpef" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; IRPEF</a>). The INPS employee contribution is 9.19% on the full RAL (source: <a href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-servizi.contributi-previdenziali-lavoratori-dipendenti-50498.contributi-previdenziali-lavoratori-dipendenti.html" target="_blank" rel="noopener">INPS &mdash; Contributi lavoratori dipendenti</a>).
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Year</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">RAL</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF (standard)</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">IRPEF (impatriati)</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Annual saving</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">2026</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;60,000</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;15,583</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;4,303</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-semibold">&euro;11,280</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">2027</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;61,200</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;16,099</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;4,477</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-semibold">&euro;11,622</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">2028</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;62,424</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;16,626</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;4,656</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-semibold">&euro;11,970</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">2029</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;63,672</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;17,163</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;4,840</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-semibold">&euro;12,323</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-medium">2030</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;64,946</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;17,711</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;5,029</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-semibold">&euro;12,682</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base" colspan="4">Total 5-year tax saving</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-brand font-bold text-base">&euro;59,877</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Elena's cumulative saving over the five-year benefit period is approximately <strong>&euro;59,877</strong> in IRPEF alone. This does not include additional savings on regional and municipal surcharges (addizionali), which are also calculated on the reduced taxable base and typically add another &euro;1,500&ndash;&euro;3,000 in annual savings depending on the region (for example, Lazio charges a regional surcharge of 3.33% on higher incomes, while Lombardy charges 1.23&ndash;1.74%). Note that INPS contributions (9.19% employee share) are always calculated on the <strong>full RAL</strong> and are not affected by the Impatriati exemption.
+  </p>
+  <p>
+    For a personalised projection based on your specific salary, use our <a href="/en/impatriati-tax-regime/">Impatriati tax calculator</a>.
+  </p>
+
+  <h2 id="common-pitfalls-and-risks">Common Pitfalls and Risks</h2>
+
+  <p>
+    While the Impatriati regime offers substantial savings, several pitfalls can lead to the benefit being revoked retroactively, resulting in repayment of all tax savings plus interest and penalties.
+  </p>
+
+  <p>
+    <strong>1. Early departure penalty.</strong> The most severe risk is leaving Italy before completing the <strong>four-year minimum residency commitment</strong>. Under Art. 5, comma 2 of D.Lgs. 209/2023, if you transfer your tax residency out of Italy before the end of the fourth year, the Impatriati benefit is retroactively revoked for all years in which it was applied. You must repay the full IRPEF difference (the 50% exemption amount) for each year, plus interest calculated at the legal rate, plus a penalty of 30% of the unpaid tax (sanzione per omesso versamento). For Elena in our example, leaving after just two years would trigger a repayment of approximately &euro;22,900 in additional IRPEF, plus roughly &euro;6,870 in penalties &mdash; a total cost of nearly &euro;30,000. This makes it critical to be genuinely committed to a multi-year stay before opting in (source: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-12-27;209" target="_blank" rel="noopener">Normattiva &mdash; D.Lgs. 209/2023</a>).
+  </p>
+
+  <p>
+    <strong>2. Same-employer restriction.</strong> Workers who return to Italy to work for the <strong>same employer or a company in the same corporate group</strong> they worked for abroad are excluded from the new regime. This rule was introduced to prevent multinationals from rotating employees through Italian assignments purely for tax optimisation. For example, if David works for GlobalCorp UK and is transferred to GlobalCorp Italy, he does <strong>not</strong> qualify under the new rules &mdash; unless his original posting abroad occurred before 1 January 2024. Intra-group transfers, secondments, and assignments all fall under this restriction. The Agenzia delle Entrate examines the corporate structure to determine whether two entities belong to the same group (source: <a href="https://www.agenziaentrate.gov.it/portale/web/guest/regime-impatriati" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; Regime Impatriati</a>).
+  </p>
+
+  <p>
+    <strong>3. Documentation requirements.</strong> The Agenzia delle Entrate can audit your eligibility for up to five years after each tax return filing. You must be able to prove that you were <strong>not</strong> an Italian tax resident for the three preceding tax years. Useful documentation includes: certificates of tax residency from foreign authorities, foreign employment contracts, foreign rental agreements, foreign utility bills, bank account statements showing foreign addresses, and AIRE registration certificates (for Italian citizens). Failing to produce adequate documentation during an audit can result in the benefit being denied, with reassessment of all affected tax years.
+  </p>
+
+  <p>
+    <strong>4. Interaction with remote work from abroad.</strong> The regime requires that the <strong>majority</strong> of your work be performed on Italian territory during each tax year. This means if you spend more than 183 days working remotely from outside Italy (e.g., from a co-working space in Portugal or your home country), you risk losing the benefit for that year. The Agenzia delle Entrate may also question whether you truly qualify as an Italian tax resident if you spend extended periods abroad. Maintain careful records of your physical presence in Italy &mdash; travel itineraries, co-working receipts, and apartment utility usage can all serve as evidence. If your employer allows significant remote work from abroad, consult a tax advisor to assess whether the Impatriati regime remains viable for your situation.
   </p>
 
   <!-- FAQ Section -->

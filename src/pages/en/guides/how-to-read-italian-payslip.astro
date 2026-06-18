@@ -26,6 +26,14 @@ const faqs = [
     question: 'Why does my net pay change from month to month even though my gross salary is fixed?',
     answer: 'Several factors can cause monthly net pay to fluctuate: (1) <strong>Regional and municipal surcharges</strong> (addizionali) are typically spread across 11 months (January&ndash;November or March&ndash;November), so some months may have no surcharge deduction. (2) The <strong>trattamento integrativo</strong> or tax wedge bonus may be adjusted mid-year if HR recalculates your projected annual income. (3) <strong>TFR accrual</strong> and <strong>tredicesima/quattordicesima</strong> (13th/14th month bonuses) are accrued monthly but paid in specific months. (4) One-off events like overtime, bonuses, or salary advances affect individual months. Your annual total should match the expected calculation.',
   },
+  {
+    question: 'What should I do if I find an error on my payslip?',
+    answer: 'If you spot an error on your busta paga, act promptly. First, document the discrepancy by comparing the payslip against your employment contract, CCNL tables, and any overtime or absence records. Then raise the issue <strong>in writing</strong> (email is sufficient) with your HR department or payroll office (ufficio paghe), requesting a formal correction. Under Italian law, the employer is obligated to issue a corrected payslip. If the error resulted in underpayment, you are entitled to receive the difference with the next pay cycle, plus interest if there is a significant delay. If your employer refuses to correct the mistake, you can file a claim with the <strong>Ispettorato Territoriale del Lavoro</strong> (ITL) or seek assistance from a trade union (sindacato). Keep in mind that the statute of limitations for payroll claims is <strong>5 years</strong> from the date of the error (Art. 2948 of the Italian Civil Code).',
+  },
+  {
+    question: 'How long should I keep my payslips?',
+    answer: 'You should keep your payslips for at least <strong>5 years</strong>, which corresponds to the statute of limitations for claiming unpaid wages and contributions under Italian law (Art. 2948 c.c.). However, many financial advisors and labour consultants recommend keeping them for <strong>10 years or more</strong>, especially for pension purposes. Your INPS contribution history (estratto conto contributivo) is built from employer filings that reference your payslips, and discrepancies may only surface decades later when you approach retirement. Payslips are also needed when applying for mortgages, filing your tax return (Modello 730 or Redditi PF), or applying for ISEE certification (for subsidized services). In 2026, most employers provide digital payslips through platforms like Zucchetti, TeamSystem, or ADP, which archive them automatically, but it is wise to download a personal copy as well.',
+  },
 ];
 ---
 
@@ -48,6 +56,8 @@ const faqs = [
       <li><a href="#section-3-deductions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 3: Deductions (Trattenute)</a></li>
       <li><a href="#section-4-net-pay" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 4: Net Pay (Netto in Busta)</a></li>
       <li><a href="#section-5-summary-footer" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Section 5: Summary Footer</a></li>
+      <li><a href="#common-payslip-abbreviations" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Common Payslip Abbreviations</a></li>
+      <li><a href="#red-flags-to-watch-for" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Red Flags to Watch For</a></li>
       <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -139,6 +149,130 @@ const faqs = [
   </ul>
   <p>
     These YTD figures are essential for cross-checking your payslip against the annual tax return (modello 730 or Certificazione Unica).
+  </p>
+
+  <h2 id="common-payslip-abbreviations">Common Payslip Abbreviations</h2>
+
+  <p>
+    Italian payslips are filled with abbreviations and acronyms that can be bewildering, especially for expats. Below is a reference table of the most common ones you will encounter, with their full Italian forms and English translations. Knowing these will help you decode any busta paga at a glance.
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Abbreviation</th>
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Full Italian form</th>
+          <th class="py-3 pl-4 text-left font-semibold text-gray-700 dark:text-gray-300">English translation</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">TFR</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Trattamento di Fine Rapporto</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Severance pay / End-of-service indemnity</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">ROL</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Riduzione Orario di Lavoro</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Paid leave hours (working time reduction)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">INPS</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Istituto Nazionale della Previdenza Sociale</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">National Social Security Institute</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">IVS</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Invalidit&agrave;, Vecchiaia, Superstiti</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Disability, Old Age, Survivors (pension contributions)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">CIG</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Cassa Integrazione Guadagni</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Wage supplementation fund (short-time work)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">ANF</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Assegno Nucleo Familiare</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Family allowance (replaced by Assegno Unico from 2022)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">IRPEF</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Imposta sul Reddito delle Persone Fisiche</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Personal income tax</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">CCNL</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Contratto Collettivo Nazionale di Lavoro</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">National collective bargaining agreement</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">RAL</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Retribuzione Annua Lorda</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Gross annual salary</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">INAIL</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">National Institute for Insurance against Workplace Injuries</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">E.R. / Ex Ind. Cont.</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Elemento Retributivo / Ex Indennit&agrave; di Contingenza</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Legacy cost-of-living adjustment (frozen since 1992)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">NASpI</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Nuova Assicurazione Sociale per l'Impiego</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Unemployment benefit</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Str. / Strao.</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Straordinario</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Overtime</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Add. Reg. / Add. Com.</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Addizionale Regionale / Addizionale Comunale</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Regional / Municipal income tax surcharge</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Tratt. Int.</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Trattamento Integrativo</td>
+          <td class="py-3 pl-4 text-gray-900 dark:text-gray-100">Supplementary tax benefit (replaces the former Bonus Renzi)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    For the full list of INPS contribution codes and their meanings, consult the <a href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-servizi.contributi-previdenziali-lavoratori-dipendenti-702.contributi-previdenziali-lavoratori-dipendenti.html" class="text-brand hover:underline">INPS contribution reference page</a>. For IRPEF bracket details and deduction formulas, refer to the <a href="https://www.agenziaentrate.gov.it/portale/web/guest/irpef" class="text-brand hover:underline">Agenzia delle Entrate IRPEF guide</a>.
+  </p>
+
+  <h2 id="red-flags-to-watch-for">Red Flags to Watch For</h2>
+
+  <p>
+    Payslip errors are more common than you might think, and they can cost you hundreds or even thousands of euros per year if left unchecked. Here is a checklist of the most important things to verify each month when you receive your busta paga.
+  </p>
+
+  <p>
+    <strong>1. Verify your INPS contributions are correct.</strong> The employee contribution rate for most private-sector workers is <strong>9.19%</strong> of gross pay (as set by <a href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-servizi.contributi-previdenziali-lavoratori-dipendenti-702.contributi-previdenziali-lavoratori-dipendenti.html" class="text-brand hover:underline">INPS regulations</a>). Multiply your <em>imponibile previdenziale</em> (INPS taxable base) by 9.19% and compare the result with the amount shown on your payslip. If it does not match, there may be a calculation error or an incorrectly applied rate. For example, if your gross pay is &euro;2,308 and the INPS deduction shown is &euro;180 instead of the expected &euro;212, you are being undercharged &mdash; which sounds positive but could result in gaps in your pension record.
+  </p>
+  <p>
+    <strong>2. Check your CCNL level (livello) and base pay (minimo tabellare).</strong> Your contract specifies a CCNL level (e.g., CCNL Commercio Livello 3, CCNL Metalmeccanico Livello D1). Each level has a minimum base pay set by the national agreement. If your <em>paga base</em> is lower than the CCNL minimum for your level, your employer is underpaying you. You can find current CCNL pay tables on the <a href="https://www.gazzettaufficiale.it/" class="text-brand hover:underline">Gazzetta Ufficiale</a> website or through your trade union. For instance, the CCNL Commercio Level 3 minimum for 2026 is approximately &euro;1,718/month (14 payments): if your payslip shows a lower figure and no superminimo makes up the difference, flag it immediately.
+  </p>
+  <p>
+    <strong>3. Confirm overtime hours are counted correctly.</strong> Compare the <em>ore straordinario</em> (overtime hours) shown on the payslip with your own records. Many workers track overtime informally but neglect to verify it appears on the payslip. Under most CCNLs, overtime is paid at premiums of 15% (first 8 hours per week), 20% (next hours), and 30% (Sundays and holidays) above the normal hourly rate. Missing or under-reported overtime directly reduces your gross pay. If you work in a company with an electronic time-tracking system (<em>rilevazione presenze</em>), you should periodically cross-check your badge records against payslip data.
+  </p>
+  <p>
+    <strong>4. Is your TFR accruing properly?</strong> Your TFR (Trattamento di Fine Rapporto, or severance indemnity) should accrue at a rate of approximately one month's gross salary per year of service (specifically, annual gross / 13.5, plus an annual revaluation). Check the <em>TFR maturato</em> field in the summary footer of your payslip. If you have been employed for 3 full years and your RAL is &euro;30,000, your TFR should be approximately &euro;6,667 plus revaluations (roughly &euro;7,000+ with ISTAT adjustments). If the figure is significantly lower, your employer may have made errors in the accrual or may not have applied the annual ISTAT revaluation (rivalutazione) correctly. The TFR calculation rules are defined in <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:codice.civile:1942-03-16;262" class="text-brand hover:underline">Art. 2120 of the Italian Civil Code</a>.
+  </p>
+  <p>
+    <strong>5. Review regional and municipal surcharges.</strong> These surcharges (<em>addizionali</em>) vary by where you are officially resident, not where you work. If you moved to a different municipality or region during the year, ensure your payroll office has updated your residency. Being charged the wrong regional rate (for example, Lazio at 3.33% instead of Lombardy at 1.73% on the same bracket) can mean an overcharge of hundreds of euros annually. Verify the rates on the <a href="https://www.agenziaentrate.gov.it/portale/web/guest/addizionali-comunali" class="text-brand hover:underline">Agenzia delle Entrate addizionali page</a>.
+  </p>
+  <p>
+    <strong>6. Confirm your remaining leave balance.</strong> Check the <em>ferie residue</em> (remaining vacation days) and <em>permessi residui</em> (remaining ROL hours) figures. Errors here may indicate that holiday days were deducted when you were actually working, or that accrued leave was not correctly carried forward from the previous year.
   </p>
 
   <!-- FAQ Section -->

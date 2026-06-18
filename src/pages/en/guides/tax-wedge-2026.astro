@@ -26,6 +26,14 @@ const faqs = [
     question: 'How does the tax wedge appear on my payslip?',
     answer: 'The tax wedge benefit appears on your busta paga (payslip) as a separate line item. For incomes up to &euro;20,000, it is shown as a non-taxable bonus (similar to how the old esonero contributivo appeared). For incomes above &euro;20,000, it appears as an additional tax deduction that reduces the IRPEF withheld. Either way, the effect is the same: a higher net amount credited to your bank account. You will typically see it labelled as "beneficio cuneo fiscale" or "ulteriore detrazione L. 207/2024" on the payslip.',
   },
+  {
+    question: 'Can I receive the tax wedge benefit if I am on the flat-rate regime (regime forfettario)?',
+    answer: 'No. The cuneo fiscale benefit is exclusively reserved for <strong>dependent employees</strong> (lavoratori dipendenti). If you are a freelancer or self-employed worker operating under the regime forfettario, you are not eligible. The flat-rate regime already provides its own tax advantage &mdash; a 15% substitute tax (or 5% for the first five years of a new business) &mdash; but it does not include the cuneo fiscale. If you transition from self-employment to an employment contract, you will begin receiving the benefit automatically through payroll from your first month as an employee.',
+  },
+  {
+    question: 'What happens to the tax wedge benefit if I change jobs during the year?',
+    answer: 'If you change employers mid-year, each employer will apply the cuneo fiscale benefit based on the income they pay you. However, the benefit is calculated on your <strong>total annual employment income</strong>, so the final adjustment happens when you file your annual tax return (Modello 730 or Modello Redditi). If your combined income from both jobs exceeds &euro;40,000, you may need to repay part or all of the benefit received. To avoid surprises, you can ask your new employer to apply payroll withholding that accounts for your prior employment income by submitting a declaration of your year-to-date earnings. This is done through a written request to your new employer&rsquo;s payroll office.',
+  },
 ];
 ---
 
@@ -46,6 +54,9 @@ const faqs = [
       <li><a href="#from-temporary-to-structural" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">From Temporary to Structural</a></li>
       <li><a href="#how-the-2026-mechanism-works" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How the 2026 Mechanism Works</a></li>
       <li><a href="#benefit-amounts-by-income" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Benefit Amounts by Income Level</a></li>
+      <li><a href="#concrete-example" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Concrete Example: Impact on Your Pay</a></li>
+      <li><a href="#tax-wedge-for-expats" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tax Wedge for Expats</a></li>
+      <li><a href="#timeline-evolution" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Timeline: Evolution of the Tax Wedge</a></li>
       <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -155,6 +166,80 @@ const faqs = [
 
   <p>
     To see exactly how the tax wedge affects your personal net salary, use our <a href="/en/">net salary calculator</a> &mdash; the cuneo fiscale benefit is included automatically.
+  </p>
+
+  <h2 id="concrete-example">Concrete Example: How the Tax Wedge Affects Your Pay</h2>
+
+  <p>
+    To make the cuneo fiscale tangible, let us walk through three real-world salary scenarios. In each case, we assume a single employee with no dependants, working full-time on a permanent contract (contratto a tempo indeterminato), with the standard INPS employee contribution rate of <strong>9.19%</strong> (source: <a href="https://www.inps.it" target="_blank" rel="noopener noreferrer">INPS</a>). The 2026 IRPEF rates are 23% up to &euro;28,000, 35% from &euro;28,001 to &euro;50,000, and 43% above &euro;50,000 (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate</a>).
+  </p>
+
+  <h3>Scenario 1: Sofia, retail assistant &mdash; RAL &euro;15,000</h3>
+  <p>
+    Sofia works part-time in a shop in Naples with a gross annual salary (RAL) of &euro;15,000. Her INPS contribution is &euro;15,000 &times; 9.19% = &euro;1,379, leaving a taxable income of &euro;13,621. Because her employment income is below &euro;20,000, she falls into the percentage-based bonus arm of the cuneo fiscale. Her income sits in the &euro;8,501&ndash;&euro;15,000 sub-band, so the bonus rate is <strong>5.3%</strong>. The annual benefit is &euro;15,000 &times; 5.3% = <strong>&euro;795</strong>. Spread across 13 pay periods, this adds approximately <strong>&euro;61 per month</strong> to her take-home pay &mdash; a meaningful increase for a worker at this income level.
+  </p>
+
+  <h3>Scenario 2: Marco, junior engineer &mdash; RAL &euro;25,000</h3>
+  <p>
+    Marco is a software engineer in Milan earning a RAL of &euro;25,000. His INPS contribution is &euro;25,000 &times; 9.19% = &euro;2,298, giving a taxable income of &euro;22,702. Since his employment income falls between &euro;20,001 and &euro;32,000, he receives the <strong>flat &euro;1,000 additional IRPEF deduction</strong>. This deduction reduces his IRPEF bill directly, saving him &euro;1,000 per year. Divided by 13 pay periods, Marco receives approximately <strong>&euro;77 extra per month</strong>. Without the cuneo fiscale, his net monthly pay would be around &euro;1,498; with it, he takes home roughly &euro;1,575.
+  </p>
+
+  <h3>Scenario 3: Elena, marketing manager &mdash; RAL &euro;36,000</h3>
+  <p>
+    Elena works in a mid-sized company in Turin with a RAL of &euro;36,000. Her INPS contribution is &euro;36,000 &times; 9.19% = &euro;3,308, producing a taxable income of &euro;32,692. Because her employment income falls in the &euro;32,001&ndash;&euro;40,000 phase-out range, the benefit is reduced. The formula is: 1,000 &times; (40,000 &minus; 36,000) / 8,000 = 1,000 &times; 4,000 / 8,000 = <strong>&euro;500</strong>. Elena therefore receives approximately <strong>&euro;38 extra per month</strong> across 13 pay periods. While smaller than Marco's benefit, this still translates to &euro;500 per year that she would not have received under the old system.
+  </p>
+
+  <p>
+    These examples illustrate the progressive design of the cuneo fiscale: the benefit is proportionally largest for lower incomes, tapers off through the middle band, and disappears entirely above &euro;40,000. You can model your own salary with our <a href="/en/">net salary calculator</a>.
+  </p>
+
+  <h2 id="tax-wedge-for-expats">Tax Wedge for Expats: What You Need to Know</h2>
+
+  <p>
+    If you are moving to Italy for work, the cuneo fiscale is one of several fiscal benefits that can affect your net pay. Here is how it interacts with other provisions relevant to expats.
+  </p>
+
+  <h3>Interaction with the Impatriati Regime</h3>
+  <p>
+    The <strong>regime impatriati</strong> (also known as the "lavoratori impatriati" incentive, regulated by Art. 5 of D.Lgs. 209/2023 and subsequent amendments &mdash; see <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">normattiva.it</a>) allows qualifying workers who transfer their tax residence to Italy to reduce their taxable income by <strong>50%</strong> (up to a maximum of &euro;600,000 in eligible income) for five years. If you qualify for this regime, the cuneo fiscale benefit is calculated on your <em>full</em> employment income before the Impatriati reduction &mdash; not on the reduced taxable base. In practice, this means an expat earning &euro;35,000 can benefit from both the 50% Impatriati exemption <em>and</em> the cuneo fiscale deduction, provided the total employment income remains below &euro;40,000.
+  </p>
+
+  <h3>How it works for new arrivals</h3>
+  <p>
+    When you start your first Italian employment contract, your employer will apply the cuneo fiscale automatically from your first payslip. You do not need to file any additional paperwork specifically for this benefit. However, if you arrive mid-year (e.g., you start working in September), the benefit is pro-rated based on the income earned during the portion of the year you worked in Italy. At year-end, the conguaglio (annual reconciliation) on your December payslip &mdash; or your Modello 730 tax return &mdash; will adjust the amounts to reflect your actual annual income.
+  </p>
+
+  <h3>Pension implications</h3>
+  <p>
+    One key advantage of the 2026 fiscal mechanism over the previous esonero contributivo is that your <strong>INPS pension contributions are no longer reduced</strong>. Under the 2024&ndash;2025 system, the contribution exemption meant workers were paying less into INPS, which could theoretically reduce future pension entitlements (although the government guaranteed full pension accrual through a supplementary state contribution). From 2026, because the benefit is delivered as a tax bonus or IRPEF deduction rather than a contribution cut, your full 9.19% employee INPS contribution is paid every month. This protects your pension record &mdash; particularly important for expats who may later transfer their Italian pension rights under EU bilateral agreements (source: <a href="https://www.inps.it" target="_blank" rel="noopener noreferrer">INPS &mdash; Convenzioni internazionali</a>).
+  </p>
+
+  <h2 id="timeline-evolution">Timeline: Evolution of Italy's Tax Wedge</h2>
+
+  <p>
+    The cuneo fiscale as we know it today is the result of a decade of incremental reforms. Understanding this history helps to contextualise why the current mechanism works the way it does.
+  </p>
+
+  <ul>
+    <li>
+      <strong>2014 &ndash; Bonus Renzi (DL 66/2014):</strong> Prime Minister Matteo Renzi introduced an &euro;80/month bonus for employees earning up to &euro;26,600 per year. This was a direct cash transfer added to the payslip, not a tax deduction. It was groundbreaking as the first large-scale attempt to cut the tax wedge for low-to-middle earners, costing the state roughly &euro;10 billion per year (source: <a href="https://www.gazzettaufficiale.it" target="_blank" rel="noopener noreferrer">Gazzetta Ufficiale, DL 66/2014</a>).
+    </li>
+    <li>
+      <strong>2020 &ndash; Trattamento integrativo (DL 3/2020):</strong> The Bonus Renzi was replaced and expanded. Employees earning up to &euro;28,000 received a &euro;100/month non-taxable bonus (trattamento integrativo), while those earning between &euro;28,001 and &euro;40,000 received an "ulteriore detrazione" (additional deduction) that phased out at higher incomes. This structure more closely resembles the current 2026 mechanism.
+    </li>
+    <li>
+      <strong>2022&ndash;2023 &ndash; Esonero contributivo (L. 234/2021, L. 197/2022):</strong> Rather than a tax-based benefit, the government introduced a <strong>temporary INPS contribution exemption</strong> of 2&ndash;3 percentage points for employees with annual income up to &euro;35,000. In 2023, this was increased to a 6% exemption (incomes up to &euro;35,000) or 7% (incomes up to &euro;25,000). While this boosted net pay significantly, it raised concerns about pension accrual and was always labelled as temporary.
+    </li>
+    <li>
+      <strong>2024&ndash;2025 &ndash; Extended esonero (L. 213/2023, L. 207/2024):</strong> The contribution exemption was renewed and eventually replaced. The 2025 Budget Law (Legge di Bilancio 2025, L. 207/2024) laid the groundwork for a permanent, structural reform that would shift from a contribution-based to a fiscal-based mechanism, effective from January 2026.
+    </li>
+    <li>
+      <strong>2026 &ndash; Structural fiscal reform:</strong> The current system takes effect, combining a percentage-based non-taxable bonus (for incomes up to &euro;20,000) with an additional IRPEF deduction (for incomes from &euro;20,001 to &euro;40,000). Full INPS contributions are preserved, and the benefit is made permanent (source: <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">L. 207/2024, Art. 1, commi 4&ndash;9</a>).
+    </li>
+  </ul>
+
+  <p>
+    This progression shows a clear trend: from a simple bonus, to a dual-track deduction, to a contribution exemption, and finally to a structural fiscal mechanism. Each iteration attempted to address the limitations of the previous one &mdash; whether it was coverage gaps, pension concerns, or the need for budgetary permanence.
   </p>
 
   <!-- FAQ Section -->

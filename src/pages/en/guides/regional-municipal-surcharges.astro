@@ -26,6 +26,14 @@ const faqs = [
     question: 'Can I reduce the amount I pay in regional and municipal surcharges?',
     answer: 'You cannot directly deduct or claim credits against the surcharges, but there are indirect ways to reduce them: (1) any deduction that lowers your IRPEF taxable income (such as pension fund contributions, mortgage interest, or medical expenses) will also reduce the base on which the surcharges are calculated; (2) the Impatriati regime reduces the taxable base by 50%, which proportionally lowers both surcharges; (3) in extreme cases, relocating to a municipality or region with lower rates can make a meaningful difference -- up to several hundred euros per year on a typical salary.',
   },
+  {
+    question: 'What happens to surcharges if I move to a different region during the year?',
+    answer: 'Italian tax law uses a <strong>snapshot date</strong> to determine which rates apply: your region and municipality of residence as of <strong>1 January</strong> of the tax year. If you move from Lazio to Lombardia on 15 March, you will still pay the Lazio regional surcharge rate for the entire tax year, because you were a Lazio resident on 1 January. The new Lombardia rate will only apply starting from the following tax year. The same rule applies to the municipal surcharge. This is established by Art. 50 of D.Lgs. 446/1997 for the regional surcharge and Art. 1 of D.Lgs. 360/1998 for the municipal surcharge (source: <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">normattiva.it</a>). For employees, if you change your residenza anagrafica mid-year, inform your employer so that the correct rates are applied starting from the next tax year.',
+  },
+  {
+    question: 'Do non-residents pay regional and municipal surcharges?',
+    answer: 'Yes, non-residents who earn income in Italy are generally subject to the regional surcharge. The rate applied is typically that of the region where the income is produced (e.g., where the employer is located or where the work is performed), not the region of residence abroad. The municipal surcharge situation is more nuanced: non-residents may owe it based on the municipality where their employer or withholding agent (sostituto d\'imposta) is registered. In practice, this means a non-resident working in Milan would pay Lombardia\'s regional surcharge and Milan\'s municipal surcharge. For specific cases, consult the <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate</a> or a qualified commercialista.',
+  },
 ];
 ---
 
@@ -46,6 +54,9 @@ const faqs = [
       <li><a href="#addizionale-regionale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Regionale</a></li>
       <li><a href="#addizionale-comunale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Comunale</a></li>
       <li><a href="#how-they-affect-your-payslip" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How They Affect Your Payslip</a></li>
+      <li><a href="#concrete-example-different-regions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Concrete Example: Cost of Living in Different Regions</a></li>
+      <li><a href="#how-to-check-rates" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How to Check Your Municipality's Rate</a></li>
+      <li><a href="#historical-context" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Historical Context</a></li>
       <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -168,6 +179,133 @@ const faqs = [
   </ul>
   <p>
     This means in any given payslip, you are simultaneously paying the prior year's regional surcharge, the prior year's municipal balance, and the current year's municipal advance. When reading your busta paga, look for lines labelled "Add. Reg." and "Add. Com." to identify these deductions. Use our <a href="/en/payslip-calculator/">payslip calculator</a> to see exactly how these surcharges affect your monthly take-home pay.
+  </p>
+
+  <h2 id="concrete-example-different-regions">Concrete Example: The Cost of Living in Different Regions</h2>
+
+  <p>
+    To illustrate just how much your choice of city matters, let us compare the surcharges for an identical salary across four major Italian cities. We will use <strong>Luca, a marketing analyst with a RAL of &euro;35,000</strong>. His INPS employee contribution is 9.19%, giving him a taxable income (imponibile IRPEF) of &euro;35,000 &minus; &euro;3,217 = <strong>&euro;31,783</strong>. His national IRPEF is the same regardless of where he lives. The difference lies entirely in the addizionali.
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">City</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Regional rate</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Regional surcharge</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Municipal rate</th>
+          <th class="py-3 px-4 text-center font-semibold text-gray-700 dark:text-gray-300">Municipal surcharge</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Total surcharges</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Milan (Lombardia)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">~1.58%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;502</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">0.8%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;254</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400"><strong>&euro;756</strong></td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Rome (Lazio)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">~2.73%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;868</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">0.9%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;286</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400"><strong>&euro;1,154</strong></td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Turin (Piemonte)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">~2.13%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;677</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">0.8%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;254</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-orange-600 dark:text-orange-400"><strong>&euro;931</strong></td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Florence (Toscana)</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">~1.42%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;451</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">0.3%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;95</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400"><strong>&euro;546</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The difference is striking. Luca would pay <strong>&euro;608 more per year</strong> in surcharges by living in Rome compared to Florence &mdash; that is roughly &euro;51 less per month in take-home pay, purely because of where he lives. Compared to Milan, Rome costs him an additional &euro;398 per year. Over a decade, the Rome-Florence gap alone amounts to more than &euro;6,000 in additional taxes.
+  </p>
+  <p>
+    These figures assume Lombardia applies its progressive regional rate (approximately 1.58% for this income level), Lazio its progressive scale (~2.73% at this bracket), Piemonte its intermediate rate (~2.13%), and Toscana its base rate (~1.42%). Municipal rates are as published for 2026 by each municipality. The exact amounts may vary slightly depending on how each region structures its progressive brackets (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate &mdash; Addizionali regionali e comunali</a>).
+  </p>
+  <p>
+    To model these surcharges with your own salary and city, use our <a href="/en/">net salary calculator</a>, which includes regional and municipal surcharges in the computation.
+  </p>
+
+  <h2 id="how-to-check-rates">How to Check Your Municipality's Rate</h2>
+
+  <p>
+    Italy has approximately 7,900 municipalities, each with the power to set its own addizionale comunale rate. Finding the exact rate for your city is straightforward, but you need to know where to look.
+  </p>
+
+  <h3>The Agenzia delle Entrate portal</h3>
+  <p>
+    The primary official source is the <strong>Agenzia delle Entrate</strong> website. The agency maintains a searchable database of all municipal surcharge rates, updated annually. To access it:
+  </p>
+  <ul>
+    <li>Visit <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">agenziaentrate.gov.it</a> and navigate to "Servizi" &rarr; "Aliquote addizionale comunale".</li>
+    <li>Select the tax year (anno d'imposta), your region, province, and municipality from the dropdown menus.</li>
+    <li>The portal will display the municipal surcharge rate, any exemption thresholds (soglia di esenzione), and whether the municipality applies a flat rate or progressive brackets.</li>
+  </ul>
+
+  <h3>The Ministry of Finance (MEF) portal</h3>
+  <p>
+    The <a href="https://www.finanze.gov.it" target="_blank" rel="noopener noreferrer">Ministry of Finance (Dipartimento delle Finanze)</a> also publishes comprehensive data. Their "Fiscalita locale" section allows you to search for both regional and municipal rates. This portal is particularly useful for comparing rates across multiple municipalities at once. The data is sourced from the official deliberations (delibere) that each municipality must publish by a legally mandated deadline.
+  </p>
+
+  <h3>Your payslip (busta paga)</h3>
+  <p>
+    If you are already employed in Italy, the simplest way to verify the rates being applied to you is to check your payslip. Look for the lines labelled "Add. Com." (municipal surcharge) and "Add. Reg." (regional surcharge). The annual CUD / Certificazione Unica, issued by your employer each March, also breaks down the exact surcharge amounts withheld during the previous tax year, along with the rates applied.
+  </p>
+
+  <h3>Your municipality's website</h3>
+  <p>
+    Many larger municipalities publish their tax rates on their official websites, often under sections labelled "Tributi" or "Fiscalita locale". Some municipalities also publish downloadable delibere (council resolutions) that detail the rates and any exemption thresholds. However, for smaller municipalities, the Agenzia delle Entrate portal is generally more reliable and up-to-date.
+  </p>
+
+  <h2 id="historical-context">Historical Context: When Surcharges Were Introduced</h2>
+
+  <p>
+    The regional and municipal surcharges are relatively modern additions to the Italian tax system. Understanding their origins helps explain why they exist and how they have evolved.
+  </p>
+
+  <ul>
+    <li>
+      <strong>1998 &ndash; Introduction of the addizionale regionale:</strong> the regional surcharge was established by <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">D.Lgs. 446/1997</a> (the same decree that introduced IRAP) and came into effect in 1998. Initially, the rate was a flat 0.5% for all regions. The stated purpose was to give regions a direct revenue source to fund healthcare and other regional competencies, in line with Italy's ongoing process of fiscal federalism (federalismo fiscale).
+    </li>
+    <li>
+      <strong>1999 &ndash; Introduction of the addizionale comunale:</strong> the municipal surcharge was introduced one year later by <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">D.Lgs. 360/1998</a>. The initial maximum rate was 0.2%, subsequently raised over the years. Municipalities could choose whether to apply it at all and at what rate within the legal bounds.
+    </li>
+    <li>
+      <strong>2007 &ndash; Expansion of regional rate limits:</strong> the Finanziaria 2007 (L. 296/2006) raised the maximum regional surcharge to 1.4% and allowed regions to introduce progressive rate structures (aliquote per scaglioni) mirroring the national IRPEF brackets. Regions with healthcare deficits (piani di rientro) were required to apply higher rates to help cover the shortfall.
+    </li>
+    <li>
+      <strong>2011 &ndash; Austerity-era increases (DL 138/2011):</strong> during the European debt crisis, the base regional rate was increased to 1.23% and the maximum was raised to 2.03%, later further increased to 3.33% for regions in healthcare deficit. The municipal surcharge cap was raised to 0.8%. These increases were part of the broader austerity measures (the "Salva Italia" and subsequent decrees) aimed at consolidating public finances (source: <a href="https://www.gazzettaufficiale.it" target="_blank" rel="noopener noreferrer">Gazzetta Ufficiale, DL 138/2011</a>).
+    </li>
+    <li>
+      <strong>2024 &ndash; Municipal cap raised to 0.9%:</strong> the 2024 Budget Law (L. 213/2023) raised the maximum municipal surcharge from 0.8% to 0.9%, allowing municipalities with strained budgets additional fiscal headroom. Several major cities, including Rome, immediately adopted the new maximum.
+    </li>
+    <li>
+      <strong>2022&ndash;2026 &ndash; Ongoing regional reform:</strong> as part of the broader IRPEF simplification from four to three brackets, some regions have been adjusting their progressive surcharge structures to align with the new national brackets. Lombardia, for example, simplified its regional surcharge bands in 2024 to match the three-bracket system. This process is still ongoing and varies by region.
+    </li>
+  </ul>
+
+  <p>
+    Over roughly 25 years, the surcharges have evolved from a minor supplementary tax into a significant component of the overall tax burden. For residents of high-rate regions and municipalities, the combined surcharges can now exceed 4% of taxable income &mdash; an amount that would have been unthinkable when they were first introduced at 0.5% and 0.2% respectively. This trend toward higher local taxation reflects Italy's gradual shift toward fiscal federalism, where regions and municipalities fund an increasing share of public services through their own tax revenues rather than relying solely on central government transfers.
   </p>
 
   <!-- FAQ Section -->

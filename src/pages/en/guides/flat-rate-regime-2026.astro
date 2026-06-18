@@ -26,6 +26,14 @@ const faqs = [
     question: 'Can I use the flat-rate regime if I also have an employment contract?',
     answer: 'Yes, but with conditions. If you have a parallel employment contract, you can still access the flat-rate regime only if your employment income in the previous year was <strong>&euro;30,000 or less</strong>. If it exceeded &euro;30,000, you are excluded &mdash; unless that employment relationship ended during the previous year. Additionally, you cannot invoice primarily to your current or recent employer (within the last two years) &mdash; this anti-abuse rule prevents companies from converting employees to fake freelancers. If you qualify, the employment income is taxed normally through IRPEF, while your freelance income benefits from the flat substitute tax.',
   },
+  {
+    question: 'Can I deduct business expenses under the flat-rate regime (forfettario)?',
+    answer: 'No. Under the regime forfettario, you <strong>cannot deduct actual business expenses</strong> such as equipment purchases, software subscriptions, office rent, or travel costs. Instead, the tax authorities apply a fixed profitability coefficient based on your ATECO code, which is meant to represent your assumed profit margin. For example, if your coefficient is 78%, the government considers 22% of your revenue as expenses &mdash; regardless of how much you actually spent. This means the regime is most advantageous for professionals with low operating costs (e.g., consultants, developers, designers). If your real expenses significantly exceed the assumed percentage, you may be better off under the ordinary regime where actual deductions are allowed. The only deduction permitted under forfettario is for INPS social security contributions paid during the year, which reduce your taxable income before the substitute tax is applied (see <a href="https://www.agenziaentrate.gov.it/portale/regime-forfetario" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; Regime Forfetario</a>).',
+  },
+  {
+    question: 'How does invoicing work without VAT in the flat-rate regime?',
+    answer: 'Flat-rate regime participants are exempt from charging VAT (IVA) on their invoices. Your invoices must include a specific note stating: <em>"Operazione effettuata ai sensi dell\'art. 1, commi da 54 a 89, Legge n. 190/2014 &mdash; Regime forfetario"</em>. You also need to add a &euro;2 revenue stamp (marca da bollo) on every invoice exceeding &euro;77.47 &mdash; this is required by DPR 642/1972. Since January 2024, all forfettario taxpayers are required to issue <strong>electronic invoices</strong> (fattura elettronica) through the Sistema di Interscambio (SDI), regardless of revenue level &mdash; the prior exemption for those under &euro;25,000 was eliminated. You can use free software provided by the Agenzia delle Entrate or commercial invoicing platforms. Note that while you do not charge VAT on sales, you may still need to handle <strong>reverse charge VAT</strong> on certain intra-EU purchases of goods and services (see <a href="https://www.agenziaentrate.gov.it/portale/web/guest/fatturazione-elettronica" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; Fatturazione Elettronica</a>).',
+  },
 ];
 ---
 
@@ -48,6 +56,8 @@ const faqs = [
       <li><a href="#tax-rates-5-and-15" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Tax Rates: 5% and 15%</a></li>
       <li><a href="#inps-contributions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">INPS Contributions</a></li>
       <li><a href="#practical-example" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Practical Example</a></li>
+      <li><a href="#flat-rate-vs-ordinary-regime" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Flat-Rate vs Ordinary Regime</a></li>
+      <li><a href="#common-mistakes-and-pitfalls" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Common Mistakes and Pitfalls</a></li>
       <li><a href="#faq" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -172,6 +182,99 @@ const faqs = [
 
   <p>
     The total tax and contribution burden in this case is about 20% of gross revenue &mdash; significantly lower than what the same income would bear under the ordinary IRPEF system. For a personalised calculation, use our <a href="/en/flat-rate-regime-calculator/">flat-rate regime calculator</a>.
+  </p>
+
+  <h2 id="flat-rate-vs-ordinary-regime">Flat-Rate vs Ordinary Regime: Side-by-Side Comparison</h2>
+
+  <p>
+    One of the most common questions freelancers ask is: "How much do I actually save with the forfettario compared to the ordinary regime?" The answer depends on your revenue level, your ATECO coefficient, and your actual business expenses. Below is a detailed side-by-side comparison for a freelance consultant (ATECO 62.02, coefficient 67%) earning <strong>&euro;50,000</strong> in gross revenue, comparing the flat-rate regime at the 15% standard rate against the ordinary IRPEF regime for the 2026 tax year.
+  </p>
+
+  <div class="overflow-x-auto not-prose">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-200 dark:border-gray-700">
+          <th class="py-3 pr-4 text-left font-semibold text-gray-700 dark:text-gray-300">Item</th>
+          <th class="py-3 px-4 text-right font-semibold text-gray-700 dark:text-gray-300">Flat-Rate (Forfettario)</th>
+          <th class="py-3 pl-4 text-right font-semibold text-gray-700 dark:text-gray-300">Ordinary (IRPEF)</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100 font-semibold">Gross revenue</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;50,000</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;50,000</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Assumed taxable base</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;33,500 (67%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;40,000 (after &euro;10k expenses)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">INPS Gestione Separata (26.07%)</td>
+          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;8,733</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;10,428</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Net taxable income</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;24,767</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;29,572</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Income tax</td>
+          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;3,715 (15%)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;6,990 (IRPEF)</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Regional + municipal surcharges</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100">&euro;0 (exempt)</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400">&minus; &euro;650 (approx.)</td>
+        </tr>
+        <tr class="border-t-2 border-gray-300 dark:border-gray-600">
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Total tax + INPS burden</td>
+          <td class="py-3 px-4 text-right tabular-nums text-brand font-bold text-base">&euro;12,448</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400 font-bold text-base">&euro;18,068</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold text-base">Effective total rate on revenue</td>
+          <td class="py-3 px-4 text-right tabular-nums text-brand font-bold text-base">24.9%</td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400 font-bold text-base">36.1%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    In this scenario, the flat-rate regime saves approximately <strong>&euro;5,620 per year</strong> compared to the ordinary regime &mdash; even assuming the ordinary-regime taxpayer can deduct &euro;10,000 in real business expenses. The IRPEF calculation for the ordinary regime uses the 2026 brackets: 23% on income up to &euro;28,000 and 35% on income between &euro;28,001 and &euro;50,000 (source: <a href="https://www.agenziaentrate.gov.it/portale/irpef" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; IRPEF</a>). The forfettario taxpayer pays zero regional and municipal surcharges, which typically add 1.5&ndash;3% to the ordinary regime burden depending on the region and municipality.
+  </p>
+  <p>
+    However, the comparison shifts if your real expenses are very high. For example, a freelancer who spends &euro;25,000 on equipment, subcontractors, and office rent would have a lower taxable base under the ordinary regime (&euro;25,000) than under forfettario (&euro;33,500). In such cases, the ordinary regime with full expense deduction may be more cost-effective. Always run the numbers for your specific situation using our <a href="/en/flat-rate-regime-calculator/">flat-rate regime calculator</a>.
+  </p>
+
+  <h2 id="common-mistakes-and-pitfalls">Common Mistakes and Pitfalls</h2>
+
+  <p>
+    The regime forfettario is straightforward in principle, but several traps catch freelancers and expats off guard. Below are the most common mistakes and how to avoid them.
+  </p>
+
+  <p>
+    <strong>1. The ex-employer anti-abuse rule (causa ostativa).</strong> You cannot invoice more than 50% of your total revenue to a former employer (or a company in the same corporate group) if you were employed by them in the <strong>previous two tax years</strong>. This anti-abuse provision, established by Art. 1, comma 57, lettera d-bis of Legge 190/2014 and confirmed for 2026, is designed to prevent companies from converting employment contracts into fake freelance arrangements to reduce costs. If Marco worked as a developer for TechCo Srl until December 2024 and opens a P.IVA in January 2025, he cannot bill TechCo for more than half of his total forfettario revenue during 2025 or 2026. Violating this rule means retroactive exclusion from the regime and repayment of the tax difference plus penalties (source: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2014-12-23;190" target="_blank" rel="noopener">Normattiva &mdash; Legge 190/2014</a>).
+  </p>
+
+  <p>
+    <strong>2. VAT obligations on intra-EU purchases.</strong> Even though forfettario taxpayers do not charge VAT on their invoices, they are <strong>not fully exempt from VAT obligations</strong>. If you purchase services from EU suppliers above &euro;10,000 per year, or goods above the intra-EU acquisition threshold, you must register for <a href="https://ec.europa.eu/taxation_customs/vies/" target="_blank" rel="noopener">VIES</a> (VAT Information Exchange System) and apply the reverse charge mechanism. This means you must self-account for VAT on the purchase, file an intra-EU transaction listing (modello Intrastat), and pay the VAT to the Italian treasury. Many freelancers who buy software subscriptions, cloud services, or equipment from other EU countries are caught unaware by this requirement. Failure to comply can result in penalties of 100&ndash;200% of the unpaid VAT (source: <a href="https://www.agenziaentrate.gov.it/portale/web/guest/iva-intracomunitaria" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; IVA intracomunitaria</a>).
+  </p>
+
+  <p>
+    <strong>3. No actual expense deduction.</strong> As explained above, the forfettario regime does not allow deduction of real business expenses from taxable income. This includes rent, utilities, professional training, travel, equipment, and subcontractor costs. The only deduction permitted is for INPS contributions paid during the year. Many new freelancers assume they can deduct their laptop, co-working space, or professional software &mdash; they cannot. If your expenses are high relative to your revenue, the ordinary regime may be more tax-efficient despite the higher nominal rates.
+  </p>
+
+  <p>
+    <strong>4. Electronic invoicing obligation since 2024.</strong> As of 1 January 2024, <strong>all</strong> forfettario taxpayers must issue electronic invoices (fattura elettronica) through the Agenzia delle Entrate's Sistema di Interscambio (SDI). The previous exemption for those earning under &euro;25,000 was eliminated by Decreto Legge 36/2022, Art. 18, comma 3 (source: <a href="https://www.gazzettaufficiale.it/eli/id/2022/04/30/22G00049/sg" target="_blank" rel="noopener">Gazzetta Ufficiale &mdash; DL 36/2022</a>). Failure to issue electronic invoices results in administrative sanctions of 5&ndash;10% of the undocumented amount (with a minimum of &euro;500 per quarter). Free invoicing software is available from the Agenzia delle Entrate website, or you can use commercial platforms such as Fatture in Cloud, Aruba, or FatturaPA.
+  </p>
+
+  <p>
+    <strong>5. Forgetting the marca da bollo.</strong> Since forfettario invoices do not include VAT, a &euro;2 revenue stamp (marca da bollo) is required on every invoice with a total amount exceeding &euro;77.47, as prescribed by DPR 642/1972. For electronic invoices, the stamp is applied digitally and paid quarterly through the Agenzia delle Entrate portal. Omitting the marca da bollo carries a penalty of 100% of the stamp's value for each missing stamp.
   </p>
 
   <!-- FAQ Section -->

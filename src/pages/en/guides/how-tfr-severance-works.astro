@@ -26,6 +26,14 @@ const faqs = [
     question: 'How is TFR taxed when I receive it?',
     answer: 'TFR is subject to <strong>tassazione separata</strong> (separate taxation), meaning it is not added to your regular annual income and does not push you into a higher IRPEF bracket. Instead, it is taxed at an average rate calculated on your income over the years the TFR accrued. The formula uses your average taxable income from the last 5 years, applies the IRPEF brackets to that average, and derives a percentage that is then applied to the TFR amount. For most employees, this results in a <strong>lower effective tax rate</strong> than the marginal IRPEF rate they pay on regular income. The annual revaluation portion of the TFR is taxed separately at a flat 17% substitute tax.',
   },
+  {
+    question: 'What happens to my TFR if my employer goes bankrupt?',
+    answer: 'Your TFR is protected by the <strong>Fondo di Garanzia INPS</strong> (INPS Guarantee Fund), established by Legge 297/1982. If your employer becomes insolvent, enters bankruptcy proceedings (fallimento), or undergoes other insolvency procedures (concordato preventivo, liquidazione coatta amministrativa), the INPS Guarantee Fund steps in to pay your accumulated TFR in full. To claim it, you must file a request with INPS after the insolvency has been officially declared and the employer\'s debt to you has been verified by the court-appointed receiver (curatore fallimentare). The fund also covers the last three months of unpaid wages. Processing times vary, but typically range from 60 to 120 days after the claim is submitted. This guarantee applies regardless of the company size. For companies with more than 50 employees, the TFR is already held by INPS (Fondo di Tesoreria), further reducing the risk. See <a href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-servizi.fondo-di-garanzia-tfr-50054.fondo-di-garanzia-tfr.html" target="_blank" rel="noopener">INPS &mdash; Fondo di Garanzia TFR</a> for details.',
+  },
+  {
+    question: 'Can I transfer my TFR to a pension fund after the initial 6-month choice period?',
+    answer: 'Yes, you can switch your TFR allocation from the employer to a pension fund (fondo pensione) <strong>at any time after the initial 6-month period</strong>. However, this choice is <strong>irreversible</strong>: once you redirect future TFR accruals to a pension fund, you cannot switch back to keeping them with the employer. The TFR already accumulated with the employer before the switch remains with the employer (it is not transferred to the pension fund) and will be paid out when your employment ends. Only <em>future</em> TFR accruals from the date of the switch onward will flow to the pension fund. To make the switch, you submit a specific form (modulo di adesione) to your employer indicating your chosen pension fund. The change takes effect from the month following your request. This flexibility is governed by Art. 8 of D.Lgs. 252/2005 (see <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-12-05;252" target="_blank" rel="noopener">Normattiva &mdash; D.Lgs. 252/2005</a>).',
+  },
 ];
 ---
 
@@ -46,6 +54,7 @@ const faqs = [
       <li><a href="#how-tfr-accrues" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How TFR Accrues</a></li>
       <li><a href="#company-vs-pension-fund" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Company vs Pension Fund</a></li>
       <li><a href="#how-tfr-is-taxed" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">How TFR Is Taxed</a></li>
+      <li><a href="#tfr-for-expats" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">TFR for Expats: Practical Considerations</a></li>
       <li><a href="#frequently-asked-questions" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Frequently Asked Questions</a></li>
     </ul>
   </Fragment>
@@ -177,6 +186,32 @@ const faqs = [
   </p>
   <p>
     Use our <a href="/en/severance-pay-calculator/">TFR severance pay calculator</a> to estimate the net amount you will receive based on your specific salary history and years of service.
+  </p>
+
+  <h2 id="tfr-for-expats">TFR for Expats: Practical Considerations</h2>
+
+  <p>
+    For expats and foreign workers in Italy, TFR raises several unique questions &mdash; particularly around what happens when you leave the country, how cross-border taxation works, and how to actually claim your money after returning home.
+  </p>
+
+  <p>
+    <strong>What happens to your TFR if you leave Italy?</strong> Your TFR entitlement is tied to your employment relationship, not to your residency status. When you resign or your contract ends, your employer must pay out your accumulated TFR regardless of whether you remain in Italy or move abroad. The payment is typically made with your final payslip (ultima busta paga), within 30&ndash;45 days of the employment end date. If you have already relocated, the employer can transfer the net amount (after withholding tax) to any bank account you designate, including a foreign bank account. There is no legal requirement to maintain an Italian bank account to receive your TFR, although some employers may initially try to deposit it into the Italian account linked to your payroll. Make sure to provide your new banking details (including IBAN/SWIFT for international transfers) to your employer's HR department before your last day.
+  </p>
+
+  <p>
+    <strong>Cross-border taxation of TFR.</strong> TFR is classified as employment income for the purposes of international double taxation treaties. Under most of Italy's bilateral tax conventions (which follow the OECD Model Tax Convention), income from employment is taxable in the state where the employment was exercised. Since your TFR accrued while you were working in Italy, Italy retains the right to tax it &mdash; even if you have already moved to another country at the time of payment. The Italian employer will apply the standard separate taxation (tassazione separata) withholding when paying out the TFR. Whether you will also owe tax in your new country of residence depends on the specific double taxation treaty between Italy and that country. Most treaties include a mechanism to avoid double taxation, either through a tax credit in the residence country for Italian tax already paid, or through an exemption. For example, under the Italy-Germany double taxation convention (Art. 15), employment income is taxable in the state where the work was performed, so Germany would generally grant a credit for the Italian tax paid on TFR. Always check the specific treaty applicable to your situation (source: <a href="https://www.agenziaentrate.gov.it/portale/web/guest/convenzioni-internazionali" target="_blank" rel="noopener">Agenzia delle Entrate &mdash; Convenzioni internazionali</a>).
+  </p>
+
+  <p>
+    <strong>Claiming TFR after returning to your home country.</strong> If your employer does not pay TFR voluntarily (for example, due to financial difficulties or disputes), you have several options. First, you can send a formal demand letter (diffida e messa in mora) through a lawyer. If the employer still does not pay, you can file a claim with the Tribunale del Lavoro (Labour Court) in the jurisdiction where you worked. Italian labour courts are accessible to foreign workers even after they have left Italy, and proceedings can be conducted through a legal representative. The statute of limitations for TFR claims is <strong>5 years</strong> from the end of the employment relationship (Art. 2948, comma 5, Codice Civile). If the employer is insolvent, you can claim from the INPS Guarantee Fund (Fondo di Garanzia) as described in the FAQ below. For practical purposes, it is advisable to keep copies of all your Italian employment documents (contratto di lavoro, buste paga, CU/Certificazione Unica) before leaving Italy, as these will be needed to support any future claim.
+  </p>
+
+  <p>
+    <strong>Practical example.</strong> Consider <strong>Katarina</strong>, a Croatian marketing manager who worked in Milan for 4 years with a RAL of &euro;40,000. Her annual TFR accrual was approximately &euro;2,963 (&euro;40,000 &divide; 13.5). Over 4 years, she accumulated roughly &euro;11,852 in gross TFR (before revaluation). When she resigns and moves back to Zagreb, her Italian employer pays out the TFR with separate taxation applied. Assuming an average IRPEF rate of approximately 20% based on her income history, the net TFR payout is around &euro;9,482. Under the Italy-Croatia double taxation treaty, Croatia grants a credit for the Italian tax paid, so Katarina does not owe additional tax in Croatia on the same amount. The employer wires the net sum to her Croatian bank account within 40 days of her last working day (source: <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:codice.civile:1942-03-16;262!vig=" target="_blank" rel="noopener">Normattiva &mdash; Codice Civile, Art. 2120</a>).
+  </p>
+
+  <p>
+    <strong>TFR allocated to a pension fund &mdash; what if you leave Italy?</strong> If you directed your TFR to a complementary pension fund (fondo pensione), the situation is more complex. Pension fund assets are generally accessible only at retirement or under specific hardship conditions. However, if you permanently leave Italy and cease Italian employment, you may be entitled to request a <strong>full redemption</strong> (riscatto totale) of your pension fund position after 12 months of inactivity (no new contributions). The payout is subject to a substitute tax ranging from 15% down to 9%, depending on how many years you have been enrolled in the fund (the rate decreases by 0.30% for each year of participation beyond the 15th year, as per D.Lgs. 252/2005, Art. 14). This tax treatment is generally more favourable than the separate taxation applied to TFR kept with the employer, making the pension fund option attractive even for expats who may not retire in Italy &mdash; provided they are comfortable with the 12-month waiting period.
   </p>
 
   <!-- FAQ Section -->
