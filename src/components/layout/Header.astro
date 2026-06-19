@@ -211,7 +211,7 @@ function getIcon(name: string): string {
           </button>
 
           <!-- Stipendio dropdown panel — 3 columns -->
-          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute left-0 top-full z-50 mt-1 w-[640px] rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150">
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute left-0 top-full z-50 mt-1 w-[640px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-5rem)] overflow-y-auto rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150" data-dropdown-panel>
             <div class="grid grid-cols-3 gap-4">
               <!-- Column 1: Flagship CTA -->
               <div class="rounded-lg bg-brand/5 dark:bg-brand/10 border-l-4 border-brand p-4 flex flex-col justify-between">
@@ -281,7 +281,7 @@ function getIcon(name: string): string {
             </svg>
           </button>
 
-          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute left-0 top-full z-50 mt-1 w-[480px] rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150">
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute left-0 top-full z-50 mt-1 w-[480px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-5rem)] overflow-y-auto rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150" data-dropdown-panel>
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <p class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t('header.taxCalculation', lang)}</p>
@@ -325,7 +325,7 @@ function getIcon(name: string): string {
             </svg>
           </button>
 
-          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute left-0 top-full z-50 mt-1 w-[480px] rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150">
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute right-0 top-full z-50 mt-1 w-[480px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-5rem)] overflow-y-auto rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150" data-dropdown-panel>
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <p class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t('header.housingAndDebt', lang)}</p>
@@ -369,7 +369,7 @@ function getIcon(name: string): string {
             </svg>
           </button>
 
-          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute right-0 top-full z-50 mt-1 w-[480px] rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150">
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute right-0 top-full z-50 mt-1 w-[480px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-5rem)] overflow-y-auto rounded-xl bg-white dark:bg-gray-800 p-4 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 transition-all duration-150" data-dropdown-panel>
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <p class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">{t('header.salaryAndTaxes', lang)}</p>
@@ -602,5 +602,43 @@ function getIcon(name: string): string {
     var style = document.createElement('style');
     style.textContent = 'details[open] .details-open\\:rotate-180 { transform: rotate(180deg); }';
     document.head.appendChild(style);
+
+    // Clamp dropdown panels within viewport on hover
+    var groups = document.querySelectorAll('.group');
+    groups.forEach(function (group) {
+      var panel = group.querySelector('[data-dropdown-panel]');
+      if (!panel) return;
+      group.addEventListener('mouseenter', function () {
+        // Reset any previous inline adjustments
+        panel.style.left = '';
+        panel.style.right = '';
+        // Wait for panel to be rendered
+        requestAnimationFrame(function () {
+          var rect = panel.getBoundingClientRect();
+          var vw = window.innerWidth;
+          // If overflowing right edge
+          if (rect.right > vw - 16) {
+            var overflow = rect.right - vw + 16;
+            panel.style.left = '';
+            panel.style.right = '0px';
+            // If right-aligned still overflows left
+            var newRect = panel.getBoundingClientRect();
+            if (newRect.left < 16) {
+              panel.style.right = '';
+              panel.style.left = (16 - rect.left) + 'px';
+            }
+          }
+          // If overflowing left edge
+          if (rect.left < 16) {
+            panel.style.left = (16 - rect.left) + 'px';
+            panel.style.right = '';
+          }
+        });
+      });
+      group.addEventListener('mouseleave', function () {
+        panel.style.left = '';
+        panel.style.right = '';
+      });
+    });
   })();
 </script>
