@@ -21,6 +21,8 @@ export const SITE = {
     charcoal: '#1F2937',
     lightGray: '#F3F4F6',
   },
+  bingVerifyCode: '', // msvalidate.01 code from Bing Webmaster Tools
+  clarityProjectId: '', // Microsoft Clarity project ID
 } as const;
 
 export type SiteConfig = typeof SITE;
