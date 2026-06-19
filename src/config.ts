@@ -22,7 +22,7 @@ export const SITE = {
     lightGray: '#F3F4F6',
   },
   bingVerifyCode: '', // msvalidate.01 code from Bing Webmaster Tools
-  clarityProjectId: '', // Microsoft Clarity project ID
+  clarityProjectId: 'x9ozigrvte', // Microsoft Clarity project ID
 } as const;
 
 export type SiteConfig = typeof SITE;
