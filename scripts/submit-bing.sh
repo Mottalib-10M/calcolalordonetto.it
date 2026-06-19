@@ -1,14 +1,17 @@
 #!/bin/bash
 # submit-bing.sh — Submit sitemap URLs to Bing Webmaster URL Submission API
-# Usage: BING_API_KEY=your_key ./scripts/submit-bing.sh
+# Usage: ./scripts/submit-bing.sh
 #
 # Bing has a daily quota (typically 100 URLs/day).
 # Run this script daily until all URLs are submitted.
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+[ -f "$SCRIPT_DIR/.env" ] && source "$SCRIPT_DIR/.env"
+
 DOMAIN="https://calcolalordonetto.it"
-API_KEY="${BING_API_KEY:?Error: Set BING_API_KEY environment variable}"
+API_KEY="${BING_API_KEY:?Error: Set BING_API_KEY in scripts/.env or environment}"
 
 echo "Fetching sitemap..."
 ALL_URLS=$(curl -s "$DOMAIN/sitemap-0.xml" | grep -o '<loc>[^<]*</loc>' | sed 's/<loc>//g;s/<\/loc>//g')
