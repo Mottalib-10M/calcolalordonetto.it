@@ -83,8 +83,11 @@ const enPath = lang === 'en' ? currentPath : alternatePath;
     {schema && <script type="application/ld+json" set:html={schema} />}
   </head>
   <body class="bg-white dark:bg-gray-950 text-charcoal dark:text-gray-100 min-h-screen flex flex-col">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg">
+      {lang === 'en' ? 'Skip to content' : 'Vai al contenuto'}
+    </a>
     <Header lang={lang} />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer lang={lang} />

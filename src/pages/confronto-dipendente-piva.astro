@@ -11,6 +11,16 @@ const breadcrumbs = [
   { name: 'Calcolatori', url: `${SITE.url}/` },
   { name: 'Confronto Dipendente vs P.IVA', url: `${SITE.url}/confronto-dipendente-piva/` },
 ];
+
+const faqs = [
+  { question: 'Conviene di piu\' la partita IVA o il lavoro dipendente?', answer: 'Non esiste una risposta universale. Dal punto di vista puramente fiscale, la partita IVA forfettaria puo\' essere piu\' conveniente per fatturati medio&ndash;bassi grazie all\'imposta sostitutiva ridotta. Tuttavia, il dipendente beneficia di TFR, tredicesima, ferie pagate, malattia, maternita\' e contributi del datore di lavoro. Per un confronto equo, il fatturato P.IVA dovrebbe essere almeno il 30&ndash;50% superiore alla RAL. La scelta dipende anche da fattori non monetari come la flessibilita\', la sicurezza economica e la propensione al rischio.' },
+  { question: 'Quanto devo fatturare in P.IVA per guadagnare come un dipendente?', answer: 'Come regola generale, per ottenere un netto equivalente a quello di un dipendente (includendo TFR e valore delle tutele), il fatturato P.IVA dovrebbe essere circa il 30&ndash;50% superiore alla RAL. Ad esempio, per eguagliare una RAL di 40.000 &euro; dovresti fatturare circa 55.000&ndash;60.000 &euro; come consulente in regime forfettario. Usa il calcolatore qui sopra per una stima precisa basata sul tuo coefficiente di redditivita\'.' },
+  { question: 'Cosa succede se supero gli 85.000 &euro; di fatturato?', answer: 'Se i ricavi superano 85.000 &euro; ma restano sotto i 100.000 &euro;, si esce dal regime forfettario a partire dall\'anno successivo e si passa al regime ordinario con IRPEF progressiva, IVA e contabilita\' ordinaria. Se invece si superano i 100.000 &euro;, l\'uscita e\' immediata gia\' nell\'anno in corso. Nel regime ordinario la tassazione e\' significativamente piu\' alta: IRPEF progressiva (fino al 43%), addizionali regionali e comunali, e IVA da versare.' },
+  { question: 'Il freelancer in forfettario paga meno tasse del dipendente?', answer: 'In termini di aliquota marginale, si\': l\'imposta sostitutiva al 5&ndash;15% e\' molto piu\' bassa dell\'IRPEF progressiva che arriva al 43%. Tuttavia il confronto non e\' cosi\' semplice. Il forfettario paga il 26,07% di INPS sul reddito imponibile (vs 9,19% del dipendente, con il datore che paga un ulteriore 23,81%). Inoltre il forfettario non puo\' detrarre spese mediche, mutuo, ristrutturazioni e altri oneri. Quando si considerano tutti i fattori (tasse, contributi, detrazioni perse, assenza di tutele), la differenza reale e\' molto piu\' contenuta.' },
+  { question: 'Posso essere dipendente e avere anche la partita IVA?', answer: 'Si\', e\' possibile essere dipendente e avere contemporaneamente una partita IVA, purche\' non ci siano clausole di esclusiva nel contratto di lavoro e non ci sia un conflitto di interessi con il datore di lavoro. Dal punto di vista fiscale, si puo\' accedere al regime forfettario anche come dipendente, a condizione che il reddito da lavoro dipendente non superi i 30.000 &euro; annui lordi (questo e\' un requisito aggiuntivo per chi ha anche un rapporto di lavoro dipendente). Se il reddito dipendente supera questa soglia, il regime forfettario non e\' accessibile e la partita IVA sara\' in regime ordinario.' },
+  { question: 'Come funziona la pensione per il freelancer in gestione separata?', answer: 'I titolari di partita IVA iscritti alla gestione separata INPS versano il 26,07% del reddito imponibile in contributi previdenziali. Questi contributi si accumulano nel montante contributivo e determinano l\'importo della pensione futura, calcolata con il sistema contributivo. Poiche\' il reddito imponibile del forfettario e\' ridotto dal coefficiente di redditivita\', i contributi effettivamente versati (e quindi la pensione futura) saranno generalmente inferiori a quelli di un dipendente con RAL equivalente, dove il datore di lavoro versa un ulteriore 23,81% di contributi. Per questo motivo, molti freelancer scelgono di integrare la pensione pubblica con forme di previdenza complementare (fondi pensione aperti).' },
+  { question: 'Il forfettario deve applicare l\'IVA in fattura?', answer: 'No, chi aderisce al regime forfettario emette fatture senza IVA, ai sensi dell\'art. 1, comma 58, della Legge 190/2014. In fattura deve essere indicata la dicitura di esenzione. Questo semplifica notevolmente la gestione contabile ma ha un rovescio della medaglia: il forfettario non puo\' detrarre l\'IVA sugli acquisti. Per i clienti privati (B2C) questo e\' un vantaggio perche\' il prezzo e\' piu\' competitivo; per i clienti aziendali (B2B) e\' neutro perche\' questi non possono scaricare l\'IVA sulle fatture ricevute dal forfettario.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -18,6 +28,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Confronto Dipendente vs Partita IVA"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <ConfrontoDipendentePIVA client:load />
 

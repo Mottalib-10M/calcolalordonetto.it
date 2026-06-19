@@ -97,6 +97,9 @@ export const itToEn: Record<string, string> = {
   '/guide/tredicesima-quattordicesima/': '/en/guides/thirteenth-fourteenth-month-pay/',
   '/guide/tfr-come-funziona/': '/en/guides/how-tfr-severance-works/',
 
+  // Glossary
+  '/glossario/': '/en/glossary/',
+
   // Static pages
   '/chi-siamo/': '/en/about/',
   '/contatti/': '/en/contact/',

@@ -11,6 +11,17 @@ const breadcrumbs = [
   { name: 'Calcolatori', url: `${SITE.url}/` },
   { name: 'Calcolo Quattordicesima', url: `${SITE.url}/calcolo-quattordicesima/` },
 ];
+
+const faqs = [
+  { question: 'Quali contratti prevedono la quattordicesima?', answer: 'I principali CCNL che prevedono la quattordicesima sono: Commercio e Terziario (Confcommercio), Turismo (alberghi, pubblici esercizi), Banche e Credito, Assicurazioni, Alimentari (industria), Autotrasporto e Logistica, Studi professionali e Chimico-farmaceutico. Non e\' prevista, ad esempio, nel CCNL Metalmeccanico e nel CCNL Edilizia.' },
+  { question: 'La quattordicesima e\' obbligatoria?', answer: 'No, a differenza della tredicesima (prevista per legge), la quattordicesima e\' una retribuzione aggiuntiva stabilita solo da alcuni CCNL. Se il tuo contratto non la prevede, il datore di lavoro non ha l\'obbligo di erogarla, a meno che non sia indicata nel contratto individuale di lavoro.' },
+  { question: 'Quando viene pagata la quattordicesima?', answer: 'La quattordicesima viene generalmente erogata nella busta paga di giugno o luglio, prima delle vacanze estive. La data precisa dipende dal CCNL applicato e dalle prassi aziendali. Alcuni contratti prevedono l\'erogazione il 1&deg; luglio, altri con la busta paga di giugno.' },
+  { question: 'La quattordicesima si calcola sullo stipendio base o sulla RAL?', answer: 'La quattordicesima viene generalmente calcolata sulla retribuzione globale mensile, che include paga base, contingenza, scatti di anzianita\' e altri elementi fissi. In questo calcolatore usiamo RAL/12 come approssimazione semplificata. Per il calcolo esatto, fai riferimento al tuo cedolino e al CCNL applicato.' },
+  { question: 'Con 14 mensilita\' guadagno di piu\'?', answer: 'No, la RAL resta invariata. Con 14 mensilita\' ogni singola busta paga mensile sara\' piu\' bassa (RAL / 14 anziche\' RAL / 12 o RAL / 13), ma riceverai due mensilita\' extra. Il totale annuo lordo e\' sempre lo stesso. Tuttavia, la distribuzione delle detrazioni puo\' portare a piccole differenze nel netto complessivo.' },
+  { question: 'La quattordicesima matura durante il periodo di prova?', answer: 'Si\', la quattordicesima matura regolarmente anche durante il periodo di prova, poiche\' il rapporto di lavoro e\' a tutti gli effetti un rapporto subordinato fin dal primo giorno. Se il periodo di prova non viene superato e il rapporto si interrompe, il lavoratore ha diritto a ricevere la quota di quattordicesima maturata in proporzione ai mesi lavorati (pro-rata), calcolata nell\'ultima busta paga con il consueto meccanismo dei 15 giorni per il conteggio del mese intero.' },
+  { question: 'Come viene tassata la quattordicesima rispetto alla tredicesima?', answer: 'La quattordicesima viene tassata esattamente come la tredicesima: si applicano i contributi INPS (9,19%) sull\'importo lordo e poi l\'IRPEF all\'aliquota marginale, senza detrazioni da lavoro dipendente e senza trattamento integrativo. Di conseguenza, a parita\' di importo lordo, il netto della quattordicesima e\' identico a quello della tredicesima. Entrambe le mensilita\' aggiuntive risultano tassate piu\' pesantemente rispetto allo stipendio mensile ordinario, dove invece si beneficia delle detrazioni fiscali.' },
+  { question: 'Posso rinunciare alla quattordicesima per avere un lordo mensile piu\' alto?', answer: 'In linea di principio, non e\' possibile rinunciare unilateralmente alla quattordicesima se il CCNL applicato la prevede, poiche\' si tratta di un diritto stabilito dal contratto collettivo. Tuttavia, e\' possibile concordare con il datore di lavoro la "mensilizzazione" della quattordicesima, cioe\' la distribuzione del suo importo nelle 12 buste paga ordinarie. In questo modo, ogni mensilita\' sarebbe leggermente piu\' alta, ma non si riceverebbe l\'erogazione separata a giugno/luglio. Questa soluzione va formalizzata per iscritto e non modifica il totale annuo lordo ne\' il carico fiscale complessivo, ma cambia solo la distribuzione temporale dei pagamenti.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -18,6 +29,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Quattordicesima Netta"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <Quattordicesima client:load />
 

@@ -1,0 +1,395 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+import { breadcrumbSchema } from '../lib/seo';
+
+const title = 'Glossario Fiscale e del Lavoro 2026: Tutti i Termini Spiegati';
+const description = "Glossario completo dei termini fiscali e del lavoro in Italia: RAL, IRPEF, INPS, TFR, cuneo fiscale, regime forfettario e altri 30+ termini spiegati in modo semplice.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/` },
+  { name: 'Glossario', url: `${SITE.url}/glossario/` },
+];
+
+const schema = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    name: title,
+    description,
+    url: `${SITE.url}/glossario/`,
+    inLanguage: SITE.locale,
+  },
+]);
+
+interface Term {
+  term: string;
+  id: string;
+  definition: string;
+  related?: { name: string; href: string }[];
+}
+
+const terms: Term[] = [
+  {
+    term: 'RAL (Retribuzione Annua Lorda)',
+    id: 'ral',
+    definition: "La Retribuzione Annua Lorda e' l'importo totale che il datore di lavoro corrisponde al dipendente in un anno, prima delle trattenute fiscali e previdenziali. Include tutte le mensilita' (13esima, 14esima se prevista) e gli eventuali scatti di anzianita'. Non include il TFR, i contributi a carico del datore e i fringe benefit. E' il dato di partenza per calcolare lo stipendio netto.",
+    related: [
+      { name: 'Calcola Stipendio Netto', href: '/' },
+      { name: 'Pagine RAL', href: '/ral/' },
+    ],
+  },
+  {
+    term: 'Stipendio Netto',
+    id: 'stipendio-netto',
+    definition: "L'importo che il lavoratore riceve effettivamente in busta paga dopo tutte le trattenute: contributi INPS, IRPEF, addizionali regionali e comunali. Lo stipendio netto si ottiene dalla RAL sottraendo i contributi previdenziali per ottenere l'imponibile fiscale, su cui si calcolano IRPEF e addizionali, e aggiungendo eventuali bonus come il trattamento integrativo.",
+    related: [
+      { name: 'Calcola Stipendio Netto', href: '/' },
+      { name: 'Guida Stipendio Netto', href: '/guide/come-si-calcola-lo-stipendio-netto/' },
+    ],
+  },
+  {
+    term: 'IRPEF (Imposta sul Reddito delle Persone Fisiche)',
+    id: 'irpef',
+    definition: "L'imposta progressiva sui redditi delle persone fisiche, principale tributo diretto italiano. Si applica a scaglioni: nel 2026, il 23% fino a 28.000 euro, il 33% da 28.001 a 50.000 euro e il 43% oltre i 50.000 euro. L'IRPEF lorda viene ridotta dalle detrazioni (lavoro dipendente, familiari a carico, cuneo fiscale) per ottenere l'IRPEF netta, che viene effettivamente trattenuta.",
+    related: [
+      { name: 'Calcolo IRPEF', href: '/calcolo-irpef/' },
+      { name: 'Scaglioni IRPEF 2026', href: '/guide/scaglioni-irpef-2026/' },
+    ],
+  },
+  {
+    term: 'INPS (Istituto Nazionale della Previdenza Sociale)',
+    id: 'inps',
+    definition: "L'ente previdenziale pubblico italiano che gestisce le pensioni, le indennita' di disoccupazione (NASpI), la maternita', la malattia e l'Assegno Unico. Il contributo a carico del lavoratore dipendente e' del 9,19% dell'imponibile previdenziale (pari alla RAL). Il datore di lavoro versa un ulteriore contributo di circa il 30% della RAL.",
+    related: [
+      { name: 'Costo Aziendale', href: '/costo-aziendale/' },
+    ],
+  },
+  {
+    term: 'TFR (Trattamento di Fine Rapporto)',
+    id: 'tfr',
+    definition: "La liquidazione o buonuscita maturata dal lavoratore dipendente durante il rapporto di lavoro. Si calcola accantonando ogni anno circa il 6,91% della RAL (RAL / 13,5). Il TFR puo' essere lasciato in azienda (rivalutato all'1,5% + 75% dell'inflazione ISTAT) oppure versato a un fondo pensione complementare, con vantaggi fiscali alla tassazione finale.",
+    related: [
+      { name: 'Calcolo TFR', href: '/calcolo-tfr/' },
+      { name: 'Guida TFR', href: '/guide/tfr-come-funziona/' },
+    ],
+  },
+  {
+    term: 'Imponibile Fiscale',
+    id: 'imponibile-fiscale',
+    definition: "La base su cui si calcola l'IRPEF. Per i lavoratori dipendenti, si ottiene dalla RAL sottraendo i contributi INPS a carico del lavoratore (9,19%) e, se applicabile, la somma esente prevista dal cuneo fiscale. E' inferiore alla RAL e rappresenta il reddito effettivamente soggetto a tassazione progressiva.",
+    related: [
+      { name: 'Calcolo IRPEF', href: '/calcolo-irpef/' },
+    ],
+  },
+  {
+    term: 'Scaglioni IRPEF',
+    id: 'scaglioni-irpef',
+    definition: "Le fasce di reddito a cui si applicano aliquote IRPEF crescenti. Nel 2026 sono tre: 23% fino a 28.000 euro, 33% da 28.001 a 50.000 euro e 43% oltre 50.000 euro. Il sistema e' progressivo: ogni scaglione si applica solo alla porzione di reddito corrispondente, non sull'intero importo.",
+    related: [
+      { name: 'Scaglioni IRPEF 2026', href: '/guide/scaglioni-irpef-2026/' },
+    ],
+  },
+  {
+    term: 'Aliquota Marginale',
+    id: 'aliquota-marginale',
+    definition: "La percentuale di tassazione applicata all'ultimo euro di reddito guadagnato. Corrisponde allo scaglione IRPEF in cui ricade la parte piu' alta del proprio imponibile. Ad esempio, con un imponibile di 35.000 euro, l'aliquota marginale e' del 33% (secondo scaglione). E' fondamentale per valutare il reale impatto netto di un aumento di stipendio.",
+    related: [
+      { name: 'Calcolo IRPEF', href: '/calcolo-irpef/' },
+    ],
+  },
+  {
+    term: 'Aliquota Media Effettiva',
+    id: 'aliquota-media',
+    definition: "Il rapporto tra il totale delle imposte e contributi pagati e la RAL, espresso in percentuale. Rappresenta il peso fiscale complessivo sulla retribuzione lorda. Per un dipendente con RAL 30.000 euro, l'aliquota media effettiva si aggira intorno al 28-30%, mentre per RAL 60.000 euro sale al 36-38%.",
+    related: [
+      { name: 'Calcola Stipendio Netto', href: '/' },
+    ],
+  },
+  {
+    term: 'Detrazioni per Lavoro Dipendente',
+    id: 'detrazioni-lavoro-dipendente',
+    definition: "Riduzioni dell'IRPEF lorda riconosciute ai lavoratori dipendenti in funzione del reddito. L'importo massimo e' di 1.955 euro per redditi fino a 15.000 euro, poi decresce progressivamente fino ad azzerarsi a 50.000 euro. Queste detrazioni creano la cosiddetta \"no-tax area\" per redditi fino a circa 8.500 euro.",
+    related: [
+      { name: 'Guida Stipendio Netto', href: '/guide/come-si-calcola-lo-stipendio-netto/' },
+    ],
+  },
+  {
+    term: 'Cuneo Fiscale',
+    id: 'cuneo-fiscale',
+    definition: "Dal 2025, il taglio del cuneo fiscale e' strutturale e sostituisce il precedente taglio contributivo. Per redditi fino a 20.000 euro, una quota del reddito diventa esente da tassazione (dal 4,8% al 7,1%). Per redditi tra 20.001 e 32.000 euro, spetta una detrazione IRPEF aggiuntiva di 1.000 euro/anno. Tra 32.001 e 40.000 euro la detrazione si riduce fino ad azzerarsi.",
+    related: [
+      { name: 'Cuneo Fiscale 2026', href: '/guide/cuneo-fiscale-2026/' },
+    ],
+  },
+  {
+    term: 'Trattamento Integrativo',
+    id: 'trattamento-integrativo',
+    definition: "Bonus di 1.200 euro annui (100 euro/mese) erogato in busta paga ai lavoratori dipendenti con reddito fino a 15.000 euro che abbiano un'IRPEF positiva. Per redditi tra 15.001 e 28.000 euro, e' riconosciuto in misura ridotta solo se le detrazioni spettanti superano l'IRPEF lorda. Oltre i 28.000 euro non spetta. Sostituisce il precedente \"bonus Renzi\".",
+    related: [
+      { name: 'Calcola Stipendio Netto', href: '/' },
+    ],
+  },
+  {
+    term: 'Addizionale Regionale IRPEF',
+    id: 'addizionale-regionale',
+    definition: "Imposta aggiuntiva sull'IRPEF dovuta alla regione di residenza del contribuente. L'aliquota varia significativamente: dall'1,23% in regioni come Friuli-Venezia Giulia e Sardegna, fino al 3,33% nel Lazio per i redditi piu' alti. Viene calcolata sull'imponibile fiscale e trattenuta in 11 rate mensili, generalmente da marzo a gennaio dell'anno successivo.",
+    related: [
+      { name: 'Addizionali Regionali e Comunali', href: '/guide/addizionali-regionali-comunali/' },
+      { name: 'Confronto Regioni', href: '/comparatore-regioni/' },
+    ],
+  },
+  {
+    term: 'Addizionale Comunale IRPEF',
+    id: 'addizionale-comunale',
+    definition: "Imposta aggiuntiva sull'IRPEF stabilita dal comune di residenza. L'aliquota varia dallo 0% (alcuni piccoli comuni) allo 0,9% (limite massimo per legge). Molti comuni adottano aliquote differenziate per fasce di reddito. Viene trattenuta in busta paga insieme all'addizionale regionale.",
+    related: [
+      { name: 'Addizionali Regionali e Comunali', href: '/guide/addizionali-regionali-comunali/' },
+    ],
+  },
+  {
+    term: 'Tredicesima Mensilita\'',
+    id: 'tredicesima',
+    definition: "Mensilita' aggiuntiva obbligatoria per legge, corrisposta generalmente a dicembre. L'importo lordo corrisponde a una mensilita' di retribuzione (RAL / 13 per chi ha 13 mensilita'). La tredicesima viene tassata come reddito ordinario ma non gode del trattamento integrativo, il che la rende leggermente meno \"netta\" delle mensilita' ordinarie.",
+    related: [
+      { name: 'Calcolo Tredicesima', href: '/calcolo-tredicesima/' },
+      { name: 'Guida Tredicesima e 14esima', href: '/guide/tredicesima-quattordicesima/' },
+    ],
+  },
+  {
+    term: 'Quattordicesima Mensilita\'',
+    id: 'quattordicesima',
+    definition: "Mensilita' aggiuntiva prevista da alcuni CCNL (Commercio, Turismo, Logistica tra i principali), corrisposta generalmente a giugno o luglio. Non e' obbligatoria per legge ma dipende dal contratto collettivo applicato. Se prevista, la RAL viene divisa su 14 mensilita' anziche' 13, riducendo l'importo lordo di ciascuna mensilita' ma lasciando invariato il netto annuo complessivo.",
+    related: [
+      { name: 'Calcolo Quattordicesima', href: '/calcolo-quattordicesima/' },
+      { name: 'Guida Tredicesima e 14esima', href: '/guide/tredicesima-quattordicesima/' },
+    ],
+  },
+  {
+    term: 'Busta Paga (Cedolino)',
+    id: 'busta-paga',
+    definition: "Il documento mensile che il datore di lavoro consegna al dipendente con il dettaglio della retribuzione: competenze (paga base, contingenza, scatti, straordinari), trattenute (INPS, IRPEF, addizionali) e il netto risultante. La busta paga e' un documento obbligatorio e deve essere conservata per almeno 5 anni.",
+    related: [
+      { name: 'Calcolo Busta Paga', href: '/calcolo-busta-paga/' },
+      { name: 'Guida Busta Paga', href: '/guide/busta-paga-come-leggerla/' },
+    ],
+  },
+  {
+    term: 'CCNL (Contratto Collettivo Nazionale di Lavoro)',
+    id: 'ccnl',
+    definition: "L'accordo stipulato tra organizzazioni sindacali e associazioni datoriali che regola i rapporti di lavoro di un intero settore: retribuzione minima per livello, mensilita' aggiuntive, ferie, orario di lavoro, preavviso e tutele. I principali CCNL italiani includono Metalmeccanico (Federmeccanica), Commercio (Confcommercio), Pubblico Impiego, Bancario (ABI) e Chimico-Farmaceutico.",
+  },
+  {
+    term: 'Regime Forfettario',
+    id: 'regime-forfettario',
+    definition: "Regime fiscale agevolato per lavoratori autonomi e liberi professionisti con ricavi annui fino a 85.000 euro. Prevede un'imposta sostitutiva del 15% (ridotta al 5% per i primi 5 anni di attivita') calcolata su una percentuale forfettaria dei ricavi (coefficiente di redditivita'), che varia per attivita'. Esenta da IVA, IRAP e addizionali.",
+    related: [
+      { name: 'Calcolo Forfettari', href: '/calcolo-forfettari/' },
+      { name: 'Guida Regime Forfettario', href: '/guide/regime-forfettario-2026/' },
+    ],
+  },
+  {
+    term: 'Regime Impatriati',
+    id: 'regime-impatriati',
+    definition: "Agevolazione fiscale per lavoratori (dipendenti e autonomi) che trasferiscono la residenza fiscale in Italia, non avendo risieduto nel Paese nei 3 anni precedenti. Prevede un'esenzione del 50% del reddito imponibile (60% con figli minori o acquisto immobile) per 5 anni. Dal 2024, il reddito agevolabile e' limitato a 600.000 euro annui. Non e' cumulabile con il regime forfettario.",
+    related: [
+      { name: 'Calcolatore Impatriati', href: '/regime-impatriati-calcolatore/' },
+      { name: 'Guida Regime Impatriati', href: '/guide/regime-impatriati/' },
+    ],
+  },
+  {
+    term: 'Costo Aziendale',
+    id: 'costo-aziendale',
+    definition: "L'importo complessivo che l'azienda sostiene per un dipendente. Include la RAL, i contributi INPS a carico del datore (circa 30% della RAL), il TFR (circa 6,91%), l'INAIL, e gli eventuali fringe benefit. Il costo aziendale e' mediamente il 130-140% della RAL. Un dipendente con RAL 30.000 euro costa all'azienda circa 40.000-42.000 euro.",
+    related: [
+      { name: 'Calcolo Costo Aziendale', href: '/costo-aziendale/' },
+    ],
+  },
+  {
+    term: 'No-Tax Area',
+    id: 'no-tax-area',
+    definition: "La soglia di reddito al di sotto della quale il lavoratore non paga IRPEF, grazie alle detrazioni che azzerano l'imposta lorda. Per i lavoratori dipendenti e' fissata a 8.500 euro (8.500 x 23% = 1.955 euro, esattamente coperto dalla detrazione massima). Per i pensionati e' di 8.500 euro, per i lavoratori autonomi di 5.500 euro. Non e' una franchigia: superata la soglia, l'IRPEF si calcola su tutto il reddito.",
+  },
+  {
+    term: 'Assegno Unico Universale (AUU)',
+    id: 'assegno-unico',
+    definition: "Sostegno economico mensile erogato dall'INPS alle famiglie con figli a carico fino a 21 anni (senza limiti di eta' per figli con disabilita'). L'importo varia in base all'ISEE (da 57 a 199,40 euro per figlio minore nel 2026) e alla composizione familiare. Viene versato direttamente su conto corrente, non transita in busta paga. Ha sostituito le detrazioni per figli a carico sotto i 21 anni.",
+  },
+  {
+    term: 'ISEE (Indicatore della Situazione Economica Equivalente)',
+    id: 'isee',
+    definition: "L'indicatore che misura la condizione economica di un nucleo familiare, considerando redditi e patrimoni (mobiliare e immobiliare) di tutti i componenti. Si calcola rapportando l'ISE (somma di redditi e 20% del patrimonio) alla scala di equivalenza familiare. Serve per accedere a prestazioni sociali agevolate: bonus bollette, Assegno Unico, riduzioni universitarie, bonus affitto e altri.",
+    related: [
+      { name: 'Calcolo ISEE', href: '/calcolo-isee/' },
+    ],
+  },
+  {
+    term: 'NASpI (Nuova Assicurazione Sociale per l\'Impiego)',
+    id: 'naspi',
+    definition: "L'indennita' di disoccupazione erogata dall'INPS ai lavoratori dipendenti che perdono involontariamente il lavoro. L'importo e' pari al 75% della retribuzione media mensile per i primi 6 mesi (con un massimale di circa 1.550 euro nel 2026), poi si riduce del 3% al mese. La durata massima e' pari alla meta' delle settimane contributive degli ultimi 4 anni.",
+  },
+  {
+    term: 'Fondo Pensione Complementare',
+    id: 'fondo-pensione',
+    definition: "Strumento di previdenza integrativa che si affianca alla pensione pubblica INPS. I contributi sono deducibili fino a 5.164,57 euro/anno, generando un risparmio fiscale proporzionale all'aliquota marginale IRPEF. Il lavoratore puo' versare il TFR e contributi aggiuntivi. Il datore di lavoro aggiunge un contributo (tipicamente 1-2% della RAL) previsto dal CCNL. La tassazione alla prestazione e' agevolata (dal 15% al 9% in base agli anni di adesione).",
+  },
+  {
+    term: 'Buoni Pasto',
+    id: 'buoni-pasto',
+    definition: "Benefit aziendale per il pasto dei dipendenti, esentasse fino a 8 euro/giorno per i buoni elettronici (4 euro per quelli cartacei). Con 21 giorni lavorativi al mese, il valore netto annuo puo' raggiungere circa 2.000 euro. Sono completamente deducibili per l'azienda e non concorrono al reddito del lavoratore entro le soglie. Rappresentano uno dei benefit piu' efficienti dal punto di vista fiscale.",
+  },
+  {
+    term: 'Welfare Aziendale',
+    id: 'welfare-aziendale',
+    definition: "L'insieme dei beni e servizi erogati dall'azienda ai dipendenti in aggiunta alla retribuzione monetaria. Include: buoni pasto, assicurazione sanitaria integrativa, contributi al fondo pensione, buoni acquisto, rimborso spese istruzione figli, abbonamento trasporti. I benefit di welfare sono generalmente esenti da IRPEF e contributi INPS entro i limiti di legge, rendendoli piu' efficienti di un equivalente aumento di stipendio.",
+  },
+  {
+    term: 'Fringe Benefit',
+    id: 'fringe-benefit',
+    definition: "Compensi in natura (non monetari) concessi dal datore di lavoro: auto aziendale ad uso promiscuo, telefono aziendale, alloggio, polizze assicurative. Nel 2026, sono esenti da tassazione fino a 258,23 euro/anno di valore convenzionale (1.000 euro per i neoassunti che trasferiscono residenza, 2.000 euro per i dipendenti con figli a carico). Oltre la soglia, l'intero importo concorre al reddito.",
+  },
+  {
+    term: 'Conguaglio Fiscale',
+    id: 'conguaglio',
+    definition: "L'operazione di ricalcolo definitivo delle imposte dovute nell'anno, effettuata dal datore di lavoro nella busta paga di dicembre (o alla cessazione del rapporto). Confronta l'IRPEF effettivamente dovuta sull'anno con le ritenute gia' operate mensilmente. Se le ritenute sono state insufficienti, il conguaglio e' a debito (trattenuta aggiuntiva); se eccessive, e' a credito (rimborso). Il conguaglio puo' includere anche le addizionali regionali e comunali.",
+  },
+  {
+    term: 'Massimale Contributivo INPS',
+    id: 'massimale-contributivo',
+    definition: "Il tetto di retribuzione annua oltre il quale non si versano contributi previdenziali INPS. Nel 2026 e' fissato a circa 119.650 euro. Si applica ai lavoratori il cui primo contributo e' successivo al 1° gennaio 1996 (sistema contributivo puro). Oltre questo importo, la retribuzione non genera accantonamento pensionistico, creando un potenziale \"gap\" previdenziale per i redditi piu' alti.",
+    related: [
+      { name: 'Calcolo Pensione', href: '/calcolo-pensione/' },
+    ],
+  },
+  {
+    term: 'Detrazioni per Familiari a Carico',
+    id: 'detrazioni-familiari',
+    definition: "Riduzioni dell'IRPEF per il coniuge e i figli di eta' pari o superiore a 21 anni fiscalmente a carico (reddito annuo inferiore a 2.840,51 euro, o 4.000 euro per i figli fino a 24 anni). Per i figli sotto i 21 anni, le detrazioni sono state sostituite dall'Assegno Unico Universale (AUU). L'importo della detrazione per il coniuge e' massimo 800 euro/anno e decresce con il reddito.",
+    related: [
+      { name: 'Calcolo Detrazioni Familiari', href: '/calcolo-detrazioni-familiari/' },
+    ],
+  },
+  {
+    term: 'Periodo di Prova',
+    id: 'periodo-di-prova',
+    definition: "Il periodo iniziale del rapporto di lavoro durante il quale entrambe le parti possono recedere liberamente senza preavviso ne' indennita'. La durata e' stabilita dal CCNL e varia per livello e qualifica: tipicamente da 15 giorni (operai) a 6 mesi (dirigenti). Durante la prova si maturano regolarmente ferie, TFR e contributi. Il periodo di prova deve essere concordato per iscritto nel contratto.",
+  },
+  {
+    term: 'Preavviso',
+    id: 'preavviso',
+    definition: "Il periodo di tempo che deve intercorrere tra la comunicazione delle dimissioni (o del licenziamento) e la cessazione effettiva del rapporto di lavoro. La durata e' stabilita dal CCNL e varia per livello, anzianita' e qualifica (da 15 giorni a 4 mesi per i livelli piu' alti). Se non rispettato, la parte inadempiente deve corrispondere un'indennita' sostitutiva pari alla retribuzione del periodo di preavviso.",
+  },
+  {
+    term: 'Ferie e Permessi (ROL)',
+    id: 'ferie-permessi',
+    definition: "Le ferie sono il periodo di riposo retribuito spettante al lavoratore: minimo 4 settimane/anno per legge (26 giorni lavorativi nel CCNL Commercio). I ROL (Riduzione Orario di Lavoro) sono permessi retribuiti aggiuntivi previsti dai CCNL: 72 ore/anno nel Metalmeccanico, 56 ore nel Commercio. Le ferie non godute entro 18 mesi dalla maturazione sono soggette a contribuzione INPS (ma non possono essere monetizzate durante il rapporto).",
+    related: [
+      { name: 'Calcolo Ferie e Permessi', href: '/calcolo-ferie-permessi/' },
+    ],
+  },
+];
+
+const alphabet = [...new Set(terms.map(t => t.term.charAt(0).toUpperCase()))].sort();
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`${SITE.url}/glossario/`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">Glossario</span>
+        </li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">
+      Glossario Fiscale e del Lavoro
+    </h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+      Tutti i termini chiave del sistema fiscale e del lavoro in Italia, spiegati in modo semplice e con riferimenti ai calcolatori e alle guide di approfondimento.
+    </p>
+
+    <!-- Alphabet quick nav -->
+    <nav aria-label="Indice alfabetico" class="mb-10">
+      <div class="flex flex-wrap gap-2">
+        {alphabet.map((letter) => (
+          <a
+            href={`#lettera-${letter}`}
+            class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-brand hover:text-white transition-colors"
+          >
+            {letter}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <!-- Terms -->
+    <div class="space-y-6">
+      {alphabet.map((letter) => {
+        const letterTerms = terms.filter(t => t.term.charAt(0).toUpperCase() === letter);
+        return (
+          <section id={`lettera-${letter}`}>
+            <h2 class="text-xl font-bold text-brand mb-4 scroll-mt-20">{letter}</h2>
+            <div class="space-y-6">
+              {letterTerms.map((item) => (
+                <article id={item.id} class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 scroll-mt-20">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    {item.term}
+                  </h3>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {item.definition}
+                  </p>
+                  {item.related && item.related.length > 0 && (
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {item.related.map((link) => (
+                        <a
+                          href={link.href}
+                          class="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-brand/10 hover:text-brand transition-colors"
+                        >
+                          <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                          </svg>
+                          {link.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+
+    <!-- CTA -->
+    <section class="mt-16 mb-16 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 text-center">
+      <h2 class="text-2xl font-bold text-white">Calcola il tuo stipendio netto</h2>
+      <p class="mt-3 text-gray-300 max-w-xl mx-auto">
+        Ora che conosci i termini, metti in pratica: inserisci la tua RAL e scopri quanto ti resta in busta paga.
+      </p>
+      <a
+        href="/"
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors"
+      >
+        Calcola Stipendio Netto
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </section>
+  </div>
+</Layout>

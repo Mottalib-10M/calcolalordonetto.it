@@ -10,6 +10,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo Interesse Composto', url: `${SITE.url}/calcolo-interesse-composto/` },
 ];
+
+const faqs = [
+  { question: 'Qual e\' la differenza tra interesse semplice e composto?', answer: 'Con l\'interesse semplice, gli interessi vengono calcolati solo sul capitale iniziale. Con l\'interesse composto, gli interessi vengono calcolati anche sugli interessi gia\' maturati. Questa differenza diventa sempre piu\' significativa col passare del tempo, creando una crescita esponenziale invece che lineare.' },
+  { question: 'Cosa significa frequenza di capitalizzazione?', answer: 'La frequenza di capitalizzazione indica quante volte all\'anno gli interessi vengono calcolati e aggiunti al capitale. Con capitalizzazione mensile gli interessi vengono calcolati 12 volte all\'anno, con trimestrale 4 volte, e cosi\' via. A parita\' di tasso nominale, una frequenza piu\' alta produce un rendimento effettivo leggermente maggiore.' },
+  { question: 'Quanto tempo serve per raddoppiare il capitale?', answer: 'Puoi usare la "Regola del 72": dividi 72 per il tasso di interesse annuo per ottenere il numero approssimativo di anni necessari a raddoppiare il capitale. Ad esempio, con un rendimento del 7% annuo servono circa 72/7 = 10,3 anni. Con il 5% servono circa 14,4 anni.' },
+  { question: 'Perche\' conviene iniziare a investire presto?', answer: 'L\'interesse composto premia il tempo piu\' di qualsiasi altra variabile. Iniziare a investire 10 anni prima puo\' fare una differenza enorme sul capitale finale, anche con versamenti piu\' piccoli. La crescita esponenziale fa si\' che gli ultimi anni siano quelli in cui il capitale cresce di piu\' in termini assoluti.' },
+  { question: 'Il calcolo tiene conto delle tasse?', answer: 'Questo calcolatore mostra il rendimento lordo. In Italia, sui rendimenti finanziari si applica un\'imposta sostitutiva del 26% (12,5% per i titoli di Stato). Per un calcolo che include l\'impatto fiscale, usa il nostro calcolatore del Piano di Accumulo (PAC) che calcola automaticamente l\'imposta sul capital gain.' },
+  { question: 'Come influisce l\'inflazione sul rendimento reale?', answer: 'L\'inflazione erode il potere d\'acquisto del denaro nel tempo, riducendo il valore reale dei rendimenti ottenuti. Il rendimento reale si calcola sottraendo il tasso di inflazione dal rendimento nominale: ad esempio, un investimento che rende il 7% annuo con un\'inflazione del 2% offre un rendimento reale di circa il 5%. Questo significa che, sebbene il capitale cresca in termini nominali, il suo potere d\'acquisto effettivo aumenta a un ritmo inferiore. Per proteggere il capitale dall\'inflazione, e\' importante scegliere investimenti con rendimenti che superino costantemente il tasso di inflazione medio nel lungo periodo.' },
+  { question: 'Qual e\' la differenza tra tasso nominale e tasso effettivo?', answer: 'Il tasso nominale (TAN - Tasso Annuo Nominale) e\' il tasso di interesse dichiarato senza tenere conto della frequenza di capitalizzazione. Il tasso effettivo, invece, rappresenta il rendimento realmente ottenuto considerando l\'effetto della capitalizzazione infrannuale. Ad esempio, un TAN del 6% con capitalizzazione mensile produce un tasso effettivo annuo del 6,17%, perche\' gli interessi mensili vengono reinvestiti e generano a loro volta interessi. La formula per calcolare il tasso effettivo e\': (1 + r/n)n - 1, dove r e\' il tasso nominale e n il numero di capitalizzazioni annue. Maggiore e\' la frequenza di capitalizzazione, maggiore sara\' la differenza tra tasso nominale e tasso effettivo.' },
+  { question: 'L\'interesse composto funziona anche con i debiti?', answer: 'Si\', l\'interesse composto si applica anche ai debiti, e in questo caso lavora contro il debitore. Nei mutui, nei prestiti personali e soprattutto nel credito revolving delle carte di credito, gli interessi non pagati vengono capitalizzati e aggiunti al debito residuo, generando interessi su interessi. Questo e\' il motivo per cui il debito su carte di credito puo\' crescere molto rapidamente se non viene saldato per intero ogni mese. Per i mutui a tasso fisso, l\'ammortamento alla francese prevede rate costanti in cui la quota interessi diminuisce progressivamente, ma il costo totale degli interessi sul lungo periodo resta significativo: su un mutuo trentennale si possono pagare interessi complessivi pari o superiori al capitale inizialmente preso in prestito.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +28,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Interesse Composto"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

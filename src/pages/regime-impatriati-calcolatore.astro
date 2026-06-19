@@ -12,6 +12,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Regime Impatriati', url: canonical },
 ];
+
+const faqs = [
+  { question: 'Quanto posso risparmiare con il regime impatriati?', answer: 'Il risparmio dipende dalla RAL e dalla tua aliquota marginale. Con una RAL di 50.000 euro puoi risparmiare indicativamente tra 5.000 e 8.000 euro all\'anno di IRPEF. Redditi piu\' alti beneficiano di un risparmio assoluto maggiore perche\' le aliquote marginali sono piu\' elevate. Usa il calcolatore qui sopra per ottenere la stima precisa per la tua situazione.' },
+  { question: 'Per quanti anni posso usufruire del regime impatriati?', answer: 'Il regime impatriati nella sua formulazione attuale ha una durata base di cinque anni. In passato esistevano estensioni fino a dieci anni per chi acquistava un immobile residenziale o aveva figli minorenni, ma le regole sono cambiate nel tempo. Verifica sempre la normativa aggiornata o consulta un commercialista per confermare la durata applicabile al tuo caso.' },
+  { question: 'I contributi INPS cambiano con il regime impatriati?', answer: 'No, i contributi previdenziali INPS vengono calcolati sull\'intera retribuzione lorda, senza alcuna riduzione. L\'agevolazione del regime impatriati si applica esclusivamente all\'IRPEF e alle addizionali regionali e comunali. Quindi il risparmio riguarda solo la componente fiscale, non quella contributiva.' },
+  { question: 'Devo comunicare qualcosa al datore di lavoro?', answer: 'Si\'. Per applicare il beneficio direttamente in busta paga, devi presentare al datore di lavoro una richiesta scritta con autocertificazione dei requisiti. In alternativa, puoi recuperare il beneficio in sede di dichiarazione dei redditi (730 o Modello Redditi). Il consiglio e\' di informare subito il datore cosi\' da beneficiare dell\'agevolazione mese per mese.' },
+  { question: 'Il regime impatriati e\' cumulabile con altre agevolazioni?', answer: 'In linea di principio, il regime impatriati non e\' cumulabile con altri regimi agevolativi (come il regime forfettario). Tuttavia, puo\' coesistere con le detrazioni ordinarie per lavoro dipendente e con il trattamento integrativo (ex bonus Renzi), calcolati sulla quota imponibile ridotta. Per situazioni specifiche, consulta sempre un professionista.' },
+  { question: 'Il regime impatriati si applica anche ai lavoratori autonomi e freelance?', answer: 'Si\', il regime impatriati si applica sia ai redditi da lavoro dipendente sia ai redditi da lavoro autonomo. I professionisti con partita IVA in regime ordinario possono beneficiare dell\'esenzione del 50% sul reddito di lavoro autonomo, applicando l\'IRPEF solo sulla meta\' del reddito imponibile. E\' importante notare che il regime impatriati non e\' compatibile con il regime forfettario: chi sceglie il forfettario non puo\' contemporaneamente applicare l\'agevolazione per impatriati, perche\' il forfettario prevede gia\' un\'imposta sostitutiva che sostituisce l\'IRPEF. I lavoratori autonomi che rientrano in Italia devono quindi valutare attentamente quale regime sia piu\' conveniente per la loro situazione specifica, confrontando il carico fiscale complessivo delle due opzioni.' },
+  { question: 'Cosa succede se lascio l\'Italia prima dei 4 anni di permanenza obbligatoria?', answer: 'Se trasferisci la residenza fiscale fuori dall\'Italia prima di aver completato il periodo minimo di quattro anni, decadi dall\'agevolazione con effetto retroattivo. Questo significa che dovrai restituire all\'Erario tutte le imposte non versate grazie al regime agevolato, cioe\' la differenza tra quanto avresti pagato con la tassazione ordinaria e quanto hai effettivamente versato. Alla somma dovuta si aggiungono gli interessi legali maturati e le sanzioni previste per l\'insufficiente versamento di imposta. L\'Agenzia delle Entrate puo\' procedere con l\'accertamento entro i termini ordinari di decadenza. E\' quindi fondamentale essere certi della propria intenzione di rimanere in Italia per almeno quattro anni prima di aderire al regime, per evitare conseguenze economiche molto onerose.' },
+  { question: 'Come funziona il regime impatriati per chi ha doppia cittadinanza?', answer: 'La doppia cittadinanza di per se\' non preclude l\'accesso al regime impatriati. Il requisito fondamentale e\' la residenza fiscale, non la cittadinanza. Un cittadino italiano con doppia cittadinanza che ha vissuto all\'estero per almeno tre periodi d\'imposta (o sei/sette se era precedentemente residente in Italia) puo\' accedere al regime al momento del rientro, alle stesse condizioni di qualsiasi altro contribuente. Analogamente, un cittadino straniero che si trasferisce in Italia per la prima volta puo\' beneficiare del regime se non e\' stato residente fiscalmente in Italia nei periodi precedenti. Il criterio determinante e\' sempre la residenza fiscale effettiva, che in Italia si basa sull\'iscrizione anagrafica, sul domicilio civilistico o sulla residenza ai sensi del codice civile per la maggior parte del periodo d\'imposta (183 giorni).' },
+];
 ---
 
 <CalcolatoreLayout
@@ -20,6 +31,8 @@ const breadcrumbs = [
   calculatorName="Calcolatore Regime Impatriati"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
+
+  faqs={faqs}
 >
   <RegimeImpatriati client:load />
 

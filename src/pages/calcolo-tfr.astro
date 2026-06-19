@@ -12,6 +12,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo TFR', url: canonical },
 ];
+
+const faqs = [
+  { question: 'Quanto TFR maturo ogni anno?', answer: 'Ogni anno maturi circa il 6,91% della tua retribuzione annua lorda (RAL diviso 13,5). Con una RAL di 30.000 euro, ad esempio, il TFR annuo e\' circa 2.222 euro lordi. A questo va sottratto il contributo dello 0,50% della retribuzione destinato al fondo adeguamento pensioni, quindi il netto accantonato e\' leggermente inferiore.' },
+  { question: 'Meglio lasciare il TFR in azienda o destinarlo a un fondo pensione?', answer: 'Dipende da diversi fattori. Il fondo pensione offre generalmente un vantaggio fiscale superiore: la tassazione finale e\' con aliquota dal 15% al 9% (invece della tassazione separata), e i contributi versati sono deducibili fino a 5.164,57 euro annui. In compenso, il TFR in azienda e\' piu\' liquido in caso di necessita\' (puoi richiedere anticipazioni dopo 8 anni). Valuta con attenzione in base alla tua situazione personale.' },
+  { question: 'Posso chiedere un anticipo del TFR?', answer: 'Si\', dopo almeno 8 anni di servizio presso lo stesso datore di lavoro puoi richiedere un anticipo fino al 70% del TFR maturato. Le motivazioni previste dalla legge sono: acquisto della prima casa per se\' o per i figli, spese sanitarie straordinarie, o congedo parentale. Alcuni CCNL prevedono la possibilita\' di anticipo anche per altri motivi. L\'anticipo puo\' essere richiesto una sola volta durante il rapporto di lavoro.' },
+  { question: 'Come viene tassato il TFR alla liquidazione?', answer: 'Il TFR e\' soggetto a tassazione separata. Si calcola il "reddito di riferimento" dividendo il TFR maturato per gli anni di servizio e moltiplicando per 12. Su questo reddito si applica l\'IRPEF per ottenere l\'aliquota media, che viene poi applicata all\'intero TFR. Questo meccanismo e\' generalmente piu\' vantaggioso rispetto alla tassazione ordinaria, soprattutto per rapporti di lavoro di lunga durata.' },
+  { question: 'Il TFR e\' compreso nella RAL?', answer: 'No, il TFR non e\' incluso nella RAL (Retribuzione Annua Lorda). La RAL comprende lo stipendio base piu\' le mensilita\' aggiuntive (tredicesima e eventuale quattordicesima). Il TFR e\' un costo aggiuntivo a carico del datore di lavoro, pari a circa il 6,91% della RAL, che si somma al costo azienda complessivo insieme ai contributi INPS a carico dell\'azienda.' },
+  { question: 'Come funziona la rivalutazione del TFR in dettaglio?', answer: 'La rivalutazione del TFR lasciato in azienda e\' composta da due elementi: una quota fissa dell\'1,5% annuo e una quota variabile pari al 75% dell\'aumento dell\'indice ISTAT dei prezzi al consumo per le famiglie di operai e impiegati (indice FOI). Ad esempio, se l\'inflazione annua e\' del 2%, la rivalutazione totale sara\' pari al 3% (1,5% + 75% di 2%). Sulla rivalutazione maturata ogni anno il datore di lavoro trattiene un\'imposta sostitutiva del 17%, che viene versata direttamente all\'Erario. Questo significa che la rivalutazione netta effettiva e\' inferiore a quella lorda. Nei periodi di deflazione (indice ISTAT negativo), la componente variabile puo\' diventare negativa, ma la rivalutazione complessiva non puo\' mai scendere sotto l\'1,5% annuo.' },
+  { question: 'Cosa succede al TFR se l\'azienda fallisce?', answer: 'In caso di fallimento o insolvenza del datore di lavoro, il TFR dei dipendenti e\' tutelato dal Fondo di Garanzia gestito dall\'INPS, istituito dalla legge n. 297/1982. Il lavoratore deve prima insinuarsi nel passivo fallimentare e ottenere l\'ammissione del credito per TFR. Una volta accertata l\'insolvenza del datore di lavoro, il lavoratore puo\' presentare domanda all\'INPS che provvede al pagamento del TFR maturato e non corrisposto, comprensivo della rivalutazione. Il Fondo di Garanzia copre l\'intero importo del TFR dovuto, senza limiti di importo. Se il TFR era stato destinato a un fondo pensione, il problema non si pone: le somme gia\' versate al fondo sono di proprieta\' del lavoratore e restano al sicuro nel patrimonio separato del fondo, indipendentemente dalle sorti dell\'azienda.' },
+  { question: 'Conviene chiedere l\'anticipo del TFR o un prestito?', answer: 'La scelta tra anticipo del TFR e prestito personale dipende da diversi fattori. L\'anticipo del TFR ha il vantaggio di non comportare il pagamento di interessi, ma presenta alcuni svantaggi: riduce il montante finale che riceverai alla cessazione del rapporto di lavoro, puo\' essere richiesto una sola volta, e la tassazione sull\'anticipo e\' a tassazione separata (con aliquota minima del 23%). Un prestito personale, d\'altra parte, comporta il pagamento di interessi ma non intacca il TFR che continua a rivalutarsi in azienda. In generale, se il tasso del prestito e\' contenuto e il rapporto di lavoro proseguira\' per molti anni, potrebbe essere piu\' conveniente mantenere il TFR intatto e accendere un prestito. Viceversa, se il tasso del prestito e\' elevato o si prevede di cambiare lavoro a breve, l\'anticipo del TFR potrebbe risultare la scelta migliore.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -20,6 +31,8 @@ const breadcrumbs = [
   calculatorName="Calcolatore TFR"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
+
+  faqs={faqs}
 >
   <TFR client:load />
 

@@ -10,6 +10,15 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Detrazioni Familiari', url: `${SITE.url}/calcolo-detrazioni-familiari/` },
 ];
+
+const faqs = [
+  { question: 'I figli sotto i 21 anni hanno ancora le detrazioni IRPEF?', answer: 'No. Dal 1&deg; marzo 2022, le detrazioni IRPEF per figli a carico si applicano solo ai figli che hanno compiuto 21 anni. Per i figli minorenni e quelli tra 18 e 20 anni, il sostegno economico e\' erogato tramite l\'Assegno Unico Universale (AUU), un trasferimento monetario mensile dell\'INPS il cui importo dipende dall\'ISEE del nucleo familiare. L\'AUU va richiesto separatamente all\'INPS.' },
+  { question: 'Conviene attribuire il 100% della detrazione figli a un solo genitore?', answer: 'Dipende dalla situazione specifica. Se entrambi i genitori hanno redditi sufficienti per sfruttare appieno le detrazioni, la ripartizione al 50% e\' generalmente equivalente. Tuttavia, se un genitore ha un reddito molto basso (con poca capienza IRPEF), attribuire il 100% al genitore con reddito piu\' alto puo\' essere vantaggioso, poiche\' evita di "perdere" la parte di detrazione non utilizzabile. La scelta va comunicata al datore di lavoro e deve essere concordata tra i genitori.' },
+  { question: 'Il coniuge convivente (non sposato) da diritto alla detrazione?', answer: 'La detrazione per il coniuge a carico spetta solo al coniuge legalmente sposato o alla parte dell\'unione civile (Legge 76/2016). Il convivente di fatto (non unito civilmente) non ha diritto alla detrazione per coniuge, anche se convive e ha un reddito sotto la soglia. Questo e\' uno dei motivi per cui le coppie conviventi con redditi asimmetrici possono valutare il matrimonio o l\'unione civile anche sotto il profilo fiscale.' },
+  { question: 'Cosa succede se il coniuge supera la soglia di reddito durante l\'anno?', answer: 'Se il coniuge supera la soglia di 2.840,51 &euro; di reddito annuo, la detrazione non spetta per l\'intero anno (non si fraziona per mesi). Il contribuente deve comunicare tempestivamente la variazione al datore di lavoro per interrompere l\'applicazione della detrazione in busta paga. Se la detrazione e\' stata gia\' fruita, l\'importo dovra\' essere restituito in sede di conguaglio di fine anno o nella dichiarazione dei redditi. Per evitare conguagli pesanti, e\' consigliabile stimare il reddito annuo del coniuge con ragionevole anticipo.' },
+  { question: 'Le detrazioni familiari si applicano anche ai lavoratori autonomi?', answer: 'Le detrazioni per familiari a carico si applicano a tutti i contribuenti soggetti a IRPEF, compresi i lavoratori autonomi con regime ordinario. Tuttavia, chi opera in regime forfettario paga un\'imposta sostitutiva e non l\'IRPEF, quindi non puo\' beneficiare delle detrazioni per familiari a carico (ne\' di nessun\'altra detrazione IRPEF). Questo e\' un aspetto importante da considerare nella scelta del regime fiscale, soprattutto per chi ha familiari a carico. In regime forfettario, le detrazioni non fruite dal contribuente possono comunque essere fruite dall\'altro genitore (se lavoratore dipendente o autonomo in regime ordinario).' },
+  { question: 'Come si dichiarano i familiari a carico nel 730?', answer: 'Nel modello 730, i familiari a carico vanno indicati nel Prospetto dei familiari a carico (sezione iniziale del modello), specificando per ciascuno: codice fiscale, tipo di parentela (C per coniuge, F per figlio, A per altro familiare), numero di mesi a carico, percentuale di detrazione spettante (50% o 100% per i figli). Il modello 730 precompilato disponibile sul sito dell\'Agenzia delle Entrate contiene gia\' molte informazioni precaricate, ma e\' responsabilita\' del contribuente verificare la correttezza dei dati e aggiornare eventuali variazioni intervenute nell\'anno. Le detrazioni gia\' fruite in busta paga vengono automaticamente conguagliate.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +26,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Detrazioni Familiari"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

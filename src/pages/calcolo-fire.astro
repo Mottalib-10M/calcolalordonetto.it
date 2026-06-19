@@ -10,6 +10,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo FIRE', url: `${SITE.url}/calcolo-fire/` },
 ];
+
+const faqs = [
+  { question: 'Cos\'e\' il FIRE number e come si calcola?', answer: 'Il FIRE number e\' il patrimonio necessario per vivere di rendita senza lavorare. Si calcola dividendo le spese annue per il tasso di prelievo sicuro (Safe Withdrawal Rate). Con la regola del 4%, il FIRE number e\' pari a 25 volte le spese annue. Ad esempio, con spese di 2.000 &euro;/mese (24.000 &euro;/anno), il FIRE number e\' 600.000 &euro;.' },
+  { question: 'La regola del 4% funziona anche in Italia?', answer: 'La regola del 4% e\' basata sui dati del mercato statunitense, storicamente tra i piu\' performanti. Per l\'Italia, la tassazione piu\' alta (26% vs ~15% negli USA) e i rendimenti storicamente inferiori del mercato europeo suggeriscono di usare un tasso piu\' conservativo del 3-3,5%. Tuttavia, investendo in un portafoglio globale diversificato (ad esempio un ETF MSCI World), ci si avvicina ai rendimenti del mercato globale. Il vantaggio italiano e\' il SSN, che riduce significativamente i costi sanitari rispetto agli USA.' },
+  { question: 'Quanto devo risparmiare al mese per raggiungere il FIRE?', answer: 'Non esiste un importo fisso: dipende dalle tue spese, dal patrimonio attuale e dal rendimento degli investimenti. La metrica chiave e\' il savings rate. Con un savings rate del 50%, puoi raggiungere il FIRE in circa 17 anni. Con il 30%, servono circa 28 anni. L\'importante e\' massimizzare il divario tra entrate e uscite, sia aumentando il reddito che riducendo le spese. Usa il calcolatore qui sopra per simulare il tuo scenario specifico.' },
+  { question: 'Che differenza c\'e\' tra Lean FIRE, Fat FIRE e Barista FIRE?', answer: 'Il Lean FIRE prevede uno stile di vita frugale (sotto 1.500 &euro;/mese in Italia) con un FIRE number basso. Il Fat FIRE punta a un tenore di vita elevato (oltre 4.000 &euro;/mese) richiedendo patrimoni importanti. Il Barista FIRE e\' una via di mezzo pratica: si accumula un patrimonio che copre la maggior parte delle spese, integrando con un lavoro part-time o un\'attivita\' flessibile. Il Coast FIRE consiste nell\'accumulare abbastanza in giovane eta\' da lasciare che l\'interesse composto faccia il resto fino all\'eta\' pensionabile.' },
+  { question: 'Come viene tassato il prelievo dal portafoglio in Italia?', answer: 'In Italia il prelievo dal portafoglio e\' soggetto all\'imposta sostitutiva del 26% sul capital gain (la plusvalenza realizzata). Questa imposta si paga solo sulla differenza tra il prezzo di vendita e il prezzo di acquisto, non sull\'intero importo venduto. Per i titoli di Stato l\'aliquota e\' del 12,5%. Si paga inoltre l\'imposta di bollo dello 0,2% annuo sul controvalore totale del portafoglio. Il regime del risparmio amministrato gestisce automaticamente queste imposte tramite il broker.' },
+  { question: 'E\' realistico raggiungere il FIRE con uno stipendio italiano medio?', answer: 'Con lo stipendio netto medio italiano di circa 1.600-1.800 &euro;/mese, il FIRE tradizionale (smettere completamente di lavorare a 40-50 anni) e\' molto difficile, perche\' il margine di risparmio e\' limitato. Tuttavia, il Barista FIRE o il Coast FIRE sono piu\' raggiungibili. Strategie per accelerare: aumentare il reddito (carriera, cambio lavoro, secondo reddito), ridurre le spese fisse (trasferirsi in citta\' meno costose, eliminare l\'auto se possibile), e investire in modo efficiente con ETF a basso costo. Il costo della vita piu\' basso al Sud Italia puo\' rendere il FIRE piu\' accessibile rispetto a Milano o Roma.' },
+  { question: 'Cosa succede alla pensione INPS se smetto di lavorare prima?', answer: 'Se smetti di lavorare e versare contributi, il montante contributivo accumulato fino a quel momento continuera\' a essere rivalutato annualmente (in base alla media mobile del PIL), ma non crescera\' con nuovi versamenti. La pensione risultante sara\' significativamente inferiore. Per accedere alla pensione di vecchiaia servono comunque almeno 20 anni di contributi. Chi raggiunge il FIRE dovrebbe considerare di versare contributi volontari INPS (circa 5.000-8.000 &euro;/anno) per non perdere la copertura pensionistica, oppure destinare una parte del patrimonio a un fondo pensione complementare.' },
+  { question: 'Dove conviene investire per il FIRE in Italia?', answer: 'La strategia piu\' efficiente per il FIRE in Italia e\' un portafoglio diversificato di ETF a basso costo. La base puo\' essere un ETF azionario globale (MSCI World o FTSE All-World, TER 0,1-0,2%), affiancato da ETF obbligazionari governativi europei per la stabilita\' (con tassazione agevolata al 12,5%). Per la liquidita\' a breve termine, conti deposito e BOT. Il tutto acquistabile tramite broker italiani (Directa, Fineco) o europei (Degiro, Interactive Brokers). Evita fondi attivi con TER elevati e prodotti assicurativi-finanziari (unit-linked) che hanno costi nascosti molto alti.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +28,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo FIRE - Indipendenza Finanziaria"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

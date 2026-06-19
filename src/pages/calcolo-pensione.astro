@@ -10,6 +10,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo Pensione INPS', url: `${SITE.url}/calcolo-pensione/` },
 ];
+
+const faqs = [
+  { question: 'Come si calcola la pensione con il sistema contributivo?', answer: 'Il calcolo si basa su tre elementi: (1) il montante contributivo, dato dalla somma dei contributi versati (33% della RAL per i dipendenti) rivalutati annualmente in base alla crescita del PIL; (2) il coefficiente di trasformazione, che dipende dall\'eta\' al pensionamento; (3) la pensione lorda annua = montante &times; coefficiente. La pensione netta si ottiene sottraendo IRPEF e addizionali, tenendo conto delle detrazioni per pensionati.' },
+  { question: 'Quanto prendero\' di pensione rispetto allo stipendio?', answer: 'Il tasso di sostituzione (pensione netta / ultimo stipendio netto) per un lavoratore dipendente nel sistema contributivo puro si aggira intorno al 55-65% con una carriera continua. Questo significa che la pensione coprira\' circa il 60% del tenore di vita da lavoratore. Per i lavoratori autonomi il tasso e\' ancora piu\' basso (35-45%) a causa dell\'aliquota contributiva inferiore. Per questo e\' fondamentale integrare con un fondo pensione complementare.' },
+  { question: 'Cosa sono i coefficienti di trasformazione?', answer: 'I coefficienti di trasformazione convertono il montante contributivo accumulato in una rendita annua. Sono calcolati dal MEF in base all\'aspettativa di vita e vengono aggiornati ogni due anni. Piu\' alta e\' l\'eta\' al pensionamento, piu\' alto e\' il coefficiente: a 57 anni e\' il 4,270%, a 67 anni il 5,931%, a 71 anni il 6,938%. Questo perche\' chi va in pensione piu\' tardi percepira\' la rendita per meno anni, quindi ogni rata e\' piu\' alta. I coefficienti tendono a diminuire nel tempo con l\'aumento dell\'aspettativa di vita.' },
+  { question: 'Conviene aderire a un fondo pensione complementare?', answer: 'Nella grande maggioranza dei casi, si\'. I vantaggi sono molteplici: deducibilita\' fino a 5.164 &euro;/anno (risparmio IRPEF dal 23% al 43%), contributo aggiuntivo del datore di lavoro (per i fondi negoziali), tassazione agevolata sui rendimenti (20% vs 26%) e sulle prestazioni (dal 9% al 15% vs aliquote IRPEF ordinarie). Non aderire al fondo negoziale di categoria significa rinunciare al contributo del datore, che e\' di fatto retribuzione perduta. Il fondo pensione e\' particolarmente importante per chi e\' nel sistema contributivo puro, dove il tasso di sostituzione della pensione pubblica e\' basso.' },
+  { question: 'Dove posso trovare il mio montante contributivo reale?', answer: 'Puoi consultare il tuo estratto conto contributivo e il montante accumulato attraverso il servizio "La mia pensione futura" sul portale INPS (inps.it), accessibile con SPID, CIE o CNS. Il servizio mostra i contributi versati, il montante rivalutato, e fornisce una stima della pensione futura basata su diverse ipotesi di carriera. E\' il dato piu\' affidabile per verificare la tua situazione previdenziale reale.' },
+  { question: 'Quando posso andare in pensione anticipata?', answer: 'La pensione anticipata ordinaria richiede 42 anni e 10 mesi di contributi per gli uomini e 41 anni e 10 mesi per le donne, indipendentemente dall\'eta\'. Chi ha iniziato a lavorare a 20 anni puo\' teoricamente andare in pensione anticipata intorno ai 63 anni. Esistono anche canali specifici come Quota 103 (62+41 anni), Opzione Donna (per lavoratrici con requisiti specifici) e APE Sociale (per lavoratori in condizioni di difficolta\'). Ogni canale ha requisiti e penalizzazioni diversi, quindi e\' consigliabile consultare un patronato o il sito INPS per valutare la propria situazione specifica.' },
+  { question: 'Come vengono tassate le pensioni?', answer: 'Le pensioni INPS sono soggette a IRPEF con le stesse aliquote dei redditi da lavoro dipendente (23% fino a 28.000 &euro;, 35% da 28.001 a 50.000 &euro;, 43% oltre 50.000 &euro;). I pensionati beneficiano di detrazioni specifiche (diverse da quelle per lavoratori dipendenti) che riducono l\'imposta effettiva. Si applicano anche le addizionali regionali e comunali. Le pensioni sono erogate su 13 mensilita\' (la tredicesima arriva a dicembre). Le pensioni basse (sotto circa 8.500 &euro;/anno) non pagano IRPEF grazie alle detrazioni.' },
+  { question: 'Quanto e\' accurata la stima di questo simulatore?', answer: 'Questo simulatore fornisce una stima indicativa basata su ipotesi semplificative: crescita costante della RAL, tasso di rivalutazione PIL fisso all\'1,5%, coefficienti di trasformazione attuali (che verranno aggiornati in futuro). La realta\' sara\' diversa perche\' la RAL non cresce linearmente, il PIL varia di anno in anno, i coefficienti cambiano con l\'aspettativa di vita, e le regole previdenziali possono essere modificate. Per una stima ufficiale, utilizza il servizio "La mia pensione futura" su inps.it, che si basa sui dati reali del tuo estratto conto contributivo.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +28,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Pensione INPS - Simulatore Contributivo"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

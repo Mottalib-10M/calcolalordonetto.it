@@ -12,6 +12,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Comparatore Regioni', url: canonical },
 ];
+
+const faqs = [
+  { question: 'Quanto puo\' cambiare il netto tra una regione e l\'altra?', answer: 'Per una RAL di 35.000 euro, la differenza tra la regione piu\' cara (tipicamente Lazio o Campania) e quella piu\' economica (Friuli-Venezia Giulia o province autonome) puo\' arrivare a circa 30-50 euro al mese, ovvero 400-650 euro l\'anno. Per redditi piu\' alti la forbice si allarga ulteriormente.' },
+  { question: 'Conta la regione dove lavoro o dove risiedo?', answer: 'L\'addizionale regionale e comunale si pagano nella regione e nel comune di residenza al 1 gennaio dell\'anno di riferimento. Se lavori a Milano ma risiedi nel Lazio, pagherai le addizionali del Lazio. Questo e\' un aspetto importante per chi considera di trasferirsi.' },
+  { question: 'Le addizionali regionali sono progressive come l\'IRPEF?', answer: 'Dipende dalla regione. Alcune (come Veneto, Sardegna, Liguria) applicano un\'aliquota unica flat. Altre (come Lombardia, Lazio, Campania, Emilia-Romagna) utilizzano un sistema a scaglioni progressivi dove l\'aliquota aumenta al crescere del reddito. Il nostro calcolatore tiene conto del sistema specifico di ciascuna regione.' },
+  { question: 'Perche\' il Friuli-Venezia Giulia ha le addizionali piu\' basse?', answer: 'Il Friuli-Venezia Giulia e\' una regione a statuto speciale con ampia autonomia fiscale. Per i redditi fino a 15.000 euro applica un\'aliquota ridotta dello 0,70%, tra le piu\' basse d\'Italia. Anche le province autonome di Trento e Bolzano beneficiano di condizioni simili grazie alla loro autonomia fiscale.' },
+  { question: 'L\'addizionale comunale e\' inclusa nel confronto?', answer: 'Si\', l\'addizionale comunale e\' inclusa nel calcolo del netto usando l\'aliquota media nazionale dello 0,8%. Poiche\' l\'addizionale comunale varia da comune a comune (e non da regione a regione), viene tenuta costante per garantire un confronto equo tra regioni. Per un calcolo preciso con la tua aliquota comunale, usa il calcolatore dello stipendio netto.' },
+  { question: 'Cambiare residenza per pagare meno tasse conviene davvero?', answer: 'Dal punto di vista puramente fiscale delle addizionali regionali, il risparmio per un reddito medio (RAL 35.000 euro) si aggira tra i 300 e i 600 euro annui, una cifra che raramente giustifica un trasferimento. Tuttavia, ci sono diversi aspetti da considerare. Primo: il risparmio aumenta significativamente per i redditi alti (oltre 50.000-60.000 euro), dove la differenza puo\' superare i 1.000 euro all\'anno. Secondo: la residenza influisce anche sull\'addizionale comunale, che puo\' variare dallo 0% allo 0,9% a seconda del comune. Terzo: bisogna considerare il costo della vita complessivo (affitti, servizi, trasporti) che varia enormemente tra le diverse aree d\'Italia e puo\' annullare o amplificare il vantaggio fiscale. In sintesi, cambiare residenza solo per le addizionali conviene principalmente a chi ha redditi elevati e puo\' lavorare in remoto, mentre per la maggior parte dei lavoratori il beneficio fiscale e\' troppo modesto per giustificare un cambiamento di vita cosi\' significativo.' },
+  { question: 'Le addizionali regionali cambiano ogni anno?', answer: 'Le aliquote delle addizionali regionali possono essere modificate ogni anno dalle singole regioni tramite legge regionale, ma nella pratica i cambiamenti sono poco frequenti. La maggior parte delle regioni mantiene le stesse aliquote per diversi anni consecutivi. Le variazioni piu\' significative avvengono quando una regione entra o esce da un piano di rientro del debito sanitario (come nel caso di Lazio e Campania), il che puo\' comportare aumenti obbligatori delle aliquote. Le regioni a statuto speciale e le province autonome tendono ad avere la maggiore stabilita\', grazie alla loro autonomia finanziaria che le rende meno esposte a pressioni di bilancio. Il nostro calcolatore viene aggiornato all\'inizio di ogni anno fiscale con le aliquote in vigore, verificate sulle delibere regionali pubblicate sul sito del Dipartimento delle Finanze del MEF.' },
+  { question: 'Come vengono calcolate le addizionali per chi cambia regione durante l\'anno?', answer: 'La regola e\' semplice ma spesso fraintesa: l\'addizionale regionale si paga interamente nella regione in cui si ha la residenza al 1 gennaio dell\'anno di imposta. Non esiste un riparto proporzionale ai mesi trascorsi in ciascuna regione. Se il 1 gennaio 2026 risiedi in Campania e a marzo ti trasferisci in Veneto, per tutto il 2026 pagherai l\'addizionale regionale della Campania (la piu\' cara). Il trasferimento avra\' effetto fiscale solo dall\'anno successivo (2027), quando pagherai l\'addizionale del Veneto. Per questo motivo, chi pianifica un trasferimento per motivi fiscali dovrebbe farlo entro il 31 dicembre dell\'anno precedente, in modo da risultare residente nella nuova regione gia\' al 1 gennaio. L\'addizionale comunale segue la stessa regola, con riferimento al domicilio fiscale al 1 gennaio.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -20,6 +31,8 @@ const breadcrumbs = [
   calculatorName="Comparatore Stipendio Netto per Regione"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
+
+  faqs={faqs}
 >
   <ComparatoreRegioni client:load />
 

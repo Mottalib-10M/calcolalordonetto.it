@@ -10,6 +10,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo Piano di Accumulo', url: `${SITE.url}/calcolo-piano-accumulo/` },
 ];
+
+const faqs = [
+  { question: 'Cos\'e un PAC e come funziona?', answer: 'Il Piano di Accumulo Capitale (PAC) e\' una strategia di investimento che prevede versamenti periodici costanti (tipicamente mensili) in un fondo comune o un ETF. Grazie al "dollar cost averaging", compri piu\' quote quando i prezzi sono bassi e meno quando sono alti, mediando il prezzo di acquisto nel tempo e riducendo il rischio di mercato.' },
+  { question: 'Quanto si paga di tasse sul rendimento?', answer: 'In Italia si applica un\'imposta sostitutiva del 26% sui capital gain (la differenza tra capitale finale e totale versato). Per i fondi che investono in titoli di Stato italiani o europei, una parte del rendimento puo\' essere tassata al 12,5%. L\'imposta viene applicata al momento del riscatto o della vendita delle quote.' },
+  { question: 'Cosa sono il costo di ingresso e il TER?', answer: 'Il costo di ingresso e\' una commissione applicata su ogni versamento (puo\' variare dallo 0% al 3-5% per i fondi attivi). Il TER (Total Expense Ratio) e il costo annuo di gestione del fondo, che riduce il rendimento effettivo. Gli ETF hanno generalmente TER molto bassi (0,1-0,5%), mentre i fondi attivi possono arrivare all\'1,5-2,5%.' },
+  { question: 'Quale rendimento atteso e\' realistico?', answer: 'Storicamente, un portafoglio azionario globale diversificato ha reso in media il 7-8% annuo lordo nel lungo periodo (20+ anni). Un portafoglio bilanciato (azioni + obbligazioni) rende tipicamente il 4-6%. Ricorda che i rendimenti passati non garantiscono quelli futuri e che la volatilita a breve termine puo\' essere significativa.' },
+  { question: 'Posso sospendere o modificare il versamento?', answer: 'Si, nella maggior parte dei casi puoi sospendere, ridurre o aumentare i versamenti del PAC senza penali. La flessibilita\' dipende dal tipo di prodotto scelto. Con gli ETF acquistati tramite broker online hai la massima liberta\', mentre i PAC bancari su fondi comuni possono avere vincoli contrattuali specifici.' },
+  { question: 'Quanto dovrei investire mensilmente in un PAC?', answer: 'Non esiste un importo universale: l\'ideale e\' investire una somma che sia sostenibile nel lungo periodo senza intaccare il fondo di emergenza (3-6 mesi di spese). Una regola comune e\' destinare al PAC il 10-20% del reddito netto mensile dopo aver coperto le spese essenziali. Molti broker online consentono di partire da importi minimi di 25-50 euro al mese, quindi anche piccole somme possono avviare un percorso di accumulo efficace grazie all\'interesse composto. L\'importante e\' la costanza nel tempo, non l\'importo iniziale.' },
+  { question: 'Il PAC e\' adatto anche per un obiettivo a breve termine (3-5 anni)?', answer: 'Un PAC azionario su un orizzonte di 3-5 anni comporta un rischio significativo, perche\' i mercati azionari possono avere fasi negative anche prolungate. Per obiettivi a breve termine e\' preferibile orientarsi verso strumenti meno volatili: ETF obbligazionari a breve scadenza, conti deposito vincolati o titoli di Stato a breve termine (BOT). Se comunque si desidera un PAC a breve termine, e\' consigliabile scegliere un portafoglio bilanciato con una componente azionaria ridotta (30-40%) e una quota maggioritaria in obbligazioni, accettando un rendimento atteso inferiore in cambio di una volatilita\' piu\' contenuta.' },
+  { question: 'Come scelgo l\'ETF giusto per il mio PAC?', answer: 'La scelta dell\'ETF dipende da diversi fattori. Per la massima diversificazione, un ETF che replica l\'indice MSCI World o il FTSE All-World copre migliaia di aziende a livello globale. Verifica che il TER sia basso (sotto lo 0,3%), che il fondo abbia un patrimonio gestito ampio (oltre 500 milioni di euro, per garantire liquidita\' e ridurre il rischio di chiusura), e che sia ad accumulazione (reinveste automaticamente i dividendi) piuttosto che a distribuzione, per massimizzare l\'effetto dell\'interesse composto. Infine, scegli un ETF domiciliato in Irlanda o Lussemburgo, che offrono la migliore efficienza fiscale per gli investitori italiani grazie ai trattati contro la doppia imposizione.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +28,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Piano di Accumulo (PAC)"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

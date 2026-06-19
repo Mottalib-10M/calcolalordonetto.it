@@ -12,6 +12,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Regime Forfettario', url: canonical },
 ];
+
+const faqs = [
+  { question: 'Qual e\' il limite di fatturato per il regime forfettario?', answer: 'Il limite di ricavi o compensi per accedere e permanere nel regime forfettario e\' di 85.000 euro annui. Se superi questa soglia ma resti sotto i 100.000 euro, esci dal regime forfettario dall\'anno successivo. Se superi i 100.000 euro in corso d\'anno, esci immediatamente dal regime e devi applicare la tassazione ordinaria da quel momento.' },
+  { question: 'Cosa sono i coefficienti di redditivita\'?', answer: 'I coefficienti di redditivita\' sono percentuali fissate dalla legge che determinano quale porzione dei tuoi ricavi viene considerata reddito imponibile. Ad esempio, per i professionisti il coefficiente e\' del 78%, quindi su 50.000 euro di ricavi, il reddito imponibile sara\' 39.000 euro. I coefficienti variano dal 40% (commercio di alimenti) all\'86% (intermediari di commercio) in base al codice ATECO.' },
+  { question: 'Il forfettario conviene rispetto al regime ordinario?', answer: 'Dipende dalla tua situazione specifica. Il forfettario conviene quando i tuoi costi reali sono inferiori alla quota forfettaria (cioe\' 100% meno il coefficiente di redditivita\'). Se hai costi elevati (affitti, dipendenti, acquisto merci), il regime ordinario potrebbe farti pagare meno tasse perche\' puoi dedurre i costi reali. Inoltre, nel forfettario non puoi detrarre spese personali (mutuo, spese mediche, ecc.) dall\'imposta.' },
+  { question: 'Posso dedurre i contributi INPS nel regime forfettario?', answer: 'Si\', i contributi previdenziali obbligatori versati nell\'anno sono l\'unica deduzione ammessa nel regime forfettario. Vengono sottratti dal reddito imponibile forfettario prima di applicare l\'imposta sostitutiva. Questo significa che i contributi INPS dell\'anno precedente riducono la base imponibile dell\'anno corrente.' },
+  { question: 'Devo emettere fattura con IVA nel regime forfettario?', answer: 'No. I contribuenti in regime forfettario non addebitano l\'IVA in fattura e non hanno diritto alla detrazione dell\'IVA sugli acquisti. Nelle fatture deve essere riportata la dicitura di esenzione prevista dalla normativa. Sei comunque obbligato alla fatturazione elettronica tramite il Sistema di Interscambio (SDI).' },
+  { question: 'Quali sono i requisiti per accedere al regime forfettario nel 2026?', answer: 'Per accedere al regime forfettario nel 2026 devi rispettare diversi requisiti. Il fatturato dell\'anno precedente non deve superare 85.000 euro. Non devi aver sostenuto spese per lavoro dipendente o collaboratori superiori a 20.000 euro lordi annui. Non devi possedere partecipazioni in societa\' di persone, associazioni professionali o SRL che svolgono attivita\' riconducibili alla tua. Inoltre, non devi percepire redditi da lavoro dipendente o assimilati superiori a 35.000 euro nell\'anno precedente (a meno che il rapporto di lavoro non sia cessato). Infine, non devi avvalersi di regimi speciali IVA ne\' effettuare in via esclusiva cessioni di fabbricati o terreni edificabili.' },
+  { question: 'Come funziona il passaggio da forfettario a ordinario?', answer: 'Il passaggio avviene in due modi diversi a seconda dell\'entita\' del superamento della soglia. Se i tuoi ricavi superano 85.000 euro ma restano sotto i 100.000 euro, esci dal regime forfettario a partire dall\'anno successivo: per l\'anno in corso continui ad applicare il forfettario normalmente. Se invece superi i 100.000 euro in corso d\'anno, l\'uscita e\' immediata: da quel momento devi applicare il regime ordinario con IVA, IRPEF e tenuta della contabilita\' completa. In entrambi i casi, dovrai adeguare la fatturazione (aggiungendo l\'IVA), aprire i registri contabili e adempiere a tutti gli obblighi del regime ordinario. Potrai eventualmente rientrare nel forfettario negli anni successivi se torni a rispettare tutti i requisiti.' },
+  { question: 'I contributi INPS nel regime forfettario possono essere ridotti?', answer: 'La riduzione contributiva del 35% e\' disponibile esclusivamente per artigiani e commercianti iscritti alle rispettive gestioni INPS. Questa agevolazione riduce sia i contributi fissi sul minimale sia quelli calcolati sul reddito eccedente il minimale. La riduzione deve essere richiesta esplicitamente tramite il portale INPS entro il 28 febbraio di ogni anno. Attenzione: chi e\' iscritto alla Gestione Separata INPS (la maggior parte dei professionisti senza cassa) non ha diritto a questa riduzione. Inoltre, la riduzione contributiva comporta un accredito proporzionalmente ridotto dei mesi di contribuzione ai fini pensionistici: si accumula meno anzianita\' contributiva, il che puo\' avere un impatto sulla pensione futura.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -20,6 +31,8 @@ const breadcrumbs = [
   calculatorName="Calcolatore Regime Forfettario"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
+
+  faqs={faqs}
 >
   <Forfettari client:load />
 

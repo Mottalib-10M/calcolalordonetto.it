@@ -10,6 +10,16 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Confronto Affitto vs Acquisto', url: `${SITE.url}/confronto-affitto-acquisto/` },
 ];
+
+const faqs = [
+  { question: 'Conviene comprare casa o restare in affitto nel 2026?', answer: 'Non esiste una risposta universale. Dipende dalla citta\', dal rapporto prezzo/affitto locale, dal tuo orizzonte temporale, dalla tua stabilita\' lavorativa e dalla tua capacita\' di investire l\'alternativa. Come regola pratica: se prevedi di restare nello stesso posto per almeno 7-10 anni e il rapporto prezzo/affitto e\' sotto 20, l\'acquisto tende a essere conveniente. Se hai mobilita\' lavorativa o il rapporto supera 20, l\'affitto puo\' essere la scelta migliore.' },
+  { question: 'Cos\'e\' il costo opportunita\' e perche\' e\' importante?', answer: 'Il costo opportunita\' e\' il rendimento che avresti potuto ottenere investendo il denaro in un\'alternativa. Se usi 50.000 € come anticipo per una casa, quei soldi non possono essere investiti sui mercati finanziari. Se il mercato azionario rende mediamente il 7% annuo, dopo 20 anni quei 50.000 € sarebbero diventati circa 193.000 €. Questa differenza e\' il costo opportunita\' dell\'acquisto, ed e\' il motivo per cui il calcolatore include il rendimento alternativo tra i parametri.' },
+  { question: 'Come viene calcolato il punto di breakeven?', answer: 'Il breakeven (punto di pareggio) e\' l\'anno in cui il costo totale dell\'acquisto (inclusi tutti i costi e al netto della rivalutazione dell\'immobile) diventa inferiore al costo totale dell\'affitto (incluso il costo opportunita\' del mancato investimento). Nei primi anni l\'acquisto e\' piu\' costoso a causa dei costi di transazione iniziali, ma col passare del tempo la rivalutazione dell\'immobile e il pagamento progressivo del mutuo riducono il costo netto dell\'acquisto.' },
+  { question: 'Quali agevolazioni fiscali esistono per l\'acquisto prima casa?', answer: 'Per l\'acquisto della prima casa in Italia esistono diverse agevolazioni: imposta di registro ridotta al 2% (invece del 9%); IVA ridotta al 4% se acquisti dal costruttore (invece del 10%); esenzione IMU; detrazione IRPEF del 19% sugli interessi passivi del mutuo fino a 4.000 € annui (risparmio massimo 760 €/anno); Fondo di Garanzia Prima Casa (Consap) che garantisce fino all\'80% del mutuo per giovani under 36.' },
+  { question: 'Quanto dovrei avere di anticipo per comprare casa?', answer: 'Le banche italiane finanziano tipicamente fino all\'80% del valore dell\'immobile (LTV 80%), quindi dovresti avere almeno il 20% di anticipo. A questo devi aggiungere il 7-10% per i costi di acquisto (notaio, agenzia, imposte). In totale, per un immobile da 200.000 € dovresti disporre di almeno 54.000-60.000 €. I giovani under 36 possono accedere al Fondo di Garanzia Consap per mutui fino al 100% LTV, ma resta necessario coprire i costi accessori.' },
+  { question: 'L\'immobile e\' un buon investimento in Italia?', answer: 'Storicamente, i prezzi degli immobili in Italia sono rimasti sostanzialmente piatti o in calo in termini reali (al netto dell\'inflazione) dal picco del 2007-2008. Solo alcune citta\' come Milano hanno registrato una crescita significativa. A differenza di azioni e obbligazioni, l\'immobile e\' un asset illiquido (difficile da vendere rapidamente), non diversificato (tutto il capitale e\' in un solo bene) e ha costi di gestione elevati. Come investimento puro, un portafoglio finanziario diversificato ha storicamente offerto rendimenti superiori con maggiore liquidita\'.' },
+  { question: 'Il calcolo tiene conto delle detrazioni fiscali sul mutuo?', answer: 'Il calcolatore non include esplicitamente la detrazione IRPEF del 19% sugli interessi passivi del mutuo (massimo 4.000 € annui, quindi risparmio massimo 760 €/anno) per mantenere il calcolo piu\' semplice e trasparente. Se vuoi tenerne conto, puoi ridurre leggermente il tasso del mutuo nel calcolatore per simulare il beneficio fiscale. In pratica, il beneficio della detrazione e\' modesto rispetto ai costi totali e non cambia significativamente il punto di breakeven.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +27,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Confronto Affitto vs Acquisto"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

@@ -11,6 +11,16 @@ const breadcrumbs = [
   { name: 'Calcolatori', url: `${SITE.url}/` },
   { name: 'Calcolo Buonuscita', url: `${SITE.url}/calcolo-buonuscita/` },
 ];
+
+const faqs = [
+  { question: 'L\'incentivo all\'esodo e\' obbligatorio?', answer: 'No, l\'incentivo all\'esodo e\' frutto di una trattativa tra datore di lavoro e dipendente. Non esiste un obbligo di legge per l\'azienda di offrirlo ne\' per il lavoratore di accettarlo. Il lavoratore ha tutto il diritto di rifiutare la proposta e continuare il rapporto di lavoro. E\' sempre consigliabile valutare attentamente l\'offerta, possibilmente con l\'assistenza di un legale o di un sindacato, prima di prendere una decisione.' },
+  { question: 'La buonuscita e\' soggetta a contributi INPS?', answer: 'No, l\'incentivo all\'esodo non e\' soggetto a contributi previdenziali INPS quando e\' classificato come somma incentivante la risoluzione consensuale del rapporto di lavoro, come chiarito dalla Circolare INPS n. 263/1997. Questo rappresenta un vantaggio significativo rispetto alla retribuzione ordinaria, dove i contributi INPS a carico del dipendente ammontano al 9,19%. L\'esenzione contributiva si applica sia alla quota a carico del lavoratore che a quella a carico del datore di lavoro.' },
+  { question: 'Posso ottenere la NASpI dopo aver accettato un incentivo all\'esodo?', answer: 'Dipende dalla modalita\' di formalizzazione della risoluzione. La NASpI spetta in caso di risoluzione consensuale avvenuta in sede protetta (Ispettorato Territoriale del Lavoro, sede sindacale, o commissione di certificazione). Se la risoluzione e\' formalizzata semplicemente come dimissioni volontarie, il diritto alla NASpI non sussiste. E\' quindi fondamentale strutturare correttamente l\'accordo per preservare il diritto all\'indennita\' di disoccupazione.' },
+  { question: 'Come viene tassata la buonuscita: separata o ordinaria?', answer: 'L\'incentivo all\'esodo beneficia di norma della tassazione separata ai sensi dell\'art. 17 del TUIR. L\'aliquota applicata e\' quella media calcolata sui redditi degli ultimi due anni fiscali. Il sostituto d\'imposta (il datore di lavoro) applica in via provvisoria un\'aliquota basata sull\'ultimo reddito disponibile. Successivamente, l\'Agenzia delle Entrate puo\' riliquidare l\'imposta applicando l\'aliquota effettiva. La tassazione ordinaria si applica solo se il lavoratore lo richiede espressamente o in casi particolari previsti dalla normativa.' },
+  { question: 'Quante mensilita\' di buonuscita posso chiedere?', answer: 'Non esiste un minimo o massimo stabilito per legge. Nella pratica italiana, gli importi variano notevolmente a seconda dell\'anzianita\', del ruolo e del contesto. Come riferimento generale: da 1 a 2 mensilita\' per ogni anno di servizio per impiegati e quadri, fino a 24 o piu\' mensilita\' complessive per dirigenti con lunga anzianita\'. E\' importante ricordare che tutto dipende dalla negoziazione: piu\' forte e\' la posizione del lavoratore (tutele contrattuali, anzianita\', competenze specifiche), piu\' alta sara\' la cifra negoziabile.' },
+  { question: 'La buonuscita influisce sul TFR?', answer: 'No, la buonuscita e l\'incentivo all\'esodo sono somme separate dal TFR. Il TFR viene calcolato esclusivamente sulla retribuzione percepita durante il rapporto di lavoro e l\'incentivo all\'esodo non rientra nella base di calcolo. Al momento della cessazione, il lavoratore ricevera\' sia il TFR maturato sia l\'incentivo all\'esodo concordato, come due voci distinte. Entrambi possono beneficiare della tassazione separata, ma con modalita\' di calcolo differenti.' },
+  { question: 'Cosa succede se l\'Agenzia delle Entrate riliquida l\'imposta?', answer: 'L\'Agenzia delle Entrate ha la facolta\' di ricalcolare (riliquidare) l\'imposta sulla buonuscita, applicando l\'aliquota media effettiva calcolata sui redditi complessivi dei due anni precedenti alla cessazione del rapporto. Se l\'aliquota risulta superiore a quella applicata dal datore di lavoro, il contribuente ricevera\' una comunicazione con l\'invito a pagare la differenza. Se invece l\'aliquota risulta inferiore, si avra\' diritto a un rimborso. La riliquidazione puo\' avvenire entro il termine ordinario di decadenza dell\'accertamento (cinque anni dalla dichiarazione). E\' possibile richiedere la rateizzazione dell\'eventuale maggiore imposta dovuta.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -18,6 +28,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Buonuscita e Incentivo all'Esodo"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <Buonuscita client:load />
 

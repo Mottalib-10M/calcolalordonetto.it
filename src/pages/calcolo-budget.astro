@@ -10,6 +10,16 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolatore Budget 50/30/20', url: `${SITE.url}/calcolo-budget/` },
 ];
+
+const faqs = [
+  { question: 'L\'affitto da solo supera il 50%: come faccio?', answer: 'E\' una situazione comune, specialmente nelle grandi citta\' italiane. In questo caso, la regola va adattata: prova con un 55/25/20 o 60/20/20. L\'obiettivo minimo e\' mantenere il risparmio ad almeno il 10-15%, anche se le necessita\' superano il 50%. Valuta se ci sono modi per ridurre l\'affitto (coinquilini, zona meno centrale) o aumentare il reddito (straordinari, secondo lavoro, formazione per avanzamento). Se l\'affitto supera il 40% del netto, e\' un segnale che l\'abitazione potrebbe non essere sostenibile nel lungo periodo.' },
+  { question: 'Il TFR conta come risparmio nel 20%?', answer: 'Il TFR e\' tecnicamente un risparmio forzato accantonato dal datore di lavoro (circa il 6,9% della retribuzione lorda). Tuttavia, poiche\' non transita dal tuo conto corrente e non e\' disponibile fino alla fine del rapporto di lavoro, la maggior parte degli esperti consiglia di non contarlo nel budget 50/30/20. Il TFR e\' un "bonus" aggiuntivo che arrivera\' in futuro. Il 20% di risparmio della regola si riferisce al denaro che metti attivamente da parte ogni mese dal tuo stipendio netto.' },
+  { question: 'Quanto dovrebbe essere grande il fondo emergenza?', answer: 'La raccomandazione standard e\' 3-6 mesi di spese essenziali (non di stipendio). Se le tue spese necessarie sono 900 €/mese, il fondo emergenza dovrebbe essere tra 2.700 € e 5.400 €. Un dipendente con contratto indeterminato puo\' stare sul limite basso; un lavoratore autonomo o a tempo determinato dovrebbe puntare a 6 mesi o piu\'. Il fondo va tenuto in strumenti liquidi: conto deposito svincolabile, BOT a breve scadenza, o semplicemente sul conto corrente.' },
+  { question: 'Come gestisco le spese variabili come le vacanze?', answer: 'Le spese periodiche (vacanze, regali di Natale, assicurazione auto annuale) vanno "mensilizzate": calcola il costo annuo e dividi per 12. Se prevedi 1.800 € di vacanze all\'anno, accantona 150 € al mese nella categoria "desideri". Lo stesso vale per le spese annuali che rientrano nelle "necessita\'" (come l\'assicurazione auto): calcola il costo annuo e distribuiscilo nei 12 mesi. Questo evita "sorprese" che sballano il budget in certi mesi.' },
+  { question: 'Dovrei prima risparmiare o prima estinguere i debiti?', answer: 'La priorita\' assoluta e\' un fondo emergenza minimo (1.000-2.000 €) per evitare di contrarre nuovi debiti in caso di imprevisti. Poi, concentra le risorse sull\'estinzione dei debiti al consumo (prestiti personali, carte revolving) perche\' i loro tassi di interesse (8-20% annuo) sono molto superiori a qualsiasi rendimento ottenibile investendo. Solo dopo aver eliminato i debiti ad alto interesse, inizia a investire e a costruire il fondo emergenza completo (3-6 mesi). Il mutuo sulla casa e\' un\'eccezione: con tassi al 3-4%, non ha senso estinguerlo anticipatamente se puoi ottenere rendimenti superiori investendo.' },
+  { question: 'La tredicesima e la quattordicesima come si gestiscono?', answer: 'Ci sono due approcci. Il primo: applica la regola 50/30/20 anche alle mensilita\' aggiuntive, destinando il 50% alle necessita\' (anticipare bollette, fare scorta), il 30% ai desideri (regali, vacanze) e il 20% al risparmio. Il secondo, piu\' aggressivo: usa la tredicesima e la quattordicesima interamente per obiettivi finanziari — rafforzare il fondo emergenza, fare un versamento extra nel PAC, estinguere un debito. Molti esperti consigliano il secondo approccio perche\' le spese mensili sono gia\' coperte dallo stipendio ordinario.' },
+  { question: 'La regola 50/30/20 funziona anche per le coppie?', answer: 'Si\', e spesso funziona meglio perche\' le coppie hanno economie di scala sulle spese fisse (un solo affitto, bollette condivise). Basta sommare i due netti mensili e applicare le stesse percentuali. Con due stipendi da 1.800 €, il netto combinato e\' 3.600 €: 1.800 € per le necessita\', 1.080 € per i desideri e 720 € per il risparmio. Le coppie riescono tipicamente a risparmiare una quota maggiore rispetto ai single, grazie alla condivisione delle spese fisse.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +27,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolatore Budget 50/30/20"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

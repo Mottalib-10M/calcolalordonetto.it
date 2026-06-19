@@ -1,0 +1,396 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config';
+import { breadcrumbSchema } from '../../lib/seo';
+
+const title = 'Italian Tax & Employment Glossary 2026: All Terms Explained';
+const description = "Complete glossary of Italian tax and employment terms: RAL, IRPEF, INPS, TFR, tax wedge, flat-rate regime and 30+ key terms explained for international workers.";
+
+const breadcrumbs = [
+  { name: 'Home', url: `${SITE.url}/en/` },
+  { name: 'Glossary', url: `${SITE.url}/en/glossary/` },
+];
+
+const schema = JSON.stringify([
+  breadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    name: title,
+    description,
+    url: `${SITE.url}/en/glossary/`,
+    inLanguage: SITE.localeEn,
+  },
+]);
+
+interface Term {
+  term: string;
+  id: string;
+  definition: string;
+  related?: { name: string; href: string }[];
+}
+
+const terms: Term[] = [
+  {
+    term: 'RAL (Retribuzione Annua Lorda) - Gross Annual Salary',
+    id: 'ral',
+    definition: "RAL stands for Retribuzione Annua Lorda, meaning Gross Annual Salary. It is the total amount the employer pays the employee in a year, before tax and social security deductions. It includes all monthly payments (13th month, 14th month if applicable) and any seniority increments. It does not include TFR (severance), employer-side contributions, or fringe benefits. RAL is the starting figure used to calculate your net salary.",
+    related: [
+      { name: 'Net Salary Calculator', href: '/en/' },
+      { name: 'Salary Pages', href: '/en/salary/' },
+    ],
+  },
+  {
+    term: 'Net Salary (Stipendio Netto)',
+    id: 'net-salary',
+    definition: "The amount a worker actually receives in their payslip after all deductions: INPS social security contributions, IRPEF income tax, and regional and municipal surcharges. Net salary is calculated from the RAL by subtracting social security contributions to obtain the taxable income, on which IRPEF and surcharges are computed, and then adding any bonuses such as the supplementary allowance (trattamento integrativo).",
+    related: [
+      { name: 'Net Salary Calculator', href: '/en/' },
+      { name: 'How to Calculate Net Salary', href: '/en/guides/how-to-calculate-net-salary/' },
+    ],
+  },
+  {
+    term: 'IRPEF (Imposta sul Reddito delle Persone Fisiche) - Personal Income Tax',
+    id: 'irpef',
+    definition: "Italy's progressive personal income tax, and the main direct tax in the country. It is applied in brackets: in 2026, 23% on income up to 28,000 euros, 33% from 28,001 to 50,000 euros, and 43% above 50,000 euros. Gross IRPEF is reduced by deductions (employment deductions, dependent family members, tax wedge) to arrive at net IRPEF, which is the amount actually withheld.",
+    related: [
+      { name: 'IRPEF Tax Calculator', href: '/en/irpef-tax-calculator/' },
+      { name: 'IRPEF Tax Brackets 2026', href: '/en/guides/irpef-tax-brackets-2026/' },
+    ],
+  },
+  {
+    term: 'INPS (Istituto Nazionale della Previdenza Sociale) - Social Security',
+    id: 'inps',
+    definition: "Italy's public social security institution, which manages pensions, unemployment benefits (NASpI), maternity leave, sick leave, and the Universal Family Allowance (Assegno Unico). The employee's contribution is 9.19% of the gross salary (RAL). The employer pays an additional contribution of approximately 30% of the RAL on top of this.",
+    related: [
+      { name: 'Employer Cost Calculator', href: '/en/employer-cost-calculator/' },
+    ],
+  },
+  {
+    term: 'TFR (Trattamento di Fine Rapporto) - Severance Pay',
+    id: 'tfr',
+    definition: "The statutory severance pay accrued by an employee throughout the employment relationship. It is calculated by setting aside approximately 6.91% of the RAL each year (RAL / 13.5). TFR can either be left with the employer (where it is revalued at 1.5% + 75% of the ISTAT inflation rate) or transferred to a supplementary pension fund, which offers tax advantages upon final payment.",
+    related: [
+      { name: 'Severance Pay Calculator', href: '/en/severance-pay-calculator/' },
+      { name: 'How TFR Severance Works', href: '/en/guides/how-tfr-severance-works/' },
+    ],
+  },
+  {
+    term: 'Taxable Income (Imponibile Fiscale)',
+    id: 'taxable-income',
+    definition: "The base amount on which IRPEF is calculated. For employees, it is obtained by subtracting the employee's INPS contributions (9.19%) from the RAL, and, if applicable, the tax-exempt amount under the tax wedge reform. It is lower than the RAL and represents the income that is actually subject to progressive taxation.",
+    related: [
+      { name: 'IRPEF Tax Calculator', href: '/en/irpef-tax-calculator/' },
+    ],
+  },
+  {
+    term: 'IRPEF Tax Brackets (Scaglioni IRPEF)',
+    id: 'irpef-tax-brackets',
+    definition: "The income bands to which increasing IRPEF tax rates apply. In 2026, there are three brackets: 23% up to 28,000 euros, 33% from 28,001 to 50,000 euros, and 43% above 50,000 euros. The system is progressive: each bracket applies only to the portion of income within its range, not to the entire amount.",
+    related: [
+      { name: 'IRPEF Tax Brackets 2026', href: '/en/guides/irpef-tax-brackets-2026/' },
+    ],
+  },
+  {
+    term: 'Marginal Tax Rate (Aliquota Marginale)',
+    id: 'marginal-tax-rate',
+    definition: "The tax rate applied to the last euro of income earned. It corresponds to the IRPEF bracket in which the highest portion of your taxable income falls. For example, with a taxable income of 35,000 euros, the marginal rate is 33% (second bracket). This is essential for evaluating the real net impact of a salary increase.",
+    related: [
+      { name: 'IRPEF Tax Calculator', href: '/en/irpef-tax-calculator/' },
+    ],
+  },
+  {
+    term: 'Effective Average Tax Rate (Aliquota Media Effettiva)',
+    id: 'effective-tax-rate',
+    definition: "The ratio of total taxes and contributions paid to the gross salary (RAL), expressed as a percentage. It represents the overall tax burden on gross pay. For an employee earning a RAL of 30,000 euros, the effective average rate is approximately 28-30%, while for a RAL of 60,000 euros it rises to around 36-38%.",
+    related: [
+      { name: 'Net Salary Calculator', href: '/en/' },
+    ],
+  },
+  {
+    term: 'Employment Income Deductions (Detrazioni per Lavoro Dipendente)',
+    id: 'employment-deductions',
+    definition: "Reductions in gross IRPEF granted to employees based on their income level. The maximum amount is 1,955 euros for incomes up to 15,000 euros, then it decreases progressively until it reaches zero at 50,000 euros. These deductions create the so-called 'no-tax area' for incomes up to approximately 8,500 euros.",
+    related: [
+      { name: 'How to Calculate Net Salary', href: '/en/guides/how-to-calculate-net-salary/' },
+    ],
+  },
+  {
+    term: 'Tax Wedge (Cuneo Fiscale)',
+    id: 'tax-wedge',
+    definition: "Since 2025, the tax wedge cut has been made structural, replacing the previous contribution cut. For incomes up to 20,000 euros, a portion of income becomes tax-exempt (ranging from 4.8% to 7.1%). For incomes between 20,001 and 32,000 euros, an additional IRPEF deduction of 1,000 euros/year applies. Between 32,001 and 40,000 euros, the deduction tapers down to zero.",
+    related: [
+      { name: 'Tax Wedge 2026 Guide', href: '/en/guides/tax-wedge-2026/' },
+    ],
+  },
+  {
+    term: 'Supplementary Allowance (Trattamento Integrativo)',
+    id: 'supplementary-allowance',
+    definition: "A bonus of 1,200 euros per year (100 euros/month) paid in the payslip to employees with income up to 15,000 euros who have a positive IRPEF liability. For incomes between 15,001 and 28,000 euros, it is granted in a reduced amount only if the applicable deductions exceed gross IRPEF. Above 28,000 euros, it is not available. It replaced the former 'Renzi bonus'.",
+    related: [
+      { name: 'Net Salary Calculator', href: '/en/' },
+    ],
+  },
+  {
+    term: 'Regional IRPEF Surcharge (Addizionale Regionale)',
+    id: 'regional-surcharge',
+    definition: "An additional tax on IRPEF owed to the region where the taxpayer resides. The rate varies significantly: from 1.23% in regions like Friuli-Venezia Giulia and Sardinia, up to 3.33% in Lazio for the highest incomes. It is calculated on the taxable income and withheld in 11 monthly instalments, generally from March to January of the following year.",
+    related: [
+      { name: 'Regional & Municipal Surcharges', href: '/en/guides/regional-municipal-surcharges/' },
+      { name: 'Region Comparison', href: '/en/region-comparison/' },
+    ],
+  },
+  {
+    term: 'Municipal IRPEF Surcharge (Addizionale Comunale)',
+    id: 'municipal-surcharge',
+    definition: "An additional tax on IRPEF set by the municipality of residence. The rate ranges from 0% (some small municipalities) to 0.9% (the legal maximum). Many municipalities apply differentiated rates by income bracket. It is withheld from the payslip together with the regional surcharge.",
+    related: [
+      { name: 'Regional & Municipal Surcharges', href: '/en/guides/regional-municipal-surcharges/' },
+    ],
+  },
+  {
+    term: 'Thirteenth Month Pay (Tredicesima)',
+    id: 'thirteenth-month',
+    definition: "An additional monthly salary required by law, typically paid in December. The gross amount equals one month's pay (RAL / 13 for those on 13 monthly payments). The thirteenth month is taxed as ordinary income but does not benefit from the supplementary allowance (trattamento integrativo), which makes its net value slightly lower than regular monthly payments.",
+    related: [
+      { name: 'Thirteenth Month Calculator', href: '/en/thirteenth-month-calculator/' },
+      { name: 'Thirteenth & Fourteenth Month Guide', href: '/en/guides/thirteenth-fourteenth-month-pay/' },
+    ],
+  },
+  {
+    term: 'Fourteenth Month Pay (Quattordicesima)',
+    id: 'fourteenth-month',
+    definition: "An additional monthly salary provided by certain collective bargaining agreements (CCNL), including Commerce, Tourism, and Logistics, among the main ones. It is typically paid in June or July. It is not required by law but depends on the applicable collective agreement. When provided, the RAL is divided across 14 monthly payments instead of 13, reducing each month's gross amount while leaving the annual net pay unchanged.",
+    related: [
+      { name: 'Fourteenth Month Calculator', href: '/en/fourteenth-month-calculator/' },
+      { name: 'Thirteenth & Fourteenth Month Guide', href: '/en/guides/thirteenth-fourteenth-month-pay/' },
+    ],
+  },
+  {
+    term: 'Payslip (Busta Paga / Cedolino)',
+    id: 'payslip',
+    definition: "The monthly document the employer provides to the employee detailing compensation: earnings (base pay, cost-of-living adjustment, seniority increments, overtime), deductions (INPS, IRPEF, surcharges), and the resulting net pay. The payslip is a mandatory document and must be kept on file for at least 5 years.",
+    related: [
+      { name: 'Payslip Calculator', href: '/en/payslip-calculator/' },
+      { name: 'How to Read an Italian Payslip', href: '/en/guides/how-to-read-italian-payslip/' },
+    ],
+  },
+  {
+    term: 'CCNL (Contratto Collettivo Nazionale di Lavoro) - National Collective Bargaining Agreement',
+    id: 'ccnl',
+    definition: "An agreement signed between trade unions and employer associations that governs employment relationships across an entire sector: minimum pay by level, additional monthly payments, holidays, working hours, notice periods, and worker protections. The main Italian CCNLs include Metalworking (Federmeccanica), Commerce (Confcommercio), Public Sector, Banking (ABI), and Chemical-Pharmaceutical.",
+  },
+  {
+    term: 'Flat-Rate Regime (Regime Forfettario)',
+    id: 'flat-rate-regime',
+    definition: "A preferential tax regime for self-employed workers and freelancers with annual revenues up to 85,000 euros. It applies a substitute tax of 15% (reduced to 5% for the first 5 years of activity), calculated on a flat-rate percentage of revenues (profitability coefficient) that varies by activity. It exempts from VAT, IRAP, and regional/municipal surcharges.",
+    related: [
+      { name: 'Flat-Rate Regime Calculator', href: '/en/flat-rate-regime-calculator/' },
+      { name: 'Flat-Rate Regime 2026 Guide', href: '/en/guides/flat-rate-regime-2026/' },
+    ],
+  },
+  {
+    term: 'Impatriati Tax Regime (Regime Impatriati)',
+    id: 'impatriati-regime',
+    definition: "A tax incentive for workers (both employees and self-employed) who transfer their tax residence to Italy, having not resided in the country for the previous 3 years. It provides a 50% exemption on taxable income (60% with minor children or property purchase) for 5 years. Since 2024, eligible income is capped at 600,000 euros per year. It cannot be combined with the flat-rate regime.",
+    related: [
+      { name: 'Impatriati Tax Regime Calculator', href: '/en/impatriati-tax-regime/' },
+      { name: 'Impatriati Tax Regime Guide', href: '/en/guides/impatriati-tax-regime/' },
+    ],
+  },
+  {
+    term: 'Employer Cost (Costo Aziendale)',
+    id: 'employer-cost',
+    definition: "The total amount a company spends for an employee. It includes the RAL, employer-side INPS contributions (approximately 30% of RAL), TFR (approximately 6.91%), INAIL (workplace accident insurance), and any fringe benefits. The employer cost is on average 130-140% of the RAL. An employee with a RAL of 30,000 euros costs the company approximately 40,000-42,000 euros.",
+    related: [
+      { name: 'Employer Cost Calculator', href: '/en/employer-cost-calculator/' },
+    ],
+  },
+  {
+    term: 'No-Tax Area',
+    id: 'no-tax-area',
+    definition: "The income threshold below which a worker pays no IRPEF, thanks to deductions that fully offset the gross tax. For employees, it is set at 8,500 euros (8,500 x 23% = 1,955 euros, exactly covered by the maximum deduction). For pensioners it is 8,500 euros, and for self-employed workers it is 5,500 euros. It is not a tax-free allowance: once the threshold is exceeded, IRPEF is calculated on the entire income.",
+  },
+  {
+    term: 'Assegno Unico Universale (AUU) - Universal Family Allowance',
+    id: 'universal-family-allowance',
+    definition: "A monthly financial support paid by INPS to families with dependent children up to age 21 (no age limit for children with disabilities). The amount varies based on the ISEE indicator (from 57 to 199.40 euros per minor child in 2026) and family composition. It is paid directly into the bank account and does not pass through the payslip. It replaced the tax deductions for dependent children under 21.",
+  },
+  {
+    term: 'ISEE (Indicatore della Situazione Economica Equivalente) - Equivalent Economic Situation Indicator',
+    id: 'isee',
+    definition: "An indicator measuring the economic status of a household, taking into account incomes and assets (both financial and real estate) of all family members. It is calculated by dividing the ISE (sum of incomes plus 20% of assets) by the family equivalence scale. It is required to access subsidised social benefits: utility bill bonuses, the Universal Family Allowance, university fee reductions, rent subsidies, and more.",
+    related: [
+      { name: 'ISEE Calculator', href: '/en/isee-calculator/' },
+    ],
+  },
+  {
+    term: 'NASpI (Nuova Assicurazione Sociale per l\'Impiego) - Unemployment Benefit',
+    id: 'naspi',
+    definition: "The unemployment benefit paid by INPS to employees who involuntarily lose their job. The amount equals 75% of the average monthly salary for the first 6 months (with a cap of approximately 1,550 euros in 2026), then decreases by 3% per month. The maximum duration is half the contributory weeks accumulated in the last 4 years.",
+  },
+  {
+    term: 'Supplementary Pension Fund (Fondo Pensione Complementare)',
+    id: 'supplementary-pension',
+    definition: "A supplementary retirement savings vehicle that tops up the public INPS pension. Contributions are tax-deductible up to 5,164.57 euros/year, generating a tax saving proportional to the marginal IRPEF rate. The employee can contribute their TFR and additional voluntary amounts. The employer adds a contribution (typically 1-2% of RAL) as required by the applicable CCNL. Taxation on the final payout is favourable (from 15% down to 9% depending on years of membership).",
+  },
+  {
+    term: 'Meal Vouchers (Buoni Pasto)',
+    id: 'meal-vouchers',
+    definition: "An employer benefit for employee meals, tax-free up to 8 euros/day for electronic vouchers (4 euros for paper vouchers). With 21 working days per month, the annual tax-free value can reach approximately 2,000 euros. They are fully deductible for the company and do not count as employee income within the thresholds. They represent one of the most tax-efficient benefits available.",
+  },
+  {
+    term: 'Corporate Welfare (Welfare Aziendale)',
+    id: 'corporate-welfare',
+    definition: "The range of goods and services provided by the employer to employees in addition to monetary compensation. This includes: meal vouchers, supplementary health insurance, pension fund contributions, gift vouchers, tuition reimbursement for children, and transport passes. Welfare benefits are generally exempt from IRPEF and INPS contributions within legal limits, making them more efficient than an equivalent salary increase.",
+  },
+  {
+    term: 'Fringe Benefits',
+    id: 'fringe-benefits',
+    definition: "Non-monetary compensation provided by the employer: company car for mixed use, company phone, housing, insurance policies. In 2026, they are tax-exempt up to a conventional value of 258.23 euros/year (1,000 euros for new hires who relocate, 2,000 euros for employees with dependent children). If the threshold is exceeded, the entire amount is added to taxable income.",
+  },
+  {
+    term: 'Year-End Tax Adjustment (Conguaglio Fiscale)',
+    id: 'year-end-tax-adjustment',
+    definition: "The final recalculation of taxes due for the year, carried out by the employer in the December payslip (or upon termination of employment). It compares the IRPEF actually owed for the year with the withholdings already made on a monthly basis. If withholdings were insufficient, the adjustment results in a debit (additional withholding); if excessive, it results in a credit (refund). The adjustment may also include regional and municipal surcharges.",
+  },
+  {
+    term: 'INPS Contribution Ceiling (Massimale Contributivo)',
+    id: 'contribution-ceiling',
+    definition: "The annual salary cap above which no INPS social security contributions are paid. In 2026, it is set at approximately 119,650 euros. It applies to workers whose first contribution was made after 1 January 1996 (pure contributory system). Above this amount, earnings do not generate pension accrual, creating a potential pension 'gap' for higher earners.",
+    related: [
+      { name: 'Pension Calculator', href: '/en/pension-calculator/' },
+    ],
+  },
+  {
+    term: 'Deductions for Dependent Family Members (Detrazioni per Familiari a Carico)',
+    id: 'family-deductions',
+    definition: "IRPEF reductions for a spouse and children aged 21 or over who are fiscally dependent (annual income below 2,840.51 euros, or 4,000 euros for children up to 24 years old). For children under 21, deductions have been replaced by the Universal Family Allowance (AUU). The maximum deduction for a spouse is 800 euros/year and decreases as income rises.",
+    related: [
+      { name: 'Family Tax Deductions Calculator', href: '/en/family-tax-deductions/' },
+    ],
+  },
+  {
+    term: 'Probation Period (Periodo di Prova)',
+    id: 'probation-period',
+    definition: "The initial period of the employment relationship during which either party may terminate the contract freely, without notice or compensation. The duration is set by the applicable CCNL and varies by level and role: typically from 15 days (manual workers) to 6 months (executives). During probation, leave, TFR, and contributions accrue normally. The probation period must be agreed in writing in the employment contract.",
+  },
+  {
+    term: 'Notice Period (Preavviso)',
+    id: 'notice-period',
+    definition: "The period of time that must elapse between the communication of resignation (or dismissal) and the effective end of the employment relationship. The duration is set by the applicable CCNL and varies by level, seniority, and role (from 15 days to 4 months for the highest levels). If not observed, the non-compliant party must pay a substitute indemnity equal to the salary for the notice period.",
+  },
+  {
+    term: 'Leave and Paid Time Off (Ferie e Permessi / ROL)',
+    id: 'leave-and-pto',
+    definition: "Leave (ferie) is the paid rest period an employee is entitled to: a legal minimum of 4 weeks/year (26 working days under the Commerce CCNL). ROL (Riduzione Orario di Lavoro) are additional paid hours off provided by the CCNL: 72 hours/year under Metalworking, 56 hours under Commerce. Unused leave beyond 18 months from accrual is subject to INPS contributions (but cannot be cashed out during employment).",
+    related: [
+      { name: 'Leave Calculator', href: '/en/leave-calculator/' },
+    ],
+  },
+];
+
+const alphabet = [...new Set(terms.map(t => t.term.charAt(0).toUpperCase()))].sort();
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`${SITE.url}/en/glossary/`}
+  schema={schema}
+  lang="en"
+>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex flex-wrap items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
+        <li class="flex items-center gap-1.5">
+          <a href="/en/" class="hover:text-brand transition-colors">Home</a>
+        </li>
+        <li class="flex items-center gap-1.5">
+          <svg class="h-3.5 w-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">Glossary</span>
+        </li>
+      </ol>
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">
+      Italian Tax & Employment Glossary
+    </h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+      All the key terms of the Italian tax and employment system, explained in plain English with links to calculators and in-depth guides. Ideal for expats, international workers, and anyone navigating Italian payroll.
+    </p>
+
+    <!-- Alphabet quick nav -->
+    <nav aria-label="Alphabetical index" class="mb-10">
+      <div class="flex flex-wrap gap-2">
+        {alphabet.map((letter) => (
+          <a
+            href={`#letter-${letter}`}
+            class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-brand hover:text-white transition-colors"
+          >
+            {letter}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <!-- Terms -->
+    <div class="space-y-6">
+      {alphabet.map((letter) => {
+        const letterTerms = terms.filter(t => t.term.charAt(0).toUpperCase() === letter);
+        return (
+          <section id={`letter-${letter}`}>
+            <h2 class="text-xl font-bold text-brand mb-4 scroll-mt-20">{letter}</h2>
+            <div class="space-y-6">
+              {letterTerms.map((item) => (
+                <article id={item.id} class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 scroll-mt-20">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    {item.term}
+                  </h3>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {item.definition}
+                  </p>
+                  {item.related && item.related.length > 0 && (
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {item.related.map((link) => (
+                        <a
+                          href={link.href}
+                          class="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-brand/10 hover:text-brand transition-colors"
+                        >
+                          <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                          </svg>
+                          {link.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+
+    <!-- CTA -->
+    <section class="mt-16 mb-16 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 text-center">
+      <h2 class="text-2xl font-bold text-white">Calculate your net salary</h2>
+      <p class="mt-3 text-gray-300 max-w-xl mx-auto">
+        Now that you know the terms, put them into practice: enter your RAL and find out how much you actually take home.
+      </p>
+      <a
+        href="/en/"
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-dark transition-colors"
+      >
+        Calculate Net Salary
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </section>
+  </div>
+</Layout>

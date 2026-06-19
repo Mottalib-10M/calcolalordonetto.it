@@ -10,6 +10,16 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo Prestito', url: `${SITE.url}/calcolo-prestito/` },
 ];
+
+const faqs = [
+  { question: 'Qual e\' la differenza tra TAN e TAEG?', answer: 'Il TAN (Tasso Annuo Nominale) rappresenta il puro costo degli interessi senza spese accessorie. Il TAEG (Tasso Annuo Effettivo Globale) include tutti i costi legati al prestito: spese di istruttoria, spese di incasso rata, assicurazioni obbligatorie e altre commissioni. Per confrontare offerte di prestito diverse, guarda sempre il TAEG.' },
+  { question: 'Quanto posso chiedere di prestito personale?', answer: 'In Italia i prestiti personali vanno generalmente da 1.000 a 75.000 euro, con durate da 12 a 120 mesi. L\'importo massimo concesso dipende dal tuo reddito e dal rapporto rata/reddito: la rata non dovrebbe superare un terzo del tuo stipendio netto mensile.' },
+  { question: 'Cosa sono le spese di istruttoria?', answer: 'Le spese di istruttoria sono costi una tantum che la banca o la finanziaria addebita per l\'analisi e l\'apertura della pratica di prestito. Possono essere un importo fisso (es. 200-500 euro) o una percentuale dell\'importo richiesto. Queste spese vengono incluse nel calcolo del TAEG.' },
+  { question: 'Posso estinguere il prestito in anticipo?', answer: 'Si, per legge hai sempre il diritto di estinguere anticipatamente un prestito personale. La penale massima e\' dell\'1% del debito residuo se mancano piu\' di 12 mesi alla scadenza, oppure dello 0,5% se mancano meno di 12 mesi. Molte banche offrono prestiti senza penale di estinzione anticipata.' },
+  { question: 'Qual e\' la differenza tra prestito personale e cessione del quinto?', answer: 'Il prestito personale e\' un finanziamento a tasso fisso rimborsato con rate mensili addebitate sul conto corrente del richiedente. La cessione del quinto, invece, prevede che la rata venga trattenuta direttamente dallo stipendio o dalla pensione, con un importo massimo pari a un quinto del netto mensile. La cessione del quinto e\' garantita dal TFR ed e\' accessibile anche a chi ha segnalazioni creditizie negative, mentre il prestito personale richiede un profilo creditizio positivo. Inoltre, la cessione del quinto ha una durata massima di 120 mesi e tassi spesso piu\' bassi grazie alle garanzie maggiori offerte al finanziatore.' },
+  { question: 'Come viene valutata la mia richiesta di prestito?', answer: 'Le banche e le finanziarie valutano la richiesta di prestito attraverso un processo di credit scoring che considera diversi fattori. Il rapporto rata/reddito e\' il parametro principale: la rata del prestito, sommata ad eventuali altri finanziamenti in corso, non dovrebbe superare il 30-35% dello stipendio netto. Viene inoltre consultata la CRIF (Centrale Rischi di Intermediazione Finanziaria), una banca dati che registra la storia creditizia del richiedente, inclusi prestiti passati, ritardi nei pagamenti e segnalazioni di sofferenza. Sono valutati anche l\'anzianita\' lavorativa, il tipo di contratto, la stabilita\' del reddito e l\'eventuale presenza di garanti.' },
+  { question: 'Posso ottenere un prestito se ho un contratto a tempo determinato?', answer: 'Si, e\' possibile ottenere un prestito personale anche con un contratto a tempo determinato, anche se le condizioni possono essere piu\' restrittive. In genere la durata del finanziamento non puo\' superare la scadenza del contratto di lavoro, e gli importi concessi tendono a essere inferiori rispetto a chi ha un contratto a tempo indeterminato. Alcune finanziarie richiedono un garante o una maggiore anzianita\' lavorativa. In alternativa, chi ha un contratto a tempo determinato puo\' valutare la cessione del quinto, che consente di ottenere un prestito per una durata non superiore alla scadenza contrattuale, con il vantaggio della trattenuta diretta dallo stipendio.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +27,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Prestito Personale"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

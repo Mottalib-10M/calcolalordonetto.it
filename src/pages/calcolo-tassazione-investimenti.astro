@@ -10,6 +10,16 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo Tassazione Investimenti', url: `${SITE.url}/calcolo-tassazione-investimenti/` },
 ];
+
+const faqs = [
+  { question: 'Quando devo pagare le tasse sugli investimenti?', answer: 'Le tasse sui capital gain si pagano solo al momento della realizzazione della plusvalenza, cioe\' quando vendi lo strumento finanziario. Le plusvalenze "latenti" (non ancora realizzate) non sono tassate. Nel regime amministrato, la banca trattiene automaticamente l\'imposta al momento della vendita. Nel regime dichiarativo, le imposte vanno versate con la dichiarazione dei redditi entro il 30 giugno dell\'anno successivo (con possibilita\' di rateizzazione).' },
+  { question: 'Posso compensare le minusvalenze degli ETF?', answer: 'Questa e\' una delle domande piu\' frequenti e la risposta e\' articolata. Se vendi un ETF in perdita, generi una minusvalenza che puo\' essere usata per compensare futuri redditi diversi (plusvalenze da azioni, obbligazioni, ETC, certificati) entro 4 anni. Ma se vendi un ETF in guadagno, la plusvalenza e\' un reddito da capitale e non puo\' essere compensata con minusvalenze pregresse. E\' un\'asimmetria fiscale nota e criticata.' },
+  { question: 'Come funziona la tassazione dei dividendi?', answer: 'I dividendi sono tassati al 26% come redditi da capitale. Nel regime amministrato, la ritenuta viene applicata direttamente dalla banca. Per i dividendi esteri, puo\' esserci una ritenuta nel Paese di origine (es. 15% per azioni USA con convenzione), e poi il 26% in Italia. Il credito d\'imposta per evitare la doppia imposizione va richiesto in dichiarazione dei redditi. Per i dividendi da partecipazioni qualificate (sopra certe soglie), la tassazione avviene in dichiarazione con regole diverse.' },
+  { question: 'Le criptovalute sono tassate in Italia?', answer: 'Si\', dal 2023 le criptovalute sono tassate al 26% sulle plusvalenze realizzate, con una soglia di esenzione di 2.000 € annui. Le plusvalenze rientrano nei "redditi diversi" e possono quindi compensare minusvalenze. Le crypto devono essere dichiarate anche nel quadro RW ai fini del monitoraggio fiscale, con un\'imposta di bollo dello 0,2% sul valore (IVAFE). La mancata dichiarazione puo\' comportare sanzioni dal 3% al 15% dell\'importo non dichiarato.' },
+  { question: 'L\'imposta di bollo sugli investimenti e\' inclusa nel calcolo?', answer: 'No, questo calcolatore si concentra esclusivamente sul capital gain (plusvalenza). In Italia esiste anche un\'imposta di bollo proporzionale dello 0,2% annuo sul valore dei depositi titoli (IVAFE per i titoli detenuti all\'estero, imposta di bollo per quelli in Italia). Per i titoli di Stato e i buoni postali, l\'imposta di bollo e\' ridotta allo 0,2% con un massimo di 14.000 € per soggetto. L\'imposta di bollo si applica sul valore di mercato e non sulle plusvalenze.' },
+  { question: 'Quanto durano le minusvalenze?', answer: 'Le minusvalenze possono essere portate in compensazione per un massimo di 4 anni dalla loro realizzazione (art. 68, comma 5, TUIR). Ad esempio, una minusvalenza realizzata nel 2024 puo\' essere utilizzata per compensare plusvalenze fino al 31 dicembre 2028. Dopo questa data, la minusvalenza si "perde" e non puo\' piu\' essere utilizzata. Per questo motivo e\' importante monitorare le minusvalenze in scadenza e valutare strategie di compensazione prima della scadenza.' },
+  { question: 'Come si calcola il prezzo di carico medio?', answer: 'Il prezzo di carico (o prezzo medio ponderato di acquisto) si calcola dividendo il costo totale di acquisto per il numero totale di quote/azioni detenute. Se hai acquistato 100 azioni a 10 € e poi altre 50 azioni a 12 €, il prezzo medio ponderato e\' (100 x 10 + 50 x 12) / 150 = 10,67 €. Il regime LIFO non si applica piu\' in Italia dal 2012: si usa sempre il costo medio ponderato.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -17,6 +27,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Tassazione Investimenti"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <!-- Calculator -->
   <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">

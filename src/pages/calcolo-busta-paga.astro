@@ -12,6 +12,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo Busta Paga', url: canonical },
 ];
+
+const faqs = [
+  { question: 'Perche\' la mia busta paga reale e\' diversa dal calcolo?', answer: 'Diversi fattori possono causare differenze: il CCNL puo\' prevedere voci aggiuntive (superminimo, scatti di anzianita\', indennita\'); potresti avere trattenute per la previdenza complementare, cessioni del quinto o pignoramenti; i buoni pasto e altri benefit non compaiono nella retribuzione base; le addizionali comunali dipendono dal tuo comune specifico.' },
+  { question: 'Perche\' in alcuni mesi il netto e\' piu\' alto?', answer: 'Nei mesi di gennaio e febbraio non vengono ancora trattenute le addizionali regionali e comunali dell\'anno corrente (che partono tipicamente da marzo). In quei mesi potresti vedere un netto leggermente piu\' alto. Inoltre, se nell\'anno precedente avevi addizionali che terminano a gennaio, il mese di febbraio risulta il piu\' "leggero" come trattenute.' },
+  { question: 'Come vengono trattenute le addizionali?', answer: 'Le addizionali regionali e comunali dell\'anno precedente vengono trattenute in 11 rate mensili, da gennaio a novembre dell\'anno successivo. Le addizionali dell\'anno corrente vengono calcolate in sede di conguaglio a fine anno oppure trattenute in acconto a partire da marzo. Il simulatore assume la trattenuta in 11 rate uguali.' },
+  { question: 'Cos\'e\' il rateo di tredicesima nella busta paga?', answer: 'Il rateo di tredicesima e\' la quota di tredicesima che maturi ogni mese. Ogni mese lavorato ti da\' diritto a 1/12 della tredicesima annua. Questo rateo non viene erogato mensilmente ma si accumula e viene pagato interamente a dicembre. Nel cedolino puo\' essere indicato come voce informativa per mostrare quanto stai maturando.' },
+  { question: 'Il TFR compare nella busta paga?', answer: 'Il TFR (Trattamento di Fine Rapporto) non viene trattenuto dalla busta paga del dipendente perche\' e\' interamente a carico del datore di lavoro. E\' pari a circa il 6,91% della RAL e si accumula anno dopo anno. Nel riepilogo annuale del nostro calcolatore trovi la stima del TFR maturato. Il TFR puo\' essere destinato alla previdenza complementare o mantenuto in azienda.' },
+  { question: 'Cosa succede alla busta paga in caso di malattia o maternita\'?', answer: 'In caso di malattia, i primi 3 giorni (periodo di carenza) sono retribuiti interamente dal datore di lavoro. Dal 4o al 20o giorno l\'INPS corrisponde il 50% della retribuzione media giornaliera, dal 21o al 180o giorno il 66,67%. Molti CCNL prevedono un\'integrazione a carico del datore di lavoro per raggiungere il 100% della retribuzione ordinaria. Per la maternita\' obbligatoria (5 mesi), l\'INPS eroga l\'80% della retribuzione e il CCNL puo\' prevedere l\'integrazione al 100%. In entrambi i casi, l\'indennita\' INPS viene anticipata dal datore di lavoro in busta paga e poi recuperata tramite conguaglio con i contributi dovuti all\'Istituto. Nel cedolino troverai le voci separate: la retribuzione ridotta per i giorni di assenza e l\'indennita\' INPS corrispondente.' },
+  { question: 'Come vengono calcolati gli straordinari in busta paga?', answer: 'Il compenso per lavoro straordinario si calcola partendo dalla paga oraria ordinaria e applicando una maggiorazione percentuale stabilita dal CCNL. La paga oraria si ottiene dividendo la retribuzione mensile per il divisore orario contrattuale (tipicamente 168 o 173 ore per un full-time). Le maggiorazioni piu\' comuni sono: straordinario diurno feriale 15-25%, straordinario notturno 30-40%, straordinario festivo 40-50%, straordinario notturno festivo 50-60%. Il D.Lgs. 66/2003 fissa un tetto massimo di 250 ore annue di lavoro straordinario, salvo diverse previsioni del CCNL. Gli straordinari sono soggetti a contributi INPS e IRPEF ordinari, ma possono beneficiare della tassazione agevolata al 5% (imposta sostitutiva) se rientrano nei premi di produttivita\' entro i limiti previsti dalla legge. In busta paga, le ore di straordinario vengono indicate separatamente con il relativo codice e la maggiorazione applicata.' },
+  { question: 'La busta paga elettronica ha lo stesso valore legale?', answer: 'Si\', la busta paga in formato elettronico ha pieno valore legale, come confermato dal D.Lgs. 82/2005 (Codice dell\'Amministrazione Digitale) e dalle successive interpretazioni del Ministero del Lavoro. Il datore di lavoro puo\' consegnare il cedolino in formato digitale (PDF via e-mail, portale aziendale, app dedicata) a condizione che il lavoratore possa accedervi, scaricarlo e conservarlo. L\'obbligo previsto dall\'art. 1 della Legge 4/1953 e\' rispettato anche con la consegna elettronica, purche\' il documento sia integro, leggibile e disponibile al dipendente. Il datore di lavoro deve garantire la conservazione dei cedolini per almeno 5 anni. Per il lavoratore, e\' consigliabile scaricare e archiviare autonomamente le proprie buste paga, sia per verifiche future sia per eventuali necessita\' documentali (richieste di mutuo, ISEE, contenziosi).' },
+];
 ---
 
 <CalcolatoreLayout
@@ -20,6 +31,8 @@ const breadcrumbs = [
   calculatorName="Simulatore Busta Paga 2026"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
+
+  faqs={faqs}
 >
   <BustaPaga client:load />
 

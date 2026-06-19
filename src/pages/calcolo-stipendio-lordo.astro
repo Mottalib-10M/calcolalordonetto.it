@@ -12,6 +12,17 @@ const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/` },
   { name: 'Calcolo Lordo da Netto', url: canonical },
 ];
+
+const faqs = [
+  { question: 'Per avere 2.000 euro netti al mese, quale RAL devo chiedere?', answer: 'Dipende dalla regione di residenza e dal numero di mensilita. Indicativamente, per ottenere circa 2.000 euro netti al mese su 13 mensilita serve una RAL intorno ai 35.000-37.000 euro. Usa il calcolatore qui sopra con la tua regione per ottenere il valore preciso.' },
+  { question: 'Cosa cambia tra 12, 13 e 14 mensilita?', answer: 'Il numero di mensilita determina come viene suddiviso il netto annuo. Con 13 mensilita (il caso piu\' comune in Italia), ricevi 12 stipendi ordinari piu\' la tredicesima a dicembre. Con 14 mensilita ricevi anche la quattordicesima, tipica di alcuni CCNL come il commercio e il turismo. Il netto annuo resta lo stesso, ma il netto mensile e\' piu\' basso perche\' diviso per un numero maggiore di pagamenti.' },
+  { question: 'La RAL include i contributi a carico del datore di lavoro?', answer: 'No. La RAL (Retribuzione Annua Lorda) e\' il tuo stipendio lordo prima delle trattenute a tuo carico (INPS dipendente e IRPEF). Il costo azienda e\' piu\' alto perche\' include anche i contributi INPS a carico del datore (circa 23,81%) e il TFR (circa 6,91%). Il calcolatore mostra anche il costo azienda nella sezione di dettaglio.' },
+  { question: 'Perche\' il netto effettivo potrebbe differire dal target?', answer: 'Il calcolatore arrotonda la RAL ai 100 euro piu\' vicini per proporre una cifra realistica e negoziabile. Questo arrotondamento puo\' causare una differenza di pochi euro nel netto mensile risultante. In pratica, in sede di trattativa si ragiona sempre in termini di RAL arrotondata.' },
+  { question: 'Posso usare questo calcolo per valutare un\'offerta di lavoro?', answer: 'Assolutamente si\'. Se sai quanto ti serve al mese per le tue spese, puoi calcolare la RAL minima da accettare. Tieni presente che nella valutazione complessiva dovresti considerare anche benefit aziendali (buoni pasto, auto aziendale, welfare), il TFR che maturi ogni anno, e le prospettive di crescita.' },
+  { question: 'Come influisce il cuneo fiscale 2026 sul calcolo inverso?', answer: 'Il cuneo fiscale 2026 prevede una riduzione strutturale dei contributi INPS a carico del lavoratore per redditi fino a 35.000 euro lordi annui. Questo significa che, per i redditi che rientrano in questa fascia, il netto mensile e\' piu\' alto rispetto al calcolo standard senza agevolazioni. Di conseguenza, il calcolo inverso restituisce una RAL necessaria inferiore: per ottenere, ad esempio, 1.500 euro netti al mese, serve una RAL piu\' bassa rispetto a quanto sarebbe necessario senza la riduzione del cuneo. Attenzione pero\' alla soglia dei 35.000 euro: superato questo limite, il beneficio si azzera completamente e il rapporto netto-lordo torna a seguire le regole ordinarie, con un impatto significativo sulla RAL richiesta. Il nostro calcolatore tiene conto automaticamente di questa agevolazione nel determinare la RAL necessaria.' },
+  { question: 'Qual e\' la differenza tra costo azienda e RAL?', answer: 'La RAL (Retribuzione Annua Lorda) e\' lo stipendio lordo del dipendente, cioe\' l\'importo su cui vengono calcolate le trattenute a carico del lavoratore (contributi INPS dipendente, IRPEF, addizionali). Il costo azienda, invece, e\' la spesa complessiva che il datore di lavoro sostiene per quel dipendente: include la RAL, i contributi INPS a carico del datore (circa il 23,81% della RAL), il TFR maturato (circa il 6,91%), l\'INAIL e altri oneri accessori. In pratica, il costo azienda e\' mediamente superiore del 30-35% rispetto alla RAL. Ad esempio, una RAL di 30.000 euro corrisponde a un costo azienda di circa 39.000-40.000 euro. Questa distinzione e\' importante nella negoziazione: l\'azienda ragiona in termini di costo azienda, mentre il candidato ragiona in termini di RAL o di netto mensile.' },
+  { question: 'Come negoziare lo stipendio usando il calcolo inverso?', answer: 'Il calcolo inverso e\' uno strumento prezioso per prepararsi alla negoziazione salariale. Ecco come usarlo al meglio: innanzitutto, calcola le tue spese mensili fisse (affitto, bollette, alimentari, trasporti, risparmio) per determinare il netto minimo di cui hai bisogno. Poi, usa il calcolatore per tradurre quel netto nella RAL corrispondente, selezionando la tua regione di residenza e il numero di mensilita previsto dal CCNL dell\'azienda. Aggiungi un margine del 5-10% alla RAL risultante per avere spazio di trattativa. In sede di colloquio, presenta la tua richiesta in termini di RAL (non di netto), perche\' e\' il linguaggio che le aziende utilizzano. Infine, ricorda di valutare anche i benefit: se l\'azienda offre buoni pasto da 8 euro al giorno, questo equivale a circa 1.760 euro netti in piu\' all\'anno, che potresti sottrarre dal tuo fabbisogno di netto mensile prima di calcolare la RAL necessaria.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -20,6 +31,8 @@ const breadcrumbs = [
   calculatorName="Calcolo Stipendio Lordo da Netto 2026"
   breadcrumbs={breadcrumbs}
   canonical={canonical}
+
+  faqs={faqs}
 >
   <StipendioLordo client:load />
 

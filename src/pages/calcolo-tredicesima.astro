@@ -11,6 +11,17 @@ const breadcrumbs = [
   { name: 'Calcolatori', url: `${SITE.url}/` },
   { name: 'Calcolo Tredicesima', url: `${SITE.url}/calcolo-tredicesima/` },
 ];
+
+const faqs = [
+  { question: 'Quando viene pagata la tredicesima?', answer: 'La tredicesima viene pagata generalmente nella busta paga di dicembre, in tempo per le feste natalizie. Alcuni datori di lavoro la erogano nella prima meta\' di dicembre, altri a fine mese.' },
+  { question: 'Perche\' la tredicesima e\' piu\' tassata dello stipendio normale?', answer: 'Sulla tredicesima non si applicano le detrazioni da lavoro dipendente (fino a 1.955 euro) e il trattamento integrativo (ex bonus Renzi, fino a 1.200 euro). L\'IRPEF viene calcolata all\'aliquota marginale, senza alcuna riduzione, rendendo l\'impatto fiscale piu\' pesante rispetto alla mensilita\' ordinaria.' },
+  { question: 'Tutti i lavoratori hanno diritto alla tredicesima?', answer: 'Si\', la tredicesima mensilita\' e\' un diritto previsto per tutti i lavoratori dipendenti, sia con contratto a tempo indeterminato che determinato, full-time e part-time. E\' stabilita dalla legge (DPR 1070/1960) e non dal CCNL come la quattordicesima.' },
+  { question: 'Come funziona la tredicesima pro-rata?', answer: 'Se non hai lavorato per tutto l\'anno (ad esempio perche\' hai iniziato a meta\' anno o ti sei dimesso), la tredicesima viene calcolata in proporzione ai mesi effettivamente lavorati. Il calcolo e\': (RAL / 12) &times; (mesi lavorati / 12). I giorni superiori a 15 in un mese contano come mese intero.' },
+  { question: 'La tredicesima influisce sul calcolo del TFR?', answer: 'Si\', la tredicesima e\' inclusa nel calcolo del TFR. La base di calcolo del TFR e\' la retribuzione annua comprensiva della tredicesima (e della quattordicesima, se prevista). Il TFR annuo si calcola dividendo l\'intera retribuzione per 13,5.' },
+  { question: 'La tredicesima viene pagata durante la malattia o la maternita\'?', answer: 'Si\', la tredicesima continua a maturare durante i periodi di malattia (entro il periodo di comporto previsto dal CCNL) e durante la maternita\' obbligatoria. Durante il congedo di maternita\' obbligatorio (5 mesi), la tredicesima matura regolarmente e la relativa quota e\' a carico dell\'INPS. Anche durante il congedo parentale (facoltativo) la tredicesima matura, sebbene in misura ridotta. In caso di malattia prolungata oltre il periodo di comporto, la maturazione si interrompe.' },
+  { question: 'Come incide la tredicesima sull\'ISEE?', answer: 'La tredicesima incide sull\'ISEE in quanto fa parte del reddito complessivo dichiarato nella Certificazione Unica (CU) e di conseguenza nella dichiarazione dei redditi. L\'ISEE considera il reddito complessivo del nucleo familiare, che include tutte le componenti retributive, tredicesima e quattordicesima comprese. Non e\' possibile escluderla dal calcolo dell\'indicatore. Per chi percepisce sia tredicesima che quattordicesima, il reddito ai fini ISEE risultera corrispondente all\'intera RAL annuale.' },
+  { question: 'Si puo\' chiedere la tredicesima anticipata o in rate mensili?', answer: 'La legge non prevede un diritto all\'anticipo della tredicesima, ma il lavoratore puo\' richiedere al datore di lavoro di erogarla in rate mensili distribuite nelle 12 buste paga ordinarie. Questa modalita va concordata con l\'azienda e puo\' essere prevista da accordi individuali o aziendali. Alcuni datori di lavoro accettano di anticipare la tredicesima o parte di essa su richiesta motivata del dipendente, ma si tratta di una concessione e non di un obbligo. E\' importante sapere che la mensilizzazione della tredicesima non cambia il carico fiscale complessivo annuo: cambia solo la distribuzione temporale dei pagamenti.' },
+];
 ---
 
 <CalcolatoreLayout
@@ -18,6 +29,8 @@ const breadcrumbs = [
   description={description}
   calculatorName="Calcolo Tredicesima Netta"
   breadcrumbs={breadcrumbs}
+
+  faqs={faqs}
 >
   <Tredicesima client:load />
 
