@@ -87,9 +87,9 @@ export default function IRPEF({ lang = 'it' }: { lang?: Lang }) {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
           Calcolo IRPEF {new Date().getFullYear()}
-        </h1>
+        </h2>
         <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
           Inserisci il tuo reddito complessivo annuo per calcolare l'IRPEF
           dovuta con il dettaglio scaglione per scaglione.

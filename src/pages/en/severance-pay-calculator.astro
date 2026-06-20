@@ -38,6 +38,13 @@ const faqs = [
 
   faqs={faqs}
 >
+  <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+    TFR Calculator
+  </h1>
+  <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+    Enter RAL and years of service to calculate your net TFR with separate taxation and ISTAT revaluation.
+  </p>
+
   <TFR client:load lang={lang} />
 
   <Fragment slot="come-si-calcola">

@@ -81,9 +81,9 @@ export default function StipendioLordo({ lang = 'it' }: { lang?: Lang }) {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
           Calcolo Stipendio Lordo da Netto
-        </h1>
+        </h2>
         <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
           Inserisci lo stipendio netto mensile che desideri e scopri quale RAL
           richiedere al tuo datore di lavoro.
