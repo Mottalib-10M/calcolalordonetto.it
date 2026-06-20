@@ -40,6 +40,22 @@ const homeSchema = JSON.stringify([
     alumniOf: { '@type': 'CollegeOrUniversity', name: 'INSEAD' },
     worksFor: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+    description,
+    inLanguage: SITE.locale,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE.url}/ral/{query}/`,
+      },
+      'query-input': 'required name=query',
+    },
+  },
 ]);
 
 const faqs = [
