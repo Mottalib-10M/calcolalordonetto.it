@@ -15,6 +15,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
+      filter: (page) => !page.includes('/404'),
       serialize(item) {
         const path = item.url.replace(SITE_URL, '');
         const isEn = path.startsWith('/en/');
