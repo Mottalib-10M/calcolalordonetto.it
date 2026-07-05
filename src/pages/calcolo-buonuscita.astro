@@ -38,7 +38,7 @@ const faqs = [
     Calcola il netto della buonuscita o incentivo all'esodo con tassazione separata e IRPEF ordinaria a confronto.
   </p>
 
-  <Buonuscita client:load />
+  <Buonuscita client:idle />
 
   <Fragment slot="come-si-calcola">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -476,17 +476,38 @@ const faqs = [
       Calcolatori correlati
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <a href="/calcolo-tfr/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
-        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo TFR</h3>
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Calcola il TFR maturato e confronta le opzioni di destinazione</p>
+      <a
+        href="/calcolo-tfr/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo TFR
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Stima il TFR per lavoratori del settore privato.
+        </p>
       </a>
-      <a href="/calcolo-busta-paga/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
-        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Busta Paga</h3>
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Simula la tua busta paga completa dal lordo al netto</p>
+      <a
+        href="/calcolo-pensione/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo Pensione
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Stima la tua pensione in base ai contributi versati.
+        </p>
       </a>
-      <a href="/confronto-dipendente-piva/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors">
-        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Dipendente vs P.IVA</h3>
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Confronta il netto tra lavoro dipendente e partita IVA forfettaria</p>
+      <a
+        href="/calcolo-irpef/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Calcolo IRPEF
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Analizza l'imposta IRPEF e la tassazione separata sulla buonuscita.
+        </p>
       </a>
     </div>
   </Fragment>

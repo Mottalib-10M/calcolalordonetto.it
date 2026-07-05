@@ -41,7 +41,7 @@ const faqs = [
     Inserisci fatturato e coefficiente per calcolare imposta sostitutiva, contributi INPS e netto annuo reale.
   </p>
 
-  <Forfettari client:load />
+  <Forfettari client:idle />
 
   <Fragment slot="come-si-calcola">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -275,53 +275,54 @@ const faqs = [
     </div>
   </Fragment>
 
+  <!-- Calcolatori correlati -->
   <Fragment slot="correlati">
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
       Calcolatori correlati
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <a
-        href="/calcolo-irpef/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        href="/confronto-dipendente-piva/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
-          Calcolo IRPEF
+          Dipendente vs P.IVA
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Dettaglio scaglione per scaglione dell'IRPEF sul tuo reddito
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Confronta il netto tra lavoro dipendente e Partita IVA.
         </p>
       </a>
       <a
         href="/regime-impatriati-calcolatore/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
           Regime Impatriati
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Calcola il risparmio fiscale con il regime per lavoratori impatriati
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calcola il risparmio fiscale per chi rientra in Italia.
         </p>
       </a>
       <a
-        href="/calcolo-paga-oraria/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        href="/costo-aziendale/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
-          Calcolo Paga Oraria
+          Costo Aziendale
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Converti la RAL in tariffa oraria lorda e netta
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Scopri quanto costa un dipendente all'azienda.
         </p>
       </a>
       <a
-        href="/calcolo-inflazione/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        href="/calcolo-irpef/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
-          Calcolo Inflazione
+          Calcolo IRPEF
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Scopri come l'inflazione erode il potere d'acquisto nel tempo
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Confronta la flat tax forfettaria con l'IRPEF ordinaria.
         </p>
       </a>
     </div>

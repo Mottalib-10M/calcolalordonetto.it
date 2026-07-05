@@ -41,7 +41,7 @@ const faqs = [
     Converti la tua RAL in paga oraria lorda e netta, al netto di IRPEF, contributi INPS e addizionali.
   </p>
 
-  <PagaOraria client:load />
+  <PagaOraria client:idle />
 
   <Fragment slot="come-si-calcola">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -314,53 +314,54 @@ const faqs = [
     </div>
   </Fragment>
 
+  <!-- Calcolatori correlati -->
   <Fragment slot="correlati">
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
       Calcolatori correlati
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <a
         href="/calcolo-busta-paga/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
           Calcolo Busta Paga
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Simula il cedolino mensile con tutte le trattenute
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Simula una busta paga mensile completa.
         </p>
       </a>
       <a
-        href="/calcolo-stipendio-lordo/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        href="/calcolo-tredicesima/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
-          Calcolo Lordo da Netto
+          Calcolo Tredicesima
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Scopri la RAL necessaria per ottenere il netto desiderato
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calcola la tredicesima netta.
         </p>
       </a>
       <a
-        href="/comparatore-regioni/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        href="/calcolo-quattordicesima/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
-          Comparatore Regioni
+          Calcolo Quattordicesima
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Confronta il netto mensile in tutte le 21 regioni italiane
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calcola la quattordicesima netta.
         </p>
       </a>
       <a
-        href="/calcolo-forfettari/"
-        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 hover:border-brand dark:hover:border-brand transition-colors"
+        href="/calcolo-ferie-permessi/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
       >
         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
-          Regime Forfettario
+          Ferie e Permessi
         </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Calcola tasse e netto con la partita IVA forfettaria
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calcola giorni di ferie e permessi maturati.
         </p>
       </a>
     </div>
