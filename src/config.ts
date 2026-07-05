@@ -21,7 +21,7 @@ export const SITE = {
     charcoal: '#1F2937',
     lightGray: '#F3F4F6',
   },
-  bingVerifyCode: '', // msvalidate.01 code from Bing Webmaster Tools
+  bingVerifyCode: '15b1d26333aa4cd7a1cdba8e813bfc7f', // msvalidate.01 code from Bing Webmaster Tools
   clarityProjectId: 'x9ozigrvte', // Microsoft Clarity project ID
 } as const;
 

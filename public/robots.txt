@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+Disallow: /*?*
+
 Sitemap: https://calcolalordonetto.it/sitemap-index.xml
