@@ -3,7 +3,7 @@ import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
 import StipendioNetto from '../components/calcolatori/StipendioNetto';
 import { SITE } from '../config';
 
-const title = "Calcolo Stipendio Netto 2026: da RAL a Netto in Busta Paga";
+const title = "Calcolo Stipendio Netto 2026: da RAL a Netto";
 const description = "Inserisci la RAL e scopri il netto in busta paga. IRPEF 2026, INPS, addizionali regionali e comunali, cuneo fiscale e detrazioni lavoro dipendente incluse.";
 
 
@@ -90,7 +90,7 @@ const faqs = [
     Inserisci la RAL e scopri il netto mensile in busta paga con IRPEF, INPS e addizionali 2026.
   </p>
 
-  <StipendioNetto client:load />
+  <StipendioNetto client:idle />
 
   <!-- Come si calcola -->
   <Fragment slot="come-si-calcola">
@@ -378,6 +378,30 @@ const faqs = [
         </h3>
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
           Calcola tasse e netto per Partita IVA con il regime forfettario agevolato.
+        </p>
+      </a>
+
+      <a
+        href="/regime-impatriati-calcolatore/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Regime Impatriati
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Calcola il risparmio fiscale per chi rientra in Italia con l'esenzione 50%.
+        </p>
+      </a>
+
+      <a
+        href="/stipendio-mensile/"
+        class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30 dark:hover:border-brand/30"
+      >
+        <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">
+          Stipendio Mensile Netto
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Tabella RAL necessaria per ogni netto mensile da 1.000 a 5.000 euro.
         </p>
       </a>
     </div>
