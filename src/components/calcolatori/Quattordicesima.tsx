@@ -188,7 +188,7 @@ export default function Quattordicesima({ lang = 'it' }: { lang?: Lang }) {
           Quali CCNL prevedono la quattordicesima?
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-          La quattordicesima non e' prevista per legge ma e' stabilita da alcuni contratti collettivi nazionali di lavoro (CCNL).
+          La quattordicesima non è prevista per legge ma è stabilita da alcuni contratti collettivi nazionali di lavoro (CCNL).
           Verifica il tuo contratto per sapere se ne hai diritto.
         </p>
         <div className="overflow-x-auto">

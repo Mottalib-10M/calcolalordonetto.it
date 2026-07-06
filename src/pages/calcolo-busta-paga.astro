@@ -14,14 +14,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Perche\' la mia busta paga reale e\' diversa dal calcolo?', answer: 'Diversi fattori possono causare differenze: il CCNL puo\' prevedere voci aggiuntive (superminimo, scatti di anzianita\', indennita\'); potresti avere trattenute per la previdenza complementare, cessioni del quinto o pignoramenti; i buoni pasto e altri benefit non compaiono nella retribuzione base; le addizionali comunali dipendono dal tuo comune specifico.' },
-  { question: 'Perche\' in alcuni mesi il netto e\' piu\' alto?', answer: 'Nei mesi di gennaio e febbraio non vengono ancora trattenute le addizionali regionali e comunali dell\'anno corrente (che partono tipicamente da marzo). In quei mesi potresti vedere un netto leggermente piu\' alto. Inoltre, se nell\'anno precedente avevi addizionali che terminano a gennaio, il mese di febbraio risulta il piu\' "leggero" come trattenute.' },
+  { question: 'perché la mia busta paga reale è diversa dal calcolo?', answer: 'Diversi fattori possono causare differenze: il CCNL può prevedere voci aggiuntive (superminimo, scatti di anzianità, indennità); potresti avere trattenute per la previdenza complementare, cessioni del quinto o pignoramenti; i buoni pasto e altri benefit non compaiono nella retribuzione base; le addizionali comunali dipendono dal tuo comune specifico.' },
+  { question: 'perché in alcuni mesi il netto è più alto?', answer: 'Nei mesi di gennaio e febbraio non vengono ancora trattenute le addizionali regionali e comunali dell\'anno corrente (che partono tipicamente da marzo). In quei mesi potresti vedere un netto leggermente più alto. Inoltre, se nell\'anno precedente avevi addizionali che terminano a gennaio, il mese di febbraio risulta il più "leggero" come trattenute.' },
   { question: 'Come vengono trattenute le addizionali?', answer: 'Le addizionali regionali e comunali dell\'anno precedente vengono trattenute in 11 rate mensili, da gennaio a novembre dell\'anno successivo. Le addizionali dell\'anno corrente vengono calcolate in sede di conguaglio a fine anno oppure trattenute in acconto a partire da marzo. Il simulatore assume la trattenuta in 11 rate uguali.' },
-  { question: 'Cos\'e\' il rateo di tredicesima nella busta paga?', answer: 'Il rateo di tredicesima e\' la quota di tredicesima che maturi ogni mese. Ogni mese lavorato ti da\' diritto a 1/12 della tredicesima annua. Questo rateo non viene erogato mensilmente ma si accumula e viene pagato interamente a dicembre. Nel cedolino puo\' essere indicato come voce informativa per mostrare quanto stai maturando.' },
-  { question: 'Il TFR compare nella busta paga?', answer: 'Il TFR (Trattamento di Fine Rapporto) non viene trattenuto dalla busta paga del dipendente perche\' e\' interamente a carico del datore di lavoro. E\' pari a circa il 6,91% della RAL e si accumula anno dopo anno. Nel riepilogo annuale del nostro calcolatore trovi la stima del TFR maturato. Il TFR puo\' essere destinato alla previdenza complementare o mantenuto in azienda.' },
-  { question: 'Cosa succede alla busta paga in caso di malattia o maternita\'?', answer: 'In caso di malattia, i primi 3 giorni (periodo di carenza) sono retribuiti interamente dal datore di lavoro. Dal 4o al 20o giorno l\'INPS corrisponde il 50% della retribuzione media giornaliera, dal 21o al 180o giorno il 66,67%. Molti CCNL prevedono un\'integrazione a carico del datore di lavoro per raggiungere il 100% della retribuzione ordinaria. Per la maternita\' obbligatoria (5 mesi), l\'INPS eroga l\'80% della retribuzione e il CCNL puo\' prevedere l\'integrazione al 100%. In entrambi i casi, l\'indennita\' INPS viene anticipata dal datore di lavoro in busta paga e poi recuperata tramite conguaglio con i contributi dovuti all\'Istituto. Nel cedolino troverai le voci separate: la retribuzione ridotta per i giorni di assenza e l\'indennita\' INPS corrispondente.' },
-  { question: 'Come vengono calcolati gli straordinari in busta paga?', answer: 'Il compenso per lavoro straordinario si calcola partendo dalla paga oraria ordinaria e applicando una maggiorazione percentuale stabilita dal CCNL. La paga oraria si ottiene dividendo la retribuzione mensile per il divisore orario contrattuale (tipicamente 168 o 173 ore per un full-time). Le maggiorazioni piu\' comuni sono: straordinario diurno feriale 15-25%, straordinario notturno 30-40%, straordinario festivo 40-50%, straordinario notturno festivo 50-60%. Il D.Lgs. 66/2003 fissa un tetto massimo di 250 ore annue di lavoro straordinario, salvo diverse previsioni del CCNL. Gli straordinari sono soggetti a contributi INPS e IRPEF ordinari, ma possono beneficiare della tassazione agevolata al 5% (imposta sostitutiva) se rientrano nei premi di produttivita\' entro i limiti previsti dalla legge. In busta paga, le ore di straordinario vengono indicate separatamente con il relativo codice e la maggiorazione applicata.' },
-  { question: 'La busta paga elettronica ha lo stesso valore legale?', answer: 'Si\', la busta paga in formato elettronico ha pieno valore legale, come confermato dal D.Lgs. 82/2005 (Codice dell\'Amministrazione Digitale) e dalle successive interpretazioni del Ministero del Lavoro. Il datore di lavoro puo\' consegnare il cedolino in formato digitale (PDF via e-mail, portale aziendale, app dedicata) a condizione che il lavoratore possa accedervi, scaricarlo e conservarlo. L\'obbligo previsto dall\'art. 1 della Legge 4/1953 e\' rispettato anche con la consegna elettronica, purche\' il documento sia integro, leggibile e disponibile al dipendente. Il datore di lavoro deve garantire la conservazione dei cedolini per almeno 5 anni. Per il lavoratore, e\' consigliabile scaricare e archiviare autonomamente le proprie buste paga, sia per verifiche future sia per eventuali necessita\' documentali (richieste di mutuo, ISEE, contenziosi).' },
+  { question: 'cos\'è il rateo di tredicesima nella busta paga?', answer: 'Il rateo di tredicesima è la quota di tredicesima che maturi ogni mese. Ogni mese lavorato ti da\' diritto a 1/12 della tredicesima annua. Questo rateo non viene erogato mensilmente ma si accumula e viene pagato interamente a dicembre. Nel cedolino può essere indicato come voce informativa per mostrare quanto stai maturando.' },
+  { question: 'Il TFR compare nella busta paga?', answer: 'Il TFR (Trattamento di Fine Rapporto) non viene trattenuto dalla busta paga del dipendente perché è interamente a carico del datore di lavoro. È pari a circa il 6,91% della RAL e si accumula anno dopo anno. Nel riepilogo annuale del nostro calcolatore trovi la stima del TFR maturato. Il TFR può essere destinato alla previdenza complementare o mantenuto in azienda.' },
+  { question: 'Cosa succede alla busta paga in caso di malattia o maternità?', answer: 'In caso di malattia, i primi 3 giorni (periodo di carenza) sono retribuiti interamente dal datore di lavoro. Dal 4o al 20o giorno l\'INPS corrisponde il 50% della retribuzione media giornaliera, dal 21o al 180o giorno il 66,67%. Molti CCNL prevedono un\'integrazione a carico del datore di lavoro per raggiungere il 100% della retribuzione ordinaria. Per la maternità obbligatoria (5 mesi), l\'INPS eroga l\'80% della retribuzione e il CCNL può prevedere l\'integrazione al 100%. In entrambi i casi, l\'indennità INPS viene anticipata dal datore di lavoro in busta paga e poi recuperata tramite conguaglio con i contributi dovuti all\'Istituto. Nel cedolino troverai le voci separate: la retribuzione ridotta per i giorni di assenza e l\'indennità INPS corrispondente.' },
+  { question: 'Come vengono calcolati gli straordinari in busta paga?', answer: 'Il compenso per lavoro straordinario si calcola partendo dalla paga oraria ordinaria e applicando una maggiorazione percentuale stabilita dal CCNL. La paga oraria si ottiene dividendo la retribuzione mensile per il divisore orario contrattuale (tipicamente 168 o 173 ore per un full-time). Le maggiorazioni più comuni sono: straordinario diurno feriale 15-25%, straordinario notturno 30-40%, straordinario festivo 40-50%, straordinario notturno festivo 50-60%. Il D.Lgs. 66/2003 fissa un tetto massimo di 250 ore annue di lavoro straordinario, salvo diverse previsioni del CCNL. Gli straordinari sono soggetti a contributi INPS e IRPEF ordinari, ma possono beneficiare della tassazione agevolata al 5% (imposta sostitutiva) se rientrano nei premi di produttività entro i limiti previsti dalla legge. In busta paga, le ore di straordinario vengono indicate separatamente con il relativo codice e la maggiorazione applicata.' },
+  { question: 'La busta paga elettronica ha lo stesso valore legale?', answer: 'Sì, la busta paga in formato elettronico ha pieno valore legale, come confermato dal D.Lgs. 82/2005 (Codice dell\'Amministrazione Digitale) e dalle successive interpretazioni del Ministero del Lavoro. Il datore di lavoro può consegnare il cedolino in formato digitale (PDF via e-mail, portale aziendale, app dedicata) a condizione che il lavoratore possa accedervi, scaricarlo e conservarlo. L\'obbligo previsto dall\'art. 1 della Legge 4/1953 è rispettato anche con la consegna elettronica, purché il documento sia integro, leggibile e disponibile al dipendente. Il datore di lavoro deve garantire la conservazione dei cedolini per almeno 5 anni. Per il lavoratore, è consigliabile scaricare e archiviare autonomamente le proprie buste paga, sia per verifiche future sia per eventuali necessità documentali (richieste di mutuo, ISEE, contenziosi).' },
 ];
 ---
 
@@ -49,10 +49,10 @@ const faqs = [
     </h2>
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
-        La busta paga (o cedolino) e' il documento che il datore di lavoro
+        La busta paga (o cedolino) è il documento che il datore di lavoro
         consegna ogni mese al dipendente. Riporta tutte le voci che compongono
         la retribuzione e le trattenute applicate per arrivare al netto finale.
-        Comprendere ogni singola riga del cedolino e' fondamentale per
+        Comprendere ogni singola riga del cedolino è fondamentale per
         verificare la correttezza degli importi e per pianificare le proprie
         finanze personali con consapevolezza.
       </p>
@@ -60,7 +60,7 @@ const faqs = [
       <ul>
         <li>
           <strong>Retribuzione base mensile:</strong> il lordo mensile, pari alla
-          RAL divisa per il numero di mensilita' (tipicamente 13)
+          RAL divisa per il numero di mensilità (tipicamente 13)
         </li>
         <li>
           <strong>Contributi INPS:</strong> la quota previdenziale a carico del
@@ -91,20 +91,20 @@ const faqs = [
         posizione INPS e INAIL) e del lavoratore (nome, cognome, codice
         fiscale, data di assunzione, qualifica, livello contrattuale e CCNL
         applicato). In questa sezione si trovano anche il mese di competenza,
-        la sede di lavoro e la posizione contributiva. E' importante
-        verificare che il livello e la qualifica siano corretti, poiche'
+        la sede di lavoro e la posizione contributiva. È importante
+        verificare che il livello e la qualifica siano corretti, poiché
         determinano la retribuzione minima prevista dal contratto collettivo.
       </p>
       <p>
-        <strong>Corpo (parte centrale):</strong> e' la sezione piu' articolata
+        <strong>Corpo (parte centrale):</strong> è la sezione più articolata
         e riporta tutte le voci retributive e le trattenute. Si trovano qui
-        la paga base, l'indennita' di contingenza, l'EDR (Elemento Distinto
-        della Retribuzione), eventuali superminimi, scatti di anzianita',
-        indennita' di funzione, straordinari, premi, ferie e permessi
-        maturati e goduti, ore lavorate e assenze. Ogni voce e' identificata
+        la paga base, l'indennità di contingenza, l'EDR (Elemento Distinto
+        della Retribuzione), eventuali superminimi, scatti di anzianità,
+        indennità di funzione, straordinari, premi, ferie e permessi
+        maturati e goduti, ore lavorate e assenze. Ogni voce è identificata
         da un codice e da una descrizione, con indicazione delle ore o dei
         giorni di riferimento, della base di calcolo e dell'importo
-        risultante. E' in questa sezione che compaiono anche le trattenute
+        risultante. È in questa sezione che compaiono anche le trattenute
         per contributi INPS, IRPEF e addizionali.
       </p>
       <p>
@@ -113,13 +113,13 @@ const faqs = [
         delle ritenute fiscali e previdenziali, l'imponibile INPS e fiscale
         progressivo, il TFR maturato, i ratei di tredicesima (e
         quattordicesima se prevista dal CCNL), le ferie e i permessi residui,
-        e infine il netto in busta, cioe' l'importo effettivamente accreditato
-        sul conto corrente del lavoratore. E' utile controllare periodicamente
+        e infine il netto in busta, cioè l'importo effettivamente accreditato
+        sul conto corrente del lavoratore. È utile controllare periodicamente
         i progressivi per assicurarsi che coincidano con quanto atteso.
       </p>
       <h3>Le voci variabili della busta paga</h3>
       <p>
-        Oltre alla retribuzione fissa mensile, il cedolino puo' contenere
+        Oltre alla retribuzione fissa mensile, il cedolino può contenere
         numerose voci variabili che incidono significativamente sull'importo
         netto percepito.
       </p>
@@ -136,16 +136,16 @@ const faqs = [
         <strong>Premi e bonus:</strong> possono essere di natura contrattuale
         (premio di produzione previsto dal CCNL) o individuale (bonus
         discrezionali, MBO). I premi di risultato legati ad incrementi di
-        produttivita' possono godere di una tassazione agevolata al 5%
+        produttività possono godere di una tassazione agevolata al 5%
         (sostitutiva dell'IRPEF) fino a un importo massimo di 3.000 euro
         annui per redditi da lavoro dipendente fino a 80.000 euro nell'anno
         precedente.
       </p>
       <p>
-        <strong>Indennita':</strong> comprendono l'indennita' di trasferta,
-        l'indennita' di turno, l'indennita' di reperibilita', l'indennita'
+        <strong>indennità:</strong> comprendono l'indennità di trasferta,
+        l'indennità di turno, l'indennità di reperibilità, l'indennità
         sostitutiva di mensa e altre voci specifiche previste dal CCNL o
-        dalla contrattazione aziendale. Alcune indennita' (come quella di
+        dalla contrattazione aziendale. Alcune indennità (come quella di
         trasferta entro certi limiti) possono essere esenti da tassazione.
       </p>
       <p>
@@ -154,47 +154,47 @@ const faqs = [
         Anche ferie e permessi non goduti, se liquidati, compaiono come
         voci positive nel cedolino e sono soggetti a tassazione ordinaria.
       </p>
-      <h3>La tredicesima mensilita'</h3>
+      <h3>La tredicesima mensilità</h3>
       <p>
-        La tredicesima e' una mensilita' aggiuntiva erogata a dicembre. Il suo
-        importo lordo e' pari a RAL/13. Viene tassata con IRPEF e INPS, ma
+        La tredicesima è una mensilità aggiuntiva erogata a dicembre. Il suo
+        importo lordo è pari a RAL/13. Viene tassata con IRPEF e INPS, ma
         non prevede la trattenuta delle addizionali regionali e comunali. Per
-        questo motivo il netto della tredicesima puo' essere leggermente diverso
+        questo motivo il netto della tredicesima può essere leggermente diverso
         da quello di un mese ordinario.
       </p>
       <h3>Quando variano le trattenute in busta paga</h3>
       <p>
         Le trattenute non sono costanti durante l'anno. Nei mesi di gennaio e
         febbraio, le addizionali dell'anno precedente sono terminate e quelle
-        nuove non sono ancora partite, quindi il netto puo' risultare piu'
+        nuove non sono ancora partite, quindi il netto può risultare più
         alto. Da marzo si aggiungono le rate delle addizionali regionale e
         comunale dell'anno corrente.
       </p>
       <h3>Conguaglio di fine anno</h3>
       <p>
-        Il conguaglio fiscale e' un'operazione che il datore di lavoro (in
-        qualita' di sostituto d'imposta) effettua tipicamente nel mese di
-        dicembre o, al piu' tardi, in quello di febbraio dell'anno successivo.
+        Il conguaglio fiscale è un'operazione che il datore di lavoro (in
+        qualità di sostituto d'imposta) effettua tipicamente nel mese di
+        dicembre o, al più tardi, in quello di febbraio dell'anno successivo.
         Serve a ricalcolare l'IRPEF effettivamente dovuta sull'intero reddito
-        annuo e a confrontarla con le ritenute gia' operate mese per mese.
+        annuo e a confrontarla con le ritenute già operate mese per mese.
       </p>
       <p>
         Durante l'anno, le trattenute IRPEF mensili vengono calcolate in via
         provvisoria, proiettando il reddito del mese su base annua. Tuttavia
         variazioni di stipendio, straordinari, bonus, periodi di assenza o
         cambi di detrazioni (ad esempio per un figlio nato in corso d'anno)
-        possono creare uno scostamento tra le ritenute gia' operate e
+        possono creare uno scostamento tra le ritenute già operate e
         l'imposta realmente dovuta. Il conguaglio corregge queste differenze.
       </p>
       <p>
-        Se durante l'anno sono state trattenute piu' imposte del dovuto, il
+        Se durante l'anno sono state trattenute più imposte del dovuto, il
         conguaglio genera un <strong>credito</strong> a favore del dipendente,
-        che si traduce in un netto di dicembre piu' alto del solito. Al
+        che si traduce in un netto di dicembre più alto del solito. Al
         contrario, se le ritenute mensili sono state insufficienti, il
         conguaglio produce un <strong>debito</strong>, e il netto di dicembre
-        risulta inferiore. In casi estremi, il debito puo' superare il netto
+        risulta inferiore. In casi estremi, il debito può superare il netto
         del mese e viene recuperato nei mesi successivi. Questo meccanismo
-        spiega perche' la busta paga di dicembre puo' riservare sorprese,
+        spiega perché la busta paga di dicembre può riservare sorprese,
         sia in positivo che in negativo.
       </p>
     </div>
@@ -208,7 +208,7 @@ const faqs = [
       <p>
         Per comprendere concretamente come si arriva dal lordo al netto, vediamo
         un esempio pratico basato su una RAL di 30.000 euro distribuita su
-        13 mensilita'. I valori sono indicativi e si riferiscono a un mese
+        13 mensilità. I valori sono indicativi e si riferiscono a un mese
         ordinario (da marzo a novembre, quando tutte le trattenute sono attive).
       </p>
     </div>
@@ -270,7 +270,7 @@ const faqs = [
         la prima trattenuta sono i <strong>contributi INPS</strong> a carico del
         lavoratore, pari al 9,19%, che ammontano a 212,08 euro. Questa quota
         finanzia la pensione futura e le prestazioni previdenziali (malattia,
-        maternita', disoccupazione). L'imponibile fiscale che ne risulta e'
+        maternità, disoccupazione). L'imponibile fiscale che ne risulta è
         di 2.095,61 euro.
       </p>
       <p>
@@ -284,9 +284,9 @@ const faqs = [
       <p>
         Le <strong>detrazioni per lavoro dipendente</strong> riducono
         l'imposta lorda. Per redditi compresi tra 15.000 e 28.000 euro,
-        la detrazione annua e' di 1.910 euro maggiorata di un importo
+        la detrazione annua è di 1.910 euro maggiorata di un importo
         decrescente fino a 28.000 euro. Nel nostro esempio, la detrazione
-        mensile e' di circa 130 euro, portando l'IRPEF netta a circa 267 euro.
+        mensile è di circa 130 euro, portando l'IRPEF netta a circa 267 euro.
       </p>
       <p>
         Si aggiungono poi le <strong>addizionali</strong>: quella regionale
@@ -297,14 +297,14 @@ const faqs = [
         risulta pari a zero.
       </p>
       <p>
-        Il risultato finale e' un <strong>netto in busta di circa
-        1.789 euro</strong>. Questo valore puo' variare sensibilmente in base
+        Il risultato finale è un <strong>netto in busta di circa
+        1.789 euro</strong>. Questo valore può variare sensibilmente in base
         alla regione e al comune di residenza: ad esempio, un lavoratore in
-        Lombardia con addizionale regionale all'1,23% avra' un netto diverso
+        Lombardia con addizionale regionale all'1,23% avrà un netto diverso
         rispetto a uno residente nel Lazio dove l'aliquota regionale arriva
         al 3,33% per la stessa fascia di reddito. Anche l'addizionale
         comunale varia notevolmente: si va dallo 0% di alcuni piccoli comuni
-        allo 0,9% dei comuni con le aliquote piu' elevate.
+        allo 0,9% dei comuni con le aliquote più elevate.
       </p>
     </div>
   </Fragment>
@@ -316,25 +316,25 @@ const faqs = [
     <div class="space-y-4">
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Perche' la mia busta paga reale e' diversa dal calcolo?
+          perché la mia busta paga reale è diversa dal calcolo?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Diversi fattori possono causare differenze: il CCNL puo' prevedere voci aggiuntive (superminimo, scatti di anzianita', indennita'); potresti avere trattenute per la previdenza complementare, cessioni del quinto o pignoramenti; i buoni pasto e altri benefit non compaiono nella retribuzione base; le addizionali comunali dipendono dal tuo comune specifico.
+          Diversi fattori possono causare differenze: il CCNL può prevedere voci aggiuntive (superminimo, scatti di anzianità, indennità); potresti avere trattenute per la previdenza complementare, cessioni del quinto o pignoramenti; i buoni pasto e altri benefit non compaiono nella retribuzione base; le addizionali comunali dipendono dal tuo comune specifico.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Perche' in alcuni mesi il netto e' piu' alto?
+          perché in alcuni mesi il netto è più alto?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Nei mesi di gennaio e febbraio non vengono ancora trattenute le addizionali regionali e comunali dell'anno corrente (che partono tipicamente da marzo). In quei mesi potresti vedere un netto leggermente piu' alto. Inoltre, se nell'anno precedente avevi addizionali che terminano a gennaio, il mese di febbraio risulta il piu' "leggero" come trattenute.
+          Nei mesi di gennaio e febbraio non vengono ancora trattenute le addizionali regionali e comunali dell'anno corrente (che partono tipicamente da marzo). In quei mesi potresti vedere un netto leggermente più alto. Inoltre, se nell'anno precedente avevi addizionali che terminano a gennaio, il mese di febbraio risulta il più "leggero" come trattenute.
         </div>
       </details>
 
@@ -352,13 +352,13 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Cos'e' il rateo di tredicesima nella busta paga?
+          cos'è il rateo di tredicesima nella busta paga?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il rateo di tredicesima e' la quota di tredicesima che maturi ogni mese. Ogni mese lavorato ti da' diritto a 1/12 della tredicesima annua. Questo rateo non viene erogato mensilmente ma si accumula e viene pagato interamente a dicembre. Nel cedolino puo' essere indicato come voce informativa per mostrare quanto stai maturando.
+          Il rateo di tredicesima è la quota di tredicesima che maturi ogni mese. Ogni mese lavorato ti da' diritto a 1/12 della tredicesima annua. Questo rateo non viene erogato mensilmente ma si accumula e viene pagato interamente a dicembre. Nel cedolino può essere indicato come voce informativa per mostrare quanto stai maturando.
         </div>
       </details>
 
@@ -370,19 +370,19 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il TFR (Trattamento di Fine Rapporto) non viene trattenuto dalla busta paga del dipendente perche' e' interamente a carico del datore di lavoro. E' pari a circa il 6,91% della RAL e si accumula anno dopo anno. Nel riepilogo annuale del nostro calcolatore trovi la stima del TFR maturato. Il TFR puo' essere destinato alla previdenza complementare o mantenuto in azienda.
+          Il TFR (Trattamento di Fine Rapporto) non viene trattenuto dalla busta paga del dipendente perché è interamente a carico del datore di lavoro. È pari a circa il 6,91% della RAL e si accumula anno dopo anno. Nel riepilogo annuale del nostro calcolatore trovi la stima del TFR maturato. Il TFR può essere destinato alla previdenza complementare o mantenuto in azienda.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Cosa succede alla busta paga in caso di malattia o maternita'?
+          Cosa succede alla busta paga in caso di malattia o maternità?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          In caso di malattia, i primi 3 giorni (periodo di carenza) sono retribuiti interamente dal datore di lavoro. Dal 4o al 20o giorno l'INPS corrisponde il 50% della retribuzione media giornaliera, dal 21o al 180o giorno il 66,67%. Molti CCNL prevedono un'integrazione a carico del datore di lavoro per raggiungere il 100% della retribuzione ordinaria. Per la maternita' obbligatoria (5 mesi), l'INPS eroga l'80% della retribuzione e il CCNL puo' prevedere l'integrazione al 100%. In entrambi i casi, l'indennita' INPS viene anticipata dal datore di lavoro in busta paga e poi recuperata tramite conguaglio con i contributi dovuti all'Istituto. Nel cedolino troverai le voci separate: la retribuzione ridotta per i giorni di assenza e l'indennita' INPS corrispondente.
+          In caso di malattia, i primi 3 giorni (periodo di carenza) sono retribuiti interamente dal datore di lavoro. Dal 4o al 20o giorno l'INPS corrisponde il 50% della retribuzione media giornaliera, dal 21o al 180o giorno il 66,67%. Molti CCNL prevedono un'integrazione a carico del datore di lavoro per raggiungere il 100% della retribuzione ordinaria. Per la maternità obbligatoria (5 mesi), l'INPS eroga l'80% della retribuzione e il CCNL può prevedere l'integrazione al 100%. In entrambi i casi, l'indennità INPS viene anticipata dal datore di lavoro in busta paga e poi recuperata tramite conguaglio con i contributi dovuti all'Istituto. Nel cedolino troverai le voci separate: la retribuzione ridotta per i giorni di assenza e l'indennità INPS corrispondente.
         </div>
       </details>
 
@@ -394,7 +394,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il compenso per lavoro straordinario si calcola partendo dalla paga oraria ordinaria e applicando una maggiorazione percentuale stabilita dal CCNL. La paga oraria si ottiene dividendo la retribuzione mensile per il divisore orario contrattuale (tipicamente 168 o 173 ore per un full-time). Le maggiorazioni piu' comuni sono: straordinario diurno feriale 15-25%, straordinario notturno 30-40%, straordinario festivo 40-50%, straordinario notturno festivo 50-60%. Il D.Lgs. 66/2003 fissa un tetto massimo di 250 ore annue di lavoro straordinario, salvo diverse previsioni del CCNL. Gli straordinari sono soggetti a contributi INPS e IRPEF ordinari, ma possono beneficiare della tassazione agevolata al 5% (imposta sostitutiva) se rientrano nei premi di produttivita' entro i limiti previsti dalla legge. In busta paga, le ore di straordinario vengono indicate separatamente con il relativo codice e la maggiorazione applicata.
+          Il compenso per lavoro straordinario si calcola partendo dalla paga oraria ordinaria e applicando una maggiorazione percentuale stabilita dal CCNL. La paga oraria si ottiene dividendo la retribuzione mensile per il divisore orario contrattuale (tipicamente 168 o 173 ore per un full-time). Le maggiorazioni più comuni sono: straordinario diurno feriale 15-25%, straordinario notturno 30-40%, straordinario festivo 40-50%, straordinario notturno festivo 50-60%. Il D.Lgs. 66/2003 fissa un tetto massimo di 250 ore annue di lavoro straordinario, salvo diverse previsioni del CCNL. Gli straordinari sono soggetti a contributi INPS e IRPEF ordinari, ma possono beneficiare della tassazione agevolata al 5% (imposta sostitutiva) se rientrano nei premi di produttività entro i limiti previsti dalla legge. In busta paga, le ore di straordinario vengono indicate separatamente con il relativo codice e la maggiorazione applicata.
         </div>
       </details>
 
@@ -406,7 +406,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Si', la busta paga in formato elettronico ha pieno valore legale, come confermato dal D.Lgs. 82/2005 (Codice dell'Amministrazione Digitale) e dalle successive interpretazioni del Ministero del Lavoro. Il datore di lavoro puo' consegnare il cedolino in formato digitale (PDF via e-mail, portale aziendale, app dedicata) a condizione che il lavoratore possa accedervi, scaricarlo e conservarlo. L'obbligo previsto dall'art. 1 della Legge 4/1953 e' rispettato anche con la consegna elettronica, purche' il documento sia integro, leggibile e disponibile al dipendente. Il datore di lavoro deve garantire la conservazione dei cedolini per almeno 5 anni. Per il lavoratore, e' consigliabile scaricare e archiviare autonomamente le proprie buste paga, sia per verifiche future sia per eventuali necessita' documentali (richieste di mutuo, ISEE, contenziosi).
+          Sì, la busta paga in formato elettronico ha pieno valore legale, come confermato dal D.Lgs. 82/2005 (Codice dell'Amministrazione Digitale) e dalle successive interpretazioni del Ministero del Lavoro. Il datore di lavoro può consegnare il cedolino in formato digitale (PDF via e-mail, portale aziendale, app dedicata) a condizione che il lavoratore possa accedervi, scaricarlo e conservarlo. L'obbligo previsto dall'art. 1 della Legge 4/1953 è rispettato anche con la consegna elettronica, purché il documento sia integro, leggibile e disponibile al dipendente. Il datore di lavoro deve garantire la conservazione dei cedolini per almeno 5 anni. Per il lavoratore, è consigliabile scaricare e archiviare autonomamente le proprie buste paga, sia per verifiche future sia per eventuali necessità documentali (richieste di mutuo, ISEE, contenziosi).
         </div>
       </details>
     </div>

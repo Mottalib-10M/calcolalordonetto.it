@@ -92,7 +92,7 @@ export default function FIRE({ lang = 'it' }: Props) {
               max={10_000_000}
               step={1000}
               prefix="€"
-              helpText={lang === 'en' ? 'Savings and investments already accumulated' : "Risparmi e investimenti gia' accumulati"}
+              helpText={lang === 'en' ? 'Savings and investments already accumulated' : "Risparmi e investimenti già accumulati"}
             />
 
             <CampoInput
@@ -149,7 +149,7 @@ export default function FIRE({ lang = 'it' }: Props) {
             {formatCurrency(risultato.patrimonioObiettivo)}
           </p>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            {lang === 'en' ? 'The wealth needed to live off investments' : 'Il patrimonio necessario per vivere di rendita'}
+            {lang === 'en' ? 'The wealth needed to live off investments' : 'Il patrimonio necessario per vivere di rendità}
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-4 border-t border-gray-200 dark:border-gray-700 pt-5">

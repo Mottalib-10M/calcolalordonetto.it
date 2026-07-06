@@ -12,13 +12,13 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Qual e\' la differenza tra TAN e TAEG?', answer: 'Il TAN (Tasso Annuo Nominale) rappresenta il puro costo degli interessi senza spese accessorie. Il TAEG (Tasso Annuo Effettivo Globale) include tutti i costi legati al prestito: spese di istruttoria, spese di incasso rata, assicurazioni obbligatorie e altre commissioni. Per confrontare offerte di prestito diverse, guarda sempre il TAEG.' },
+  { question: 'Qual è la differenza tra TAN e TAEG?', answer: 'Il TAN (Tasso Annuo Nominale) rappresenta il puro costo degli interessi senza spese accessorie. Il TAEG (Tasso Annuo Effettivo Globale) include tutti i costi legati al prestito: spese di istruttoria, spese di incasso rata, assicurazioni obbligatorie e altre commissioni. Per confrontare offerte di prestito diverse, guarda sempre il TAEG.' },
   { question: 'Quanto posso chiedere di prestito personale?', answer: 'In Italia i prestiti personali vanno generalmente da 1.000 a 75.000 euro, con durate da 12 a 120 mesi. L\'importo massimo concesso dipende dal tuo reddito e dal rapporto rata/reddito: la rata non dovrebbe superare un terzo del tuo stipendio netto mensile.' },
   { question: 'Cosa sono le spese di istruttoria?', answer: 'Le spese di istruttoria sono costi una tantum che la banca o la finanziaria addebita per l\'analisi e l\'apertura della pratica di prestito. Possono essere un importo fisso (es. 200-500 euro) o una percentuale dell\'importo richiesto. Queste spese vengono incluse nel calcolo del TAEG.' },
-  { question: 'Posso estinguere il prestito in anticipo?', answer: 'Si, per legge hai sempre il diritto di estinguere anticipatamente un prestito personale. La penale massima e\' dell\'1% del debito residuo se mancano piu\' di 12 mesi alla scadenza, oppure dello 0,5% se mancano meno di 12 mesi. Molte banche offrono prestiti senza penale di estinzione anticipata.' },
-  { question: 'Qual e\' la differenza tra prestito personale e cessione del quinto?', answer: 'Il prestito personale e\' un finanziamento a tasso fisso rimborsato con rate mensili addebitate sul conto corrente del richiedente. La cessione del quinto, invece, prevede che la rata venga trattenuta direttamente dallo stipendio o dalla pensione, con un importo massimo pari a un quinto del netto mensile. La cessione del quinto e\' garantita dal TFR ed e\' accessibile anche a chi ha segnalazioni creditizie negative, mentre il prestito personale richiede un profilo creditizio positivo. Inoltre, la cessione del quinto ha una durata massima di 120 mesi e tassi spesso piu\' bassi grazie alle garanzie maggiori offerte al finanziatore.' },
-  { question: 'Come viene valutata la mia richiesta di prestito?', answer: 'Le banche e le finanziarie valutano la richiesta di prestito attraverso un processo di credit scoring che considera diversi fattori. Il rapporto rata/reddito e\' il parametro principale: la rata del prestito, sommata ad eventuali altri finanziamenti in corso, non dovrebbe superare il 30-35% dello stipendio netto. Viene inoltre consultata la CRIF (Centrale Rischi di Intermediazione Finanziaria), una banca dati che registra la storia creditizia del richiedente, inclusi prestiti passati, ritardi nei pagamenti e segnalazioni di sofferenza. Sono valutati anche l\'anzianita\' lavorativa, il tipo di contratto, la stabilita\' del reddito e l\'eventuale presenza di garanti.' },
-  { question: 'Posso ottenere un prestito se ho un contratto a tempo determinato?', answer: 'Si, e\' possibile ottenere un prestito personale anche con un contratto a tempo determinato, anche se le condizioni possono essere piu\' restrittive. In genere la durata del finanziamento non puo\' superare la scadenza del contratto di lavoro, e gli importi concessi tendono a essere inferiori rispetto a chi ha un contratto a tempo indeterminato. Alcune finanziarie richiedono un garante o una maggiore anzianita\' lavorativa. In alternativa, chi ha un contratto a tempo determinato puo\' valutare la cessione del quinto, che consente di ottenere un prestito per una durata non superiore alla scadenza contrattuale, con il vantaggio della trattenuta diretta dallo stipendio.' },
+  { question: 'Posso estinguere il prestito in anticipo?', answer: 'Si, per legge hai sempre il diritto di estinguere anticipatamente un prestito personale. La penale massima è dell\'1% del debito residuo se mancano più di 12 mesi alla scadenza, oppure dello 0,5% se mancano meno di 12 mesi. Molte banche offrono prestiti senza penale di estinzione anticipata.' },
+  { question: 'Qual è la differenza tra prestito personale e cessione del quinto?', answer: 'Il prestito personale è un finanziamento a tasso fisso rimborsato con rate mensili addebitate sul conto corrente del richiedente. La cessione del quinto, invece, prevede che la rata venga trattenuta direttamente dallo stipendio o dalla pensione, con un importo massimo pari a un quinto del netto mensile. La cessione del quinto è garantita dal TFR ed è accessibile anche a chi ha segnalazioni creditizie negative, mentre il prestito personale richiede un profilo creditizio positivo. Inoltre, la cessione del quinto ha una durata massima di 120 mesi e tassi spesso più bassi grazie alle garanzie maggiori offerte al finanziatore.' },
+  { question: 'Come viene valutata la mia richiesta di prestito?', answer: 'Le banche e le finanziarie valutano la richiesta di prestito attraverso un processo di credit scoring che considera diversi fattori. Il rapporto rata/reddito è il parametro principale: la rata del prestito, sommata ad eventuali altri finanziamenti in corso, non dovrebbe superare il 30-35% dello stipendio netto. Viene inoltre consultata la CRIF (Centrale Rischi di Intermediazione Finanziaria), una banca dati che registra la storia creditizia del richiedente, inclusi prestiti passati, ritardi nei pagamenti e segnalazioni di sofferenza. Sono valutati anche l\'anzianità lavorativa, il tipo di contratto, la stabilità del reddito e l\'eventuale presenza di garanti.' },
+  { question: 'Posso ottenere un prestito se ho un contratto a tempo determinato?', answer: 'Si, è possibile ottenere un prestito personale anche con un contratto a tempo determinato, anche se le condizioni possono essere più restrittive. In genere la durata del finanziamento non può superare la scadenza del contratto di lavoro, e gli importi concessi tendono a essere inferiori rispetto a chi ha un contratto a tempo indeterminato. Alcune finanziarie richiedono un garante o una maggiore anzianità lavorativa. In alternativa, chi ha un contratto a tempo determinato può valutare la cessione del quinto, che consente di ottenere un prestito per una durata non superiore alla scadenza contrattuale, con il vantaggio della trattenuta diretta dallo stipendio.' },
 ];
 ---
 
@@ -58,11 +58,11 @@ const faqs = [
         Il <strong>TAN</strong> (Tasso Annuo Nominale) indica il costo puro degli interessi,
         mentre il <strong>TAEG</strong> comprende anche le spese di istruttoria, le spese
         di incasso rata e altri costi accessori. Per confrontare diversi prestiti, il TAEG
-        e' l'indicatore piu' affidabile perche' riflette il costo totale effettivo.
+        è l'indicatore più affidabile perché riflette il costo totale effettivo.
       </p>
       <p>
         Il TAEG viene calcolato con il metodo <strong>Newton-Raphson</strong>: si cerca il tasso
-        che eguaglia il valore attuale di tutte le rate all'importo netto erogato (cioe'
+        che eguaglia il valore attuale di tutte le rate all'importo netto erogato (cioè
         l'importo meno le spese iniziali).
       </p>
 
@@ -70,15 +70,15 @@ const faqs = [
         TAN vs TAEG: la differenza fondamentale
       </h3>
       <p>
-        Quando si valuta un prestito personale, e' fondamentale comprendere la differenza tra
+        Quando si valuta un prestito personale, è fondamentale comprendere la differenza tra
         <strong>TAN</strong> e <strong>TAEG</strong>, due indicatori spesso confusi ma profondamente
         diversi. Il TAN (Tasso Annuo Nominale) rappresenta esclusivamente il costo degli interessi
         puri applicati al capitale prestato. Si tratta di un tasso "nudo", che non tiene conto di
         nessuna spesa accessoria legata al finanziamento. Ad esempio, un prestito con TAN al 6%
-        indica che il costo degli interessi calcolati sul capitale residuo e' pari al 6% annuo.
+        indica che il costo degli interessi calcolati sul capitale residuo è pari al 6% annuo.
       </p>
       <p>
-        Il TAEG (Tasso Annuo Effettivo Globale), invece, e' un indicatore molto piu' completo e
+        Il TAEG (Tasso Annuo Effettivo Globale), invece, è un indicatore molto più completo e
         rappresenta il vero costo del prestito. Il TAEG include tutte le voci di spesa
         obbligatorie legate al finanziamento: le spese di istruttoria (la commissione che la banca
         applica per analizzare e aprire la pratica), le spese di incasso rata (un costo fisso
@@ -89,7 +89,7 @@ const faqs = [
       <p>
         Per legge, la normativa italiana ed europea sulla trasparenza bancaria impone che il TAEG
         venga sempre indicato in modo chiaro e ben visibile in qualsiasi comunicazione pubblicitaria
-        e contrattuale relativa a un prestito. Questo obbligo esiste proprio perche' il TAEG e'
+        e contrattuale relativa a un prestito. Questo obbligo esiste proprio perché il TAEG è
         l'unico indicatore che permette un confronto reale tra offerte di finanziamento diverse.
         Un prestito con TAN al 5% ma con spese di istruttoria elevate potrebbe avere un TAEG
         superiore a un prestito con TAN al 6% ma senza spese aggiuntive. Per questo motivo,
@@ -100,28 +100,28 @@ const faqs = [
         La cessione del quinto dello stipendio
       </h3>
       <p>
-        La <strong>cessione del quinto</strong> e' una forma particolare di prestito personale
+        La <strong>cessione del quinto</strong> è una forma particolare di prestito personale
         disciplinata dal DPR 180/1950 e successive modifiche, che presenta caratteristiche uniche
         rispetto ai finanziamenti tradizionali. In questo tipo di prestito, la rata viene trattenuta
         direttamente dalla busta paga del lavoratore dal datore di lavoro (o dall'ente pensionistico,
         nel caso di pensionati), che la versa alla banca o alla finanziaria. L'importo massimo
-        della rata non puo' superare un quinto (il 20%) dello stipendio netto mensile del
+        della rata non può superare un quinto (il 20%) dello stipendio netto mensile del
         richiedente, da cui il nome "cessione del quinto".
       </p>
       <p>
-        Questa tipologia di prestito presenta diversi vantaggi significativi. In primo luogo, e'
+        Questa tipologia di prestito presenta diversi vantaggi significativi. In primo luogo, è
         accessibile anche a chi ha avuto problemi creditizi in passato, come segnalazioni in CRIF
-        o protesti, perche' la garanzia principale non e' il merito creditizio del richiedente, ma
+        o protesti, perché la garanzia principale non è il merito creditizio del richiedente, ma
         il fatto che la rata viene prelevata alla fonte dallo stipendio. In secondo luogo, il
-        prestito e' ulteriormente garantito dal <strong>TFR</strong> (Trattamento di Fine Rapporto)
+        prestito è ulteriormente garantito dal <strong>TFR</strong> (Trattamento di Fine Rapporto)
         maturato dal lavoratore: in caso di licenziamento o dimissioni, il TFR viene utilizzato
         per estinguere il debito residuo. Questa doppia garanzia (trattenuta in busta paga e TFR)
         consente alle banche di offrire tassi spesso competitivi rispetto ai prestiti personali
         tradizionali.
       </p>
       <p>
-        La durata massima di una cessione del quinto e' di 120 mesi (10 anni), e il prestito
-        puo' essere rinnovato prima della scadenza naturale. Possono accedere alla cessione del
+        La durata massima di una cessione del quinto è di 120 mesi (10 anni), e il prestito
+        può essere rinnovato prima della scadenza naturale. Possono accedere alla cessione del
         quinto i dipendenti pubblici, i dipendenti privati con contratto a tempo indeterminato
         e i pensionati. I lavoratori con contratto a tempo determinato possono ottenere la cessione
         del quinto solo per una durata non superiore alla scadenza del contratto di lavoro.
@@ -134,27 +134,27 @@ const faqs = [
         La normativa italiana, recependo la Direttiva europea 2008/48/CE sul credito al consumo,
         garantisce al consumatore il <strong>diritto di estinguere anticipatamente</strong> un
         prestito personale in qualsiasi momento, senza dover fornire motivazioni. Questo diritto
-        e' irrinunciabile e non puo' essere escluso da clausole contrattuali. L'estinzione anticipata
-        puo' essere totale (si rimborsa l'intero debito residuo) oppure parziale (si versa una
+        è irrinunciabile e non può essere escluso da clausole contrattuali. L'estinzione anticipata
+        può essere totale (si rimborsa l'intero debito residuo) oppure parziale (si versa una
         somma aggiuntiva che riduce il capitale residuo e, di conseguenza, le rate future o la
         durata del prestito).
       </p>
       <p>
         Per quanto riguarda i costi dell'estinzione anticipata, la legge fissa un tetto massimo
-        molto preciso. Se al momento dell'estinzione mancano piu' di 12 mesi alla scadenza
-        naturale del prestito, la penale massima applicabile e' pari all'<strong>1% del debito
+        molto preciso. Se al momento dell'estinzione mancano più di 12 mesi alla scadenza
+        naturale del prestito, la penale massima applicabile è pari all'<strong>1% del debito
         residuo</strong>. Se invece mancano meno di 12 mesi alla scadenza, la penale scende
-        allo <strong>0,5% del debito residuo</strong>. In nessun caso la penale puo' superare
+        allo <strong>0,5% del debito residuo</strong>. In nessun caso la penale può superare
         l'importo degli interessi che il consumatore avrebbe pagato nel periodo residuo.
       </p>
       <p>
-        E' importante sapere che molte banche e finanziarie, per ragioni competitive, offrono
+        È importante sapere che molte banche e finanziarie, per ragioni competitive, offrono
         prestiti con <strong>zero penale di estinzione anticipata</strong>. Questa condizione
         va verificata attentamente nel foglio informativo e nel contratto prima della firma.
-        In ogni caso, anche quando la penale e' prevista, l'estinzione anticipata conviene quasi
-        sempre se si dispone della liquidita' necessaria, perche' il risparmio sugli interessi
+        In ogni caso, anche quando la penale è prevista, l'estinzione anticipata conviene quasi
+        sempre se si dispone della liquidità necessaria, perché il risparmio sugli interessi
         futuri supera ampiamente il costo della penale, soprattutto nelle fasi iniziali del
-        prestito quando la quota interessi nella rata e' piu' elevata.
+        prestito quando la quota interessi nella rata è più elevata.
       </p>
     </div>
   </Fragment>
@@ -169,7 +169,7 @@ const faqs = [
         La tabella seguente mostra esempi concreti di rata mensile, TAEG e totale interessi
         per diverse combinazioni di importo e durata, calcolati con un TAN fisso del 7%
         e spese di istruttoria pari al 2% dell'importo finanziato. I valori sono indicativi
-        e servono come riferimento per orientarsi nella scelta del finanziamento piu' adatto
+        e servono come riferimento per orientarsi nella scelta del finanziamento più adatto
         alle proprie esigenze.
       </p>
     </div>
@@ -231,9 +231,9 @@ const faqs = [
         Ad esempio, un prestito di 10.000 euro a 36 mesi ha una rata di 309 euro con 1.112 euro
         di interessi totali, mentre lo stesso importo a 60 mesi scende a 198 euro di rata ma
         gli interessi salgono a 1.881 euro, con un incremento di circa 770 euro. Questo accade
-        perche', con una durata maggiore, il capitale residuo si riduce piu' lentamente e gli
-        interessi vengono calcolati per un periodo piu' lungo. La scelta della durata ideale
-        dipende quindi dal bilanciamento tra la sostenibilita' della rata mensile rispetto al
+        perché, con una durata maggiore, il capitale residuo si riduce più lentamente e gli
+        interessi vengono calcolati per un periodo più lungo. La scelta della durata ideale
+        dipende quindi dal bilanciamento tra la sostenibilità della rata mensile rispetto al
         proprio reddito e il desiderio di minimizzare il costo complessivo del prestito.
       </p>
     </div>
@@ -247,7 +247,7 @@ const faqs = [
     <div class="space-y-4">
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
         <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
-          Qual e' la differenza tra TAN e TAEG?
+          Qual è la differenza tra TAN e TAEG?
           <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
@@ -300,7 +300,7 @@ const faqs = [
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           Si, per legge hai sempre il diritto di estinguere anticipatamente un prestito
-          personale. La penale massima e' dell'1% del debito residuo se mancano piu' di
+          personale. La penale massima è dell'1% del debito residuo se mancano più di
           12 mesi alla scadenza, oppure dello 0,5% se mancano meno di 12 mesi. Molte
           banche offrono prestiti senza penale di estinzione anticipata.
         </p>
@@ -308,19 +308,19 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
         <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
-          Qual e' la differenza tra prestito personale e cessione del quinto?
+          Qual è la differenza tra prestito personale e cessione del quinto?
           <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          Il prestito personale e' un finanziamento a tasso fisso rimborsato con rate mensili
+          Il prestito personale è un finanziamento a tasso fisso rimborsato con rate mensili
           addebitate sul conto corrente del richiedente. La cessione del quinto, invece, prevede
           che la rata venga trattenuta direttamente dallo stipendio o dalla pensione, con un
-          importo massimo pari a un quinto del netto mensile. La cessione del quinto e' garantita
-          dal TFR ed e' accessibile anche a chi ha segnalazioni creditizie negative, mentre il
+          importo massimo pari a un quinto del netto mensile. La cessione del quinto è garantita
+          dal TFR ed è accessibile anche a chi ha segnalazioni creditizie negative, mentre il
           prestito personale richiede un profilo creditizio positivo. Inoltre, la cessione del
-          quinto ha una durata massima di 120 mesi e tassi spesso piu' bassi grazie alle garanzie
+          quinto ha una durata massima di 120 mesi e tassi spesso più bassi grazie alle garanzie
           maggiori offerte al finanziatore.
         </p>
       </details>
@@ -334,13 +334,13 @@ const faqs = [
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           Le banche e le finanziarie valutano la richiesta di prestito attraverso un processo
-          di credit scoring che considera diversi fattori. Il rapporto rata/reddito e' il
+          di credit scoring che considera diversi fattori. Il rapporto rata/reddito è il
           parametro principale: la rata del prestito, sommata ad eventuali altri finanziamenti
           in corso, non dovrebbe superare il 30-35% dello stipendio netto. Viene inoltre
           consultata la CRIF (Centrale Rischi di Intermediazione Finanziaria), una banca dati
           che registra la storia creditizia del richiedente, inclusi prestiti passati, ritardi
-          nei pagamenti e segnalazioni di sofferenza. Sono valutati anche l'anzianita' lavorativa,
-          il tipo di contratto, la stabilita' del reddito e l'eventuale presenza di garanti.
+          nei pagamenti e segnalazioni di sofferenza. Sono valutati anche l'anzianità lavorativa,
+          il tipo di contratto, la stabilità del reddito e l'eventuale presenza di garanti.
         </p>
       </details>
 
@@ -352,12 +352,12 @@ const faqs = [
           </svg>
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          Si, e' possibile ottenere un prestito personale anche con un contratto a tempo
-          determinato, anche se le condizioni possono essere piu' restrittive. In genere la
-          durata del finanziamento non puo' superare la scadenza del contratto di lavoro,
+          Si, è possibile ottenere un prestito personale anche con un contratto a tempo
+          determinato, anche se le condizioni possono essere più restrittive. In genere la
+          durata del finanziamento non può superare la scadenza del contratto di lavoro,
           e gli importi concessi tendono a essere inferiori rispetto a chi ha un contratto
           a tempo indeterminato. Alcune finanziarie richiedono un garante o una maggiore
-          anzianita' lavorativa. In alternativa, chi ha un contratto a tempo determinato puo'
+          anzianità lavorativa. In alternativa, chi ha un contratto a tempo determinato può
           valutare la cessione del quinto, che consente di ottenere un prestito per una durata
           non superiore alla scadenza contrattuale, con il vantaggio della trattenuta diretta
           dallo stipendio.

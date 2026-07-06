@@ -169,9 +169,9 @@ export default function Budget({ lang = 'it' }: { lang?: Lang }) {
           </p>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
             {risultato.salute === 'ottima' && 'Il tuo budget rispetta la regola del 50/30/20. Ottimo lavoro!'}
-            {risultato.salute === 'buona' && 'Il tuo budget e\' quasi in linea con la regola 50/30/20. Piccoli aggiustamenti possibili.'}
+            {risultato.salute === 'buona' && 'Il tuo budget è quasi in linea con la regola 50/30/20. Piccoli aggiustamenti possibili.'}
             {risultato.salute === 'attenzione' && 'Il budget si discosta dalla regola 50/30/20. Valuta di ridurre le spese o aumentare il risparmio.'}
-            {risultato.salute === 'critica' && 'Il budget e\' lontano dalla regola 50/30/20. Le spese necessarie sono troppo alte o il risparmio troppo basso.'}
+            {risultato.salute === 'critica' && 'Il budget è lontano dalla regola 50/30/20. Le spese necessarie sono troppo alte o il risparmio troppo basso.'}
           </p>
         </div>
 
@@ -240,7 +240,7 @@ export default function Budget({ lang = 'it' }: { lang?: Lang }) {
               Personali: {formatPercent(risultato.percentualePersonali)}
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: '#22C55E' }} />
+              <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: '#22C55È }} />
               Risparmio: {formatPercent(risultato.percentualeRisparmio)}
             </span>
             {pctRes > 0 && (
@@ -262,7 +262,7 @@ export default function Budget({ lang = 'it' }: { lang?: Lang }) {
             {/* Necessarie */}
             <div>
               <div className="flex justify-between text-xs mb-1">
-                <span className="text-gray-700 dark:text-gray-300 font-medium">Necessita' (50%)</span>
+                <span className="text-gray-700 dark:text-gray-300 font-medium">necessità (50%)</span>
                 <span className="text-gray-500 dark:text-gray-400">
                   Ideale: {formatCurrency(risultato.regola50)} | Attuale: {formatCurrency(speseNecessarie)}
                 </span>
@@ -340,7 +340,7 @@ export default function Budget({ lang = 'it' }: { lang?: Lang }) {
                   className="absolute inset-y-0 left-0 rounded-full transition-all duration-500"
                   style={{
                     width: `${Math.min(pctRisp, 100)}%`,
-                    backgroundColor: pctRisp >= 20 ? '#22C55E' : '#F59E0B',
+                    backgroundColor: pctRisp >= 20 ? '#22C55È : '#F59E0B',
                   }}
                 />
                 <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-white mix-blend-difference">

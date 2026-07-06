@@ -146,8 +146,8 @@ export default function PlusvalenzaImmobiliare({ lang = 'it' }: { lang?: Lang })
                   Plusvalenza ESENTE da imposte
                 </p>
                 <p className="mt-1 text-sm text-green-700 dark:text-green-400">
-                  Hai posseduto l'immobile per piu' di 5 anni ({anniPossesso} anni).
-                  La plusvalenza e' completamente esente da imposte ai sensi dell'art. 67,
+                  Hai posseduto l'immobile per più di 5 anni ({anniPossesso} anni).
+                  La plusvalenza è completamente esente da imposte ai sensi dell'art. 67,
                   comma 1, lett. b) del TUIR. Non devi pagare nessuna imposta sulla vendita.
                 </p>
               </div>
@@ -208,7 +208,7 @@ export default function PlusvalenzaImmobiliare({ lang = 'it' }: { lang?: Lang })
                   </span>
                   {convieneSostitutiva && (
                     <span className="text-xs font-medium text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/40 px-2 py-0.5 rounded-full">
-                      Piu' conveniente
+                      più conveniente
                     </span>
                   )}
                 </div>
@@ -235,7 +235,7 @@ export default function PlusvalenzaImmobiliare({ lang = 'it' }: { lang?: Lang })
                   </span>
                   {!convieneSostitutiva && (
                     <span className="text-xs font-medium text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/40 px-2 py-0.5 rounded-full">
-                      Piu' conveniente
+                      più conveniente
                     </span>
                   )}
                 </div>
@@ -311,10 +311,10 @@ export default function PlusvalenzaImmobiliare({ lang = 'it' }: { lang?: Lang })
                   Esenzione per abitazione principale
                 </p>
                 <p className="mt-1 text-sm text-blue-700 dark:text-blue-400">
-                  Se l'immobile e' stato adibito ad abitazione principale per la maggior parte
-                  del periodo di possesso, la plusvalenza e' esente anche entro i 5 anni.
+                  Se l'immobile è stato adibito ad abitazione principale per la maggior parte
+                  del periodo di possesso, la plusvalenza è esente anche entro i 5 anni.
                   Questa esenzione si applica automaticamente se hai avuto la residenza
-                  nell'immobile per oltre la meta' del tempo di possesso. Il calcolatore mostra
+                  nell'immobile per oltre la metà del tempo di possesso. Il calcolatore mostra
                   lo scenario peggiore (senza esenzione prima casa).
                 </p>
               </div>

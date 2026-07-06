@@ -124,7 +124,7 @@ export default function DetrazioniFamiliari({ lang = 'it' }: { lang?: Lang }) {
               min={0}
               max={5}
               step={1}
-              helpText="Solo figli di 21 anni o piu'. Sotto i 21 si applica l'Assegno Unico Universale."
+              helpText="Solo figli di 21 anni o più. Sotto i 21 si applica l'Assegno Unico Universale."
             />
 
             {/* Percentuale a carico */}
@@ -160,7 +160,7 @@ export default function DetrazioniFamiliari({ lang = 'it' }: { lang?: Lang }) {
                   </button>
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  Il 50% e' lo standard quando entrambi i genitori lavorano. Il 100% si applica se l'altro genitore non ha reddito sufficiente.
+                  Il 50% è lo standard quando entrambi i genitori lavorano. Il 100% si applica se l'altro genitore non ha reddito sufficiente.
                 </p>
               </div>
             )}
@@ -173,7 +173,7 @@ export default function DetrazioniFamiliari({ lang = 'it' }: { lang?: Lang }) {
             <strong>Figli sotto i 21 anni:</strong> Dal marzo 2022, i figli minorenni e
             quelli fino a 20 anni sono coperti dall'Assegno Unico Universale (AUU) erogato
             dall'INPS. Le detrazioni IRPEF per figli a carico si applicano solo ai figli
-            di 21 anni compiuti o piu'.
+            di 21 anni compiuti o più.
           </p>
         </div>
       </div>
@@ -227,7 +227,7 @@ export default function DetrazioniFamiliari({ lang = 'it' }: { lang?: Lang }) {
               <Row label="Differenza annua" value={risultato.differenzaNettaAnnua} highlight bold />
             </div>
             <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
-              <Row label="Differenza mensile (su 13 mensilita')" value={risultato.differenzaNettaMensile} highlight bold />
+              <Row label="Differenza mensile (su 13 mensilità)" value={risultato.differenzaNettaMensile} highlight bold />
             </div>
           </div>
         </div>

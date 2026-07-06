@@ -14,14 +14,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Quanto costa all\'azienda un dipendente con RAL 30.000 euro?', answer: 'Per un dipendente con RAL di 30.000 euro in un\'attivita\' d\'ufficio (INAIL 0,4%), il costo aziendale totale e\' di circa 39.474 euro annui. Questo include: RAL 30.000 euro + contributi INPS datore 7.143 euro (23,81%) + TFR 2.211 euro (RAL/13,5 al netto dello 0,50%) + INAIL 120 euro (0,4%). Il costo mensile e\' di circa 3.290 euro e il costo orario di circa 22,95 euro (su 1.720 ore annue).' },
-  { question: 'Qual e\' il moltiplicatore per passare dalla RAL al costo aziendale?', answer: 'Il moltiplicatore dipende dal settore, ma una regola pratica e\' la seguente: per attivita\' d\'ufficio (INAIL basso) si moltiplica la RAL per circa 1,32x; per il settore industriale e metalmeccanico per circa 1,34x; per l\'edilizia per circa 1,37x. Questi valori includono INPS datore (23,81%), TFR (~6,91%) e INAIL (variabile). Non includono costi accessori come buoni pasto, welfare, formazione e costi amministrativi, che possono aggiungere un ulteriore 5-15%.' },
-  { question: 'Il TFR e\' un costo per l\'azienda?', answer: 'Si\', il TFR e\' un costo aziendale a tutti gli effetti. Anche se viene accantonato e non versato mensilmente (nelle aziende fino a 50 dipendenti che lo mantengono in azienda), il TFR rappresenta un debito certo e determinabile nei confronti del lavoratore. Contabilmente viene registrato come "fondo TFR" nel passivo dello stato patrimoniale. Per le aziende con oltre 50 dipendenti, il TFR deve essere versato mensilmente al Fondo Tesoreria INPS, diventando un esborso effettivo. Se il lavoratore ha scelto di destinare il TFR a un fondo pensione, l\'azienda versa la quota direttamente al fondo con cadenza mensile.' },
-  { question: 'Come si calcola il costo orario di un dipendente?', answer: 'Il costo orario si ottiene dividendo il costo aziendale annuo per le ore lavorative annue. La convenzione standard (usata anche in ambito europeo per i bandi pubblici) prevede 1.720 ore annue, che corrispondono a circa 215 giornate lavorative da 8 ore, gia\' al netto di ferie, festivita\' e permessi retribuiti. Il costo orario effettivo "produttivo" puo\' essere superiore se si considerano assenze per malattia, permessi aggiuntivi e ore di formazione non direttamente produttive.' },
-  { question: 'Ci sono agevolazioni che riducono il costo aziendale?', answer: 'Si\', esistono diverse agevolazioni contributive che riducono i contributi INPS a carico del datore di lavoro: l\'esonero contributivo per nuove assunzioni a tempo indeterminato (variabile di anno in anno, nel 2026 puo\' arrivare fino al 100% per giovani under 36 o donne svantaggiate in determinate condizioni); la decontribuzione per le assunzioni nel Mezzogiorno; le agevolazioni per apprendistato professionalizzante (aliquota INPS ridotta al 10% per le aziende fino a 9 dipendenti); e lo sgravio INAIL tramite modello OT23 per le aziende con buon andamento infortunistico. Inoltre, i costi del personale sono interamente deducibili ai fini IRES e IRAP, con l\'importante eccezione della deduzione integrale del costo del lavoro dalla base imponibile IRAP prevista a partire dal 2015.' },
-  { question: 'Il costo aziendale di un apprendista e\' diverso?', answer: 'Si\', l\'apprendistato professionalizzante gode di un regime contributivo agevolato. Per le aziende con meno di 10 dipendenti, l\'aliquota INPS a carico del datore e\' ridotta al 3,11% per il primo anno e al 4,61% per il secondo anno, per poi salire al 11,61% dal terzo anno in poi. Per le aziende con 10 o piu\' dipendenti, l\'aliquota e\' del 11,61% per tutta la durata dell\'apprendistato. Queste aliquote sono significativamente inferiori al 23,81% standard, rendendo l\'apprendistato uno strumento di inserimento molto conveniente per le aziende. Al termine del periodo formativo, i contributi tornano all\'aliquota piena.' },
-  { question: 'Come incide la quattordicesima sul costo aziendale?', answer: 'La quattordicesima non cambia il costo aziendale totale se si ragiona in termini di RAL. La RAL include gia\' tutte le mensilita\' previste (12, 13 o 14). Cio\' che cambia e\' la distribuzione dei pagamenti nell\'anno: con 14 mensilita\', ogni mensilita\' singola sara\' di importo inferiore rispetto a 13 mensilita\', a parita\' di RAL. Il costo aziendale annuo complessivo resta identico perche\' i contributi INPS, il TFR e l\'INAIL sono tutti calcolati sulla RAL annua, indipendentemente da come viene suddivisa nei vari mesi.' },
-  { question: 'Qual e\' la differenza tra costo aziendale e cuneo fiscale?', answer: 'Il cuneo fiscale e\' la differenza tra il costo totale sostenuto dall\'azienda (costo aziendale) e il netto effettivamente percepito dal dipendente in busta paga. Include sia gli oneri a carico del datore (INPS datore, TFR, INAIL) sia quelli a carico del lavoratore (INPS dipendente, IRPEF, addizionali regionali e comunali). In Italia il cuneo fiscale e\' tra i piu\' elevati in Europa: per un lavoratore single senza figli con reddito medio, l\'OCSE stima un cuneo fiscale intorno al 45-47% del costo del lavoro complessivo. La Legge di Bilancio 2025 ha introdotto misure strutturali di riduzione del cuneo fiscale per i redditi fino a 40.000 euro, mediante un mix di somma esente e detrazione fiscale aggiuntiva.' },
+  { question: 'Quanto costa all\'azienda un dipendente con RAL 30.000 euro?', answer: 'Per un dipendente con RAL di 30.000 euro in un\'attività d\'ufficio (INAIL 0,4%), il costo aziendale totale è di circa 39.474 euro annui. Questo include: RAL 30.000 euro + contributi INPS datore 7.143 euro (23,81%) + TFR 2.211 euro (RAL/13,5 al netto dello 0,50%) + INAIL 120 euro (0,4%). Il costo mensile è di circa 3.290 euro e il costo orario di circa 22,95 euro (su 1.720 ore annue).' },
+  { question: 'Qual è il moltiplicatore per passare dalla RAL al costo aziendale?', answer: 'Il moltiplicatore dipende dal settore, ma una regola pratica è la seguente: per attività d\'ufficio (INAIL basso) si moltiplica la RAL per circa 1,32x; per il settore industriale e metalmeccanico per circa 1,34x; per l\'edilizia per circa 1,37x. Questi valori includono INPS datore (23,81%), TFR (~6,91%) e INAIL (variabile). Non includono costi accessori come buoni pasto, welfare, formazione e costi amministrativi, che possono aggiungere un ulteriore 5-15%.' },
+  { question: 'Il TFR è un costo per l\'azienda?', answer: 'Sì, il TFR è un costo aziendale a tutti gli effetti. Anche se viene accantonato e non versato mensilmente (nelle aziende fino a 50 dipendenti che lo mantengono in azienda), il TFR rappresenta un debito certo e determinabile nei confronti del lavoratore. Contabilmente viene registrato come "fondo TFR" nel passivo dello stato patrimoniale. Per le aziende con oltre 50 dipendenti, il TFR deve essere versato mensilmente al Fondo Tesoreria INPS, diventando un esborso effettivo. Se il lavoratore ha scelto di destinare il TFR a un fondo pensione, l\'azienda versa la quota direttamente al fondo con cadenza mensile.' },
+  { question: 'Come si calcola il costo orario di un dipendente?', answer: 'Il costo orario si ottiene dividendo il costo aziendale annuo per le ore lavorative annue. La convenzione standard (usata anche in ambito europeo per i bandi pubblici) prevede 1.720 ore annue, che corrispondono a circa 215 giornate lavorative da 8 ore, già al netto di ferie, festività e permessi retribuiti. Il costo orario effettivo "produttivo" può essere superiore se si considerano assenze per malattia, permessi aggiuntivi e ore di formazione non direttamente produttive.' },
+  { question: 'Ci sono agevolazioni che riducono il costo aziendale?', answer: 'Sì, esistono diverse agevolazioni contributive che riducono i contributi INPS a carico del datore di lavoro: l\'esonero contributivo per nuove assunzioni a tempo indeterminato (variabile di anno in anno, nel 2026 può arrivare fino al 100% per giovani under 36 o donne svantaggiate in determinate condizioni); la decontribuzione per le assunzioni nel Mezzogiorno; le agevolazioni per apprendistato professionalizzante (aliquota INPS ridotta al 10% per le aziende fino a 9 dipendenti); e lo sgravio INAIL tramite modello OT23 per le aziende con buon andamento infortunistico. Inoltre, i costi del personale sono interamente deducibili ai fini IRES e IRAP, con l\'importante eccezione della deduzione integrale del costo del lavoro dalla base imponibile IRAP prevista a partire dal 2015.' },
+  { question: 'Il costo aziendale di un apprendista è diverso?', answer: 'Sì, l\'apprendistato professionalizzante gode di un regime contributivo agevolato. Per le aziende con meno di 10 dipendenti, l\'aliquota INPS a carico del datore è ridotta al 3,11% per il primo anno e al 4,61% per il secondo anno, per poi salire al 11,61% dal terzo anno in poi. Per le aziende con 10 o più dipendenti, l\'aliquota è del 11,61% per tutta la durata dell\'apprendistato. Queste aliquote sono significativamente inferiori al 23,81% standard, rendendo l\'apprendistato uno strumento di inserimento molto conveniente per le aziende. Al termine del periodo formativo, i contributi tornano all\'aliquota piena.' },
+  { question: 'Come incide la quattordicesima sul costo aziendale?', answer: 'La quattordicesima non cambia il costo aziendale totale se si ragiona in termini di RAL. La RAL include già tutte le mensilità previste (12, 13 o 14). ciò che cambia è la distribuzione dei pagamenti nell\'anno: con 14 mensilità, ogni mensilità singola sarà di importo inferiore rispetto a 13 mensilità, a parità di RAL. Il costo aziendale annuo complessivo resta identico perché i contributi INPS, il TFR e l\'INAIL sono tutti calcolati sulla RAL annua, indipendentemente da come viene suddivisa nei vari mesi.' },
+  { question: 'Qual è la differenza tra costo aziendale e cuneo fiscale?', answer: 'Il cuneo fiscale è la differenza tra il costo totale sostenuto dall\'azienda (costo aziendale) e il netto effettivamente percepito dal dipendente in busta paga. Include sia gli oneri a carico del datore (INPS datore, TFR, INAIL) sia quelli a carico del lavoratore (INPS dipendente, IRPEF, addizionali regionali e comunali). In Italia il cuneo fiscale è tra i più elevati in Europa: per un lavoratore single senza figli con reddito medio, l\'OCSE stima un cuneo fiscale intorno al 45-47% del costo del lavoro complessivo. La Legge di Bilancio 2025 ha introdotto misure strutturali di riduzione del cuneo fiscale per i redditi fino a 40.000 euro, mediante un mix di somma esente e detrazione fiscale aggiuntiva.' },
 ];
 ---
 
@@ -45,18 +45,18 @@ const faqs = [
 
   <Fragment slot="come-si-calcola">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-      Cos'e' il costo aziendale e come si calcola
+      cos'è il costo aziendale e come si calcola
     </h2>
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
         Il <strong>costo aziendale</strong> (o costo del lavoro) rappresenta la spesa complessiva che
-        un'azienda sostiene per impiegare un lavoratore dipendente. E' un concetto fondamentale per
-        imprenditori, responsabili HR e consulenti del lavoro, perche' e' sempre significativamente
+        un'azienda sostiene per impiegare un lavoratore dipendente. È un concetto fondamentale per
+        imprenditori, responsabili HR e consulenti del lavoro, perché è sempre significativamente
         superiore alla RAL (Retribuzione Annua Lorda) indicata nel contratto di lavoro. Comprendere
-        questa differenza e' essenziale sia per chi assume sia per chi negozia il proprio stipendio.
+        questa differenza è essenziale sia per chi assume sia per chi negozia il proprio stipendio.
       </p>
       <p>
-        La differenza tra costo aziendale e RAL puo' essere sorprendente: per un dipendente con RAL
+        La differenza tra costo aziendale e RAL può essere sorprendente: per un dipendente con RAL
         di 30.000 euro, il costo aziendale totale supera tipicamente i 40.000 euro, con un
         moltiplicatore di circa 1,35x. Questo significa che per ogni euro di stipendio lordo, l'azienda
         spende circa 35 centesimi aggiuntivi in contributi e accantonamenti obbligatori.
@@ -71,21 +71,21 @@ const faqs = [
 
       <h4>1. RAL - Retribuzione Annua Lorda</h4>
       <p>
-        La RAL e' la componente principale del costo aziendale e corrisponde allo stipendio lordo
+        La RAL è la componente principale del costo aziendale e corrisponde allo stipendio lordo
         annuale concordato nel contratto di lavoro. Include lo stipendio base mensile moltiplicato
-        per il numero di mensilita' previste dal CCNL (tipicamente 13 o 14), oltre a eventuali
-        superminimi, indennita' fisse e altri emolumenti ricorrenti. La RAL rappresenta mediamente
+        per il numero di mensilità previste dal CCNL (tipicamente 13 o 14), oltre a eventuali
+        superminimi, indennità fisse e altri emolumenti ricorrenti. La RAL rappresenta mediamente
         il 70-75% del costo aziendale totale, a seconda del settore e del livello retributivo.
       </p>
 
       <h4>2. Contributi INPS a carico del datore di lavoro (23,81%)</h4>
       <p>
-        I contributi previdenziali a carico del datore di lavoro costituiscono la voce piu'
-        rilevante dopo la RAL. L'aliquota standard per il settore privato e' del 23,81% della
-        retribuzione imponibile, che comprende diverse sotto-voci: il contributo IVS (Invalidita',
+        I contributi previdenziali a carico del datore di lavoro costituiscono la voce più
+        rilevante dopo la RAL. L'aliquota standard per il settore privato è del 23,81% della
+        retribuzione imponibile, che comprende diverse sotto-voci: il contributo IVS (Invalidità,
         Vecchiaia, Superstiti) pari al 23,81%, a cui si aggiungono contributi minori per CUAF
-        (Cassa Unica Assegni Familiari), maternita', disoccupazione (NASpI) e malattia. L'aliquota
-        complessiva effettiva puo' variare leggermente in base al settore e alla qualifica del
+        (Cassa Unica Assegni Familiari), maternità, disoccupazione (NASpI) e malattia. L'aliquota
+        complessiva effettiva può variare leggermente in base al settore e alla qualifica del
         lavoratore, ma il 23,81% rappresenta il valore di riferimento per la grande maggioranza
         dei dipendenti del settore privato, come indicato dalle tabelle contributive INPS
         pubblicate annualmente nella circolare di inizio anno.
@@ -93,13 +93,13 @@ const faqs = [
 
       <h4>3. TFR - Trattamento di Fine Rapporto (7,41%)</h4>
       <p>
-        Il TFR e' un accantonamento obbligatorio disciplinato dall'articolo 2120 del Codice Civile.
+        Il TFR è un accantonamento obbligatorio disciplinato dall'articolo 2120 del Codice Civile.
         Ogni anno il datore di lavoro deve accantonare una quota pari alla retribuzione annua divisa
         per 13,5, che corrisponde a circa il 7,41% della RAL (al netto del contributo dello 0,50%
-        destinato al Fondo Adeguamento Pensioni INPS, l'accantonamento effettivo e' di circa il
+        destinato al Fondo Adeguamento Pensioni INPS, l'accantonamento effettivo è di circa il
         6,91%). Il TFR, pur non essendo un costo "versato" immediatamente come i contributi INPS,
         rappresenta un debito certo dell'azienda nei confronti del lavoratore, esigibile alla
-        cessazione del rapporto di lavoro. Per le aziende con piu' di 50 dipendenti, il TFR
+        cessazione del rapporto di lavoro. Per le aziende con più di 50 dipendenti, il TFR
         deve essere conferito al Fondo Tesoreria INPS, trasformandolo di fatto in un esborso
         corrente mensile.
       </p>
@@ -107,18 +107,18 @@ const faqs = [
       <h4>4. Premio INAIL (variabile per settore)</h4>
       <p>
         Il premio assicurativo INAIL (Istituto Nazionale per l'Assicurazione contro gli Infortuni
-        sul Lavoro) copre il rischio di infortuni e malattie professionali ed e' interamente a
+        sul Lavoro) copre il rischio di infortuni e malattie professionali ed è interamente a
         carico del datore di lavoro. L'aliquota varia significativamente in base alla classe di
-        rischio dell'attivita' svolta, come definito dalla Tariffa dei Premi approvata con DM
-        27 febbraio 2019. Per le attivita' di ufficio e terziario il tasso e' molto contenuto
-        (circa 0,3-0,5%), mentre per settori ad alto rischio come l'edilizia puo' superare il 5%.
+        rischio dell'attività svolta, come definito dalla Tariffa dei Premi approvata con DM
+        27 febbraio 2019. Per le attività di ufficio e terziario il tasso è molto contenuto
+        (circa 0,3-0,5%), mentre per settori ad alto rischio come l'edilizia può superare il 5%.
         Il premio viene calcolato sulla retribuzione imponibile INAIL e pagato con autoliquidazione
         annuale entro il 16 febbraio di ogni anno.
       </p>
 
       <h3>La formula completa del costo aziendale</h3>
       <p>
-        La formula sintetica per il calcolo del costo aziendale e':
+        La formula sintetica per il calcolo del costo aziendale è:
       </p>
       <p>
         <strong>Costo Aziendale = RAL + Contributi INPS Datore + TFR + Premio INAIL</strong>
@@ -132,15 +132,15 @@ const faqs = [
         <li>INAIL: da +0,3% a +5% e oltre, in base al settore</li>
       </ul>
       <p>
-        Per un'attivita' di ufficio con INAIL allo 0,4%, il moltiplicatore totale e' circa 1,32x.
-        Per un'attivita' metalmeccanica con INAIL al 2,5%, il moltiplicatore sale a circa 1,34x.
+        Per un'attività di ufficio con INAIL allo 0,4%, il moltiplicatore totale è circa 1,32x.
+        Per un'attività metalmeccanica con INAIL al 2,5%, il moltiplicatore sale a circa 1,34x.
         Per l'edilizia con INAIL al 5%, si arriva a circa 1,36x.
       </p>
 
       <h3>Esempio dettagliato: RAL 35.000 euro</h3>
       <p>
         Vediamo nel dettaglio il costo aziendale per un dipendente con RAL di 35.000 euro,
-        impiegato in un'attivita' di ufficio (INAIL 0,4%):
+        impiegato in un'attività di ufficio (INAIL 0,4%):
       </p>
       <ul>
         <li><strong>RAL:</strong> 35.000,00 €</li>
@@ -150,11 +150,11 @@ const faqs = [
         <li><strong>Costo aziendale totale:</strong> 46.053,75 €</li>
       </ul>
       <p>
-        Il moltiplicatore in questo caso e' 46.053,75 / 35.000 = 1,316x. Il costo mensile per
-        l'azienda e' di circa 3.837,81 €, mentre il costo orario (basato su 1.720 ore annue
-        standard) e' di circa 26,78 €. Se consideriamo che il netto in busta per il dipendente
-        con questa RAL e' di circa 1.870 € al mese (con 13 mensilita' in Lombardia), l'azienda
-        spende piu' del doppio di quello che il dipendente effettivamente incassa: un dato che
+        Il moltiplicatore in questo caso è 46.053,75 / 35.000 = 1,316x. Il costo mensile per
+        l'azienda è di circa 3.837,81 €, mentre il costo orario (basato su 1.720 ore annue
+        standard) è di circa 26,78 €. Se consideriamo che il netto in busta per il dipendente
+        con questa RAL è di circa 1.870 € al mese (con 13 mensilità in Lombardia), l'azienda
+        spende più del doppio di quello che il dipendente effettivamente incassa: un dato che
         evidenzia l'impatto del cosiddetto "cuneo fiscale" italiano.
       </p>
     </div>
@@ -168,8 +168,8 @@ const faqs = [
       <p>
         La tabella seguente mostra il costo aziendale stimato per diversi livelli di RAL, con
         contributi INPS datore al 23,81%, TFR secondo la formula dell'art. 2120 c.c. e INAIL
-        allo 0,4% (attivita' d'ufficio). Per settori con INAIL diverso, il costo totale
-        variera' di conseguenza: utilizza il calcolatore sopra per una stima personalizzata.
+        allo 0,4% (attività d'ufficio). Per settori con INAIL diverso, il costo totale
+        varierà di conseguenza: utilizza il calcolatore sopra per una stima personalizzata.
       </p>
     </div>
     <div class="overflow-x-auto mt-6">
@@ -238,16 +238,16 @@ const faqs = [
     </div>
     <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
       <p>
-        <strong>Nota:</strong> il moltiplicatore resta costante al 1,32x perche' tutti i contributi
+        <strong>Nota:</strong> il moltiplicatore resta costante al 1,32x perché tutti i contributi
         sono calcolati in percentuale sulla RAL. Il rapporto cambia solo al variare dell'aliquota
         INAIL o al superamento del massimale INPS annuo (per il {SITE.annoFiscale} pari a circa
-        119.650 euro), oltre il quale i contributi INPS non aumentano piu' proporzionalmente.
+        119.650 euro), oltre il quale i contributi INPS non aumentano più proporzionalmente.
       </p>
 
       <h3>Tassi INAIL per settore: quanto incide il premio assicurativo</h3>
       <p>
         Il premio INAIL varia enormemente in base alla Tariffa dei Premi e alla classe di rischio
-        assegnata all'attivita'. Ecco alcuni valori indicativi per i principali settori:
+        assegnata all'attività. Ecco alcuni valori indicativi per i principali settori:
       </p>
     </div>
     <div class="overflow-x-auto mt-6">
@@ -305,7 +305,7 @@ const faqs = [
       <h3>Altri costi del lavoro non inclusi nel calcolo base</h3>
       <p>
         Oltre alle componenti considerate dal nostro calcolatore, il costo effettivo di un
-        dipendente puo' includere ulteriori voci:
+        dipendente può includere ulteriori voci:
       </p>
       <ul>
         <li>
@@ -348,31 +348,31 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Per un dipendente con RAL di 30.000 euro in un'attivita' d'ufficio (INAIL 0,4%), il costo aziendale totale e' di circa 39.474 euro annui. Questo include: RAL 30.000 euro + contributi INPS datore 7.143 euro (23,81%) + TFR 2.211 euro (RAL/13,5 al netto dello 0,50%) + INAIL 120 euro (0,4%). Il costo mensile e' di circa 3.290 euro e il costo orario di circa 22,95 euro (su 1.720 ore annue).
+          Per un dipendente con RAL di 30.000 euro in un'attività d'ufficio (INAIL 0,4%), il costo aziendale totale è di circa 39.474 euro annui. Questo include: RAL 30.000 euro + contributi INPS datore 7.143 euro (23,81%) + TFR 2.211 euro (RAL/13,5 al netto dello 0,50%) + INAIL 120 euro (0,4%). Il costo mensile è di circa 3.290 euro e il costo orario di circa 22,95 euro (su 1.720 ore annue).
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Qual e' il moltiplicatore per passare dalla RAL al costo aziendale?
+          Qual è il moltiplicatore per passare dalla RAL al costo aziendale?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il moltiplicatore dipende dal settore, ma una regola pratica e' la seguente: per attivita' d'ufficio (INAIL basso) si moltiplica la RAL per circa 1,32x; per il settore industriale e metalmeccanico per circa 1,34x; per l'edilizia per circa 1,37x. Questi valori includono INPS datore (23,81%), TFR (~6,91%) e INAIL (variabile). Non includono costi accessori come buoni pasto, welfare, formazione e costi amministrativi, che possono aggiungere un ulteriore 5-15%.
+          Il moltiplicatore dipende dal settore, ma una regola pratica è la seguente: per attività d'ufficio (INAIL basso) si moltiplica la RAL per circa 1,32x; per il settore industriale e metalmeccanico per circa 1,34x; per l'edilizia per circa 1,37x. Questi valori includono INPS datore (23,81%), TFR (~6,91%) e INAIL (variabile). Non includono costi accessori come buoni pasto, welfare, formazione e costi amministrativi, che possono aggiungere un ulteriore 5-15%.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Il TFR e' un costo per l'azienda?
+          Il TFR è un costo per l'azienda?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Si', il TFR e' un costo aziendale a tutti gli effetti. Anche se viene accantonato e non versato mensilmente (nelle aziende fino a 50 dipendenti che lo mantengono in azienda), il TFR rappresenta un debito certo e determinabile nei confronti del lavoratore. Contabilmente viene registrato come "fondo TFR" nel passivo dello stato patrimoniale. Per le aziende con oltre 50 dipendenti, il TFR deve essere versato mensilmente al Fondo Tesoreria INPS, diventando un esborso effettivo. Se il lavoratore ha scelto di destinare il TFR a un fondo pensione, l'azienda versa la quota direttamente al fondo con cadenza mensile.
+          Sì, il TFR è un costo aziendale a tutti gli effetti. Anche se viene accantonato e non versato mensilmente (nelle aziende fino a 50 dipendenti che lo mantengono in azienda), il TFR rappresenta un debito certo e determinabile nei confronti del lavoratore. Contabilmente viene registrato come "fondo TFR" nel passivo dello stato patrimoniale. Per le aziende con oltre 50 dipendenti, il TFR deve essere versato mensilmente al Fondo Tesoreria INPS, diventando un esborso effettivo. Se il lavoratore ha scelto di destinare il TFR a un fondo pensione, l'azienda versa la quota direttamente al fondo con cadenza mensile.
         </div>
       </details>
 
@@ -384,7 +384,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il costo orario si ottiene dividendo il costo aziendale annuo per le ore lavorative annue. La convenzione standard (usata anche in ambito europeo per i bandi pubblici) prevede 1.720 ore annue, che corrispondono a circa 215 giornate lavorative da 8 ore, gia' al netto di ferie, festivita' e permessi retribuiti. Il costo orario effettivo "produttivo" puo' essere superiore se si considerano assenze per malattia, permessi aggiuntivi e ore di formazione non direttamente produttive.
+          Il costo orario si ottiene dividendo il costo aziendale annuo per le ore lavorative annue. La convenzione standard (usata anche in ambito europeo per i bandi pubblici) prevede 1.720 ore annue, che corrispondono a circa 215 giornate lavorative da 8 ore, già al netto di ferie, festività e permessi retribuiti. Il costo orario effettivo "produttivo" può essere superiore se si considerano assenze per malattia, permessi aggiuntivi e ore di formazione non direttamente produttive.
         </div>
       </details>
 
@@ -396,19 +396,19 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Si', esistono diverse agevolazioni contributive che riducono i contributi INPS a carico del datore di lavoro: l'esonero contributivo per nuove assunzioni a tempo indeterminato (variabile di anno in anno, nel 2026 puo' arrivare fino al 100% per giovani under 36 o donne svantaggiate in determinate condizioni); la decontribuzione per le assunzioni nel Mezzogiorno; le agevolazioni per apprendistato professionalizzante (aliquota INPS ridotta al 10% per le aziende fino a 9 dipendenti); e lo sgravio INAIL tramite modello OT23 per le aziende con buon andamento infortunistico. Inoltre, i costi del personale sono interamente deducibili ai fini IRES e IRAP, con l'importante eccezione della deduzione integrale del costo del lavoro dalla base imponibile IRAP prevista a partire dal 2015.
+          Sì, esistono diverse agevolazioni contributive che riducono i contributi INPS a carico del datore di lavoro: l'esonero contributivo per nuove assunzioni a tempo indeterminato (variabile di anno in anno, nel 2026 può arrivare fino al 100% per giovani under 36 o donne svantaggiate in determinate condizioni); la decontribuzione per le assunzioni nel Mezzogiorno; le agevolazioni per apprendistato professionalizzante (aliquota INPS ridotta al 10% per le aziende fino a 9 dipendenti); e lo sgravio INAIL tramite modello OT23 per le aziende con buon andamento infortunistico. Inoltre, i costi del personale sono interamente deducibili ai fini IRES e IRAP, con l'importante eccezione della deduzione integrale del costo del lavoro dalla base imponibile IRAP prevista a partire dal 2015.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Il costo aziendale di un apprendista e' diverso?
+          Il costo aziendale di un apprendista è diverso?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Si', l'apprendistato professionalizzante gode di un regime contributivo agevolato. Per le aziende con meno di 10 dipendenti, l'aliquota INPS a carico del datore e' ridotta al 3,11% per il primo anno e al 4,61% per il secondo anno, per poi salire al 11,61% dal terzo anno in poi. Per le aziende con 10 o piu' dipendenti, l'aliquota e' del 11,61% per tutta la durata dell'apprendistato. Queste aliquote sono significativamente inferiori al 23,81% standard, rendendo l'apprendistato uno strumento di inserimento molto conveniente per le aziende. Al termine del periodo formativo, i contributi tornano all'aliquota piena.
+          Sì, l'apprendistato professionalizzante gode di un regime contributivo agevolato. Per le aziende con meno di 10 dipendenti, l'aliquota INPS a carico del datore è ridotta al 3,11% per il primo anno e al 4,61% per il secondo anno, per poi salire al 11,61% dal terzo anno in poi. Per le aziende con 10 o più dipendenti, l'aliquota è del 11,61% per tutta la durata dell'apprendistato. Queste aliquote sono significativamente inferiori al 23,81% standard, rendendo l'apprendistato uno strumento di inserimento molto conveniente per le aziende. Al termine del periodo formativo, i contributi tornano all'aliquota piena.
         </div>
       </details>
 
@@ -420,19 +420,19 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          La quattordicesima non cambia il costo aziendale totale se si ragiona in termini di RAL. La RAL include gia' tutte le mensilita' previste (12, 13 o 14). Cio' che cambia e' la distribuzione dei pagamenti nell'anno: con 14 mensilita', ogni mensilita' singola sara' di importo inferiore rispetto a 13 mensilita', a parita' di RAL. Il costo aziendale annuo complessivo resta identico perche' i contributi INPS, il TFR e l'INAIL sono tutti calcolati sulla RAL annua, indipendentemente da come viene suddivisa nei vari mesi.
+          La quattordicesima non cambia il costo aziendale totale se si ragiona in termini di RAL. La RAL include già tutte le mensilità previste (12, 13 o 14). ciò che cambia è la distribuzione dei pagamenti nell'anno: con 14 mensilità, ogni mensilità singola sarà di importo inferiore rispetto a 13 mensilità, a parità di RAL. Il costo aziendale annuo complessivo resta identico perché i contributi INPS, il TFR e l'INAIL sono tutti calcolati sulla RAL annua, indipendentemente da come viene suddivisa nei vari mesi.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Qual e' la differenza tra costo aziendale e cuneo fiscale?
+          Qual è la differenza tra costo aziendale e cuneo fiscale?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il cuneo fiscale e' la differenza tra il costo totale sostenuto dall'azienda (costo aziendale) e il netto effettivamente percepito dal dipendente in busta paga. Include sia gli oneri a carico del datore (INPS datore, TFR, INAIL) sia quelli a carico del lavoratore (INPS dipendente, IRPEF, addizionali regionali e comunali). In Italia il cuneo fiscale e' tra i piu' elevati in Europa: per un lavoratore single senza figli con reddito medio, l'OCSE stima un cuneo fiscale intorno al 45-47% del costo del lavoro complessivo. La Legge di Bilancio 2025 ha introdotto misure strutturali di riduzione del cuneo fiscale per i redditi fino a 40.000 euro, mediante un mix di somma esente e detrazione fiscale aggiuntiva.
+          Il cuneo fiscale è la differenza tra il costo totale sostenuto dall'azienda (costo aziendale) e il netto effettivamente percepito dal dipendente in busta paga. Include sia gli oneri a carico del datore (INPS datore, TFR, INAIL) sia quelli a carico del lavoratore (INPS dipendente, IRPEF, addizionali regionali e comunali). In Italia il cuneo fiscale è tra i più elevati in Europa: per un lavoratore single senza figli con reddito medio, l'OCSE stima un cuneo fiscale intorno al 45-47% del costo del lavoro complessivo. La Legge di Bilancio 2025 ha introdotto misure strutturali di riduzione del cuneo fiscale per i redditi fino a 40.000 euro, mediante un mix di somma esente e detrazione fiscale aggiuntiva.
         </div>
       </details>
     </div>
@@ -506,7 +506,7 @@ const faqs = [
           Ferie e Permessi Non Goduti
         </h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Calcola l'indennita' per ferie e ROL non utilizzati
+          Calcola l'indennità per ferie e ROL non utilizzati
         </p>
       </a>
     </div>

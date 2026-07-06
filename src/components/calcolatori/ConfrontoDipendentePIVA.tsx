@@ -130,7 +130,7 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              {lang === 'en' ? 'Profitability coefficient' : "Coefficiente di redditivita'"}
+              {lang === 'en' ? 'Profitability coefficient' : "Coefficiente di redditività"}
             </label>
             <div className="relative">
               <select
@@ -165,7 +165,7 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
         <div className="mt-6">
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              {lang === 'en' ? 'First 5 years of activity (P.IVA)?' : "Primi 5 anni di attivita' (P.IVA)?"}
+              {lang === 'en' ? 'First 5 years of activity (P.IVA)?' : "Primi 5 anni di attività (P.IVA)?"}
             </label>
             <button
               type="button"
@@ -201,7 +201,7 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
               <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clipRule="evenodd" />
             </svg>
             <p className="text-sm text-red-700 dark:text-red-400">
-              {lang === 'en' ? 'Warning: the revenue limit for the flat-rate regime is' : "Attenzione: il limite di fatturato per il regime forfettario e' di"} <strong>85.000 &euro;</strong> {lang === 'en' ? 'per year.' : 'annui.'}
+              {lang === 'en' ? 'Warning: the revenue limit for the flat-rate regime is' : "Attenzione: il limite di fatturato per il regime forfettario è di"} <strong>85.000 &euro;</strong> {lang === 'en' ? 'per year.' : 'annui.'}
             </p>
           </div>
         </div>
@@ -286,7 +286,7 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
             ].join(' ')}>
               {lang === 'en'
                 ? <>With equal amounts (RAL {formatCurrency(ral)} vs Turnover {formatCurrency(fatturato)}):</>
-                : <>A parita' di importi (RAL {formatCurrency(ral)} vs Fatturato {formatCurrency(fatturato)}):</>}
+                : <>A parità di importi (RAL {formatCurrency(ral)} vs Fatturato {formatCurrency(fatturato)}):</>}
             </p>
             <p className={[
               'mt-1 text-lg font-bold',
@@ -297,11 +297,11 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
               {differenzaNetto > 0
                 ? (lang === 'en'
                     ? `The employee earns ${formatCurrency(differenzaNetto)}/year more net`
-                    : `Il dipendente guadagna ${formatCurrency(differenzaNetto)}/anno in piu' netti`)
+                    : `Il dipendente guadagna ${formatCurrency(differenzaNetto)}/anno in più netti`)
                 : differenzaNetto < 0
                   ? (lang === 'en'
                       ? `The freelancer earns ${formatCurrency(Math.abs(differenzaNetto))}/year more net`
-                      : `La P.IVA guadagna ${formatCurrency(Math.abs(differenzaNetto))}/anno in piu' netti`)
+                      : `La P.IVA guadagna ${formatCurrency(Math.abs(differenzaNetto))}/anno in più netti`)
                   : (lang === 'en' ? 'Both annual net incomes are equivalent' : 'I due netti annui sono equivalenti')
               }
             </p>
@@ -379,12 +379,12 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
                   </tr>
                   <tr>
                     <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Paid sick leave' : 'Malattia retribuita'}</td>
-                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? 'Yes' : "Si'"}</td>
+                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? 'Yes' : "Sì"}</td>
                     <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">No</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Maternity / Paternity' : "Maternita' / Paternita'"}</td>
-                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? 'Yes (paid)' : "Si' (retribuita)"}</td>
+                    <td className="py-3 pr-4 text-gray-600 dark:text-gray-400">{lang === 'en' ? 'Maternity / Paternity' : "maternità / paternità"}</td>
+                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">{lang === 'en' ? 'Yes (paid)' : "Sì (retribuita)"}</td>
                     <td className="py-3 pl-4 text-right text-gray-400 dark:text-gray-500">{lang === 'en' ? 'INPS gestione separata only' : 'Solo INPS gestione separata'}</td>
                   </tr>
                   <tr>

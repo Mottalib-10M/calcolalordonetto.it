@@ -15,15 +15,15 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Are unused vacation days paid out when I leave my job?', answer: 'Yes, absolutely. When the employment relationship ends -- whether through voluntary resignation (dimissioni), dismissal (licenziamento), expiry of a fixed-term contract, or retirement -- the employer is legally required to pay out all accrued and unused vacation days (ferie) and leave hours (permessi) in the final payslip (ultima busta paga). This applies to both the statutory minimum of 4 weeks and any additional entitlements under the CCNL, as well as all remaining ROL and ex festivita\' hours. The right to this compensation (indennita\' sostitutiva) is inalienable under Italian law.' },
+  { question: 'Are unused vacation days paid out when I leave my job?', answer: 'Yes, absolutely. When the employment relationship ends -- whether through voluntary resignation (dimissioni), dismissal (licenziamento), expiry of a fixed-term contract, or retirement -- the employer is legally required to pay out all accrued and unused vacation days (ferie) and leave hours (permessi) in the final payslip (ultima busta paga). This applies to both the statutory minimum of 4 weeks and any additional entitlements under the CCNL, as well as all remaining ROL and ex festività hours. The right to this compensation (indennità sostitutiva) is inalienable under Italian law.' },
   { question: 'Is the payout for unused vacation taxed at ordinary or separate rates?', answer: 'The compensation for unused vacation and leave is subject to ordinary taxation (tassazione ordinaria), not separate taxation (tassazione separata). This has been confirmed by both the Italian Supreme Court (Corte di Cassazione) and the Revenue Agency (Agenzia delle Entrate). The compensation is considered ordinary employment income under Article 51 of the TUIR and is therefore taxed at the standard progressive IRPEF rates (23%, 35%, or 43%) and subject to the 9.19% INPS contribution. Do not confuse this with TFR severance pay, which benefits from a more favourable separate taxation regime.' },
-  { question: 'Can I get paid for unused vacation without resigning?', answer: 'It depends on which type of leave we are talking about. For the statutory minimum of 4 weeks of vacation (ferie) per year, D.Lgs. 66/2003 expressly prohibits monetization during the employment relationship -- you must actually take the days off. However, vacation days exceeding the 4-week minimum (e.g. a fifth week granted by your CCNL) and permessi ROL/ex festivita\' can be monetized while you are still employed, if the CCNL permits it or if the usage deadline expires. In common practice, ROL hours that are not used by June 30 of the following year are automatically paid out in the next payslip.' },
+  { question: 'Can I get paid for unused vacation without resigning?', answer: 'It depends on which type of leave we are talking about. For the statutory minimum of 4 weeks of vacation (ferie) per year, D.Lgs. 66/2003 expressly prohibits monetization during the employment relationship -- you must actually take the days off. However, vacation days exceeding the 4-week minimum (e.g. a fifth week granted by your CCNL) and permessi ROL/ex festività can be monetized while you are still employed, if the CCNL permits it or if the usage deadline expires. In common practice, ROL hours that are not used by June 30 of the following year are automatically paid out in the next payslip.' },
   { question: 'How is vacation calculated for part-time workers?', answer: 'Italy distinguishes between two types of part-time arrangements, and the calculation differs for each. For horizontal part-time (part-time orizzontale -- working every day but with reduced hours), the number of vacation days is the same as for full-time employees, but the daily pay rate is proportionally lower. For vertical part-time (part-time verticale -- working only certain days of the week), vacation days are recalculated proportionally based on the number of days actually worked. For example, an employee working 3 days out of 5 would get: 26 x 3/5 = approximately 16 days. When using our calculator, simply enter your actual part-time RAL and your weekly working hours.' },
   { question: 'Do vacation days expire? Can I lose them?', answer: 'Vacation days do not simply "expire" in the sense that you lose them completely. Italian law requires that two weeks of annual vacation be taken during the year they accrue, and the remaining two weeks within 18 months after the end of the accrual year. If the employer fails to ensure you take your vacation within these deadlines, they face an administrative fine (ranging from 120 to 720 euros per employee), but the employee\'s right does not automatically extinguish. The European Court of Justice has also ruled that employers must prove they put the employee in a position to actually take their vacation. ROL leave hours generally have shorter deadlines (typically by June 30 of the following year, as stipulated in the CCNL) and are monetized automatically when they expire.' },
-  { question: 'Do vacation days accrue during sick leave or maternity leave?', answer: 'Yes, vacation days (ferie) continue to accrue during periods of illness (malattia), work-related injury (infortunio), mandatory maternity leave (maternita\' obbligatoria), and ordinary short-time work (cassa integrazione ordinaria), because the employment relationship remains fully active during these periods. However, during optional parental leave (congedo parentale facoltativo), vacation days do not accrue for the non-working periods. Regarding ROL hours, whether they continue to accrue during absences depends on the specific provisions of the applicable CCNL, which may suspend accrual in certain cases.' },
+  { question: 'Do vacation days accrue during sick leave or maternity leave?', answer: 'Yes, vacation days (ferie) continue to accrue during periods of illness (malattia), work-related injury (infortunio), mandatory maternity leave (maternità obbligatoria), and ordinary short-time work (cassa integrazione ordinaria), because the employment relationship remains fully active during these periods. However, during optional parental leave (congedo parentale facoltativo), vacation days do not accrue for the non-working periods. Regarding ROL hours, whether they continue to accrue during absences depends on the specific provisions of the applicable CCNL, which may suspend accrual in certain cases.' },
   { question: 'Can my employer force me to use vacation during the notice period?', answer: 'The prevailing interpretation in Italian case law holds that the employer cannot unilaterally impose the use of vacation during the notice period (periodo di preavviso). This is because the notice period and vacation serve different legal purposes: the notice period is meant to guarantee the employee continued income while searching for a new job, while vacation serves the purpose of rest and psycho-physical recovery. However, if both parties agree, vacation can be taken during the notice period. In the absence of agreement, any remaining unused vacation days will be paid out in the final payslip. An important detail: if you do take vacation during the notice period, the notice period clock is suspended for the duration of the vacation.' },
-  { question: 'Where can I find my remaining vacation and leave balance on my payslip?', answer: 'In the lower section of your Italian payslip (busta paga), you will typically find a dedicated area showing your vacation and leave balances. It displays three columns: "Maturato" (accrued), "Goduto" (used), and "Residuo" or "Saldo" (remaining balance). Vacation days (ferie) are expressed in days, while ROL and ex festivita\' are expressed in hours. The "Residuo" counter shows exactly how many vacation days and leave hours you still have available. Some payroll software also shows the monetary value of the remaining balance. If you have trouble reading your payslip, our payslip calculator can help you understand each line item.' },
-  { question: 'What are "ex festivita\'" and why do they appear on my payslip?', answer: 'Ex festivita\' (literally "former public holidays") are paid leave hours that compensate workers for public holidays that were abolished by Italian law in 1977 (Law no. 54/1977). These included certain saints\' days and other religious observances that were removed from the official calendar of public holidays. To avoid reducing workers\' total time off, many CCNLs converted these abolished holidays into additional paid leave hours -- typically 32 hours per year (equivalent to 4 full working days of 8 hours each). They accrue monthly and appear as a separate line on your payslip alongside ROL hours. They function identically to ROL for calculation and monetization purposes.' },
+  { question: 'Where can I find my remaining vacation and leave balance on my payslip?', answer: 'In the lower section of your Italian payslip (busta paga), you will typically find a dedicated area showing your vacation and leave balances. It displays three columns: "Maturato" (accrued), "Goduto" (used), and "Residuo" or "Saldo" (remaining balance). Vacation days (ferie) are expressed in days, while ROL and ex festività are expressed in hours. The "Residuo" counter shows exactly how many vacation days and leave hours you still have available. Some payroll software also shows the monetary value of the remaining balance. If you have trouble reading your payslip, our payslip calculator can help you understand each line item.' },
+  { question: 'What are "ex festività" and why do they appear on my payslip?', answer: 'Ex festività (literally "former public holidays") are paid leave hours that compensate workers for public holidays that were abolished by Italian law in 1977 (Law no. 54/1977). These included certain saints\' days and other religious observances that were removed from the official calendar of public holidays. To avoid reducing workers\' total time off, many CCNLs converted these abolished holidays into additional paid leave hours -- typically 32 hours per year (equivalent to 4 full working days of 8 hours each). They accrue monthly and appear as a separate line on your payslip alongside ROL hours. They function identically to ROL for calculation and monetization purposes.' },
   { question: 'How does the leave payout affect my annual tax return?', answer: 'Since the compensation for unused vacation and leave is classified as ordinary employment income, it is included in your CU (Certificazione Unica) -- the annual income certificate issued by your employer -- and will be part of your total taxable income for that fiscal year. If the payout pushes you into a higher IRPEF bracket, you may owe additional taxes when you file your dichiarazione dei redditi (tax return). Conversely, if the monthly IRPEF withholding was calculated at a higher marginal rate than your actual average rate for the year, you may receive a small refund. This is particularly relevant for expats who leave mid-year and may have a lower total annual income than expected.' },
 ];
 ---
@@ -60,7 +60,7 @@ const faqs = [
         used within the deadlines set by law or by your <strong>CCNL (Contratto Collettivo Nazionale
         di Lavoro)</strong> -- the national collective bargaining agreement that governs your
         employment -- or when your employment relationship ends, you are entitled to a cash
-        compensation (<em>indennita' sostitutiva</em>) that is paid through your final payslip,
+        compensation (<em>indennità sostitutiva</em>) that is paid through your final payslip,
         subject to the standard tax and social security deductions.
       </p>
       <p>
@@ -91,7 +91,7 @@ const faqs = [
           The <strong>CCNL (national collective bargaining agreement)</strong> applicable to your
           employment may provide for more generous leave entitlements above this legal minimum. Many
           CCNLs grant between 20 and 32 vacation days depending on the employee's seniority
-          (<em>anzianita' di servizio</em>). Your specific entitlement depends on which CCNL applies
+          (<em>anzianità di servizio</em>). Your specific entitlement depends on which CCNL applies
           to your employer and your job classification level (<em>livello di inquadramento</em>).
         </li>
         <li>
@@ -121,15 +121,15 @@ const faqs = [
       <p>
         <strong>Permessi retribuiti (paid leave hours)</strong>, commonly referred to as
         <strong>ROL (Riduzione Orario di Lavoro)</strong>, literally "Working Time Reduction," and
-        <strong>ex festivita'</strong> (abolished public holidays), are additional hours of paid
+        <strong>ex festività</strong> (abolished public holidays), are additional hours of paid
         leave established by the applicable CCNL. Unlike vacation days, these are measured in
         <em>hours</em>, not days, and their number varies significantly depending on which CCNL
         governs your employment:
       </p>
       <ul>
-        <li><strong>CCNL Commercio (Commerce/Retail):</strong> 56 hours of ROL + 32 hours of ex festivita' = 88 total hours for employees with more than 2 years of seniority. In the first year, only 32 hours of ROL accrue.</li>
-        <li><strong>CCNL Metalmeccanico (Metalworking/Manufacturing):</strong> 72 hours of PAR (Permessi Annui Retribuiti, or Annual Paid Leave) + 8 hours of ex festivita' = 80 total hours.</li>
-        <li><strong>CCNL Chimico (Chemical Industry):</strong> 72 hours of reduced working time + 32 hours of ex festivita' = 104 total hours.</li>
+        <li><strong>CCNL Commercio (Commerce/Retail):</strong> 56 hours of ROL + 32 hours of ex festività = 88 total hours for employees with more than 2 years of seniority. In the first year, only 32 hours of ROL accrue.</li>
+        <li><strong>CCNL Metalmeccanico (Metalworking/Manufacturing):</strong> 72 hours of PAR (Permessi Annui Retribuiti, or Annual Paid Leave) + 8 hours of ex festività = 80 total hours.</li>
+        <li><strong>CCNL Chimico (Chemical Industry):</strong> 72 hours of reduced working time + 32 hours of ex festività = 104 total hours.</li>
         <li><strong>CCNL Edilizia (Construction):</strong> generally does not provide additional ROL beyond the vacation entitlement.</li>
         <li><strong>CCNL Turismo (Tourism/Hospitality):</strong> 32 to 104 hours depending on job classification and seniority.</li>
       </ul>
@@ -143,7 +143,7 @@ const faqs = [
       <h3>How the cash compensation for unused leave is calculated</h3>
       <p>
         When unused vacation days and paid leave hours are converted to a cash payment
-        (<em>indennita' sostitutiva</em>), the calculation starts from your daily or hourly pay
+        (<em>indennità sostitutiva</em>), the calculation starts from your daily or hourly pay
         rate. The standard formula used in Italian payroll practice is:
       </p>
       <p>
@@ -243,10 +243,10 @@ const faqs = [
           contract (<em>contratto a termine</em>), the employer is legally required to pay out all
           accrued and unused vacation days and leave hours in the final payslip. This is mandatory
           and applies to both the statutory minimum (4 weeks) and any additional entitlements under
-          the CCNL, as well as all remaining ROL and ex festivita' hours.
+          the CCNL, as well as all remaining ROL and ex festività hours.
         </li>
         <li>
-          <strong>Expiry of the usage deadline:</strong> ROL hours and ex festivita' that are not
+          <strong>Expiry of the usage deadline:</strong> ROL hours and ex festività that are not
           used within the deadline established by the CCNL (typically by June 30 of the year
           following accrual) are generally monetized automatically in the next payslip. However, for
           statutory vacation (the first 4 weeks), monetization while still employed is not permitted
@@ -386,7 +386,7 @@ const faqs = [
             <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">CCNL (Sector)</th>
             <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Ferie (days)</th>
             <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">ROL (hours)</th>
-            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Ex festivita' (hours)</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Ex festività (hours)</th>
             <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Total leave (hours)</th>
           </tr>
         </thead>
@@ -439,7 +439,7 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
       <p>
         <strong>Note:</strong> the vacation days shown include the legal minimum of 4 weeks. Most
-        CCNLs provide for increases based on years of service (<em>anzianita' di servizio</em>),
+        CCNLs provide for increases based on years of service (<em>anzianità di servizio</em>),
         typically after 5, 10, and 15 years. ROL hours under the CCNL Commercio accrue
         progressively: 32 hours in the first year, increasing to 56 hours from the second year
         onward. Always refer to your specific CCNL for the exact figures applicable to your
@@ -461,7 +461,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Yes, absolutely. When the employment relationship ends -- whether through voluntary resignation (<em>dimissioni</em>), dismissal (<em>licenziamento</em>), expiry of a fixed-term contract, or retirement -- the employer is legally required to pay out all accrued and unused vacation days (<em>ferie</em>) and leave hours (<em>permessi</em>) in the final payslip (<em>ultima busta paga</em>). This applies to both the statutory minimum of 4 weeks and any additional entitlements under the CCNL, as well as all remaining ROL and ex festivita' hours. The right to this compensation (<em>indennita' sostitutiva</em>) is inalienable under Italian law.
+          Yes, absolutely. When the employment relationship ends -- whether through voluntary resignation (<em>dimissioni</em>), dismissal (<em>licenziamento</em>), expiry of a fixed-term contract, or retirement -- the employer is legally required to pay out all accrued and unused vacation days (<em>ferie</em>) and leave hours (<em>permessi</em>) in the final payslip (<em>ultima busta paga</em>). This applies to both the statutory minimum of 4 weeks and any additional entitlements under the CCNL, as well as all remaining ROL and ex festività hours. The right to this compensation (<em>indennità sostitutiva</em>) is inalienable under Italian law.
         </div>
       </details>
 
@@ -485,7 +485,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          It depends on which type of leave we are talking about. For the statutory minimum of 4 weeks of vacation (<em>ferie</em>) per year, D.Lgs. 66/2003 expressly prohibits monetization during the employment relationship -- you must actually take the days off. However, vacation days <strong>exceeding</strong> the 4-week minimum (e.g. a fifth week granted by your CCNL) and <strong>permessi ROL/ex festivita'</strong> can be monetized while you are still employed, if the CCNL permits it or if the usage deadline expires. In common practice, ROL hours that are not used by June 30 of the following year are automatically paid out in the next payslip.
+          It depends on which type of leave we are talking about. For the statutory minimum of 4 weeks of vacation (<em>ferie</em>) per year, D.Lgs. 66/2003 expressly prohibits monetization during the employment relationship -- you must actually take the days off. However, vacation days <strong>exceeding</strong> the 4-week minimum (e.g. a fifth week granted by your CCNL) and <strong>permessi ROL/ex festività</strong> can be monetized while you are still employed, if the CCNL permits it or if the usage deadline expires. In common practice, ROL hours that are not used by June 30 of the following year are automatically paid out in the next payslip.
         </div>
       </details>
 
@@ -521,7 +521,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Yes, vacation days (<em>ferie</em>) continue to accrue during periods of illness (<em>malattia</em>), work-related injury (<em>infortunio</em>), mandatory maternity leave (<em>maternita' obbligatoria</em>), and ordinary short-time work (<em>cassa integrazione ordinaria</em>), because the employment relationship remains fully active during these periods. However, during optional parental leave (<em>congedo parentale facoltativo</em>), vacation days do not accrue for the non-working periods. Regarding ROL hours, whether they continue to accrue during absences depends on the specific provisions of the applicable CCNL, which may suspend accrual in certain cases.
+          Yes, vacation days (<em>ferie</em>) continue to accrue during periods of illness (<em>malattia</em>), work-related injury (<em>infortunio</em>), mandatory maternity leave (<em>maternità obbligatoria</em>), and ordinary short-time work (<em>cassa integrazione ordinaria</em>), because the employment relationship remains fully active during these periods. However, during optional parental leave (<em>congedo parentale facoltativo</em>), vacation days do not accrue for the non-working periods. Regarding ROL hours, whether they continue to accrue during absences depends on the specific provisions of the applicable CCNL, which may suspend accrual in certain cases.
         </div>
       </details>
 
@@ -545,19 +545,19 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          In the lower section of your Italian payslip (<em>busta paga</em>), you will typically find a dedicated area showing your vacation and leave balances. It displays three columns: <strong>"Maturato"</strong> (accrued), <strong>"Goduto"</strong> (used), and <strong>"Residuo"</strong> or <strong>"Saldo"</strong> (remaining balance). Vacation days (<em>ferie</em>) are expressed in days, while ROL and ex festivita' are expressed in hours. The "Residuo" counter shows exactly how many vacation days and leave hours you still have available. Some payroll software also shows the monetary value of the remaining balance. If you have trouble reading your payslip, our <a href="/en/payslip-calculator/" class="underline hover:text-brand">payslip calculator</a> can help you understand each line item.
+          In the lower section of your Italian payslip (<em>busta paga</em>), you will typically find a dedicated area showing your vacation and leave balances. It displays three columns: <strong>"Maturato"</strong> (accrued), <strong>"Goduto"</strong> (used), and <strong>"Residuo"</strong> or <strong>"Saldo"</strong> (remaining balance). Vacation days (<em>ferie</em>) are expressed in days, while ROL and ex festività are expressed in hours. The "Residuo" counter shows exactly how many vacation days and leave hours you still have available. Some payroll software also shows the monetary value of the remaining balance. If you have trouble reading your payslip, our <a href="/en/payslip-calculator/" class="underline hover:text-brand">payslip calculator</a> can help you understand each line item.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          What are "ex festivita'" and why do they appear on my payslip?
+          What are "ex festività" and why do they appear on my payslip?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          <em>Ex festivita'</em> (literally "former public holidays") are paid leave hours that compensate workers for public holidays that were abolished by Italian law in 1977 (Law no. 54/1977). These included certain saints' days and other religious observances that were removed from the official calendar of public holidays. To avoid reducing workers' total time off, many CCNLs converted these abolished holidays into additional paid leave hours -- typically 32 hours per year (equivalent to 4 full working days of 8 hours each). They accrue monthly and appear as a separate line on your payslip alongside ROL hours. They function identically to ROL for calculation and monetization purposes.
+          <em>Ex festività</em> (literally "former public holidays") are paid leave hours that compensate workers for public holidays that were abolished by Italian law in 1977 (Law no. 54/1977). These included certain saints' days and other religious observances that were removed from the official calendar of public holidays. To avoid reducing workers' total time off, many CCNLs converted these abolished holidays into additional paid leave hours -- typically 32 hours per year (equivalent to 4 full working days of 8 hours each). They accrue monthly and appear as a separate line on your payslip alongside ROL hours. They function identically to ROL for calculation and monetization purposes.
         </div>
       </details>
 

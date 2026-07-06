@@ -12,12 +12,12 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'I figli sotto i 21 anni hanno ancora le detrazioni IRPEF?', answer: 'No. Dal 1&deg; marzo 2022, le detrazioni IRPEF per figli a carico si applicano solo ai figli che hanno compiuto 21 anni. Per i figli minorenni e quelli tra 18 e 20 anni, il sostegno economico e\' erogato tramite l\'Assegno Unico Universale (AUU), un trasferimento monetario mensile dell\'INPS il cui importo dipende dall\'ISEE del nucleo familiare. L\'AUU va richiesto separatamente all\'INPS.' },
-  { question: 'Conviene attribuire il 100% della detrazione figli a un solo genitore?', answer: 'Dipende dalla situazione specifica. Se entrambi i genitori hanno redditi sufficienti per sfruttare appieno le detrazioni, la ripartizione al 50% e\' generalmente equivalente. Tuttavia, se un genitore ha un reddito molto basso (con poca capienza IRPEF), attribuire il 100% al genitore con reddito piu\' alto puo\' essere vantaggioso, poiche\' evita di "perdere" la parte di detrazione non utilizzabile. La scelta va comunicata al datore di lavoro e deve essere concordata tra i genitori.' },
-  { question: 'Il coniuge convivente (non sposato) da diritto alla detrazione?', answer: 'La detrazione per il coniuge a carico spetta solo al coniuge legalmente sposato o alla parte dell\'unione civile (Legge 76/2016). Il convivente di fatto (non unito civilmente) non ha diritto alla detrazione per coniuge, anche se convive e ha un reddito sotto la soglia. Questo e\' uno dei motivi per cui le coppie conviventi con redditi asimmetrici possono valutare il matrimonio o l\'unione civile anche sotto il profilo fiscale.' },
-  { question: 'Cosa succede se il coniuge supera la soglia di reddito durante l\'anno?', answer: 'Se il coniuge supera la soglia di 2.840,51 &euro; di reddito annuo, la detrazione non spetta per l\'intero anno (non si fraziona per mesi). Il contribuente deve comunicare tempestivamente la variazione al datore di lavoro per interrompere l\'applicazione della detrazione in busta paga. Se la detrazione e\' stata gia\' fruita, l\'importo dovra\' essere restituito in sede di conguaglio di fine anno o nella dichiarazione dei redditi. Per evitare conguagli pesanti, e\' consigliabile stimare il reddito annuo del coniuge con ragionevole anticipo.' },
-  { question: 'Le detrazioni familiari si applicano anche ai lavoratori autonomi?', answer: 'Le detrazioni per familiari a carico si applicano a tutti i contribuenti soggetti a IRPEF, compresi i lavoratori autonomi con regime ordinario. Tuttavia, chi opera in regime forfettario paga un\'imposta sostitutiva e non l\'IRPEF, quindi non puo\' beneficiare delle detrazioni per familiari a carico (ne\' di nessun\'altra detrazione IRPEF). Questo e\' un aspetto importante da considerare nella scelta del regime fiscale, soprattutto per chi ha familiari a carico. In regime forfettario, le detrazioni non fruite dal contribuente possono comunque essere fruite dall\'altro genitore (se lavoratore dipendente o autonomo in regime ordinario).' },
-  { question: 'Come si dichiarano i familiari a carico nel 730?', answer: 'Nel modello 730, i familiari a carico vanno indicati nel Prospetto dei familiari a carico (sezione iniziale del modello), specificando per ciascuno: codice fiscale, tipo di parentela (C per coniuge, F per figlio, A per altro familiare), numero di mesi a carico, percentuale di detrazione spettante (50% o 100% per i figli). Il modello 730 precompilato disponibile sul sito dell\'Agenzia delle Entrate contiene gia\' molte informazioni precaricate, ma e\' responsabilita\' del contribuente verificare la correttezza dei dati e aggiornare eventuali variazioni intervenute nell\'anno. Le detrazioni gia\' fruite in busta paga vengono automaticamente conguagliate.' },
+  { question: 'I figli sotto i 21 anni hanno ancora le detrazioni IRPEF?', answer: 'No. Dal 1&deg; marzo 2022, le detrazioni IRPEF per figli a carico si applicano solo ai figli che hanno compiuto 21 anni. Per i figli minorenni e quelli tra 18 e 20 anni, il sostegno economico è erogato tramite l\'Assegno Unico Universale (AUU), un trasferimento monetario mensile dell\'INPS il cui importo dipende dall\'ISEE del nucleo familiare. L\'AUU va richiesto separatamente all\'INPS.' },
+  { question: 'Conviene attribuire il 100% della detrazione figli a un solo genitore?', answer: 'Dipende dalla situazione specifica. Se entrambi i genitori hanno redditi sufficienti per sfruttare appieno le detrazioni, la ripartizione al 50% è generalmente equivalente. Tuttavia, se un genitore ha un reddito molto basso (con poca capienza IRPEF), attribuire il 100% al genitore con reddito più alto può essere vantaggioso, poiché evita di "perdere" la parte di detrazione non utilizzabile. La scelta va comunicata al datore di lavoro e deve essere concordata tra i genitori.' },
+  { question: 'Il coniuge convivente (non sposato) da diritto alla detrazione?', answer: 'La detrazione per il coniuge a carico spetta solo al coniuge legalmente sposato o alla parte dell\'unione civile (Legge 76/2016). Il convivente di fatto (non unito civilmente) non ha diritto alla detrazione per coniuge, anche se convive e ha un reddito sotto la soglia. Questo è uno dei motivi per cui le coppie conviventi con redditi asimmetrici possono valutare il matrimonio o l\'unione civile anche sotto il profilo fiscale.' },
+  { question: 'Cosa succede se il coniuge supera la soglia di reddito durante l\'anno?', answer: 'Se il coniuge supera la soglia di 2.840,51 &euro; di reddito annuo, la detrazione non spetta per l\'intero anno (non si fraziona per mesi). Il contribuente deve comunicare tempestivamente la variazione al datore di lavoro per interrompere l\'applicazione della detrazione in busta paga. Se la detrazione è stata già fruita, l\'importo dovrà essere restituito in sede di conguaglio di fine anno o nella dichiarazione dei redditi. Per evitare conguagli pesanti, è consigliabile stimare il reddito annuo del coniuge con ragionevole anticipo.' },
+  { question: 'Le detrazioni familiari si applicano anche ai lavoratori autonomi?', answer: 'Le detrazioni per familiari a carico si applicano a tutti i contribuenti soggetti a IRPEF, compresi i lavoratori autonomi con regime ordinario. Tuttavia, chi opera in regime forfettario paga un\'imposta sostitutiva e non l\'IRPEF, quindi non può beneficiare delle detrazioni per familiari a carico (né di nessun\'altra detrazione IRPEF). Questo è un aspetto importante da considerare nella scelta del regime fiscale, soprattutto per chi ha familiari a carico. In regime forfettario, le detrazioni non fruite dal contribuente possono comunque essere fruite dall\'altro genitore (se lavoratore dipendente o autonomo in regime ordinario).' },
+  { question: 'Come si dichiarano i familiari a carico nel 730?', answer: 'Nel modello 730, i familiari a carico vanno indicati nel Prospetto dei familiari a carico (sezione iniziale del modello), specificando per ciascuno: codice fiscale, tipo di parentela (C per coniuge, F per figlio, A per altro familiare), numero di mesi a carico, percentuale di detrazione spettante (50% o 100% per i figli). Il modello 730 precompilato disponibile sul sito dell\'Agenzia delle Entrate contiene già molte informazioni precaricate, ma è responsabilità del contribuente verificare la correttezza dei dati e aggiornare eventuali variazioni intervenute nell\'anno. Le detrazioni già fruite in busta paga vengono automaticamente conguagliate.' },
 ];
 ---
 
@@ -34,7 +34,7 @@ const faqs = [
     Calcolo Detrazioni Familiari 2026
   </h1>
   <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
-    Calcola le detrazioni IRPEF per il coniuge e i figli a carico di 21 anni o piu' e scopri l'impatto sul tuo stipendio netto mensile.
+    Calcola le detrazioni IRPEF per il coniuge e i figli a carico di 21 anni o più e scopri l'impatto sul tuo stipendio netto mensile.
   </p>
 
   <DetrazioniFamiliari client:idle />
@@ -58,9 +58,9 @@ const faqs = [
       </h3>
       <p>
         Un familiare si considera <strong>fiscalmente a carico</strong> quando il suo reddito complessivo annuo
-        non supera <strong>2.840,51 &euro;</strong> al lordo degli oneri deducibili. Per i <strong>figli di eta'
-        non superiore a 24 anni</strong>, la soglia di reddito e' elevata a <strong>4.000 &euro;</strong>. Questa
-        soglia piu' alta per i giovani riconosce che molti figli tra i 21 e i 24 anni possono avere piccoli redditi
+        non supera <strong>2.840,51 &euro;</strong> al lordo degli oneri deducibili. Per i <strong>figli di età
+        non superiore a 24 anni</strong>, la soglia di reddito è elevata a <strong>4.000 &euro;</strong>. Questa
+        soglia più alta per i giovani riconosce che molti figli tra i 21 e i 24 anni possono avere piccoli redditi
         da lavori occasionali o stage senza che la famiglia perda il diritto alle detrazioni.
       </p>
       <p>
@@ -69,16 +69,16 @@ const faqs = [
         <strong>altri familiari</strong> (genitori, generi, nuore, suoceri, fratelli e sorelle) a condizione che
         convivano con il contribuente o percepiscano assegni alimentari non risultanti da provvedimenti giudiziari.
         Il nostro calcolatore si concentra sulle due detrazioni principali: quella per il coniuge e quella per i
-        figli di 21 anni o piu'.
+        figli di 21 anni o più.
       </p>
 
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
         Detrazione per il coniuge a carico
       </h3>
       <p>
-        La detrazione per il coniuge a carico e' calcolata con un sistema di <strong>formule a fasce</strong> che
-        varia in base al reddito complessivo del contribuente (non del coniuge). Il meccanismo e' strutturato per
-        garantire una detrazione piu' elevata ai redditi bassi, con una riduzione progressiva all'aumentare del
+        La detrazione per il coniuge a carico è calcolata con un sistema di <strong>formule a fasce</strong> che
+        varia in base al reddito complessivo del contribuente (non del coniuge). Il meccanismo è strutturato per
+        garantire una detrazione più elevata ai redditi bassi, con una riduzione progressiva all'aumentare del
         reddito, fino ad azzerarsi per redditi superiori a 80.000 &euro;.
       </p>
       <p>
@@ -139,38 +139,38 @@ const faqs = [
         sarebbe 690 &times; (80.000 &minus; 60.000) / 40.000 = 690 &times; 0,5 = 345 &euro;.
       </p>
       <p>
-        <strong>Reddito superiore a 80.000 &euro;:</strong> la detrazione e' pari a zero.
+        <strong>Reddito superiore a 80.000 &euro;:</strong> la detrazione è pari a zero.
       </p>
 
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
-        Detrazione per figli a carico di 21 anni o piu'
+        Detrazione per figli a carico di 21 anni o più
       </h3>
       <p>
         A partire dal <strong>1&deg; marzo 2022</strong>, con l'introduzione dell'<strong>Assegno Unico
         Universale (AUU)</strong> erogato dall'INPS, le tradizionali detrazioni IRPEF per figli a carico si
         applicano esclusivamente ai <strong>figli che hanno compiuto 21 anni</strong>. Per i figli minorenni e
-        quelli tra 18 e 20 anni, il sostegno economico e' erogato interamente tramite l'Assegno Unico, che e'
+        quelli tra 18 e 20 anni, il sostegno economico è erogato interamente tramite l'Assegno Unico, che è
         un trasferimento monetario diretto basato sull'ISEE del nucleo familiare.
       </p>
       <p>
-        Per i figli di 21 anni e piu' che risultano fiscalmente a carico (reddito annuo &le; 2.840,51 &euro;, o
+        Per i figli di 21 anni e più che risultano fiscalmente a carico (reddito annuo &le; 2.840,51 &euro;, o
         &le; 4.000 &euro; se under 24), la detrazione IRPEF si calcola con la seguente formula:
       </p>
       <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
         Detrazione = 950 &times; (95.000 &minus; reddito complessivo) / 95.000
       </div>
       <p>
-        La formula produce una detrazione che decresce linearmente: a un reddito di 0 &euro;, la detrazione e' di
-        950 &euro; per figlio; a un reddito di 47.500 &euro;, e' di 475 &euro;; e si azzera quando il reddito
-        raggiunge i 95.000 &euro;. In presenza di piu' figli a carico, il reddito di riferimento (95.000 &euro;)
+        La formula produce una detrazione che decresce linearmente: a un reddito di 0 &euro;, la detrazione è di
+        950 &euro; per figlio; a un reddito di 47.500 &euro;, è di 475 &euro;; e si azzera quando il reddito
+        raggiunge i 95.000 &euro;. In presenza di più figli a carico, il reddito di riferimento (95.000 &euro;)
         viene aumentato di <strong>15.000 &euro; per ogni figlio successivo al primo</strong>, rendendo la detrazione
-        piu' generosa per le famiglie numerose.
+        più generosa per le famiglie numerose.
       </p>
       <p>
-        La detrazione per i figli e' normalmente <strong>ripartita al 50% tra i due genitori</strong>. Tuttavia,
-        e' possibile attribuire il 100% della detrazione al genitore con il reddito piu' alto, se i genitori sono
-        d'accordo e se cio' consente al nucleo familiare di sfruttare pienamente la detrazione (ad esempio, quando
-        il genitore con reddito piu' basso non ha sufficiente capienza IRPEF per utilizzare la propria quota).
+        La detrazione per i figli è normalmente <strong>ripartita al 50% tra i due genitori</strong>. Tuttavia,
+        è possibile attribuire il 100% della detrazione al genitore con il reddito più alto, se i genitori sono
+        d'accordo e se ciò consente al nucleo familiare di sfruttare pienamente la detrazione (ad esempio, quando
+        il genitore con reddito più basso non ha sufficiente capienza IRPEF per utilizzare la propria quota).
       </p>
 
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
@@ -178,17 +178,17 @@ const faqs = [
       </h3>
       <p>
         L'<strong>Assegno Unico Universale (AUU)</strong>, introdotto dal D.Lgs. 230/2021 e operativo dal marzo
-        2022, e' la misura economica che ha sostituito le precedenti detrazioni IRPEF per figli minorenni, gli
-        assegni al nucleo familiare (ANF), il bonus bebe' e il premio alla nascita. L'AUU e' un trasferimento
+        2022, è la misura economica che ha sostituito le precedenti detrazioni IRPEF per figli minorenni, gli
+        assegni al nucleo familiare (ANF), il bonus bebe' e il premio alla nascita. L'AUU è un trasferimento
         monetario mensile erogato dall'INPS direttamente sul conto corrente del beneficiario, dal settimo mese di
-        gravidanza fino al compimento del ventunesimo anno di eta' del figlio (con importi ridotti per i figli
+        gravidanza fino al compimento del ventunesimo anno di età del figlio (con importi ridotti per i figli
         maggiorenni tra 18 e 20 anni).
       </p>
       <p>
         L'importo dell'AUU varia in base all'<strong>ISEE</strong> del nucleo familiare: per ISEE fino a
-        17.090,61 &euro; l'importo massimo per figlio minorenne e' di circa 199,40 &euro; al mese; per ISEE
-        superiori a 45.574,96 &euro; (o in assenza di ISEE), l'importo minimo e' di circa 57 &euro; al mese per
-        figlio. Sono previste maggiorazioni per nuclei numerosi (3 o piu' figli), per figli con disabilita', per
+        17.090,61 &euro; l'importo massimo per figlio minorenne è di circa 199,40 &euro; al mese; per ISEE
+        superiori a 45.574,96 &euro; (o in assenza di ISEE), l'importo minimo è di circa 57 &euro; al mese per
+        figlio. Sono previste maggiorazioni per nuclei numerosi (3 o più figli), per figli con disabilità, per
         madri sotto i 21 anni e per nuclei con entrambi i genitori lavoratori. La domanda va presentata all'INPS
         (online, tramite patronato o contact center) e l'assegno viene erogato mensilmente.
       </p>
@@ -210,13 +210,13 @@ const faqs = [
         29.201 &minus; 34.700 &euro;, che prevede un importo fisso di <strong>710 &euro;</strong>.
       </p>
       <p>
-        <strong>Detrazione figlio 22 anni al 50%:</strong> La formula e'
+        <strong>Detrazione figlio 22 anni al 50%:</strong> La formula è
         950 &times; (95.000 &minus; 31.783,50) / 95.000 = 950 &times; 0,6654 = 632,17 &euro;. Al 50%, la
-        detrazione spettante e' 632,17 &times; 50% = <strong>316,09 &euro;</strong>.
+        detrazione spettante è 632,17 &times; 50% = <strong>316,09 &euro;</strong>.
       </p>
       <p>
         <strong>Totale detrazioni familiari:</strong> 710 + 316,09 = <strong>1.026,09 &euro; annui</strong>.
-        Diviso per 13 mensilita', questo corrisponde a circa <strong>78,93 &euro; in piu' al mese</strong>
+        Diviso per 13 mensilità, questo corrisponde a circa <strong>78,93 &euro; in più al mese</strong>
         in busta paga rispetto a un contribuente senza familiari a carico.
       </p>
 
@@ -286,7 +286,7 @@ const faqs = [
         </table>
       </div>
       <p>
-        La tabella evidenzia come le detrazioni familiari siano piu' significative per i redditi medio-bassi: un
+        La tabella evidenzia come le detrazioni familiari siano più significative per i redditi medio-bassi: un
         contribuente con reddito di 25.000 &euro; riceve circa 1.040 &euro; annui di detrazioni (80 &euro; al mese),
         mentre un contribuente con 70.000 &euro; riceve solo 297 &euro; annui (23 &euro; al mese). Oltre gli 80.000
         &euro; di reddito, la detrazione per il coniuge si azzera completamente, e resta solo una detrazione residuale
@@ -301,24 +301,24 @@ const faqs = [
         di lavoro (o all'ufficio del personale) la situazione dei familiari a carico mediante la compilazione di un
         apposito modulo di richiesta. La comunicazione va effettuata all'inizio del rapporto di lavoro e ogni volta
         che intervengono variazioni (nascita di un figlio, variazione del reddito del coniuge, compimento dei 21 anni
-        di un figlio, ecc.). Il datore di lavoro, in qualita' di sostituto d'imposta, applica le detrazioni
-        mensilmente in busta paga, dividendo l'importo annuo per il numero di mensilita' (generalmente 12, con
-        conguaglio a fine anno). E' responsabilita' del lavoratore comunicare tempestivamente eventuali variazioni:
-        se un familiare supera la soglia di reddito durante l'anno, la detrazione non spetta piu' e l'importo
-        gia' fruito dovra' essere restituito in sede di conguaglio o dichiarazione dei redditi.
+        di un figlio, ecc.). Il datore di lavoro, in qualità di sostituto d'imposta, applica le detrazioni
+        mensilmente in busta paga, dividendo l'importo annuo per il numero di mensilità (generalmente 12, con
+        conguaglio a fine anno). È responsabilità del lavoratore comunicare tempestivamente eventuali variazioni:
+        se un familiare supera la soglia di reddito durante l'anno, la detrazione non spetta più e l'importo
+        già fruito dovrà essere restituito in sede di conguaglio o dichiarazione dei redditi.
       </p>
 
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
-        La capienza fiscale: quando la detrazione non si puo' sfruttare
+        La capienza fiscale: quando la detrazione non si può sfruttare
       </h3>
       <p>
-        Un aspetto fondamentale da comprendere e' quello della <strong>capienza fiscale</strong>. Le detrazioni
-        possono ridurre l'IRPEF fino a zero, ma non possono generare un credito d'imposta: se l'IRPEF lorda e'
-        inferiore al totale delle detrazioni spettanti, la parte eccedente va persa. Questo e' particolarmente
+        Un aspetto fondamentale da comprendere è quello della <strong>capienza fiscale</strong>. Le detrazioni
+        possono ridurre l'IRPEF fino a zero, ma non possono generare un credito d'imposta: se l'IRPEF lorda è
+        inferiore al totale delle detrazioni spettanti, la parte eccedente va persa. Questo è particolarmente
         rilevante per i redditi bassi, dove la combinazione di detrazione per lavoro dipendente, cuneo fiscale
         e detrazioni familiari potrebbe superare l'IRPEF lorda dovuta. In questi casi, attribuire il 100% della
-        detrazione figli al genitore con il reddito piu' alto puo' essere la strategia ottimale per il nucleo
-        familiare, poiche' quel genitore avra' una maggiore capienza fiscale per assorbire la detrazione.
+        detrazione figli al genitore con il reddito più alto può essere la strategia ottimale per il nucleo
+        familiare, poiché quel genitore avrà una maggiore capienza fiscale per assorbire la detrazione.
       </p>
     </div>
   </Fragment>
@@ -379,7 +379,7 @@ const faqs = [
               <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">50% ciascuno</td>
             </tr>
             <tr class="bg-gray-50 dark:bg-gray-800/50">
-              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">Eta' minima figli per detrazione IRPEF</td>
+              <td class="border border-gray-200 dark:border-gray-700 px-4 py-3">età minima figli per detrazione IRPEF</td>
               <td class="border border-gray-200 dark:border-gray-700 px-4 py-3 text-center font-medium">21 anni (sotto: AUU)</td>
             </tr>
           </tbody>
@@ -403,7 +403,7 @@ const faqs = [
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           No. Dal 1&deg; marzo 2022, le detrazioni IRPEF per figli a carico si applicano solo ai figli che hanno
-          compiuto 21 anni. Per i figli minorenni e quelli tra 18 e 20 anni, il sostegno economico e' erogato
+          compiuto 21 anni. Per i figli minorenni e quelli tra 18 e 20 anni, il sostegno economico è erogato
           tramite l'Assegno Unico Universale (AUU), un trasferimento monetario mensile dell'INPS il cui importo
           dipende dall'ISEE del nucleo familiare. L'AUU va richiesto separatamente all'INPS.
         </p>
@@ -418,9 +418,9 @@ const faqs = [
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           Dipende dalla situazione specifica. Se entrambi i genitori hanno redditi sufficienti per sfruttare
-          appieno le detrazioni, la ripartizione al 50% e' generalmente equivalente. Tuttavia, se un genitore
-          ha un reddito molto basso (con poca capienza IRPEF), attribuire il 100% al genitore con reddito piu'
-          alto puo' essere vantaggioso, poiche' evita di "perdere" la parte di detrazione non utilizzabile.
+          appieno le detrazioni, la ripartizione al 50% è generalmente equivalente. Tuttavia, se un genitore
+          ha un reddito molto basso (con poca capienza IRPEF), attribuire il 100% al genitore con reddito più
+          alto può essere vantaggioso, poiché evita di "perdere" la parte di detrazione non utilizzabile.
           La scelta va comunicata al datore di lavoro e deve essere concordata tra i genitori.
         </p>
       </details>
@@ -435,7 +435,7 @@ const faqs = [
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           La detrazione per il coniuge a carico spetta solo al coniuge legalmente sposato o alla parte dell'unione
           civile (Legge 76/2016). Il convivente di fatto (non unito civilmente) non ha diritto alla detrazione per
-          coniuge, anche se convive e ha un reddito sotto la soglia. Questo e' uno dei motivi per cui le coppie
+          coniuge, anche se convive e ha un reddito sotto la soglia. Questo è uno dei motivi per cui le coppie
           conviventi con redditi asimmetrici possono valutare il matrimonio o l'unione civile anche sotto il profilo
           fiscale.
         </p>
@@ -451,9 +451,9 @@ const faqs = [
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           Se il coniuge supera la soglia di 2.840,51 &euro; di reddito annuo, la detrazione non spetta per l'intero
           anno (non si fraziona per mesi). Il contribuente deve comunicare tempestivamente la variazione al datore
-          di lavoro per interrompere l'applicazione della detrazione in busta paga. Se la detrazione e' stata gia'
-          fruita, l'importo dovra' essere restituito in sede di conguaglio di fine anno o nella dichiarazione dei
-          redditi. Per evitare conguagli pesanti, e' consigliabile stimare il reddito annuo del coniuge con
+          di lavoro per interrompere l'applicazione della detrazione in busta paga. Se la detrazione è stata già
+          fruita, l'importo dovrà essere restituito in sede di conguaglio di fine anno o nella dichiarazione dei
+          redditi. Per evitare conguagli pesanti, è consigliabile stimare il reddito annuo del coniuge con
           ragionevole anticipo.
         </p>
       </details>
@@ -468,8 +468,8 @@ const faqs = [
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           Le detrazioni per familiari a carico si applicano a tutti i contribuenti soggetti a IRPEF, compresi i
           lavoratori autonomi con regime ordinario. Tuttavia, chi opera in <strong>regime forfettario</strong>
-          paga un'imposta sostitutiva e non l'IRPEF, quindi non puo' beneficiare delle detrazioni per familiari
-          a carico (ne' di nessun'altra detrazione IRPEF). Questo e' un aspetto importante da considerare nella
+          paga un'imposta sostitutiva e non l'IRPEF, quindi non può beneficiare delle detrazioni per familiari
+          a carico (ne' di nessun'altra detrazione IRPEF). Questo è un aspetto importante da considerare nella
           scelta del regime fiscale, soprattutto per chi ha familiari a carico. In regime forfettario, le detrazioni
           non fruite dal contribuente possono comunque essere fruite dall'altro genitore (se lavoratore dipendente
           o autonomo in regime ordinario).
@@ -488,8 +488,8 @@ const faqs = [
           (sezione iniziale del modello), specificando per ciascuno: codice fiscale, tipo di parentela (C per coniuge,
           F per figlio, A per altro familiare), numero di mesi a carico, percentuale di detrazione spettante (50%
           o 100% per i figli). Il modello 730 precompilato disponibile sul sito dell'Agenzia delle Entrate
-          contiene gia' molte informazioni precaricate, ma e' responsabilita' del contribuente verificare la
-          correttezza dei dati e aggiornare eventuali variazioni intervenute nell'anno. Le detrazioni gia' fruite
+          contiene già molte informazioni precaricate, ma è responsabilità del contribuente verificare la
+          correttezza dei dati e aggiornare eventuali variazioni intervenute nell'anno. Le detrazioni già fruite
           in busta paga vengono automaticamente conguagliate.
         </p>
       </details>

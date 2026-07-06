@@ -454,7 +454,7 @@ export interface RisultatoPensione {
   montanteFinale: number;
   coefficienteTrasformazione: number;
   pensioneAnnuaLorda: number;
-  pensioneMensileLorda: number;    // su 13 mensilita'
+  pensioneMensileLorda: number;    // su 13 mensilità
   pensioneAnnuaNetta: number;      // after IRPEF
   pensioneMensileNetta: number;
   tassoSostituzione: number;       // pensione netta / ultimo stipendio netto
@@ -676,7 +676,7 @@ export interface RisultatoISEE {
  * Maggiorazioni:
  * +0,2 per ogni figlio minorenne
  * +0,35 se ci sono almeno 3 figli minorenni
- * +0,5 per ogni componente con disabilita'
+ * +0,5 per ogni componente con disabilità
  * +0,2 per genitore unico con almeno un figlio minorenne
  */
 const SCALA_EQUIVALENZA_BASE: Record<number, number> = {
@@ -778,7 +778,7 @@ export function calcolaISEE(input: InputISEE): RisultatoISEE {
   // ── Fascia ISEE ──
   let fasciaISEE: string;
   if (isee <= 6_000) {
-    fasciaISEE = 'Fascia minima: accesso a bonus sociali (elettricita\', gas, acqua), carta acquisti, bonus asilo nido massimo';
+    fasciaISEE = 'Fascia minima: accesso a bonus sociali (elettricità, gas, acqua), carta acquisti, bonus asilo nido massimo';
   } else if (isee <= 9_530) {
     fasciaISEE = 'Accesso a sussidi sociali, agevolazioni tariffarie, contributi per affitto';
   } else if (isee <= 15_000) {

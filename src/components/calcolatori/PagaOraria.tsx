@@ -26,7 +26,7 @@ export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
     if (h) setOreSettimanali(parseInt(h, 10) || 40);
     const w = params.get('settimane');
     if (w) setSettimaneAnno(parseInt(w, 10) || 52);
-    if (params.get('modalita') === 'oraria') {
+    if (params.get('modalità) === 'oraria') {
       setModalita('da-oraria');
       const t = params.get('tariffa');
       if (t) setTariffa(parseFloat(t) || 15);
@@ -41,10 +41,10 @@ export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
     const url = new URL(window.location.href);
     if (modalita === 'da-ral') {
       url.searchParams.set('ral', String(ral));
-      url.searchParams.delete('modalita');
+      url.searchParams.delete('modalità);
       url.searchParams.delete('tariffa');
     } else {
-      url.searchParams.set('modalita', 'oraria');
+      url.searchParams.set('modalità, 'oraria');
       url.searchParams.set('tariffa', String(tariffa));
       url.searchParams.delete('ral');
     }
@@ -284,7 +284,7 @@ export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
             </p>
             <p className="mt-1 text-sm text-blue-700 dark:text-blue-400">
               La paga oraria lorda si ottiene dividendo la RAL per le ore lavorate nell'anno.
-              Il netto orario e' una stima che tiene conto di INPS, IRPEF e addizionali (riferimento: Lombardia).
+              Il netto orario è una stima che tiene conto di INPS, IRPEF e addizionali (riferimento: Lombardia).
               Il valore effettivo puo variare in base alla regione, alle detrazioni e ad altri fattori.
             </p>
           </div>

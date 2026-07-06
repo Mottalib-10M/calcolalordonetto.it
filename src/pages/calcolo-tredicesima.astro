@@ -13,14 +13,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Quando viene pagata la tredicesima?', answer: 'La tredicesima viene pagata generalmente nella busta paga di dicembre, in tempo per le feste natalizie. Alcuni datori di lavoro la erogano nella prima meta\' di dicembre, altri a fine mese.' },
-  { question: 'Perche\' la tredicesima e\' piu\' tassata dello stipendio normale?', answer: 'Sulla tredicesima non si applicano le detrazioni da lavoro dipendente (fino a 1.955 euro) e il trattamento integrativo (ex bonus Renzi, fino a 1.200 euro). L\'IRPEF viene calcolata all\'aliquota marginale, senza alcuna riduzione, rendendo l\'impatto fiscale piu\' pesante rispetto alla mensilita\' ordinaria.' },
-  { question: 'Tutti i lavoratori hanno diritto alla tredicesima?', answer: 'Si\', la tredicesima mensilita\' e\' un diritto previsto per tutti i lavoratori dipendenti, sia con contratto a tempo indeterminato che determinato, full-time e part-time. E\' stabilita dalla legge (DPR 1070/1960) e non dal CCNL come la quattordicesima.' },
-  { question: 'Come funziona la tredicesima pro-rata?', answer: 'Se non hai lavorato per tutto l\'anno (ad esempio perche\' hai iniziato a meta\' anno o ti sei dimesso), la tredicesima viene calcolata in proporzione ai mesi effettivamente lavorati. Il calcolo e\': (RAL / 12) &times; (mesi lavorati / 12). I giorni superiori a 15 in un mese contano come mese intero.' },
-  { question: 'La tredicesima influisce sul calcolo del TFR?', answer: 'Si\', la tredicesima e\' inclusa nel calcolo del TFR. La base di calcolo del TFR e\' la retribuzione annua comprensiva della tredicesima (e della quattordicesima, se prevista). Il TFR annuo si calcola dividendo l\'intera retribuzione per 13,5.' },
-  { question: 'La tredicesima viene pagata durante la malattia o la maternita\'?', answer: 'Si\', la tredicesima continua a maturare durante i periodi di malattia (entro il periodo di comporto previsto dal CCNL) e durante la maternita\' obbligatoria. Durante il congedo di maternita\' obbligatorio (5 mesi), la tredicesima matura regolarmente e la relativa quota e\' a carico dell\'INPS. Anche durante il congedo parentale (facoltativo) la tredicesima matura, sebbene in misura ridotta. In caso di malattia prolungata oltre il periodo di comporto, la maturazione si interrompe.' },
-  { question: 'Come incide la tredicesima sull\'ISEE?', answer: 'La tredicesima incide sull\'ISEE in quanto fa parte del reddito complessivo dichiarato nella Certificazione Unica (CU) e di conseguenza nella dichiarazione dei redditi. L\'ISEE considera il reddito complessivo del nucleo familiare, che include tutte le componenti retributive, tredicesima e quattordicesima comprese. Non e\' possibile escluderla dal calcolo dell\'indicatore. Per chi percepisce sia tredicesima che quattordicesima, il reddito ai fini ISEE risultera corrispondente all\'intera RAL annuale.' },
-  { question: 'Si puo\' chiedere la tredicesima anticipata o in rate mensili?', answer: 'La legge non prevede un diritto all\'anticipo della tredicesima, ma il lavoratore puo\' richiedere al datore di lavoro di erogarla in rate mensili distribuite nelle 12 buste paga ordinarie. Questa modalita va concordata con l\'azienda e puo\' essere prevista da accordi individuali o aziendali. Alcuni datori di lavoro accettano di anticipare la tredicesima o parte di essa su richiesta motivata del dipendente, ma si tratta di una concessione e non di un obbligo. E\' importante sapere che la mensilizzazione della tredicesima non cambia il carico fiscale complessivo annuo: cambia solo la distribuzione temporale dei pagamenti.' },
+  { question: 'Quando viene pagata la tredicesima?', answer: 'La tredicesima viene pagata generalmente nella busta paga di dicembre, in tempo per le feste natalizie. Alcuni datori di lavoro la erogano nella prima metà di dicembre, altri a fine mese.' },
+  { question: 'perché la tredicesima è più tassata dello stipendio normale?', answer: 'Sulla tredicesima non si applicano le detrazioni da lavoro dipendente (fino a 1.955 euro) e il trattamento integrativo (ex bonus Renzi, fino a 1.200 euro). L\'IRPEF viene calcolata all\'aliquota marginale, senza alcuna riduzione, rendendo l\'impatto fiscale più pesante rispetto alla mensilità ordinaria.' },
+  { question: 'Tutti i lavoratori hanno diritto alla tredicesima?', answer: 'Sì, la tredicesima mensilità è un diritto previsto per tutti i lavoratori dipendenti, sia con contratto a tempo indeterminato che determinato, full-time e part-time. È stabilita dalla legge (DPR 1070/1960) e non dal CCNL come la quattordicesima.' },
+  { question: 'Come funziona la tredicesima pro-rata?', answer: 'Se non hai lavorato per tutto l\'anno (ad esempio perché hai iniziato a metà anno o ti sei dimesso), la tredicesima viene calcolata in proporzione ai mesi effettivamente lavorati. Il calcolo è: (RAL / 12) &times; (mesi lavorati / 12). I giorni superiori a 15 in un mese contano come mese intero.' },
+  { question: 'La tredicesima influisce sul calcolo del TFR?', answer: 'Sì, la tredicesima è inclusa nel calcolo del TFR. La base di calcolo del TFR è la retribuzione annua comprensiva della tredicesima (e della quattordicesima, se prevista). Il TFR annuo si calcola dividendo l\'intera retribuzione per 13,5.' },
+  { question: 'La tredicesima viene pagata durante la malattia o la maternità?', answer: 'Sì, la tredicesima continua a maturare durante i periodi di malattia (entro il periodo di comporto previsto dal CCNL) e durante la maternità obbligatoria. Durante il congedo di maternità obbligatorio (5 mesi), la tredicesima matura regolarmente e la relativa quota è a carico dell\'INPS. Anche durante il congedo parentale (facoltativo) la tredicesima matura, sebbene in misura ridotta. In caso di malattia prolungata oltre il periodo di comporto, la maturazione si interrompe.' },
+  { question: 'Come incide la tredicesima sull\'ISEE?', answer: 'La tredicesima incide sull\'ISEE in quanto fa parte del reddito complessivo dichiarato nella Certificazione Unica (CU) e di conseguenza nella dichiarazione dei redditi. L\'ISEE considera il reddito complessivo del nucleo familiare, che include tutte le componenti retributive, tredicesima e quattordicesima comprese. Non è possibile escluderla dal calcolo dell\'indicatore. Per chi percepisce sia tredicesima che quattordicesima, il reddito ai fini ISEE risultera corrispondente all\'intera RAL annuale.' },
+  { question: 'Si può chiedere la tredicesima anticipata o in rate mensili?', answer: 'La legge non prevede un diritto all\'anticipo della tredicesima, ma il lavoratore può richiedere al datore di lavoro di erogarla in rate mensili distribuite nelle 12 buste paga ordinarie. Questa modalita va concordata con l\'azienda e può essere prevista da accordi individuali o aziendali. Alcuni datori di lavoro accettano di anticipare la tredicesima o parte di essa su richiesta motivata del dipendente, ma si tratta di una concessione e non di un obbligo. È importante sapere che la mensilizzazione della tredicesima non cambia il carico fiscale complessivo annuo: cambia solo la distribuzione temporale dei pagamenti.' },
 ];
 ---
 
@@ -47,7 +47,7 @@ const faqs = [
     </h2>
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
-        La <strong>tredicesima mensilita'</strong> e' una mensilita' aggiuntiva che viene erogata
+        La <strong>tredicesima mensilità</strong> è una mensilità aggiuntiva che viene erogata
         generalmente a dicembre. Ecco come si calcola:
       </p>
       <ol>
@@ -60,15 +60,15 @@ const faqs = [
         </li>
         <li>
           <strong>IRPEF</strong>: la tredicesima viene tassata all'aliquota IRPEF marginale,
-          cioe' l'aliquota dello scaglione in cui ricade il tuo reddito. Non si applicano
-          le detrazioni da lavoro dipendente ne' il trattamento integrativo.
+          cioè l'aliquota dello scaglione in cui ricade il tuo reddito. Non si applicano
+          le detrazioni da lavoro dipendente né il trattamento integrativo.
         </li>
         <li>
           <strong>Tredicesima netta</strong> = Tredicesima lorda - INPS - IRPEF.
         </li>
       </ol>
       <p>
-        Per questo motivo la tredicesima risulta tassata piu' pesantemente dello stipendio
+        Per questo motivo la tredicesima risulta tassata più pesantemente dello stipendio
         mensile ordinario, dove invece si beneficia delle detrazioni fiscali.
       </p>
 
@@ -78,15 +78,15 @@ const faqs = [
       <p>
         La tredicesima non viene generata interamente a dicembre: matura progressivamente nel corso
         dell'anno solare, nella misura di <strong>1/12 per ogni mese di lavoro</strong>. Questo
-        significa che a gennaio maturi 1/12, a febbraio un altro dodicesimo, e cosi' via fino a
+        significa che a gennaio maturi 1/12, a febbraio un altro dodicesimo, e così via fino a
         dicembre, quando hai accumulato l'intero importo.
       </p>
       <p>
         La regola fondamentale riguarda il conteggio dei mesi lavorati: un mese viene considerato
         "intero" ai fini della maturazione della tredicesima se il lavoratore ha prestato servizio
-        per <strong>piu' di 15 giorni</strong> in quel mese. Se ad esempio inizi un nuovo lavoro il
-        giorno 14 di un mese, quel mese viene conteggiato come intero perche' hai lavorato piu' di 15
-        giorni. Al contrario, se inizi il giorno 20, quel mese non verra' conteggiato perche' i giorni
+        per <strong>più di 15 giorni</strong> in quel mese. Se ad esempio inizi un nuovo lavoro il
+        giorno 14 di un mese, quel mese viene conteggiato come intero perché hai lavorato più di 15
+        giorni. Al contrario, se inizi il giorno 20, quel mese non verrà conteggiato perché i giorni
         lavorati (circa 10-11) sono inferiori a 15.
       </p>
       <p>
@@ -97,43 +97,43 @@ const faqs = [
         5/12 della tredicesima annuale.
       </p>
       <p>
-        E' importante notare che durante i periodi di assenza retribuita (come ferie, permessi
-        retribuiti, festivita' e malattia entro il periodo di comporto) la tredicesima continua
+        È importante notare che durante i periodi di assenza retribuita (come ferie, permessi
+        retribuiti, festività e malattia entro il periodo di comporto) la tredicesima continua
         a maturare regolarmente. Non matura invece durante le assenze non retribuite, i periodi di
         aspettativa non retribuita e la cassa integrazione a zero ore (in questo ultimo caso, una
         quota viene comunque corrisposta dall'INPS).
       </p>
 
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
-        Tassazione della tredicesima: perche' si paga di piu'
+        Tassazione della tredicesima: perché si paga di più
       </h3>
       <p>
-        Uno degli aspetti che crea piu' confusione tra i lavoratori e' il fatto che la tredicesima,
-        a parita' di importo lordo, produce un netto significativamente inferiore rispetto alla
-        normale mensilita'. La ragione risiede nel meccanismo di tassazione IRPEF applicato alle
-        mensilita' aggiuntive.
+        Uno degli aspetti che crea più confusione tra i lavoratori è il fatto che la tredicesima,
+        a parità di importo lordo, produce un netto significativamente inferiore rispetto alla
+        normale mensilità. La ragione risiede nel meccanismo di tassazione IRPEF applicato alle
+        mensilità aggiuntive.
       </p>
       <p>
-        Sulla retribuzione ordinaria mensile, il datore di lavoro (in qualita' di sostituto d'imposta)
+        Sulla retribuzione ordinaria mensile, il datore di lavoro (in qualità di sostituto d'imposta)
         applica le <strong>detrazioni da lavoro dipendente</strong>, che riducono l'IRPEF dovuta. Per
         il 2026, queste detrazioni possono arrivare fino a 1.955 euro annui e vengono ripartite sulle
-        12 mensilita' ordinarie. Inoltre, per i redditi fino a 15.000 euro (o fino a 28.000 euro con
+        12 mensilità ordinarie. Inoltre, per i redditi fino a 15.000 euro (o fino a 28.000 euro con
         determinate condizioni), si applica il <strong>trattamento integrativo</strong> (ex bonus
         Renzi) di 1.200 euro annui.
       </p>
       <p>
         La tredicesima, invece, non beneficia di nessuna di queste agevolazioni. L'IRPEF viene
-        calcolata applicando direttamente l'<strong>aliquota marginale</strong>, cioe' l'aliquota
-        dello scaglione piu' alto raggiunto dal reddito complessivo del lavoratore. Per capire
-        meglio: se la tua RAL e' di 30.000 euro, il tuo reddito ricade nel secondo scaglione IRPEF
+        calcolata applicando direttamente l'<strong>aliquota marginale</strong>, cioè l'aliquota
+        dello scaglione più alto raggiunto dal reddito complessivo del lavoratore. Per capire
+        meglio: se la tua RAL è di 30.000 euro, il tuo reddito ricade nel secondo scaglione IRPEF
         (da 28.001 a 50.000 euro) con aliquota del 35%. Questo significa che sulla tredicesima, dopo
-        aver sottratto i contributi INPS, verra' trattenuto il 35% di IRPEF, senza alcuna detrazione
-        a mitigare l'impatto. Il risultato e' una tredicesima netta che puo' essere anche il 25-30%
-        piu' bassa rispetto allo stipendio netto ordinario, pur partendo dallo stesso importo lordo.
+        aver sottratto i contributi INPS, verrà trattenuto il 35% di IRPEF, senza alcuna detrazione
+        a mitigare l'impatto. Il risultato è una tredicesima netta che può essere anche il 25-30%
+        più bassa rispetto allo stipendio netto ordinario, pur partendo dallo stesso importo lordo.
       </p>
       <p>
-        E' bene precisare che questa tassazione piu' pesante non rappresenta un "sopruso": le
-        detrazioni da lavoro dipendente sono gia' state interamente ripartite sulle 12 mensilita'
+        È bene precisare che questa tassazione più pesante non rappresenta un "sopruso": le
+        detrazioni da lavoro dipendente sono già state interamente ripartite sulle 12 mensilità
         ordinarie e il trattamento integrativo viene erogato mensilmente. Applicarli anche sulla
         tredicesima significherebbe raddoppiarne l'effetto, con conseguente conguaglio a debito in
         sede di dichiarazione dei redditi.
@@ -143,14 +143,14 @@ const faqs = [
         Diritti e obblighi: cosa dice la legge
       </h3>
       <p>
-        Il diritto alla tredicesima mensilita' per i lavoratori dipendenti del settore privato e'
+        Il diritto alla tredicesima mensilità per i lavoratori dipendenti del settore privato è
         sancito dal <strong>DPR 28 luglio 1960, n. 1070</strong>, che ha esteso a tutti i lavoratori
         la cosiddetta "gratifica natalizia" inizialmente prevista solo per alcuni settori. Prima
         di questa norma, la tredicesima era una concessione contrattuale; con il DPR 1070/1960
-        e' diventata un diritto irrinunciabile garantito a tutti i lavoratori subordinati.
+        è diventata un diritto irrinunciabile garantito a tutti i lavoratori subordinati.
       </p>
       <p>
-        Per i dipendenti pubblici, la tredicesima e' regolata dall'articolo 2 della Legge 27 maggio
+        Per i dipendenti pubblici, la tredicesima è regolata dall'articolo 2 della Legge 27 maggio
         1959, n. 324, e successive modifiche. Anche i pensionati hanno diritto alla tredicesima sulla
         pensione, come stabilito dalla legislazione previdenziale.
       </p>
@@ -158,7 +158,7 @@ const faqs = [
         I singoli <strong>CCNL</strong> (Contratti Collettivi Nazionali di Lavoro) possono prevedere
         condizioni migliorative rispetto alla legge. Ad esempio, il CCNL Commercio (Confcommercio)
         stabilisce che la tredicesima venga calcolata sulla retribuzione globale di fatto, includendo
-        paga base, contingenza, scatti di anzianita', terzi elementi e superminimi assorbibili. Il CCNL
+        paga base, contingenza, scatti di anzianità, terzi elementi e superminimi assorbibili. Il CCNL
         Metalmeccanico (Federmeccanica) prevede disposizioni analoghe, con la precisazione che i
         periodi di malattia entro il comporto sono utili alla maturazione. Il CCNL del Credito
         prevede il pagamento entro il 20 dicembre di ogni anno.
@@ -166,11 +166,11 @@ const faqs = [
       <p>
         Per quanto riguarda i <strong>tempi di pagamento</strong>, la legge non fissa una data
         precisa, ma stabilisce che la tredicesima debba essere corrisposta in occasione delle
-        festivita' natalizie. Nella prassi, la maggior parte dei datori di lavoro la eroga con la
-        busta paga di dicembre, spesso nella prima meta' del mese. In caso di ritardo nel pagamento,
-        il lavoratore puo' rivolgersi all'Ispettorato del Lavoro o agire in via giudiziale. Il mancato
+        festività natalizie. Nella prassi, la maggior parte dei datori di lavoro la eroga con la
+        busta paga di dicembre, spesso nella prima metà del mese. In caso di ritardo nel pagamento,
+        il lavoratore può rivolgersi all'Ispettorato del Lavoro o agire in via giudiziale. Il mancato
         pagamento della tredicesima costituisce una violazione degli obblighi retributivi del datore
-        di lavoro e puo' comportare sanzioni amministrative. Il lavoratore ha inoltre diritto agli
+        di lavoro e può comportare sanzioni amministrative. Il lavoratore ha inoltre diritto agli
         interessi legali e alla rivalutazione monetaria sull'importo non corrisposto.
       </p>
     </div>
@@ -242,7 +242,7 @@ const faqs = [
         Come si evince dalla tabella, l'incidenza della tassazione sulla tredicesima cresce
         sensibilmente al crescere della RAL. Un lavoratore con RAL di 20.000 euro riceve in tasca
         circa il 70% della tredicesima lorda, mentre chi ha una RAL di 50.000 euro trattiene appena
-        il 52%. Questo divario e' dovuto alla progressivita' delle aliquote IRPEF: chi ricade nello
+        il 52%. Questo divario è dovuto alla progressività delle aliquote IRPEF: chi ricade nello
         scaglione del 43% subisce un prelievo fiscale quasi doppio rispetto a chi si trova nello
         scaglione del 23%. Per una stima precisa basata sulla tua situazione specifica, utilizza
         il simulatore in alto inserendo la tua RAL e il numero di mesi lavorati.
@@ -262,19 +262,19 @@ const faqs = [
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
           La tredicesima viene pagata generalmente nella busta paga di dicembre, in tempo per le feste natalizie.
-          Alcuni datori di lavoro la erogano nella prima meta' di dicembre, altri a fine mese.
+          Alcuni datori di lavoro la erogano nella prima metà di dicembre, altri a fine mese.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
-          Perche' la tredicesima e' piu' tassata dello stipendio normale?
+          perché la tredicesima è più tassata dello stipendio normale?
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
           Sulla tredicesima non si applicano le detrazioni da lavoro dipendente (fino a 1.955 euro) e il trattamento
           integrativo (ex bonus Renzi, fino a 1.200 euro). L'IRPEF viene calcolata all'aliquota marginale,
-          senza alcuna riduzione, rendendo l'impatto fiscale piu' pesante rispetto alla mensilita' ordinaria.
+          senza alcuna riduzione, rendendo l'impatto fiscale più pesante rispetto alla mensilità ordinaria.
         </div>
       </details>
 
@@ -284,8 +284,8 @@ const faqs = [
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          Si', la tredicesima mensilita' e' un diritto previsto per tutti i lavoratori dipendenti, sia con contratto
-          a tempo indeterminato che determinato, full-time e part-time. E' stabilita dalla legge (DPR 1070/1960)
+          Sì, la tredicesima mensilità è un diritto previsto per tutti i lavoratori dipendenti, sia con contratto
+          a tempo indeterminato che determinato, full-time e part-time. È stabilita dalla legge (DPR 1070/1960)
           e non dal CCNL come la quattordicesima.
         </div>
       </details>
@@ -296,9 +296,9 @@ const faqs = [
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          Se non hai lavorato per tutto l'anno (ad esempio perche' hai iniziato a meta' anno o ti sei dimesso),
+          Se non hai lavorato per tutto l'anno (ad esempio perché hai iniziato a metà anno o ti sei dimesso),
           la tredicesima viene calcolata in proporzione ai mesi effettivamente lavorati.
-          Il calcolo e': (RAL / 12) &times; (mesi lavorati / 12). I giorni superiori a 15 in un mese
+          Il calcolo è: (RAL / 12) &times; (mesi lavorati / 12). I giorni superiori a 15 in un mese
           contano come mese intero.
         </div>
       </details>
@@ -309,7 +309,7 @@ const faqs = [
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          Si', la tredicesima e' inclusa nel calcolo del TFR. La base di calcolo del TFR e' la retribuzione annua
+          Sì, la tredicesima è inclusa nel calcolo del TFR. La base di calcolo del TFR è la retribuzione annua
           comprensiva della tredicesima (e della quattordicesima, se prevista). Il TFR annuo si calcola
           dividendo l'intera retribuzione per 13,5.
         </div>
@@ -317,13 +317,13 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
-          La tredicesima viene pagata durante la malattia o la maternita'?
+          La tredicesima viene pagata durante la malattia o la maternità?
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          Si', la tredicesima continua a maturare durante i periodi di malattia (entro il periodo di comporto previsto
-          dal CCNL) e durante la maternita' obbligatoria. Durante il congedo di maternita' obbligatorio (5 mesi), la
-          tredicesima matura regolarmente e la relativa quota e' a carico dell'INPS. Anche durante il congedo
+          Sì, la tredicesima continua a maturare durante i periodi di malattia (entro il periodo di comporto previsto
+          dal CCNL) e durante la maternità obbligatoria. Durante il congedo di maternità obbligatorio (5 mesi), la
+          tredicesima matura regolarmente e la relativa quota è a carico dell'INPS. Anche durante il congedo
           parentale (facoltativo) la tredicesima matura, sebbene in misura ridotta. In caso di malattia prolungata
           oltre il periodo di comporto, la maturazione si interrompe.
         </div>
@@ -338,22 +338,22 @@ const faqs = [
           La tredicesima incide sull'ISEE in quanto fa parte del reddito complessivo dichiarato nella Certificazione
           Unica (CU) e di conseguenza nella dichiarazione dei redditi. L'ISEE considera il reddito complessivo del
           nucleo familiare, che include tutte le componenti retributive, tredicesima e quattordicesima comprese. Non
-          e' possibile escluderla dal calcolo dell'indicatore. Per chi percepisce sia tredicesima che quattordicesima,
+          è possibile escluderla dal calcolo dell'indicatore. Per chi percepisce sia tredicesima che quattordicesima,
           il reddito ai fini ISEE risultera corrispondente all'intera RAL annuale.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
-          Si puo' chiedere la tredicesima anticipata o in rate mensili?
+          Si può chiedere la tredicesima anticipata o in rate mensili?
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          La legge non prevede un diritto all'anticipo della tredicesima, ma il lavoratore puo' richiedere al datore
+          La legge non prevede un diritto all'anticipo della tredicesima, ma il lavoratore può richiedere al datore
           di lavoro di erogarla in rate mensili distribuite nelle 12 buste paga ordinarie. Questa modalita va
-          concordata con l'azienda e puo' essere prevista da accordi individuali o aziendali. Alcuni datori di lavoro
+          concordata con l'azienda e può essere prevista da accordi individuali o aziendali. Alcuni datori di lavoro
           accettano di anticipare la tredicesima o parte di essa su richiesta motivata del dipendente, ma si tratta
-          di una concessione e non di un obbligo. E' importante sapere che la mensilizzazione della tredicesima non
+          di una concessione e non di un obbligo. È importante sapere che la mensilizzazione della tredicesima non
           cambia il carico fiscale complessivo annuo: cambia solo la distribuzione temporale dei pagamenti.
         </div>
       </details>

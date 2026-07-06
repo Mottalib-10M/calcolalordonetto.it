@@ -44,7 +44,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
           <div className="space-y-4">
             <CampoInput
               lang={lang}
-              label="Eta' attuale"
+              label="età attuale"
               value={etaAttuale}
               onChange={(v) => setEtaAttuale(Math.round(v))}
               min={18}
@@ -55,7 +55,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
 
             <CampoInput
               lang={lang}
-              label="Eta' pensionamento"
+              label="età pensionamento"
               value={etaPensionamento}
               onChange={(v) => setEtaPensionamento(Math.round(v))}
               min={57}
@@ -91,20 +91,20 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
 
             <CampoInput
               lang={lang}
-              label="Anni di contributi gia' versati"
+              label="Anni di contributi già versati"
               value={anniContributi}
               onChange={(v) => setAnniContributi(Math.round(v))}
               min={0}
               max={50}
               step={1}
               suffix="anni"
-              helpText="Anni di lavoro con contributi INPS gia' versati"
+              helpText="Anni di lavoro con contributi INPS già versati"
             />
           </div>
 
           <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3 text-xs text-amber-700 dark:text-amber-300">
             <strong>Nota:</strong> stima basata su ipotesi semplificative (sistema contributivo puro,
-            rivalutazione PIL 1,5%, aliquota contributiva 33%). Il risultato reale puo' variare
+            rivalutazione PIL 1,5%, aliquota contributiva 33%). Il risultato reale può variare
             in base a molti fattori. Per una stima ufficiale consulta il servizio "La mia pensione futura" su inps.it.
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
             {formatCurrency(risultato.pensioneMensileNetta)}
           </p>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            su 13 mensilita' — a {etaPensionamento} anni
+            su 13 mensilità — a {etaPensionamento} anni
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-4 border-t border-gray-200 dark:border-gray-700 pt-5">
@@ -188,7 +188,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
 
           {risultato.tassoSostituzione < 0.6 && (
             <div className="mt-4 rounded-lg bg-red-50 dark:bg-red-900/20 p-3 text-xs text-red-700 dark:text-red-300">
-              Il tasso di sostituzione e' inferiore al 60%. Valuta l'adesione a un fondo pensione
+              Il tasso di sostituzione è inferiore al 60%. Valuta l'adesione a un fondo pensione
               complementare per integrare la pensione pubblica.
             </div>
           )}
@@ -227,7 +227,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
                 <span className="inline-block h-2.5 w-2.5 rounded-sm bg-brand" />
                 Montante contributivo
               </span>
-              <span>Eta' mostrata sull'asse verticale</span>
+              <span>età mostrata sull'asse verticale</span>
             </div>
           </div>
         )}
@@ -258,7 +258,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
               <table className="w-full text-xs">
                 <thead>
                   <tr className="border-b border-gray-200 dark:border-gray-700 text-left text-gray-500 dark:text-gray-400">
-                    <th className="pb-2 pr-3 font-medium">Eta'</th>
+                    <th className="pb-2 pr-3 font-medium">età</th>
                     <th className="pb-2 pr-3 font-medium text-right">RAL</th>
                     <th className="pb-2 pr-3 font-medium text-right">Contributo annuo</th>
                     <th className="pb-2 font-medium text-right">Montante</th>
@@ -292,7 +292,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b border-gray-200 dark:border-gray-700 text-left text-gray-500 dark:text-gray-400">
-                  <th className="pb-2 pr-3 font-medium">Eta'</th>
+                  <th className="pb-2 pr-3 font-medium">età</th>
                   <th className="pb-2 font-medium text-right">Coefficiente</th>
                 </tr>
               </thead>

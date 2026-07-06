@@ -12,7 +12,7 @@ import PannelloRisultato from '../ui/PannelloRisultato';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import SelettoreRegione from '../ui/SelettoreRegione';
 import SelettoreComune from '../ui/SelettoreComune';
-import SelettoreMensilita from '../ui/SelettoreMensilita';
+import SelettoreMensilita from '../ui/Selettoremensilità;
 import SelettoreSituazioneFamiliare from '../ui/SelettoreSituazioneFamiliare';
 import TabellaDettaglio from '../ui/TabellaDettaglio';
 

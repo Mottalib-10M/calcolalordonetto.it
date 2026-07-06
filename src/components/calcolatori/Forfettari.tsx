@@ -174,7 +174,7 @@ export default function Forfettari({ lang = 'it' }: Props) {
             <p className="text-sm text-red-700 dark:text-red-400">
               {lang === 'en'
                 ? <>{`Warning: the revenue limit for the flat-rate regime is `}<strong>€85,000</strong>{` per year. With higher revenue you lose the right to the flat-rate regime.`}</>
-                : <>{`Attenzione: il limite di fatturato per il regime forfettario e' di `}<strong>85.000 €</strong>{` annui. Con ricavi superiori perdi il diritto al regime forfettario.`}</>}
+                : <>{`Attenzione: il limite di fatturato per il regime forfettario è di `}<strong>85.000 €</strong>{` annui. Con ricavi superiori perdi il diritto al regime forfettario.`}</>}
             </p>
           </div>
         </div>
@@ -274,7 +274,7 @@ export default function Forfettari({ lang = 'it' }: Props) {
             <p className="mt-1 text-sm text-blue-700 dark:text-blue-400">
               {lang === 'en'
                 ? 'In the flat-rate regime, you cannot deduct actual expenses (rent, equipment, etc.), because the deduction is already flat-rated into the profitability coefficient. The actual net will depend on your non-deductible expenses.'
-                : 'Nel regime forfettario non puoi dedurre le spese effettive (affitto, attrezzature, ecc.), perche la deduzione e\' gia forfettizzata nel coefficiente di redditivita. Il netto reale dipendera dalle tue spese vive non deducibili.'}
+                : 'Nel regime forfettario non puoi dedurre le spese effettive (affitto, attrezzature, ecc.), perche la deduzione è gia forfettizzata nel coefficiente di redditivita. Il netto reale dipendera dalle tue spese vive non deducibili.'}
             </p>
           </div>
         </div>

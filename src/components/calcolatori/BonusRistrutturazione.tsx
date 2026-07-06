@@ -241,8 +241,8 @@ export default function BonusRistrutturazione({ lang = 'it' }: { lang?: Lang }) 
                 <p className="mt-1 text-sm text-amber-700 dark:text-amber-400">
                   La detrazione annua ({formatCurrency(risultato.detrazioneAnnua)}) supera la tua IRPEF annua stimata
                   ({formatCurrency(irpefAnnua)}). Ogni anno perdi {formatCurrency(risultato.quotaPersa)} di
-                  detrazione che non puoi recuperare negli anni successivi. La quota eccedente non e' rimborsabile
-                  ne' trasferibile.
+                  detrazione che non puoi recuperare negli anni successivi. La quota eccedente non è rimborsabile
+                  né trasferibile.
                 </p>
               </div>
             </div>

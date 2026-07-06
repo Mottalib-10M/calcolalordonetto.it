@@ -13,14 +13,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Quali contratti prevedono la quattordicesima?', answer: 'I principali CCNL che prevedono la quattordicesima sono: Commercio e Terziario (Confcommercio), Turismo (alberghi, pubblici esercizi), Banche e Credito, Assicurazioni, Alimentari (industria), Autotrasporto e Logistica, Studi professionali e Chimico-farmaceutico. Non e\' prevista, ad esempio, nel CCNL Metalmeccanico e nel CCNL Edilizia.' },
-  { question: 'La quattordicesima e\' obbligatoria?', answer: 'No, a differenza della tredicesima (prevista per legge), la quattordicesima e\' una retribuzione aggiuntiva stabilita solo da alcuni CCNL. Se il tuo contratto non la prevede, il datore di lavoro non ha l\'obbligo di erogarla, a meno che non sia indicata nel contratto individuale di lavoro.' },
+  { question: 'Quali contratti prevedono la quattordicesima?', answer: 'I principali CCNL che prevedono la quattordicesima sono: Commercio e Terziario (Confcommercio), Turismo (alberghi, pubblici esercizi), Banche e Credito, Assicurazioni, Alimentari (industria), Autotrasporto e Logistica, Studi professionali e Chimico-farmaceutico. Non è prevista, ad esempio, nel CCNL Metalmeccanico e nel CCNL Edilizia.' },
+  { question: 'La quattordicesima è obbligatoria?', answer: 'No, a differenza della tredicesima (prevista per legge), la quattordicesima è una retribuzione aggiuntiva stabilita solo da alcuni CCNL. Se il tuo contratto non la prevede, il datore di lavoro non ha l\'obbligo di erogarla, a meno che non sia indicata nel contratto individuale di lavoro.' },
   { question: 'Quando viene pagata la quattordicesima?', answer: 'La quattordicesima viene generalmente erogata nella busta paga di giugno o luglio, prima delle vacanze estive. La data precisa dipende dal CCNL applicato e dalle prassi aziendali. Alcuni contratti prevedono l\'erogazione il 1&deg; luglio, altri con la busta paga di giugno.' },
-  { question: 'La quattordicesima si calcola sullo stipendio base o sulla RAL?', answer: 'La quattordicesima viene generalmente calcolata sulla retribuzione globale mensile, che include paga base, contingenza, scatti di anzianita\' e altri elementi fissi. In questo calcolatore usiamo RAL/12 come approssimazione semplificata. Per il calcolo esatto, fai riferimento al tuo cedolino e al CCNL applicato.' },
-  { question: 'Con 14 mensilita\' guadagno di piu\'?', answer: 'No, la RAL resta invariata. Con 14 mensilita\' ogni singola busta paga mensile sara\' piu\' bassa (RAL / 14 anziche\' RAL / 12 o RAL / 13), ma riceverai due mensilita\' extra. Il totale annuo lordo e\' sempre lo stesso. Tuttavia, la distribuzione delle detrazioni puo\' portare a piccole differenze nel netto complessivo.' },
-  { question: 'La quattordicesima matura durante il periodo di prova?', answer: 'Si\', la quattordicesima matura regolarmente anche durante il periodo di prova, poiche\' il rapporto di lavoro e\' a tutti gli effetti un rapporto subordinato fin dal primo giorno. Se il periodo di prova non viene superato e il rapporto si interrompe, il lavoratore ha diritto a ricevere la quota di quattordicesima maturata in proporzione ai mesi lavorati (pro-rata), calcolata nell\'ultima busta paga con il consueto meccanismo dei 15 giorni per il conteggio del mese intero.' },
-  { question: 'Come viene tassata la quattordicesima rispetto alla tredicesima?', answer: 'La quattordicesima viene tassata esattamente come la tredicesima: si applicano i contributi INPS (9,19%) sull\'importo lordo e poi l\'IRPEF all\'aliquota marginale, senza detrazioni da lavoro dipendente e senza trattamento integrativo. Di conseguenza, a parita\' di importo lordo, il netto della quattordicesima e\' identico a quello della tredicesima. Entrambe le mensilita\' aggiuntive risultano tassate piu\' pesantemente rispetto allo stipendio mensile ordinario, dove invece si beneficia delle detrazioni fiscali.' },
-  { question: 'Posso rinunciare alla quattordicesima per avere un lordo mensile piu\' alto?', answer: 'In linea di principio, non e\' possibile rinunciare unilateralmente alla quattordicesima se il CCNL applicato la prevede, poiche\' si tratta di un diritto stabilito dal contratto collettivo. Tuttavia, e\' possibile concordare con il datore di lavoro la "mensilizzazione" della quattordicesima, cioe\' la distribuzione del suo importo nelle 12 buste paga ordinarie. In questo modo, ogni mensilita\' sarebbe leggermente piu\' alta, ma non si riceverebbe l\'erogazione separata a giugno/luglio. Questa soluzione va formalizzata per iscritto e non modifica il totale annuo lordo ne\' il carico fiscale complessivo, ma cambia solo la distribuzione temporale dei pagamenti.' },
+  { question: 'La quattordicesima si calcola sullo stipendio base o sulla RAL?', answer: 'La quattordicesima viene generalmente calcolata sulla retribuzione globale mensile, che include paga base, contingenza, scatti di anzianità e altri elementi fissi. In questo calcolatore usiamo RAL/12 come approssimazione semplificata. Per il calcolo esatto, fai riferimento al tuo cedolino e al CCNL applicato.' },
+  { question: 'Con 14 mensilità guadagno di più?', answer: 'No, la RAL resta invariata. Con 14 mensilità ogni singola busta paga mensile sarà più bassa (RAL / 14 anziché RAL / 12 o RAL / 13), ma riceverai due mensilità extra. Il totale annuo lordo è sempre lo stesso. Tuttavia, la distribuzione delle detrazioni può portare a piccole differenze nel netto complessivo.' },
+  { question: 'La quattordicesima matura durante il periodo di prova?', answer: 'Sì, la quattordicesima matura regolarmente anche durante il periodo di prova, poiché il rapporto di lavoro è a tutti gli effetti un rapporto subordinato fin dal primo giorno. Se il periodo di prova non viene superato e il rapporto si interrompe, il lavoratore ha diritto a ricevere la quota di quattordicesima maturata in proporzione ai mesi lavorati (pro-rata), calcolata nell\'ultima busta paga con il consueto meccanismo dei 15 giorni per il conteggio del mese intero.' },
+  { question: 'Come viene tassata la quattordicesima rispetto alla tredicesima?', answer: 'La quattordicesima viene tassata esattamente come la tredicesima: si applicano i contributi INPS (9,19%) sull\'importo lordo e poi l\'IRPEF all\'aliquota marginale, senza detrazioni da lavoro dipendente e senza trattamento integrativo. Di conseguenza, a parità di importo lordo, il netto della quattordicesima è identico a quello della tredicesima. Entrambe le mensilità aggiuntive risultano tassate più pesantemente rispetto allo stipendio mensile ordinario, dove invece si beneficia delle detrazioni fiscali.' },
+  { question: 'Posso rinunciare alla quattordicesima per avere un lordo mensile più alto?', answer: 'In linea di principio, non è possibile rinunciare unilateralmente alla quattordicesima se il CCNL applicato la prevede, poiché si tratta di un diritto stabilito dal contratto collettivo. Tuttavia, è possibile concordare con il datore di lavoro la "mensilizzazione" della quattordicesima, cioè la distribuzione del suo importo nelle 12 buste paga ordinarie. In questo modo, ogni mensilità sarebbe leggermente più alta, ma non si riceverebbe l\'erogazione separata a giugno/luglio. Questa soluzione va formalizzata per iscritto e non modifica il totale annuo lordo né il carico fiscale complessivo, ma cambia solo la distribuzione temporale dei pagamenti.' },
 ];
 ---
 
@@ -47,9 +47,9 @@ const faqs = [
     </h2>
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
-        La <strong>quattordicesima mensilita'</strong> e' una mensilita' aggiuntiva prevista
+        La <strong>quattordicesima mensilità</strong> è una mensilità aggiuntiva prevista
         da alcuni contratti collettivi nazionali di lavoro (CCNL). A differenza della tredicesima,
-        non e' obbligatoria per legge.
+        non è obbligatoria per legge.
       </p>
       <ol>
         <li>
@@ -60,7 +60,7 @@ const faqs = [
           <strong>Contributi INPS</strong>: si applicano i contributi previdenziali (9,19%) come sullo stipendio ordinario.
         </li>
         <li>
-          <strong>IRPEF</strong>: come per la tredicesima, la quattordicesima e' tassata all'aliquota marginale
+          <strong>IRPEF</strong>: come per la tredicesima, la quattordicesima è tassata all'aliquota marginale
           senza le detrazioni da lavoro dipendente e il trattamento integrativo.
         </li>
         <li>
@@ -76,8 +76,8 @@ const faqs = [
         Quali CCNL prevedono la quattordicesima
       </h3>
       <p>
-        A differenza della tredicesima, che e' garantita per legge a tutti i lavoratori dipendenti,
-        la quattordicesima mensilita' e' un istituto di natura contrattuale: spetta solo se il CCNL
+        A differenza della tredicesima, che è garantita per legge a tutti i lavoratori dipendenti,
+        la quattordicesima mensilità è un istituto di natura contrattuale: spetta solo se il CCNL
         applicato al rapporto di lavoro la prevede espressamente. Ecco un quadro dettagliato dei
         principali contratti collettivi.
       </p>
@@ -86,9 +86,9 @@ const faqs = [
       </p>
       <ul>
         <li>
-          <strong>Commercio e Terziario (Confcommercio)</strong>: e' uno dei contratti piu' diffusi in
+          <strong>Commercio e Terziario (Confcommercio)</strong>: è uno dei contratti più diffusi in
           Italia, applicato a milioni di lavoratori nel settore della distribuzione, vendita al
-          dettaglio e ingrosso, servizi alle imprese. La quattordicesima e' pari a una mensilita'
+          dettaglio e ingrosso, servizi alle imprese. La quattordicesima è pari a una mensilità
           della retribuzione globale di fatto e viene erogata entro il 1&deg; luglio di ogni anno.
         </li>
         <li>
@@ -100,13 +100,13 @@ const faqs = [
         <li>
           <strong>Banche e Credito (ABI)</strong>: il contratto del settore bancario prevede la
           quattordicesima, tradizionalmente erogata nel mese di giugno. In alcuni istituti di
-          credito possono essere previste ulteriori mensilita' aggiuntive in base ad accordi
+          credito possono essere previste ulteriori mensilità aggiuntive in base ad accordi
           integrativi aziendali.
         </li>
         <li>
           <strong>Assicurazioni (ANIA)</strong>: il CCNL del settore assicurativo prevede la
-          quattordicesima mensilita', generalmente corrisposta nel mese di giugno. Il settore
-          assicurativo e' storicamente tra quelli con il trattamento retributivo complessivo piu'
+          quattordicesima mensilità, generalmente corrisposta nel mese di giugno. Il settore
+          assicurativo è storicamente tra quelli con il trattamento retributivo complessivo più
           elevato.
         </li>
         <li>
@@ -116,7 +116,7 @@ const faqs = [
         </li>
         <li>
           <strong>Autotrasporto e Logistica</strong>: il CCNL Logistica, Trasporto Merci e Spedizione
-          prevede la quattordicesima mensilita', erogata nel periodo giugno-luglio.
+          prevede la quattordicesima mensilità, erogata nel periodo giugno-luglio.
         </li>
         <li>
           <strong>Studi professionali (Confprofessioni)</strong>: il contratto per i dipendenti
@@ -126,7 +126,7 @@ const faqs = [
         <li>
           <strong>Chimico-farmaceutico (Federchimica)</strong>: il CCNL del settore chimico e
           farmaceutico prevede la quattordicesima, corrisposta entro il mese di luglio. Il contratto
-          e' considerato tra i piu' completi e strutturati nel panorama contrattuale italiano.
+          è considerato tra i più completi e strutturati nel panorama contrattuale italiano.
         </li>
       </ul>
       <p>
@@ -134,20 +134,20 @@ const faqs = [
       </p>
       <ul>
         <li>
-          <strong>Metalmeccanico (Federmeccanica/Fiom-Fim-Uilm)</strong>: uno dei contratti piu'
-          applicati in Italia. La retribuzione e' distribuita su 13 mensilita'. Non e' prevista
+          <strong>Metalmeccanico (Federmeccanica/Fiom-Fim-Uilm)</strong>: uno dei contratti più
+          applicati in Italia. La retribuzione è distribuita su 13 mensilità. Non è prevista
           la quattordicesima, anche se singoli accordi aziendali possono prevedere premi o
           gratifiche aggiuntive.
         </li>
         <li>
           <strong>Edilizia (ANCE)</strong>: il settore edile non prevede la quattordicesima. I
-          lavoratori edili hanno pero' la Cassa Edile, che eroga gratifiche natalizie e ferie
+          lavoratori edili hanno però la Cassa Edile, che eroga gratifiche natalizie e ferie
           attraverso un meccanismo specifico di accantonamento.
         </li>
         <li>
           <strong>Pubblico Impiego</strong>: i dipendenti della pubblica amministrazione (sia
-          comparti ministeriali che enti locali, sanita', scuola e universita') ricevono solo la
-          tredicesima mensilita'. Non e' prevista la quattordicesima in nessun comparto del
+          comparti ministeriali che enti locali, sanità, scuola e università) ricevono solo la
+          tredicesima mensilità. Non è prevista la quattordicesima in nessun comparto del
           pubblico impiego.
         </li>
       </ul>
@@ -158,21 +158,21 @@ const faqs = [
       <p>
         Quando il lavoratore non ha prestato servizio per l'intero periodo di maturazione (di solito
         da luglio a giugno, oppure da gennaio a dicembre a seconda del CCNL), la quattordicesima
-        viene calcolata in proporzione ai mesi effettivamente lavorati. La formula e':
+        viene calcolata in proporzione ai mesi effettivamente lavorati. La formula è:
       </p>
       <p>
         <strong>Quattordicesima pro-rata</strong> = (Retribuzione mensile) &times; (mesi lavorati / 12)
       </p>
       <p>
         Come per la tredicesima, vale la regola dei 15 giorni: un mese viene conteggiato come
-        intero se il lavoratore ha prestato servizio per piu' di 15 giorni di calendario in quel mese.
+        intero se il lavoratore ha prestato servizio per più di 15 giorni di calendario in quel mese.
         Se i giorni lavorati sono 15 o meno, il mese non viene conteggiato.
       </p>
       <p>
         Facciamo alcuni <strong>esempi pratici</strong>. Un lavoratore con RAL di 30.000 euro (su 14
-        mensilita', quindi retribuzione mensile di circa 2.143 euro) che inizia a lavorare il 1&deg;
-        aprile avra' maturato, entro il periodo di erogazione della quattordicesima (luglio), solo
-        4 mesi su 12. La sua quattordicesima pro-rata sara' quindi: 2.143 &times; 4/12 = circa 714
+        mensilità, quindi retribuzione mensile di circa 2.143 euro) che inizia a lavorare il 1&deg;
+        aprile avrà maturato, entro il periodo di erogazione della quattordicesima (luglio), solo
+        4 mesi su 12. La sua quattordicesima pro-rata sarà quindi: 2.143 &times; 4/12 = circa 714
         euro lordi. Da questo importo andranno poi sottratti i contributi INPS (9,19%) e l'IRPEF
         all'aliquota marginale.
       </p>
@@ -188,37 +188,37 @@ const faqs = [
         Differenze tra tredicesima e quattordicesima
       </h3>
       <p>
-        Sebbene tredicesima e quattordicesima siano entrambe mensilita' aggiuntive e vengano calcolate
-        in modo analogo, presentano differenze sostanziali che e' importante conoscere.
+        Sebbene tredicesima e quattordicesima siano entrambe mensilità aggiuntive e vengano calcolate
+        in modo analogo, presentano differenze sostanziali che è importante conoscere.
       </p>
       <p>
-        La <strong>base giuridica</strong> e' profondamente diversa. La tredicesima e' un diritto
+        La <strong>base giuridica</strong> è profondamente diversa. La tredicesima è un diritto
         sancito dalla legge (DPR 1070/1960) e spetta a tutti i lavoratori subordinati senza
-        eccezione. La quattordicesima, invece, e' un istituto di origine contrattuale: il diritto
+        eccezione. La quattordicesima, invece, è un istituto di origine contrattuale: il diritto
         nasce dal CCNL applicato o, in assenza, da un accordo individuale o aziendale. Se il
         contratto non la prevede, il datore di lavoro non ha alcun obbligo di corrisponderla.
       </p>
       <p>
-        Il <strong>periodo di erogazione</strong> e' diverso: la tredicesima viene pagata a
+        Il <strong>periodo di erogazione</strong> è diverso: la tredicesima viene pagata a
         dicembre, in occasione delle festivita natalizie, mentre la quattordicesima viene
         corrisposta generalmente tra giugno e luglio, prima delle vacanze estive. Anche il
-        periodo di maturazione puo' differire: la tredicesima matura sull'anno solare
+        periodo di maturazione può differire: la tredicesima matura sull'anno solare
         (gennaio-dicembre), mentre per la quattordicesima il periodo di riferimento varia in base
         al CCNL (spesso luglio-giugno).
       </p>
       <p>
-        Dal punto di vista della <strong>tassazione</strong>, il trattamento e' identico: sia la
+        Dal punto di vista della <strong>tassazione</strong>, il trattamento è identico: sia la
         tredicesima che la quattordicesima sono soggette a contributi INPS al 9,19% e a IRPEF
         calcolata all'aliquota marginale, senza applicazione di detrazioni da lavoro dipendente
-        ne' del trattamento integrativo. Di conseguenza, a parita' di importo lordo, il netto
-        percepito dal lavoratore e' lo stesso per entrambe le mensilita' aggiuntive.
+        né del trattamento integrativo. Di conseguenza, a parità di importo lordo, il netto
+        percepito dal lavoratore è lo stesso per entrambe le mensilità aggiuntive.
       </p>
       <p>
         Un'ultima differenza riguarda l'<strong>impatto sulla busta paga mensile</strong>: con 14
-        mensilita' la stessa RAL annuale viene distribuita su piu' pagamenti, riducendo l'importo
-        di ogni singola busta paga mensile. Con una RAL di 30.000 euro e 13 mensilita', lo stipendio
-        mensile lordo e' di circa 2.308 euro; con 14 mensilita' scende a circa 2.143 euro. Il totale
-        annuo lordo rimane invariato, ma il flusso di cassa mensile e' diverso.
+        mensilità la stessa RAL annuale viene distribuita su più pagamenti, riducendo l'importo
+        di ogni singola busta paga mensile. Con una RAL di 30.000 euro e 13 mensilità, lo stipendio
+        mensile lordo è di circa 2.308 euro; con 14 mensilità scende a circa 2.143 euro. Il totale
+        annuo lordo rimane invariato, ma il flusso di cassa mensile è diverso.
       </p>
     </div>
   </Fragment>
@@ -230,9 +230,9 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
         La tabella seguente mostra la quattordicesima netta stimata per le principali fasce di RAL nel
-        2026, ipotizzando 12 mesi di maturazione completa e le aliquote IRPEF vigenti. Il calcolo e'
-        identico a quello della tredicesima, poiche' il meccanismo di tassazione delle mensilita'
-        aggiuntive e' lo stesso.
+        2026, ipotizzando 12 mesi di maturazione completa e le aliquote IRPEF vigenti. Il calcolo è
+        identico a quello della tredicesima, poiché il meccanismo di tassazione delle mensilità
+        aggiuntive è lo stesso.
       </p>
     </div>
     <div class="overflow-x-auto mt-4">
@@ -287,15 +287,15 @@ const faqs = [
     </div>
     <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
       <p>
-        E' importante considerare che nei contratti a 14 mensilita' la stessa RAL annuale viene
-        suddivisa su 14 rate anziche' 12 o 13. Questo significa che il <strong>netto mensile
-        ordinario</strong> e' proporzionalmente piu' basso rispetto a chi ha lo stesso RAL su 13
-        mensilita'. Ad esempio, con una RAL di 30.000 euro e 14 mensilita', lo stipendio mensile lordo
-        scende da 2.308 euro (su 13 mensilita') a circa 2.143 euro. In compenso, il lavoratore riceve
+        È importante considerare che nei contratti a 14 mensilità la stessa RAL annuale viene
+        suddivisa su 14 rate anziché 12 o 13. Questo significa che il <strong>netto mensile
+        ordinario</strong> è proporzionalmente più basso rispetto a chi ha lo stesso RAL su 13
+        mensilità. Ad esempio, con una RAL di 30.000 euro e 14 mensilità, lo stipendio mensile lordo
+        scende da 2.308 euro (su 13 mensilità) a circa 2.143 euro. In compenso, il lavoratore riceve
         due erogazioni extra durante l'anno (la tredicesima a dicembre e la quattordicesima a
         giugno/luglio) che possono essere utili per gestire spese straordinarie o per il
         risparmio. Il totale annuo netto complessivo resta sostanzialmente lo stesso, con piccole
-        differenze dovute alla distribuzione delle detrazioni fiscali sulle mensilita' ordinarie.
+        differenze dovute alla distribuzione delle detrazioni fiscali sulle mensilità ordinarie.
       </p>
     </div>
   </Fragment>
@@ -313,18 +313,18 @@ const faqs = [
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
           I principali CCNL che prevedono la quattordicesima sono: Commercio e Terziario (Confcommercio),
           Turismo (alberghi, pubblici esercizi), Banche e Credito, Assicurazioni, Alimentari (industria),
-          Autotrasporto e Logistica, Studi professionali e Chimico-farmaceutico. Non e' prevista, ad esempio,
+          Autotrasporto e Logistica, Studi professionali e Chimico-farmaceutico. Non è prevista, ad esempio,
           nel CCNL Metalmeccanico e nel CCNL Edilizia.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
-          La quattordicesima e' obbligatoria?
+          La quattordicesima è obbligatoria?
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          No, a differenza della tredicesima (prevista per legge), la quattordicesima e' una retribuzione
+          No, a differenza della tredicesima (prevista per legge), la quattordicesima è una retribuzione
           aggiuntiva stabilita solo da alcuni CCNL. Se il tuo contratto non la prevede,
           il datore di lavoro non ha l'obbligo di erogarla, a meno che non sia indicata
           nel contratto individuale di lavoro.
@@ -351,7 +351,7 @@ const faqs = [
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
           La quattordicesima viene generalmente calcolata sulla retribuzione globale mensile,
-          che include paga base, contingenza, scatti di anzianita' e altri elementi fissi.
+          che include paga base, contingenza, scatti di anzianità e altri elementi fissi.
           In questo calcolatore usiamo RAL/12 come approssimazione semplificata.
           Per il calcolo esatto, fai riferimento al tuo cedolino e al CCNL applicato.
         </div>
@@ -359,13 +359,13 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
-          Con 14 mensilita' guadagno di piu'?
+          Con 14 mensilità guadagno di più?
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          No, la RAL resta invariata. Con 14 mensilita' ogni singola busta paga mensile sara' piu' bassa
-          (RAL / 14 anziche' RAL / 12 o RAL / 13), ma riceverai due mensilita' extra. Il totale annuo
-          lordo e' sempre lo stesso. Tuttavia, la distribuzione delle detrazioni puo' portare
+          No, la RAL resta invariata. Con 14 mensilità ogni singola busta paga mensile sarà più bassa
+          (RAL / 14 anziché RAL / 12 o RAL / 13), ma riceverai due mensilità extra. Il totale annuo
+          lordo è sempre lo stesso. Tuttavia, la distribuzione delle detrazioni può portare
           a piccole differenze nel netto complessivo.
         </div>
       </details>
@@ -376,8 +376,8 @@ const faqs = [
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          Si', la quattordicesima matura regolarmente anche durante il periodo di prova, poiche' il
-          rapporto di lavoro e' a tutti gli effetti un rapporto subordinato fin dal primo giorno. Se
+          Sì, la quattordicesima matura regolarmente anche durante il periodo di prova, poiché il
+          rapporto di lavoro è a tutti gli effetti un rapporto subordinato fin dal primo giorno. Se
           il periodo di prova non viene superato e il rapporto si interrompe, il lavoratore ha diritto
           a ricevere la quota di quattordicesima maturata in proporzione ai mesi lavorati (pro-rata),
           calcolata nell'ultima busta paga con il consueto meccanismo dei 15 giorni per il conteggio
@@ -393,26 +393,26 @@ const faqs = [
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
           La quattordicesima viene tassata esattamente come la tredicesima: si applicano i contributi
           INPS (9,19%) sull'importo lordo e poi l'IRPEF all'aliquota marginale, senza detrazioni da
-          lavoro dipendente e senza trattamento integrativo. Di conseguenza, a parita' di importo lordo,
-          il netto della quattordicesima e' identico a quello della tredicesima. Entrambe le mensilita'
-          aggiuntive risultano tassate piu' pesantemente rispetto allo stipendio mensile ordinario, dove
+          lavoro dipendente e senza trattamento integrativo. Di conseguenza, a parità di importo lordo,
+          il netto della quattordicesima è identico a quello della tredicesima. Entrambe le mensilità
+          aggiuntive risultano tassate più pesantemente rispetto allo stipendio mensile ordinario, dove
           invece si beneficia delle detrazioni fiscali.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-gray-900 dark:text-white">
-          Posso rinunciare alla quattordicesima per avere un lordo mensile piu' alto?
+          Posso rinunciare alla quattordicesima per avere un lordo mensile più alto?
           <svg class="h-5 w-5 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
         </summary>
         <div class="px-5 pb-5 text-sm text-gray-600 dark:text-gray-400">
-          In linea di principio, non e' possibile rinunciare unilateralmente alla quattordicesima se
-          il CCNL applicato la prevede, poiche' si tratta di un diritto stabilito dal contratto
-          collettivo. Tuttavia, e' possibile concordare con il datore di lavoro la
-          "mensilizzazione" della quattordicesima, cioe' la distribuzione del suo importo nelle 12
-          buste paga ordinarie. In questo modo, ogni mensilita' sarebbe leggermente piu' alta, ma non
+          In linea di principio, non è possibile rinunciare unilateralmente alla quattordicesima se
+          il CCNL applicato la prevede, poiché si tratta di un diritto stabilito dal contratto
+          collettivo. Tuttavia, è possibile concordare con il datore di lavoro la
+          "mensilizzazione" della quattordicesima, cioè la distribuzione del suo importo nelle 12
+          buste paga ordinarie. In questo modo, ogni mensilità sarebbe leggermente più alta, ma non
           si riceverebbe l'erogazione separata a giugno/luglio. Questa soluzione va formalizzata
-          per iscritto e non modifica il totale annuo lordo ne' il carico fiscale complessivo,
+          per iscritto e non modifica il totale annuo lordo né il carico fiscale complessivo,
           ma cambia solo la distribuzione temporale dei pagamenti.
         </div>
       </details>

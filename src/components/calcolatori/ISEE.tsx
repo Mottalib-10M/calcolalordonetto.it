@@ -115,7 +115,7 @@ export default function ISEE({ lang = 'it' }: { lang?: Lang }) {
               max={5_000_000}
               step={1000}
               prefix="€"
-              helpText="Valore catastale degli immobili di proprieta' del nucleo (per la prima casa, inserire il valore catastale rivalutato)"
+              helpText="Valore catastale degli immobili di proprietà del nucleo (per la prima casa, inserire il valore catastale rivalutato)"
             />
             <CampoInput
               lang={lang}
@@ -167,7 +167,7 @@ export default function ISEE({ lang = 'it' }: { lang?: Lang }) {
             />
             <CampoInput
               lang={lang}
-              label="Componenti con disabilita'"
+              label="Componenti con disabilità"
               value={disabili}
               onChange={(v) => setDisabili(Math.max(0, Math.round(v)))}
               min={0}
@@ -305,10 +305,10 @@ export default function ISEE({ lang = 'it' }: { lang?: Lang }) {
         {/* Disclaimer */}
         <div className="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-4">
           <p className="text-sm text-amber-800 dark:text-amber-300">
-            <strong>Nota:</strong> Questo e' un calcolo semplificato a scopo informativo.
+            <strong>Nota:</strong> Questo è un calcolo semplificato a scopo informativo.
             L'ISEE ufficiale richiede la DSU (Dichiarazione Sostitutiva Unica) presentata
             tramite CAF, patronato o direttamente sul portale INPS. Il valore effettivo
-            puo' differire per la presenza di rendite, trattamenti assistenziali, patrimoni
+            può differire per la presenza di rendite, trattamenti assistenziali, patrimoni
             all'estero e altre variabili non considerate in questa simulazione.
           </p>
         </div>

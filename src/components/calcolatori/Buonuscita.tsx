@@ -99,7 +99,7 @@ export default function Buonuscita({ lang = 'it' }: { lang?: Lang }) {
           {/* Hero Result */}
           <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg shadow-gray-200/50 dark:shadow-black/20 p-6 sm:p-8">
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Netto con tassazione separata (piu' conveniente)
+              Netto con tassazione separata (più conveniente)
             </p>
             <p className="text-4xl sm:text-5xl font-bold text-brand tracking-tight leading-tight">
               {formatCurrency(risultato.nettoTassazioneSeparata)}
@@ -203,9 +203,9 @@ export default function Buonuscita({ lang = 'it' }: { lang?: Lang }) {
                 </p>
                 <p className="mt-1 text-sm text-blue-700 dark:text-blue-400">
                   La tassazione separata (art. 17 TUIR) applica l'aliquota media degli ultimi anni ed
-                  e' quasi sempre piu' conveniente. L'Agenzia delle Entrate puo' successivamente
+                  è quasi sempre più conveniente. L'Agenzia delle Entrate può successivamente
                   riliquidare l'imposta applicando l'aliquota media effettiva degli ultimi 2 anni.
-                  Il calcolo qui presentato e' una stima basata sulla RAL dell'ultimo anno.
+                  Il calcolo qui presentato è una stima basata sulla RAL dell'ultimo anno.
                 </p>
               </div>
             </div>

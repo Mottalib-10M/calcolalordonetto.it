@@ -27,7 +27,7 @@ export function encodeState(params: CalcoloParams): string {
     searchParams.set('figli', String(params.figli));
   if (params.coniugeACarico) searchParams.set('coniuge', '1');
   if (params.mensilita !== undefined && params.mensilita !== 13)
-    searchParams.set('mensilita', String(params.mensilita));
+    searchParams.set('mensilità, String(params.mensilita));
   if (params.altriCarico !== undefined && params.altriCarico > 0)
     searchParams.set('altri', String(params.altriCarico));
   if (params.tipoContratto) searchParams.set('contratto', params.tipoContratto);
@@ -55,7 +55,7 @@ export function decodeState(search: string): CalcoloParams {
 
   if (params.get('coniuge') === '1') result.coniugeACarico = true;
 
-  const mensilita = params.get('mensilita');
+  const mensilita = params.get('mensilità);
   if (mensilita) {
     const m = parseInt(mensilita, 10);
     if (m === 12 || m === 13 || m === 14) result.mensilita = m;

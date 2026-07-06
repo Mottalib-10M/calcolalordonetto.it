@@ -14,14 +14,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Qual e\' la differenza tra IRPEF lorda e IRPEF netta?', answer: 'L\'IRPEF lorda e\' l\'imposta calcolata applicando le aliquote progressive al tuo reddito imponibile. L\'IRPEF netta si ottiene sottraendo le detrazioni spettanti (lavoro dipendente, cuneo fiscale, carichi familiari). E\' l\'IRPEF netta che viene effettivamente trattenuta dalla busta paga.' },
-  { question: 'Cos\'e\' l\'aliquota marginale e perche\' e\' importante?', answer: 'L\'aliquota marginale indica la percentuale di tassazione applicata all\'ultimo euro guadagnato. Per esempio, se il tuo reddito supera i 28.000 euro, ogni euro aggiuntivo viene tassato al 33%. Questo e\' fondamentale per valutare il reale impatto netto di un aumento di stipendio o di un bonus.' },
-  { question: 'Cosa sono le addizionali regionali e comunali?', answer: 'Sono imposte aggiuntive sull\'IRPEF dovute alla regione e al comune di residenza. L\'addizionale regionale varia dall\'1,23% al 3,33% a seconda della regione (il Lazio e la Campania sono tra le piu\' care). L\'addizionale comunale va dallo 0% allo 0,9%. Entrambe sono calcolate sull\'imponibile fiscale e vengono trattenute in 11 rate mensili, generalmente da marzo a gennaio.' },
-  { question: 'Come funziona il cuneo fiscale nel 2026?', answer: 'Dal 2025 il taglio contributivo e\' stato sostituito da un sistema a due livelli. Per redditi fino a 20.000 euro, una quota del reddito diventa esente da tassazione (dal 4,8% al 7,1% a seconda della fascia). Per redditi tra 20.001 e 32.000 euro, spetta una detrazione IRPEF fissa di 1.000 euro/anno. Tra 32.001 e 40.000 euro la detrazione si riduce gradualmente fino ad azzerarsi.' },
+  { question: 'Qual è la differenza tra IRPEF lorda e IRPEF netta?', answer: 'L\'IRPEF lorda è l\'imposta calcolata applicando le aliquote progressive al tuo reddito imponibile. L\'IRPEF netta si ottiene sottraendo le detrazioni spettanti (lavoro dipendente, cuneo fiscale, carichi familiari). È l\'IRPEF netta che viene effettivamente trattenuta dalla busta paga.' },
+  { question: 'cos\'è l\'aliquota marginale e perché è importante?', answer: 'L\'aliquota marginale indica la percentuale di tassazione applicata all\'ultimo euro guadagnato. Per esempio, se il tuo reddito supera i 28.000 euro, ogni euro aggiuntivo viene tassato al 33%. Questo è fondamentale per valutare il reale impatto netto di un aumento di stipendio o di un bonus.' },
+  { question: 'Cosa sono le addizionali regionali e comunali?', answer: 'Sono imposte aggiuntive sull\'IRPEF dovute alla regione e al comune di residenza. L\'addizionale regionale varia dall\'1,23% al 3,33% a seconda della regione (il Lazio e la Campania sono tra le più care). L\'addizionale comunale va dallo 0% allo 0,9%. Entrambe sono calcolate sull\'imponibile fiscale e vengono trattenute in 11 rate mensili, generalmente da marzo a gennaio.' },
+  { question: 'Come funziona il cuneo fiscale nel 2026?', answer: 'Dal 2025 il taglio contributivo è stato sostituito da un sistema a due livelli. Per redditi fino a 20.000 euro, una quota del reddito diventa esente da tassazione (dal 4,8% al 7,1% a seconda della fascia). Per redditi tra 20.001 e 32.000 euro, spetta una detrazione IRPEF fissa di 1.000 euro/anno. Tra 32.001 e 40.000 euro la detrazione si riduce gradualmente fino ad azzerarsi.' },
   { question: 'Chi ha diritto al trattamento integrativo (ex bonus Renzi)?', answer: 'Il trattamento integrativo di 1.200 euro/anno (100 euro/mese) spetta ai lavoratori dipendenti con reddito fino a 15.000 euro che abbiano un\'imposta lorda positiva. Per redditi tra 15.001 e 28.000 euro, il bonus spetta in misura ridotta solo se la somma delle detrazioni supera l\'IRPEF lorda. Oltre i 28.000 euro non spetta alcun importo.' },
-  { question: 'Come cambiano gli scaglioni IRPEF dal 2024 al 2026?', answer: 'Il percorso di semplificazione dell\'IRPEF ha portato a una progressiva riduzione del numero di scaglioni. Nel 2023 erano ancora in vigore quattro scaglioni (23%, 25%, 35%, 43%). Dal 2024 si e\' passati a tre scaglioni: 23% fino a 28.000 euro, 35% da 28.001 a 50.000 euro e 43% oltre i 50.000 euro. Con la Legge di Bilancio 2025, confermata per il 2026, l\'aliquota del secondo scaglione e\' stata ridotta dal 35% al 33%, portando gli attuali tre scaglioni a 23%, 33% e 43%. Per un lavoratore con reddito imponibile di 40.000 euro, questa riduzione si traduce in un risparmio annuo di 240 euro rispetto al 2024. Il governo ha annunciato l\'intenzione di proseguire il percorso di riforma verso un sistema a due sole aliquote (flat tax progressiva) nelle prossime legislature.' },
-  { question: 'Cos\'e\' la no tax area e come funziona?', answer: 'La no tax area e\' la soglia di reddito al di sotto della quale non si paga IRPEF, grazie al meccanismo delle detrazioni che azzerano l\'imposta lorda. Per i lavoratori dipendenti, la no tax area e\' fissata a 8.500 euro annui: fino a questo importo la detrazione per lavoro dipendente (pari a 1.955 euro) e\' sufficiente a coprire interamente l\'IRPEF lorda dovuta (8.500 x 23% = 1.955 euro). Per i pensionati la soglia e\' di 8.500 euro (equiparata a quella dei dipendenti dal 2024), mentre per i lavoratori autonomi e\' di 5.500 euro, dato che la detrazione per altri redditi e\' inferiore. E\' importante sottolineare che la no tax area non e\' una franchigia ma un effetto delle detrazioni: superata la soglia, l\'IRPEF si paga su tutto il reddito imponibile, con la detrazione che si riduce progressivamente all\'aumentare del reddito.' },
-  { question: 'Come si calcola l\'IRPEF su redditi da lavoro autonomo?', answer: 'Per i lavoratori autonomi con Partita IVA in regime ordinario, l\'IRPEF si calcola sullo stesso sistema a scaglioni dei dipendenti, ma con alcune differenze fondamentali. Il reddito imponibile si determina sottraendo dai compensi percepiti i costi deducibili sostenuti per l\'attivita\' (affitto studio, attrezzature, collaboratori, ecc.) e i contributi previdenziali versati alla propria cassa o alla gestione separata INPS. Le detrazioni applicabili sono diverse: al posto della detrazione per lavoro dipendente, spetta la detrazione per "altri redditi" (pari a 1.265 euro per redditi fino a 5.500 euro, decrescente fino a 50.000 euro). Non spettano il trattamento integrativo ne\' il beneficio del cuneo fiscale, riservati ai soli lavoratori dipendenti. Inoltre, il lavoratore autonomo in regime ordinario e\' soggetto ad acconti IRPEF (pari al 100% dell\'imposta dell\'anno precedente, versati in due rate a giugno e novembre) e deve presentare la dichiarazione dei redditi tramite modello Redditi PF. Chi ha un fatturato fino a 85.000 euro puo\' optare per il regime forfettario, che sostituisce l\'IRPEF con un\'imposta sostitutiva del 15% (o 5% per i primi 5 anni di attivita\').' },
+  { question: 'Come cambiano gli scaglioni IRPEF dal 2024 al 2026?', answer: 'Il percorso di semplificazione dell\'IRPEF ha portato a una progressiva riduzione del numero di scaglioni. Nel 2023 erano ancora in vigore quattro scaglioni (23%, 25%, 35%, 43%). Dal 2024 si è passati a tre scaglioni: 23% fino a 28.000 euro, 35% da 28.001 a 50.000 euro e 43% oltre i 50.000 euro. Con la Legge di Bilancio 2025, confermata per il 2026, l\'aliquota del secondo scaglione è stata ridotta dal 35% al 33%, portando gli attuali tre scaglioni a 23%, 33% e 43%. Per un lavoratore con reddito imponibile di 40.000 euro, questa riduzione si traduce in un risparmio annuo di 240 euro rispetto al 2024. Il governo ha annunciato l\'intenzione di proseguire il percorso di riforma verso un sistema a due sole aliquote (flat tax progressiva) nelle prossime legislature.' },
+  { question: 'cos\'è la no tax area e come funziona?', answer: 'La no tax area è la soglia di reddito al di sotto della quale non si paga IRPEF, grazie al meccanismo delle detrazioni che azzerano l\'imposta lorda. Per i lavoratori dipendenti, la no tax area è fissata a 8.500 euro annui: fino a questo importo la detrazione per lavoro dipendente (pari a 1.955 euro) è sufficiente a coprire interamente l\'IRPEF lorda dovuta (8.500 x 23% = 1.955 euro). Per i pensionati la soglia è di 8.500 euro (equiparata a quella dei dipendenti dal 2024), mentre per i lavoratori autonomi è di 5.500 euro, dato che la detrazione per altri redditi è inferiore. È importante sottolineare che la no tax area non è una franchigia ma un effetto delle detrazioni: superata la soglia, l\'IRPEF si paga su tutto il reddito imponibile, con la detrazione che si riduce progressivamente all\'aumentare del reddito.' },
+  { question: 'Come si calcola l\'IRPEF su redditi da lavoro autonomo?', answer: 'Per i lavoratori autonomi con Partita IVA in regime ordinario, l\'IRPEF si calcola sullo stesso sistema a scaglioni dei dipendenti, ma con alcune differenze fondamentali. Il reddito imponibile si determina sottraendo dai compensi percepiti i costi deducibili sostenuti per l\'attività (affitto studio, attrezzature, collaboratori, ecc.) e i contributi previdenziali versati alla propria cassa o alla gestione separata INPS. Le detrazioni applicabili sono diverse: al posto della detrazione per lavoro dipendente, spetta la detrazione per "altri redditi" (pari a 1.265 euro per redditi fino a 5.500 euro, decrescente fino a 50.000 euro). Non spettano il trattamento integrativo né il beneficio del cuneo fiscale, riservati ai soli lavoratori dipendenti. Inoltre, il lavoratore autonomo in regime ordinario è soggetto ad acconti IRPEF (pari al 100% dell\'imposta dell\'anno precedente, versati in due rate a giugno e novembre) e deve presentare la dichiarazione dei redditi tramite modello Redditi PF. Chi ha un fatturato fino a 85.000 euro può optare per il regime forfettario, che sostituisce l\'IRPEF con un\'imposta sostitutiva del 15% (o 5% per i primi 5 anni di attività).' },
 ];
 ---
 
@@ -49,12 +49,12 @@ const faqs = [
     </h2>
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
-        L'IRPEF (Imposta sul Reddito delle Persone Fisiche) e' la principale imposta
+        L'IRPEF (Imposta sul Reddito delle Persone Fisiche) è la principale imposta
         diretta in Italia. Si calcola con un sistema a scaglioni progressivi: ogni
         fascia di reddito viene tassata con un'aliquota diversa, applicata solo alla
         porzione di reddito che ricade in quello scaglione. Questo meccanismo garantisce
-        che chi guadagna di piu' contribuisca in misura maggiore, rispettando il principio
-        di progressivita' sancito dall'articolo 53 della Costituzione italiana.
+        che chi guadagna di più contribuisca in misura maggiore, rispettando il principio
+        di progressività sancito dall'articolo 53 della Costituzione italiana.
       </p>
       <h3>Scaglioni IRPEF 2026</h3>
       <p>
@@ -75,7 +75,7 @@ const faqs = [
       </p>
       <p>
         All'IRPEF netta si aggiungono le addizionali regionale e comunale, che
-        variano in base al luogo di residenza. Per i redditi piu' bassi puo' spettare
+        variano in base al luogo di residenza. Per i redditi più bassi può spettare
         il trattamento integrativo (ex bonus Renzi) di 100 euro al mese.
       </p>
 
@@ -95,14 +95,14 @@ const faqs = [
         alleggerimento per i redditi medio-bassi, eliminando l'aliquota del 27% e del 41%.
       </p>
       <p>
-        Il passaggio piu' significativo e' avvenuto nel 2024, quando il governo ha accorpato i
+        Il passaggio più significativo è avvenuto nel 2024, quando il governo ha accorpato i
         primi due scaglioni in uno solo, portando il sistema a <strong>tre scaglioni</strong>:
         23% fino a 28.000 euro, 35% da 28.001 a 50.000 euro e 43% oltre. Inizialmente prevista
-        come misura transitoria, questa struttura e' stata confermata in via permanente. Con la
-        Legge di Bilancio 2025, l'aliquota del secondo scaglione e' stata ulteriormente ridotta
+        come misura transitoria, questa struttura è stata confermata in via permanente. Con la
+        Legge di Bilancio 2025, l'aliquota del secondo scaglione è stata ulteriormente ridotta
         dal 35% al 33%, portando un beneficio concreto per i lavoratori con redditi compresi
         tra 28.000 e 50.000 euro. Questa configurazione a tre scaglioni con aliquote al 23%,
-        33% e 43% e' quella attualmente in vigore per il 2025 e il 2026.
+        33% e 43% è quella attualmente in vigore per il 2025 e il 2026.
       </p>
 
       <h3>Calcolo IRPEF passo per passo</h3>
@@ -113,7 +113,7 @@ const faqs = [
       <p>
         <strong>Passo 1 - Calcolo dell'imponibile fiscale:</strong> dalla RAL si sottraggono i
         contributi INPS a carico del lavoratore. Per un dipendente del settore privato, l'aliquota
-        e' il 9,19% della retribuzione lorda. Quindi: 35.000 x 9,19% = 3.216,50 euro di contributi.
+        è il 9,19% della retribuzione lorda. Quindi: 35.000 x 9,19% = 3.216,50 euro di contributi.
         L'imponibile fiscale risulta: 35.000 - 3.216,50 = <strong>31.783,50 euro</strong>.
       </p>
       <p>
@@ -143,12 +143,12 @@ const faqs = [
       <h3>L'impatto del cuneo fiscale 2026 sull'IRPEF</h3>
       <p>
         A partire dal 2025, il precedente taglio dei contributi INPS (esonero contributivo del
-        6-7%) e' stato sostituito da un nuovo meccanismo strutturale che interagisce direttamente
+        6-7%) è stato sostituito da un nuovo meccanismo strutturale che interagisce direttamente
         con il calcolo dell'IRPEF. Il sistema si articola su due livelli distinti in base al reddito
         complessivo del lavoratore dipendente.
       </p>
       <p>
-        Per i <strong>redditi fino a 20.000 euro</strong>, e' previsto un bonus erogato direttamente
+        Per i <strong>redditi fino a 20.000 euro</strong>, è previsto un bonus erogato direttamente
         in busta paga, calcolato come percentuale del reddito da lavoro dipendente. La percentuale
         varia in base alla fascia: il 7,1% per redditi fino a 8.500 euro, il 5,3% per redditi
         tra 8.501 e 15.000 euro, e il 4,8% per redditi tra 15.001 e 20.000 euro. Questo importo
@@ -158,17 +158,17 @@ const faqs = [
       <p>
         Per i <strong>redditi tra 20.001 e 40.000 euro</strong>, il beneficio assume la forma di
         una detrazione fiscale aggiuntiva che riduce direttamente l'IRPEF dovuta. Nella fascia
-        20.001-32.000 euro, la detrazione e' pari a 1.000 euro annui. Nella fascia 32.001-40.000
+        20.001-32.000 euro, la detrazione è pari a 1.000 euro annui. Nella fascia 32.001-40.000
         euro, la detrazione si riduce progressivamente con la formula: 1.000 x (40.000 - reddito)
         / 8.000, fino ad azzerarsi al raggiungimento dei 40.000 euro. Questo meccanismo di
         decalage evita il cosiddetto "effetto scalone", garantendo una transizione graduale.
       </p>
       <p>
-        L'interazione tra cuneo fiscale e IRPEF e' particolarmente rilevante perche' il nuovo
+        L'interazione tra cuneo fiscale e IRPEF è particolarmente rilevante perché il nuovo
         sistema, a differenza del precedente taglio contributivo, non riduce la base imponibile
-        previdenziale. Cio' significa che la pensione futura del lavoratore non viene intaccata,
+        previdenziale. ciò significa che la pensione futura del lavoratore non viene intaccata,
         a differenza di quanto avveniva con l'esonero contributivo degli anni precedenti. Il costo
-        del beneficio viene interamente sostenuto dallo Stato attraverso la fiscalita' generale.
+        del beneficio viene interamente sostenuto dallo Stato attraverso la fiscalità generale.
       </p>
     </div>
   </Fragment>
@@ -232,7 +232,7 @@ const faqs = [
         media effettiva coincide con l'aliquota marginale del 23%. Man mano che il reddito aumenta
         e attraversa gli scaglioni superiori, l'aliquota media cresce gradualmente, ma resta
         sempre inferiore all'aliquota marginale applicata all'ultimo euro guadagnato. Ad esempio,
-        con un reddito imponibile di 50.000 euro l'aliquota media effettiva e' del 27,40%, ben al
+        con un reddito imponibile di 50.000 euro l'aliquota media effettiva è del 27,40%, ben al
         di sotto dell'aliquota marginale del 33% che si applica alla fascia 28.001-50.000 euro.
         Anche per un reddito di 100.000 euro, l'aliquota media del 35,20% resta significativamente
         inferiore al 43% dell'ultimo scaglione.
@@ -244,10 +244,10 @@ const faqs = [
         primo scaglione esente fino a circa 11.000 euro. La Spagna prevede sei scaglioni con
         un'aliquota massima del 47% (sommando la quota statale e quella regionale). I Paesi
         scandinavi, come la Svezia, arrivano ad aliquote marginali superiori al 50%, ma offrono
-        in cambio un welfare state molto piu' esteso. Il Regno Unito, pur con solo tre aliquote
+        in cambio un welfare state molto più esteso. Il Regno Unito, pur con solo tre aliquote
         (20%, 40% e 45%), prevede una personal allowance di 12.570 sterline completamente esente.
         Il sistema italiano, con la sua no tax area e il meccanismo delle detrazioni, punta a
-        raggiungere un obiettivo simile ma con una struttura piu' complessa.
+        raggiungere un obiettivo simile ma con una struttura più complessa.
       </p>
     </div>
   </Fragment>
@@ -259,25 +259,25 @@ const faqs = [
     <div class="space-y-4">
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Qual e' la differenza tra IRPEF lorda e IRPEF netta?
+          Qual è la differenza tra IRPEF lorda e IRPEF netta?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          L'IRPEF lorda e' l'imposta calcolata applicando le aliquote progressive al tuo reddito imponibile. L'IRPEF netta si ottiene sottraendo le detrazioni spettanti (lavoro dipendente, cuneo fiscale, carichi familiari). E' l'IRPEF netta che viene effettivamente trattenuta dalla busta paga.
+          L'IRPEF lorda è l'imposta calcolata applicando le aliquote progressive al tuo reddito imponibile. L'IRPEF netta si ottiene sottraendo le detrazioni spettanti (lavoro dipendente, cuneo fiscale, carichi familiari). È l'IRPEF netta che viene effettivamente trattenuta dalla busta paga.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Cos'e' l'aliquota marginale e perche' e' importante?
+          cos'è l'aliquota marginale e perché è importante?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          L'aliquota marginale indica la percentuale di tassazione applicata all'ultimo euro guadagnato. Per esempio, se il tuo reddito supera i 28.000 euro, ogni euro aggiuntivo viene tassato al 33%. Questo e' fondamentale per valutare il reale impatto netto di un aumento di stipendio o di un bonus.
+          L'aliquota marginale indica la percentuale di tassazione applicata all'ultimo euro guadagnato. Per esempio, se il tuo reddito supera i 28.000 euro, ogni euro aggiuntivo viene tassato al 33%. Questo è fondamentale per valutare il reale impatto netto di un aumento di stipendio o di un bonus.
         </div>
       </details>
 
@@ -289,7 +289,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Sono imposte aggiuntive sull'IRPEF dovute alla regione e al comune di residenza. L'addizionale regionale varia dall'1,23% al 3,33% a seconda della regione (il Lazio e la Campania sono tra le piu' care). L'addizionale comunale va dallo 0% allo 0,9%. Entrambe sono calcolate sull'imponibile fiscale e vengono trattenute in 11 rate mensili, generalmente da marzo a gennaio.
+          Sono imposte aggiuntive sull'IRPEF dovute alla regione e al comune di residenza. L'addizionale regionale varia dall'1,23% al 3,33% a seconda della regione (il Lazio e la Campania sono tra le più care). L'addizionale comunale va dallo 0% allo 0,9%. Entrambe sono calcolate sull'imponibile fiscale e vengono trattenute in 11 rate mensili, generalmente da marzo a gennaio.
         </div>
       </details>
 
@@ -301,7 +301,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Dal 2025 il taglio contributivo e' stato sostituito da un sistema a due livelli. Per redditi fino a 20.000 euro, una quota del reddito diventa esente da tassazione (dal 4,8% al 7,1% a seconda della fascia). Per redditi tra 20.001 e 32.000 euro, spetta una detrazione IRPEF fissa di 1.000 euro/anno. Tra 32.001 e 40.000 euro la detrazione si riduce gradualmente fino ad azzerarsi.
+          Dal 2025 il taglio contributivo è stato sostituito da un sistema a due livelli. Per redditi fino a 20.000 euro, una quota del reddito diventa esente da tassazione (dal 4,8% al 7,1% a seconda della fascia). Per redditi tra 20.001 e 32.000 euro, spetta una detrazione IRPEF fissa di 1.000 euro/anno. Tra 32.001 e 40.000 euro la detrazione si riduce gradualmente fino ad azzerarsi.
         </div>
       </details>
 
@@ -325,19 +325,19 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il percorso di semplificazione dell'IRPEF ha portato a una progressiva riduzione del numero di scaglioni. Nel 2023 erano ancora in vigore quattro scaglioni (23%, 25%, 35%, 43%). Dal 2024 si e' passati a tre scaglioni: 23% fino a 28.000 euro, 35% da 28.001 a 50.000 euro e 43% oltre i 50.000 euro. Con la Legge di Bilancio 2025, confermata per il 2026, l'aliquota del secondo scaglione e' stata ridotta dal 35% al 33%, portando gli attuali tre scaglioni a 23%, 33% e 43%. Per un lavoratore con reddito imponibile di 40.000 euro, questa riduzione si traduce in un risparmio annuo di 240 euro rispetto al 2024. Il governo ha annunciato l'intenzione di proseguire il percorso di riforma verso un sistema a due sole aliquote (flat tax progressiva) nelle prossime legislature.
+          Il percorso di semplificazione dell'IRPEF ha portato a una progressiva riduzione del numero di scaglioni. Nel 2023 erano ancora in vigore quattro scaglioni (23%, 25%, 35%, 43%). Dal 2024 si è passati a tre scaglioni: 23% fino a 28.000 euro, 35% da 28.001 a 50.000 euro e 43% oltre i 50.000 euro. Con la Legge di Bilancio 2025, confermata per il 2026, l'aliquota del secondo scaglione è stata ridotta dal 35% al 33%, portando gli attuali tre scaglioni a 23%, 33% e 43%. Per un lavoratore con reddito imponibile di 40.000 euro, questa riduzione si traduce in un risparmio annuo di 240 euro rispetto al 2024. Il governo ha annunciato l'intenzione di proseguire il percorso di riforma verso un sistema a due sole aliquote (flat tax progressiva) nelle prossime legislature.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Cos'e' la no tax area e come funziona?
+          cos'è la no tax area e come funziona?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          La no tax area e' la soglia di reddito al di sotto della quale non si paga IRPEF, grazie al meccanismo delle detrazioni che azzerano l'imposta lorda. Per i lavoratori dipendenti, la no tax area e' fissata a 8.500 euro annui: fino a questo importo la detrazione per lavoro dipendente (pari a 1.955 euro) e' sufficiente a coprire interamente l'IRPEF lorda dovuta (8.500 x 23% = 1.955 euro). Per i pensionati la soglia e' di 8.500 euro (equiparata a quella dei dipendenti dal 2024), mentre per i lavoratori autonomi e' di 5.500 euro, dato che la detrazione per altri redditi e' inferiore. E' importante sottolineare che la no tax area non e' una franchigia ma un effetto delle detrazioni: superata la soglia, l'IRPEF si paga su tutto il reddito imponibile, con la detrazione che si riduce progressivamente all'aumentare del reddito.
+          La no tax area è la soglia di reddito al di sotto della quale non si paga IRPEF, grazie al meccanismo delle detrazioni che azzerano l'imposta lorda. Per i lavoratori dipendenti, la no tax area è fissata a 8.500 euro annui: fino a questo importo la detrazione per lavoro dipendente (pari a 1.955 euro) è sufficiente a coprire interamente l'IRPEF lorda dovuta (8.500 x 23% = 1.955 euro). Per i pensionati la soglia è di 8.500 euro (equiparata a quella dei dipendenti dal 2024), mentre per i lavoratori autonomi è di 5.500 euro, dato che la detrazione per altri redditi è inferiore. È importante sottolineare che la no tax area non è una franchigia ma un effetto delle detrazioni: superata la soglia, l'IRPEF si paga su tutto il reddito imponibile, con la detrazione che si riduce progressivamente all'aumentare del reddito.
         </div>
       </details>
 
@@ -349,7 +349,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Per i lavoratori autonomi con Partita IVA in regime ordinario, l'IRPEF si calcola sullo stesso sistema a scaglioni dei dipendenti, ma con alcune differenze fondamentali. Il reddito imponibile si determina sottraendo dai compensi percepiti i costi deducibili sostenuti per l'attivita' (affitto studio, attrezzature, collaboratori, ecc.) e i contributi previdenziali versati alla propria cassa o alla gestione separata INPS. Le detrazioni applicabili sono diverse: al posto della detrazione per lavoro dipendente, spetta la detrazione per "altri redditi" (pari a 1.265 euro per redditi fino a 5.500 euro, decrescente fino a 50.000 euro). Non spettano il trattamento integrativo ne' il beneficio del cuneo fiscale, riservati ai soli lavoratori dipendenti. Inoltre, il lavoratore autonomo in regime ordinario e' soggetto ad acconti IRPEF (pari al 100% dell'imposta dell'anno precedente, versati in due rate a giugno e novembre) e deve presentare la dichiarazione dei redditi tramite modello Redditi PF. Chi ha un fatturato fino a 85.000 euro puo' optare per il regime forfettario, che sostituisce l'IRPEF con un'imposta sostitutiva del 15% (o 5% per i primi 5 anni di attivita').
+          Per i lavoratori autonomi con Partita IVA in regime ordinario, l'IRPEF si calcola sullo stesso sistema a scaglioni dei dipendenti, ma con alcune differenze fondamentali. Il reddito imponibile si determina sottraendo dai compensi percepiti i costi deducibili sostenuti per l'attività (affitto studio, attrezzature, collaboratori, ecc.) e i contributi previdenziali versati alla propria cassa o alla gestione separata INPS. Le detrazioni applicabili sono diverse: al posto della detrazione per lavoro dipendente, spetta la detrazione per "altri redditi" (pari a 1.265 euro per redditi fino a 5.500 euro, decrescente fino a 50.000 euro). Non spettano il trattamento integrativo né il beneficio del cuneo fiscale, riservati ai soli lavoratori dipendenti. Inoltre, il lavoratore autonomo in regime ordinario è soggetto ad acconti IRPEF (pari al 100% dell'imposta dell'anno precedente, versati in due rate a giugno e novembre) e deve presentare la dichiarazione dei redditi tramite modello Redditi PF. Chi ha un fatturato fino a 85.000 euro può optare per il regime forfettario, che sostituisce l'IRPEF con un'imposta sostitutiva del 15% (o 5% per i primi 5 anni di attività).
         </div>
       </details>
     </div>

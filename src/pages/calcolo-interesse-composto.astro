@@ -12,14 +12,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Qual e\' la differenza tra interesse semplice e composto?', answer: 'Con l\'interesse semplice, gli interessi vengono calcolati solo sul capitale iniziale. Con l\'interesse composto, gli interessi vengono calcolati anche sugli interessi gia\' maturati. Questa differenza diventa sempre piu\' significativa col passare del tempo, creando una crescita esponenziale invece che lineare.' },
-  { question: 'Cosa significa frequenza di capitalizzazione?', answer: 'La frequenza di capitalizzazione indica quante volte all\'anno gli interessi vengono calcolati e aggiunti al capitale. Con capitalizzazione mensile gli interessi vengono calcolati 12 volte all\'anno, con trimestrale 4 volte, e cosi\' via. A parita\' di tasso nominale, una frequenza piu\' alta produce un rendimento effettivo leggermente maggiore.' },
+  { question: 'Qual è la differenza tra interesse semplice e composto?', answer: 'Con l\'interesse semplice, gli interessi vengono calcolati solo sul capitale iniziale. Con l\'interesse composto, gli interessi vengono calcolati anche sugli interessi già maturati. Questa differenza diventa sempre più significativa col passare del tempo, creando una crescita esponenziale invece che lineare.' },
+  { question: 'Cosa significa frequenza di capitalizzazione?', answer: 'La frequenza di capitalizzazione indica quante volte all\'anno gli interessi vengono calcolati e aggiunti al capitale. Con capitalizzazione mensile gli interessi vengono calcolati 12 volte all\'anno, con trimestrale 4 volte, e così via. A parità di tasso nominale, una frequenza più alta produce un rendimento effettivo leggermente maggiore.' },
   { question: 'Quanto tempo serve per raddoppiare il capitale?', answer: 'Puoi usare la "Regola del 72": dividi 72 per il tasso di interesse annuo per ottenere il numero approssimativo di anni necessari a raddoppiare il capitale. Ad esempio, con un rendimento del 7% annuo servono circa 72/7 = 10,3 anni. Con il 5% servono circa 14,4 anni.' },
-  { question: 'Perche\' conviene iniziare a investire presto?', answer: 'L\'interesse composto premia il tempo piu\' di qualsiasi altra variabile. Iniziare a investire 10 anni prima puo\' fare una differenza enorme sul capitale finale, anche con versamenti piu\' piccoli. La crescita esponenziale fa si\' che gli ultimi anni siano quelli in cui il capitale cresce di piu\' in termini assoluti.' },
+  { question: 'perché conviene iniziare a investire presto?', answer: 'L\'interesse composto premia il tempo più di qualsiasi altra variabile. Iniziare a investire 10 anni prima può fare una differenza enorme sul capitale finale, anche con versamenti più piccoli. La crescita esponenziale fa sì che gli ultimi anni siano quelli in cui il capitale cresce di più in termini assoluti.' },
   { question: 'Il calcolo tiene conto delle tasse?', answer: 'Questo calcolatore mostra il rendimento lordo. In Italia, sui rendimenti finanziari si applica un\'imposta sostitutiva del 26% (12,5% per i titoli di Stato). Per un calcolo che include l\'impatto fiscale, usa il nostro calcolatore del Piano di Accumulo (PAC) che calcola automaticamente l\'imposta sul capital gain.' },
-  { question: 'Come influisce l\'inflazione sul rendimento reale?', answer: 'L\'inflazione erode il potere d\'acquisto del denaro nel tempo, riducendo il valore reale dei rendimenti ottenuti. Il rendimento reale si calcola sottraendo il tasso di inflazione dal rendimento nominale: ad esempio, un investimento che rende il 7% annuo con un\'inflazione del 2% offre un rendimento reale di circa il 5%. Questo significa che, sebbene il capitale cresca in termini nominali, il suo potere d\'acquisto effettivo aumenta a un ritmo inferiore. Per proteggere il capitale dall\'inflazione, e\' importante scegliere investimenti con rendimenti che superino costantemente il tasso di inflazione medio nel lungo periodo.' },
-  { question: 'Qual e\' la differenza tra tasso nominale e tasso effettivo?', answer: 'Il tasso nominale (TAN - Tasso Annuo Nominale) e\' il tasso di interesse dichiarato senza tenere conto della frequenza di capitalizzazione. Il tasso effettivo, invece, rappresenta il rendimento realmente ottenuto considerando l\'effetto della capitalizzazione infrannuale. Ad esempio, un TAN del 6% con capitalizzazione mensile produce un tasso effettivo annuo del 6,17%, perche\' gli interessi mensili vengono reinvestiti e generano a loro volta interessi. La formula per calcolare il tasso effettivo e\': (1 + r/n)n - 1, dove r e\' il tasso nominale e n il numero di capitalizzazioni annue. Maggiore e\' la frequenza di capitalizzazione, maggiore sara\' la differenza tra tasso nominale e tasso effettivo.' },
-  { question: 'L\'interesse composto funziona anche con i debiti?', answer: 'Si\', l\'interesse composto si applica anche ai debiti, e in questo caso lavora contro il debitore. Nei mutui, nei prestiti personali e soprattutto nel credito revolving delle carte di credito, gli interessi non pagati vengono capitalizzati e aggiunti al debito residuo, generando interessi su interessi. Questo e\' il motivo per cui il debito su carte di credito puo\' crescere molto rapidamente se non viene saldato per intero ogni mese. Per i mutui a tasso fisso, l\'ammortamento alla francese prevede rate costanti in cui la quota interessi diminuisce progressivamente, ma il costo totale degli interessi sul lungo periodo resta significativo: su un mutuo trentennale si possono pagare interessi complessivi pari o superiori al capitale inizialmente preso in prestito.' },
+  { question: 'Come influisce l\'inflazione sul rendimento reale?', answer: 'L\'inflazione erode il potere d\'acquisto del denaro nel tempo, riducendo il valore reale dei rendimenti ottenuti. Il rendimento reale si calcola sottraendo il tasso di inflazione dal rendimento nominale: ad esempio, un investimento che rende il 7% annuo con un\'inflazione del 2% offre un rendimento reale di circa il 5%. Questo significa che, sebbene il capitale cresca in termini nominali, il suo potere d\'acquisto effettivo aumenta a un ritmo inferiore. Per proteggere il capitale dall\'inflazione, è importante scegliere investimenti con rendimenti che superino costantemente il tasso di inflazione medio nel lungo periodo.' },
+  { question: 'Qual è la differenza tra tasso nominale e tasso effettivo?', answer: 'Il tasso nominale (TAN - Tasso Annuo Nominale) è il tasso di interesse dichiarato senza tenere conto della frequenza di capitalizzazione. Il tasso effettivo, invece, rappresenta il rendimento realmente ottenuto considerando l\'effetto della capitalizzazione infrannuale. Ad esempio, un TAN del 6% con capitalizzazione mensile produce un tasso effettivo annuo del 6,17%, perché gli interessi mensili vengono reinvestiti e generano a loro volta interessi. La formula per calcolare il tasso effettivo è: (1 + r/n)n - 1, dove r è il tasso nominale e n il numero di capitalizzazioni annue. Maggiore è la frequenza di capitalizzazione, maggiore sarà la differenza tra tasso nominale e tasso effettivo.' },
+  { question: 'L\'interesse composto funziona anche con i debiti?', answer: 'Sì, l\'interesse composto si applica anche ai debiti, e in questo caso lavora contro il debitore. Nei mutui, nei prestiti personali e soprattutto nel credito revolving delle carte di credito, gli interessi non pagati vengono capitalizzati e aggiunti al debito residuo, generando interessi su interessi. Questo è il motivo per cui il debito su carte di credito può crescere molto rapidamente se non viene saldato per intero ogni mese. Per i mutui a tasso fisso, l\'ammortamento alla francese prevede rate costanti in cui la quota interessi diminuisce progressivamente, ma il costo totale degli interessi sul lungo periodo resta significativo: su un mutuo trentennale si possono pagare interessi complessivi pari o superiori al capitale inizialmente preso in prestito.' },
 ];
 ---
 
@@ -49,7 +49,7 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
         L'interesse composto si calcola applicando gli interessi non solo al capitale iniziale,
-        ma anche agli interessi gia' maturati nei periodi precedenti. La formula base e':
+        ma anche agli interessi già maturati nei periodi precedenti. La formula base è:
       </p>
       <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 my-4 text-center font-mono text-sm">
         A = P &times; (1 + r/n)<sup>n&times;t</sup>
@@ -63,29 +63,29 @@ const faqs = [
         <li><strong>t</strong> = durata in anni</li>
       </ul>
       <p>
-        Se aggiungi <strong>versamenti periodici</strong>, il capitale cresce ancora piu'
-        velocemente perche' ogni versamento beneficia a sua volta dell'effetto composto.
+        Se aggiungi <strong>versamenti periodici</strong>, il capitale cresce ancora più
+        velocemente perché ogni versamento beneficia a sua volta dell'effetto composto.
         Albert Einstein avrebbe definito l'interesse composto "l'ottava meraviglia del
-        mondo" proprio per la sua capacita' di far crescere esponenzialmente il capitale
+        mondo" proprio per la sua capacità di far crescere esponenzialmente il capitale
         nel lungo periodo.
       </p>
       <p>
         La <strong>frequenza di capitalizzazione</strong> (annuale, semestrale, trimestrale,
-        mensile) influenza il risultato finale: piu' frequente e' la capitalizzazione,
-        maggiore sara' il rendimento effettivo.
+        mensile) influenza il risultato finale: più frequente è la capitalizzazione,
+        maggiore sarà il rendimento effettivo.
       </p>
 
       <h3>La Regola del 72</h3>
       <p>
-        La <strong>Regola del 72</strong> e' una scorciatoia matematica che permette di stimare
-        rapidamente in quanti anni un investimento raddoppiera' di valore. Il calcolo e'
+        La <strong>Regola del 72</strong> è una scorciatoia matematica che permette di stimare
+        rapidamente in quanti anni un investimento raddoppierà di valore. Il calcolo è
         semplice: basta dividere il numero 72 per il tasso di interesse annuo atteso. Il
-        risultato indica, in modo approssimativo, il numero di anni necessari affinche' il
+        risultato indica, in modo approssimativo, il numero di anni necessari affinché il
         capitale iniziale si moltiplichi per due grazie all'effetto dell'interesse composto.
       </p>
       <p>
         Ad esempio, se il tuo investimento rende il <strong>3% annuo</strong>, il capitale
-        raddoppiera' in circa 72 / 3 = <strong>24 anni</strong>. Con un rendimento del
+        raddoppierà in circa 72 / 3 = <strong>24 anni</strong>. Con un rendimento del
         <strong>5% annuo</strong>, il tempo si riduce a 72 / 5 = <strong>14,4 anni</strong>.
         Se il tasso sale al <strong>7%</strong>, bastano 72 / 7 = <strong>10,3 anni</strong>,
         mentre con un rendimento del <strong>10% annuo</strong> il raddoppio avviene in soli
@@ -93,18 +93,18 @@ const faqs = [
       </p>
       <p>
         Questa regola, pur essendo un'approssimazione, si rivela sorprendentemente accurata
-        per tassi compresi tra il 2% e il 15%. E' uno strumento molto utilizzato dai consulenti
-        finanziari e dagli investitori per valutare rapidamente l'attrattivita' di un investimento
+        per tassi compresi tra il 2% e il 15%. È uno strumento molto utilizzato dai consulenti
+        finanziari e dagli investitori per valutare rapidamente l'attrattività di un investimento
         senza ricorrere a calcoli complessi. Ricorda che la regola non tiene conto di inflazione,
         tasse o costi di gestione, quindi il tempo reale di raddoppio del potere d'acquisto
-        sara' in genere piu' lungo.
+        sarà in genere più lungo.
       </p>
 
       <h3>Confronto tra frequenze di capitalizzazione</h3>
       <p>
         La frequenza con cui gli interessi vengono capitalizzati ha un impatto diretto sul
-        rendimento finale dell'investimento. A parita' di tasso nominale e durata, una
-        capitalizzazione piu' frequente genera un montante superiore. Questo accade perche'
+        rendimento finale dell'investimento. A parità di tasso nominale e durata, una
+        capitalizzazione più frequente genera un montante superiore. Questo accade perché
         gli interessi maturati vengono reinvestiti prima, e a loro volta iniziano a generare
         ulteriori interessi.
       </p>
@@ -121,25 +121,25 @@ const faqs = [
       </ul>
       <p>
         Come si nota, la differenza tra capitalizzazione annuale e mensile in questo esempio
-        e' di circa <strong>181 &euro;</strong> su 10 anni. Sebbene possa sembrare modesta, questa
-        differenza cresce in modo significativo con importi maggiori, tassi piu' elevati e
-        orizzonti temporali piu' lunghi. Per investimenti di lungo periodo, scegliere prodotti
-        finanziari con capitalizzazione piu' frequente puo' tradursi in un vantaggio concreto.
+        è di circa <strong>181 &euro;</strong> su 10 anni. Sebbene possa sembrare modesta, questa
+        differenza cresce in modo significativo con importi maggiori, tassi più elevati e
+        orizzonti temporali più lunghi. Per investimenti di lungo periodo, scegliere prodotti
+        finanziari con capitalizzazione più frequente può tradursi in un vantaggio concreto.
       </p>
 
       <h3>Tassazione dei rendimenti finanziari in Italia</h3>
       <p>
         In Italia i rendimenti derivanti da investimenti finanziari sono soggetti a diversi
         livelli di tassazione che riducono il rendimento effettivo percepito dall'investitore.
-        E' fondamentale tenerne conto quando si pianificano investimenti di lungo termine basati
+        È fondamentale tenerne conto quando si pianificano investimenti di lungo termine basati
         sull'interesse composto.
       </p>
       <p>
-        L'<strong>imposta sostitutiva sulle rendite finanziarie</strong> (capital gain) e' pari
+        L'<strong>imposta sostitutiva sulle rendite finanziarie</strong> (capital gain) è pari
         al <strong>26%</strong> per la maggior parte degli strumenti finanziari, inclusi azioni,
         ETF, fondi comuni, obbligazioni corporate e conti deposito. I <strong>titoli di Stato</strong>
         italiani ed europei (come BTP, BOT, CCT) beneficiano invece di un'aliquota agevolata
-        del <strong>12,5%</strong>, cosi' come i buoni fruttiferi postali.
+        del <strong>12,5%</strong>, così come i buoni fruttiferi postali.
       </p>
       <p>
         Oltre all'imposta sui rendimenti, esiste l'<strong>imposta di bollo</strong> pari allo
@@ -152,8 +152,8 @@ const faqs = [
         In pratica, un rendimento lordo del 7% annuo si traduce, dopo la tassazione al 26%
         e l'imposta di bollo dello 0,2%, in un rendimento netto di circa il <strong>4,98%</strong>.
         Questa riduzione ha un impatto molto significativo sull'interesse composto nel lungo
-        periodo: su 30 anni, la differenza tra il montante lordo e quello netto puo' superare
-        il 30-40% del capitale finale. Per questo motivo, nella pianificazione finanziaria e'
+        periodo: su 30 anni, la differenza tra il montante lordo e quello netto può superare
+        il 30-40% del capitale finale. Per questo motivo, nella pianificazione finanziaria è
         sempre consigliabile ragionare in termini di rendimenti netti e considerare strumenti
         fiscalmente efficienti.
       </p>
@@ -210,7 +210,7 @@ const faqs = [
     <div class="mt-6 prose prose-gray dark:prose-invert max-w-none">
       <h3>L'effetto dei versamenti periodici</h3>
       <p>
-        L'interesse composto diventa ancora piu' potente quando si aggiungono
+        L'interesse composto diventa ancora più potente quando si aggiungono
         <strong>versamenti ricorrenti</strong>. Partendo dallo stesso capitale iniziale di
         10.000 &euro; al 7% annuo, ma aggiungendo <strong>200 &euro; al mese</strong>, i
         risultati cambiano radicalmente: dopo 10 anni il capitale sale a circa
@@ -224,8 +224,8 @@ const faqs = [
         Questi numeri mostrano un principio fondamentale: nel lungo periodo, il contributo
         degli interessi composti supera di gran lunga quello dei versamenti effettivi. A 30
         anni, gli interessi rappresentano quasi il <strong>75%</strong> del capitale finale.
-        Questo significa che il tempo e' il fattore piu' prezioso per un investitore: prima si
-        inizia a investire con costanza, maggiore sara' l'effetto moltiplicatore del denaro.
+        Questo significa che il tempo è il fattore più prezioso per un investitore: prima si
+        inizia a investire con costanza, maggiore sarà l'effetto moltiplicatore del denaro.
         Anche piccoli importi mensili, se mantenuti con disciplina su orizzonti lunghi,
         possono generare patrimoni significativi.
       </p>
@@ -240,7 +240,7 @@ const faqs = [
     <div class="space-y-4">
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
         <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
-          Qual e' la differenza tra interesse semplice e composto?
+          Qual è la differenza tra interesse semplice e composto?
           <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
@@ -248,7 +248,7 @@ const faqs = [
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           Con l'interesse semplice, gli interessi vengono calcolati solo sul capitale iniziale.
           Con l'interesse composto, gli interessi vengono calcolati anche sugli interessi
-          gia' maturati. Questa differenza diventa sempre piu' significativa col passare
+          già maturati. Questa differenza diventa sempre più significativa col passare
           del tempo, creando una crescita esponenziale invece che lineare.
         </p>
       </details>
@@ -263,8 +263,8 @@ const faqs = [
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           La frequenza di capitalizzazione indica quante volte all'anno gli interessi
           vengono calcolati e aggiunti al capitale. Con capitalizzazione mensile gli
-          interessi vengono calcolati 12 volte all'anno, con trimestrale 4 volte, e cosi'
-          via. A parita' di tasso nominale, una frequenza piu' alta produce un rendimento
+          interessi vengono calcolati 12 volte all'anno, con trimestrale 4 volte, e così
+          via. A parità di tasso nominale, una frequenza più alta produce un rendimento
           effettivo leggermente maggiore.
         </p>
       </details>
@@ -286,16 +286,16 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
         <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
-          Perche' conviene iniziare a investire presto?
+          perché conviene iniziare a investire presto?
           <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          L'interesse composto premia il tempo piu' di qualsiasi altra variabile. Iniziare
-          a investire 10 anni prima puo' fare una differenza enorme sul capitale finale,
-          anche con versamenti piu' piccoli. La crescita esponenziale fa si' che gli ultimi
-          anni siano quelli in cui il capitale cresce di piu' in termini assoluti.
+          L'interesse composto premia il tempo più di qualsiasi altra variabile. Iniziare
+          a investire 10 anni prima può fare una differenza enorme sul capitale finale,
+          anche con versamenti più piccoli. La crescita esponenziale fa sì che gli ultimi
+          anni siano quelli in cui il capitale cresce di più in termini assoluti.
         </p>
       </details>
 
@@ -328,28 +328,28 @@ const faqs = [
           con un'inflazione del 2% offre un rendimento reale di circa il 5%. Questo significa
           che, sebbene il capitale cresca in termini nominali, il suo potere d'acquisto
           effettivo aumenta a un ritmo inferiore. Per proteggere il capitale dall'inflazione,
-          e' importante scegliere investimenti con rendimenti che superino costantemente il
+          è importante scegliere investimenti con rendimenti che superino costantemente il
           tasso di inflazione medio nel lungo periodo.
         </p>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
         <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
-          Qual e' la differenza tra tasso nominale e tasso effettivo?
+          Qual è la differenza tra tasso nominale e tasso effettivo?
           <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          Il tasso nominale (TAN - Tasso Annuo Nominale) e' il tasso di interesse dichiarato
+          Il tasso nominale (TAN - Tasso Annuo Nominale) è il tasso di interesse dichiarato
           senza tenere conto della frequenza di capitalizzazione. Il tasso effettivo, invece,
           rappresenta il rendimento realmente ottenuto considerando l'effetto della
           capitalizzazione infrannuale. Ad esempio, un TAN del 6% con capitalizzazione mensile
-          produce un tasso effettivo annuo del 6,17%, perche' gli interessi mensili vengono
+          produce un tasso effettivo annuo del 6,17%, perché gli interessi mensili vengono
           reinvestiti e generano a loro volta interessi. La formula per calcolare il tasso
-          effettivo e': (1 + r/n)<sup>n</sup> - 1, dove r e' il tasso nominale e n il numero
-          di capitalizzazioni annue. Maggiore e' la frequenza di capitalizzazione, maggiore
-          sara' la differenza tra tasso nominale e tasso effettivo.
+          effettivo è: (1 + r/n)<sup>n</sup> - 1, dove r è il tasso nominale e n il numero
+          di capitalizzazioni annue. Maggiore è la frequenza di capitalizzazione, maggiore
+          sarà la differenza tra tasso nominale e tasso effettivo.
         </p>
       </details>
 
@@ -361,11 +361,11 @@ const faqs = [
           </svg>
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          Si', l'interesse composto si applica anche ai debiti, e in questo caso lavora contro
+          Sì, l'interesse composto si applica anche ai debiti, e in questo caso lavora contro
           il debitore. Nei mutui, nei prestiti personali e soprattutto nel credito revolving
           delle carte di credito, gli interessi non pagati vengono capitalizzati e aggiunti
-          al debito residuo, generando interessi su interessi. Questo e' il motivo per cui
-          il debito su carte di credito puo' crescere molto rapidamente se non viene saldato
+          al debito residuo, generando interessi su interessi. Questo è il motivo per cui
+          il debito su carte di credito può crescere molto rapidamente se non viene saldato
           per intero ogni mese. Per i mutui a tasso fisso, l'ammortamento alla francese
           prevede rate costanti in cui la quota interessi diminuisce progressivamente,
           ma il costo totale degli interessi sul lungo periodo resta significativo: su un

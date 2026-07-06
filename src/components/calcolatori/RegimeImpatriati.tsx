@@ -218,7 +218,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
               </svg>
               <div>
                 <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                  {lang === 'en' ? 'Eligibility requirements' : 'Requisiti di eleggibilita'}
+                  {lang === 'en' ? 'Eligibility requirements' : 'Requisiti di eleggibilità}
                 </p>
                 <ul className="mt-2 text-sm text-amber-700 dark:text-amber-400 space-y-1 list-disc list-inside">
                   <li>{lang === 'en' ? 'Must not have been a tax resident in Italy for the 3 preceding tax periods' : 'Non essere stato residente fiscalmente in Italia nei 3 periodi d\'imposta precedenti'}</li>
@@ -229,7 +229,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
                   <li>{lang === 'en' ? 'Maximum eligible income: €600,000 per year (from 2024)' : 'Limite massimo di reddito agevolabile: 600.000 euro annui (dal 2024)'}</li>
                 </ul>
                 <p className="mt-3 text-xs text-amber-600 dark:text-amber-500">
-                  {lang === 'en' ? 'This calculation is indicative. Consult a commercialista (tax advisor) to verify your specific situation and the current impatriati regime requirements.' : 'Questo calcolo e\' indicativo. Consulta un commercialista per verificare la tua situazione specifica e i requisiti aggiornati del regime impatriati.'}
+                  {lang === 'en' ? 'This calculation is indicative. Consult a commercialista (tax advisor) to verify your specific situation and the current impatriati regime requirements.' : 'Questo calcolo è indicativo. Consulta un commercialista per verificare la tua situazione specifica e i requisiti aggiornati del regime impatriati.'}
                 </p>
               </div>
             </div>

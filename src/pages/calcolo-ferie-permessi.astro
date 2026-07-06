@@ -14,14 +14,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Le ferie non godute vengono pagate alla cessazione del rapporto?', answer: 'Si\', assolutamente. In caso di cessazione del rapporto di lavoro (dimissioni, licenziamento, scadenza del contratto a termine, pensionamento), il datore di lavoro e\' obbligato a liquidare nell\'ultima busta paga tutte le ferie e i permessi maturati e non goduti, senza alcuna eccezione. Questo vale sia per le ferie minime legali (4 settimane) sia per quelle aggiuntive previste dal CCNL, nonche\' per tutti i ROL e le ex festivita\' residue. L\'indennita\' sostitutiva e\' un diritto irrinunciabile del lavoratore.' },
-  { question: 'Le ferie non godute hanno tassazione separata o ordinaria?', answer: 'L\'indennita\' sostitutiva delle ferie e dei permessi non goduti e\' soggetta a tassazione ordinaria, non a tassazione separata. Questo e\' stato confermato dalla Corte di Cassazione e dall\'Agenzia delle Entrate: l\'indennita\' ha natura retributiva (non risarcitoria) e rientra tra i redditi di lavoro dipendente ai sensi dell\'art. 51 del TUIR. Viene quindi tassata con le normali aliquote IRPEF progressive e soggetta ai contributi INPS. Attenzione a non confonderla con il TFR, che invece gode della tassazione separata piu\' favorevole.' },
-  { question: 'Posso farmi pagare le ferie senza dare le dimissioni?', answer: 'Dipende. Per le ferie minime legali (4 settimane annue), il D.Lgs. 66/2003 vieta espressamente la monetizzazione durante il rapporto di lavoro: il lavoratore deve effettivamente goderne. Tuttavia, le ferie eccedenti il minimo legale (ad esempio, la quinta settimana prevista da molti CCNL) e i permessi ROL/ex festivita\' possono essere monetizzati anche in costanza di rapporto, se il CCNL lo prevede o se scadono i termini per la loro fruizione. La prassi piu\' comune e\' che i ROL non goduti entro il 30 giugno dell\'anno successivo vengano automaticamente pagati in busta paga.' },
-  { question: 'Come si calcolano le ferie per un part-time?', answer: 'Per il part-time orizzontale (stesse giornate del full-time ma con orario ridotto), i giorni di ferie sono gli stessi del full-time ma la retribuzione giornaliera e\' proporzionata all\'orario ridotto. Per il part-time verticale (solo alcune giornate nella settimana), i giorni di ferie vengono riproporzionati in base ai giorni effettivamente lavorati. Ad esempio, un part-time a 3 giorni su 5 avra\' ferie = 26 x 3/5 = circa 16 giorni. Per il calcolo con il nostro strumento, inserisci la tua RAL effettiva da part-time e le ore settimanali corrispondenti.' },
-  { question: 'Le ferie scadono? Dopo quanto tempo si perdono?', answer: 'Le ferie non "scadono" nel senso che si perdono completamente. La legge prevede che due settimane debbano essere godute nell\'anno di maturazione e le restanti due settimane entro i 18 mesi successivi. Se il datore di lavoro non le fa fruire entro questi termini, e\' passibile di sanzione amministrativa (da 120 a 720 euro per lavoratore), ma il diritto del lavoratore non si estingue automaticamente. Tuttavia, la Corte di Giustizia UE ha stabilito che il datore deve dimostrare di aver messo il lavoratore in condizione di fruire delle ferie. I permessi ROL hanno generalmente scadenze piu\' brevi (tipicamente entro il 30 giugno dell\'anno successivo, secondo il CCNL) e vengono monetizzati alla scadenza.' },
-  { question: 'Le ferie non godute maturano anche durante malattia o maternita\'?', answer: 'Si\', le ferie continuano a maturare durante i periodi di malattia, infortunio, maternita\' obbligatoria e cassa integrazione ordinaria, poiche\' il rapporto di lavoro resta in essere a tutti gli effetti. Durante il congedo parentale facoltativo, invece, le ferie non maturano per i periodi non lavorati. Per quanto riguarda i ROL, la maturazione durante le assenze dipende dalle specifiche previsioni del CCNL applicato, che puo\' prevedere la sospensione della maturazione in determinati casi.' },
-  { question: 'Il datore puo\' obbligarmi a consumare le ferie durante il preavviso?', answer: 'La giurisprudenza prevalente ritiene che il datore di lavoro non possa imporre unilateralmente il godimento delle ferie durante il periodo di preavviso, perche\' preavviso e ferie hanno finalita\' diverse: il preavviso serve a garantire al lavoratore la continuita\' retributiva durante la ricerca di un nuovo impiego, mentre le ferie servono al recupero delle energie psico-fisiche. Tuttavia, se c\'e\' un accordo tra le parti, le ferie possono essere fruite durante il preavviso. In assenza di accordo, le ferie residue vengono monetizzate nell\'ultima busta paga. E\' importante notare che, durante le ferie, il preavviso resta sospeso.' },
-  { question: 'Dove trovo le ferie e i permessi residui nella busta paga?', answer: 'Nella parte inferiore della busta paga trovi generalmente una sezione dedicata a ferie e permessi, con le colonne "Maturato", "Goduto" e "Residuo" (o "Saldo"). Le ferie sono espresse in giorni, mentre i ROL e le ex festivita\' sono espressi in ore. Il contatore "Residuo" mostra esattamente quanti giorni di ferie e ore di permessi hai a disposizione. Se hai dubbi sulla lettura della busta paga, il nostro calcolatore busta paga ti aiuta a interpretare ogni voce del cedolino. Alcuni software paghe mostrano anche il valore economico delle ferie residue, utile per confrontarlo con il calcolo del nostro strumento.' },
+  { question: 'Le ferie non godute vengono pagate alla cessazione del rapporto?', answer: 'Sì, assolutamente. In caso di cessazione del rapporto di lavoro (dimissioni, licenziamento, scadenza del contratto a termine, pensionamento), il datore di lavoro è obbligato a liquidare nell\'ultima busta paga tutte le ferie e i permessi maturati e non goduti, senza alcuna eccezione. Questo vale sia per le ferie minime legali (4 settimane) sia per quelle aggiuntive previste dal CCNL, nonché per tutti i ROL e le ex festività residue. L\'indennità sostitutiva è un diritto irrinunciabile del lavoratore.' },
+  { question: 'Le ferie non godute hanno tassazione separata o ordinaria?', answer: 'L\'indennità sostitutiva delle ferie e dei permessi non goduti è soggetta a tassazione ordinaria, non a tassazione separata. Questo è stato confermato dalla Corte di Cassazione e dall\'Agenzia delle Entrate: l\'indennità ha natura retributiva (non risarcitoria) e rientra tra i redditi di lavoro dipendente ai sensi dell\'art. 51 del TUIR. Viene quindi tassata con le normali aliquote IRPEF progressive e soggetta ai contributi INPS. Attenzione a non confonderla con il TFR, che invece gode della tassazione separata più favorevole.' },
+  { question: 'Posso farmi pagare le ferie senza dare le dimissioni?', answer: 'Dipende. Per le ferie minime legali (4 settimane annue), il D.Lgs. 66/2003 vieta espressamente la monetizzazione durante il rapporto di lavoro: il lavoratore deve effettivamente goderne. Tuttavia, le ferie eccedenti il minimo legale (ad esempio, la quinta settimana prevista da molti CCNL) e i permessi ROL/ex festività possono essere monetizzati anche in costanza di rapporto, se il CCNL lo prevede o se scadono i termini per la loro fruizione. La prassi più comune è che i ROL non goduti entro il 30 giugno dell\'anno successivo vengano automaticamente pagati in busta paga.' },
+  { question: 'Come si calcolano le ferie per un part-time?', answer: 'Per il part-time orizzontale (stesse giornate del full-time ma con orario ridotto), i giorni di ferie sono gli stessi del full-time ma la retribuzione giornaliera è proporzionata all\'orario ridotto. Per il part-time verticale (solo alcune giornate nella settimana), i giorni di ferie vengono riproporzionati in base ai giorni effettivamente lavorati. Ad esempio, un part-time a 3 giorni su 5 avrà ferie = 26 x 3/5 = circa 16 giorni. Per il calcolo con il nostro strumento, inserisci la tua RAL effettiva da part-time e le ore settimanali corrispondenti.' },
+  { question: 'Le ferie scadono? Dopo quanto tempo si perdono?', answer: 'Le ferie non "scadono" nel senso che si perdono completamente. La legge prevede che due settimane debbano essere godute nell\'anno di maturazione e le restanti due settimane entro i 18 mesi successivi. Se il datore di lavoro non le fa fruire entro questi termini, è passibile di sanzione amministrativa (da 120 a 720 euro per lavoratore), ma il diritto del lavoratore non si estingue automaticamente. Tuttavia, la Corte di Giustizia UE ha stabilito che il datore deve dimostrare di aver messo il lavoratore in condizione di fruire delle ferie. I permessi ROL hanno generalmente scadenze più brevi (tipicamente entro il 30 giugno dell\'anno successivo, secondo il CCNL) e vengono monetizzati alla scadenza.' },
+  { question: 'Le ferie non godute maturano anche durante malattia o maternità?', answer: 'Sì, le ferie continuano a maturare durante i periodi di malattia, infortunio, maternità obbligatoria e cassa integrazione ordinaria, poiché il rapporto di lavoro resta in essere a tutti gli effetti. Durante il congedo parentale facoltativo, invece, le ferie non maturano per i periodi non lavorati. Per quanto riguarda i ROL, la maturazione durante le assenze dipende dalle specifiche previsioni del CCNL applicato, che può prevedere la sospensione della maturazione in determinati casi.' },
+  { question: 'Il datore può obbligarmi a consumare le ferie durante il preavviso?', answer: 'La giurisprudenza prevalente ritiene che il datore di lavoro non possa imporre unilateralmente il godimento delle ferie durante il periodo di preavviso, perché preavviso e ferie hanno finalità diverse: il preavviso serve a garantire al lavoratore la continuità retributiva durante la ricerca di un nuovo impiego, mentre le ferie servono al recupero delle energie psico-fisiche. Tuttavia, se c\'è un accordo tra le parti, le ferie possono essere fruite durante il preavviso. In assenza di accordo, le ferie residue vengono monetizzate nell\'ultima busta paga. È importante notare che, durante le ferie, il preavviso resta sospeso.' },
+  { question: 'Dove trovo le ferie e i permessi residui nella busta paga?', answer: 'Nella parte inferiore della busta paga trovi generalmente una sezione dedicata a ferie e permessi, con le colonne "Maturato", "Goduto" e "Residuo" (o "Saldo"). Le ferie sono espresse in giorni, mentre i ROL e le ex festività sono espressi in ore. Il contatore "Residuo" mostra esattamente quanti giorni di ferie e ore di permessi hai a disposizione. Se hai dubbi sulla lettura della busta paga, il nostro calcolatore busta paga ti aiuta a interpretare ogni voce del cedolino. Alcuni software paghe mostrano anche il valore economico delle ferie residue, utile per confrontarlo con il calcolo del nostro strumento.' },
 ];
 ---
 
@@ -50,16 +50,16 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
         Le <strong>ferie non godute</strong> e i <strong>permessi non goduti</strong> (ROL - Riduzione
-        Orario di Lavoro ed ex festivita') rappresentano giorni e ore di assenza retribuita a cui il
+        Orario di Lavoro ed ex festività) rappresentano giorni e ore di assenza retribuita a cui il
         lavoratore ha diritto ma che non ha ancora usufruito. Quando questi diritti non vengono
         eserciti entro i termini previsti dalla legge o dal CCNL, oppure quando il rapporto di lavoro
-        si conclude, il lavoratore ha diritto a un'indennita' sostitutiva in denaro che viene erogata
+        si conclude, il lavoratore ha diritto a un'indennità sostitutiva in denaro che viene erogata
         in busta paga con le normali trattenute fiscali e contributive.
       </p>
       <p>
-        E' importante comprendere che il diritto alle ferie e' costituzionalmente garantito
+        È importante comprendere che il diritto alle ferie è costituzionalmente garantito
         dall'articolo 36 della Costituzione italiana, che prevede che il lavoratore ha diritto a
-        "ferie annuali retribuite" e "non puo' rinunziarvi". Questo principio e' stato ulteriormente
+        "ferie annuali retribuite" e "non può rinunziarvi". Questo principio è stato ulteriormente
         dettagliato dal D.Lgs. 66/2003, che all'articolo 10 stabilisce il periodo minimo di ferie
         annuali in quattro settimane, di cui almeno due consecutive da fruire nell'anno di maturazione
         e le restanti due entro i 18 mesi successivi alla fine dell'anno di maturazione.
@@ -78,14 +78,14 @@ const faqs = [
           o circa 20 giorni per chi lavora 5 giorni).
         </li>
         <li>
-          La contrattazione collettiva puo' prevedere periodi superiori al minimo legale.
-          Molti CCNL prevedono infatti da 20 a 32 giorni di ferie, in base all'anzianita' di
+          La contrattazione collettiva può prevedere periodi superiori al minimo legale.
+          Molti CCNL prevedono infatti da 20 a 32 giorni di ferie, in base all'anzianità di
           servizio.
         </li>
         <li>
-          Le ferie non possono essere sostituite dalla relativa indennita' per le prime quattro
+          Le ferie non possono essere sostituite dalla relativa indennità per le prime quattro
           settimane, salvo il caso di cessazione del rapporto di lavoro. Questo significa che il
-          datore di lavoro non puo' "monetizzare" le ferie minime legali in costanza di rapporto:
+          datore di lavoro non può "monetizzare" le ferie minime legali in costanza di rapporto:
           il lavoratore deve effettivamente goderle.
         </li>
         <li>
@@ -97,28 +97,28 @@ const faqs = [
 
       <h3>La differenza tra ferie e permessi (ROL)</h3>
       <p>
-        Le <strong>ferie</strong> sono giorni interi di assenza retribuita e il loro minimo e'
+        Le <strong>ferie</strong> sono giorni interi di assenza retribuita e il loro minimo è
         stabilito per legge (4 settimane). I <strong>permessi retribuiti</strong> (comunemente
-        chiamati ROL - Riduzione Orario di Lavoro) e le <strong>ex festivita'</strong> sono
+        chiamati ROL - Riduzione Orario di Lavoro) e le <strong>ex festività</strong> sono
         invece ore di permesso aggiuntive previste dalla contrattazione collettiva. Il numero di
         ore di ROL varia in base al CCNL applicato:
       </p>
       <ul>
-        <li><strong>CCNL Commercio:</strong> 56 ore di permessi (ROL) + 32 ore di ex festivita' = 88 ore totali per i lavoratori con oltre 2 anni di anzianita'.</li>
-        <li><strong>CCNL Metalmeccanico:</strong> 72 ore di PAR (Permessi Annui Retribuiti) + 8 ore di ex festivita' = 80 ore totali.</li>
-        <li><strong>CCNL Chimico:</strong> 72 ore di riduzione orario + 32 ore di ex festivita' = 104 ore totali.</li>
+        <li><strong>CCNL Commercio:</strong> 56 ore di permessi (ROL) + 32 ore di ex festività = 88 ore totali per i lavoratori con oltre 2 anni di anzianità.</li>
+        <li><strong>CCNL Metalmeccanico:</strong> 72 ore di PAR (Permessi Annui Retribuiti) + 8 ore di ex festività = 80 ore totali.</li>
+        <li><strong>CCNL Chimico:</strong> 72 ore di riduzione orario + 32 ore di ex festività = 104 ore totali.</li>
         <li><strong>CCNL Edilizia:</strong> generalmente non prevede ROL aggiuntivi alle ferie.</li>
-        <li><strong>CCNL Turismo:</strong> 32-104 ore a seconda dell'inquadramento e dell'anzianita'.</li>
+        <li><strong>CCNL Turismo:</strong> 32-104 ore a seconda dell'inquadramento e dell'anzianità.</li>
       </ul>
 
-      <h3>Come si calcola l'indennita' sostitutiva</h3>
+      <h3>Come si calcola l'indennità sostitutiva</h3>
       <p>
-        L'indennita' sostitutiva per ferie e permessi non goduti viene calcolata partendo dalla
-        retribuzione giornaliera o oraria del lavoratore. La formula utilizzata nella prassi e'
+        L'indennità sostitutiva per ferie e permessi non goduti viene calcolata partendo dalla
+        retribuzione giornaliera o oraria del lavoratore. La formula utilizzata nella prassi è
         la seguente:
       </p>
       <p>
-        <strong>Retribuzione giornaliera</strong> = RAL / mensilita' / 26 giorni lavorativi
+        <strong>Retribuzione giornaliera</strong> = RAL / mensilità / 26 giorni lavorativi
       </p>
       <p>
         <strong>Retribuzione oraria</strong> = Retribuzione giornaliera / ore giornaliere (es. 8 ore per full-time 40h)
@@ -128,13 +128,13 @@ const faqs = [
         giorni per settimana per circa 4,33 settimane). Anche per i lavoratori con orario su 5
         giorni, la retribuzione giornaliera viene spesso calcolata con il divisore 26, secondo la
         prassi consolidata nel diritto del lavoro italiano. Tuttavia, alcuni CCNL prevedono divisori
-        diversi (es. 22 o 25): in tal caso, la retribuzione giornaliera sara' leggermente superiore.
+        diversi (es. 22 o 25): in tal caso, la retribuzione giornaliera sarà leggermente superiore.
       </p>
 
       <h3>La tassazione: ordinaria, non separata</h3>
       <p>
-        Un aspetto fondamentale da comprendere e' che l'indennita' sostitutiva per ferie e permessi
-        non goduti e' soggetta a <strong>tassazione ordinaria</strong>, non a tassazione separata.
+        Un aspetto fondamentale da comprendere è che l'indennità sostitutiva per ferie e permessi
+        non goduti è soggetta a <strong>tassazione ordinaria</strong>, non a tassazione separata.
         Questo significa che l'importo viene sommato al reddito del mese in cui viene erogato
         (tipicamente l'ultimo mese di lavoro o il mese successivo alla cessazione) e tassato
         secondo le normali aliquote IRPEF progressive, in base all'aliquota marginale del lavoratore.
@@ -144,21 +144,21 @@ const faqs = [
       </p>
       <ul>
         <li><strong>Contributi INPS dipendente:</strong> 9,19% dell'importo lordo (aliquota IVS standard per dipendenti del settore privato).</li>
-        <li><strong>IRPEF:</strong> calcolata con le aliquote progressive ordinarie. Poiche' l'indennita' si aggiunge al reddito mensile, viene tipicamente tassata all'aliquota marginale del lavoratore (23%, 35% o 43% a seconda dello scaglione).</li>
+        <li><strong>IRPEF:</strong> calcolata con le aliquote progressive ordinarie. poiché l'indennità si aggiunge al reddito mensile, viene tipicamente tassata all'aliquota marginale del lavoratore (23%, 35% o 43% a seconda dello scaglione).</li>
         <li><strong>Addizionali regionali e comunali:</strong> si applicano in sede di conguaglio di fine anno.</li>
       </ul>
       <p>
         A differenza del TFR (che gode della tassazione separata con aliquota media) e delle somme
         erogate a titolo di incentivo all'esodo, le ferie e i permessi non goduti sono considerati
         reddito di lavoro dipendente ordinario ai sensi dell'art. 51 del TUIR (Testo Unico delle
-        Imposte sui Redditi). La Corte di Cassazione ha confermato piu' volte questo orientamento,
-        stabilendo che l'indennita' sostitutiva delle ferie ha natura retributiva e non
+        Imposte sui Redditi). La Corte di Cassazione ha confermato più volte questo orientamento,
+        stabilendo che l'indennità sostitutiva delle ferie ha natura retributiva e non
         risarcitoria.
       </p>
 
       <h3>Esempio pratico: RAL 30.000 euro, 8 giorni ferie + 16 ore permessi</h3>
       <p>
-        Consideriamo un lavoratore con RAL di 30.000 euro, 13 mensilita', orario full-time di 40
+        Consideriamo un lavoratore con RAL di 30.000 euro, 13 mensilità, orario full-time di 40
         ore settimanali, a cui restano 8 giorni di ferie non godute e 16 ore di permessi ROL.
       </p>
       <ul>
@@ -175,7 +175,7 @@ const faqs = [
       </ul>
       <p>
         Il lavoratore riceverebbe quindi circa 524 euro netti per i suoi 8 giorni di ferie e 16 ore
-        di permessi non goduti. L'importo netto effettivo puo' variare leggermente in base al
+        di permessi non goduti. L'importo netto effettivo può variare leggermente in base al
         conguaglio fiscale di fine anno, alle detrazioni spettanti e alla regione di residenza
         (per le addizionali).
       </p>
@@ -187,14 +187,14 @@ const faqs = [
       <ul>
         <li>
           <strong>Cessazione del rapporto di lavoro:</strong> in caso di dimissioni, licenziamento
-          o scadenza del contratto a termine, il datore di lavoro e' obbligato a liquidare tutte
+          o scadenza del contratto a termine, il datore di lavoro è obbligato a liquidare tutte
           le ferie e i permessi maturati e non goduti nell'ultima busta paga.
         </li>
         <li>
-          <strong>Scadenza dei termini di fruizione:</strong> i permessi ROL ed ex festivita' che
+          <strong>Scadenza dei termini di fruizione:</strong> i permessi ROL ed ex festività che
           non vengono usufruiti entro il termine stabilito dal CCNL vengono generalmente
           monetizzati. Per le ferie legali (4 settimane), la monetizzazione in costanza di rapporto
-          non e' consentita.
+          non è consentita.
         </li>
         <li>
           <strong>Contributi INPS sulle ferie non godute:</strong> dal 2007, l'INPS ha stabilito
@@ -215,7 +215,7 @@ const faqs = [
       <p>
         La tabella seguente mostra la retribuzione giornaliera e oraria per diversi livelli di RAL,
         utile per stimare rapidamente il valore delle ferie e dei permessi non goduti. I valori
-        sono calcolati con 13 mensilita' e orario full-time di 40 ore settimanali, utilizzando
+        sono calcolati con 13 mensilità e orario full-time di 40 ore settimanali, utilizzando
         il divisore convenzionale di 26 giorni lavorativi mensili.
       </p>
     </div>
@@ -280,7 +280,7 @@ const faqs = [
       <p>
         <strong>Nota:</strong> i valori in tabella sono lordi. Per ottenere il netto, occorre
         sottrarre i contributi INPS (9,19%) e l'IRPEF calcolata all'aliquota marginale. Per un
-        lavoratore con RAL di 30.000 euro nello scaglione al 35%, il netto e' circa il 59%
+        lavoratore con RAL di 30.000 euro nello scaglione al 35%, il netto è circa il 59%
         del lordo. Utilizza il calcolatore sopra per una stima precisa del netto.
       </p>
 
@@ -297,7 +297,7 @@ const faqs = [
             <th class="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">CCNL</th>
             <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Ferie (giorni)</th>
             <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">ROL (ore)</th>
-            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Ex festivita' (ore)</th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Ex festività (ore)</th>
             <th class="px-4 py-3 text-right font-semibold text-gray-900 dark:text-white">Totale permessi (ore)</th>
           </tr>
         </thead>
@@ -350,9 +350,9 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none mt-6">
       <p>
         <strong>Nota:</strong> il numero di giorni di ferie indicato include il minimo legale (4
-        settimane). L'aumento in base all'anzianita' di servizio e' previsto dalla maggior parte
+        settimane). L'aumento in base all'anzianità di servizio è previsto dalla maggior parte
         dei CCNL (tipicamente dopo 5, 10 e 15 anni di servizio). I ROL per il CCNL Commercio
-        maturano progressivamente: 32 ore nel primo anno, 56 ore dal secondo anno in poi. E'
+        maturano progressivamente: 32 ore nel primo anno, 56 ore dal secondo anno in poi. È
         sempre opportuno consultare il proprio CCNL specifico per verificare i valori esatti
         applicabili.
       </p>
@@ -372,7 +372,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Si', assolutamente. In caso di cessazione del rapporto di lavoro (dimissioni, licenziamento, scadenza del contratto a termine, pensionamento), il datore di lavoro e' obbligato a liquidare nell'ultima busta paga tutte le ferie e i permessi maturati e non goduti, senza alcuna eccezione. Questo vale sia per le ferie minime legali (4 settimane) sia per quelle aggiuntive previste dal CCNL, nonche' per tutti i ROL e le ex festivita' residue. L'indennita' sostitutiva e' un diritto irrinunciabile del lavoratore.
+          Sì, assolutamente. In caso di cessazione del rapporto di lavoro (dimissioni, licenziamento, scadenza del contratto a termine, pensionamento), il datore di lavoro è obbligato a liquidare nell'ultima busta paga tutte le ferie e i permessi maturati e non goduti, senza alcuna eccezione. Questo vale sia per le ferie minime legali (4 settimane) sia per quelle aggiuntive previste dal CCNL, nonché per tutti i ROL e le ex festività residue. L'indennità sostitutiva è un diritto irrinunciabile del lavoratore.
         </div>
       </details>
 
@@ -384,7 +384,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          L'indennita' sostitutiva delle ferie e dei permessi non goduti e' soggetta a tassazione ordinaria, non a tassazione separata. Questo e' stato confermato dalla Corte di Cassazione e dall'Agenzia delle Entrate: l'indennita' ha natura retributiva (non risarcitoria) e rientra tra i redditi di lavoro dipendente ai sensi dell'art. 51 del TUIR. Viene quindi tassata con le normali aliquote IRPEF progressive e soggetta ai contributi INPS. Attenzione a non confonderla con il TFR, che invece gode della tassazione separata piu' favorevole.
+          L'indennità sostitutiva delle ferie e dei permessi non goduti è soggetta a tassazione ordinaria, non a tassazione separata. Questo è stato confermato dalla Corte di Cassazione e dall'Agenzia delle Entrate: l'indennità ha natura retributiva (non risarcitoria) e rientra tra i redditi di lavoro dipendente ai sensi dell'art. 51 del TUIR. Viene quindi tassata con le normali aliquote IRPEF progressive e soggetta ai contributi INPS. Attenzione a non confonderla con il TFR, che invece gode della tassazione separata più favorevole.
         </div>
       </details>
 
@@ -396,7 +396,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Dipende. Per le ferie minime legali (4 settimane annue), il D.Lgs. 66/2003 vieta espressamente la monetizzazione durante il rapporto di lavoro: il lavoratore deve effettivamente goderne. Tuttavia, le ferie eccedenti il minimo legale (ad esempio, la quinta settimana prevista da molti CCNL) e i permessi ROL/ex festivita' possono essere monetizzati anche in costanza di rapporto, se il CCNL lo prevede o se scadono i termini per la loro fruizione. La prassi piu' comune e' che i ROL non goduti entro il 30 giugno dell'anno successivo vengano automaticamente pagati in busta paga.
+          Dipende. Per le ferie minime legali (4 settimane annue), il D.Lgs. 66/2003 vieta espressamente la monetizzazione durante il rapporto di lavoro: il lavoratore deve effettivamente goderne. Tuttavia, le ferie eccedenti il minimo legale (ad esempio, la quinta settimana prevista da molti CCNL) e i permessi ROL/ex festività possono essere monetizzati anche in costanza di rapporto, se il CCNL lo prevede o se scadono i termini per la loro fruizione. La prassi più comune è che i ROL non goduti entro il 30 giugno dell'anno successivo vengano automaticamente pagati in busta paga.
         </div>
       </details>
 
@@ -408,7 +408,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Per il part-time orizzontale (stesse giornate del full-time ma con orario ridotto), i giorni di ferie sono gli stessi del full-time ma la retribuzione giornaliera e' proporzionata all'orario ridotto. Per il part-time verticale (solo alcune giornate nella settimana), i giorni di ferie vengono riproporzionati in base ai giorni effettivamente lavorati. Ad esempio, un part-time a 3 giorni su 5 avra' ferie = 26 x 3/5 = circa 16 giorni. Per il calcolo con il nostro strumento, inserisci la tua RAL effettiva da part-time e le ore settimanali corrispondenti.
+          Per il part-time orizzontale (stesse giornate del full-time ma con orario ridotto), i giorni di ferie sono gli stessi del full-time ma la retribuzione giornaliera è proporzionata all'orario ridotto. Per il part-time verticale (solo alcune giornate nella settimana), i giorni di ferie vengono riproporzionati in base ai giorni effettivamente lavorati. Ad esempio, un part-time a 3 giorni su 5 avrà ferie = 26 x 3/5 = circa 16 giorni. Per il calcolo con il nostro strumento, inserisci la tua RAL effettiva da part-time e le ore settimanali corrispondenti.
         </div>
       </details>
 
@@ -420,31 +420,31 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Le ferie non "scadono" nel senso che si perdono completamente. La legge prevede che due settimane debbano essere godute nell'anno di maturazione e le restanti due settimane entro i 18 mesi successivi. Se il datore di lavoro non le fa fruire entro questi termini, e' passibile di sanzione amministrativa (da 120 a 720 euro per lavoratore), ma il diritto del lavoratore non si estingue automaticamente. Tuttavia, la Corte di Giustizia UE ha stabilito che il datore deve dimostrare di aver messo il lavoratore in condizione di fruire delle ferie. I permessi ROL hanno generalmente scadenze piu' brevi (tipicamente entro il 30 giugno dell'anno successivo, secondo il CCNL) e vengono monetizzati alla scadenza.
+          Le ferie non "scadono" nel senso che si perdono completamente. La legge prevede che due settimane debbano essere godute nell'anno di maturazione e le restanti due settimane entro i 18 mesi successivi. Se il datore di lavoro non le fa fruire entro questi termini, è passibile di sanzione amministrativa (da 120 a 720 euro per lavoratore), ma il diritto del lavoratore non si estingue automaticamente. Tuttavia, la Corte di Giustizia UE ha stabilito che il datore deve dimostrare di aver messo il lavoratore in condizione di fruire delle ferie. I permessi ROL hanno generalmente scadenze più brevi (tipicamente entro il 30 giugno dell'anno successivo, secondo il CCNL) e vengono monetizzati alla scadenza.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Le ferie non godute maturano anche durante malattia o maternita'?
+          Le ferie non godute maturano anche durante malattia o maternità?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Si', le ferie continuano a maturare durante i periodi di malattia, infortunio, maternita' obbligatoria e cassa integrazione ordinaria, poiche' il rapporto di lavoro resta in essere a tutti gli effetti. Durante il congedo parentale facoltativo, invece, le ferie non maturano per i periodi non lavorati. Per quanto riguarda i ROL, la maturazione durante le assenze dipende dalle specifiche previsioni del CCNL applicato, che puo' prevedere la sospensione della maturazione in determinati casi.
+          Sì, le ferie continuano a maturare durante i periodi di malattia, infortunio, maternità obbligatoria e cassa integrazione ordinaria, poiché il rapporto di lavoro resta in essere a tutti gli effetti. Durante il congedo parentale facoltativo, invece, le ferie non maturano per i periodi non lavorati. Per quanto riguarda i ROL, la maturazione durante le assenze dipende dalle specifiche previsioni del CCNL applicato, che può prevedere la sospensione della maturazione in determinati casi.
         </div>
       </details>
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Il datore puo' obbligarmi a consumare le ferie durante il preavviso?
+          Il datore può obbligarmi a consumare le ferie durante il preavviso?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          La giurisprudenza prevalente ritiene che il datore di lavoro non possa imporre unilateralmente il godimento delle ferie durante il periodo di preavviso, perche' preavviso e ferie hanno finalita' diverse: il preavviso serve a garantire al lavoratore la continuita' retributiva durante la ricerca di un nuovo impiego, mentre le ferie servono al recupero delle energie psico-fisiche. Tuttavia, se c'e' un accordo tra le parti, le ferie possono essere fruite durante il preavviso. In assenza di accordo, le ferie residue vengono monetizzate nell'ultima busta paga. E' importante notare che, durante le ferie, il preavviso resta sospeso.
+          La giurisprudenza prevalente ritiene che il datore di lavoro non possa imporre unilateralmente il godimento delle ferie durante il periodo di preavviso, perché preavviso e ferie hanno finalità diverse: il preavviso serve a garantire al lavoratore la continuità retributiva durante la ricerca di un nuovo impiego, mentre le ferie servono al recupero delle energie psico-fisiche. Tuttavia, se c'è un accordo tra le parti, le ferie possono essere fruite durante il preavviso. In assenza di accordo, le ferie residue vengono monetizzate nell'ultima busta paga. È importante notare che, durante le ferie, il preavviso resta sospeso.
         </div>
       </details>
 
@@ -456,7 +456,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Nella parte inferiore della busta paga trovi generalmente una sezione dedicata a ferie e permessi, con le colonne "Maturato", "Goduto" e "Residuo" (o "Saldo"). Le ferie sono espresse in giorni, mentre i ROL e le ex festivita' sono espressi in ore. Il contatore "Residuo" mostra esattamente quanti giorni di ferie e ore di permessi hai a disposizione. Se hai dubbi sulla lettura della busta paga, il nostro calcolatore busta paga ti aiuta a interpretare ogni voce del cedolino. Alcuni software paghe mostrano anche il valore economico delle ferie residue, utile per confrontarlo con il calcolo del nostro strumento.
+          Nella parte inferiore della busta paga trovi generalmente una sezione dedicata a ferie e permessi, con le colonne "Maturato", "Goduto" e "Residuo" (o "Saldo"). Le ferie sono espresse in giorni, mentre i ROL e le ex festività sono espressi in ore. Il contatore "Residuo" mostra esattamente quanti giorni di ferie e ore di permessi hai a disposizione. Se hai dubbi sulla lettura della busta paga, il nostro calcolatore busta paga ti aiuta a interpretare ogni voce del cedolino. Alcuni software paghe mostrano anche il valore economico delle ferie residue, utile per confrontarlo con il calcolo del nostro strumento.
         </div>
       </details>
     </div>

@@ -3,7 +3,7 @@ import type { Lang } from '../../i18n/types';
 import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
-import SelettoreMensilita from '../ui/SelettoreMensilita';
+import SelettoreMensilita from '../ui/Selettoremensilità;
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaStipendio } from '../../lib/irpef-engine';
 import { formatCurrency, formatPercent, formatNumber } from '../../lib/format-it';
@@ -26,7 +26,7 @@ export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
     if (r) setRal(parseInt(r, 10) || 30_000);
     const reg = params.get('regione');
     if (reg) setRegione(reg);
-    const m = params.get('mensilita');
+    const m = params.get('mensilità);
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
     const inail = params.get('inail');
     if (inail) setAliquotaINAIL(parseFloat(inail) || 0.4);
@@ -41,8 +41,8 @@ export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
     url.searchParams.set('ral', String(ral));
     if (regione !== 'LOM') url.searchParams.set('regione', regione);
     else url.searchParams.delete('regione');
-    if (mensilita !== 13) url.searchParams.set('mensilita', String(mensilita));
-    else url.searchParams.delete('mensilita');
+    if (mensilita !== 13) url.searchParams.set('mensilità, String(mensilita));
+    else url.searchParams.delete('mensilità);
     if (aliquotaINAIL !== 0.4) url.searchParams.set('inail', String(aliquotaINAIL));
     else url.searchParams.delete('inail');
     window.history.replaceState({}, '', url.toString());
@@ -302,9 +302,9 @@ export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
                   Nota sul costo orario
                 </p>
                 <p className="mt-1 text-sm text-blue-700 dark:text-blue-400">
-                  Il costo orario di {formatCurrency(risultato.costoOrario)} e' calcolato su {formatNumber(ORE_ANNO_STANDARD)} ore
+                  Il costo orario di {formatCurrency(risultato.costoOrario)} è calcolato su {formatNumber(ORE_ANNO_STANDARD)} ore
                   lavorative annue standard (convenzione internazionale). Questo valore include ferie, permessi e
-                  festivita' gia' retribuite. Il costo effettivo per ora "produttiva" puo' essere
+                  festività già retribuite. Il costo effettivo per ora "produttiva" può essere
                   significativamente superiore, in base al tasso di assenteismo e alle ore effettivamente lavorate.
                 </p>
               </div>

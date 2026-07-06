@@ -15,23 +15,23 @@ const breadcrumbs = [
 const faqs = [
   {
     question: 'Le addizionali regionali e comunali si pagano anche sotto la no tax area?',
-    answer: 'Dipende dalla regione e dal comune di residenza. L\'IRPEF nazionale prevede una no tax area di 8.500 euro, ma le addizionali locali seguono regole proprie. Alcune regioni e comuni prevedono soglie di esenzione (ad esempio, il Lazio esenta i redditi fino a 12.000 euro dall\'addizionale regionale), mentre altre applicano l\'addizionale anche su redditi molto bassi. E\' quindi fondamentale verificare le delibere del proprio comune e della propria regione per sapere se si e\' soggetti al pagamento.',
+    answer: 'Dipende dalla regione e dal comune di residenza. L\'IRPEF nazionale prevede una no tax area di 8.500 euro, ma le addizionali locali seguono regole proprie. Alcune regioni e comuni prevedono soglie di esenzione (ad esempio, il Lazio esenta i redditi fino a 12.000 euro dall\'addizionale regionale), mentre altre applicano l\'addizionale anche su redditi molto bassi. È quindi fondamentale verificare le delibere del proprio comune e della propria regione per sapere se si è soggetti al pagamento.',
   },
   {
     question: 'Come vengono trattenute le addizionali in busta paga?',
-    answer: 'Le addizionali regionali e comunali vengono trattenute in busta paga con modalita\' diverse. L\'addizionale regionale, calcolata sul reddito dell\'anno precedente, viene trattenuta in rate mensili da marzo a gennaio dell\'anno successivo (11 rate). L\'addizionale comunale si divide in due componenti: il saldo dell\'anno precedente (trattenuto in 11 rate da marzo a gennaio dell\'anno successivo) e l\'acconto per l\'anno in corso (trattenuto in 9 rate da marzo a novembre, pari al 30% dell\'addizionale dell\'anno precedente). Questo spiega perche\' le trattenute per addizionali compaiono in busta paga anche nei mesi in cui non si percepiscono redditi particolarmente elevati.',
+    answer: 'Le addizionali regionali e comunali vengono trattenute in busta paga con modalità diverse. L\'addizionale regionale, calcolata sul reddito dell\'anno precedente, viene trattenuta in rate mensili da marzo a gennaio dell\'anno successivo (11 rate). L\'addizionale comunale si divide in due componenti: il saldo dell\'anno precedente (trattenuto in 11 rate da marzo a gennaio dell\'anno successivo) e l\'acconto per l\'anno in corso (trattenuto in 9 rate da marzo a novembre, pari al 30% dell\'addizionale dell\'anno precedente). Questo spiega perché le trattenute per addizionali compaiono in busta paga anche nei mesi in cui non si percepiscono redditi particolarmente elevati.',
   },
   {
     question: 'Posso ridurre le addizionali trasferendo la residenza?',
-    answer: 'Si, in linea di principio. Le addizionali si calcolano in base alla regione e al comune di residenza al 1 gennaio dell\'anno di riferimento. Se trasferisci la residenza in una regione o in un comune con aliquote piu\' basse prima del 1 gennaio, le addizionali dell\'anno successivo saranno calcolate con le nuove aliquote. Tuttavia, il trasferimento di residenza deve essere reale e effettivo: non e\' sufficiente un cambio formale senza un effettivo spostamento del domicilio abituale. Le differenze tra regioni possono essere significative, come illustrato negli esempi di questa guida.',
+    answer: 'Si, in linea di principio. Le addizionali si calcolano in base alla regione e al comune di residenza al 1 gennaio dell\'anno di riferimento. Se trasferisci la residenza in una regione o in un comune con aliquote più basse prima del 1 gennaio, le addizionali dell\'anno successivo saranno calcolate con le nuove aliquote. Tuttavia, il trasferimento di residenza deve essere reale e effettivo: non è sufficiente un cambio formale senza un effettivo spostamento del domicilio abituale. Le differenze tra regioni possono essere significative, come illustrato negli esempi di questa guida.',
   },
   {
     question: 'Le addizionali si applicano anche sulla tredicesima?',
-    answer: 'No. Le addizionali regionali e comunali non vengono calcolate separatamente sulla tredicesima mensilita\'. Esse si calcolano sull\'imponibile fiscale annuo complessivo, che include gia\' tutte le mensilita\' (compresa la tredicesima e l\'eventuale quattordicesima). La tredicesima, quando viene erogata a dicembre, subisce le trattenute per contributi INPS e IRPEF, ma non le addizionali in modo diretto. Le addizionali vengono poi distribuite in rate mensili nell\'anno successivo.',
+    answer: 'No. Le addizionali regionali e comunali non vengono calcolate separatamente sulla tredicesima mensilità. Esse si calcolano sull\'imponibile fiscale annuo complessivo, che include già tutte le mensilità (compresa la tredicesima e l\'eventuale quattordicesima). La tredicesima, quando viene erogata a dicembre, subisce le trattenute per contributi INPS e IRPEF, ma non le addizionali in modo diretto. Le addizionali vengono poi distribuite in rate mensili nell\'anno successivo.',
   },
   {
     question: 'Dove trovo le aliquote aggiornate del mio comune?',
-    answer: 'Le aliquote delle addizionali comunali IRPEF vengono deliberate dai singoli comuni e pubblicate sul portale del Dipartimento delle Finanze del Ministero dell\'Economia (<a href="https://www.finanze.gov.it" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">finanze.gov.it</a>), nella sezione dedicata alla fiscalita\' locale. In alternativa, puoi consultare il sito istituzionale del tuo comune o utilizzare il nostro <a href="/comparatore-regioni/" class="text-brand hover:underline">comparatore regionale</a> per un confronto immediato tra diverse aree geografiche. Le aliquote vengono aggiornate solitamente entro marzo di ogni anno.',
+    answer: 'Le aliquote delle addizionali comunali IRPEF vengono deliberate dai singoli comuni e pubblicate sul portale del Dipartimento delle Finanze del Ministero dell\'Economia (<a href="https://www.finanze.gov.it" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">finanze.gov.it</a>), nella sezione dedicata alla fiscalità locale. In alternativa, puoi consultare il sito istituzionale del tuo comune o utilizzare il nostro <a href="/comparatore-regioni/" class="text-brand hover:underline">comparatore regionale</a> per un confronto immediato tra diverse aree geografiche. Le aliquote vengono aggiornate solitamente entro marzo di ogni anno.',
   },
 ];
 ---
@@ -53,7 +53,7 @@ const faqs = [
       <li><a href="#addizionale-regionale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Regionale</a></li>
       <li><a href="#aliquote-regionali-a-confronto" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Aliquote Regionali a Confronto</a></li>
       <li><a href="#addizionale-comunale" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Addizionale Comunale</a></li>
-      <li><a href="#aliquote-comunali-principali-citta" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Aliquote Comunali: Principali Citta'</a></li>
+      <li><a href="#aliquote-comunali-principali-citta" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Aliquote Comunali: Principali città</a></li>
       <li><a href="#esempio-pratico-confronto" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esempio Pratico di Confronto</a></li>
       <li><a href="#come-vengono-trattenute" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Come Vengono Trattenute</a></li>
       <li><a href="#esenzioni-e-soglie" class="text-gray-600 dark:text-gray-400 hover:text-brand transition-colors">Esenzioni e Soglie</a></li>
@@ -67,13 +67,13 @@ const faqs = [
   <h2 id="cosa-sono-le-addizionali-irpef">Cosa Sono le Addizionali IRPEF</h2>
 
   <p>
-    Le addizionali regionali e comunali IRPEF sono imposte locali che si aggiungono all'IRPEF nazionale. Ogni lavoratore dipendente o pensionato residente in Italia e' tenuto a versarle in proporzione al proprio reddito imponibile. A differenza dell'IRPEF statale, che e' uguale su tutto il territorio nazionale, le addizionali variano in modo significativo da regione a regione e da comune a comune. Questo significa che, a parita' di RAL, due lavoratori residenti in localita' diverse possono ritrovarsi con uno stipendio netto anche sensibilmente diverso.
+    Le addizionali regionali e comunali IRPEF sono imposte locali che si aggiungono all'IRPEF nazionale. Ogni lavoratore dipendente o pensionato residente in Italia è tenuto a versarle in proporzione al proprio reddito imponibile. A differenza dell'IRPEF statale, che è uguale su tutto il territorio nazionale, le addizionali variano in modo significativo da regione a regione e da comune a comune. Questo significa che, a parità di RAL, due lavoratori residenti in località diverse possono ritrovarsi con uno stipendio netto anche sensibilmente diverso.
   </p>
   <p>
-    Le addizionali si calcolano sullo stesso imponibile fiscale utilizzato per l'IRPEF, cioe' la RAL al netto dei contributi INPS a carico del lavoratore. Tuttavia, a differenza dell'IRPEF nazionale, le addizionali <strong>non beneficiano delle detrazioni per lavoro dipendente</strong>: vengono calcolate direttamente sull'imponibile, senza alcuna riduzione. Questo le rende un prelievo proporzionale (o progressivo, nel caso di regioni e comuni con scaglioni) che incide in modo diretto sul netto finale.
+    Le addizionali si calcolano sullo stesso imponibile fiscale utilizzato per l'IRPEF, cioè la RAL al netto dei contributi INPS a carico del lavoratore. Tuttavia, a differenza dell'IRPEF nazionale, le addizionali <strong>non beneficiano delle detrazioni per lavoro dipendente</strong>: vengono calcolate direttamente sull'imponibile, senza alcuna riduzione. Questo le rende un prelievo proporzionale (o progressivo, nel caso di regioni e comuni con scaglioni) che incide in modo diretto sul netto finale.
   </p>
   <p>
-    Per avere un'idea dell'impatto, consideriamo che su un reddito imponibile di 30.000 euro le addizionali possono pesare da circa 400 euro annui nelle aree piu' favorevoli fino a oltre 1.200 euro nelle aree con le aliquote piu' elevate. Una differenza che, su base mensile, puo' tradursi in 50 o 60 euro in piu' o in meno nella busta paga.
+    Per avere un'idea dell'impatto, consideriamo che su un reddito imponibile di 30.000 euro le addizionali possono pesare da circa 400 euro annui nelle aree più favorevoli fino a oltre 1.200 euro nelle aree con le aliquote più elevate. Una differenza che, su base mensile, può tradursi in 50 o 60 euro in più o in meno nella busta paga.
   </p>
 
   <h2 id="base-normativa">Base Normativa</h2>
@@ -82,20 +82,20 @@ const faqs = [
     Le addizionali IRPEF trovano il loro fondamento in due provvedimenti legislativi principali:
   </p>
   <ul>
-    <li><strong>D.Lgs. 28 settembre 1998, n. 360</strong>: istituisce l'addizionale comunale all'IRPEF, attribuendo ai comuni la facolta' di deliberare un'aliquota entro il limite massimo dello 0,8% (successivamente elevato allo 0,9%). Il decreto stabilisce le modalita' di calcolo, i termini per le delibere comunali e le regole per l'applicazione in busta paga.</li>
-    <li><strong>D.Lgs. 15 dicembre 1997, n. 446</strong>: nell'ambito dell'istituzione dell'IRAP, ha introdotto anche l'addizionale regionale all'IRPEF, attribuendo alle regioni la potesta' di fissare l'aliquota entro determinati limiti. L'aliquota base e' stata fissata inizialmente all'1,23%, con la possibilita' per le regioni di incrementarla fino a un massimo del 3,33%.</li>
+    <li><strong>D.Lgs. 28 settembre 1998, n. 360</strong>: istituisce l'addizionale comunale all'IRPEF, attribuendo ai comuni la facoltà di deliberare un'aliquota entro il limite massimo dello 0,8% (successivamente elevato allo 0,9%). Il decreto stabilisce le modalità di calcolo, i termini per le delibere comunali e le regole per l'applicazione in busta paga.</li>
+    <li><strong>D.Lgs. 15 dicembre 1997, n. 446</strong>: nell'ambito dell'istituzione dell'IRAP, ha introdotto anche l'addizionale regionale all'IRPEF, attribuendo alle regioni la potestà di fissare l'aliquota entro determinati limiti. L'aliquota base è stata fissata inizialmente all'1,23%, con la possibilità per le regioni di incrementarla fino a un massimo del 3,33%.</li>
   </ul>
   <p>
-    La <strong>Legge di Bilancio 2026</strong> non ha introdotto modifiche sostanziali alla disciplina delle addizionali locali, confermando il quadro normativo esistente. Le singole regioni e i singoli comuni hanno poi provveduto, con delibere proprie, a fissare le aliquote applicabili per il 2026. E' importante sottolineare che le addizionali sono imposte autonome rispetto all'IRPEF statale: ogni ente locale ha la facolta' di definire scaglioni e aliquote proprie, che non coincidono necessariamente con quelli nazionali.
+    La <strong>Legge di Bilancio 2026</strong> non ha introdotto modifiche sostanziali alla disciplina delle addizionali locali, confermando il quadro normativo esistente. Le singole regioni e i singoli comuni hanno poi provveduto, con delibere proprie, a fissare le aliquote applicabili per il 2026. È importante sottolineare che le addizionali sono imposte autonome rispetto all'IRPEF statale: ogni ente locale ha la facoltà di definire scaglioni e aliquote proprie, che non coincidono necessariamente con quelli nazionali.
   </p>
 
   <h2 id="addizionale-regionale">Addizionale Regionale</h2>
 
   <p>
-    L'addizionale regionale IRPEF e' la componente piu' rilevante tra le imposte locali sul reddito. Ogni regione italiana puo' applicare un'aliquota che va da un minimo dell'1,23% (l'aliquota base fissata dalla legge statale) fino a un massimo del 3,33%. Alcune regioni applicano un'aliquota fissa uguale per tutti i livelli di reddito, mentre altre adottano un sistema progressivo per scaglioni, con aliquote crescenti al crescere del reddito imponibile.
+    L'addizionale regionale IRPEF è la componente più rilevante tra le imposte locali sul reddito. Ogni regione italiana può applicare un'aliquota che va da un minimo dell'1,23% (l'aliquota base fissata dalla legge statale) fino a un massimo del 3,33%. Alcune regioni applicano un'aliquota fissa uguale per tutti i livelli di reddito, mentre altre adottano un sistema progressivo per scaglioni, con aliquote crescenti al crescere del reddito imponibile.
   </p>
   <p>
-    Le regioni a statuto speciale (Sicilia, Sardegna, Valle d'Aosta, Trentino-Alto Adige e Friuli Venezia Giulia) godono di maggiore autonomia in materia fiscale e tendono generalmente ad applicare aliquote piu' contenute. Le regioni del Centro e del Sud, spesso gravate da deficit sanitari, tendono invece ad avere aliquote piu' elevate, perche' parte del gettito dell'addizionale regionale e' destinata a coprire i disavanzi del servizio sanitario regionale.
+    Le regioni a statuto speciale (Sicilia, Sardegna, Valle d'Aosta, Trentino-Alto Adige e Friuli Venezia Giulia) godono di maggiore autonomia in materia fiscale e tendono generalmente ad applicare aliquote più contenute. Le regioni del Centro e del Sud, spesso gravate da deficit sanitari, tendono invece ad avere aliquote più elevate, perché parte del gettito dell'addizionale regionale è destinata a coprire i disavanzi del servizio sanitario regionale.
   </p>
 
   <h2 id="aliquote-regionali-a-confronto">Aliquote Regionali a Confronto</h2>
@@ -159,7 +159,7 @@ const faqs = [
   </div>
 
   <p>
-    Il Lazio e' storicamente una delle regioni con le addizionali piu' elevate d'Italia, a causa dei piani di rientro dal deficit sanitario che hanno imposto l'applicazione delle aliquote massime. Questo si traduce in un prelievo significativamente superiore rispetto alla media nazionale.
+    Il Lazio è storicamente una delle regioni con le addizionali più elevate d'Italia, a causa dei piani di rientro dal deficit sanitario che hanno imposto l'applicazione delle aliquote massime. Questo si traduce in un prelievo significativamente superiore rispetto alla media nazionale.
   </p>
 
   <h3>Campania (progressiva)</h3>
@@ -171,7 +171,7 @@ const faqs = [
   <h3>Friuli Venezia Giulia (progressiva, 2 scaglioni)</h3>
 
   <p>
-    Il Friuli Venezia Giulia rappresenta uno degli esempi piu' virtuosi in Italia. In quanto regione a statuto speciale, applica un'aliquota dello <strong>0,70%</strong> per i redditi fino a 15.000 euro e dell'<strong>1,23%</strong> per la parte eccedente. Si tratta di aliquote tra le piu' basse tra tutte le regioni italiane. Questa differenza si traduce in un risparmio sostanziale rispetto alle regioni con aliquote elevate, come vedremo nell'esempio pratico.
+    Il Friuli Venezia Giulia rappresenta uno degli esempi più virtuosi in Italia. In quanto regione a statuto speciale, applica un'aliquota dello <strong>0,70%</strong> per i redditi fino a 15.000 euro e dell'<strong>1,23%</strong> per la parte eccedente. Si tratta di aliquote tra le più basse tra tutte le regioni italiane. Questa differenza si traduce in un risparmio sostanziale rispetto alle regioni con aliquote elevate, come vedremo nell'esempio pratico.
   </p>
 
   <h3>Riepilogo aliquote regionali selezionate</h3>
@@ -234,19 +234,19 @@ const faqs = [
   </div>
 
   <p>
-    Come si puo' osservare dalla tabella, la forbice tra la regione piu' economica (Friuli Venezia Giulia, con aliquote dallo 0,70% all'1,23%) e quella piu' costosa per i redditi elevati (Lazio, fino al 3,33%) e' molto ampia. Per un reddito imponibile di 40.000 euro, la differenza puo' superare i 700 euro all'anno.
+    Come si può osservare dalla tabella, la forbice tra la regione più economica (Friuli Venezia Giulia, con aliquote dallo 0,70% all'1,23%) e quella più costosa per i redditi elevati (Lazio, fino al 3,33%) è molto ampia. Per un reddito imponibile di 40.000 euro, la differenza può superare i 700 euro all'anno.
   </p>
 
   <h2 id="addizionale-comunale">Addizionale Comunale</h2>
 
   <p>
-    L'addizionale comunale IRPEF e' un'imposta deliberata da ciascun comune italiano, con un'aliquota che puo' variare dallo 0% fino a un massimo dello <strong>0,9%</strong> del reddito imponibile. Alcuni comuni scelgono di applicare un'aliquota fissa, mentre altri adottano un sistema progressivo per scaglioni. Esistono anche comuni che hanno deliberato l'azzeramento dell'addizionale o che prevedono esenzioni per determinate fasce di reddito.
+    L'addizionale comunale IRPEF è un'imposta deliberata da ciascun comune italiano, con un'aliquota che può variare dallo 0% fino a un massimo dello <strong>0,9%</strong> del reddito imponibile. Alcuni comuni scelgono di applicare un'aliquota fissa, mentre altri adottano un sistema progressivo per scaglioni. Esistono anche comuni che hanno deliberato l'azzeramento dell'addizionale o che prevedono esenzioni per determinate fasce di reddito.
   </p>
   <p>
-    A differenza dell'addizionale regionale, il cui impatto e' generalmente maggiore in termini assoluti, l'addizionale comunale puo' sembrare un prelievo contenuto. In realta', sommata all'addizionale regionale, contribuisce in modo significativo al divario di netto tra una citta' e l'altra. E' importante considerarla quando si confrontano offerte di lavoro in localita' diverse o quando si valuta un trasferimento di residenza.
+    A differenza dell'addizionale regionale, il cui impatto è generalmente maggiore in termini assoluti, l'addizionale comunale può sembrare un prelievo contenuto. In realtà, sommata all'addizionale regionale, contribuisce in modo significativo al divario di netto tra una città e l'altra. È importante considerarla quando si confrontano offerte di lavoro in località diverse o quando si valuta un trasferimento di residenza.
   </p>
 
-  <h2 id="aliquote-comunali-principali-citta">Aliquote Comunali: Principali Citta'</h2>
+  <h2 id="aliquote-comunali-principali-citta">Aliquote Comunali: Principali città</h2>
 
   <div class="overflow-x-auto not-prose">
     <table class="w-full text-sm border-collapse">
@@ -298,7 +298,7 @@ const faqs = [
   </div>
 
   <p>
-    Roma applica l'aliquota massima consentita dalla legge (0,9%), il che, sommato alle aliquote regionali elevate del Lazio, rende la Capitale una delle citta' con il prelievo locale complessivo piu' alto d'Italia. All'estremo opposto, Firenze, con un sistema progressivo che parte dallo 0,2% per i redditi piu' bassi, e' tra le grandi citta' con le addizionali comunali piu' contenute per chi ha un reddito medio.
+    Roma applica l'aliquota massima consentita dalla legge (0,9%), il che, sommato alle aliquote regionali elevate del Lazio, rende la Capitale una delle città con il prelievo locale complessivo più alto d'Italia. All'estremo opposto, Firenze, con un sistema progressivo che parte dallo 0,2% per i redditi più bassi, è tra le grandi città con le addizionali comunali più contenute per chi ha un reddito medio.
   </p>
 
   <h2 id="esempio-pratico-confronto">Esempio Pratico di Confronto</h2>
@@ -310,7 +310,7 @@ const faqs = [
   <h3>Passo 1: calcolo dell'imponibile fiscale</h3>
 
   <p>
-    Per entrambi i lavoratori, il primo passo e' sottrarre i contributi INPS dalla RAL:
+    Per entrambi i lavoratori, il primo passo è sottrarre i contributi INPS dalla RAL:
   </p>
   <ul>
     <li><strong>RAL:</strong> 35.000 &euro;</li>
@@ -318,7 +318,7 @@ const faqs = [
     <li><strong>Imponibile fiscale:</strong> 35.000 &minus; 3.216,50 = <strong>31.783,50 &euro;</strong></li>
   </ul>
   <p>
-    L'imponibile fiscale e' identico per entrambi, perche' i contributi INPS non dipendono dalla residenza. Le differenze emergono nel calcolo delle addizionali.
+    L'imponibile fiscale è identico per entrambi, perché i contributi INPS non dipendono dalla residenza. Le differenze emergono nel calcolo delle addizionali.
   </p>
 
   <h3>Passo 2: addizionali per il residente nel Lazio (Roma)</h3>
@@ -401,7 +401,7 @@ const faqs = [
   </div>
 
   <p>
-    Il lavoratore residente a Roma paga <strong>circa 378 euro in piu' all'anno</strong> di addizionali rispetto al collega residente a Udine, a parita' di RAL. Su base mensile (calcolando 13 mensilita'), la differenza si traduce in circa <strong>29 euro al mese</strong> di netto in meno. Questa cifra, apparentemente contenuta, si accumula nel tempo: su 10 anni di carriera, la differenza supera i 3.700 euro.
+    Il lavoratore residente a Roma paga <strong>circa 378 euro in più all'anno</strong> di addizionali rispetto al collega residente a Udine, a parità di RAL. Su base mensile (calcolando 13 mensilità), la differenza si traduce in circa <strong>29 euro al mese</strong> di netto in meno. Questa cifra, apparentemente contenuta, si accumula nel tempo: su 10 anni di carriera, la differenza supera i 3.700 euro.
   </p>
   <p>
     Per verificare l'impatto delle addizionali sulla tua situazione specifica, utilizza il nostro <a href="/comparatore-regioni/">comparatore regionale</a>, che permette di confrontare il netto tra diverse regioni e comuni inserendo la tua RAL.
@@ -410,16 +410,16 @@ const faqs = [
   <h2 id="come-vengono-trattenute">Come Vengono Trattenute in Busta Paga</h2>
 
   <p>
-    Le addizionali non vengono trattenute nello stesso modo dell'IRPEF. Mentre l'IRPEF viene calcolata e trattenuta mensilmente dal datore di lavoro, le addizionali seguono un meccanismo di <strong>saldo e acconto</strong> che si distribuisce su piu' mesi.
+    Le addizionali non vengono trattenute nello stesso modo dell'IRPEF. Mentre l'IRPEF viene calcolata e trattenuta mensilmente dal datore di lavoro, le addizionali seguono un meccanismo di <strong>saldo e acconto</strong> che si distribuisce su più mesi.
   </p>
   <p>
-    Per l'<strong>addizionale regionale</strong>, il saldo relativo all'anno precedente viene trattenuto in <strong>11 rate mensili</strong>, da marzo dell'anno corrente a gennaio dell'anno successivo. Non e' previsto un meccanismo di acconto: si paga solo il saldo definitivo, calcolato sulla base del reddito effettivo dell'anno precedente.
+    Per l'<strong>addizionale regionale</strong>, il saldo relativo all'anno precedente viene trattenuto in <strong>11 rate mensili</strong>, da marzo dell'anno corrente a gennaio dell'anno successivo. Non è previsto un meccanismo di acconto: si paga solo il saldo definitivo, calcolato sulla base del reddito effettivo dell'anno precedente.
   </p>
   <p>
-    Per l'<strong>addizionale comunale</strong>, il meccanismo e' piu' articolato. Il saldo dell'anno precedente viene trattenuto in 11 rate (da marzo a gennaio dell'anno successivo), mentre l'acconto per l'anno corrente, pari al 30% dell'addizionale dell'anno precedente, viene trattenuto in 9 rate (da marzo a novembre). Questo significa che nei mesi da marzo a novembre il lavoratore si trova a pagare sia il saldo dell'anno precedente sia l'acconto dell'anno in corso.
+    Per l'<strong>addizionale comunale</strong>, il meccanismo è più articolato. Il saldo dell'anno precedente viene trattenuto in 11 rate (da marzo a gennaio dell'anno successivo), mentre l'acconto per l'anno corrente, pari al 30% dell'addizionale dell'anno precedente, viene trattenuto in 9 rate (da marzo a novembre). Questo significa che nei mesi da marzo a novembre il lavoratore si trova a pagare sia il saldo dell'anno precedente sia l'acconto dell'anno in corso.
   </p>
   <p>
-    In caso di <strong>cessazione del rapporto di lavoro</strong>, il datore di lavoro e' tenuto a trattenere tutte le rate residue nell'ultima busta paga, il che puo' generare una trattenuta piu' consistente del solito.
+    In caso di <strong>cessazione del rapporto di lavoro</strong>, il datore di lavoro è tenuto a trattenere tutte le rate residue nell'ultima busta paga, il che può generare una trattenuta più consistente del solito.
   </p>
 
   <h2 id="esenzioni-e-soglie">Esenzioni e Soglie di Esenzione</h2>
@@ -434,7 +434,7 @@ const faqs = [
     <li><strong>Milano:</strong> esenzione per redditi fino a 21.000 euro per determinate categorie di contribuenti.</li>
   </ul>
   <p>
-    E' fondamentale verificare le delibere aggiornate del proprio comune e della propria regione, perche' le soglie di esenzione possono cambiare di anno in anno. Il portale del Dipartimento delle Finanze del Ministero dell'Economia pubblica l'elenco completo delle aliquote e delle esenzioni deliberate da ogni ente locale.
+    È fondamentale verificare le delibere aggiornate del proprio comune e della propria regione, perché le soglie di esenzione possono cambiare di anno in anno. Il portale del Dipartimento delle Finanze del Ministero dell'Economia pubblica l'elenco completo delle aliquote e delle esenzioni deliberate da ogni ente locale.
   </p>
 
   <h2 id="strumenti-utili">Strumenti Utili</h2>
@@ -446,7 +446,7 @@ const faqs = [
   <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
     <a href="/comparatore-regioni/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
       <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Confronto tra Regioni</h3>
-      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Confronta le addizionali regionali e comunali tra diverse aree geografiche a parita' di RAL.</p>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Confronta le addizionali regionali e comunali tra diverse aree geografiche a parità di RAL.</p>
     </a>
     <a href="/" class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand/30">
       <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-brand transition-colors">Calcolo Stipendio Netto</h3>

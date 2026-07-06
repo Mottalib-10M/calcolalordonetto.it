@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Lang } from '../../i18n/types';
 import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
-import SelettoreMensilita from '../ui/SelettoreMensilita';
+import SelettoreMensilita from '../ui/Selettoremensilità;
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaFeriePermessi } from '../../lib/irpef-engine';
 import { formatCurrency, formatNumber, formatPercent } from '../../lib/format-it';
@@ -28,7 +28,7 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
     if (op) setOrePermessi(parseInt(op, 10) || 16);
     const os = params.get('ore');
     if (os) setOreSettimanali(parseInt(os, 10) || 40);
-    const m = params.get('mensilita');
+    const m = params.get('mensilità);
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
     if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
@@ -45,8 +45,8 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
     else url.searchParams.delete('permessi');
     if (oreSettimanali !== 40) url.searchParams.set('ore', String(oreSettimanali));
     else url.searchParams.delete('ore');
-    if (mensilita !== 13) url.searchParams.set('mensilita', String(mensilita));
-    else url.searchParams.delete('mensilita');
+    if (mensilita !== 13) url.searchParams.set('mensilità, String(mensilita));
+    else url.searchParams.delete('mensilità);
     window.history.replaceState({}, '', url.toString());
   }, [ral, giorniFerie, orePermessi, oreSettimanali, mensilita]);
 
@@ -97,7 +97,7 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
             min={0}
             max={200}
             suffix="h"
-            helpText="Ore di ROL/ex festivita' residue"
+            helpText="Ore di ROL/ex festività residue"
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
@@ -193,7 +193,7 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
             <div className="space-y-1">
               <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-800">
                 <div>
-                  <span className="text-gray-900 dark:text-white font-medium">Indennita' ferie non godute</span>
+                  <span className="text-gray-900 dark:text-white font-medium">indennità ferie non godute</span>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     {formatCurrency(risultato.retribuzioneGiornaliera)} x {giorniFerie} giorni
                   </p>
@@ -202,7 +202,7 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
               </div>
               <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-800">
                 <div>
-                  <span className="text-gray-900 dark:text-white font-medium">Indennita' permessi non goduti</span>
+                  <span className="text-gray-900 dark:text-white font-medium">indennità permessi non goduti</span>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     {formatCurrency(risultato.retribuzioneOraria)} x {orePermessi} ore
                   </p>
@@ -251,10 +251,10 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
                   Nota importante sulla tassazione
                 </p>
                 <p className="mt-1 text-sm text-amber-700 dark:text-amber-400">
-                  L'indennita' per ferie e permessi non goduti e' soggetta a <strong>tassazione ordinaria</strong> (non
+                  L'indennità per ferie e permessi non goduti è soggetta a <strong>tassazione ordinaria</strong> (non
                   separata), come stabilito dall'art. 51 del TUIR. Viene quindi cumulata con il reddito del mese in
                   cui viene erogata, e l'IRPEF viene calcolata sulla base dell'aliquota marginale del lavoratore.
-                  L'importo netto effettivo puo' variare in base al conguaglio fiscale di fine anno.
+                  L'importo netto effettivo può variare in base al conguaglio fiscale di fine anno.
                 </p>
               </div>
             </div>

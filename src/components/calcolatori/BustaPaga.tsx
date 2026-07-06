@@ -305,8 +305,8 @@ export default function BustaPaga({ lang = 'it' }: { lang?: Lang }) {
                 successivo.
               </li>
               <li>
-                Nei mesi di gennaio e febbraio la busta paga puo' essere
-                leggermente piu' alta, perche' le addizionali dell'anno
+                Nei mesi di gennaio e febbraio la busta paga può essere
+                leggermente più alta, perché le addizionali dell'anno
                 precedente sono terminate e quelle nuove non sono ancora
                 iniziate.
               </li>
@@ -315,7 +315,7 @@ export default function BustaPaga({ lang = 'it' }: { lang?: Lang }) {
                 regionali e comunali.
               </li>
               <li>
-                L'addizionale comunale utilizzata e' la media nazionale
+                L'addizionale comunale utilizzata è la media nazionale
                 (0,8%). Verifica il tuo comune per il valore esatto.
               </li>
             </ul>

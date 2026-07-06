@@ -143,7 +143,7 @@ export default function ComparatoreRegioni({ lang = 'it' }: { lang?: Lang }) {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-5">
               <p className="text-sm text-green-700 dark:text-green-400 font-medium mb-1">
-                Regione piu' conveniente
+                Regione più conveniente
               </p>
               <p className="text-2xl font-bold text-green-700 dark:text-green-300">
                 {bestRegion?.nome}
@@ -154,7 +154,7 @@ export default function ComparatoreRegioni({ lang = 'it' }: { lang?: Lang }) {
             </div>
             <div className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-5">
               <p className="text-sm text-red-700 dark:text-red-400 font-medium mb-1">
-                Regione piu' costosa
+                Regione più costosa
               </p>
               <p className="text-2xl font-bold text-red-700 dark:text-red-300">
                 {worstRegion?.nome}

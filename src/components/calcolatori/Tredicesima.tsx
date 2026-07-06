@@ -51,7 +51,7 @@ export default function Tredicesima({ lang = 'it' }: { lang?: Lang }) {
     // Imponibile della tredicesima
     const imponibileTredicesima = tredicesimeLorda - inpsTredicesima;
 
-    // La tredicesima e' tassata all'aliquota marginale SENZA detrazione lavoro dipendente
+    // La tredicesima è tassata all'aliquota marginale SENZA detrazione lavoro dipendente
     const aliquotaMarg = aliquotaMarginale(imponibileAnnuo);
 
     // Calcolo IRPEF sulla tredicesima al marginale
@@ -179,7 +179,7 @@ export default function Tredicesima({ lang = 'it' }: { lang?: Lang }) {
               </svg>
               <div>
                 <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                  Perche la tredicesima e' tassata di piu?
+                  Perche la tredicesima è tassata di piu?
                 </p>
                 <p className="mt-1 text-sm text-amber-700 dark:text-amber-400">
                   Sulla tredicesima non si applicano le detrazioni da lavoro dipendente ne il trattamento integrativo.
