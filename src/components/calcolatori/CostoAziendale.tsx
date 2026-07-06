@@ -3,7 +3,7 @@ import type { Lang } from '../../i18n/types';
 import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
 import SelettoreRegione from '../ui/SelettoreRegione';
-import SelettoreMensilita from '../ui/Selettoremensilità;
+import SelettoreMensilita from '../ui/SelettoreMensilita';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaStipendio } from '../../lib/irpef-engine';
 import { formatCurrency, formatPercent, formatNumber } from '../../lib/format-it';

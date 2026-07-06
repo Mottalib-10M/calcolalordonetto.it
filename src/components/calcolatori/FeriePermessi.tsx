@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Lang } from '../../i18n/types';
 import { t } from '../../i18n/index';
 import CampoInput from '../ui/CampoInput';
-import SelettoreMensilita from '../ui/Selettoremensilità;
+import SelettoreMensilita from '../ui/SelettoreMensilita';
 import BarraScomposizione from '../ui/BarraScomposizione';
 import { calcolaFeriePermessi } from '../../lib/irpef-engine';
 import { formatCurrency, formatNumber, formatPercent } from '../../lib/format-it';
