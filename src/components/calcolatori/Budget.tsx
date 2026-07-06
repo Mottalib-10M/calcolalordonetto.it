@@ -240,7 +240,7 @@ export default function Budget({ lang = 'it' }: { lang?: Lang }) {
               Personali: {formatPercent(risultato.percentualePersonali)}
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: '#22C55È }} />
+              <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: '#22C55E }} />
               Risparmio: {formatPercent(risultato.percentualeRisparmio)}
             </span>
             {pctRes > 0 && (
@@ -340,7 +340,7 @@ export default function Budget({ lang = 'it' }: { lang?: Lang }) {
                   className="absolute inset-y-0 left-0 rounded-full transition-all duration-500"
                   style={{
                     width: `${Math.min(pctRisp, 100)}%`,
-                    backgroundColor: pctRisp >= 20 ? '#22C55È : '#F59E0B',
+                    backgroundColor: pctRisp >= 20 ? '#22C55E : '#F59E0B',
                   }}
                 />
                 <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-white mix-blend-difference">
