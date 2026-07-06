@@ -26,7 +26,7 @@ export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
     if (h) setOreSettimanali(parseInt(h, 10) || 40);
     const w = params.get('settimane');
     if (w) setSettimaneAnno(parseInt(w, 10) || 52);
-    if (params.get('modalità) === 'oraria') {
+    if (params.get('modalita') === 'oraria') {
       setModalita('da-oraria');
       const t = params.get('tariffa');
       if (t) setTariffa(parseFloat(t) || 15);
@@ -41,10 +41,10 @@ export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
     const url = new URL(window.location.href);
     if (modalita === 'da-ral') {
       url.searchParams.set('ral', String(ral));
-      url.searchParams.delete('modalità);
+      url.searchParams.delete('modalita');
       url.searchParams.delete('tariffa');
     } else {
-      url.searchParams.set('modalità, 'oraria');
+      url.searchParams.set('modalita', 'oraria');
       url.searchParams.set('tariffa', String(tariffa));
       url.searchParams.delete('ral');
     }

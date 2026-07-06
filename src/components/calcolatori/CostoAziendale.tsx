@@ -26,7 +26,7 @@ export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
     if (r) setRal(parseInt(r, 10) || 30_000);
     const reg = params.get('regione');
     if (reg) setRegione(reg);
-    const m = params.get('mensilità);
+    const m = params.get('mensilita');
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
     const inail = params.get('inail');
     if (inail) setAliquotaINAIL(parseFloat(inail) || 0.4);
@@ -41,8 +41,8 @@ export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
     url.searchParams.set('ral', String(ral));
     if (regione !== 'LOM') url.searchParams.set('regione', regione);
     else url.searchParams.delete('regione');
-    if (mensilita !== 13) url.searchParams.set('mensilità, String(mensilita));
-    else url.searchParams.delete('mensilità);
+    if (mensilita !== 13) url.searchParams.set('mensilita', String(mensilita));
+    else url.searchParams.delete('mensilita');
     if (aliquotaINAIL !== 0.4) url.searchParams.set('inail', String(aliquotaINAIL));
     else url.searchParams.delete('inail');
     window.history.replaceState({}, '', url.toString());

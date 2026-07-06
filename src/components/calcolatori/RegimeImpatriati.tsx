@@ -218,7 +218,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
               </svg>
               <div>
                 <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">
-                  {lang === 'en' ? 'Eligibility requirements' : 'Requisiti di eleggibilità}
+                  {lang === 'en' ? 'Eligibility requirements' : 'Requisiti di eleggibilità'}
                 </p>
                 <ul className="mt-2 text-sm text-amber-700 dark:text-amber-400 space-y-1 list-disc list-inside">
                   <li>{lang === 'en' ? 'Must not have been a tax resident in Italy for the 3 preceding tax periods' : 'Non essere stato residente fiscalmente in Italia nei 3 periodi d\'imposta precedenti'}</li>

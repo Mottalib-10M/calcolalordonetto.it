@@ -20,7 +20,7 @@ export default function StipendioLordo({ lang = 'it' }: { lang?: Lang }) {
     if (n) setNettoTarget(parseInt(n, 10) || 2_000);
     const r = params.get('regione');
     if (r) setRegione(r.toUpperCase());
-    const m = params.get('mensilità);
+    const m = params.get('mensilita');
     if (m) {
       const mv = parseInt(m, 10);
       if (mv === 12 || mv === 13 || mv === 14) setMensilita(mv);
@@ -35,8 +35,8 @@ export default function StipendioLordo({ lang = 'it' }: { lang?: Lang }) {
       const url = new URL(window.location.href);
       url.searchParams.set('netto', String(n));
       url.searchParams.set('regione', r);
-      if (m !== 13) url.searchParams.set('mensilità, String(m));
-      else url.searchParams.delete('mensilità);
+      if (m !== 13) url.searchParams.set('mensilita', String(m));
+      else url.searchParams.delete('mensilita');
       window.history.replaceState({}, '', url.toString());
     },
     [],

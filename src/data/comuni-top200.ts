@@ -74,7 +74,7 @@ export const COMUNI: Comune[] = [
   // 22
   { nome: 'Reggio Emilia', slug: 'reggio-emilia', provincia: 'RE', regione: 'emilia-romagna', aliquota: 0.006 },
   // 23
-  { nome: 'Perugià, slug: 'perugià, provincia: 'PG', regione: 'umbria', aliquota: 0.008 },
+  { nome: 'Perugia', slug: 'perugia', provincia: 'PG', regione: 'umbria', aliquota: 0.008 },
   // 24
   { nome: 'Livorno', slug: 'livorno', provincia: 'LI', regione: 'toscana', aliquota: 0.007 },
   // 25
@@ -82,7 +82,7 @@ export const COMUNI: Comune[] = [
   // 26
   { nome: 'Cagliari', slug: 'cagliari', provincia: 'CA', regione: 'sardegna', aliquota: 0.006 },
   // 27
-  { nome: 'Foggià, slug: 'foggià, provincia: 'FG', regione: 'puglia', aliquota: 0.008 },
+  { nome: 'Foggia', slug: 'foggia', provincia: 'FG', regione: 'puglia', aliquota: 0.008 },
   // 28
   { nome: 'Rimini', slug: 'rimini', provincia: 'RN', regione: 'emilia-romagna', aliquota: 0.008 },
   // 29
