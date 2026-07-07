@@ -4,8 +4,8 @@ import { SITE } from '../config';
 import { canonicalURL } from '../lib/seo';
 import StipendioLordo from '../components/calcolatori/StipendioLordo';
 
-const title = "Da Netto a Lordo 2026: Calcola la RAL per il Tuo Stipendio";
-const description = "Quale RAL chiedere per il netto che vuoi? Inserisci lo stipendio netto desiderato e scopri il lordo annuo necessario. Calcolo inverso con IRPEF e INPS 2026.";
+const title = "Da Netto a Lordo 2026: Calcola la RAL dallo Stipendio Netto";
+const description = "Quanto lordo serve per il tuo netto? Calcola la RAL necessaria partendo dallo stipendio netto desiderato. Calcolo inverso 2026 con IRPEF, INPS e detrazioni.";
 const canonical = canonicalURL('/calcolo-stipendio-lordo/');
 
 const breadcrumbs = [
@@ -19,7 +19,7 @@ const faqs = [
   { question: 'La RAL include i contributi a carico del datore di lavoro?', answer: 'No. La RAL (Retribuzione Annua Lorda) è il tuo stipendio lordo prima delle trattenute a tuo carico (INPS dipendente e IRPEF). Il costo azienda è più alto perché include anche i contributi INPS a carico del datore (circa 23,81%) e il TFR (circa 6,91%). Il calcolatore mostra anche il costo azienda nella sezione di dettaglio.' },
   { question: 'perché il netto effettivo potrebbe differire dal target?', answer: 'Il calcolatore arrotonda la RAL ai 100 euro più vicini per proporre una cifra realistica e negoziabile. Questo arrotondamento può causare una differenza di pochi euro nel netto mensile risultante. In pratica, in sede di trattativa si ragiona sempre in termini di RAL arrotondata.' },
   { question: 'Posso usare questo calcolo per valutare un\'offerta di lavoro?', answer: 'Assolutamente sì. Se sai quanto ti serve al mese per le tue spese, puoi calcolare la RAL minima da accettare. Tieni presente che nella valutazione complessiva dovresti considerare anche benefit aziendali (buoni pasto, auto aziendale, welfare), il TFR che maturi ogni anno, e le prospettive di crescita.' },
-  { question: 'Come influisce il cuneo fiscale 2026 sul calcolo inverso?', answer: 'Il cuneo fiscale 2026 prevede una riduzione strutturale dei contributi INPS a carico del lavoratore per redditi fino a 35.000 euro lordi annui. Questo significa che, per i redditi che rientrano in questa fascia, il netto mensile è più alto rispetto al calcolo standard senza agevolazioni. Di conseguenza, il calcolo inverso restituisce una RAL necessaria inferiore: per ottenere, ad esempio, 1.500 euro netti al mese, serve una RAL più bassa rispetto a quanto sarebbe necessario senza la riduzione del cuneo. Attenzione però alla soglia dei 35.000 euro: superato questo limite, il beneficio si azzera completamente e il rapporto netto-lordo torna a seguire le regole ordinarie, con un impatto significativo sulla RAL richiesta. Il nostro calcolatore tiene conto automaticamente di questa agevolazione nel determinare la RAL necessaria.' },
+  { question: 'Come influisce il cuneo fiscale 2026 sul calcolo inverso?', answer: 'In fase di negoziazione salariale, il cuneo fiscale 2026 gioca a tuo favore se il netto desiderato corrisponde a una RAL sotto i 40.000 euro: la detrazione aggiuntiva e la somma esente riducono la RAL necessaria. Sopra i 40.000 euro il beneficio scompare e serve un lordo sensibilmente più alto. Il calcolatore ne tiene conto automaticamente. Approfondisci nella <a href="/guide/cuneo-fiscale-2026/">guida al cuneo fiscale 2026</a>.' },
   { question: 'Qual è la differenza tra costo azienda e RAL?', answer: 'La RAL (Retribuzione Annua Lorda) è lo stipendio lordo del dipendente, cioè l\'importo su cui vengono calcolate le trattenute a carico del lavoratore (contributi INPS dipendente, IRPEF, addizionali). Il costo azienda, invece, è la spesa complessiva che il datore di lavoro sostiene per quel dipendente: include la RAL, i contributi INPS a carico del datore (circa il 23,81% della RAL), il TFR maturato (circa il 6,91%), l\'INAIL e altri oneri accessori. In pratica, il costo azienda è mediamente superiore del 30-35% rispetto alla RAL. Ad esempio, una RAL di 30.000 euro corrisponde a un costo azienda di circa 39.000-40.000 euro. Questa distinzione è importante nella negoziazione: l\'azienda ragiona in termini di costo azienda, mentre il candidato ragiona in termini di RAL o di netto mensile.' },
   { question: 'Come negoziare lo stipendio usando il calcolo inverso?', answer: 'Il calcolo inverso è uno strumento prezioso per prepararsi alla negoziazione salariale. Ecco come usarlo al meglio: innanzitutto, calcola le tue spese mensili fisse (affitto, bollette, alimentari, trasporti, risparmio) per determinare il netto minimo di cui hai bisogno. Poi, usa il calcolatore per tradurre quel netto nella RAL corrispondente, selezionando la tua regione di residenza e il numero di mensilita previsto dal CCNL dell\'azienda. Aggiungi un margine del 5-10% alla RAL risultante per avere spazio di trattativa. In sede di colloquio, presenta la tua richiesta in termini di RAL (non di netto), perché è il linguaggio che le aziende utilizzano. Infine, ricorda di valutare anche i benefit: se l\'azienda offre buoni pasto da 8 euro al giorno, questo equivale a circa 1.760 euro netti in più all\'anno, che potresti sottrarre dal tuo fabbisogno di netto mensile prima di calcolare la RAL necessaria.' },
 ];
@@ -153,44 +153,17 @@ const faqs = [
           vantaggiosa.
         </li>
       </ul>
-      <h3>Il ruolo del cuneo fiscale nel 2026</h3>
+      <h3>Il ruolo del cuneo fiscale nel calcolo inverso</h3>
       <p>
-        Il <strong>cuneo fiscale</strong> rappresenta la differenza tra il costo
-        totale sostenuto dal datore di lavoro e il netto percepito dal
-        lavoratore. In Italia, il cuneo fiscale è storicamente tra i più alti
-        d'Europa, attestandosi intorno al 45-47% per il lavoratore medio. Questo
-        significa che per ogni 100 euro di costo azienda, il dipendente ne
-        percepisce in tasca circa 53-55.
+        Il cuneo fiscale 2026 riduce la RAL necessaria per raggiungere un dato netto
+        mensile, soprattutto per i redditi fino a 40.000 euro. Grazie alla somma esente
+        (fino a 20.000 euro di reddito) e alla detrazione aggiuntiva (fino a 1.000 euro
+        annui tra 20.001 e 32.000 euro), oggi serve una RAL inferiore rispetto al passato
+        per ottenere lo stesso netto. Sopra i 40.000 euro il beneficio si azzera.
       </p>
       <p>
-        Nel 2026, il governo ha confermato e reso strutturale la riduzione del
-        cuneo contributivo introdotta negli anni precedenti. Questa misura riduce
-        i contributi INPS a carico del lavoratore per i redditi fino a 35.000
-        euro, generando un aumento del netto mensile che può arrivare fino a
-        circa 100 euro al mese. Il beneficio si riduce gradualmente per i
-        redditi tra 25.000 e 35.000 euro e si azzera completamente sopra questa
-        soglia.
-      </p>
-      <p>
-        Per il calcolo inverso, il cuneo fiscale ha un impatto diretto: grazie
-        alla riduzione contributiva, per i redditi medio-bassi la RAL necessaria
-        per raggiungere un dato netto è inferiore rispetto a quanto sarebbe
-        senza questa agevolazione. In altre parole, se desideri 1.500 euro netti
-        al mese, oggi ti basta una RAL più bassa rispetto a qualche anno fa.
-        Questo effetto, tuttavia, si esaurisce superando i 35.000 euro di
-        reddito: oltre questa soglia, il rapporto netto-lordo torna a seguire le
-        regole ordinarie, con aliquote contributive piene e la sola progressività
-        IRPEF a determinare il netto.
-      </p>
-      <p>
-        Comprendere il funzionamento del cuneo fiscale è fondamentale per
-        negoziare con consapevolezza. Se il tuo obiettivo di netto mensile si
-        colloca nella fascia coperta dalla riduzione contributiva, potresti
-        ottenere il risultato desiderato con una RAL ragionevolmente accessibile.
-        Se invece punti a un netto più elevato, dovrai mettere in conto
-        l'effetto combinato di aliquote IRPEF più alte e contributi pieni, che
-        rendono il passaggio da lordo a netto sempre meno favorevole
-        all'aumentare del reddito.
+        Per tutti i dettagli sul funzionamento, consulta la
+        <a href="/guide/cuneo-fiscale-2026/">guida completa al cuneo fiscale 2026</a>.
       </p>
     </div>
   </Fragment>
@@ -347,7 +320,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Il cuneo fiscale 2026 prevede una riduzione strutturale dei contributi INPS a carico del lavoratore per redditi fino a 35.000 euro lordi annui. Questo significa che, per i redditi che rientrano in questa fascia, il netto mensile è più alto rispetto al calcolo standard senza agevolazioni. Di conseguenza, il calcolo inverso restituisce una RAL necessaria inferiore: per ottenere, ad esempio, 1.500 euro netti al mese, serve una RAL più bassa rispetto a quanto sarebbe necessario senza la riduzione del cuneo. Attenzione però alla soglia dei 35.000 euro: superato questo limite, il beneficio si azzera completamente e il rapporto netto-lordo torna a seguire le regole ordinarie, con un impatto significativo sulla RAL richiesta. Il nostro calcolatore tiene conto automaticamente di questa agevolazione nel determinare la RAL necessaria.
+          In fase di negoziazione salariale, il cuneo fiscale 2026 gioca a tuo favore se il netto desiderato corrisponde a una RAL sotto i 40.000 euro: la detrazione aggiuntiva e la somma esente riducono la RAL necessaria. Sopra i 40.000 euro il beneficio scompare e serve un lordo sensibilmente più alto. Il calcolatore ne tiene conto automaticamente. Approfondisci nella <a href="/guide/cuneo-fiscale-2026/" class="text-brand hover:underline">guida al cuneo fiscale 2026</a>.
         </div>
       </details>
 

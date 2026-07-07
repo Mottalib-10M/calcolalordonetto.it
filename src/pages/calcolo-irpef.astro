@@ -4,8 +4,8 @@ import { SITE } from '../config';
 import { canonicalURL } from '../lib/seo';
 import IRPEF from '../components/calcolatori/IRPEF';
 
-const title = 'Calcolo IRPEF 2026: Aliquote 23%, 35%, 43% e Detrazioni';
-const description = "Inserisci il reddito e calcola l'IRPEF scaglione per scaglione: 23% fino a 28.000, 35% fino a 50.000, 43% oltre. Detrazioni, addizionali e aliquota effettiva.";
+const title = 'Calcolo IRPEF 2026: Scaglioni 23%, 33%, 43% e Detrazioni';
+const description = "Calcola l'IRPEF 2026 per scaglione: 23% fino a 28.000\u20AC, 33% fino a 50.000\u20AC, 43% oltre. Detrazioni lavoro dipendente, addizionali regionali e aliquota effettiva.";
 const canonical = canonicalURL('/calcolo-irpef/');
 
 const breadcrumbs = [
@@ -17,7 +17,7 @@ const faqs = [
   { question: 'Qual è la differenza tra IRPEF lorda e IRPEF netta?', answer: 'L\'IRPEF lorda è l\'imposta calcolata applicando le aliquote progressive al tuo reddito imponibile. L\'IRPEF netta si ottiene sottraendo le detrazioni spettanti (lavoro dipendente, cuneo fiscale, carichi familiari). È l\'IRPEF netta che viene effettivamente trattenuta dalla busta paga.' },
   { question: 'cos\'è l\'aliquota marginale e perché è importante?', answer: 'L\'aliquota marginale indica la percentuale di tassazione applicata all\'ultimo euro guadagnato. Per esempio, se il tuo reddito supera i 28.000 euro, ogni euro aggiuntivo viene tassato al 33%. Questo è fondamentale per valutare il reale impatto netto di un aumento di stipendio o di un bonus.' },
   { question: 'Cosa sono le addizionali regionali e comunali?', answer: 'Sono imposte aggiuntive sull\'IRPEF dovute alla regione e al comune di residenza. L\'addizionale regionale varia dall\'1,23% al 3,33% a seconda della regione (il Lazio e la Campania sono tra le più care). L\'addizionale comunale va dallo 0% allo 0,9%. Entrambe sono calcolate sull\'imponibile fiscale e vengono trattenute in 11 rate mensili, generalmente da marzo a gennaio.' },
-  { question: 'Come funziona il cuneo fiscale nel 2026?', answer: 'Dal 2025 il taglio contributivo è stato sostituito da un sistema a due livelli. Per redditi fino a 20.000 euro, una quota del reddito diventa esente da tassazione (dal 4,8% al 7,1% a seconda della fascia). Per redditi tra 20.001 e 32.000 euro, spetta una detrazione IRPEF fissa di 1.000 euro/anno. Tra 32.001 e 40.000 euro la detrazione si riduce gradualmente fino ad azzerarsi.' },
+  { question: 'Come interagisce il cuneo fiscale 2026 con gli scaglioni IRPEF?', answer: 'Il cuneo fiscale agisce sull\'IRPEF in modo diverso a seconda dello scaglione: sotto i 20.000 euro riduce direttamente la base imponibile (somma esente dal 4,8% al 7,1%), abbassando l\'IRPEF lorda calcolata al 23%. Tra 20.001 e 40.000 euro opera come detrazione aggiuntiva fino a 1.000 euro, sottratta dall\'IRPEF netta dopo le detrazioni ordinarie. Non modifica le aliquote degli scaglioni, ma ne attenua l\'impatto. Approfondisci nella <a href="/guide/cuneo-fiscale-2026/">guida al cuneo fiscale</a>.' },
   { question: 'Chi ha diritto al trattamento integrativo (ex bonus Renzi)?', answer: 'Il trattamento integrativo di 1.200 euro/anno (100 euro/mese) spetta ai lavoratori dipendenti con reddito fino a 15.000 euro che abbiano un\'imposta lorda positiva. Per redditi tra 15.001 e 28.000 euro, il bonus spetta in misura ridotta solo se la somma delle detrazioni supera l\'IRPEF lorda. Oltre i 28.000 euro non spetta alcun importo.' },
   { question: 'Come cambiano gli scaglioni IRPEF dal 2024 al 2026?', answer: 'Il percorso di semplificazione dell\'IRPEF ha portato a una progressiva riduzione del numero di scaglioni. Nel 2023 erano ancora in vigore quattro scaglioni (23%, 25%, 35%, 43%). Dal 2024 si è passati a tre scaglioni: 23% fino a 28.000 euro, 35% da 28.001 a 50.000 euro e 43% oltre i 50.000 euro. Con la Legge di Bilancio 2025, confermata per il 2026, l\'aliquota del secondo scaglione è stata ridotta dal 35% al 33%, portando gli attuali tre scaglioni a 23%, 33% e 43%. Per un lavoratore con reddito imponibile di 40.000 euro, questa riduzione si traduce in un risparmio annuo di 240 euro rispetto al 2024. Il governo ha annunciato l\'intenzione di proseguire il percorso di riforma verso un sistema a due sole aliquote (flat tax progressiva) nelle prossime legislature.' },
   { question: 'cos\'è la no tax area e come funziona?', answer: 'La no tax area è la soglia di reddito al di sotto della quale non si paga IRPEF, grazie al meccanismo delle detrazioni che azzerano l\'imposta lorda. Per i lavoratori dipendenti, la no tax area è fissata a 8.500 euro annui: fino a questo importo la detrazione per lavoro dipendente (pari a 1.955 euro) è sufficiente a coprire interamente l\'IRPEF lorda dovuta (8.500 x 23% = 1.955 euro). Per i pensionati la soglia è di 8.500 euro (equiparata a quella dei dipendenti dal 2024), mentre per i lavoratori autonomi è di 5.500 euro, dato che la detrazione per altri redditi è inferiore. È importante sottolineare che la no tax area non è una franchigia ma un effetto delle detrazioni: superata la soglia, l\'IRPEF si paga su tutto il reddito imponibile, con la detrazione che si riduce progressivamente all\'aumentare del reddito.' },
@@ -142,33 +142,15 @@ const faqs = [
 
       <h3>L'impatto del cuneo fiscale 2026 sull'IRPEF</h3>
       <p>
-        A partire dal 2025, il precedente taglio dei contributi INPS (esonero contributivo del
-        6-7%) è stato sostituito da un nuovo meccanismo strutturale che interagisce direttamente
-        con il calcolo dell'IRPEF. Il sistema si articola su due livelli distinti in base al reddito
-        complessivo del lavoratore dipendente.
+        Il nuovo cuneo fiscale interagisce direttamente con il calcolo dell'IRPEF
+        attraverso due meccanismi: per redditi fino a 20.000 euro, una somma esente che
+        riduce la base imponibile; per redditi tra 20.001 e 40.000 euro, una detrazione
+        aggiuntiva che abbatte l'IRPEF netta fino a 1.000 euro annui. A differenza del
+        precedente esonero contributivo, questo sistema non impatta sulla pensione futura.
       </p>
       <p>
-        Per i <strong>redditi fino a 20.000 euro</strong>, è previsto un bonus erogato direttamente
-        in busta paga, calcolato come percentuale del reddito da lavoro dipendente. La percentuale
-        varia in base alla fascia: il 7,1% per redditi fino a 8.500 euro, il 5,3% per redditi
-        tra 8.501 e 15.000 euro, e il 4,8% per redditi tra 15.001 e 20.000 euro. Questo importo
-        non concorre alla formazione del reddito imponibile e quindi non viene tassato ai fini IRPEF,
-        risultando interamente a vantaggio del lavoratore.
-      </p>
-      <p>
-        Per i <strong>redditi tra 20.001 e 40.000 euro</strong>, il beneficio assume la forma di
-        una detrazione fiscale aggiuntiva che riduce direttamente l'IRPEF dovuta. Nella fascia
-        20.001-32.000 euro, la detrazione è pari a 1.000 euro annui. Nella fascia 32.001-40.000
-        euro, la detrazione si riduce progressivamente con la formula: 1.000 x (40.000 - reddito)
-        / 8.000, fino ad azzerarsi al raggiungimento dei 40.000 euro. Questo meccanismo di
-        decalage evita il cosiddetto "effetto scalone", garantendo una transizione graduale.
-      </p>
-      <p>
-        L'interazione tra cuneo fiscale e IRPEF è particolarmente rilevante perché il nuovo
-        sistema, a differenza del precedente taglio contributivo, non riduce la base imponibile
-        previdenziale. ciò significa che la pensione futura del lavoratore non viene intaccata,
-        a differenza di quanto avveniva con l'esonero contributivo degli anni precedenti. Il costo
-        del beneficio viene interamente sostenuto dallo Stato attraverso la fiscalità generale.
+        Approfondisci nella nostra <a href="/guide/cuneo-fiscale-2026/">guida
+        dedicata al cuneo fiscale 2026</a>.
       </p>
     </div>
   </Fragment>
@@ -295,13 +277,13 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-gray-900 dark:text-white font-medium">
-          Come funziona il cuneo fiscale nel 2026?
+          Come interagisce il cuneo fiscale 2026 con gli scaglioni IRPEF?
           <svg class="h-5 w-5 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0l-4.25-4.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Dal 2025 il taglio contributivo è stato sostituito da un sistema a due livelli. Per redditi fino a 20.000 euro, una quota del reddito diventa esente da tassazione (dal 4,8% al 7,1% a seconda della fascia). Per redditi tra 20.001 e 32.000 euro, spetta una detrazione IRPEF fissa di 1.000 euro/anno. Tra 32.001 e 40.000 euro la detrazione si riduce gradualmente fino ad azzerarsi.
+          Il cuneo fiscale agisce sull'IRPEF in modo diverso a seconda dello scaglione: sotto i 20.000 euro riduce direttamente la base imponibile (somma esente dal 4,8% al 7,1%), abbassando l'IRPEF lorda calcolata al 23%. Tra 20.001 e 40.000 euro opera come detrazione aggiuntiva fino a 1.000 euro, sottratta dall'IRPEF netta dopo le detrazioni ordinarie. Non modifica le aliquote degli scaglioni, ma ne attenua l'impatto. Approfondisci nella <a href="/guide/cuneo-fiscale-2026/" class="text-brand hover:underline">guida al cuneo fiscale</a>.
         </div>
       </details>
 

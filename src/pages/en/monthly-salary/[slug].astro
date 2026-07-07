@@ -94,33 +94,174 @@ function getMarketContext(netto: number): { livello: string; settori: string; co
 
 const market = getMarketContext(nettoTarget);
 
-// FAQs
-const faqs = [
-  {
-    question: `What gross salary do you need to earn €${fmtCurRound(nettoTarget)} net per month?`,
-    answer: `To take home approximately €${fmtCurRound(nettoTarget)} net per month in Italy, you need a gross annual salary (RAL) of about €${fmtCurRound(ralDefault)}, based on 13 pay periods, a permanent employment contract in Lombardy, with no dependent family members.`,
+/* ── Per-amount unique content — job profiles & financial context ───────── */
+
+const nettoProfiles: Record<number, { jobs: string; finance: string }> = {
+  1000: {
+    jobs: 'A net salary of €1,000 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) is typical of part-time contracts in retail (CCNL Commercio, level 6-7 on reduced hours), paid extracurricular internships, hospitality collaborations, and on-call contracts in seasonal tourism. It is also the pay for first-year apprentices in many service-sector roles, part-time call center operators, and cleaning staff on part-time contracts. In social cooperatives, it corresponds to educators or activity coordinators working 25-30 hours per week.',
+    finance: 'With €1,000 net per month, the absolute priority is strict control of fixed expenses. Rent should not exceed €350, which in nearly all Italian cities means sharing accommodation or living with family. Food expenses should be kept within €200-250 per month, making use of local markets, weekly deals, and home-cooked meals. At this income level, it is essential to check eligibility for ISEE-linked benefits: utility bonuses (estimated savings of €150-200/year), TARI waste tax reductions, and healthcare co-pay exemptions. Saving is difficult but not impossible: even €50 per month in a fixed-term deposit account can build a €600 emergency fund in one year, enough for minor unexpected expenses.',
   },
-  {
-    question: `Is €${fmtCurRound(nettoTarget)} net per month a good salary in Italy?`,
-    answer: `A net salary of €${fmtCurRound(nettoTarget)} per month is at a ${market.livello} level compared to the Italian national average. The median net salary in Italy is approximately €1,400 per month (ISTAT data). Purchasing power also depends on the city of residence.`,
+  1200: {
+    jobs: 'A net salary of €1,200 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) is the pay for full-time shop assistants and cashiers under CCNL Commercio (level 5), general workers in the food industry, hotel receptionists, medical office assistants, and full-time secretaries in the service sector. In the public sector, it corresponds to operators (former category B) in the first salary classes. It is also the typical net pay for OSS (healthcare assistants) in nursing homes with cooperative contracts, and sales associates in clothing retail chains.',
+    finance: 'With €1,200 net per month, the monthly budget requires careful planning: approximately €400-450 for housing (rent in small-to-medium cities or a shared room in major cities), €200-250 for groceries, €100 for transport and utilities. This leaves around €250-300 for personal expenses and savings. The primary goal should be building an emergency fund of at least €3,600 (three months of expenses). The supplementary allowance (trattamento integrativo, €100/month) is generally available at this income level and already included in the net pay: verify its presence on your payslip. To save on utility bills, consider comparing energy market offers on the ARERA regulator website.',
   },
-  {
-    question: `Does the required gross salary change by region?`,
-    answer: `Yes, regional IRPEF surcharges vary significantly across Italian regions. To earn €${fmtCurRound(nettoTarget)} net, the required gross salary (RAL) can differ by several hundred euros between the most and least tax-favorable regions. Regions with the lowest surcharges are generally Friuli-Venezia Giulia, Sardinia, and Veneto.`,
+  1300: {
+    jobs: 'With €1,300 net per month (approximately €' + fmtCurRound(ralDefault) + ' RAL), typical roles include junior administrative clerks, skilled construction workers, entry-level laboratory technicians, experienced logistics operators, and educational assistants in schools. Under the CCNL Metalmeccanico, this corresponds to level C1 with a few years of seniority. It is also the salary for many newly hired employees in the insurance sector (agency clerks), hairdressers and beauticians with employment contracts in structured salons, and urban bus drivers in their first years of service.',
+    finance: 'With €1,300 net per month, you reach the first level of financial flexibility. After covering essential expenses (rent €400-500, groceries €250, utilities and transport €150), approximately €400-500 remains for discretionary spending and savings. Starting a Capital Accumulation Plan (PAC) with €100/month contributions into a low-cost global equity ETF can generate approximately €20,000 over 15 years (at the historical average return of 7%). At this income level, enrolling in your sector pension fund is particularly advantageous thanks to the employer contribution (typically 1-2% of RAL), which represents an additional net benefit.',
   },
-  {
-    question: `How is net salary calculated from gross in Italy?`,
-    answer: `From the gross salary, the following are deducted: INPS social security contributions (9.19%), IRPEF income tax calculated on progressive brackets (23%, 33%, 43%), and regional and municipal surcharges. Then employment deductions, the tax wedge, and any supplementary allowance (formerly known as "Bonus Renzi") are added back.`,
+  1400: {
+    jobs: 'A salary of €1,400 net per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) corresponds to the Italian median and represents the pay for accounting clerks, experienced surveyors, nurses in their early public-sector career years, entry-level IT technicians (help desk, IT support), and bank employees at 3rd level. Under CCNL Commercio, this falls at level 3-4 with seniority, while in the Metalmeccanico contract at level C2-C3. It is also the typical salary for primary school teachers in their first 10 years of tenure and graphic designers with experience in small agencies.',
+    finance: 'With €1,400 net per month, the salary aligns with the national median. The 50/30/20 rule applied at this level means: €' + fmtCurRound(1400 * 0.5) + ' for necessities, €' + fmtCurRound(1400 * 0.3) + ' for wants, €' + fmtCurRound(1400 * 0.2) + ' for savings and investments. The ideal emergency fund is €' + fmtCurRound(1400 * 4) + ' (four months of expenses). At this RAL level, the tax wedge (cuneo fiscale) still includes the additional €1,000/year deduction: it is important to verify it is being applied correctly on your payslip. For rent in Northern Italian cities, costs can easily reach 40% of net pay, well above the recommended 30% threshold: consider well-connected suburbs or satellite cities.',
   },
-  {
-    question: `Does monthly net pay change with 14 pay periods?`,
-    answer: `With 14 pay periods, the gross annual salary (RAL) remains the same, but the annual net is divided by 14 instead of 13, so each monthly payment is lower (about 7% less per paycheck), offset by the two additional payments. The total annual net remains essentially unchanged.`,
+  1500: {
+    jobs: 'A net salary of €1,500 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) is the pay for profiles such as senior accountants, B2B sales engineers, junior web developers, department coordinators in large retail, and experienced industrial surveyors. In the public sector, this corresponds to officials (former category D) in the first salary classes. It is also the salary for secondary school teachers with 10-15 years of service, physiotherapists in private practice with employment contracts, and marketing specialists with 2-3 years of experience.',
+    finance: 'With €1,500 net per month, you exceed the national median and enter a range where structured saving becomes realistic. Allocating €300/month between a pension fund (tax-deductible voluntary contribution) and ETF-based PAC, in 20 years you can accumulate capital exceeding €100,000. At this RAL level, watch the €28,000 IRPEF threshold: if your RAL is just below it, a raise that pushes it above triggers the 33% marginal rate on the excess. Meal vouchers (if provided) worth €8/day add approximately €170/month of net purchasing power. For housing, rent up to €500 is sustainable and compatible with saving: feasible in many Central-Southern cities and in Northern suburbs.',
   },
-];
+  1600: {
+    jobs: 'With €1,600 net per month (approximately €' + fmtCurRound(ralDefault) + ' RAL), typical roles include data analysts, programmers with 2-3 years of experience, HR specialists, surveyors with coordination responsibilities, senior public-sector nurses, and executive-level employees under CCNL Commercio (level 2). Under Metalmeccanico, this is level D1. It is also the pay for journalists with FNSI contracts in their early years, junior project managers at communications agencies, and experienced radiology technicians.',
+    finance: 'At €1,600 net per month, financial planning opportunities expand significantly. The saveable portion (€320/month applying the 20% rule) allows combining precautionary savings and investment: €150/month into an emergency fund until reaching €' + fmtCurRound(1600 * 6) + ' (six months of expenses), then rebalancing toward a diversified PAC. The RAL of approximately €' + fmtCurRound(ralDefault) + ' falls in the range where the tax wedge begins to decrease: verify that the deduction is still applied and in the correct amount. The difference between regional surcharges becomes significant: moving from Lazio to Friuli-Venezia Giulia can mean savings of €300-400/year. Consider opening a supplementary pension fund: with the 33% marginal rate, every €1,000 contributed generates tax savings of approximately €330.',
+  },
+  1700: {
+    jobs: 'A net salary of €1,700 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) is typical for software developers with 3-5 years of experience, associate accountants at professional firms, junior engineers in industrial companies, senior public-sector social workers, and store managers in large retail. In banking, this corresponds to 2nd level with seniority increments. It is also the pay for pharmacist employees, full-time public-sector archivists and librarians, and account managers in medium-sized companies.',
+    finance: 'With €1,700 net per month, the personal budget can support independent living even in Northern Italian cities (rent up to €550-600 while staying below 35% of net pay) while maintaining a concrete savings margin. The optimal allocation is: €850 for necessities, €340 for discretionary spending, €340 for savings. At this level, contributions to a supplementary pension fund become particularly efficient: a RAL above €28,000 implies a 33% marginal rate, meaning each euro contributed to the pension fund effectively costs only 67 cents. The maximum tax saving (contributing €5,164/year) is approximately €1,700. Also consider deductions for mortgage interest (up to €760/year) if purchasing a first home.',
+  },
+  1800: {
+    jobs: 'With €1,800 net per month (approximately €' + fmtCurRound(ralDefault) + ' RAL), typical roles include engineers with 3-5 years of experience, mid-level full-stack developers, junior financial analysts in banking, intermediate managers in manufacturing, nursing coordinators, and secondary school teachers with over 20 years of service. Under CCNL Metalmeccanico this corresponds to level D2, and in banking to 1st level. It is also the salary for experienced pharmacists, construction site managers, and digital marketing specialists with 4-6 years in the field.',
+    finance: 'At €1,800 net per month, purchasing power allows for comfortable independent living in all Italian cities with structured savings capacity. With a RAL of approximately €' + fmtCurRound(ralDefault) + ', you are fully within the second IRPEF bracket (33%). Strategic allocation of savings (€360/month) should include: emergency fund (if not yet completed at €' + fmtCurRound(1800 * 6) + '), pension fund contributions (at minimum the amount to trigger the employer match), and a PAC on a diversified portfolio (60% equities, 40% bonds). At this income level, a sustainable mortgage (maximum payment 30% of net, or €540) can finance a property worth approximately €150,000-170,000 with a 20% down payment.',
+  },
+  2000: {
+    jobs: 'A net salary of €2,000 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) is the pay for senior software developers, experienced mechanical and electronic engineers, accountants with their own client portfolio, company managers in SMEs, HR directors in medium-sized companies, and bank management analysts. In the IT sector, this is the level for DevOps engineers and product owners with 5-7 years of experience. It is also the salary for hospital doctors in their early specialization years, senior management controllers, and certified project managers in construction and engineering.',
+    finance: 'With €2,000 net per month, you enter an income range that allows for structured financial planning. The 20% savings (€400/month) can be split between: supplementary pension fund (maximize deductibility up to €5,164/year at the 33% marginal rate), ETF investments via PAC (€200/month on a global portfolio), and goal-specific accumulation (property down payment, education). The maximum sustainable mortgage payment is approximately €600, compatible with financing €180,000-200,000 over 25 years. At this level, the choice of region of residence has a concrete impact: the difference between the lowest and highest surcharges is worth approximately €500-700/year.',
+  },
+  2200: {
+    jobs: 'A net salary of €2,200 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) is the pay for IT team leaders, senior engineers in industry, regional sales managers, managers under CCNL Metalmeccanico (level D3-E), lawyers with 5-8 years of experience at structured firms, and high-level public officials with coordination responsibilities. It is also the salary for hospital doctors with a few years of service, pharmacy branch directors, and business consultants with a consolidated client portfolio.',
+    finance: 'With €2,200 net per month, the margin for building long-term wealth becomes significant. Allocating €440/month to savings and investment, over 15 years with an average 7% return you can accumulate approximately €110,000. Financial priorities at this level are: maximize pension fund contributions (with the 33% marginal rate, the tax benefit is substantial), diversify investments between global equities and bonds, and plan a first home purchase if not yet done. A mortgage with a payment of €660 (30% of net) allows purchasing a property up to €200,000-230,000 in Northern cities or a larger apartment in Central-Southern Italy. The annual TFR accrued (approximately €' + fmtCurRound(ralDefault / 13.5) + ') can be directed to the pension fund for additional tax advantages.',
+  },
+  2500: {
+    jobs: 'With €2,500 net per month (approximately €' + fmtCurRound(ralDefault) + ' RAL), typical profiles include engineering managers, solution architects in IT, industrial production directors, SME executives, early-career medical specialists, trainee notaries at established firms, and accountants with a consolidated independent practice. In banking, this corresponds to branch managers or deputy directors. It is also the pay for school principals in their early years, senior project managers in construction, and heads of marketing in medium-sized companies.',
+    finance: 'At €2,500 net per month, financial strategy can become sophisticated. The saveable portion (€500/month) allows articulating the portfolio across multiple asset classes. A suggested allocation: €200/month in the pension fund (maximizing the tax benefit), €250/month in a diversified ETF PAC, and €50/month in high-yield cash for tactical opportunities. With a RAL of approximately €' + fmtCurRound(ralDefault) + ', the marginal IRPEF rate is 33%, making the pension fund highly advantageous: contributing the maximum deductible amount of €5,164/year saves approximately €1,700 in taxes. Mortgage capacity at this income (sustainable payment of €750) allows purchasing properties up to €250,000-280,000. Also consider tax-deductible life insurance (up to €530/year deduction) and PIR investments for capital gains tax exemption.',
+  },
+  2800: {
+    jobs: 'A net salary of €2,800 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) corresponds to senior management roles: department directors in medium-to-large companies, principal consultants at consulting firms, lead developers and CTOs of growing startups, hospital doctors with specialization and seniority, and executives in the insurance sector. In the public sector, this is the salary for second-tier executives with responsibility appointments. It is also the pay for senior lawyers at international law firms, area managers at audit firms (Big Four), and country managers of foreign companies in Italy.',
+    finance: 'With €2,800 net per month, basic needs are amply covered and financial planning can focus on wealth building. Saving 25-30% (€700-840/month) enables building a diversified portfolio: pension fund at maximum deductible (€5,164/year), PAC on global ETFs (€300-400/month), and potentially real estate investments through crowdfunding or REITs. With a RAL of approximately €' + fmtCurRound(ralDefault) + ', part of the income falls in the 43% IRPEF bracket: pension fund deduction generates tax savings up to €2,200/year. Mortgage capacity (sustainable payment of €840) allows financing high-value properties. At this wealth level, consulting with an independent financial advisor is recommended to optimize asset allocation and estate planning.',
+  },
+  3000: {
+    jobs: 'A net salary of €3,000 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) is typical of executive positions in structured companies: commercial directors, VP Engineering in tech, junior partners at professional firms, chief hospital physicians, and industrial executives with P&L responsibility. In finance, this corresponds to portfolio managers, trading desk heads, and banking network directors. It is also the pay for associate university professors, senior magistrates, and general managers of Italian branches of medium-sized multinationals.',
+    finance: 'With €3,000 net per month, financial management requires a structured strategy. A RAL of approximately €' + fmtCurRound(ralDefault) + ' means a 43% marginal rate, making tax optimization essential. Priorities: maximize pension fund contributions (tax savings exceeding €2,200/year), evaluate company welfare as a compensation component (fringe benefits, company car, supplementary health insurance). With savings of €900/month (30% of net), in 15 years you can accumulate capital exceeding €250,000. Wealth should be diversified: 40-50% global equities, 20-30% bonds, 10-20% real estate. Consider an independent financial advisor (fee-only) for retirement planning: the high marginal rate makes pension funds and supplementary health funds particularly advantageous.',
+  },
+  3500: {
+    jobs: 'With €3,500 net per month (approximately €' + fmtCurRound(ralDefault) + ' RAL), we are in the realm of senior leadership: C-level executives (CFO, COO, CTO) of medium-to-large companies, partners at law and consulting firms, chief physicians with management appointments, first-tier public sector executives, and country directors of multinationals. In the tech sector, this corresponds to VP or SVP at scale-ups and large companies. It is also the pay for full university professors with seniority, high-level banking executives, and managing directors at audit firms.',
+    finance: 'At €3,500 net per month, financial strategy must be managed with specialist expertise. With a RAL of approximately €' + fmtCurRound(ralDefault) + ', the 43% marginal tax rate demands particular attention to the tax efficiency of every compensation component. Key strategies: negotiate compensation packages with a strong company welfare component (car, supplementary pension, family health insurance); maximize pension fund contributions (tax savings exceeding €2,200/year); evaluate PIR investments for capital gains exemption up to €150,000. Monthly savings (€1,000-1,200) enable building a robust portfolio relatively quickly: with a €1,000/month PAC at 7% average return, accumulated capital in 10 years exceeds €170,000. Consider estate planning and asset protection with revaluation life insurance policies.',
+  },
+  4000: {
+    jobs: 'A net salary of €4,000 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) corresponds to the upper echelon of Italian executive compensation: CEOs and managing directors of medium-sized companies, senior partners at leading professional firms, general directors of public entities, and managing directors in banking and finance. In the tech sector, this is the level for VPs at big tech companies or founders of well-funded startups with structured salaries. It is also the pay for chief hospital physicians with top-level appointments, court section presidents in the judiciary, and practice leaders at major consulting firms.',
+    finance: 'With €4,000 net per month, wealth planning must be comprehensive. A RAL of approximately €' + fmtCurRound(ralDefault) + ' implies an average tax rate exceeding 40%: every optimization strategy has a significant impact. Monthly savings (€1,200-1,500) should be allocated diversely: pension fund at maximum deductible, global ETF PAC with emerging markets exposure, real estate (direct or via REITs), and a portion in alternative instruments (private equity through ELTIFs with tax benefits). At this level, the INPS contribution ceiling is not yet relevant but planning for supplementary retirement is important, as the INPS replacement rate for medium-high incomes is significantly below average. Consider establishing a company for ancillary consulting activities: the corporate regime can be more tax-efficient for extra income compared to 43% IRPEF taxation.',
+  },
+  5000: {
+    jobs: 'A net salary of €5,000 per month (approximately €' + fmtCurRound(ralDefault) + ' RAL) represents the pinnacle of employment compensation in Italy, reserved for fewer than 2% of workers. Typical profiles include: CEOs of companies with revenues exceeding €50 million, equity partners at top-tier law and consulting firms, general directors of major public entities, nationally renowned surgeons and chief physicians, and country managers of large multinationals. In the financial sector, this corresponds to managing directors in investment banking and heads of desk in asset management. It is also the pay for university rectors, presidents of regulatory authorities, and general counsel of listed industrial groups.',
+    finance: 'With €5,000 net per month, financial management requires a private banking approach. A RAL of approximately €' + fmtCurRound(ralDefault) + ' entails an average tax rate approaching 45%, making tax planning an essential component of compensation strategy. Optimization levers include: maximizing pension fund contributions (tax savings exceeding €2,200/year), strategic use of company welfare (which at this level can be worth €5,000-10,000/year in tax-free services), and negotiating tax-optimized variable components (stock options, phantom shares). Monthly savings (€1,500-2,000) must be managed with a sophisticated asset allocation: a globally diversified portfolio across equities, bonds, real estate, and alternatives. At this wealth level, an independent financial advisor (fee-only) is essential, along with estate planning and verification of concentration risk exposure (too much wealth tied to the employer). The annual TFR accrued (approximately €' + fmtCurRound(ralDefault / 13.5) + ') represents a significant sum: evaluate whether to direct it to the pension fund or leave it with the employer based on your retirement situation.',
+  },
+};
+
+const nettoProfile = nettoProfiles[nettoTarget];
+
+// FAQs — dynamic based on salary range
+function buildFaqs() {
+  const base = [
+    {
+      question: `What gross salary do you need to earn €${fmtCurRound(nettoTarget)} net per month?`,
+      answer: `To take home approximately €${fmtCurRound(nettoTarget)} net per month in Italy, you need a gross annual salary (RAL) of about €${fmtCurRound(ralDefault)}, based on 13 pay periods, a permanent employment contract in Lombardy, with no dependent family members. The effective average tax rate is ${fmtPct(dettaglio.aliquotaMedia)}, including INPS contributions at 9.19%, IRPEF, and regional/municipal surcharges.`,
+    },
+    {
+      question: `Is €${fmtCurRound(nettoTarget)} net per month a good salary in Italy?`,
+      answer: `A net salary of €${fmtCurRound(nettoTarget)} per month is at a ${market.livello} level compared to the Italian national average. The median net salary in Italy is approximately €1,400 per month (ISTAT data). Purchasing power also depends heavily on the city of residence: the same salary goes much further in Southern Italy or smaller towns than in Milan or Rome.`,
+    },
+    {
+      question: `How is €${fmtCurRound(nettoTarget)} net calculated from a RAL of €${fmtCurRound(ralDefault)}?`,
+      answer: `From the gross salary (RAL of €${fmtCurRound(ralDefault)}), the following are deducted: INPS social security contributions (${fmtCur(dettaglio.contributiINPS)}/year at 9.19%), IRPEF income tax on progressive brackets (23% up to €28,000, 33% from €28,001 to €50,000, 43% above €50,000), and regional and municipal surcharges. Then employment deductions (${fmtCur(dettaglio.detrazioneLavoroDipendente)}), the tax wedge (cuneo fiscale), and any supplementary allowance are added back.`,
+    },
+  ];
+
+  const extra: { question: string; answer: string }[] = [];
+
+  if (nettoTarget <= 1200) {
+    // Entry-level range
+    extra.push({
+      question: `Am I eligible for the supplementary allowance (trattamento integrativo) with €${fmtCurRound(nettoTarget)} net?`,
+      answer: `Yes. The supplementary allowance (trattamento integrativo) of up to €1,200/year (€100/month) is available for employees with taxable income up to €15,000, and in certain conditions up to €28,000. With a RAL of approximately €${fmtCurRound(ralDefault)}, you are likely eligible. The amount of ${fmtCur(dettaglio.trattamentoIntegrativo)}/year is already included in your net pay calculation. Always check your payslip to confirm it is applied.`,
+    });
+    extra.push({
+      question: `What ISEE benefits can I access with this salary?`,
+      answer: `With a net salary of €${fmtCurRound(nettoTarget)} per month, your ISEE (Equivalent Financial Situation Indicator) is likely low enough to qualify for several benefits: utility bill bonuses (electricity, gas, water — saving €150-200/year), reduced TARI waste tax, healthcare co-pay exemptions, and subsidized public transport passes. If you have dependents, you may also qualify for the Assegno Unico family allowance at a higher rate. Apply through your local CAF office or the INPS website.`,
+    });
+  } else if (nettoTarget <= 1500) {
+    // Lower-middle range
+    extra.push({
+      question: `How does €${fmtCurRound(nettoTarget)} compare to the Italian median salary?`,
+      answer: `The median net salary for Italian employees is approximately €1,400 per month according to ISTAT data. At €${fmtCurRound(nettoTarget)} net, your salary is ${nettoTarget <= 1400 ? 'around' : 'slightly above'} the national median. However, there is significant geographic variation: the median in the North is about €1,600, while in the South it is around €1,200. Your RAL of €${fmtCurRound(ralDefault)} places you in the ${market.livello} bracket.`,
+    });
+    extra.push({
+      question: `What is the tax wedge (cuneo fiscale) and how does it affect my pay?`,
+      answer: `The tax wedge (cuneo fiscale) is a set of measures introduced by the Italian government to increase net pay for employees with medium-low incomes. At your RAL of €${fmtCurRound(ralDefault)}, the cuneo fiscale includes both an exempt amount (reducing your taxable income by ${fmtCur(dettaglio.cuneoFiscaleSommaEsente)}) and an additional tax deduction (${fmtCur(dettaglio.cuneoFiscaleDetrazione)}). Together, these measures increase your annual net pay. The benefit is automatically applied by your employer.`,
+    });
+  } else if (nettoTarget <= 1800) {
+    // Middle range
+    extra.push({
+      question: `Should I contribute to a supplementary pension fund?`,
+      answer: `Absolutely. With a RAL of €${fmtCurRound(ralDefault)} and a marginal IRPEF rate of ${fmtPct(dettaglio.aliquotaMarginale)}, every euro contributed to a supplementary pension fund saves you approximately ${(dettaglio.aliquotaMarginale * 100).toFixed(0)} cents in taxes (up to the maximum deductible of €5,164/year). Additionally, by enrolling in your sector pension fund, you unlock the employer contribution (typically 1-2% of RAL), which is essentially free money. Your TFR (severance fund) of approximately ${fmtCur(dettaglio.tfrAnnuo)}/year can also be directed to the fund for additional long-term growth.`,
+    });
+    extra.push({
+      question: `What IRPEF brackets apply to my income?`,
+      answer: `With a RAL of €${fmtCurRound(ralDefault)}, after deducting INPS contributions (9.19%), your taxable income is approximately ${fmtCur(dettaglio.imponibileFiscale)}. Italy's 2026 IRPEF brackets are: 23% on the first €28,000, 33% from €28,001 to €50,000, and 43% above €50,000. Your gross IRPEF is ${fmtCur(dettaglio.irpefLorda)}, reduced by the employment deduction (${fmtCur(dettaglio.detrazioneLavoroDipendente)}) to a net IRPEF of ${fmtCur(dettaglio.irpefNetta)}.`,
+    });
+    extra.push({
+      question: `Does monthly net pay change with 14 pay periods?`,
+      answer: `With 14 pay periods, the gross annual salary (RAL of €${fmtCurRound(ralDefault)}) remains the same, but the annual net is divided by 14 instead of 13, so each monthly payment is lower (about 7% less per paycheck), offset by two additional payments (typically in June and December). The total annual net remains essentially unchanged at approximately ${fmtCur(dettaglio.nettoAnnuo)}.`,
+    });
+  } else if (nettoTarget <= 2200) {
+    // Upper-middle range
+    extra.push({
+      question: `Can I reduce my tax burden by choosing a different region?`,
+      answer: `Yes, regional IRPEF surcharges vary significantly. To earn €${fmtCurRound(nettoTarget)} net, the required RAL can differ by several hundred euros between the most and least tax-favorable regions. The lowest surcharges are typically found in Friuli-Venezia Giulia, Sardinia, and Veneto. Moving from a high-surcharge region like Lazio to a low one could save you €400-600 per year. However, this must be weighed against differences in cost of living and job opportunities.`,
+    });
+    extra.push({
+      question: `How much mortgage can I afford with €${fmtCurRound(nettoTarget)} net per month?`,
+      answer: `Following the prudent rule of keeping your mortgage payment below 30% of net income, your maximum monthly payment should be around €${fmtCurRound(nettoTarget * 0.3)}. At current average interest rates (approximately 3-3.5% fixed for 25 years), this translates to a mortgage of approximately €${fmtCurRound(nettoTarget * 0.3 / 0.005)} (with a 20% down payment). Factor in property taxes (IMU, if applicable), condominium fees, and maintenance costs. The total employer cost for your position is approximately ${fmtCur(dettaglio.costoAzienda)}.`,
+    });
+  } else if (nettoTarget <= 3000) {
+    // High range
+    extra.push({
+      question: `How does the 43% IRPEF bracket affect my salary?`,
+      answer: `With a RAL of €${fmtCurRound(ralDefault)}, your taxable income of approximately ${fmtCur(dettaglio.imponibileFiscale)} means that a portion of your income falls in the 43% IRPEF bracket (above €50,000). Your effective average rate is ${fmtPct(dettaglio.aliquotaMedia)}, but the marginal rate of ${fmtPct(dettaglio.aliquotaMarginale)} applies to any additional income. This means that any bonus, raise, or overtime above this level will be taxed at the highest rate.`,
+    });
+    extra.push({
+      question: `What are the best tax optimization strategies at this income level?`,
+      answer: `With a marginal rate of ${fmtPct(dettaglio.aliquotaMarginale)}, tax optimization becomes crucial. Key strategies include: (1) maximize pension fund contributions (up to €5,164/year deductible, saving over €2,200 in taxes), (2) negotiate company welfare benefits (fringe benefits up to €258.23/year are tax-free, or €3,000 with dependent children), (3) take advantage of deductible expenses (mortgage interest up to €760/year, healthcare expenses at 19%, life insurance up to €530/year), and (4) if applicable, consider voluntary INPS contributions for retirement credit optimization.`,
+    });
+  } else {
+    // Very high range (>3000)
+    extra.push({
+      question: `Can expats benefit from the "regime impatriati" tax incentive?`,
+      answer: `Yes. If you are relocating to Italy after at least two years abroad, the "regime impatriati" (inbound workers regime) can reduce your taxable income by 50% (or up to 90% for those moving to Southern Italian regions) for up to five years, extendable to ten in certain conditions. For a RAL of €${fmtCurRound(ralDefault)}, this could effectively cut your IRPEF bill roughly in half, increasing your net monthly pay well above €${fmtCurRound(nettoTarget)}. Eligibility requires transferring tax residence to Italy and committing to remain for at least two years.`,
+    });
+    extra.push({
+      question: `What is the INPS contribution ceiling and how does it affect retirement?`,
+      answer: `The INPS contribution ceiling (massimale contributivo) for employees who started contributing after 1996 is approximately €119,000 (2026). With a RAL of €${fmtCurRound(ralDefault)}, you are ${ralDefault > 119000 ? 'above this ceiling, meaning no INPS contributions are paid on income exceeding the cap — reducing contributions but also future pension benefits' : 'below this ceiling, so contributions are calculated on your full salary'}. At high income levels, the INPS replacement rate drops significantly (to 50-60% of last salary). Building a robust supplementary pension (second and third pillar) is essential to maintain your lifestyle in retirement.`,
+    });
+    extra.push({
+      question: `How should I approach wealth management at this income level?`,
+      answer: `With €${fmtCurRound(nettoTarget)} net per month, a comprehensive wealth strategy is essential. Consider: (1) engaging an independent fee-only financial advisor, (2) diversifying across asset classes — global equities, bonds, real estate (direct or REITs), and alternatives (private equity via ELTIFs, which offer Italian tax benefits), (3) PIR (Individual Savings Plans) for capital gains exemption on Italian/European investments up to €150,000, (4) estate planning with revaluation life insurance policies, which offer favorable succession treatment in Italy, and (5) evaluating whether incorporating for consulting side income is more tax-efficient than the 43% IRPEF marginal rate.`,
+    });
+  }
+
+  return [...base, ...extra];
+}
+
+const faqs = buildFaqs();
 
 // SEO
-const title = `€${fmtCurRound(nettoTarget)} Net per Month: Required Gross Salary in Italy ${SITE.annoFiscale}`;
-const description = `To earn €${fmtCurRound(nettoTarget)} net monthly you need about €${fmtCurRound(ralDefault)} gross (RAL). Full ${SITE.annoFiscale} breakdown: IRPEF, INPS, and regional taxes.`;
+const title = `€${fmtCurRound(nettoTarget)} Net per Month in Italy: Gross Salary Needed ${SITE.annoFiscale}`;
+const description = `To earn €${fmtCurRound(nettoTarget)} net per month in Italy you need about €${fmtCurRound(ralDefault)} gross (RAL). Full ${SITE.annoFiscale} breakdown: IRPEF, INPS 9.19%, deductions, and regional tax comparison.`;
 
 const breadcrumbs = [
   { name: 'Home', url: `${SITE.url}/en/` },
@@ -430,6 +571,30 @@ const schemaString = JSON.stringify([
         </p>
       </div>
     </section>
+
+    <!-- Who Earns This? -->
+    {nettoProfile && (
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Who Earns &euro;{fmtCurRound(nettoTarget)} Net per Month?
+        </h2>
+        <div class="prose prose-gray dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>{nettoProfile.jobs}</p>
+        </div>
+      </section>
+    )}
+
+    <!-- Financial Planning -->
+    {nettoProfile && (
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Financial Planning with &euro;{fmtCurRound(nettoTarget)} Net per Month
+        </h2>
+        <div class="prose prose-gray dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>{nettoProfile.finance}</p>
+        </div>
+      </section>
+    )}
 
     <!-- H2: FAQ -->
     <section class="mb-12">
