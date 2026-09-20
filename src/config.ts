@@ -10,8 +10,8 @@ export const SITE = {
   localeEn: 'en-US',
   annoFiscale: 2026,
   author: {
-    name: 'Mottalib Radif',
-    title: 'MBA INSEAD, Appassionato di finanza personale e fiscalità',
+    name: 'Radif Partners',
+    title: 'Publisher of calculators and practical guides',
     url: 'https://calcolalordonetto.it/chi-siamo/',
     email: 'contact@calcolalordonetto.it',
   },
