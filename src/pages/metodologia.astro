@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Metodologia: come calcoliamo IRPEF, addizionali e contributi INPS"
+  description="L&rsquo;ordine esatto del calcolo: imponibile previdenziale, contributi INPS, scaglioni IRPEF, detrazioni da lavoro dipendente, addizionali regionali e comunali."
+>
+  <div class="max-w-3xl mx-auto">
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-800">Metodologia</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Come calcoliamo lo stipendio netto</h1>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">L&rsquo;ordine del calcolo conta</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">Il netto in busta paga non si ottiene con una percentuale. Si parte dal lordo, si tolgono i <strong>contributi previdenziali INPS</strong> a carico del lavoratore, e solo quello che resta &mdash; l&rsquo;imponibile fiscale &mdash; entra nel calcolo dell&rsquo;IRPEF. Invertire i due passaggi sovrastima l&rsquo;imposta, ed &egrave; l&rsquo;errore pi&ugrave; comune nei calcoli fatti a mano.</p>
+      <p class="text-gray-700 leading-relaxed mb-3">L&rsquo;<strong>IRPEF lorda</strong> si calcola per scaglioni: ogni fascia di reddito &egrave; tassata alla propria aliquota, non l&rsquo;intero reddito all&rsquo;aliquota pi&ugrave; alta. Dall&rsquo;imposta lorda si sottraggono poi le <strong>detrazioni per lavoro dipendente</strong>, che decrescono al crescere del reddito fino ad azzerarsi: sono loro a rendere l&rsquo;aliquota effettiva molto pi&ugrave; bassa di quella nominale sui redditi medio-bassi.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Addizionali regionali e comunali</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">Sopra l&rsquo;IRPEF statale si aggiungono l&rsquo;addizionale regionale e quella comunale, calcolate sull&rsquo;imponibile fiscale con aliquote che cambiano da regione a regione e da comune a comune. Due stipendi lordi identici in citt&agrave; diverse danno netti diversi, e la differenza pu&ograve; superare le centinaia di euro l&rsquo;anno.</p>
+      <p class="text-gray-700 leading-relaxed mb-3">Le addizionali si versano in acconto e saldo l&rsquo;anno successivo: in busta paga compaiono quindi come rate mensili riferite all&rsquo;anno precedente. Il calcolatore le riporta all&rsquo;anno corrente per dare una lettura coerente del netto annuo.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Cosa il calcolatore non fa</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">Non considera il trattamento integrativo oltre il caso standard, i fringe benefit, i premi di risultato a tassazione agevolata, le detrazioni per familiari a carico, gli oneri deducibili n&eacute; il TFR. Ipotizza un unico rapporto di lavoro dipendente a tempo indeterminato.</p>
+      <p class="text-gray-700 leading-relaxed mb-3">&Egrave; una stima documentata, non un cedolino. Il conteggio effettivo lo esegue il sostituto d&rsquo;imposta sulla base della tua situazione reale.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Quando aggiorniamo</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">Scaglioni, aliquote e detrazioni cambiano con la legge di bilancio, in vigore dal 1&deg; gennaio. Aggiorniamo quando il testo &egrave; pubblicato in Gazzetta Ufficiale, non sulla base degli annunci. Ogni pagina riporta la data dell&rsquo;ultima revisione, presa dalla cronologia del sito.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Da dove vengono i numeri</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">Ogni aliquota e ogni soglia proviene dalle seguenti fonti ufficiali:</p>
+      <ul class="list-disc pl-6 text-gray-700 space-y-2">
+        <li><a class="underline" href="https://www.agenziaentrate.gov.it/portale/web/guest/schede/dichiarazioni/irpef-imposta-sul-reddito-delle-persone-fisiche/scheda-info-irpef-imposta-sul-reddito-delle-persone-fisiche" rel="nofollow noopener" target="_blank">Agenzia delle Entrate &mdash; IRPEF, aliquote e scaglioni</a></li>
+        <li><a class="underline" href="https://www.inps.it/it/it/dettaglio-scheda.schede-servizio-strumento.schede-strumenti.aliquote-contributive.html" rel="nofollow noopener" target="_blank">INPS &mdash; Aliquote contributive lavoratori dipendenti</a></li>
+        <li><a class="underline" href="https://www.finanze.gov.it/it/fiscalita-regionale-e-locale/" rel="nofollow noopener" target="_blank">Dipartimento delle Finanze &mdash; Addizionali regionali e comunali</a></li>
+        <li><a class="underline" href="https://www.agenziaentrate.gov.it/portale/detrazioni-per-lavoro-dipendente" rel="nofollow noopener" target="_blank">Agenzia delle Entrate &mdash; Detrazioni per lavoro dipendente</a></li>
+      </ul>
+    </section>
+  </div>
+</Layout>

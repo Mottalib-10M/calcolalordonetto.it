@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import trustKit from './src/integrations/trust-kit.mjs';
 
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
@@ -13,6 +14,7 @@ export default defineConfig({
   site: SITE_URL,
   trailingSlash: 'always',
   integrations: [
+    trustKit({ lang: 'it', siteUrl: 'https://calcolalordonetto.it', siteName: 'CalcolaLordoNetto', founded: '2026-06-27', about: '/chi-siamo/', method: '/metodologia/' }),
     react(),
     sitemap({
       filter: (page) => !page.includes('/404'),
