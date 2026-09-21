@@ -208,7 +208,7 @@ function buildFaqs() {
     // Middle range
     extra.push({
       question: `Should I contribute to a supplementary pension fund?`,
-      answer: `Absolutely. With a RAL of €${fmtCurRound(ralDefault)} and a marginal IRPEF rate of ${fmtPct(dettaglio.aliquotaMarginale)}, every euro contributed to a supplementary pension fund saves you approximately ${(dettaglio.aliquotaMarginale * 100).toFixed(0)} cents in taxes (up to the maximum deductible of €5,164/year). Additionally, by enrolling in your sector pension fund, you unlock the employer contribution (typically 1-2% of RAL), which is essentially free money. Your TFR (severance fund) of approximately ${fmtCur(dettaglio.tfrAnnuo)}/year can also be directed to the fund for additional long-term growth.`,
+      answer: `Absolutely. With a RAL of €${fmtCurRound(ralDefault)} and a marginal IRPEF rate of ${fmtPct(dettaglio.aliquotaMarginale)}, every euro contributed to a supplementary pension fund saves you approximately ${formatNumber(dettaglio.aliquotaMarginale * 100, 0)} cents in taxes (up to the maximum deductible of €5,164/year). Additionally, by enrolling in your sector pension fund, you unlock the employer contribution (typically 1-2% of RAL), which is essentially free money. Your TFR (severance fund) of approximately ${fmtCur(dettaglio.tfrAnnuo)}/year can also be directed to the fund for additional long-term growth.`,
     });
     extra.push({
       question: `What IRPEF brackets apply to my income?`,

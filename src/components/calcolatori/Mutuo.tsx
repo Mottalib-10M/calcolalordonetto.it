@@ -211,8 +211,8 @@ export default function Mutuo({ lang = 'it' }: { lang?: Lang }) {
           </h3>
           <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
             {annuali.map((a) => {
-              const capPct = ((a.quotaCapitale / maxAnnuale) * 100).toFixed(1);
-              const intPct = ((a.quotaInteressi / maxAnnuale) * 100).toFixed(1);
+              const capPct = formatNumber((a.quotaCapitale / maxAnnuale) * 100, 1);
+              const intPct = formatNumber((a.quotaInteressi / maxAnnuale) * 100, 1);
               return (
                 <div key={a.anno} className="flex items-center gap-2 text-xs">
                   <span className="w-10 text-right text-gray-500 dark:text-gray-400 shrink-0">

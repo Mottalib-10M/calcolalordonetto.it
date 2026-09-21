@@ -1,3 +1,4 @@
+import { formatNumber } from '../../lib/format-it';
 import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaPAC } from '../../lib/finanz-engine';
@@ -188,7 +189,7 @@ export default function PianoAccumulo({ lang = 'it' }: { lang?: Lang }) {
           </h3>
           <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
             {risultato.evoluzione.map((e) => {
-              const versatoPct = ((e.versato / maxCapitale) * 100).toFixed(1);
+              const versatoPct = formatNumber((e.versato / maxCapitale) * 100, 1);
               const rendPct = (((e.capitale - e.versato) / maxCapitale) * 100).toFixed(1);
               return (
                 <div key={e.anno} className="flex items-center gap-2 text-xs">

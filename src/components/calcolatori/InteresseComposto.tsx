@@ -1,3 +1,4 @@
+import { formatNumber } from '../../lib/format-it';
 import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaInteresseComposto } from '../../lib/finanz-engine';
@@ -182,8 +183,8 @@ export default function InteresseComposto({ lang = 'it' }: { lang?: Lang }) {
           </h3>
           <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
             {risultato.evoluzione.map((e) => {
-              const versatoPct = ((e.versato / maxCapitale) * 100).toFixed(1);
-              const interessiPct = ((e.interessi / maxCapitale) * 100).toFixed(1);
+              const versatoPct = formatNumber((e.versato / maxCapitale) * 100, 1);
+              const interessiPct = formatNumber((e.interessi / maxCapitale) * 100, 1);
               return (
                 <div key={e.anno} className="flex items-center gap-2 text-xs">
                   <span className="w-10 text-right text-gray-500 dark:text-gray-400 shrink-0">

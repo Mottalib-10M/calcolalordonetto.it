@@ -1,3 +1,4 @@
+import { formatNumber } from '../../lib/format-it';
 import { useState } from 'react';
 import { formatCurrency as formatCurrencyIt, formatPercent as formatPercentIt } from '../../lib/format-it';
 import { formatCurrency as formatCurrencyLocale, formatPercent as formatPercentLocale } from '../../lib/format';
@@ -49,7 +50,7 @@ export default function BarraScomposizione({
               {/* Percentage text inside segment if wide enough */}
               {pct >= 8 && (
                 <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold text-white drop-shadow-sm">
-                  {pct.toFixed(1)}%
+                  {formatNumber(pct, 1)}%
                 </span>
               )}
 

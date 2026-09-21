@@ -202,7 +202,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
             </h3>
             <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
               {risultato.evoluzioneMontante.map((e) => {
-                const pct = ((e.montante / maxMontante) * 100).toFixed(1);
+                const pct = formatNumber((e.montante / maxMontante) * 100, 1);
                 return (
                   <div key={e.anno} className="flex items-center gap-2 text-xs">
                     <span className="w-8 text-right text-gray-500 dark:text-gray-400 shrink-0">

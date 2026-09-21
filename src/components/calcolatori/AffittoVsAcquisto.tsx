@@ -324,7 +324,7 @@ export default function AffittoVsAcquisto({ lang = 'it' }: { lang?: Lang }) {
                     <div className="flex flex-1 h-3 rounded overflow-hidden bg-gray-100 dark:bg-gray-800">
                       <div
                         className="bg-blue-500 dark:bg-blue-400 transition-all duration-300"
-                        style={{ width: `${affittoPct.toFixed(1)}%` }}
+                        style={{ width: `${formatNumber(affittoPct, 1)}%` }}
                         title={`Affitto: ${formatCurrency(e.costoAffitto)}`}
                       />
                     </div>
@@ -337,7 +337,7 @@ export default function AffittoVsAcquisto({ lang = 'it' }: { lang?: Lang }) {
                     <div className="flex flex-1 h-3 rounded overflow-hidden bg-gray-100 dark:bg-gray-800">
                       <div
                         className="bg-brand transition-all duration-300"
-                        style={{ width: `${acquistoPct.toFixed(1)}%` }}
+                        style={{ width: `${formatNumber(acquistoPct, 1)}%` }}
                         title={`Acquisto: ${formatCurrency(e.costoAcquisto)}`}
                       />
                     </div>

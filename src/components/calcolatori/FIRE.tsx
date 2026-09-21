@@ -1,3 +1,4 @@
+import { formatNumber } from '../../lib/format-it';
 import { useState, useMemo } from 'react';
 import CampoInput from '../ui/CampoInput';
 import { calcolaFIRE } from '../../lib/finanz-engine';
@@ -190,8 +191,8 @@ export default function FIRE({ lang = 'it' }: Props) {
           </h3>
           <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
             {risultato.evoluzione.map((e) => {
-              const patriPct = ((e.patrimonio / maxPatrimonio) * 100).toFixed(1);
-              const obietPct = ((e.obiettivo / maxPatrimonio) * 100).toFixed(1);
+              const patriPct = formatNumber((e.patrimonio / maxPatrimonio) * 100, 1);
+              const obietPct = formatNumber((e.obiettivo / maxPatrimonio) * 100, 1);
               const raggiunto = e.patrimonio >= e.obiettivo;
               return (
                 <div key={e.anno} className="flex items-center gap-2 text-xs">
