@@ -191,7 +191,7 @@ function buildFaqs() {
       answer: `Yes. The supplementary allowance (trattamento integrativo) of up to €1,200/year (€100/month) is available for employees with taxable income up to €15,000, and in certain conditions up to €28,000. With a RAL of approximately €${fmtCurRound(ralDefault)}, you are likely eligible. The amount of ${fmtCur(dettaglio.trattamentoIntegrativo)}/year is already included in your net pay calculation. Always check your payslip to confirm it is applied.`,
     });
     extra.push({
-      question: `What ISEE benefits can I access with this salary?`,
+      question: `What ISEE benefits can I access with €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `With a net salary of €${fmtCurRound(nettoTarget)} per month, your ISEE (Equivalent Financial Situation Indicator) is likely low enough to qualify for several benefits: utility bill bonuses (electricity, gas, water — saving €150-200/year), reduced TARI waste tax, healthcare co-pay exemptions, and subsidized public transport passes. If you have dependents, you may also qualify for the Assegno Unico family allowance at a higher rate. Apply through your local CAF office or the INPS website.`,
     });
   } else if (nettoTarget <= 1500) {
@@ -201,27 +201,27 @@ function buildFaqs() {
       answer: `The median net salary for Italian employees is approximately €1,400 per month according to ISTAT data. At €${fmtCurRound(nettoTarget)} net, your salary is ${nettoTarget <= 1400 ? 'around' : 'slightly above'} the national median. However, there is significant geographic variation: the median in the North is about €1,600, while in the South it is around €1,200. Your RAL of €${fmtCurRound(ralDefault)} places you in the ${market.livello} bracket.`,
     });
     extra.push({
-      question: `What is the tax wedge (cuneo fiscale) and how does it affect my pay?`,
+      question: `How much of the tax wedge falls on €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `The tax wedge (cuneo fiscale) is a set of measures introduced by the Italian government to increase net pay for employees with medium-low incomes. At your RAL of €${fmtCurRound(ralDefault)}, the cuneo fiscale includes both an exempt amount (reducing your taxable income by ${fmtCur(dettaglio.cuneoFiscaleSommaEsente)}) and an additional tax deduction (${fmtCur(dettaglio.cuneoFiscaleDetrazione)}). Together, these measures increase your annual net pay. The benefit is automatically applied by your employer.`,
     });
   } else if (nettoTarget <= 1800) {
     // Middle range
     extra.push({
-      question: `Should I contribute to a supplementary pension fund?`,
+      question: `Is a supplementary pension fund worth it at €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `Absolutely. With a RAL of €${fmtCurRound(ralDefault)} and a marginal IRPEF rate of ${fmtPct(dettaglio.aliquotaMarginale)}, every euro contributed to a supplementary pension fund saves you approximately ${formatNumber(dettaglio.aliquotaMarginale * 100, 0)} cents in taxes (up to the maximum deductible of €5,164/year). Additionally, by enrolling in your sector pension fund, you unlock the employer contribution (typically 1-2% of RAL), which is essentially free money. Your TFR (severance fund) of approximately ${fmtCur(dettaglio.tfrAnnuo)}/year can also be directed to the fund for additional long-term growth.`,
     });
     extra.push({
-      question: `What IRPEF brackets apply to my income?`,
+      question: `Which IRPEF brackets apply at €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `With a RAL of €${fmtCurRound(ralDefault)}, after deducting INPS contributions (9.19%), your taxable income is approximately ${fmtCur(dettaglio.imponibileFiscale)}. Italy's 2026 IRPEF brackets are: 23% on the first €28,000, 33% from €28,001 to €50,000, and 43% above €50,000. Your gross IRPEF is ${fmtCur(dettaglio.irpefLorda)}, reduced by the employment deduction (${fmtCur(dettaglio.detrazioneLavoroDipendente)}) to a net IRPEF of ${fmtCur(dettaglio.irpefNetta)}.`,
     });
     extra.push({
-      question: `Does monthly net pay change with 14 pay periods?`,
+      question: `Does €${fmtCurRound(nettoTarget)} net per month change with 14 pay periods?`,
       answer: `With 14 pay periods, the gross annual salary (RAL of €${fmtCurRound(ralDefault)}) remains the same, but the annual net is divided by 14 instead of 13, so each monthly payment is lower (about 7% less per paycheck), offset by two additional payments (typically in June and December). The total annual net remains essentially unchanged at approximately ${fmtCur(dettaglio.nettoAnnuo)}.`,
     });
   } else if (nettoTarget <= 2200) {
     // Upper-middle range
     extra.push({
-      question: `Can I reduce my tax burden by choosing a different region?`,
+      question: `Can a different region raise €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `Yes, regional IRPEF surcharges vary significantly. To earn €${fmtCurRound(nettoTarget)} net, the required RAL can differ by several hundred euros between the most and least tax-favorable regions. The lowest surcharges are typically found in Friuli-Venezia Giulia, Sardinia, and Veneto. Moving from a high-surcharge region like Lazio to a low one could save you €400-600 per year. However, this must be weighed against differences in cost of living and job opportunities.`,
     });
     extra.push({
@@ -231,25 +231,25 @@ function buildFaqs() {
   } else if (nettoTarget <= 3000) {
     // High range
     extra.push({
-      question: `How does the 43% IRPEF bracket affect my salary?`,
+      question: `How does the 43% IRPEF bracket affect €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `With a RAL of €${fmtCurRound(ralDefault)}, your taxable income of approximately ${fmtCur(dettaglio.imponibileFiscale)} means that a portion of your income falls in the 43% IRPEF bracket (above €50,000). Your effective average rate is ${fmtPct(dettaglio.aliquotaMedia)}, but the marginal rate of ${fmtPct(dettaglio.aliquotaMarginale)} applies to any additional income. This means that any bonus, raise, or overtime above this level will be taxed at the highest rate.`,
     });
     extra.push({
-      question: `What are the best tax optimization strategies at this income level?`,
+      question: `Which tax optimisation options suit €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `With a marginal rate of ${fmtPct(dettaglio.aliquotaMarginale)}, tax optimization becomes crucial. Key strategies include: (1) maximize pension fund contributions (up to €5,164/year deductible, saving over €2,200 in taxes), (2) negotiate company welfare benefits (fringe benefits up to €258.23/year are tax-free, or €3,000 with dependent children), (3) take advantage of deductible expenses (mortgage interest up to €760/year, healthcare expenses at 19%, life insurance up to €530/year), and (4) if applicable, consider voluntary INPS contributions for retirement credit optimization.`,
     });
   } else {
     // Very high range (>3000)
     extra.push({
-      question: `Can expats benefit from the "regime impatriati" tax incentive?`,
+      question: `Can expats on €${fmtCurRound(nettoTarget)} net per month use the regime impatriati?`,
       answer: `Yes. If you are relocating to Italy after at least two years abroad, the "regime impatriati" (inbound workers regime) can reduce your taxable income by 50% (or up to 90% for those moving to Southern Italian regions) for up to five years, extendable to ten in certain conditions. For a RAL of €${fmtCurRound(ralDefault)}, this could effectively cut your IRPEF bill roughly in half, increasing your net monthly pay well above €${fmtCurRound(nettoTarget)}. Eligibility requires transferring tax residence to Italy and committing to remain for at least two years.`,
     });
     extra.push({
-      question: `What is the INPS contribution ceiling and how does it affect retirement?`,
+      question: `Does the INPS ceiling affect €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `The INPS contribution ceiling (massimale contributivo) for employees who started contributing after 1996 is approximately €119,000 (2026). With a RAL of €${fmtCurRound(ralDefault)}, you are ${ralDefault > 119000 ? 'above this ceiling, meaning no INPS contributions are paid on income exceeding the cap — reducing contributions but also future pension benefits' : 'below this ceiling, so contributions are calculated on your full salary'}. At high income levels, the INPS replacement rate drops significantly (to 50-60% of last salary). Building a robust supplementary pension (second and third pillar) is essential to maintain your lifestyle in retirement.`,
     });
     extra.push({
-      question: `How should I approach wealth management at this income level?`,
+      question: `How should wealth be managed at €${fmtCurRound(nettoTarget)} net per month?`,
       answer: `With €${fmtCurRound(nettoTarget)} net per month, a comprehensive wealth strategy is essential. Consider: (1) engaging an independent fee-only financial advisor, (2) diversifying across asset classes — global equities, bonds, real estate (direct or REITs), and alternatives (private equity via ELTIFs, which offer Italian tax benefits), (3) PIR (Individual Savings Plans) for capital gains exemption on Italian/European investments up to €150,000, (4) estate planning with revaluation life insurance policies, which offer favorable succession treatment in Italy, and (5) evaluating whether incorporating for consulting side income is more tax-efficient than the 43% IRPEF marginal rate.`,
     });
   }
@@ -257,7 +257,9 @@ function buildFaqs() {
   return [...base, ...extra];
 }
 
-const faqs = buildFaqs();
+// §7 plafonne à huit questions par page : au-delà, la FAQ n'est plus une FAQ
+// mais un sommaire, et Google n'en retient de toute façon qu'une poignée.
+const faqs = buildFaqs().slice(0, 8);
 
 // SEO
 const title = `€${fmtCurRound(nettoTarget)} Net per Month in Italy: Gross Salary Needed ${SITE.annoFiscale}`;
@@ -350,6 +352,22 @@ const schemaString = JSON.stringify([
         <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
       </div>
     </section>
+    <!-- §21 citable block: a self-contained answer of at least 120 words, near the top. -->
+    <section class="mx-auto max-w-4xl px-4 pt-8">
+      <div class="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+        <h2 class="mb-3 text-lg font-bold text-gray-900 dark:text-white">The short answer</h2>
+        <p class="leading-relaxed text-gray-700 dark:text-gray-300">
+          To take home {fmtCurRound(nettoTarget)} euro net per month in Italy you need a gross annual salary (RAL) of roughly
+          {fmtCurRound(ralDefault)} euro, calculated over thirteen monthly payments for a single worker with no dependants.
+          From that gross figure three deductions follow in order: INPS social contributions, charged to the employee at 9.19 per cent
+          of the contributory base, then national income tax applied in brackets, and finally regional and municipal surcharges set by
+          local authorities. Employment deductions and, where it applies, the trattamento integrativo reduce the tax due. The result
+          changes with where you live, since the local surcharges alone are worth several hundred euro a year, and with the number of
+          payments in your contract: at the same annual gross, fourteen payments make each payslip smaller without changing the total for the year. The figures below assume a single worker in Lombardy; dependants and a different region both move the result.
+        </p>
+      </div>
+    </section>
+
 
     <!-- H2: Required Gross Salary by Region -->
     <section class="mb-12">

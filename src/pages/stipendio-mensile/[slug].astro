@@ -240,7 +240,7 @@ function buildFaqs() {
       answer: `Con un netto mensile di circa ${fmtCur(dettaglio.nettoMensile)} euro, applicando la regola bancaria del 30-35% del reddito netto per la rata del mutuo, la rata massima sostenibile e di circa ${fmtCurRound(dettaglio.nettoMensile * 0.3)}-${fmtCurRound(dettaglio.nettoMensile * 0.35)} euro. Con un mutuo a 25 anni al tasso attuale (circa 3-3,5%), questo consente di finanziare un immobile del valore di circa ${fmtCurRound(dettaglio.nettoMensile * 0.3 * 200)}-${fmtCurRound(dettaglio.nettoMensile * 0.35 * 200)} euro (con un anticipo del 20%). Ricordate che gli interessi passivi sul mutuo prima casa sono detraibili al 19% fino a un massimo di 4.000 euro/anno (risparmio fino a 760 euro/anno).`,
     });
     rangeFaqs.push({
-      question: `Conviene il fondo pensione con un'aliquota marginale del ${fmtPct(dettaglio.aliquotaMarginale)}?`,
+      question: `Con ${fmtCurRound(nettoTarget)} euro netti conviene il fondo pensione?`,
       answer: `Assolutamente si. Con una RAL di ${fmtCurRound(ralDefault)} euro e un'aliquota marginale del ${fmtPct(dettaglio.aliquotaMarginale)}, il fondo pensione complementare offre un doppio vantaggio: ogni euro versato (fino a 5.164 euro/anno) riduce l'IRPEF di ${fmtPct(dettaglio.aliquotaMarginale)}, e in fase di erogazione la tassazione sara agevolata (dal 15% al 9%). Il risparmio fiscale massimo annuo e di circa ${fmtCurRound(5164 * dettaglio.aliquotaMarginale)} euro. Il TFR annuo accantonato (${fmtCur(dettaglio.tfrAnnuo)} euro) puo essere conferito al fondo pensione per massimizzare il montante previdenziale.`,
     });
   } else if (nettoTarget <= 3000) {
@@ -254,7 +254,7 @@ function buildFaqs() {
       answer: `Con una RAL di ${fmtCurRound(ralDefault)} euro e un'aliquota marginale del ${fmtPct(dettaglio.aliquotaMarginale)}, le principali leve di ottimizzazione sono: 1) Fondo pensione complementare (risparmio fino a ${fmtCurRound(5164 * dettaglio.aliquotaMarginale)} euro/anno); 2) Welfare aziendale (fringe benefit, buoni pasto, assicurazione sanitaria integrativa sono detassati); 3) Detrazioni per interessi passivi mutuo prima casa (fino a 760 euro/anno); 4) Versamenti a fondi sanitari integrativi (deducibili fino a 3.615 euro/anno); 5) PIR (Piani Individuali di Risparmio) per l'esenzione fiscale sui capital gain fino a 150.000 euro investiti.`,
     });
     rangeFaqs.push({
-      question: `Come cambia il netto con 14 mensilita a questo livello di RAL?`,
+      question: `Come cambia il netto con 14 mensilita partendo da ${fmtCurRound(ralDefault)} euro di RAL?`,
       answer: `Con 14 mensilita e una RAL invariata di ${fmtCurRound(ralDefault)} euro, il netto annuo di ${fmtCur(dettaglio.nettoAnnuo)} euro viene suddiviso in 14 rate anziche 13. Ogni mensilita sara di circa ${fmtCurRound(dettaglio.nettoAnnuo / 14)} euro (invece di ${fmtCur(dettaglio.nettoMensile)} euro), ma si ricevono due mensilita aggiuntive. Per redditi di questa fascia, le 14 mensilita possono avere un leggero vantaggio fiscale nella gestione dei conguagli di fine anno.`,
     });
   } else {
@@ -272,7 +272,7 @@ function buildFaqs() {
       answer: `Con ${fmtCurRound(nettoTarget)} euro netti mensili (RAL di ${fmtCurRound(ralDefault)} euro), la capacita di accumulo e elevata: risparmiando il 25-30% del netto si accantonano circa ${fmtCurRound(nettoTarget * 0.25 * 12)}-${fmtCurRound(nettoTarget * 0.3 * 12)} euro/anno. Le priorita di gestione patrimoniale sono: massimizzare il fondo pensione (risparmio fiscale al 43% di aliquota marginale, circa ${fmtCurRound(5164 * 0.43)} euro/anno); diversificare gli investimenti (ETF globali, obbligazionario, immobiliare tramite REITs); valutare ELTIF per investimenti in private equity con benefici fiscali; pianificare la successione patrimoniale. A questo livello, un consulente finanziario indipendente (fee-only) puo ottimizzare l'asset allocation e la pianificazione fiscale complessiva.`,
     });
     rangeFaqs.push({
-      question: `Quanto incidono le addizionali regionali su un reddito cosi elevato?`,
+      question: `Quanto incidono le addizionali regionali su ${fmtCurRound(nettoTarget)} euro netti al mese?`,
       answer: `Con una RAL di ${fmtCurRound(ralDefault)} euro, le addizionali regionali hanno un impatto molto rilevante in valore assoluto. La differenza tra la regione meno costosa (${regionResults[0].nome}, addizionale di ${fmtCur(regionResults[0].addizionaleRegionale)} euro) e la piu costosa (${regionResults[regionResults.length - 1].nome}, addizionale di ${fmtCur(regionResults[regionResults.length - 1].addizionaleRegionale)} euro) e di circa ${fmtCurRound(regionResults[regionResults.length - 1].addizionaleRegionale - regionResults[0].addizionaleRegionale)} euro/anno. Per i redditi alti, alcune regioni come il Lazio applicano aliquote progressive che penalizzano particolarmente questa fascia.`,
     });
   }
@@ -280,7 +280,9 @@ function buildFaqs() {
   return [...baseFaqs, ...rangeFaqs];
 }
 
-const faqs = buildFaqs();
+// §7 plafonne à huit questions par page : au-delà, la FAQ n'est plus une FAQ
+// mais un sommaire, et Google n'en retient de toute façon qu'une poignée.
+const faqs = buildFaqs().slice(0, 8);
 
 // SEO
 const title = `${fmtCurRound(nettoTarget)} Euro Netti al Mese: Quanta RAL Serve nel 2026?`;
@@ -372,6 +374,22 @@ const schemaString = JSON.stringify([
         <div class="absolute -left-10 -bottom-10 h-60 w-60 rounded-full bg-brand"></div>
       </div>
     </section>
+    <!-- Bloc citable §21 : une risposta di almeno 120 parole, in cima alla pagina. -->
+    <section class="mx-auto max-w-4xl px-4 pt-8">
+      <div class="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+        <h2 class="mb-3 text-lg font-bold text-gray-900 dark:text-white">In sintesi</h2>
+        <p class="leading-relaxed text-gray-700 dark:text-gray-300">
+          Per portare a casa {fmtCurRound(nettoTarget)} euro netti al mese in Italia serve una RAL di circa {fmtCurRound(ralDefault)} euro,
+          calcolata su tredici mensilità e per un lavoratore single senza familiari a carico. Da quella cifra lorda si sottraggono
+          nell'ordine i contributi INPS a carico del dipendente, pari al 9,19 per cento dell'imponibile previdenziale, poi l'IRPEF
+          nazionale applicata per scaglioni e infine le addizionali regionale e comunale, decise localmente. Le detrazioni da lavoro
+          dipendente e l'eventuale trattamento integrativo riducono l'imposta dovuta. Il risultato cambia con la regione di residenza,
+          perché le sole addizionali valgono alcune centinaia di euro l'anno, e con il numero di mensilità previste dal contratto:
+          a parità di RAL, quattordici mensilità abbassano l'importo di ciascuna busta senza modificare il totale annuo.
+        </p>
+      </div>
+    </section>
+
 
     <!-- H2: RAL Necessaria per Regione -->
     <section class="mb-12">

@@ -52,6 +52,9 @@ const faqs = [
   { question: 'Why does my net pay vary by region and municipality?', answer: 'In addition to national IRPEF, Italy has local surcharges that vary by where you are registered as a resident (residenza). The addizionale regionale (regional surcharge) ranges from 0.70% in Friuli-Venezia Giulia (lowest bracket) to 3.33% in Lazio (highest bracket). Most regions apply progressive rates with multiple brackets, similar to national IRPEF. The addizionale comunale (municipal surcharge) varies by municipality, averaging about 0.8% but reaching up to 0.9% in some cities. Together, these surcharges can cost from a few hundred to over €1,000 per year, depending on your income and residence. This is why selecting your region and municipality in the calculator is important for an accurate result.' },
   { question: 'What is the tredicesima and why does Italy have 13 or 14 pay periods?', answer: 'In Italy, most employment contracts include a tredicesima (13th-month salary), paid in December as a kind of year-end bonus. Some contracts (especially in commerce, tourism, and certain industries) also include a quattordicesima (14th-month salary), typically paid in June or July. These are not bonuses — they are part of your RAL, simply distributed over more pay periods. If your RAL is €30,000 with 13 pay periods, your monthly gross is €30,000 / 13 = €2,307.69 (instead of €2,500 with 12). The annual net remains the same regardless of whether you choose 12, 13, or 14 pay periods — only the monthly amount changes.' },
   { question: 'What is TFR (trattamento di fine rapporto)?', answer: 'TFR (Trattamento di Fine Rapporto) is Italy\'s mandatory severance pay system. Your employer sets aside approximately 1/13.5 of your gross annual salary each year (roughly 7.4%). This money accrues throughout your employment and is paid out when you leave the company (for any reason — resignation, dismissal, or retirement). You can choose to keep TFR with your employer (where it earns a modest legally-guaranteed return) or direct it to a pension fund (fondo pensione) for potentially higher returns and tax advantages. TFR is not deducted from your paycheck — it is an additional cost to your employer on top of your RAL.' },
+  { question: `What is RAL and why does everything start from it?`, answer: `RAL stands for retribuzione annua lorda, the gross annual salary written into an Italian employment contract before any deduction. It is the figure quoted in job offers, so it is where every calculation starts. It does not include employer social contributions, which cost the company substantially more than the RAL itself, nor expense reimbursements or non-cash benefits.` },
+  { question: `Why does net pay differ between Italian regions?`, answer: `Because regional and municipal surcharges are set locally, while national income tax and INPS contributions are identical throughout the country. The gap between the most and least favourable region is worth a few hundred euro a year on a typical salary, which is real but usually smaller than the difference in local living costs.` },
+  { question: `Do these calculators apply to self-employed workers?`, answer: `Only some of them. The flat-rate regime calculator and the employee versus freelancer comparison are built for self-employment, while the payslip and net salary tools assume employment. The distinction matters because the taxable base, the contribution rates and the timing of payments are all different for a partita IVA.` },
 ];
 ---
 
@@ -181,77 +184,7 @@ const faqs = [
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
       Frequently Asked Questions
     </h2>
-    <div class="space-y-4">
-      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
-          What is RAL and where do I find it?
-          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          <p>
-            RAL stands for Retribuzione Annua Lorda (Gross Annual Salary). It is the total annual compensation your employer pays you before any taxes or social security contributions are deducted. It includes your base monthly salary multiplied by the number of pay periods (typically 13 or 14 in Italy), plus any fixed allowances. You can find your RAL in your employment contract (contratto di lavoro), offer letter (lettera di assunzione), or your CU (Certificazione Unica) that your employer provides annually. Note that RAL does not include employer-side contributions, TFR, or company benefits.
-          </p>
-        </div>
-      </details>
-
-      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
-          What are the 2026 IRPEF tax brackets?
-          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          <p>
-            In 2026, Italy's IRPEF (personal income tax) has three progressive brackets. The first bracket taxes income up to €28,000 at 23%. The second bracket covers €28,001 to €50,000 at 33%, reduced from the previous 35% thanks to the 2026 Budget Law (Legge di Bilancio). The third bracket, for income above €50,000, has a rate of 43%. Remember the system is progressive: if you earn €60,000, the 43% rate only applies to the €10,000 exceeding €50,000, not your entire income.
-          </p>
-        </div>
-      </details>
-
-      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
-          Why does my net pay vary by region and municipality?
-          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          <p>
-            In addition to national IRPEF, Italy has local surcharges that vary by where you are registered as a resident (residenza). The addizionale regionale (regional surcharge) ranges from 0.70% in Friuli-Venezia Giulia (lowest bracket) to 3.33% in Lazio (highest bracket). Most regions apply progressive rates with multiple brackets, similar to national IRPEF. The addizionale comunale (municipal surcharge) varies by municipality, averaging about 0.8% but reaching up to 0.9% in some cities. Together, these surcharges can cost from a few hundred to over €1,000 per year, depending on your income and residence. This is why selecting your region and municipality in the calculator is important for an accurate result.
-          </p>
-        </div>
-      </details>
-
-      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
-          What is the tredicesima and why does Italy have 13 or 14 pay periods?
-          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          <p>
-            In Italy, most employment contracts include a tredicesima (13th-month salary), paid in December as a kind of year-end bonus. Some contracts (especially in commerce, tourism, and certain industries) also include a quattordicesima (14th-month salary), typically paid in June or July. These are not bonuses — they are part of your RAL, simply distributed over more pay periods. If your RAL is €30,000 with 13 pay periods, your monthly gross is €30,000 / 13 = €2,307.69 (instead of €2,500 with 12). The annual net remains the same regardless of whether you choose 12, 13, or 14 pay periods — only the monthly amount changes.
-          </p>
-        </div>
-      </details>
-
-      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-4 text-base font-medium text-gray-900 dark:text-white hover:text-brand transition-colors">
-          What is TFR (trattamento di fine rapporto)?
-          <svg class="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          <p>
-            TFR (Trattamento di Fine Rapporto) is Italy's mandatory severance pay system. Your employer sets aside approximately 1/13.5 of your gross annual salary each year (roughly 7.4%). This money accrues throughout your employment and is paid out when you leave the company (for any reason — resignation, dismissal, or retirement). You can choose to keep TFR with your employer (where it earns a modest legally-guaranteed return) or direct it to a pension fund (fondo pensione) for potentially higher returns and tax advantages. TFR is not deducted from your paycheck — it is an additional cost to your employer on top of your RAL.
-          </p>
-        </div>
-      </details>
-    </div>
+    <FAQFisarmonica faqs={faqs} titolo="" />
   </Fragment>
 
   <!-- Related calculators -->

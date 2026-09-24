@@ -77,7 +77,10 @@ export function breadcrumbSchema(
  * Le texte déclaré reste alors, mot pour mot, un début du texte servi : la
  * promesse faite au moteur est tenue par la page.
  */
-function estratto(testo: string, massimo = 90): string {
+// Marge de deux mots : une entité HTML ou une espace insécable présente dans le
+// texte compte pour un mot de plus une fois décodée par le contrôle, si bien
+// qu'une coupe à 90 pouvait en donner 91 (2026-09-24).
+function estratto(testo: string, massimo = 88): string {
   const parole = testo.trim().split(/\s+/);
   if (parole.length <= massimo) return testo.trim();
   // Une fin de phrase est un point suivi d'une espace et d'une majuscule.
@@ -111,7 +114,11 @@ export function faqSchema(
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
+    // §7 plafonne à huit questions déclarées : au-delà, l'extrait enrichi n'en
+    // retient de toute façon qu'une poignée. La page peut en afficher davantage,
+    // on ne déclare que les huit premières — déclarer un sous-ensemble est
+    // permis, déclarer ce qui n'est pas sur la page ne l'est pas.
+    mainEntity: faqs.slice(0, 8).map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
