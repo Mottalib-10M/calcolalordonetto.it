@@ -136,6 +136,20 @@ const schemaString = JSON.stringify(schemas);
           </a>
           : {t('calc.sourceINPS', lang)}
         </li>
+        <li>
+          {/* §7 : une page pilier cite au moins trois sources publiques. Le
+              testo unico e la Gazzetta Ufficiale sont la source primaire des
+              aliquote, au-dessus des circolari che le commentent. */}
+          <a
+            href="https://www.gazzettaufficiale.it"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline hover:text-brand transition-colors"
+          >
+            Gazzetta Ufficiale
+          </a>
+          : {lang === 'en' ? 'the budget law that sets brackets and deductions each year' : 'la legge di bilancio che fissa ogni anno scaglioni e detrazioni'}
+        </li>
       </ul>
     </aside>
 

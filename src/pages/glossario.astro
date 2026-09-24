@@ -1,4 +1,5 @@
 ---
+import FontiUfficiali from '../components/ui/FontiUfficiali.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config';
 import { breadcrumbSchema } from '../lib/seo';
@@ -392,4 +393,5 @@ const alphabet = [...new Set(terms.map(t => t.term.charAt(0).toUpperCase()))].so
       </a>
     </section>
   </div>
+  <FontiUfficiali lang="it" />
 </Layout>

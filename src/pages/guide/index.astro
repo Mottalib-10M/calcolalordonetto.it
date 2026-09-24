@@ -1,4 +1,5 @@
 ---
+import FontiUfficiali from '../../components/ui/FontiUfficiali.astro';
 import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
@@ -308,4 +309,5 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
 
   </div>
   <FAQFisarmonica faqs={faqs} titolo="" />
+  <FontiUfficiali lang="it" />
 </Layout>

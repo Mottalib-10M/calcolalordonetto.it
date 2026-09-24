@@ -1,0 +1,32 @@
+---
+/**
+ * Encart des sources officielles (RECETTE-SITE.md §7).
+ *
+ * Une page pilier cite au moins trois sources publiques vérifiables. Ce n'est
+ * pas décoratif : c'est ce qui permet au lettore, et à un moteur, de remonter
+ * du chiffre affiché all'organismo che lo pubblica.
+ */
+interface Props { lang?: 'it' | 'en'; }
+const { lang = 'it' } = Astro.props;
+const fonti = [
+  { nome: 'Agenzia delle Entrate', url: 'https://www.agenziaentrate.gov.it',
+    it: 'scaglioni IRPEF, detrazioni e addizionali', en: 'income tax brackets, deductions and local surcharges' },
+  { nome: 'INPS', url: 'https://www.inps.it',
+    it: 'aliquote contributive, massimali e prestazioni', en: 'contribution rates, ceilings and benefits' },
+  { nome: 'Gazzetta Ufficiale', url: 'https://www.gazzettaufficiale.it',
+    it: 'la legge di bilancio che fissa ogni anno i parametri', en: 'the budget law that sets the parameters each year' },
+];
+---
+<aside class="mt-12 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-6">
+  <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
+    {lang === 'en' ? 'Official sources' : 'Fonti ufficiali'}
+  </h2>
+  <ul class="mt-3 space-y-1.5 text-sm text-gray-600 dark:text-gray-400">
+    {fonti.map((f) => (
+      <li>
+        <a href={f.url} target="_blank" rel="noopener noreferrer" class="underline hover:text-brand transition-colors">{f.nome}</a>
+        : {lang === 'en' ? f.en : f.it}
+      </li>
+    ))}
+  </ul>
+</aside>

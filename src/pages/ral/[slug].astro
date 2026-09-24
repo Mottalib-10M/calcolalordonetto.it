@@ -709,6 +709,21 @@ const ralProfile = ralProfiles[ral];
       RAL {ralFormatted} &euro;: Quanto Guadagni Netto al Mese nel {SITE.annoFiscale}
     </h1>
 
+
+    <!-- Bloc citable §21 : una risposta di almeno 120 parole, in cima alla pagina. -->
+    <section class="mb-8 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+      <h2 class="mb-3 text-lg font-bold text-gray-900 dark:text-white">In sintesi</h2>
+      <p class="leading-relaxed text-gray-700 dark:text-gray-300">
+        Con una RAL di {ralFormatted} euro, un lavoratore dipendente single residente in Lombardia porta a casa circa
+        {formatCurrency(defaultResult.nettoMensile)} netti al mese su tredici mensilità. Dalla cifra lorda si sottraggono nell'ordine
+        i contributi INPS a carico del dipendente, pari al 9,19 per cento dell'imponibile previdenziale, poi l'IRPEF nazionale
+        applicata per scaglioni e infine le addizionali regionale e comunale, decise localmente. Le detrazioni da lavoro dipendente
+        e l'eventuale trattamento integrativo riducono l'imposta dovuta. La regione di residenza sposta il risultato: il netto più
+        alto si ottiene in {bestRegion.nome}, il più basso in {worstRegion.nome}, con una differenza che deriva unicamente dalle
+        addizionali locali. Cambia anche con il numero di mensilità: a parità di RAL, quattordici mensilità rendono ogni busta più
+        leggera senza modificare il totale annuo.
+      </p>
+    </section>
     <!-- Hero box -->
     <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 mb-12">
       <div class="relative z-10">

@@ -692,6 +692,20 @@ const ralProfile = ralProfiles[ral];
       Gross Salary (RAL) {ralFormatted} &euro;: Your Net Monthly Pay in {SITE.annoFiscale}
     </h1>
 
+
+    <!-- §21 citable block: a self-contained answer of at least 120 words. -->
+    <section class="mb-8 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+      <h2 class="mb-3 text-lg font-bold text-gray-900 dark:text-white">The short answer</h2>
+      <p class="leading-relaxed text-gray-700 dark:text-gray-300">
+        On a gross annual salary (RAL) of {ralFormatted} euro, a single employee living in Lombardy takes home roughly
+        {formatCurrency(defaultResult.nettoMensile)} net per month over thirteen payments. Three deductions apply in order:
+        INPS social contributions, charged to the employee at 9.19 per cent of the contributory base, then national income tax
+        applied in brackets, and finally regional and municipal surcharges set by local authorities. Employment deductions and,
+        where it applies, the trattamento integrativo reduce the tax due. Where you live moves the result: net pay is highest in
+        {bestRegion.nome} and lowest in {worstRegion.nome}, a gap that comes entirely from local surcharges. The number of payments
+        matters too: at the same annual gross, fourteen payments make each payslip smaller without changing the yearly total.
+      </p>
+    </section>
     <!-- Hero box -->
     <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 px-6 py-10 sm:px-10 sm:py-12 mb-12">
       <div class="relative z-10">
