@@ -1,8 +1,9 @@
 ---
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
 import { calcolaLordoDaNetto } from '../../lib/irpef-engine';
-import { breadcrumbSchema } from '../../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../../lib/seo';
 
 const title = 'Stipendio Mensile Netto: Quanto Lordo Serve? Tabella 2026';
 const description = 'Quale RAL serve per un netto da 1.000 a 5.000 euro al mese? Tabella 2026 aggiornata con IRPEF, INPS, addizionali regionali e detrazioni per ogni importo netto.';
@@ -30,7 +31,14 @@ const breadcrumbs = [
   { name: 'Stipendio Mensile', url: `${SITE.url}/stipendio-mensile/` },
 ];
 
+const faqs = [
+  { question: `Come si passa dallo stipendio mensile alla RAL?`, answer: `Si moltiplica il netto mensile per il numero di mensilità previste dal contratto e si risale all'imponibile aggiungendo contributi e imposte. Il passaggio non è una semplice moltiplicazione, perché IRPEF e addizionali sono progressive: per questo conviene usare il calcolatore anziché una proporzione.` },
+  { question: `Perché la tredicesima ha un netto più basso di una mensilità normale?`, answer: `Perché sulla tredicesima non spettano le detrazioni da lavoro dipendente, che vengono invece ripartite sulle dodici mensilità ordinarie. L'imponibile è lo stesso, ma mancando le detrazioni la trattenuta risulta proporzionalmente più alta, e il netto che arriva in banca è inferiore.` },
+  { question: `Il netto mensile indicato è al netto anche delle tasse annuali?`, answer: `Sì: il calcolo comprende contributi INPS, IRPEF nazionale e addizionali regionale e comunale, che in busta paga vengono trattenute mese per mese. Restano fuori soltanto gli eventuali conguagli di fine anno, che dipendono dalle detrazioni spettanti e dagli altri redditi dichiarati, e che possono spostare il netto di qualche decina di euro al mese.` },
+];
+
 const schemaString = JSON.stringify([
+  faqSchema(faqs),
   breadcrumbSchema(breadcrumbs),
   {
     '@context': 'https://schema.org',
@@ -56,6 +64,7 @@ const groups = [
   { label: 'Stipendi Medio-Alti (2.200 - 3.000 euro)', items: pages.filter(p => p.netto >= 2200 && p.netto <= 3000) },
   { label: 'Stipendi Alti (3.500 - 5.000 euro)', items: pages.filter(p => p.netto >= 3500) },
 ];
+
 ---
 
 <Layout
@@ -477,4 +486,5 @@ const groups = [
       </div>
     </section>
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

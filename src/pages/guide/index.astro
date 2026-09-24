@@ -1,7 +1,8 @@
 ---
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
-import { breadcrumbSchema } from '../../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../../lib/seo';
 
 const title = "Guide Fiscali Italia 2026: IRPEF, Stipendio Netto e Tasse";
 const description = "Guide fiscali 2026: come si calcola lo stipendio netto, scaglioni IRPEF, TFR, regime forfettario e impatriati. Esempi pratici con numeri reali e riferimenti.";
@@ -11,7 +12,14 @@ const breadcrumbs = [
   { name: 'Guide', url: `${SITE.url}/guide/` },
 ];
 
+const faqs = [
+  { question: `Da quale guida conviene partire?`, answer: `Da quella sulla busta paga, perché spiega le voci che ritornano in tutte le altre: imponibile previdenziale, imponibile fiscale, detrazioni e netto in busta. Una volta chiari quei quattro concetti, le guide su TFR, tredicesima e addizionali diventano molto più semplici da seguire.` },
+  { question: `Le guide sostituiscono il parere di un consulente?`, answer: `No, e non è il loro scopo. Servono a capire come si compone il proprio stipendio e a verificare che la busta paga sia coerente. Per una situazione particolare, come redditi esteri, partite IVA miste o passaggi di regime, resta necessario il parere di un commercialista o di un consulente del lavoro.` },
+  { question: `Ogni quanto vengono riviste?`, answer: `Ogni guida riporta in alto la data dell'ultima revisione. Gli aggiornamenti seguono le fonti ufficiali: la legge di bilancio di fine anno per scaglioni e detrazioni, le circolari INPS per le aliquote contributive, le delibere regionali e comunali per le addizionali.` },
+];
+
 const schema = JSON.stringify([
+  faqSchema(faqs),
   breadcrumbSchema(breadcrumbs),
   {
     '@context': 'https://schema.org',
@@ -107,6 +115,7 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
   month: 'long',
   day: 'numeric',
 });
+
 ---
 
 <Layout title={title} description={description} schema={schema}>
@@ -295,4 +304,5 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
     </div>
 
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

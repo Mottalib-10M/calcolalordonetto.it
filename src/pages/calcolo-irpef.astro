@@ -1,4 +1,5 @@
 ---
+import FAQFisarmonica from '../components/ui/FAQFisarmonica.astro';
 import CalcolatoreLayout from '../layouts/CalcolatoreLayout.astro';
 import { SITE } from '../config';
 import { canonicalURL } from '../lib/seo';
@@ -14,7 +15,7 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Qual è la differenza tra IRPEF lorda e IRPEF netta?', answer: 'L\'IRPEF lorda è l\'imposta calcolata applicando le aliquote progressive al tuo reddito imponibile. L\'IRPEF netta si ottiene sottraendo le detrazioni spettanti (lavoro dipendente, cuneo fiscale, carichi familiari). È l\'IRPEF netta che viene effettivamente trattenuta dalla busta paga.' },
+  { question: 'Qual è la differenza tra IRPEF lorda e IRPEF netta?', answer: 'L\'IRPEF lorda è l\'imposta calcolata applicando le aliquote progressive al tuo reddito imponibile. L\'IRPEF netta si ottiene sottraendo le detrazioni spettanti (lavoro dipendente, cuneo fiscale, carichi familiari). È l\'IRPEF netta che viene effettivamente trattenuta dalla busta paga. L\'IRPEF lorda è l\'imposta che deriva dall\'applicazione degli scaglioni al reddito imponibile. L\'IRPEF netta è quella che si paga davvero, dopo aver sottratto detrazioni per lavoro dipendente, per familiari a carico e per le spese ammesse in dichiarazione.' },
   { question: 'cos\'è l\'aliquota marginale e perché è importante?', answer: 'L\'aliquota marginale indica la percentuale di tassazione applicata all\'ultimo euro guadagnato. Per esempio, se il tuo reddito supera i 28.000 euro, ogni euro aggiuntivo viene tassato al 33%. Questo è fondamentale per valutare il reale impatto netto di un aumento di stipendio o di un bonus.' },
   { question: 'Cosa sono le addizionali regionali e comunali?', answer: 'Sono imposte aggiuntive sull\'IRPEF dovute alla regione e al comune di residenza. L\'addizionale regionale varia dall\'1,23% al 3,33% a seconda della regione (il Lazio e la Campania sono tra le più care). L\'addizionale comunale va dallo 0% allo 0,9%. Entrambe sono calcolate sull\'imponibile fiscale e vengono trattenute in 11 rate mensili, generalmente da marzo a gennaio.' },
   { question: 'Come interagisce il cuneo fiscale 2026 con gli scaglioni IRPEF?', answer: 'Il cuneo fiscale agisce sull\'IRPEF in modo diverso a seconda dello scaglione: sotto i 20.000 euro riduce direttamente la base imponibile (somma esente dal 4,8% al 7,1%), abbassando l\'IRPEF lorda calcolata al 23%. Tra 20.001 e 40.000 euro opera come detrazione aggiuntiva fino a 1.000 euro, sottratta dall\'IRPEF netta dopo le detrazioni ordinarie. Non modifica le aliquote degli scaglioni, ma ne attenua l\'impatto. Approfondisci nella <a href="/guide/cuneo-fiscale-2026/">guida al cuneo fiscale</a>.' },

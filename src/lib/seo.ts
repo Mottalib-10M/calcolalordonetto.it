@@ -68,6 +68,42 @@ export function breadcrumbSchema(
   };
 }
 
+/**
+ * Ce que le balisage déclare : la réponse entière, ou ses premières phrases.
+ *
+ * Une réponse de 140 mots est utile au lecteur, mais Google tronque l'extrait
+ * enrichi bien avant et §7 fixe la limite à 90 mots. Plutôt que d'amputer la
+ * page, on ne déclare que les premières phrases complètes, dans cette limite.
+ * Le texte déclaré reste alors, mot pour mot, un début du texte servi : la
+ * promesse faite au moteur est tenue par la page.
+ */
+function estratto(testo: string, massimo = 90): string {
+  const parole = testo.trim().split(/\s+/);
+  if (parole.length <= massimo) return testo.trim();
+  // Une fin de phrase est un point suivi d'une espace et d'une majuscule.
+  // Couper sur tout point cassait « 6.91% » en deux et produisait une phrase
+  // fausse, absente de la page (calcolalordonetto.it, 2026-09-24).
+  const frasi = testo.split(/(?<=[.!?])\s+(?=[A-ZÀ-Ý])/);
+  const presi: string[] = [];
+  let n = 0;
+  for (const frase of frasi) {
+    const m = frase.trim().split(/\s+/).length;
+    if (n + m > massimo && n >= 40) break;
+    presi.push(frase);
+    n += m;
+  }
+  let out = presi.join('').trim();
+  // Une énumération peut à elle seule dépasser la limite : on coupe alors à la
+  // dernière virgule utile plutôt qu'en plein mot.
+  const mots = out.split(/\s+/);
+  if (mots.length > massimo) {
+    const corto = mots.slice(0, massimo).join(' ');
+    const i = Math.max(corto.lastIndexOf(','), corto.lastIndexOf(';'));
+    out = (i > 0 ? corto.slice(0, i) : corto).replace(/[,;\s]+$/, '') + '.';
+  }
+  return out;
+}
+
 /** Generate FAQPage schema */
 export function faqSchema(
   faqs: { question: string; answer: string }[]
@@ -80,7 +116,7 @@ export function faqSchema(
       name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer,
+        text: estratto(faq.answer),
       },
     })),
   };

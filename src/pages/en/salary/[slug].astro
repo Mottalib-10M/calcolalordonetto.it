@@ -1,4 +1,5 @@
 ---
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../../layouts/Layout.astro';
 import { SITE } from '../../../config';
 import { calcolaStipendio, type RisultatoStipendio } from '../../../lib/irpef-engine';
@@ -73,11 +74,11 @@ export function getStaticPaths() {
       },
       {
         question: `Which Italian region has the highest net pay with a RAL of ${ralF} euro?`,
-        answer: `With a RAL of ${ralF} euro, the region with the highest monthly net pay is ${best.nome} (${formatCurrency(best.nettoMensile, 'en')}), thanks to lower regional surcharges (addizionale regionale). The least favorable region is ${worst.nome} (${formatCurrency(worst.nettoMensile, 'en')}), with a difference of ${formatCurrency(best.nettoMensile - worst.nettoMensile, 'en')} per month.`,
+        answer: `With a RAL of ${ralF} euro, the region with the highest monthly net pay is ${best.nome} (${formatCurrency(best.nettoMensile, 'en')}), thanks to lower regional surcharges (addizionale regionale). The least favorable region is ${worst.nome} (${formatCurrency(worst.nettoMensile, 'en')}), with a difference of ${formatCurrency(best.nettoMensile - worst.nettoMensile, 'en')} per month. The gap comes only from regional and municipal surcharges, since national income tax and social contributions are identical across Italy. Before relocating, compare the local cost of living too: it weighs far more than the surcharge itself.`,
       },
       {
         question: `How much tax do you pay on a RAL of ${ralF} euro in Italy?`,
-        answer: `On a RAL of ${ralF} euro, the overall effective tax rate is approximately ${formatRate(result.aliquotaMedia, 'en')} (INPS social contributions + IRPEF income tax + regional and municipal surcharges). The marginal IRPEF rate is ${formatRate(result.aliquotaMarginale, 'en')}. The annual net salary is approximately ${formatCurrency(result.nettoAnnuo, 'en')}.`,
+        answer: `On a RAL of ${ralF} euro, the overall effective tax rate is approximately ${formatRate(result.aliquotaMedia, 'en')} (INPS social contributions + IRPEF income tax + regional and municipal surcharges). The marginal IRPEF rate is ${formatRate(result.aliquotaMarginale, 'en')}. The annual net salary is approximately ${formatCurrency(result.nettoAnnuo, 'en')}. The total splits into three separate items: INPS contributions withheld from the employee, national IRPEF charged in brackets, and regional and municipal surcharges that vary by where you live. Employment deductions and the trattamento integrativo are then subtracted, where they apply.`,
       },
     ];
 
@@ -102,7 +103,7 @@ export function getStaticPaths() {
       });
       faqs.push({
         question: `Which IRPEF tax bracket does a RAL of ${ralF} euro fall into?`,
-        answer: `With a RAL of ${ralF} euro, after deducting INPS contributions, the taxable income falls mainly in the second IRPEF bracket (23% up to EUR 28,000 and 33% from EUR 28,001 to EUR 50,000). The effective marginal rate is ${formatRate(result.aliquotaMarginale, 'en')}.`,
+        answer: `With a RAL of ${ralF} euro, after deducting INPS contributions, the taxable income falls mainly in the second IRPEF bracket (23% up to EUR 28,000 and 33% from EUR 28,001 to EUR 50,000). The effective marginal rate is ${formatRate(result.aliquotaMarginale, 'en')}. Remember that a bracket rate applies only to the portion of income inside it, never to the whole income, which is the most common misunderstanding about Italian tax. Taxable income is also lower than the RAL itself, because social contributions are deducted first.`,
       });
     } else if (rangeKey === 'upper-middle') {
       faqs.push({
@@ -116,7 +117,7 @@ export function getStaticPaths() {
       });
       faqs.push({
         question: `Is there an INPS contribution ceiling for a RAL of ${ralF} euro?`,
-        answer: `Yes, for 2026 the INPS contribution ceiling (massimale contributivo) is approximately EUR 119,650. Beyond this threshold, no further INPS employee contributions are due. With a RAL of ${ralF} euro, ${ral > 119_650 ? 'the exceeding portion is not subject to INPS employee contributions' : 'the entire RAL is subject to INPS contributions'}.`,
+        answer: `Yes, for 2026 the INPS contribution ceiling (massimale contributivo) is approximately EUR 119,650. Beyond this threshold, no further INPS employee contributions are due. With a RAL of ${ralF} euro, ${ral > 119_650 ? 'the exceeding portion is not subject to INPS employee contributions' : 'the entire RAL is subject to INPS contributions'}. The ceiling applies only to workers who started contributing after 1996 and is set each year by INPS: above that threshold no further pension contributions are due. Below it, the rate applies to the whole taxable base.`,
       });
     }
 

@@ -76,15 +76,15 @@ export function buildFaqs(ral: number, result: RisultatoStipendio, best: RegionR
   const faqs: FaqItem[] = [
     {
       question: `Quanto si guadagna netto al mese con una RAL di ${ralF} euro?`,
-      answer: `Con una RAL di ${ralF} euro e 13 mensilita, lo stipendio netto mensile e di circa ${nettoF} per un lavoratore single residente in Lombardia. L'importo varia in base alla regione di residenza, alla situazione familiare e all'aliquota comunale.`,
+      answer: `Con una RAL di ${ralF} euro e 13 mensilita, lo stipendio netto mensile e di circa ${nettoF} per un lavoratore single residente in Lombardia. L'importo varia in base alla regione di residenza, alla situazione familiare e all'aliquota comunale. Il netto dipende soprattutto da tre elementi: le addizionali regionale e comunale, che cambiano di centinaia di euro l'anno da un comune all'altro, il numero di mensilita previsto dal contratto e le eventuali detrazioni per familiari a carico.`,
     },
     {
       question: `Qual e la regione dove si guadagna di piu con RAL ${ralF} euro?`,
-      answer: `Con una RAL di ${ralF} euro, la regione dove il netto mensile e piu alto e ${best.nome} (${formatCurrency(best.nettoMensile)}), grazie ad addizionali regionali piu basse. La regione meno conveniente e ${worst.nome} (${formatCurrency(worst.nettoMensile)}), con una differenza di ${formatCurrency(best.nettoMensile - worst.nettoMensile)} al mese.`,
+      answer: `Con una RAL di ${ralF} euro, la regione dove il netto mensile e piu alto e ${best.nome} (${formatCurrency(best.nettoMensile)}), grazie ad addizionali regionali piu basse. La regione meno conveniente e ${worst.nome} (${formatCurrency(worst.nettoMensile)}), con una differenza di ${formatCurrency(best.nettoMensile - worst.nettoMensile)} al mese. La differenza nasce solo dalle addizionali locali, perche l'IRPEF nazionale e i contributi INPS sono identici in tutta Italia. Prima di trasferirsi conviene pero confrontare anche il costo della vita, che pesa molto piu dell'addizionale.`,
     },
     {
       question: `Quante tasse si pagano su ${ralF} euro di RAL?`,
-      answer: `Su una RAL di ${ralF} euro si paga circa il ${formatRate(result.aliquotaMedia)} di tasse complessive (INPS + IRPEF + addizionali). L'aliquota marginale IRPEF e del ${formatRate(result.aliquotaMarginale)}. Il netto annuo e di circa ${formatCurrency(result.nettoAnnuo)}.`,
+      answer: `Su una RAL di ${ralF} euro si paga circa il ${formatRate(result.aliquotaMedia)} di tasse complessive (INPS + IRPEF + addizionali). L'aliquota marginale IRPEF e del ${formatRate(result.aliquotaMarginale)}. Il netto annuo e di circa ${formatCurrency(result.nettoAnnuo)}. Il carico si divide in tre voci distinte: i contributi INPS a carico del lavoratore, l'IRPEF nazionale a scaglioni e le addizionali regionale e comunale. A queste si sottraggono le detrazioni da lavoro dipendente e il trattamento integrativo, quando spettano.`,
     },
   ];
 
@@ -109,7 +109,7 @@ export function buildFaqs(ral: number, result: RisultatoStipendio, best: RegionR
     });
     faqs.push({
       question: `In quale scaglione IRPEF cade una RAL di ${ralF} euro?`,
-      answer: `Con una RAL di ${ralF} euro, al netto dei contributi INPS, l'imponibile fiscale ricade principalmente nel secondo scaglione IRPEF (23% fino a 28.000 euro e 33% da 28.001 a 50.000 euro). L'aliquota marginale effettiva e del ${formatRate(result.aliquotaMarginale)}.`,
+      answer: `Con una RAL di ${ralF} euro, al netto dei contributi INPS, l'imponibile fiscale ricade principalmente nel secondo scaglione IRPEF (23% fino a 28.000 euro e 33% da 28.001 a 50.000 euro). L'aliquota marginale effettiva e del ${formatRate(result.aliquotaMarginale)}. Lo scaglione si applica solo alla parte di reddito che vi rientra, non a tutto il reddito: e un errore comune pensare il contrario. Il reddito imponibile e inoltre inferiore alla RAL, perche i contributi previdenziali si deducono prima del calcolo dell'imposta.`,
     });
   } else if (rangeKey === 'upper-middle') {
     faqs.push({
@@ -123,7 +123,7 @@ export function buildFaqs(ral: number, result: RisultatoStipendio, best: RegionR
     });
     faqs.push({
       question: `Esiste un tetto contributivo INPS per RAL ${ralF} euro?`,
-      answer: `Si, per il 2026 il massimale contributivo INPS e di circa 119.650 euro. Oltre questa soglia non si versano ulteriori contributi previdenziali INPS. Con una RAL di ${ralF} euro, ${ral > 119_650 ? 'la parte eccedente non e soggetta a contributi INPS dipendente' : 'l\'intera RAL e soggetta a contributi INPS'}.`,
+      answer: `Si, per il 2026 il massimale contributivo INPS e di circa 119.650 euro. Oltre questa soglia non si versano ulteriori contributi previdenziali INPS. Con una RAL di ${ralF} euro, ${ral > 119_650 ? 'la parte eccedente non e soggetta a contributi INPS dipendente' : 'l\'intera RAL e soggetta a contributi INPS'}. Il massimale riguarda solo chi ha iniziato a versare dopo il 1996 ed e fissato ogni anno dall'INPS: oltre quella soglia i contributi pensionistici non si versano piu. Per le RAL sotto il massimale, l'aliquota si applica invece sull'intero imponibile.`,
     });
   }
 

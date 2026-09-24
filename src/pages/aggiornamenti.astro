@@ -1,7 +1,8 @@
 ---
+import FAQFisarmonica from '../components/ui/FAQFisarmonica.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config';
-import { breadcrumbSchema } from '../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../lib/seo';
 
 const title = 'Aggiornamenti Fiscali Italia 2026: novità IRPEF, INPS e Tasse';
 const description = "Le ultime novità fiscali italiane: aggiornamenti IRPEF, contributi INPS, cuneo fiscale, scadenze e modifiche normative che impattano il tuo stipendio netto.";
@@ -11,7 +12,14 @@ const breadcrumbs = [
   { name: 'Aggiornamenti', url: `${SITE.url}/aggiornamenti/` },
 ];
 
+const faqs = [
+  { question: `Che cosa contiene questa pagina?`, answer: `L'elenco delle modifiche apportate ai calcolatori e alle guide: aggiornamenti degli scaglioni, delle aliquote contributive e delle addizionali, ma anche correzioni di contenuto. Serve a rendere verificabile ciò che è cambiato e quando, invece di aggiornare i numeri in silenzio.` },
+  { question: `Perché pubblicare gli aggiornamenti?`, answer: `Perché su un sito di calcoli fiscali la data conta quanto il numero. Un lettore che ha fatto una simulazione sei mesi fa deve poter capire se nel frattempo qualcosa è cambiato, e su quale base. Ogni pagina riporta inoltre in alto la propria data di ultima revisione.` },
+  { question: `Come segnalare un errore?`, answer: `Dalla pagina contatti, indicando la pagina e il valore che sembra sbagliato. Le segnalazioni che riguardano un'aliquota o uno scaglione vengono verificate sulla fonte ufficiale prima di qualsiasi modifica, e la correzione compare poi in questo elenco con la sua data.` },
+];
+
 const schema = JSON.stringify([
+  faqSchema(faqs),
   breadcrumbSchema(breadcrumbs),
   {
     '@context': 'https://schema.org',
@@ -101,6 +109,7 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
   month: 'long',
   day: 'numeric',
 });
+
 ---
 
 <Layout
@@ -218,4 +227,5 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
       </a>
     </section>
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

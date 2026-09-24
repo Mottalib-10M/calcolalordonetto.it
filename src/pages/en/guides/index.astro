@@ -1,7 +1,8 @@
 ---
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../../layouts/Layout.astro';
 import { SITE } from '../../../config';
-import { breadcrumbSchema } from '../../../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../../../lib/seo';
 
 const title = "Italian Tax Guides for Expats 2026: IRPEF, Salary, TFR";
 const description = "Practical tax guides for living and working in Italy. IRPEF brackets, net salary calculation, TFR severance, flat-rate regime, and impatriati regime explained.";
@@ -11,7 +12,14 @@ const breadcrumbs = [
   { name: 'Guides', url: `${SITE.url}/en/guides/` },
 ];
 
+const faqs = [
+  { question: `Which guide should I read first?`, answer: `The one on reading an Italian payslip, because it explains the items that recur in all the others: social security base, taxable income, deductions and net pay. Once those four concepts are clear, the guides on severance pay, the thirteenth month and local surcharges become much easier to follow.` },
+  { question: `Do these guides replace professional advice?`, answer: `No, and they are not meant to. They help you understand how your salary is built and check that your payslip is consistent. For a specific situation, such as foreign income, mixed self-employment or a change of tax regime, an accountant or a labour consultant remains necessary.` },
+  { question: `How often are they revised?`, answer: `Each guide shows its last review date at the top, so you always know which tax year it describes. Updates follow the official sources: the year-end budget law for brackets and deductions, INPS circulars for contribution rates, and regional and municipal resolutions for local surcharges.` },
+];
+
 const schema = JSON.stringify([
+  faqSchema(faqs),
   breadcrumbSchema(breadcrumbs),
   {
     '@context': 'https://schema.org',
@@ -107,6 +115,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
 ---
 
 <Layout title={title} description={description} schema={schema} lang="en">
@@ -295,4 +304,5 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
     </div>
 
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

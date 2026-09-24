@@ -1,8 +1,9 @@
 ---
+import FAQFisarmonica from '../components/ui/FAQFisarmonica.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config';
 import { t } from '../i18n/index';
-import { breadcrumbSchema } from '../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../lib/seo';
 
 const lang = 'it';
 const title = t('calcolatori.title', lang);
@@ -13,7 +14,14 @@ const breadcrumbs = [
   { name: 'Calcolatori', url: `${SITE.url}/calcolatori/` },
 ];
 
+const faqs = [
+  { question: `Quale calcolatore devo usare per sapere quanto prendo al mese?`, answer: `Il calcolatore da lordo a netto è il punto di partenza: converte la RAL in stipendio mensile tenendo conto di contributi INPS, IRPEF e addizionali locali. Se il contratto prevede tredicesima o quattordicesima, il risultato cambia perché lo stesso importo annuo si divide su più mensilità, ciascuna di valore inferiore.` },
+  { question: `I calcolatori sono aggiornati agli scaglioni in vigore?`, answer: `Sì, e ogni pagina indica in alto la data dell'ultima revisione, così si sa esattamente su quale annualità si sta ragionando. Gli scaglioni IRPEF, le aliquote contributive e le addizionali regionali vengono aggiornati quando le fonti ufficiali pubblicano, in genere dopo la legge di bilancio.` },
+  { question: `I dati che inserisco vengono salvati da qualche parte?`, answer: `No. Tutti i calcoli avvengono nel browser, sul dispositivo di chi consulta il sito: nessuna retribuzione, nessuna situazione familiare e nessun risultato viene inviato a un server. Chiudere la scheda cancella tutto, e non esiste alcun modo tecnico di recuperare ciò che è stato digitato.` },
+];
+
 const schema = JSON.stringify([
+  faqSchema(faqs),
   breadcrumbSchema(breadcrumbs),
   {
     '@context': 'https://schema.org',
@@ -63,6 +71,7 @@ const calcolatoriFinanza = [
   { name: t('nav.savingsPlan', lang), href: '/calcolo-piano-accumulo/', desc: t('calcolatori.savingsPlanDesc', lang) },
   { name: t('nav.inflation', lang), href: '/calcolo-inflazione/', desc: t('calcolatori.inflationDesc', lang) },
 ];
+
 ---
 
 <Layout title={title} description={description} schema={schema}>
@@ -169,4 +178,5 @@ const calcolatoriFinanza = [
     </div>
 
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

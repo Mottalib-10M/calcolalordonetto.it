@@ -1,8 +1,9 @@
 ---
+import FAQFisarmonica from '../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
 import { t } from '../../i18n/index';
-import { breadcrumbSchema } from '../../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../../lib/seo';
 
 const lang = 'en';
 const title = t('calcolatori.title', lang);
@@ -13,7 +14,14 @@ const breadcrumbs = [
   { name: 'Calculators', url: `${SITE.url}/en/calculators/` },
 ];
 
+const faqs = [
+  { question: `Which calculator should I start with?`, answer: `The gross-to-net calculator is the starting point: it turns an annual gross salary into a monthly net figure, accounting for INPS contributions, national income tax and local surcharges. If your contract includes a thirteenth or fourteenth month, the result changes, because the same annual amount is spread over more payments.` },
+  { question: `Are the calculators up to date with current rates?`, answer: `Yes, and every page shows the date of its last review directly under the title, so you know which tax year you are looking at. Brackets, contribution rates and regional surcharges are updated when the official sources publish, usually after the annual budget law.` },
+  { question: `Is anything I type stored?`, answer: `No. All calculations run in your browser, on your own device: no salary, no family situation and no result is sent to a server. Closing the tab clears everything, and there is no technical way for us to recover what was entered.` },
+];
+
 const schema = JSON.stringify([
+  faqSchema(faqs),
   breadcrumbSchema(breadcrumbs),
   {
     '@context': 'https://schema.org',
@@ -63,6 +71,7 @@ const calcolatoriFinanza = [
   { name: t('nav.savingsPlan', lang), href: '/en/savings-plan-calculator/', desc: t('calcolatori.savingsPlanDesc', lang) },
   { name: t('nav.inflation', lang), href: '/en/inflation-calculator/', desc: t('calcolatori.inflationDesc', lang) },
 ];
+
 ---
 
 <Layout title={title} description={description} schema={schema} lang="en">
@@ -169,4 +178,5 @@ const calcolatoriFinanza = [
     </div>
 
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

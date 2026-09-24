@@ -1,8 +1,9 @@
 ---
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../../layouts/Layout.astro';
 import { SITE } from '../../../config';
 import { calcolaLordoDaNetto } from '../../../lib/irpef-engine';
-import { breadcrumbSchema } from '../../../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../../../lib/seo';
 
 const title = `Monthly Net Salary to Gross RAL Conversion Table Italy ${SITE.annoFiscale}`;
 const description = `What gross salary (RAL) do you need for €1,000 to €5,000 net per month? Updated ${SITE.annoFiscale} table with IRPEF, INPS, surcharges, and exact RAL required per amount.`;
@@ -30,7 +31,14 @@ const breadcrumbs = [
   { name: 'Monthly Salary', url: `${SITE.url}/en/monthly-salary/` },
 ];
 
+const faqs = [
+  { question: `How do I convert a monthly salary into an annual gross figure?`, answer: `Multiply the net monthly figure by the number of payments in your contract, then work back to the gross by adding contributions and tax. It is not a simple multiplication, because income tax and surcharges are progressive, which is why a calculator gives a more reliable answer than a proportion.` },
+  { question: `Why is the thirteenth month lower than a normal monthly payment?`, answer: `Because employment deductions do not apply to it: they are spread across the twelve ordinary payments instead. The taxable amount is the same, but with no deductions to offset it the withholding is proportionally higher, so the amount that reaches your account is smaller.` },
+  { question: `Does the monthly net figure already include annual taxes?`, answer: `Yes: it accounts for INPS contributions, national income tax and regional and municipal surcharges, all of which are withheld month by month on the payslip. What it does not include is any year-end adjustment, which depends on deductions and on other income you declare.` },
+];
+
 const schemaString = JSON.stringify([
+  faqSchema(faqs),
   breadcrumbSchema(breadcrumbs),
   {
     '@context': 'https://schema.org',
@@ -56,6 +64,7 @@ const groups = [
   { label: 'Above-Average Salaries (€2,200 - €3,000)', items: pages.filter(p => p.netto >= 2200 && p.netto <= 3000) },
   { label: 'High Salaries (€3,500 - €5,000)', items: pages.filter(p => p.netto >= 3500) },
 ];
+
 ---
 
 <Layout
@@ -354,4 +363,5 @@ const groups = [
       </div>
     </section>
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

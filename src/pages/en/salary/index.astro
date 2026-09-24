@@ -1,9 +1,10 @@
 ---
+import FAQFisarmonica from '../../../components/ui/FAQFisarmonica.astro';
 import Layout from '../../../layouts/Layout.astro';
 import { SITE } from '../../../config';
 import { calcolaStipendio } from '../../../lib/irpef-engine';
 import { formatCurrency } from '../../../lib/format';
-import { breadcrumbSchema } from '../../../lib/seo';
+import { breadcrumbSchema, faqSchema } from '../../../lib/seo';
 
 const title = `RAL to Net Salary Table Italy ${SITE.annoFiscale}: From €15k to €150k`;
 const description = `Gross salary (RAL) to net monthly pay conversion table: every level from €15,000 to €150,000 with IRPEF, INPS, regional surcharges, and effective tax rate.`;
@@ -64,8 +65,15 @@ const breadcrumbs = [
   { name: 'Salary', url: `${SITE.url}/en/salary/` },
 ];
 
-const schemas = [breadcrumbSchema(breadcrumbs)];
+const faqs = [
+  { question: `What do the per-salary pages show?`, answer: `Each page starts from one specific gross annual salary and shows the corresponding monthly net pay, the split between contributions, income tax and local surcharges, and a comparison across all twenty Italian regions. It answers the practical question you face when reading a job offer: what actually reaches your account.` },
+  { question: `Why does net pay differ between Italian regions?`, answer: `Because regional and municipal surcharges are set locally, while national income tax and INPS contributions are identical throughout Italy. The gap between the cheapest and the most expensive region is worth a few hundred euro a year, which should be weighed against the local cost of living.` },
+  { question: `Do the figures assume any family situation?`, answer: `They assume a single worker with no dependants, which is the simplest case to compare. With a dependent spouse or children, additional deductions apply and net pay rises; the amount depends on the number of dependants and on total household income.` },
+];
+
+const schemas = [breadcrumbSchema(breadcrumbs), faqSchema(faqs)];
 const schemaString = JSON.stringify(schemas);
+
 ---
 
 <Layout
@@ -352,4 +360,5 @@ const schemaString = JSON.stringify(schemas);
       </a>
     </section>
   </div>
+  <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>
