@@ -25,10 +25,20 @@ const lastUpdated = '15 maggio 2026';
         Il presente sito web <strong>{SITE.domain}</strong> (di seguito "il Sito") è gestito da:
       </p>
       <ul>
-        <li><strong>Denominazione:</strong> {SITE.name}</li>
+        {/* L'editore va nominato con la sua denominazione legale e un recapito
+            raggiungibile: un nome di sito non basta (D.Lgs. 70/2003, art. 7). */}
+        <li><strong>Editore:</strong> Radif Partners</li>
+        <li><strong>Sede:</strong> 49 rue du Ressort, 63000 Clermont-Ferrand, Francia</li>
+        <li><strong>Denominazione del sito:</strong> {SITE.name}</li>
         <li><strong>Dominio:</strong> {SITE.domain}</li>
-        <li><strong>Contatto:</strong> <a href="/contatti/">pagina contatti</a></li>
+        <li><strong>Contatto:</strong> <a href={`mailto:${SITE.author.email}`}>{SITE.author.email}</a> — <a href="/contatti/">modulo contatti</a></li>
+        <li><strong>Responsabile della pubblicazione:</strong> il rappresentante legale di Radif Partners</li>
       </ul>
+      <h2>1 bis. Hosting</h2>
+      <p>
+        Il Sito è ospitato da <strong>GitHub,&nbsp;Inc.</strong>, 88 Colin P. Kelly Jr. Street, San Francisco,
+        CA&nbsp;94107, Stati Uniti (<a href="https://github.com" rel="nofollow noopener" target="_blank">github.com</a>).
+      </p>
       <p>
         Ai sensi dell'art. 7 del D.Lgs. 9 aprile 2003, n. 70 (attuazione della Direttiva 2000/31/CE sul commercio elettronico), si forniscono le informazioni obbligatorie relative al prestatore di servizi della società dell'informazione. Le presenti note legali disciplinano le condizioni generali di accesso e utilizzo del Sito e costituiscono un accordo vincolante tra il titolare del Sito e qualsiasi soggetto che vi acceda o ne utilizzi i servizi.
       </p>
