@@ -502,8 +502,8 @@ const it = {
 
   // ── Calcolatori hub page ─────────────────────────────────────────────────
   calcolatori: {
-    title: 'Tutti i Calcolatori Fiscali e Finanziari 2026',
-    description: 'Tutti i calcolatori per stipendio netto, IRPEF, TFR, mutuo, pensione, investimenti e molto altro. Strumenti gratuiti e aggiornati al 2026.',
+    title: 'Calcolatori fiscali e finanziari 2026 : elenco completo',
+    description: 'Ogni calcolatore del sito: stipendio netto, IRPEF, TFR, mutuo, pensione, investimenti e liquidazione. Strumenti gratuiti, aggiornati alle aliquote 2026.',
     heading: 'Tutti i Calcolatori',
     intro: 'Esplora tutti i nostri calcolatori gratuiti per gestire le tue finanze personali. Ogni strumento è aggiornato con le normative fiscali 2026 e include spiegazioni dettagliate.',
     workAndTaxes: 'Lavoro & Tasse',

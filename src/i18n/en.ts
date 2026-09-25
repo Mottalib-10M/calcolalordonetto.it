@@ -504,8 +504,8 @@ const en: Dictionary = {
 
   // ── Calcolatori hub page ─────────────────────────────────────────────────
   calcolatori: {
-    title: 'All Italian Tax & Finance Calculators 2026',
-    description: 'All calculators for net salary, IRPEF, TFR, mortgage, pension, investments, and more. Free tools updated for 2026.',
+    title: 'Tax and finance calculators for Italy: the full list',
+    description: 'Every calculator on this site: net salary, IRPEF, TFR, mortgage, pension, investments and severance pay. All free, instant, and updated for 2026 rates.',
     heading: 'All Calculators',
     intro: 'Explore all our free calculators for managing your personal finances in Italy. Every tool is updated with 2026 tax regulations and includes detailed explanations.',
     workAndTaxes: 'Work & Taxes',
