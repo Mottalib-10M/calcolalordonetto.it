@@ -177,6 +177,80 @@ const calcolatoriFinanza = [
       </a>
     </div>
 
+    <section class="mb-12 prose prose-gray max-w-none">
+      <h2>Which calculator answers which question</h2>
+
+      <p>
+        The calculators on this site answer different questions, and using the wrong one
+        produces a correct answer to a question you did not ask. The main division runs between
+        the pay calculators and the financial ones. The first start from a contractual figure,
+        gross or net, and rebuild the path of the withholdings: social security contributions,
+        IRPEF by bracket, tax credits, and the regional and municipal surcharges. The second
+        start from a capital sum or a stream of contributions and project a result over time,
+        with a return and a horizon as stated assumptions. Confusing the two families is the
+        most common error, and it is worth resolving before reading any result.
+      </p>
+
+      <h3>Starting from a contractual figure</h3>
+
+      <p>
+        The main calculator converts gross annual pay into monthly net. The reverse one starts
+        from a desired net figure and finds the gross that produces it by iteration, which is
+        the direction the question is asked in a negotiation. The payslip calculator rebuilds
+        the four sections of the Italian document, so each line can be compared with the one
+        received. The thirteenth and fourteenth month calculators apply the standalone taxation
+        that distinguishes them from an ordinary month, which is why their net share is lower
+        than the gross suggests. The severance calculator applies the separate regime, at the
+        average rate of the previous five years.
+      </p>
+
+      <h3>Isolating a single tax</h3>
+
+      <p>
+        The IRPEF calculator isolates the national tax and shows brackets, gross tax, credits
+        and net tax on separate lines. The region comparison isolates the surcharges instead,
+        which are the only component that depends on where you live and which are worth several
+        hundred euro a year at the same gross salary. The family deductions calculator shows
+        how much of each credit survives as income rises, since all of them taper to nothing.
+        The employer cost calculator looks from the other side of the relationship and shows
+        what the employer spends, a figure that matters far more in a negotiation than gross pay.
+      </p>
+
+      <h3>Self-employment and special regimes</h3>
+
+      <p>
+        The flat-rate regime calculator applies the profitability coefficient of the activity
+        code entered and shows the levy and the contributions separately, since only the latter
+        are deductible. The employee against freelancer comparison sets the two positions at
+        equal cost to the client, which is the only way to make them genuinely comparable: an
+        identical gross figure does not include the same things. The inbound worker regime
+        calculator applies the parameters in force after the reform, which cut the abatement,
+        shortened the duration and introduced a cap on eligible income.
+      </p>
+
+      <h3>Long-term planning</h3>
+
+      <p>
+        The pension calculator rebuilds the contribution balance and converts it into an annuity
+        with the coefficient for the chosen age of exit, so the cost of retiring early becomes
+        legible. The compound interest, inflation, FIRE and investment tax calculators work on
+        stated assumptions and should be used with a return net of costs and of the 26 per cent
+        tax, failing which the projection overstates the outcome systematically. The budget
+        calculator starts from the amount to be set aside and builds spending backwards.
+      </p>
+
+      <h3>What none of them does</h3>
+
+      <p>
+        No calculator here accounts for personal deductible charges, medical expenses, mortgage
+        interest on a main residence or charitable donations, because those depend on an
+        individual position rather than on a table. None replaces a tax return or a notice from
+        the tax authority. None keeps what is entered: the computation runs in the browser and
+        nothing leaves the device. And each states the tax year it refers to, because on a
+        subject whose figures change every year a result without a date cannot be verified.
+      </p>
+    </section>
+
   </div>
   <FAQFisarmonica faqs={faqs} titolo="" />
 </Layout>

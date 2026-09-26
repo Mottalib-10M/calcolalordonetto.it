@@ -94,7 +94,7 @@ function getMarketContext(netto: number): { livello: string; settori: string; co
 
 const market = getMarketContext(nettoTarget);
 
-/* ── Per-amount unique content — job profiles & financial context ───────── */
+/* ── Per-amount unique content, job profiles & financial context ───────── */
 
 const nettoProfiles: Record<number, { jobs: string; finance: string }> = {
   1000: {
@@ -165,7 +165,7 @@ const nettoProfiles: Record<number, { jobs: string; finance: string }> = {
 
 const nettoProfile = nettoProfiles[nettoTarget];
 
-// FAQs — dynamic based on salary range
+// FAQs, dynamic based on salary range
 function buildFaqs() {
   const base = [
     {
@@ -192,7 +192,7 @@ function buildFaqs() {
     });
     extra.push({
       question: `What ISEE benefits can I access with €${fmtCurRound(nettoTarget)} net per month?`,
-      answer: `With a net salary of €${fmtCurRound(nettoTarget)} per month, your ISEE (Equivalent Financial Situation Indicator) is likely low enough to qualify for several benefits: utility bill bonuses (electricity, gas, water — saving €150-200/year), reduced TARI waste tax, healthcare co-pay exemptions, and subsidized public transport passes. If you have dependents, you may also qualify for the Assegno Unico family allowance at a higher rate. Apply through your local CAF office or the INPS website.`,
+      answer: `With a net salary of €${fmtCurRound(nettoTarget)} per month, your ISEE (Equivalent Financial Situation Indicator) is likely low enough to qualify for several benefits: utility bill bonuses (electricity, gas, water, saving €150-200/year), reduced TARI waste tax, healthcare co-pay exemptions, and subsidized public transport passes. If you have dependents, you may also qualify for the Assegno Unico family allowance at a higher rate. Apply through your local CAF office or the INPS website.`,
     });
   } else if (nettoTarget <= 1500) {
     // Lower-middle range
@@ -246,11 +246,11 @@ function buildFaqs() {
     });
     extra.push({
       question: `Does the INPS ceiling affect €${fmtCurRound(nettoTarget)} net per month?`,
-      answer: `The INPS contribution ceiling (massimale contributivo) for employees who started contributing after 1996 is approximately €119,000 (2026). With a RAL of €${fmtCurRound(ralDefault)}, you are ${ralDefault > 119000 ? 'above this ceiling, meaning no INPS contributions are paid on income exceeding the cap — reducing contributions but also future pension benefits' : 'below this ceiling, so contributions are calculated on your full salary'}. At high income levels, the INPS replacement rate drops significantly (to 50-60% of last salary). Building a robust supplementary pension (second and third pillar) is essential to maintain your lifestyle in retirement.`,
+      answer: `The INPS contribution ceiling (massimale contributivo) for employees who started contributing after 1996 is approximately €119,000 (2026). With a RAL of €${fmtCurRound(ralDefault)}, you are ${ralDefault > 119000 ? 'above this ceiling, meaning no INPS contributions are paid on income exceeding the cap, reducing contributions but also future pension benefits' : 'below this ceiling, so contributions are calculated on your full salary'}. At high income levels, the INPS replacement rate drops significantly (to 50-60% of last salary). Building a robust supplementary pension (second and third pillar) is essential to maintain your lifestyle in retirement.`,
     });
     extra.push({
       question: `How should wealth be managed at €${fmtCurRound(nettoTarget)} net per month?`,
-      answer: `With €${fmtCurRound(nettoTarget)} net per month, a comprehensive wealth strategy is essential. Consider: (1) engaging an independent fee-only financial advisor, (2) diversifying across asset classes — global equities, bonds, real estate (direct or REITs), and alternatives (private equity via ELTIFs, which offer Italian tax benefits), (3) PIR (Individual Savings Plans) for capital gains exemption on Italian/European investments up to €150,000, (4) estate planning with revaluation life insurance policies, which offer favorable succession treatment in Italy, and (5) evaluating whether incorporating for consulting side income is more tax-efficient than the 43% IRPEF marginal rate.`,
+      answer: `With €${fmtCurRound(nettoTarget)} net per month, a comprehensive wealth strategy is essential. Consider: (1) engaging an independent fee-only financial advisor, (2) diversifying across asset classes, global equities, bonds, real estate (direct or REITs), and alternatives (private equity via ELTIFs, which offer Italian tax benefits), (3) PIR (Individual Savings Plans) for capital gains exemption on Italian/European investments up to €150,000, (4) estate planning with revaluation life insurance policies, which offer favorable succession treatment in Italy, and (5) evaluating whether incorporating for consulting side income is more tax-efficient than the 43% IRPEF marginal rate.`,
     });
   }
 

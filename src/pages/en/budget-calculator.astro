@@ -18,12 +18,12 @@ const breadcrumbs = [
 const faqs = [
   { question: 'My rent alone exceeds 50% of my net income. What should I do?', answer: 'This is common in Italy\'s major cities, especially Milan and Rome. In this case, adapt the rule: try a 55/25/20 or 60/20/20 split. The minimum goal should be to maintain savings at 10-15%, even if needs exceed 50%. Consider whether there are ways to reduce rent (flatmates, a less central neighbourhood, a contratto a canone concordato for lower regulated rent) or increase your income. If rent alone exceeds 40% of net income, it may be a sign that the housing is not sustainable long-term on your current salary.' },
   { question: 'Does TFR (severance pay) count as part of the 20% savings?', answer: 'TFR is technically a form of forced savings set aside by your employer (roughly 6.9% of gross salary). However, since it never passes through your bank account and is not available until you leave the company, most financial advisors recommend not counting it in your 50/30/20 budget. Think of TFR as a future "bonus" that will arrive when you change jobs or retire. The 20% savings target refers to money you actively set aside each month from the net pay that lands in your account. That said, knowing your TFR exists can give you extra peace of mind about your overall financial safety net.' },
-  { question: 'How large should my emergency fund be?', answer: 'The standard recommendation is 3-6 months of essential expenses (not your full salary). If your necessary expenses are 900 €/month, the emergency fund should be between 2,700 € and 5,400 €. A permanent employee (contratto indeterminato) can lean toward the lower end; a freelancer (partita IVA) or fixed-term worker should aim for 6 months or more. Keep the fund in liquid instruments: a conto deposito svincolabile (withdrawable savings account), short-term government bonds (BOT), or simply in your current account. As an expat, also consider whether you might need to relocate unexpectedly — this could justify a slightly larger emergency fund.' },
+  { question: 'How large should my emergency fund be?', answer: 'The standard recommendation is 3-6 months of essential expenses (not your full salary). If your necessary expenses are 900 €/month, the emergency fund should be between 2,700 € and 5,400 €. A permanent employee (contratto indeterminato) can lean toward the lower end; a freelancer (partita IVA) or fixed-term worker should aim for 6 months or more. Keep the fund in liquid instruments: a conto deposito svincolabile (withdrawable savings account), short-term government bonds (BOT), or simply in your current account. As an expat, also consider whether you might need to relocate unexpectedly, this could justify a slightly larger emergency fund.' },
   { question: 'How do I handle irregular expenses like holidays?', answer: 'Periodic expenses (holidays, Christmas gifts, annual car insurance) should be "monthly-ized": calculate the annual cost and divide by 12. If you plan to spend 1,800 € on holidays per year, set aside 150 € each month under "wants." The same applies to annual costs that fall under "needs" (such as car insurance): estimate the annual total and spread it across 12 months. This prevents budget "surprises" that throw off certain months. Many Italian banks let you set up automatic sub-accounts or standing orders that make this easy to automate.' },
   { question: 'Should I save first or pay off debts first?', answer: 'The absolute priority is a minimum emergency fund (1,000-2,000 €) to avoid taking on new debt in case of unexpected expenses. Then, focus your resources on paying off consumer debt (personal loans, revolving credit cards) because their interest rates (8-20% per year) far exceed any returns you could earn by investing. Only after clearing high-interest debt should you begin investing and building the full emergency fund (3-6 months). A home mortgage is an exception: with rates at 3-4%, it generally does not make sense to pay it off early if you can earn higher returns by investing. This principle applies equally whether your debt is in Italy or in your home country.' },
-  { question: 'How should I handle the tredicesima and quattordicesima?', answer: 'There are two approaches. The first: apply the 50/30/20 rule to these extra pay periods as well, allocating 50% to needs (pay bills ahead, stock up on essentials), 30% to wants (gifts, holiday travel), and 20% to savings. The second, more aggressive approach: use the tredicesima and quattordicesima entirely for financial goals — boost the emergency fund, make an extra contribution to your PAC, or pay down debt. Many financial experts recommend the second approach because your regular monthly expenses are already covered by the ordinary 12 monthly payments. For expats who are not accustomed to 13 or 14 pay periods, the extra months can feel like "bonus" money — channel that psychology into savings rather than lifestyle inflation.' },
+  { question: 'How should I handle the tredicesima and quattordicesima?', answer: 'There are two approaches. The first: apply the 50/30/20 rule to these extra pay periods as well, allocating 50% to needs (pay bills ahead, stock up on essentials), 30% to wants (gifts, holiday travel), and 20% to savings. The second, more aggressive approach: use the tredicesima and quattordicesima entirely for financial goals, boost the emergency fund, make an extra contribution to your PAC, or pay down debt. Many financial experts recommend the second approach because your regular monthly expenses are already covered by the ordinary 12 monthly payments. For expats who are not accustomed to 13 or 14 pay periods, the extra months can feel like "bonus" money, channel that psychology into savings rather than lifestyle inflation.' },
   { question: 'Does the 50/30/20 rule work for couples?', answer: 'Yes, and it often works even better because couples benefit from economies of scale on fixed costs (one rent payment, shared utilities, shared groceries). Simply add both net monthly incomes together and apply the same percentages. With two salaries of 1,800 €, the combined net is 3,600 €: 1,800 € for needs, 1,080 € for wants, and 720 € for savings. Couples typically manage to save a higher proportion than singles thanks to shared fixed costs. In Italy, where one-income households face particular pressure from high housing costs, a dual-income household can achieve the 50/30/20 targets much more comfortably.' },
-  { question: 'What net salary should I use: based on 12, 13, or 14 months?', answer: 'For monthly budgeting, use the net amount that actually arrives in your bank account each month — which is typically based on 13 (or 14) pay periods. If your annual net is 21,600 € paid over 13 months, your regular monthly net is approximately 1,662 € (not 1,800 €). Build your 50/30/20 budget around this actual monthly figure. The tredicesima (and quattordicesima, if applicable) should then be handled separately, either following the same rule or directed entirely to savings goals.' },
+  { question: 'What net salary should I use: based on 12, 13, or 14 months?', answer: 'For monthly budgeting, use the net amount that actually arrives in your bank account each month, which is typically based on 13 (or 14) pay periods. If your annual net is 21,600 € paid over 13 months, your regular monthly net is approximately 1,662 € (not 1,800 €). Build your 50/30/20 budget around this actual monthly figure. The tredicesima (and quattordicesima, if applicable) should then be handled separately, either following the same rule or directed entirely to savings goals.' },
 ];
 ---
 
@@ -78,8 +78,8 @@ const faqs = [
         applied to life in Italy. Here, the cost of living and spending patterns are quite
         different. In major cities like Milan, Rome, or Florence, rent alone can absorb 35-50%
         of a young worker's net income, making it difficult to keep all needs under 50%.
-        At the same time, Italy's welfare system &mdash; universal public healthcare (SSN),
-        mandatory pension contributions (INPS), and severance pay (TFR) &mdash; provides a
+        At the same time, Italy's welfare system, universal public healthcare (SSN),
+        mandatory pension contributions (INPS), and severance pay (TFR), provides a
         safety net that largely does not exist in the United States. This reduces the urgency
         of building a very large emergency fund compared to the American context.
       </p>
@@ -88,15 +88,14 @@ const faqs = [
         guideline</strong>, not a rigid constraint. If you live in Milan with rent of
         800-1,200 &euro;/month, it may be more realistic to aim for a 55/25/20 or even
         60/25/15 split in your first years. The goal is to move gradually toward the 50/30/20
-        ideal as your income grows. What matters most is that you are saving consistently
-        &mdash; even 10-15% is far better than nothing.
+        ideal as your income grows. What matters most is that you are saving consistently, even 10-15% is far better than nothing.
       </p>
 
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-3">
         50% Needs: essential living expenses
       </h3>
       <p>
-        Half of your net salary should cover all essential expenses &mdash; those you cannot
+        Half of your net salary should cover all essential expenses, those you cannot
         eliminate without seriously compromising your basic quality of life:
       </p>
       <ul>
@@ -133,8 +132,7 @@ const faqs = [
       </p>
       <ul>
         <li><strong>Restaurants and food delivery</strong>: dining out, bar lunches,
-        aperitivo. For many people in Italy, this is a significant spending category &mdash;
-        the Italian culture of eating out, especially aperitivo and weekend dinners, makes
+        aperitivo. For many people in Italy, this is a significant spending category, the Italian culture of eating out, especially aperitivo and weekend dinners, makes
         it easy to overspend here.</li>
         <li><strong>Clothing and personal care</strong>: beyond the bare minimum, including
         fashion, shoes, hairdresser, and cosmetics.</li>
@@ -145,7 +143,7 @@ const faqs = [
         other European countries.</li>
         <li><strong>Holidays and travel</strong>: monthly set-asides for vacations. Italy's
         generous holiday allowance (typically 26 paid days plus public holidays) means you
-        likely have ample time for travel &mdash; budget accordingly.</li>
+        likely have ample time for travel, budget accordingly.</li>
         <li><strong>Hobbies</strong>: any recreational activity you enjoy, from cooking
         classes to sailing lessons.</li>
         <li><strong>Lifestyle upgrades</strong>: the premium phone plan instead of the
@@ -171,8 +169,7 @@ const faqs = [
         compound growth. This is the Italian equivalent of dollar-cost averaging and is
         widely available through Italian banks and online brokers.</li>
         <li><strong>Supplementary pension fund (fondo pensione)</strong>: beyond the
-        mandatory INPS pension, supplementary pension funds offer significant tax advantages
-        &mdash; contributions are deductible up to 5,164.57 &euro;/year. For expats planning
+        mandatory INPS pension, supplementary pension funds offer significant tax advantages, contributions are deductible up to 5,164.57 &euro;/year. For expats planning
         to stay in Italy long-term, this is one of the best tax-advantaged savings vehicles
         available.</li>
         <li><strong>TFR (severance pay)</strong>: your employer automatically sets aside
@@ -305,7 +302,7 @@ const faqs = [
         With a net salary of 1,800 &euro;/month and 900 &euro; in essential expenses, the
         ideal emergency fund is between 2,700 &euro; (3 months) and 5,400 &euro; (6 months).
         At a savings rate of 20% (360 &euro;/month), it takes roughly 8-15 months to build
-        from scratch &mdash; this should be your first financial goal before you start
+        from scratch, this should be your first financial goal before you start
         investing in a PAC or other instruments.
       </p>
 
@@ -332,7 +329,7 @@ const faqs = [
         average gross return of 7% annually, after 20 years Sarah would have accumulated
         roughly 190,000 &euro; before tax. After Italy's 26% capital gains tax on investment
         profits, the net capital would be approximately 157,000 &euro;. That is a remarkable
-        result from what seems like a modest monthly savings amount &mdash; a powerful
+        result from what seems like a modest monthly savings amount, a powerful
         illustration of how compound growth works over time.
       </p>
 
@@ -375,7 +372,7 @@ const faqs = [
         The following figures are based on the <strong>Bank of Italy's Household Budget
         Survey</strong> and ISTAT consumer spending data. They serve as a useful benchmark
         to evaluate whether your own expenses are in line with the national average. Keep
-        in mind that costs vary significantly by city &mdash; Milan and Rome are 20-40%
+        in mind that costs vary significantly by city, Milan and Rome are 20-40%
         more expensive than smaller cities in the south.
       </p>
     </div>
@@ -440,7 +437,7 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
       <p>
         According to the Bank of Italy, the average household savings rate is approximately
-        10% of disposable income &mdash; well below the 20% recommended by the 50/30/20 rule.
+        10% of disposable income, well below the 20% recommended by the 50/30/20 rule.
         Households in northern Italy tend to save more (12-15%) than those in the south
         (6-8%), and the savings rate increases with age until 55-60, then declines during
         retirement. This data confirms that for the majority of people living in Italy,
@@ -571,7 +568,7 @@ const faqs = [
           fixed-term worker should aim for 6 months or more. Keep the fund in liquid
           instruments: a conto deposito svincolabile (withdrawable savings account),
           short-term government bonds (BOT), or simply in your current account. As an expat,
-          also consider whether you might need to relocate unexpectedly &mdash; this could
+          also consider whether you might need to relocate unexpectedly, this could
           justify a slightly larger emergency fund.
         </p>
       </details>
@@ -626,11 +623,11 @@ const faqs = [
           periods as well, allocating 50% to needs (pay bills ahead, stock up on essentials),
           30% to wants (gifts, holiday travel), and 20% to savings. The second, more
           aggressive approach: use the tredicesima and quattordicesima entirely for financial
-          goals &mdash; boost the emergency fund, make an extra contribution to your PAC, or
+          goals, boost the emergency fund, make an extra contribution to your PAC, or
           pay down debt. Many financial experts recommend the second approach because your
           regular monthly expenses are already covered by the ordinary 12 monthly payments.
           For expats who are not accustomed to 13 or 14 pay periods, the extra months can
-          feel like "bonus" money &mdash; channel that psychology into savings rather than
+          feel like "bonus" money, channel that psychology into savings rather than
           lifestyle inflation.
         </p>
       </details>
@@ -663,7 +660,7 @@ const faqs = [
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           For monthly budgeting, use the net amount that actually arrives in your bank
-          account each month &mdash; which is typically based on 13 (or 14) pay periods.
+          account each month, which is typically based on 13 (or 14) pay periods.
           If your annual net is 21,600 &euro; paid over 13 months, your regular monthly net
           is approximately 1,662 &euro; (not 1,800 &euro;). Build your 50/30/20 budget
           around this actual monthly figure. The tredicesima (and quattordicesima, if

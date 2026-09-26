@@ -1,5 +1,5 @@
 /**
- * English dictionary — translations for expats in Italy.
+ * English dictionary, translations for expats in Italy.
  * Italian fiscal terms are kept with English explanations in parentheses.
  */
 import type { Dictionary } from './it';

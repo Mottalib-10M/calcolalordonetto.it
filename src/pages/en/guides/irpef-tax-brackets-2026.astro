@@ -16,11 +16,11 @@ const breadcrumbs = [
 const faqs = [
   {
     question: 'How does progressive taxation work in Italy?',
-    answer: 'Italy uses a progressive (a scaglioni) income tax system. This means that each tax bracket only applies to the portion of income that falls within it — not to your entire income. For example, if you earn €35,000, you pay 23% on the first €28,000 and 35% only on the remaining €7,000. Your effective (average) tax rate will always be lower than the marginal rate of your highest bracket. This system is mandated by Article 53 of the Italian Constitution, which requires taxation to be proportional to one\'s ability to pay.',
+    answer: 'Italy uses a progressive (a scaglioni) income tax system. This means that each tax bracket only applies to the portion of income that falls within it, not to your entire income. For example, if you earn €35,000, you pay 23% on the first €28,000 and 35% only on the remaining €7,000. Your effective (average) tax rate will always be lower than the marginal rate of your highest bracket. This system is mandated by Article 53 of the Italian Constitution, which requires taxation to be proportional to one\'s ability to pay.',
   },
   {
     question: 'What is the difference between effective tax rate and marginal tax rate?',
-    answer: 'The <strong>marginal rate</strong> (aliquota marginale) is the tax rate applied to the last euro you earn — i.e., the rate of the bracket your income falls into. The <strong>effective rate</strong> (aliquota media/effettiva) is the total IRPEF divided by your total taxable income, expressed as a percentage. For instance, on €40,000 taxable income the marginal rate is 35%, but the effective rate is about 26.2%. The effective rate always reflects the blended impact of all lower brackets.',
+    answer: 'The <strong>marginal rate</strong> (aliquota marginale) is the tax rate applied to the last euro you earn, i.e., the rate of the bracket your income falls into. The <strong>effective rate</strong> (aliquota media/effettiva) is the total IRPEF divided by your total taxable income, expressed as a percentage. For instance, on €40,000 taxable income the marginal rate is 35%, but the effective rate is about 26.2%. The effective rate always reflects the blended impact of all lower brackets.',
   },
   {
     question: 'Has the number of IRPEF brackets changed recently?',
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     question: 'How does IRPEF work for dual-income households in Italy?',
-    answer: 'Italy does not offer joint taxation for married couples or partners. IRPEF is calculated <strong>individually</strong> — each spouse or partner files and is taxed on their own income. There is no option to file jointly or split income between partners, as exists in some other countries (e.g., the German Ehegattensplitting or the US joint return). However, tax deductions for dependent family members (detrazioni per carichi di famiglia) can be allocated between partners. For example, if one spouse earns significantly more than the other, the higher earner can claim 100% of the deductions for dependent children, or the couple can split them 50/50. Since each person is taxed individually, a household where two people each earn €30,000 will pay less total IRPEF than a household where one person earns €60,000, because the progressive brackets are applied separately to each income.',
+    answer: 'Italy does not offer joint taxation for married couples or partners. IRPEF is calculated <strong>individually</strong>, each spouse or partner files and is taxed on their own income. There is no option to file jointly or split income between partners, as exists in some other countries (e.g., the German Ehegattensplitting or the US joint return). However, tax deductions for dependent family members (detrazioni per carichi di famiglia) can be allocated between partners. For example, if one spouse earns significantly more than the other, the higher earner can claim 100% of the deductions for dependent children, or the couple can split them 50/50. Since each person is taxed individually, a household where two people each earn €30,000 will pay less total IRPEF than a household where one person earns €60,000, because the progressive brackets are applied separately to each income.',
   },
 ];
 ---
@@ -68,7 +68,7 @@ const faqs = [
   <h2 id="what-is-irpef">What Is IRPEF?</h2>
 
   <p>
-    IRPEF (Imposta sul Reddito delle Persone Fisiche) is Italy's personal income tax. It applies to all residents on their worldwide income and to non-residents on Italian-source income. IRPEF is a <strong>progressive tax</strong> &mdash; the rate increases as your income rises &mdash; and it is the single largest deduction you will see on your Italian payslip (busta paga).
+    IRPEF (Imposta sul Reddito delle Persone Fisiche) is Italy's personal income tax. It applies to all residents on their worldwide income and to non-residents on Italian-source income. IRPEF is a <strong>progressive tax</strong>, the rate increases as your income rises, and it is the single largest deduction you will see on your Italian payslip (busta paga).
   </p>
   <p>
     IRPEF is regulated by the Testo Unico delle Imposte sui Redditi (TUIR, DPR 917/1986) and is collected through payroll withholding (ritenuta alla fonte) by the employer, who acts as a tax substitute (sostituto d'imposta). The tax is calculated on your <strong>taxable income</strong> (imponibile fiscale), which is your gross salary minus INPS social security contributions.
@@ -127,7 +127,7 @@ const faqs = [
     <li>Total gross IRPEF = &euro;6,440 + &euro;2,450 = <strong>&euro;8,890</strong></li>
   </ul>
   <p>
-    Your marginal rate is 35% (the bracket your last euro falls into), but your effective rate is &euro;8,890 / &euro;35,000 = <strong>25.4%</strong> &mdash; significantly lower than the marginal rate.
+    Your marginal rate is 35% (the bracket your last euro falls into), but your effective rate is &euro;8,890 / &euro;35,000 = <strong>25.4%</strong>, significantly lower than the marginal rate.
   </p>
 
   <h2 id="effective-vs-marginal-rate">Effective vs Marginal Rate</h2>
@@ -214,13 +214,13 @@ const faqs = [
     The regional surcharge ranges from <strong>0.7% to 3.33%</strong> depending on the region. Some regions, such as Lombardia, apply relatively low flat rates (around 1.23%), while others, notably Lazio and Campania, impose progressive rates that can reach the legal maximum of 3.33% for higher incomes. The municipal surcharge ranges from <strong>0% to 0.9%</strong>, set independently by each of Italy's approximately 7,900 municipalities. Major cities such as Rome (0.9%) and Milan (0.8%) apply rates near the maximum (source: <a href="https://www.finanze.gov.it" target="_blank" rel="noopener noreferrer">Ministero dell'Economia e delle Finanze</a>).
   </p>
   <p>
-    In practice, these surcharges can add between <strong>1.5% and 4%</strong> to your effective tax rate. For example, consider Giulia, a teacher in Rome earning a taxable income of &euro;30,000. Her national IRPEF is &euro;7,140 (effective rate 23.8%). On top of this, she pays approximately &euro;690 in regional surcharge (Lazio progressive rate ~2.3%) and &euro;270 in municipal surcharge (Rome at 0.9%), bringing her total income tax burden to approximately &euro;8,100 &mdash; an effective rate of <strong>27.0%</strong>. To understand exactly how surcharges affect your pay, see our detailed <a href="/en/guides/regional-municipal-surcharges/">guide to regional and municipal surcharges</a>.
+    In practice, these surcharges can add between <strong>1.5% and 4%</strong> to your effective tax rate. For example, consider Giulia, a teacher in Rome earning a taxable income of &euro;30,000. Her national IRPEF is &euro;7,140 (effective rate 23.8%). On top of this, she pays approximately &euro;690 in regional surcharge (Lazio progressive rate ~2.3%) and &euro;270 in municipal surcharge (Rome at 0.9%), bringing her total income tax burden to approximately &euro;8,100, an effective rate of <strong>27.0%</strong>. To understand exactly how surcharges affect your pay, see our detailed <a href="/en/guides/regional-municipal-surcharges/">guide to regional and municipal surcharges</a>.
   </p>
 
   <h2 id="irpef-for-non-residents">IRPEF for Non-Residents</h2>
 
   <p>
-    Italian tax law distinguishes between <strong>residents</strong> and <strong>non-residents</strong> for IRPEF purposes (Art. 2 and Art. 3 of the TUIR, DPR 917/1986 &mdash; see <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">normattiva.it</a>). A person is considered tax resident in Italy if, for the greater part of the tax year (more than 183 days), they are registered in the anagrafe (civil registry), have their domicile (domicilio) in Italy, or have their habitual residence (residenza) in Italy.
+    Italian tax law distinguishes between <strong>residents</strong> and <strong>non-residents</strong> for IRPEF purposes (Art. 2 and Art. 3 of the TUIR, DPR 917/1986, see <a href="https://www.normattiva.it" target="_blank" rel="noopener noreferrer">normattiva.it</a>). A person is considered tax resident in Italy if, for the greater part of the tax year (more than 183 days), they are registered in the anagrafe (civil registry), have their domicile (domicilio) in Italy, or have their habitual residence (residenza) in Italy.
   </p>
   <p>
     Non-residents are taxed only on <strong>Italian-source income</strong> (redditi prodotti in Italia). For employment income, this means wages earned for work performed on Italian territory. The same IRPEF brackets (23%, 35%, 43%) apply to non-residents, but there are important restrictions:
@@ -232,7 +232,7 @@ const faqs = [
     <li><strong>Regional and municipal surcharges:</strong> non-residents who earn income in Italy must still pay the addizionale regionale (typically at the rate of the region where the income is produced) and may be subject to the municipal surcharge as well.</li>
   </ul>
   <p>
-    For example, Thomas, a German consultant who works three months per year at a client office in Milan but remains a tax resident of Germany, would pay IRPEF on his Italian-source employment income at the standard progressive rates, but without the benefit of the employment income deduction. On &euro;20,000 of Italian income, Thomas would owe &euro;4,600 in gross IRPEF with no deduction to offset it, compared to an Italian resident who might owe as little as &euro;2,645 after the detrazione per lavoro dipendente. Double taxation relief may be available under the Italy-Germany tax treaty (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate &mdash; Convenzioni contro le doppie imposizioni</a>).
+    For example, Thomas, a German consultant who works three months per year at a client office in Milan but remains a tax resident of Germany, would pay IRPEF on his Italian-source employment income at the standard progressive rates, but without the benefit of the employment income deduction. On &euro;20,000 of Italian income, Thomas would owe &euro;4,600 in gross IRPEF with no deduction to offset it, compared to an Italian resident who might owe as little as &euro;2,645 after the detrazione per lavoro dipendente. Double taxation relief may be available under the Italy-Germany tax treaty (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate, Convenzioni contro le doppie imposizioni</a>).
   </p>
 
   <h2 id="how-to-optimise-your-irpef">How to Optimise Your IRPEF</h2>
@@ -258,7 +258,7 @@ const faqs = [
   </ul>
 
   <p>
-    A practical example: Anna, a project manager in Bologna, earns a taxable income of &euro;45,000. Her gross IRPEF before deductions is &euro;12,390. She contributes &euro;4,000 to a supplementary pension fund (reducing her taxable income to &euro;41,000 and her gross IRPEF to &euro;10,990), has &euro;2,500 in medical expenses (yielding a 19% credit on &euro;2,371 after the threshold = &euro;450), and pays &euro;3,200 in mortgage interest (19% credit = &euro;608). After the employment income deduction and these credits, her net IRPEF drops to approximately <strong>&euro;8,200</strong> &mdash; an effective rate of just <strong>18.2%</strong> on her original &euro;45,000, compared to a headline marginal rate of 35%. This demonstrates how proactive tax planning can meaningfully reduce the IRPEF burden within the bounds of the law (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate &mdash; Detrazioni e deduzioni</a>).
+    A practical example: Anna, a project manager in Bologna, earns a taxable income of &euro;45,000. Her gross IRPEF before deductions is &euro;12,390. She contributes &euro;4,000 to a supplementary pension fund (reducing her taxable income to &euro;41,000 and her gross IRPEF to &euro;10,990), has &euro;2,500 in medical expenses (yielding a 19% credit on &euro;2,371 after the threshold = &euro;450), and pays &euro;3,200 in mortgage interest (19% credit = &euro;608). After the employment income deduction and these credits, her net IRPEF drops to approximately <strong>&euro;8,200</strong>, an effective rate of just <strong>18.2%</strong> on her original &euro;45,000, compared to a headline marginal rate of 35%. This demonstrates how proactive tax planning can meaningfully reduce the IRPEF burden within the bounds of the law (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate, Detrazioni e deduzioni</a>).
   </p>
 
   <!-- FAQ Section -->

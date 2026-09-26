@@ -16,14 +16,14 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'When do I have to pay taxes on my investments in Italy?', answer: 'Capital gains tax is due only at the moment of realization — that is, when you sell the financial instrument. Unrealized gains (paper profits) are not taxed. Under the regime amministrato (managed savings regime), the bank automatically withholds the tax at the time of sale. Under the regime dichiarativo (declarative regime), taxes must be paid with your annual tax return by June 30 of the following year (with the option to pay in installments). For expats using foreign brokers, the declarative regime applies by default, meaning you will settle the tax when filing your Modello Redditi PF.' },
-  { question: 'Can I offset capital losses from ETFs?', answer: 'This is one of the most common questions, and the answer is nuanced. If you sell an ETF at a loss, you generate a minusvalenza (capital loss) that can be used to offset future redditi diversi (miscellaneous income) — such as gains from stocks, bonds, ETCs, or certificates — within 4 years. However, if you sell an ETF at a gain, the profit is classified as reddito da capitale (capital income) and cannot be offset against prior capital losses. This asymmetry is a well-known and frequently criticized feature of the Italian system.' },
-  { question: 'How are dividends taxed in Italy?', answer: 'Dividends are taxed at 26% as redditi da capitale (capital income). Under the regime amministrato, the withholding is applied directly by the Italian bank. For foreign dividends, there may be a withholding tax in the country of origin (e.g., 15% for US stocks under the Italy-US tax treaty). Italy then applies 26% on top, but you can claim a foreign tax credit (credito d\'imposta) to avoid double taxation — this requires filing a tax return. For dividends from "qualified participations" (partecipazioni qualificate), above certain thresholds, different rules apply and the income is taxed progressively through IRPEF brackets.' },
+  { question: 'When do I have to pay taxes on my investments in Italy?', answer: 'Capital gains tax is due only at the moment of realization, that is, when you sell the financial instrument. Unrealized gains (paper profits) are not taxed. Under the regime amministrato (managed savings regime), the bank automatically withholds the tax at the time of sale. Under the regime dichiarativo (declarative regime), taxes must be paid with your annual tax return by June 30 of the following year (with the option to pay in installments). For expats using foreign brokers, the declarative regime applies by default, meaning you will settle the tax when filing your Modello Redditi PF.' },
+  { question: 'Can I offset capital losses from ETFs?', answer: 'This is one of the most common questions, and the answer is nuanced. If you sell an ETF at a loss, you generate a minusvalenza (capital loss) that can be used to offset future redditi diversi (miscellaneous income), such as gains from stocks, bonds, ETCs, or certificates, within 4 years. However, if you sell an ETF at a gain, the profit is classified as reddito da capitale (capital income) and cannot be offset against prior capital losses. This asymmetry is a well-known and frequently criticized feature of the Italian system.' },
+  { question: 'How are dividends taxed in Italy?', answer: 'Dividends are taxed at 26% as redditi da capitale (capital income). Under the regime amministrato, the withholding is applied directly by the Italian bank. For foreign dividends, there may be a withholding tax in the country of origin (e.g., 15% for US stocks under the Italy-US tax treaty). Italy then applies 26% on top, but you can claim a foreign tax credit (credito d\'imposta) to avoid double taxation, this requires filing a tax return. For dividends from "qualified participations" (partecipazioni qualificate), above certain thresholds, different rules apply and the income is taxed progressively through IRPEF brackets.' },
   { question: 'Are cryptocurrencies taxed in Italy?', answer: 'Yes. Since 2023, cryptocurrencies are taxed at 26% on realized capital gains, with an annual exemption threshold of €2,000. Crypto gains are classified as redditi diversi (miscellaneous income), so they can offset capital losses from the same category. Crypto holdings must also be declared in Quadro RW for fiscal monitoring purposes, and they are subject to a 0.2% annual stamp duty (IVAFE) on total value. Failure to declare crypto can result in penalties of 3% to 15% of the undeclared amount. This applies even if you hold your crypto on foreign exchanges or in self-custody wallets.' },
-  { question: 'Does this calculator include the stamp duty (imposta di bollo)?', answer: 'No, this calculator focuses exclusively on the capital gain (plusvalenza) and the corresponding imposta sostitutiva (substitute tax). In Italy, there is also a proportional stamp duty of 0.2% per year on the value of securities accounts — called imposta di bollo for domestically held securities and IVAFE for securities held abroad. For government bonds and postal savings certificates, the stamp duty is capped at €14,000 per taxpayer. The stamp duty is calculated on market value, not on capital gains, and is a separate cost from the capital gains tax.' },
-  { question: 'How long can I carry forward capital losses (minusvalenze)?', answer: 'Capital losses (minusvalenze) can be carried forward and used to offset gains for a maximum of 4 years from the date they were realized (Article 68, paragraph 5 of the TUIR). For example, a capital loss realized in 2024 can be used to offset capital gains through December 31, 2028. After that date, the loss expires and can no longer be used. This is why it is important to track your expiring losses and consider offsetting strategies before they lapse — especially given the ETF trap discussed above.' },
-  { question: 'How is the average purchase price (prezzo di carico) calculated?', answer: 'The prezzo di carico (cost basis, or weighted average purchase price) is calculated by dividing the total purchase cost by the total number of shares or units held. For example, if you bought 100 shares at €10 and then another 50 shares at €12, the weighted average cost is (100 × 10 + 50 × 12) / 150 = €10.67. Note that the LIFO (last-in-first-out) method has not been used in Italy since 2012 — the weighted average cost method always applies. Transaction fees (commissioni) can be added to your cost basis, slightly reducing your taxable gain.' },
-  { question: 'I use a foreign broker — what are my tax obligations?', answer: 'If you use a broker that is not established in Italy (e.g., Interactive Brokers, DEGIRO, Trading 212, Revolut, eToro), you are automatically under the regime dichiarativo (declarative regime). This means you must: (1) report all financial assets in Quadro RW of your tax return for fiscal monitoring, (2) declare and pay capital gains tax in Quadro RT, (3) pay the 0.2% IVAFE on the value of foreign-held securities, and (4) declare any foreign dividends and interest. All of this must be done in your annual Modello Redditi PF filing. Most expats engage a commercialista (Italian tax advisor) to handle this, as the calculations can be complex.' },
+  { question: 'Does this calculator include the stamp duty (imposta di bollo)?', answer: 'No, this calculator focuses exclusively on the capital gain (plusvalenza) and the corresponding imposta sostitutiva (substitute tax). In Italy, there is also a proportional stamp duty of 0.2% per year on the value of securities accounts, called imposta di bollo for domestically held securities and IVAFE for securities held abroad. For government bonds and postal savings certificates, the stamp duty is capped at €14,000 per taxpayer. The stamp duty is calculated on market value, not on capital gains, and is a separate cost from the capital gains tax.' },
+  { question: 'How long can I carry forward capital losses (minusvalenze)?', answer: 'Capital losses (minusvalenze) can be carried forward and used to offset gains for a maximum of 4 years from the date they were realized (Article 68, paragraph 5 of the TUIR). For example, a capital loss realized in 2024 can be used to offset capital gains through December 31, 2028. After that date, the loss expires and can no longer be used. This is why it is important to track your expiring losses and consider offsetting strategies before they lapse, especially given the ETF trap discussed above.' },
+  { question: 'How is the average purchase price (prezzo di carico) calculated?', answer: 'The prezzo di carico (cost basis, or weighted average purchase price) is calculated by dividing the total purchase cost by the total number of shares or units held. For example, if you bought 100 shares at €10 and then another 50 shares at €12, the weighted average cost is (100 × 10 + 50 × 12) / 150 = €10.67. Note that the LIFO (last-in-first-out) method has not been used in Italy since 2012, the weighted average cost method always applies. Transaction fees (commissioni) can be added to your cost basis, slightly reducing your taxable gain.' },
+  { question: 'I use a foreign broker, what are my tax obligations?', answer: 'If you use a broker that is not established in Italy (e.g., Interactive Brokers, DEGIRO, Trading 212, Revolut, eToro), you are automatically under the regime dichiarativo (declarative regime). This means you must: (1) report all financial assets in Quadro RW of your tax return for fiscal monitoring, (2) declare and pay capital gains tax in Quadro RT, (3) pay the 0.2% IVAFE on the value of foreign-held securities, and (4) declare any foreign dividends and interest. All of this must be done in your annual Modello Redditi PF filing. Most expats engage a commercialista (Italian tax advisor) to handle this, as the calculations can be complex.' },
 ];
 ---
 
@@ -55,10 +55,10 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
         Taxation of investment income in Italy is governed by the <strong>Testo Unico delle Imposte
-        sui Redditi (TUIR)</strong> &mdash; the Consolidated Income Tax Act &mdash; specifically Articles 44
+        sui Redditi (TUIR)</strong>, the Consolidated Income Tax Act, specifically Articles 44
         (redditi da capitale, or capital income) and 67 (redditi diversi, or miscellaneous income).
-        When an investor realizes a gain from selling financial instruments &mdash; the so-called
-        <strong>plusvalenza (capital gain)</strong> &mdash; that gain is subject to a flat-rate
+        When an investor realizes a gain from selling financial instruments, the so-called
+        <strong>plusvalenza (capital gain)</strong>, that gain is subject to a flat-rate
         substitute tax known as <strong>imposta sostitutiva</strong>. The applicable rate depends on
         the type of financial instrument and the nature of the income generated.
       </p>
@@ -77,7 +77,7 @@ const faqs = [
         to the majority of financial instruments: Italian and foreign stocks, equity and bond ETFs,
         corporate bonds (issued by private companies), mutual funds, bank deposit accounts (conti
         deposito), repurchase agreements (pronti contro termine), and cryptocurrencies. The tax is
-        levied on the realized capital gain &mdash; that is, the difference between the selling price
+        levied on the realized capital gain, that is, the difference between the selling price
         and the purchase price (the so-called prezzo di carico, or weighted average cost).
       </p>
       <p>
@@ -105,7 +105,7 @@ const faqs = [
       </p>
       <ul>
         <li>
-          <strong>Regime del risparmio amministrato (managed savings regime)</strong> &mdash; Article 6
+          <strong>Regime del risparmio amministrato (managed savings regime)</strong>, Article 6
           of Legislative Decree 461/1997: this is the most common regime. The bank or online broker
           acts as a <strong>sostituto d'imposta (withholding agent)</strong>, automatically calculating
           and remitting the taxes owed at the time the instrument is sold. The investor does not need
@@ -113,11 +113,10 @@ const faqs = [
           offsetting of capital losses within the 4-year carryforward period prescribed by law.
         </li>
         <li>
-          <strong>Regime dichiarativo (declarative regime)</strong> &mdash; Article 5 of Legislative
+          <strong>Regime dichiarativo (declarative regime)</strong>, Article 5 of Legislative
           Decree 461/1997: the investor is responsible for reporting all financial income in section RT
           (Quadro RT) of the annual tax return (Modello Redditi PF). This regime is <strong>mandatory
-          for anyone using foreign brokers</strong> that do not act as withholding agents in Italy
-          &mdash; for example, Interactive Brokers, DEGIRO, Trading 212, or Revolut. It requires more
+          for anyone using foreign brokers</strong> that do not act as withholding agents in Italy, for example, Interactive Brokers, DEGIRO, Trading 212, or Revolut. It requires more
           complex tax management but potentially offers greater flexibility in offsetting capital losses.
         </li>
       </ul>
@@ -133,18 +132,17 @@ const faqs = [
         Redditi da capitale vs redditi diversi: capital income vs miscellaneous income
       </h3>
       <p>
-        This is one of the most important &mdash; and most frequently misunderstood &mdash;
-        distinctions in the Italian investment tax system. The TUIR classifies financial income into
+        This is one of the most important, and most frequently misunderstood, distinctions in the Italian investment tax system. The TUIR classifies financial income into
         two categories:
       </p>
       <ul>
         <li>
-          <strong>Redditi da capitale (capital income)</strong> &mdash; Article 44 TUIR: this includes
+          <strong>Redditi da capitale (capital income)</strong>, Article 44 TUIR: this includes
           dividends, interest on bonds and deposit accounts, and proceeds from harmonized mutual funds
           and ETFs (OICR UCITS). These returns <strong>cannot be offset</strong> against capital losses.
         </li>
         <li>
-          <strong>Redditi diversi (miscellaneous income)</strong> &mdash; Article 67 TUIR: this includes
+          <strong>Redditi diversi (miscellaneous income)</strong>, Article 67 TUIR: this includes
           capital gains from the sale of individual stocks, bonds, derivatives, cryptocurrencies, and
           non-harmonized instruments. These gains <strong>can be offset</strong> against capital losses
           realized in the previous 4 years.
@@ -152,7 +150,7 @@ const faqs = [
       </ul>
       <p>
         The fundamental rule is: capital losses (minusvalenze) can only offset miscellaneous income
-        (redditi diversi &mdash; i.e., capital gains), not capital income (redditi da capitale). This
+        (redditi diversi, i.e., capital gains), not capital income (redditi da capitale). This
         means that if you realized losses selling stocks and have gains from a mutual fund, <strong>you
         cannot use the former to reduce the tax on the latter</strong>.
       </p>
@@ -161,8 +159,8 @@ const faqs = [
         ETFs: the Italian fiscal trap
       </h3>
       <p>
-        Harmonized ETFs &mdash; those compliant with the UCITS directive, which represent the vast
-        majority of ETFs listed in Europe &mdash; generate <strong>exclusively capital income (redditi
+        Harmonized ETFs, those compliant with the UCITS directive, which represent the vast
+        majority of ETFs listed in Europe, generate <strong>exclusively capital income (redditi
         da capitale)</strong>. This has a critical consequence: capital gains realized from selling an
         ETF <strong>cannot be offset against prior capital losses (minusvalenze)</strong>.
       </p>
@@ -173,8 +171,8 @@ const faqs = [
         as capital income, which cannot be offset against the capital loss (miscellaneous income).
       </p>
       <p>
-        This fiscal asymmetry &mdash; known in Italy as the "trappola fiscale degli ETF" (ETF fiscal
-        trap) &mdash; leads some Italian investors to favor offsetting strategies that use instruments
+        This fiscal asymmetry, known in Italy as the "trappola fiscale degli ETF" (ETF fiscal
+        trap), leads some Italian investors to favor offsetting strategies that use instruments
         generating miscellaneous income (such as ETCs on commodities, certificates, or individual
         stocks) to recover capital losses before the 4-year expiration. If you are building a portfolio
         in Italy, this quirk is essential to understand, as it can materially affect your after-tax
@@ -192,8 +190,8 @@ const faqs = [
       </p>
       <p>
         From a classification standpoint, cryptocurrency capital gains fall under <strong>redditi
-        diversi (miscellaneous income)</strong> &mdash; Article 67, paragraph 1, letter c-sexies of
-        the TUIR &mdash; meaning they <strong>can be offset</strong> against capital losses of the
+        diversi (miscellaneous income)</strong>, Article 67, paragraph 1, letter c-sexies of
+        the TUIR, meaning they <strong>can be offset</strong> against capital losses of the
         same category. The law also offered a one-time opportunity to revalue cryptocurrency holdings
         as of January 1, 2023, by paying a 14% substitute tax on their total value, effectively
         resetting any embedded unrealized gains accumulated in prior years.
@@ -210,8 +208,7 @@ const faqs = [
         Double taxation and international treaties
       </h3>
       <p>
-        When an investor who is tax-resident in Italy receives income from foreign sources &mdash;
-        such as dividends on US stocks, interest on foreign bonds, etc. &mdash; the income may be
+        When an investor who is tax-resident in Italy receives income from foreign sources, such as dividends on US stocks, interest on foreign bonds, etc., the income may be
         taxed both in the country of origin and in Italy. To prevent double taxation, Italy has
         signed <strong>double taxation treaties (convenzioni contro le doppie imposizioni)</strong>
         with over 100 countries.
@@ -234,13 +231,13 @@ const faqs = [
         Consider an investor with a portfolio of 100,000 euros composed as follows:
       </p>
       <ul>
-        <li><strong>&euro;60,000</strong> in a global equity ETF (MSCI World), purchased at &euro;48,000 &mdash; capital gain: &euro;12,000</li>
-        <li><strong>&euro;40,000</strong> in BTP Italia (Italian government bonds), purchased at &euro;38,000 &mdash; capital gain: &euro;2,000</li>
+        <li><strong>&euro;60,000</strong> in a global equity ETF (MSCI World), purchased at &euro;48,000, capital gain: &euro;12,000</li>
+        <li><strong>&euro;40,000</strong> in BTP Italia (Italian government bonds), purchased at &euro;38,000, capital gain: &euro;2,000</li>
       </ul>
       <p>If the investor sells everything:</p>
       <ul>
-        <li>ETF: capital gain &euro;12,000 &times; 26% = <strong>&euro;3,120 tax</strong> (reddito da capitale &mdash; capital income)</li>
-        <li>BTP: capital gain &euro;2,000 &times; 12.5% = <strong>&euro;250 tax</strong> (reddito diverso &mdash; miscellaneous income)</li>
+        <li>ETF: capital gain &euro;12,000 &times; 26% = <strong>&euro;3,120 tax</strong> (reddito da capitale, capital income)</li>
+        <li>BTP: capital gain &euro;2,000 &times; 12.5% = <strong>&euro;250 tax</strong> (reddito diverso, miscellaneous income)</li>
         <li><strong>Total tax: &euro;3,370</strong></li>
         <li><strong>Net proceeds: &euro;96,630</strong> on a &euro;86,000 investment (net gain: &euro;10,630)</li>
       </ul>
@@ -342,15 +339,15 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none mt-4">
       <p>
         The table above highlights a crucial difference: the most popular instruments among Italian
-        savers &mdash; ETFs and mutual funds &mdash; generate capital income (redditi da capitale),
+        savers, ETFs and mutual funds, generate capital income (redditi da capitale),
         which <strong>cannot be offset against capital losses</strong>. This characteristic makes it
         particularly important to plan the sequence of selling instruments carefully, especially when
         you have expiring capital losses (remember: they expire 4 years after realization).
       </p>
       <p>
         A common approach among tax-aware investors is to maintain some instruments that generate
-        miscellaneous income (redditi diversi) in their portfolio &mdash; such as individual stocks,
-        corporate bonds, or ETCs &mdash; so they can offset accumulated capital losses before
+        miscellaneous income (redditi diversi) in their portfolio, such as individual stocks,
+        corporate bonds, or ETCs, so they can offset accumulated capital losses before
         selling ETFs or mutual funds. However, this strategy must be evaluated on a case-by-case
         basis, also taking into account transaction costs and the overall diversification of the
         portfolio.
@@ -380,7 +377,7 @@ const faqs = [
           </svg>
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
-          Capital gains tax is due only at the <strong>moment of realization</strong> &mdash; that
+          Capital gains tax is due only at the <strong>moment of realization</strong>, that
           is, when you sell the financial instrument. Unrealized gains (paper profits) are not taxed.
           Under the regime amministrato (managed savings regime), the bank automatically withholds
           the tax at the time of sale. Under the regime dichiarativo (declarative regime), taxes must
@@ -400,8 +397,8 @@ const faqs = [
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           This is one of the most common questions, and the answer is nuanced. If you sell an ETF
           <strong>at a loss</strong>, you generate a minusvalenza (capital loss) that can be used to
-          offset future redditi diversi (miscellaneous income) &mdash; such as gains from stocks,
-          bonds, ETCs, or certificates &mdash; within 4 years. However, if you sell an ETF
+          offset future redditi diversi (miscellaneous income), such as gains from stocks,
+          bonds, ETCs, or certificates, within 4 years. However, if you sell an ETF
           <strong>at a gain</strong>, the profit is classified as reddito da capitale (capital income)
           and <strong>cannot be offset</strong> against prior capital losses. This asymmetry is a
           well-known and frequently criticized feature of the Italian system.
@@ -420,7 +417,7 @@ const faqs = [
           amministrato, the withholding is applied directly by the Italian bank. For foreign
           dividends, there may be a withholding tax in the country of origin (e.g., 15% for US
           stocks under the Italy-US tax treaty). Italy then applies 26% on top, but you can claim a
-          foreign tax credit (credito d'imposta) to avoid double taxation &mdash; this requires filing
+          foreign tax credit (credito d'imposta) to avoid double taxation, this requires filing
           a tax return. For dividends from "qualified participations" (partecipazioni qualificate),
           above certain thresholds, different rules apply and the income is taxed progressively
           through IRPEF brackets.
@@ -455,7 +452,7 @@ const faqs = [
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           No, this calculator focuses exclusively on the capital gain (plusvalenza) and the
           corresponding imposta sostitutiva (substitute tax). In Italy, there is also a proportional
-          stamp duty of 0.2% per year on the value of securities accounts &mdash; called
+          stamp duty of 0.2% per year on the value of securities accounts, called
           <strong>imposta di bollo</strong> for domestically held securities and <strong>IVAFE</strong>
           for securities held abroad. For government bonds and postal savings certificates, the stamp
           duty is capped at &euro;14,000 per taxpayer. The stamp duty is calculated on market value,
@@ -476,7 +473,7 @@ const faqs = [
           paragraph 5 of the TUIR). For example, a capital loss realized in 2024 can be used to
           offset capital gains through December 31, 2028. After that date, the loss expires and
           can no longer be used. This is why it is important to track your expiring losses and
-          consider offsetting strategies before they lapse &mdash; especially given the ETF trap
+          consider offsetting strategies before they lapse, especially given the ETF trap
           discussed above.
         </p>
       </details>
@@ -493,7 +490,7 @@ const faqs = [
           dividing the total purchase cost by the total number of shares or units held. For example,
           if you bought 100 shares at &euro;10 and then another 50 shares at &euro;12, the weighted
           average cost is (100 &times; 10 + 50 &times; 12) / 150 = &euro;10.67. Note that the LIFO
-          (last-in-first-out) method has not been used in Italy since 2012 &mdash; the weighted
+          (last-in-first-out) method has not been used in Italy since 2012, the weighted
           average cost method always applies. Transaction fees (commissioni) can be added to your
           cost basis, slightly reducing your taxable gain.
         </p>
@@ -501,7 +498,7 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
         <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
-          I use a foreign broker &mdash; what are my tax obligations?
+          I use a foreign broker, what are my tax obligations?
           <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>

@@ -1,5 +1,5 @@
 /**
- * Addizionale regionale IRPEF 2026 — all Italian regions and autonomous provinces.
+ * Addizionale regionale IRPEF 2026, all Italian regions and autonomous provinces.
  *
  * Sources: official regional deliberations for anno fiscale 2026.
  *

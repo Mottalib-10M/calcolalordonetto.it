@@ -176,7 +176,7 @@ export default function Buonuscita({ lang = 'it' }: { lang?: Lang }) {
             </div>
           </div>
 
-          {/* Visual Breakdown — Tassazione Separata */}
+          {/* Visual Breakdown, Tassazione Separata */}
           <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
               Composizione con tassazione separata

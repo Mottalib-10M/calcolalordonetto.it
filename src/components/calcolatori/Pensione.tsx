@@ -121,7 +121,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
             {formatCurrency(risultato.pensioneMensileNetta)}
           </p>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-            su 13 mensilità — a {etaPensionamento} anni
+            su 13 mensilità, a {etaPensionamento} anni
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-4 border-t border-gray-200 dark:border-gray-700 pt-5">

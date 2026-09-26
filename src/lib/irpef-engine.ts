@@ -1,5 +1,5 @@
 /**
- * IRPEF Engine — core Italian salary calculation functions.
+ * IRPEF Engine, core Italian salary calculation functions.
  *
  * Pure typed functions for computing RAL → Netto, IRPEF, detrazioni,
  * trattamento integrativo, addizionali, TFR, and more.
@@ -469,7 +469,7 @@ export function calcolaStipendio(input: InputStipendio): RisultatoStipendio {
   // 2. Imponibile fiscale = RAL − INPS dipendente
   let imponibileFiscale = ral - contributiINPS;
 
-  // 3. Cuneo fiscale — somma esente (reduces the taxable base)
+  // 3. Cuneo fiscale, somma esente (reduces the taxable base)
   const cuneoFiscale = calcolaCuneoFiscale(imponibileFiscale);
   const imponibilePerIRPEF = imponibileFiscale - cuneoFiscale.sommaEsente;
 

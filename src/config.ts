@@ -1,4 +1,4 @@
-/** Central site configuration — single source of truth for brand values */
+/** Central site configuration, single source of truth for brand values */
 export const SITE = {
   name: 'Calcola Lordo Netto',
   nameEn: 'Italian Tax Calculator',

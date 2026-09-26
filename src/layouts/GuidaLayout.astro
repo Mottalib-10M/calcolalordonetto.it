@@ -1,11 +1,17 @@
 ---
 import Layout from './Layout.astro';
+import { RESUMES } from '../data/resumes';
 import { SITE } from '../config';
 import type { Lang } from '../i18n/types';
 import { t } from '../i18n/index';
 import { breadcrumbSchema, faqSchema } from '../lib/seo';
 
 interface Props {
+  /**
+   * Paragrafo citabile (RECETTE §21) : almeno 120 parole, rese nel corpo e non
+   * nell'intestazione, che check-seo rimuove come ornamento.
+   */
+  resume?: string;
   title: string;
   description: string;
   canonical?: string;
@@ -27,7 +33,12 @@ const {
   breadcrumbs,
   faqs,
   lang = 'it',
-} = Astro.props;
+
+  resume,} = Astro.props;
+// Il paragrafo si trova dal percorso quando la pagina non lo fornisce : una
+// sola tabella da tenere, non settanta chiamate da modificare.
+const resumeAffiche = resume ?? RESUMES[Astro.url.pathname]
+  ?? RESUMES[Astro.url.pathname.replace(/\/$/, '') + '/'];
 
 const canonicalURL = canonical || Astro.url.href;
 
@@ -155,6 +166,10 @@ const dateFormatter = new Intl.DateTimeFormat(dateLocale, {
 
         <!-- Article body -->
         <div class="prose prose-lg dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-brand prose-a:no-underline hover:prose-a:underline max-w-none">
+          {resumeAffiche && (
+            <p class="mb-8 leading-relaxed text-gray-700">{resumeAffiche}</p>
+          )}
+
           <slot />
         </div>
       </article>

@@ -151,7 +151,10 @@ const dateFormatter = new Intl.DateTimeFormat('it-IT', {
         return (
           <article class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden">
             <div class="p-6">
-              <div class="flex flex-wrap items-center gap-3 mb-3">
+              {/* §10.3 : categorie et date forment un surtitre avec le titre
+                  qu'elles introduisent. La classe kicker le dit au controle de
+                  rythme, qui sinon reproche 12 px de blanc au-dessus du titre. */}
+              <div class="kicker flex flex-wrap items-center gap-3 mb-3">
                 <span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${cat.color}`}>
                   {cat.label}
                 </span>

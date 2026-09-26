@@ -16,10 +16,10 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { question: 'Do children under 21 still qualify for IRPEF deductions?', answer: 'No. Since 1 March 2022, IRPEF deductions for dependent children apply only to children who have turned 21. For children under 18 and those aged 18 to 20, financial support is provided through the Assegno Unico Universale (AUU), a monthly cash transfer from INPS whose amount depends on the household\'s ISEE score. The AUU must be applied for separately through INPS. This change unified multiple previous benefits into a single instrument, simplifying the system but also meaning that families with young children no longer see a deduction line on their pay slip — they receive a bank transfer from INPS instead.' },
+  { question: 'Do children under 21 still qualify for IRPEF deductions?', answer: 'No. Since 1 March 2022, IRPEF deductions for dependent children apply only to children who have turned 21. For children under 18 and those aged 18 to 20, financial support is provided through the Assegno Unico Universale (AUU), a monthly cash transfer from INPS whose amount depends on the household\'s ISEE score. The AUU must be applied for separately through INPS. This change unified multiple previous benefits into a single instrument, simplifying the system but also meaning that families with young children no longer see a deduction line on their pay slip, they receive a bank transfer from INPS instead.' },
   { question: 'Is it better to assign 100% of the child deduction to one parent?', answer: 'It depends on your specific situation. If both parents have sufficient income to fully utilise the deductions, the standard 50/50 split is generally equivalent in total tax savings. However, if one parent has a very low income (with limited IRPEF liability, i.e., low capienza fiscale), assigning 100% to the higher-earning parent can be advantageous because it prevents the lower-earning parent\'s share from going to waste. The choice must be communicated to the employer and agreed upon between both parents. Use our calculator above to compare both scenarios and see which option maximises your household\'s total net pay.' },
   { question: 'Does an unmarried cohabiting partner qualify for the spouse deduction?', answer: 'The spouse deduction (detrazione per il coniuge a carico) is available only to legally married couples or partners in a civil union (unione civile) registered under Law 76/2016 (the Legge Cirinna\'). A cohabiting partner (convivente di fatto) who is not in a civil union does not qualify for the spouse deduction, even if they live together and earn below the income threshold. This is one reason why couples in Italy with asymmetric incomes may consider marriage or a civil union also from a tax perspective, as the deduction can be worth up to €800 per year.' },
-  { question: 'What happens if my spouse exceeds the income threshold during the year?', answer: 'If your spouse\'s annual gross income exceeds €2,840.51, the deduction is lost for the entire year — it is not pro-rated by month. You must promptly inform your employer to stop applying the deduction in your pay slip. If the deduction has already been applied during the year, the amount will be clawed back during the year-end adjustment (conguaglio di fine anno) or in your annual tax return (dichiarazione dei redditi, typically the Modello 730). To avoid an unpleasant surprise, it is advisable to estimate your spouse\'s annual income with reasonable anticipation, particularly if they take on part-time or temporary work during the year.' },
+  { question: 'What happens if my spouse exceeds the income threshold during the year?', answer: 'If your spouse\'s annual gross income exceeds €2,840.51, the deduction is lost for the entire year, it is not pro-rated by month. You must promptly inform your employer to stop applying the deduction in your pay slip. If the deduction has already been applied during the year, the amount will be clawed back during the year-end adjustment (conguaglio di fine anno) or in your annual tax return (dichiarazione dei redditi, typically the Modello 730). To avoid an unpleasant surprise, it is advisable to estimate your spouse\'s annual income with reasonable anticipation, particularly if they take on part-time or temporary work during the year.' },
   { question: 'Do family deductions apply to self-employed workers and freelancers?', answer: 'Family deductions apply to all taxpayers subject to IRPEF, including self-employed workers and freelancers operating under the ordinary regime (regime ordinario). However, workers under the regime forfettario (flat-rate regime) pay a substitute tax instead of IRPEF and therefore cannot claim any IRPEF deductions, including family deductions. This is an important factor to consider when choosing your tax regime, especially if you have dependents. If you are in the forfettario regime and cannot use the deductions, the other parent (if they are an employee or self-employed under the ordinary regime) can claim 100% of the child deduction instead of the standard 50%.' },
   { question: 'How do I declare dependent family members in the Modello 730?', answer: 'In the Modello 730 (Italy\'s standard tax return for employees and retirees), dependent family members are declared in the Prospetto dei familiari a carico (Dependent Family Members section) at the beginning of the form. For each dependent, you must indicate: their codice fiscale (tax ID number), the type of relationship (C for coniuge/spouse, F for figlio/child, A for altro familiare/other relative), the number of months they were dependent during the year, and the applicable deduction percentage (50% or 100% for children). The pre-filled 730 (730 precompilato) available on the Agenzia delle Entrate website already contains much of this information, but it is your responsibility to verify its accuracy and update any changes that occurred during the year. Deductions already received through your monthly pay are automatically reconciled.' },
   { question: 'Can expats claim family deductions for a spouse living abroad?', answer: 'Yes, if you are a tax resident in Italy (residente fiscale), you can claim the spouse deduction even if your spouse lives abroad, provided they meet the income threshold requirement (€2,840.51 annual gross income). The spouse\'s foreign income must be considered for this test. You will need to ensure your spouse has an Italian codice fiscale, which can be obtained at the Italian consulate or embassy in their country of residence. Be prepared to provide documentation of their income if requested by the Agenzia delle Entrate, particularly income certifications from the relevant foreign tax authority.' },
@@ -55,7 +55,7 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
         <strong>Detrazioni per familiari a carico</strong> (dependent family member deductions) are reductions of
-        IRPEF (Imposta sul Reddito delle Persone Fisiche &mdash; Italy's personal income tax) established by
+        IRPEF (Imposta sul Reddito delle Persone Fisiche, Italy's personal income tax) established by
         <strong>Article 12 of the TUIR</strong> (Testo Unico delle Imposte sui Redditi, D.P.R. 917/1986) for
         taxpayers who support economically dependent family members. These deductions reduce the tax itself (not
         the taxable income), which means they translate into a concrete increase in your monthly take-home pay
@@ -75,10 +75,9 @@ const faqs = [
         to deductions.
       </p>
       <p>
-        The following family members can be claimed as dependents: the <strong>spouse</strong> (coniuge &mdash; not
-        legally and effectively separated), <strong>children</strong> (figli &mdash; including natural, recognised,
-        adopted, fostered, or affiliated children), and <strong>other relatives</strong> (altri familiari &mdash;
-        parents, sons- and daughters-in-law, parents-in-law, brothers and sisters) provided they live with the
+        The following family members can be claimed as dependents: the <strong>spouse</strong> (coniuge, not
+        legally and effectively separated), <strong>children</strong> (figli, including natural, recognised,
+        adopted, fostered, or affiliated children), and <strong>other relatives</strong> (altri familiari, parents, sons- and daughters-in-law, parents-in-law, brothers and sisters) provided they live with the
         taxpayer or receive alimony not resulting from court orders. Our calculator focuses on the two main
         deductions: the spouse deduction and the deduction for children aged 21 and older.
       </p>
@@ -167,7 +166,7 @@ const faqs = [
       </h3>
       <p>
         Since <strong>1 March 2022</strong>, with the introduction of the <strong>Assegno Unico Universale
-        (AUU)</strong> &mdash; the Universal Child Allowance paid by INPS &mdash; the traditional IRPEF
+        (AUU)</strong>, the Universal Child Allowance paid by INPS, the traditional IRPEF
         deductions for dependent children apply exclusively to <strong>children who have turned 21</strong>.
         For children under 18 and those aged 18 to 20, financial support is provided entirely through the
         Assegno Unico, which is a direct monthly cash transfer based on the household's ISEE indicator
@@ -191,7 +190,7 @@ const faqs = [
       <p>
         The child deduction is normally <strong>split 50/50 between the two parents</strong>. However, it is
         possible to assign 100% of the deduction to the higher-earning parent if both parents agree and
-        doing so allows the household to fully utilise the deduction &mdash; for example, when the
+        doing so allows the household to fully utilise the deduction, for example, when the
         lower-earning parent does not have enough IRPEF liability (capienza fiscale) to absorb their share.
       </p>
 
@@ -201,7 +200,7 @@ const faqs = [
       <p>
         The <strong>Assegno Unico Universale (AUU)</strong>, introduced by Legislative Decree 230/2021 and
         operational since March 2022, is the welfare measure that replaced the previous IRPEF deductions for
-        minor children, the family allowances (ANF &mdash; Assegni al Nucleo Familiare), the baby bonus (bonus
+        minor children, the family allowances (ANF, Assegni al Nucleo Familiare), the baby bonus (bonus
         bebe'), and the birth premium. The AUU is a monthly cash transfer paid by INPS directly into the
         beneficiary's bank account, from the seventh month of pregnancy until the child turns 21 (with reduced
         amounts for children aged 18 to 20).
@@ -327,7 +326,7 @@ const faqs = [
         To receive the deductions in your monthly pay, you must inform your employer (or the HR/payroll
         department) about your dependent family members by filling in a specific declaration form (modulo di
         richiesta detrazioni). This notification must be made when you start a new job and whenever changes
-        occur &mdash; birth of a child, change in your spouse's income, a child turning 21, and so on. The
+        occur, birth of a child, change in your spouse's income, a child turning 21, and so on. The
         employer, acting as your tax withholding agent (sostituto d'imposta), applies the deductions monthly
         in your pay slip by dividing the annual amount by the number of pay periods (usually 12, with a
         year-end adjustment in the conguaglio). It is your responsibility to report changes promptly: if a
@@ -348,7 +347,7 @@ const faqs = [
       </h3>
       <p>
         A key concept to understand is <strong>capienza fiscale</strong> (tax capacity). Deductions can
-        reduce your IRPEF liability down to zero, but they cannot generate a tax credit &mdash; if your
+        reduce your IRPEF liability down to zero, but they cannot generate a tax credit, if your
         gross IRPEF is less than the total deductions you are entitled to, the excess portion is lost. This
         is particularly relevant for low incomes, where the combination of the employment income deduction
         (detrazione per lavoro dipendente), the 2026 tax wedge benefit (cuneo fiscale), and family deductions
@@ -450,7 +449,7 @@ const faqs = [
           the Assegno Unico Universale (AUU), a monthly cash transfer from INPS whose amount depends on the
           household's ISEE score. The AUU must be applied for separately through INPS. This change unified
           multiple previous benefits into a single instrument, simplifying the system but also meaning that
-          families with young children no longer see a deduction line on their pay slip &mdash; they receive
+          families with young children no longer see a deduction line on their pay slip, they receive
           a bank transfer from INPS instead.
         </p>
       </details>
@@ -499,7 +498,7 @@ const faqs = [
         </summary>
         <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
           If your spouse's annual gross income exceeds &euro;2,840.51, the deduction is lost for the
-          <strong>entire year</strong> &mdash; it is not pro-rated by month. You must promptly inform your
+          <strong>entire year</strong>, it is not pro-rated by month. You must promptly inform your
           employer to stop applying the deduction in your pay slip. If the deduction has already been applied
           during the year, the amount will be clawed back during the year-end adjustment (conguaglio di fine
           anno) or in your annual tax return (dichiarazione dei redditi, typically the Modello 730). To avoid

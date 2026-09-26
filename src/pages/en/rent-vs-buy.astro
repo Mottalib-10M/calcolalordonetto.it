@@ -20,8 +20,8 @@ const faqs = [
   { question: 'What is opportunity cost and why does it matter in this comparison?', answer: 'Opportunity cost is the return you could have earned by investing the money elsewhere. If you use €50,000 as a down payment, those funds can no longer grow in a stock market portfolio or other investments. Assuming an average annual return of 7%, that €50,000 would have grown to roughly €193,000 over 20 years. This forgone growth is the opportunity cost of buying, which is why the calculator includes an “alternative investment return” field.' },
   { question: 'How is the breakeven point calculated?', answer: 'The breakeven point is the year at which the total cost of buying (including all expenses, minus the property’s appreciated value) drops below the total cost of renting (including cumulative rent payments, minus the investment gains from the capital you did not tie up in property). In the early years, buying is more expensive because of the upfront transaction costs. Over time, property appreciation and the gradual paydown of the mortgage shift the balance in favour of buying. The exact crossover year depends on the assumptions you feed into the calculator.' },
   { question: 'What tax breaks exist for first-home buyers in Italy?', answer: 'Italy offers several incentives for “prima casa” (first-home) buyers: a reduced registration tax of 2% instead of 9%; reduced VAT of 4% instead of 10% when buying from a developer; full exemption from IMU (property tax); and a 19% IRPEF deduction on mortgage interest up to €4,000 per year (maximum saving: €760/year). The Fondo di Garanzia Prima Casa (managed by Consap) can guarantee up to 80% of the mortgage for qualifying young buyers under 36. Non-Italian residents can access these benefits as long as they establish residency in the municipality within 18 months.' },
-  { question: 'How much should I have saved as a down payment?', answer: 'Italian banks typically finance up to 80% of the property value (known as 80% LTV — loan-to-value), so you should have at least 20% saved for the down payment. On top of that, budget 7–10% for closing costs (notary, agent, taxes). For a €200,000 property, that means you need roughly €54,000 to €60,000 in total. Young buyers under 36 may access the Fondo di Garanzia Consap for mortgages up to 100% LTV, but you will still need cash for the closing costs. As an expat, some banks may require a higher down payment (up to 30–40%) depending on your residency status and employment history in Italy.' },
-  { question: 'Is Italian real estate a good investment?', answer: 'Historically, Italian property prices have been flat or declining in real terms (after inflation) since the 2007–2008 peak. Only a handful of cities — Milan being the most notable — have seen meaningful real price growth. Unlike stocks and bonds, real estate is an illiquid asset (hard to sell quickly), is undiversified (all your capital sits in one property in one location), and carries high ongoing costs. As a pure financial investment, a diversified portfolio has historically delivered stronger returns with greater liquidity. However, a primary residence serves a dual purpose — it is both a place to live and a store of value — so it should not be judged solely by its investment performance.' },
+  { question: 'How much should I have saved as a down payment?', answer: 'Italian banks typically finance up to 80% of the property value (known as 80% LTV, loan-to-value), so you should have at least 20% saved for the down payment. On top of that, budget 7–10% for closing costs (notary, agent, taxes). For a €200,000 property, that means you need roughly €54,000 to €60,000 in total. Young buyers under 36 may access the Fondo di Garanzia Consap for mortgages up to 100% LTV, but you will still need cash for the closing costs. As an expat, some banks may require a higher down payment (up to 30–40%) depending on your residency status and employment history in Italy.' },
+  { question: 'Is Italian real estate a good investment?', answer: 'Historically, Italian property prices have been flat or declining in real terms (after inflation) since the 2007–2008 peak. Only a handful of cities, Milan being the most notable, have seen meaningful real price growth. Unlike stocks and bonds, real estate is an illiquid asset (hard to sell quickly), is undiversified (all your capital sits in one property in one location), and carries high ongoing costs. As a pure financial investment, a diversified portfolio has historically delivered stronger returns with greater liquidity. However, a primary residence serves a dual purpose, it is both a place to live and a store of value, so it should not be judged solely by its investment performance.' },
   { question: 'Does the calculator account for mortgage interest tax deductions?', answer: 'The calculator does not explicitly model the 19% IRPEF deduction on mortgage interest (capped at €4,000/year in interest, meaning a maximum annual tax saving of €760). This keeps the calculation simpler and more transparent. If you want to account for the deduction, you can slightly reduce the mortgage interest rate in the calculator to simulate the tax benefit. In practice, the saving is modest relative to total costs and does not significantly shift the breakeven point.' },
   { question: 'Can a foreigner buy property in Italy?', answer: 'Yes. EU citizens can buy property in Italy without restrictions. Non-EU citizens can also purchase property provided there is a reciprocity agreement between Italy and their home country (most major countries qualify). You do not need to be a resident to buy, but you will need an Italian tax code (codice fiscale) and a valid form of identification. To claim “prima casa” (first-home) tax benefits, you must establish residency in the municipality within 18 months of the purchase. Non-EU citizens will need a valid permesso di soggiorno to register residency.' },
   { question: 'What are typical mortgage rates in Italy right now?', answer: 'As of mid-2026, fixed mortgage rates (tasso fisso) in Italy generally range between 3.0% and 4.0% for a standard 20–25 year loan at 80% LTV. Variable rates (tasso variabile), which track the Euribor index, can start lower but carry the risk of rising over the loan term. The exact rate you receive depends on your financial profile, the LTV ratio, the loan duration, and the specific bank. It is always advisable to get quotes from multiple lenders. You can use our mortgage calculator to see how different rates affect your monthly payment.' },
@@ -43,7 +43,7 @@ const faqs = [
     Rent vs Buy in Italy: Calculator 2026
   </h1>
   <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
-    Compare the true cost of renting versus buying property in Italy &mdash; including mortgage payments, hidden fees, taxes, and the opportunity cost of your down payment.
+    Compare the true cost of renting versus buying property in Italy, including mortgage payments, hidden fees, taxes, and the opportunity cost of your down payment.
   </p>
 
   <AffittoVsAcquisto client:idle lang={lang} />
@@ -56,7 +56,7 @@ const faqs = [
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
         &quot;Renting is throwing money away&quot; is one of the most deeply held financial beliefs
-        in Italian culture &mdash; and it is a mindset that many expats absorb quickly after arriving.
+        in Italian culture, and it is a mindset that many expats absorb quickly after arriving.
         But the reality is far more nuanced than that one-liner suggests. The decision between renting
         and buying is one of the most consequential financial choices you will make during your time
         in Italy, and it deserves a clear-eyed analysis that considers every factor, not just cultural
@@ -107,14 +107,13 @@ const faqs = [
         <li>
           <strong>Ongoing maintenance (manutenzione)</strong>: a widely used rule of thumb is to
           budget 1&ndash;2% of the property value per year for ordinary and extraordinary
-          maintenance. Older Italian buildings &mdash; especially those built before the 1970s
-          &mdash; can easily push toward the higher end of that range.
+          maintenance. Older Italian buildings, especially those built before the 1970s, can easily push toward the higher end of that range.
         </li>
         <li>
           <strong>IMU (property tax)</strong>: Italy&rsquo;s main property tax, <em>Imposta
           Municipale Unica</em>, is <strong>not</strong> levied on your primary residence (except
           for luxury categories A/1, A/8, A/9). However, if you own a second home or an investment
-          property, you will pay IMU at rates set by the municipality &mdash; typically between
+          property, you will pay IMU at rates set by the municipality, typically between
           0.76% and 1.06% of the cadastral value.
         </li>
         <li>
@@ -140,8 +139,8 @@ const faqs = [
       </h3>
       <p>
         This is the factor most often ignored in the rent-versus-buy debate, and arguably the most
-        important one. If you choose to rent, the entire down payment amount &mdash; typically
-        20&ndash;30% of the property value &mdash; can be invested in the financial markets instead
+        important one. If you choose to rent, the entire down payment amount, typically
+        20&ndash;30% of the property value, can be invested in the financial markets instead
         of being locked inside a single, illiquid asset.
       </p>
       <p>
@@ -173,7 +172,7 @@ const faqs = [
       </div>
       <ul>
         <li><strong>Ratio below 15</strong>: buying is generally more cost-effective</li>
-        <li><strong>Ratio 15&ndash;20</strong>: grey zone &mdash; the answer depends on individual circumstances</li>
+        <li><strong>Ratio 15&ndash;20</strong>: grey zone, the answer depends on individual circumstances</li>
         <li><strong>Ratio above 20</strong>: renting is generally more cost-effective</li>
       </ul>
 
@@ -259,7 +258,7 @@ const faqs = [
         <li>Property price: &euro;250,000</li>
         <li>Down payment: &euro;50,000 (20%)</li>
         <li>Mortgage: &euro;200,000 over 25 years at 3.5% fixed rate</li>
-        <li>Purchase costs: 8% (&euro;20,000) &mdash; notary, agent, taxes</li>
+        <li>Purchase costs: 8% (&euro;20,000), notary, agent, taxes</li>
         <li>Condominium fees: &euro;150/month</li>
         <li>Maintenance: &euro;2,500/year</li>
         <li>IMU (property tax): &euro;0 (primary residence)</li>
@@ -270,7 +269,7 @@ const faqs = [
       </p>
       <ul>
         <li>Monthly rent: &euro;1,200</li>
-        <li>Annual rent increase: 2% (ISTAT inflation adjustment &mdash; the standard indexing method in Italian rental contracts)</li>
+        <li>Annual rent increase: 2% (ISTAT inflation adjustment, the standard indexing method in Italian rental contracts)</li>
         <li>Down payment + purchase costs invested: &euro;70,000 at 5% annual return</li>
       </ul>
       <p>
@@ -303,7 +302,7 @@ const faqs = [
         regime expires partway through your loan term.</li>
         <li><strong>Currency risk</strong>: if your savings or income stream is in a currency other
         than the euro, exchange rate fluctuations can materially change the effective cost of a
-        purchase &mdash; both the down payment and ongoing mortgage payments.</li>
+        purchase, both the down payment and ongoing mortgage payments.</li>
         <li><strong>Residency and prima casa benefits</strong>: to claim first-home tax benefits,
         you must establish official residency (<em>residenza</em>) in the municipality where the
         property is located within 18 months of purchase. This is straightforward for EU citizens
@@ -320,7 +319,7 @@ const faqs = [
       <ul>
         <li><strong>Stability and security</strong>: owning your home provides psychological peace
         of mind and protection from rent increases or eviction. In Italy, where eviction of a
-        tenant is notoriously slow through the courts, landlords have limited power &mdash; but the
+        tenant is notoriously slow through the courts, landlords have limited power, but the
         uncertainty can still be stressful.</li>
         <li><strong>Freedom and flexibility</strong>: renting allows you to change city, neighbourhood,
         or apartment size with relative ease. This is a huge advantage if your career is mobile, if
@@ -330,7 +329,7 @@ const faqs = [
         it to your liking without needing the landlord&rsquo;s permission. Italian rental contracts
         typically prohibit structural changes and even minor modifications may require approval.</li>
         <li><strong>Community and roots</strong>: owning property creates a deeper connection to
-        the neighbourhood and community &mdash; something many expats value as they integrate into
+        the neighbourhood and community, something many expats value as they integrate into
         Italian life.</li>
         <li><strong>Forced savings discipline</strong>: the mortgage imposes a regular saving habit
         that many people would not maintain voluntarily. If you know you are not naturally disciplined
@@ -384,7 +383,7 @@ const faqs = [
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Typical mortgage payment (25 yr, 3.5%)</td>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">~&euro;1,000/month on &euro;200k loan</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">&mdash;</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">, </td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Flexibility</td>
@@ -451,7 +450,7 @@ const faqs = [
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Cedolare secca</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Flat-rate rental tax (21% or 10%) &mdash; a tax regime your landlord may opt into</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Flat-rate rental tax (21% or 10%), a tax regime your landlord may opt into</td>
           </tr>
         </tbody>
       </table>

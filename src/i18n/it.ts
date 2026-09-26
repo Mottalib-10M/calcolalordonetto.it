@@ -1,5 +1,5 @@
 /**
- * Italian dictionary — source of truth for all UI strings.
+ * Italian dictionary, source of truth for all UI strings.
  * Keys follow the convention: component.element
  */
 const it = {

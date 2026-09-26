@@ -1,5 +1,5 @@
 /**
- * Financial calculation engine — pure functions for credit, savings,
+ * Financial calculation engine, pure functions for credit, savings,
  * and investment calculators.
  *
  * All monetary values in EUR. All rates as decimals (e.g., 0.05 = 5%).
@@ -31,7 +31,7 @@ export interface RataAmmortamento {
 
 /**
  * Calculate mortgage monthly payment using French amortization
- * (rata costante — standard in Italy).
+ * (rata costante, standard in Italy).
  */
 export function calcolaMutuo(input: InputMutuo): RisultatoMutuo {
   const { importo, tassoAnnuo, durataAnni } = input;
@@ -259,7 +259,7 @@ export interface RisultatoPAC {
 }
 
 /**
- * Calculate PAC (Piano di Accumulo Capitale) — systematic investment plan.
+ * Calculate PAC (Piano di Accumulo Capitale), systematic investment plan.
  * Applies Italian 26% capital gains tax on the gain at the end.
  */
 export function calcolaPAC(input: InputPAC): RisultatoPAC {

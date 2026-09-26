@@ -116,7 +116,7 @@ export function faqSchema(
     '@type': 'FAQPage',
     // §7 plafonne à huit questions déclarées : au-delà, l'extrait enrichi n'en
     // retient de toute façon qu'une poignée. La page peut en afficher davantage,
-    // on ne déclare que les huit premières — déclarer un sous-ensemble est
+    // on ne déclare que les huit premières, déclarer un sous-ensemble est
     // permis, déclarer ce qui n'est pas sur la page ne l'est pas.
     mainEntity: faqs.slice(0, 8).map((faq) => ({
       '@type': 'Question',

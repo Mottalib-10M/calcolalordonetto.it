@@ -1,5 +1,5 @@
 /**
- * IRPEF 2026 — Italian Personal Income Tax Data
+ * IRPEF 2026, Italian Personal Income Tax Data
  *
  * Sources:
  * - TUIR (Testo Unico delle Imposte sui Redditi), D.P.R. 917/1986, Art. 11, 13
@@ -31,7 +31,7 @@ export interface FasciaCuneoFiscale {
   tipo: 'somma_esente' | 'detrazione';
   /**
    * For `somma_esente`: percentage of income (as decimal, e.g. 0.071 = 7.1%).
-   * For `detrazione`: fixed yearly EUR value (may phase out — see `fasciaCuneoFiscalePhaseOut`).
+   * For `detrazione`: fixed yearly EUR value (may phase out, see `fasciaCuneoFiscalePhaseOut`).
    */
   percentualeOValore: number;
 }
@@ -87,7 +87,7 @@ export const SCAGLIONI_IRPEF_2026: readonly ScaglioneIRPEF[] = [
 // ---------------------------------------------------------------------------
 
 /**
- * Employment income tax credit — piecewise formula.
+ * Employment income tax credit, piecewise formula.
  *
  * The raw credit must be prorated: `detrazione × (giorni_lavoro / 365)`.
  *
@@ -174,15 +174,15 @@ export const TRATTAMENTO_INTEGRATIVO_2026 = {
 // ---------------------------------------------------------------------------
 
 /**
- * Cuneo fiscale 2026 — two-tier system replacing the old contributivo cuts.
+ * Cuneo fiscale 2026, two-tier system replacing the old contributivo cuts.
  *
- * Tier 1 — Somma esente (income ≤ €20,000):
+ * Tier 1, Somma esente (income ≤ €20,000):
  *   A tax-exempt sum proportional to income, varying by sub-band:
  *   - Up to €8,500 → 7.1% of income
  *   - €8,501–€15,000 → 5.3% of income
  *   - €15,001–€20,000 → 4.8% of income
  *
- * Tier 2 — Detrazione IRPEF (€20,001–€40,000):
+ * Tier 2, Detrazione IRPEF (€20,001–€40,000):
  *   - €20,001–€32,000 → fixed €1,000/year
  *   - €32,001–€40,000 → €1,000 × (40,000 − reddito) / 8,000 (phase-out)
  *
@@ -191,7 +191,7 @@ export const TRATTAMENTO_INTEGRATIVO_2026 = {
  * @see Legge di Bilancio 2026, Art. 1, commi relativi al cuneo fiscale
  */
 export const FASCE_CUNEO_FISCALE_2026: readonly FasciaCuneoFiscale[] = [
-  // Tier 1 — Somma esente
+  // Tier 1, Somma esente
   {
     limiteInferiore: 0,
     limiteSuperiore: 8_500,
@@ -210,7 +210,7 @@ export const FASCE_CUNEO_FISCALE_2026: readonly FasciaCuneoFiscale[] = [
     tipo: 'somma_esente',
     percentualeOValore: 0.048, // 4.8%
   },
-  // Tier 2 — Detrazione IRPEF
+  // Tier 2, Detrazione IRPEF
   {
     limiteInferiore: 20_001,
     limiteSuperiore: 32_000,
@@ -374,14 +374,14 @@ export const CONTRIBUTI_INPS_2026 = {
 // ---------------------------------------------------------------------------
 
 /**
- * Regional and municipal IRPEF surcharges — default indicative rates.
+ * Regional and municipal IRPEF surcharges, default indicative rates.
  *
  * Actual rates vary by Regione and Comune. These are common reference values.
  * A full implementation should allow the user to select their location.
  */
 export const ADDIZIONALI_DEFAULT_2026 = {
   /** Indicative regional surcharge rate (varies by Regione, 1.23%–3.33%). */
-  regionaleIndicativa: 0.0173, // 1.73% — approximate national midpoint
+  regionaleIndicativa: 0.0173, // 1.73%, approximate national midpoint
   /** Indicative municipal surcharge rate (varies by Comune, 0%–0.9%). */
   comunaleIndicativa: 0.008, // 0.8%
 } as const;

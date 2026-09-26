@@ -19,12 +19,12 @@ const breadcrumbs = [
 const faqs = [
   { question: 'Is it better to be an employee or a freelancer (Partita IVA) in Italy?', answer: 'There is no universal answer. From a strictly fiscal perspective, the Partita IVA under the regime forfettario (flat-rate regime) can be more tax-efficient at low-to-medium revenue levels thanks to the reduced substitute tax. However, employees benefit from TFR severance, the 13th-month salary, paid holidays, sick pay, maternity/paternity leave, and employer pension contributions. For a fair comparison, your freelance revenue should be at least 30–50% higher than the equivalent employee RAL. The choice also depends on non-monetary factors such as flexibility, financial security, and personal risk tolerance.' },
   { question: 'How much do I need to invoice as a freelancer to earn the same as an employee?', answer: 'As a general rule, to achieve a net income equivalent to that of an employee (including TFR and the value of employment protections), your Partita IVA revenue should be roughly 30–50% higher than the employee RAL. For example, to match a RAL of €40,000 you would need to bill approximately €55,000–60,000 as a consultant under the regime forfettario. Use the calculator above for a precise estimate based on your specific profitability coefficient (coefficiente di redditivit&agrave;).' },
-  { question: 'What happens if my freelance revenue exceeds €85,000?', answer: 'If your revenues exceed €85,000 but remain below €100,000, you exit the regime forfettario starting from the following calendar year and transition to the regime ordinario (standard tax regime) with progressive IRPEF, VAT obligations, and full double-entry bookkeeping. If you exceed €100,000, the exit is immediate — effective in the current year. Under the regime ordinario, the tax burden is significantly higher: progressive IRPEF (up to 43%), regional and municipal surcharges, and VAT to charge and remit.' },
-  { question: 'Does a freelancer under the regime forfettario really pay less tax than an employee?', answer: 'In terms of the marginal tax rate, yes: the substitute tax of 5–15% is much lower than the progressive IRPEF which reaches 43%. However, the comparison is not straightforward. The forfettario freelancer pays 26.07% in INPS contributions on taxable income (compared to 9.19% for the employee, with the employer adding another 23.81%). Moreover, the forfettario cannot claim tax deductions for medical costs, mortgage interest, home renovations, or other standard reliefs. When you consider all factors — taxes, contributions, lost deductions, and the absence of employment protections — the real difference is much smaller than the headline rates suggest.' },
+  { question: 'What happens if my freelance revenue exceeds €85,000?', answer: 'If your revenues exceed €85,000 but remain below €100,000, you exit the regime forfettario starting from the following calendar year and transition to the regime ordinario (standard tax regime) with progressive IRPEF, VAT obligations, and full double-entry bookkeeping. If you exceed €100,000, the exit is immediate, effective in the current year. Under the regime ordinario, the tax burden is significantly higher: progressive IRPEF (up to 43%), regional and municipal surcharges, and VAT to charge and remit.' },
+  { question: 'Does a freelancer under the regime forfettario really pay less tax than an employee?', answer: 'In terms of the marginal tax rate, yes: the substitute tax of 5–15% is much lower than the progressive IRPEF which reaches 43%. However, the comparison is not straightforward. The forfettario freelancer pays 26.07% in INPS contributions on taxable income (compared to 9.19% for the employee, with the employer adding another 23.81%). Moreover, the forfettario cannot claim tax deductions for medical costs, mortgage interest, home renovations, or other standard reliefs. When you consider all factors, taxes, contributions, lost deductions, and the absence of employment protections, the real difference is much smaller than the headline rates suggest.' },
   { question: 'Can I be employed and have a Partita IVA at the same time?', answer: 'Yes, it is possible to be employed and simultaneously hold a Partita IVA, provided there is no exclusivity clause in your employment contract and no conflict of interest with your employer. From a tax perspective, you can still access the regime forfettario as an employee, on the condition that your employment income does not exceed €30,000 gross per year (this is an additional requirement for those who also have an employment relationship). If your employee income exceeds this threshold, the regime forfettario is not available and your Partita IVA must operate under the standard regime ordinario.' },
-  { question: 'How does the pension work for a freelancer in the INPS gestione separata?', answer: 'Holders of a Partita IVA enrolled in the INPS gestione separata (separate management fund) contribute 26.07% of their taxable income towards their pension. These contributions accumulate in a notional contribution pot (montante contributivo) and determine the future pension amount, calculated under Italy\'s contribution-based system (sistema contributivo). Because the forfettario taxable income is reduced by the profitability coefficient, the contributions actually paid — and therefore the future pension — will generally be lower than those of an employee with an equivalent RAL, whose employer pays an additional 23.81% on top. For this reason, many freelancers choose to supplement their state pension with private pension plans (fondi pensione aperti or piani individuali pensionistici).' },
+  { question: 'How does the pension work for a freelancer in the INPS gestione separata?', answer: 'Holders of a Partita IVA enrolled in the INPS gestione separata (separate management fund) contribute 26.07% of their taxable income towards their pension. These contributions accumulate in a notional contribution pot (montante contributivo) and determine the future pension amount, calculated under Italy\'s contribution-based system (sistema contributivo). Because the forfettario taxable income is reduced by the profitability coefficient, the contributions actually paid, and therefore the future pension, will generally be lower than those of an employee with an equivalent RAL, whose employer pays an additional 23.81% on top. For this reason, many freelancers choose to supplement their state pension with private pension plans (fondi pensione aperti or piani individuali pensionistici).' },
   { question: 'Does a freelancer in the regime forfettario need to charge VAT?', answer: 'No. Freelancers operating under the regime forfettario issue invoices without VAT, pursuant to Art. 1, paragraph 58, of Law 190/2014. The invoice must include a specific exemption statement (dicitura di esenzione). This greatly simplifies accounting, but it has a flip side: the forfettario cannot deduct VAT on purchases. For private clients (B2C) this is an advantage because your prices are more competitive; for business clients (B2B) the effect is neutral because those clients cannot reclaim the input VAT on invoices received from a forfettario supplier.' },
-  { question: 'I am an expat moving to Italy — should I start as an employee or open a Partita IVA?', answer: 'For most expats arriving in Italy, starting as an employee is generally the simpler and safer path. Employment provides a steady income, immediate access to the Italian healthcare system (SSN), a straightforward residency process, and familiarity with the tax system through your employer\'s payroll. Opening a Partita IVA requires choosing the right codice ATECO, registering with INPS, hiring a commercialista, and managing quarterly tax obligations — all in a foreign language and legal system. If you are considering freelancing, it is worth exploring the regime impatriati (expat tax incentive), which can reduce your taxable income by 50–70% for qualifying new residents. Use our Impatriati calculator to estimate potential savings.' },
+  { question: 'I am an expat moving to Italy, should I start as an employee or open a Partita IVA?', answer: 'For most expats arriving in Italy, starting as an employee is generally the simpler and safer path. Employment provides a steady income, immediate access to the Italian healthcare system (SSN), a straightforward residency process, and familiarity with the tax system through your employer\'s payroll. Opening a Partita IVA requires choosing the right codice ATECO, registering with INPS, hiring a commercialista, and managing quarterly tax obligations, all in a foreign language and legal system. If you are considering freelancing, it is worth exploring the regime impatriati (expat tax incentive), which can reduce your taxable income by 50–70% for qualifying new residents. Use our Impatriati calculator to estimate potential savings.' },
   { question: 'What is the 5% reduced tax rate and who qualifies?', answer: 'New Partita IVA holders who meet certain requirements can pay a reduced substitute tax of just 5% for the first 5 years of activity, instead of the standard 15%. To qualify, you must not have held a Partita IVA in the same sector in the three years prior to opening, you must not be continuing a previously existing business activity (unless it was an apprenticeship or training period), and your annual revenues must remain below €85,000. This reduced rate applies automatically if the conditions are met at the time of opening your Partita IVA. After 5 years, the rate increases to 15%.' },
 ];
 ---
@@ -50,7 +50,7 @@ const faqs = [
 
   <Fragment slot="come-si-calcola">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-      When is freelancing better than employment in Italy &mdash; and when is it not?
+      When is freelancing better than employment in Italy, and when is it not?
     </h2>
     <div class="prose prose-gray dark:prose-invert max-w-none">
       <p>
@@ -68,7 +68,7 @@ const faqs = [
         &euro;50,000&ndash;60,000 in annual billings), thanks to the reduced substitute tax of 5% for
         the first five years and 15% thereafter, plus the absence of progressive IRPEF brackets.
         However, Italian employees enjoy a suite of protections and supplementary compensation
-        components that carry real economic value &mdash; and these must be factored into any honest
+        components that carry real economic value, and these must be factored into any honest
         comparison.
       </p>
 
@@ -83,7 +83,7 @@ const faqs = [
       </p>
       <ul>
         <li>
-          <strong>TFR (Trattamento di Fine Rapporto &mdash; severance pay)</strong>: equal to roughly
+          <strong>TFR (Trattamento di Fine Rapporto, severance pay)</strong>: equal to roughly
           6.91% of the gross annual salary or RAL (calculated as RAL&nbsp;/&nbsp;13.5). The employer
           sets aside this amount each year, and it is paid out when the employment relationship ends.
           For a RAL of &euro;40,000, this amounts to approximately &euro;2,963 per year. Freelancers
@@ -98,7 +98,7 @@ const faqs = [
         <li>
           <strong>Paid holidays (ferie retribuite)</strong>: Italian employees are entitled to at least
           26 working days of paid leave per year (four weeks minimum by law, plus public holidays and
-          additional leave under the applicable CCNL &mdash; the national collective labour agreement).
+          additional leave under the applicable CCNL, the national collective labour agreement).
           This is equivalent to roughly 10% of annual working time that is paid without working. A
           freelancer who does not work does not bill.
         </li>
@@ -128,7 +128,7 @@ const faqs = [
           employer pays approximately 23.81% of the RAL in INPS pension contributions on top of the
           employee's salary. These contributions translate into a higher future pension for the
           employee. A freelancer enrolled in the <em>gestione separata</em> pays 26.07% of taxable
-          income &mdash; which is already reduced by the profitability coefficient (<em>coefficiente
+          income, which is already reduced by the profitability coefficient (<em>coefficiente
           di redditivit&agrave;</em>), resulting in lower lifetime pension accrual.
         </li>
       </ul>
@@ -190,8 +190,7 @@ const faqs = [
         The comparison trap: RAL &euro;40,000 vs revenue &euro;40,000
       </h3>
       <p>
-        One of the most common mistakes is to compare a RAL (<em>Retribuzione Annua Lorda</em> &mdash;
-        gross annual salary) of &euro;40,000 with freelance revenue of &euro;40,000 as though they were
+        One of the most common mistakes is to compare a RAL (<em>Retribuzione Annua Lorda</em>, gross annual salary) of &euro;40,000 with freelance revenue of &euro;40,000 as though they were
         equivalent. <strong>They are not.</strong> The employee's RAL already includes the 13th-month
         salary (it is split across 13 payments), and on top of the RAL the employee also receives TFR,
         paid holidays, sick leave, and the employer's pension contributions. The <strong>total employer
@@ -305,8 +304,8 @@ const faqs = [
         At first glance, the freelancer earns more (&euro;39,059 vs &euro;30,200). But once you add
         the employee's annual TFR (~&euro;2,963) and the economic value of 26 days of paid holiday
         (~&euro;4,000), the gap narrows significantly. Furthermore, the freelancer must cover
-        professional expenses out of pocket &mdash; accountant fees (<em>commercialista</em>),
-        software subscriptions, coworking spaces, professional insurance &mdash; none of which are
+        professional expenses out of pocket, accountant fees (<em>commercialista</em>),
+        software subscriptions, coworking spaces, professional insurance, none of which are
         deductible under the regime forfettario. When all these factors are taken into account, the
         two compensation packages become much closer than a simple net-to-net comparison would
         suggest.
@@ -405,7 +404,7 @@ const faqs = [
         professionals), and <strong>67%</strong> for general service activities. For retail trade and
         food services, the coefficients drop to <strong>40%</strong>, reflecting higher operating
         costs. The coefficient determines what percentage of your gross revenue is considered taxable
-        income &mdash; a lower coefficient means a larger portion of revenue is treated as expenses.
+        income, a lower coefficient means a larger portion of revenue is treated as expenses.
       </p>
       <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">
         Key Italian tax terms for expats
@@ -477,8 +476,7 @@ const faqs = [
           If your revenues exceed &euro;85,000 but remain below &euro;100,000, you exit the regime
           forfettario starting from the following calendar year and transition to the <em>regime
           ordinario</em> (standard tax regime) with progressive IRPEF, VAT obligations, and full
-          double-entry bookkeeping. If you exceed &euro;100,000, the exit is immediate &mdash;
-          effective in the current year. Under the regime ordinario, the tax burden is significantly
+          double-entry bookkeeping. If you exceed &euro;100,000, the exit is immediate, effective in the current year. Under the regime ordinario, the tax burden is significantly
           higher: progressive IRPEF (up to 43%), regional and municipal surcharges, and VAT to
           charge and remit.
         </p>
@@ -497,8 +495,8 @@ const faqs = [
           straightforward. The forfettario freelancer pays 26.07% in INPS contributions on taxable
           income (compared to 9.19% for the employee, with the employer adding another 23.81%).
           Moreover, the forfettario cannot claim tax deductions for medical costs, mortgage interest,
-          home renovations, or other standard reliefs. When you consider all factors &mdash; taxes,
-          contributions, lost deductions, and the absence of employment protections &mdash; the real
+          home renovations, or other standard reliefs. When you consider all factors, taxes,
+          contributions, lost deductions, and the absence of employment protections, the real
           difference is much smaller than the headline rates suggest.
         </p>
       </details>
@@ -534,8 +532,7 @@ const faqs = [
           accumulate in a notional contribution pot (<em>montante contributivo</em>) and determine
           the future pension amount, calculated under Italy's contribution-based system (<em>sistema
           contributivo</em>). Because the forfettario taxable income is reduced by the profitability
-          coefficient, the contributions actually paid &mdash; and therefore the future pension &mdash;
-          will generally be lower than those of an employee with an equivalent RAL, whose employer
+          coefficient, the contributions actually paid, and therefore the future pension, will generally be lower than those of an employee with an equivalent RAL, whose employer
           pays an additional 23.81% on top. For this reason, many freelancers choose to supplement
           their state pension with private pension plans (<em>fondi pensione aperti</em> or
           <em>piani individuali pensionistici</em>).
@@ -562,7 +559,7 @@ const faqs = [
 
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5">
         <summary class="flex cursor-pointer items-center justify-between font-medium text-gray-900 dark:text-white">
-          I am an expat moving to Italy &mdash; should I start as an employee or open a Partita IVA?
+          I am an expat moving to Italy, should I start as an employee or open a Partita IVA?
           <svg class="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
           </svg>
@@ -573,7 +570,7 @@ const faqs = [
           system (SSN), a straightforward residency process, and familiarity with the tax system
           through your employer's payroll. Opening a Partita IVA requires choosing the right codice
           ATECO, registering with INPS, hiring a commercialista, and managing quarterly tax
-          obligations &mdash; all in a foreign language and legal system. If you are considering
+          obligations, all in a foreign language and legal system. If you are considering
           freelancing, it is worth exploring the <em>regime impatriati</em> (expat tax incentive),
           which can reduce your taxable income by 50&ndash;70% for qualifying new residents.
           Use our <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati

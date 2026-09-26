@@ -56,7 +56,9 @@ export default function BonusRistrutturazione({ lang = 'it' }: { lang?: Lang }) 
   const speseAmmesse = Math.min(costoLavori, tipoSelezionato.tetto);
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
+    // §10.3 : un enfant de grille ne descend pas sous la largeur minimale de son
+    // contenu sans min-w-0 : a 390 px la colonne debordait de 22 px.
+    <div className="grid gap-8 lg:grid-cols-2 [&>*]:min-w-0">
       {/* ── Left column: Inputs ── */}
       <div className="space-y-6">
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">

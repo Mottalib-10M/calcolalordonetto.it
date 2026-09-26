@@ -9,7 +9,7 @@ import { breadcrumbSchema, faqSchema } from '../../lib/seo';
 import { t } from '../../i18n/index';
 
 /* ──────────────────────────────────────────────────────────────────────────
-   getStaticPaths — generates 24 RAL pages
+   getStaticPaths, generates 24 RAL pages
    ────────────────────────────────────────────────────────────────────────── */
 
 export function getStaticPaths() {
@@ -555,7 +555,7 @@ const ralNarratives: Record<number, { analysisTitle: string; analysisBody: strin
 
 const narrative = ralNarratives[ral];
 
-/* ── Per-RAL unique content — job profiles & financial context ────────── */
+/* ── Per-RAL unique content, job profiles & financial context ────────── */
 
 const ralProfiles: Record<number, { jobs: string; finance: string }> = {
   15_000: {

@@ -18,11 +18,11 @@ const breadcrumbs = [
 const faqs = [
   { question: 'What RAL do I need for €2,000 net per month in Italy?', answer: 'It depends on your region of residence and the number of monthly payments. As a general guideline, to receive approximately €2,000 net per month on 13 monthly payments, you will need a RAL of around €35,000–37,000. Use the calculator above with your specific region selected for a precise figure. Keep in mind that the 2026 tax wedge reduction can lower the RAL needed for incomes that fall below the €35,000 threshold.' },
   { question: 'What is the difference between 12, 13, and 14 monthly payments (mensilita)?', answer: 'The number of monthly payments determines how your annual net is distributed. With 13 payments (the most common arrangement in Italy), you receive 12 regular monthly salaries plus the tredicesima (thirteenth-month bonus) in December. With 14 payments, you also receive the quattordicesima (fourteenth-month bonus), which is typical of certain CCNL sectors such as commerce (commercio) and tourism (turismo). The annual net stays the same, but the net per individual month is lower because the total is spread across more payments. When negotiating, always specify whether the net pay you have in mind is based on 13 or 14 installments.' },
-  { question: 'Does the RAL include employer social security contributions?', answer: 'No. The RAL (Retribuzione Annua Lorda — gross annual salary) is your gross salary before deductions charged to you (employee INPS contributions and IRPEF income tax). The costo azienda (total employer cost) is considerably higher because it also includes the employer\'s INPS contributions (approximately 23.81%) and the TFR accrual (Trattamento di Fine Rapporto — severance pay, approximately 6.91%). In total, the employer cost is roughly 30–35% higher than the RAL. The calculator shows the employer cost in the detailed breakdown section.' },
+  { question: 'Does the RAL include employer social security contributions?', answer: 'No. The RAL (Retribuzione Annua Lorda, gross annual salary) is your gross salary before deductions charged to you (employee INPS contributions and IRPEF income tax). The costo azienda (total employer cost) is considerably higher because it also includes the employer\'s INPS contributions (approximately 23.81%) and the TFR accrual (Trattamento di Fine Rapporto, severance pay, approximately 6.91%). In total, the employer cost is roughly 30–35% higher than the RAL. The calculator shows the employer cost in the detailed breakdown section.' },
   { question: 'Why might the actual net pay differ slightly from my target?', answer: 'The calculator rounds the RAL to the nearest €100 in order to suggest a realistic and negotiable figure. This rounding may cause a difference of a few euros in the resulting monthly net pay. In practice, salary negotiations in Italy always deal in rounded RAL figures, so this rounding actually makes the result more useful. Additionally, real-world payslips may differ slightly due to exact municipal surcharge rates, specific CCNL provisions, or any personal deductions you may be entitled to.' },
-  { question: 'Can I use this calculator to evaluate a job offer?', answer: 'Absolutely. If you know how much you need each month to cover your expenses, you can calculate the minimum RAL to accept. Keep in mind that for a comprehensive evaluation you should also consider company benefits such as buoni pasto (meal vouchers, up to €8/day tax-free), auto aziendale (company car), welfare aziendale (corporate welfare), and smart working arrangements. Also factor in the TFR (Trattamento di Fine Rapporto — severance pay) that accrues each year at roughly 6.91% of your gross salary, and any career growth prospects. For expats, do not forget to check whether you qualify for the impatriati tax regime, which could significantly reduce your tax burden.' },
+  { question: 'Can I use this calculator to evaluate a job offer?', answer: 'Absolutely. If you know how much you need each month to cover your expenses, you can calculate the minimum RAL to accept. Keep in mind that for a comprehensive evaluation you should also consider company benefits such as buoni pasto (meal vouchers, up to €8/day tax-free), auto aziendale (company car), welfare aziendale (corporate welfare), and smart working arrangements. Also factor in the TFR (Trattamento di Fine Rapporto, severance pay) that accrues each year at roughly 6.91% of your gross salary, and any career growth prospects. For expats, do not forget to check whether you qualify for the impatriati tax regime, which could significantly reduce your tax burden.' },
   { question: 'How does the 2026 tax wedge (cuneo fiscale) affect the reverse calculation?', answer: 'The 2026 tax wedge includes a structural reduction in the employee\'s INPS contributions for gross annual incomes up to €35,000. This means that, for incomes within this bracket, the monthly net pay is higher compared to a standard calculation without the relief. Consequently, the reverse calculation returns a lower required RAL: to obtain, for instance, €1,500 net per month, you need a lower RAL than would have been necessary without the cuneo reduction. However, be aware of the €35,000 cliff: once your income exceeds this limit, the benefit disappears entirely and the net-to-gross ratio reverts to the standard rules, with a significant jump in the RAL required. Our calculator automatically accounts for this relief when determining the necessary RAL.' },
-  { question: 'What is the difference between costo azienda (employer cost) and RAL?', answer: 'The RAL (Retribuzione Annua Lorda) is the employee\'s gross salary — the amount on which employee-side deductions are calculated (INPS employee contributions, IRPEF, and regional/municipal surcharges). The costo azienda (employer cost), on the other hand, is the total expense the employer incurs for that employee: it includes the RAL, the employer\'s INPS contributions (approximately 23.81% of RAL), the accrued TFR severance (approximately 6.91%), INAIL workplace insurance, and other ancillary charges. In practice, the employer cost is on average 30–35% higher than the RAL. For example, a RAL of €30,000 corresponds to an employer cost of approximately €39,000–40,000. This distinction matters in negotiations: the company thinks in terms of employer cost, while the candidate thinks in terms of RAL or monthly net pay.' },
+  { question: 'What is the difference between costo azienda (employer cost) and RAL?', answer: 'The RAL (Retribuzione Annua Lorda) is the employee\'s gross salary, the amount on which employee-side deductions are calculated (INPS employee contributions, IRPEF, and regional/municipal surcharges). The costo azienda (employer cost), on the other hand, is the total expense the employer incurs for that employee: it includes the RAL, the employer\'s INPS contributions (approximately 23.81% of RAL), the accrued TFR severance (approximately 6.91%), INAIL workplace insurance, and other ancillary charges. In practice, the employer cost is on average 30–35% higher than the RAL. For example, a RAL of €30,000 corresponds to an employer cost of approximately €39,000–40,000. This distinction matters in negotiations: the company thinks in terms of employer cost, while the candidate thinks in terms of RAL or monthly net pay.' },
   { question: 'How should I negotiate salary in Italy using the reverse calculation?', answer: 'The reverse calculation is an invaluable tool for preparing your salary negotiation. Here is how to use it effectively: first, calculate your fixed monthly expenses (rent, utilities, groceries, transportation, savings) to determine the minimum net pay you need. Then, use the calculator to translate that net into the corresponding RAL, selecting your region of residence and the number of monthly payments as specified by the company\'s CCNL. Add a 5–10% margin to the resulting RAL to give yourself negotiation room. During the interview, always present your request in terms of RAL (not net pay), because that is the language Italian companies use. Finally, remember to evaluate benefits as well: if the company offers buoni pasto of €8 per day, this is equivalent to approximately €1,760 in additional tax-free income per year, which you can subtract from your net pay requirement before calculating the necessary RAL.' },
   { question: 'Do expats qualify for special tax regimes that affect this calculation?', answer: 'Yes. Italy offers the regime impatriati (impatriate tax regime), which allows qualifying workers who transfer their tax residence to Italy to exclude up to 50% of their employment income from taxation for up to five years. To qualify, you generally must not have been a tax resident in Italy for the two years prior to your transfer, and you must commit to remaining a tax resident for at least two years. If you qualify, the RAL required for a given net pay target will be significantly lower than what this standard calculator shows. We recommend using our dedicated Impatriati Tax Regime Calculator for an accurate estimate under that regime. Additionally, researchers, academics, and certain highly skilled workers may qualify for even more favorable conditions.' },
   { question: 'What is TFR and how does it affect my total compensation?', answer: 'TFR (Trattamento di Fine Rapporto) is Italy\'s mandatory severance pay. Each year, the employer sets aside approximately 6.91% of your gross annual salary. This money is paid out as a lump sum when your employment ends, regardless of the reason for termination. You can choose to keep it with the employer (where it earns a legally guaranteed return) or direct it to a pension fund (fondo pensione). While TFR does not affect your monthly net pay, it is an important part of your total compensation. For a RAL of €30,000, the TFR accrual is approximately €2,073 per year. You can estimate your TFR using our dedicated Severance Pay Calculator.' },
@@ -57,7 +57,7 @@ const faqs = [
         The reverse calculation (from net to gross) does not have a direct formula
         because the Italian tax system is progressive, with deductions that vary
         based on the income level itself. Our calculator uses a binary search
-        algorithm to find the RAL (Retribuzione Annua Lorda &mdash; gross annual salary)
+        algorithm to find the RAL (Retribuzione Annua Lorda, gross annual salary)
         that produces your desired monthly net pay.
       </p>
       <h3>Why you need the reverse calculation</h3>
@@ -83,7 +83,7 @@ const faqs = [
           payments the net per month is lower than with 13 payments, because the
           same annual net is divided by a larger number. Italian employment
           contracts commonly provide either 13 or 14 payments per year, depending
-          on the CCNL (Contratto Collettivo Nazionale di Lavoro &mdash; national
+          on the CCNL (Contratto Collettivo Nazionale di Lavoro, national
           collective bargaining agreement) that applies to the company.
         </li>
         <li>
@@ -218,9 +218,9 @@ const faqs = [
         first. Here is a quick overview of the key deductions that reduce your RAL
         to arrive at net pay. First, <strong>INPS contributions</strong> (contributi
         INPS a carico del lavoratore) are deducted at a rate of approximately 9.19%
-        of your gross salary &mdash; these fund pension, unemployment, and sickness
+        of your gross salary, these fund pension, unemployment, and sickness
         insurance. Next, <strong>IRPEF</strong> (Imposta sul Reddito delle Persone
-        Fisiche &mdash; personal income tax) is applied progressively on your taxable
+        Fisiche, personal income tax) is applied progressively on your taxable
         income after the INPS deduction. The 2026 IRPEF brackets are: 23% on income
         up to &euro;28,000; 35% on income from &euro;28,001 to &euro;50,000; and 43%
         on income above &euro;50,000. Finally, <strong>addizionali regionali e
@@ -233,8 +233,7 @@ const faqs = [
         regime) enjoy a significant exemption: up to 50% of employment income can be
         excluded from taxation for up to five years. If this applies to you, the RAL
         needed for a given net pay target will be substantially lower. Note that
-        this calculator does not factor in the impatriati regime by default &mdash;
-        for that specific scenario, use our dedicated
+        this calculator does not factor in the impatriati regime by default, for that specific scenario, use our dedicated
         <a href="/en/impatriati-tax-regime/" class="text-brand hover:underline">Impatriati Tax Regime Calculator</a>.
       </p>
     </div>
@@ -305,7 +304,7 @@ const faqs = [
         favorable. Once you exceed this threshold, the ratio deteriorates
         progressively.
       </p>
-      <h3>IRPEF Brackets 2026 &mdash; Quick Reference</h3>
+      <h3>IRPEF Brackets 2026, Quick Reference</h3>
       <table class="w-full text-sm border-collapse mt-4">
         <thead>
           <tr class="border-b-2 border-gray-200 dark:border-gray-700">
@@ -382,7 +381,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          No. The RAL (Retribuzione Annua Lorda &mdash; gross annual salary) is your gross salary before deductions charged to you (employee INPS contributions and IRPEF income tax). The costo azienda (total employer cost) is considerably higher because it also includes the employer's INPS contributions (approximately 23.81%) and the TFR accrual (Trattamento di Fine Rapporto &mdash; severance pay, approximately 6.91%). In total, the employer cost is roughly 30&ndash;35% higher than the RAL. The calculator shows the employer cost in the detailed breakdown section.
+          No. The RAL (Retribuzione Annua Lorda, gross annual salary) is your gross salary before deductions charged to you (employee INPS contributions and IRPEF income tax). The costo azienda (total employer cost) is considerably higher because it also includes the employer's INPS contributions (approximately 23.81%) and the TFR accrual (Trattamento di Fine Rapporto, severance pay, approximately 6.91%). In total, the employer cost is roughly 30&ndash;35% higher than the RAL. The calculator shows the employer cost in the detailed breakdown section.
         </div>
       </details>
 
@@ -406,7 +405,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          Absolutely. If you know how much you need each month to cover your expenses, you can calculate the minimum RAL to accept. Keep in mind that for a comprehensive evaluation you should also consider company benefits such as buoni pasto (meal vouchers, up to &euro;8/day tax-free), auto aziendale (company car), welfare aziendale (corporate welfare), and smart working arrangements. Also factor in the TFR (Trattamento di Fine Rapporto &mdash; severance pay) that accrues each year at roughly 6.91% of your gross salary, and any career growth prospects. For expats, do not forget to check whether you qualify for the impatriati tax regime, which could significantly reduce your tax burden.
+          Absolutely. If you know how much you need each month to cover your expenses, you can calculate the minimum RAL to accept. Keep in mind that for a comprehensive evaluation you should also consider company benefits such as buoni pasto (meal vouchers, up to &euro;8/day tax-free), auto aziendale (company car), welfare aziendale (corporate welfare), and smart working arrangements. Also factor in the TFR (Trattamento di Fine Rapporto, severance pay) that accrues each year at roughly 6.91% of your gross salary, and any career growth prospects. For expats, do not forget to check whether you qualify for the impatriati tax regime, which could significantly reduce your tax burden.
         </div>
       </details>
 
@@ -430,7 +429,7 @@ const faqs = [
           </svg>
         </summary>
         <div class="px-6 pb-4 text-sm text-gray-600 dark:text-gray-400">
-          The RAL (Retribuzione Annua Lorda) is the employee's gross salary &mdash; the amount on which employee-side deductions are calculated (INPS employee contributions, IRPEF, and regional/municipal surcharges). The costo azienda (employer cost), on the other hand, is the total expense the employer incurs for that employee: it includes the RAL, the employer's INPS contributions (approximately 23.81% of RAL), the accrued TFR severance (approximately 6.91%), INAIL workplace insurance, and other ancillary charges. In practice, the employer cost is on average 30&ndash;35% higher than the RAL. For example, a RAL of &euro;30,000 corresponds to an employer cost of approximately &euro;39,000&ndash;40,000. This distinction matters in negotiations: the company thinks in terms of employer cost, while the candidate thinks in terms of RAL or monthly net pay.
+          The RAL (Retribuzione Annua Lorda) is the employee's gross salary, the amount on which employee-side deductions are calculated (INPS employee contributions, IRPEF, and regional/municipal surcharges). The costo azienda (employer cost), on the other hand, is the total expense the employer incurs for that employee: it includes the RAL, the employer's INPS contributions (approximately 23.81% of RAL), the accrued TFR severance (approximately 6.91%), INAIL workplace insurance, and other ancillary charges. In practice, the employer cost is on average 30&ndash;35% higher than the RAL. For example, a RAL of &euro;30,000 corresponds to an employer cost of approximately &euro;39,000&ndash;40,000. This distinction matters in negotiations: the company thinks in terms of employer cost, while the candidate thinks in terms of RAL or monthly net pay.
         </div>
       </details>
 
