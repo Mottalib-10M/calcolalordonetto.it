@@ -464,25 +464,25 @@ export interface RisultatoPensione {
 
 /**
  * Coefficienti di trasformazione del montante contributivo in pensione annua.
- * Validi per il biennio 2024-2025 (Decreto MEF 20 novembre 2023).
+ * Validi per il biennio 2025-2026 (Decreto del Ministero del Lavoro del 20 novembre 2024).
  * Fonte: INPS, Gazzetta Ufficiale.
  */
 const COEFFICIENTI_TRASFORMAZIONE: Record<number, number> = {
-  57: 0.04270,
-  58: 0.04382,
-  59: 0.04504,
-  60: 0.04636,
-  61: 0.04781,
-  62: 0.04940,
-  63: 0.05115,
-  64: 0.05308,
-  65: 0.05523,
-  66: 0.05723,
-  67: 0.05931,
-  68: 0.06154,
-  69: 0.06395,
-  70: 0.06655,
-  71: 0.06938,
+  57: 0.04204,
+  58: 0.04308,
+  59: 0.04419,
+  60: 0.04536,
+  61: 0.04661,
+  62: 0.04795,
+  63: 0.04936,
+  64: 0.05088,
+  65: 0.05250,
+  66: 0.05423,
+  67: 0.05608,
+  68: 0.05808,
+  69: 0.06024,
+  70: 0.06257,
+  71: 0.06510,
 };
 
 /** Average GDP nominal growth rate for montante revaluation */
@@ -549,7 +549,7 @@ export function calcolaPensione(input: InputPensione): RisultatoPensione {
 
   // Get coefficiente di trasformazione
   const etaClamp = Math.max(57, Math.min(71, etaPensionamento));
-  const coefficienteTrasformazione = COEFFICIENTI_TRASFORMAZIONE[etaClamp] ?? 0.05931;
+  const coefficienteTrasformazione = COEFFICIENTI_TRASFORMAZIONE[etaClamp] ?? 0.05608;
 
   // Pensione lorda annua
   const pensioneAnnuaLorda = Math.round(montanteFinale * coefficienteTrasformazione * 100) / 100;

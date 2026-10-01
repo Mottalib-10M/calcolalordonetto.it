@@ -286,7 +286,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
         {/* Coefficienti di trasformazione reference */}
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-            Coefficienti di trasformazione (2024-2025)
+            Coefficienti di trasformazione (2025-2026)
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
@@ -298,7 +298,7 @@ export default function Pensione({ lang = 'it' }: { lang?: Lang }) {
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                 {[57,58,59,60,61,62,63,64,65,66,67,68,69,70,71].map((eta) => {
-                  const coeff: Record<number, number> = {57:4.270,58:4.382,59:4.504,60:4.636,61:4.781,62:4.940,63:5.115,64:5.308,65:5.523,66:5.723,67:5.931,68:6.154,69:6.395,70:6.655,71:6.938};
+                  const coeff: Record<number, number> = {57:4.204,58:4.308,59:4.419,60:4.536,61:4.661,62:4.795,63:4.936,64:5.088,65:5.250,66:5.423,67:5.608,68:5.808,69:6.024,70:6.257,71:6.510};
                   const isSelected = eta === etaPensionamento;
                   return (
                     <tr key={eta} className={isSelected ? 'bg-brand/5 dark:bg-brand/10 font-bold text-brand' : 'text-gray-700 dark:text-gray-300'}>

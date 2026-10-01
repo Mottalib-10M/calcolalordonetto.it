@@ -66,7 +66,7 @@ export const INPS_GESTIONE_SEPARATA: GestioneSeparata = {
 // (massimale contributivo – art. 2, c. 18, L 335/1995)
 // ---------------------------------------------------------------------------
 
-export const MASSIMALE_CONTRIBUTIVO_2026 = 120_607;
+export const MASSIMALE_CONTRIBUTIVO_2026 = 122_295;
 
 // ---------------------------------------------------------------------------
 // TFR accrual rate  (Trattamento di Fine Rapporto)

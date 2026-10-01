@@ -15,11 +15,11 @@ const breadcrumbs = [
 const faqs = [
   { question: 'Come si calcola la pensione con il sistema contributivo?', answer: 'Il calcolo si basa su tre elementi: (1) il montante contributivo, dato dalla somma dei contributi versati (33% della RAL per i dipendenti) rivalutati annualmente in base alla crescita del PIL; (2) il coefficiente di trasformazione, che dipende dall\'età al pensionamento; (3) la pensione lorda annua = montante × coefficiente. La pensione netta si ottiene sottraendo IRPEF e addizionali, tenendo conto delle detrazioni per pensionati.' },
   { question: 'Quanto prendero\' di pensione rispetto allo stipendio?', answer: 'Il tasso di sostituzione (pensione netta / ultimo stipendio netto) per un lavoratore dipendente nel sistema contributivo puro si aggira intorno al 55-65% con una carriera continua. Questo significa che la pensione coprirà circa il 60% del tenore di vita da lavoratore. Per i lavoratori autonomi il tasso è ancora più basso (35-45%) a causa dell\'aliquota contributiva inferiore. Per questo è fondamentale integrare con un fondo pensione complementare.' },
-  { question: 'Cosa sono i coefficienti di trasformazione?', answer: 'I coefficienti di trasformazione convertono il montante contributivo accumulato in una rendita annua. Sono calcolati dal MEF in base all\'aspettativa di vita e vengono aggiornati ogni due anni. più alta è l\'età al pensionamento, più alto è il coefficiente: a 57 anni è il 4,270%, a 67 anni il 5,931%, a 71 anni il 6,938%. Questo perché chi va in pensione più tardi percepirà la rendita per meno anni, quindi ogni rata è più alta. I coefficienti tendono a diminuire nel tempo con l\'aumento dell\'aspettativa di vita.' },
+  { question: 'Cosa sono i coefficienti di trasformazione?', answer: 'I coefficienti di trasformazione convertono il montante contributivo accumulato in una rendita annua. Sono calcolati dal MEF in base all\'aspettativa di vita e vengono aggiornati ogni due anni. più alta è l\'età al pensionamento, più alto è il coefficiente: a 57 anni è il 4,204%, a 67 anni il 5,608%, a 71 anni il 6,510%. Questo perché chi va in pensione più tardi percepirà la rendita per meno anni, quindi ogni rata è più alta. I coefficienti tendono a diminuire nel tempo con l\'aumento dell\'aspettativa di vita.' },
   { question: 'Conviene aderire a un fondo pensione complementare?', answer: 'Nella grande maggioranza dei casi, sì. I vantaggi sono molteplici: deducibilità fino a 5.164 €/anno (risparmio IRPEF dal 23% al 43%), contributo aggiuntivo del datore di lavoro (per i fondi negoziali), tassazione agevolata sui rendimenti (20% vs 26%) e sulle prestazioni (dal 9% al 15% vs aliquote IRPEF ordinarie). Non aderire al fondo negoziale di categoria significa rinunciare al contributo del datore, che è di fatto retribuzione perduta. Il fondo pensione è particolarmente importante per chi è nel sistema contributivo puro, dove il tasso di sostituzione della pensione pubblica è basso.' },
   { question: 'Dove posso trovare il mio montante contributivo reale?', answer: 'Puoi consultare il tuo estratto conto contributivo e il montante accumulato attraverso il servizio "La mia pensione futura" sul portale INPS (inps.it), accessibile con SPID, CIE o CNS. Il servizio mostra i contributi versati, il montante rivalutato, e fornisce una stima della pensione futura basata su diverse ipotesi di carriera. È il dato più affidabile per verificare la tua situazione previdenziale reale.' },
   { question: 'Quando posso andare in pensione anticipata?', answer: 'La pensione anticipata ordinaria richiede 42 anni e 10 mesi di contributi per gli uomini e 41 anni e 10 mesi per le donne, indipendentemente dall\'età. Chi ha iniziato a lavorare a 20 anni può teoricamente andare in pensione anticipata intorno ai 63 anni. Esistono anche canali specifici come Quota 103 (62+41 anni), Opzione Donna (per lavoratrici con requisiti specifici) e APE Sociale (per lavoratori in condizioni di difficoltà). Ogni canale ha requisiti e penalizzazioni diversi, quindi è consigliabile consultare un patronato o il sito INPS per valutare la propria situazione specifica.' },
-  { question: 'Come vengono tassate le pensioni?', answer: 'Le pensioni INPS sono soggette a IRPEF con le stesse aliquote dei redditi da lavoro dipendente (23% fino a 28.000 €, 35% da 28.001 a 50.000 €, 43% oltre 50.000 €). I pensionati beneficiano di detrazioni specifiche (diverse da quelle per lavoratori dipendenti) che riducono l\'imposta effettiva. Si applicano anche le addizionali regionali e comunali. Le pensioni sono erogate su 13 mensilità (la tredicesima arriva a dicembre). Le pensioni basse (sotto circa 8.500 €/anno) non pagano IRPEF grazie alle detrazioni.' },
+  { question: 'Come vengono tassate le pensioni?', answer: 'Le pensioni INPS sono soggette a IRPEF con le stesse aliquote dei redditi da lavoro dipendente (23% fino a 28.000 €, 33% da 28.001 a 50.000 €, 43% oltre 50.000 €). I pensionati beneficiano di detrazioni specifiche (diverse da quelle per lavoratori dipendenti) che riducono l\'imposta effettiva. Si applicano anche le addizionali regionali e comunali. Le pensioni sono erogate su 13 mensilità (la tredicesima arriva a dicembre). Le pensioni basse (sotto circa 8.500 €/anno) non pagano IRPEF grazie alle detrazioni.' },
   { question: 'Quanto è accurata la stima di questo simulatore?', answer: 'Questo simulatore fornisce una stima indicativa basata su ipotesi semplificative: crescita costante della RAL, tasso di rivalutazione PIL fisso all\'1,5%, coefficienti di trasformazione attuali (che verranno aggiornati in futuro). La realtà sarà diversa perché la RAL non cresce linearmente, il PIL varia di anno in anno, i coefficienti cambiano con l\'aspettativa di vita, e le regole previdenziali possono essere modificate. Per una stima ufficiale, utilizza il servizio "La mia pensione futura" su inps.it, che si basa sui dati reali del tuo estratto conto contributivo.' },
 ];
 ---
@@ -122,7 +122,7 @@ const faqs = [
       <p>
         I coefficienti vengono aggiornati ogni due anni dal MEF (Ministero dell'Economia e delle Finanze)
         in base all'aspettativa di vita calcolata dall'ISTAT. L'ultimo aggiornamento, valido per il
-        biennio 2024-2025, è stato emanato con il Decreto MEF del 20 novembre 2023.
+        biennio 2025-2026, è stato emanato con il Decreto del 20 novembre 2024.
       </p>
     </div>
 
@@ -139,78 +139,78 @@ const faqs = [
         <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">57 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,270%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.270 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,204%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.204 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">58 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,382%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.382 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,308%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.308 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">59 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,504%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.504 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,419%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.419 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">60 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,636%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.636 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,536%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.536 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">61 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,781%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.781 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,661%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.661 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">62 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,940%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.940 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,795%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.795 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">63 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,115%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.115 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4,936%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">4.936 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">64 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,308%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.308 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,088%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.088 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">65 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,523%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.523 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,250%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.250 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">66 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,723%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.723 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,423%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.423 &euro;/anno</td>
           </tr>
           <tr class="bg-brand/5 dark:bg-brand/10">
             <td class="px-4 py-3 font-semibold text-brand">67 anni (vecchiaia)</td>
-            <td class="px-4 py-3 font-semibold text-brand">5,931%</td>
-            <td class="px-4 py-3 font-semibold text-brand">5.931 &euro;/anno</td>
+            <td class="px-4 py-3 font-semibold text-brand">5,608%</td>
+            <td class="px-4 py-3 font-semibold text-brand">5.608 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">68 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,154%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.154 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,808%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5.808 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">69 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,395%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.395 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,024%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.024 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">70 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,655%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.655 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,257%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.257 &euro;/anno</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">71 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,938%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.938 &euro;/anno</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6,510%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">6.510 &euro;/anno</td>
           </tr>
         </tbody>
       </table>
@@ -232,7 +232,7 @@ const faqs = [
       <p>
         Per chi è nel sistema contributivo puro (primo contributo dal 1 gennaio 1996), c'è un requisito
         aggiuntivo: l'importo della pensione deve essere almeno pari a 1,5 volte l'assegno sociale
-        (circa 534 &euro;/mese nel 2026, quindi la soglia è circa 801 &euro;/mese). Se la pensione
+        (circa 546 &euro;/mese nel 2026, quindi la soglia è circa 819 &euro;/mese). Se la pensione
         calcolata è inferiore a questa soglia, il lavoratore deve attendere i 71 anni per il
         pensionamento, con il solo requisito di 5 anni di contributi.
       </p>
@@ -270,8 +270,8 @@ const faqs = [
         42 anni di contribuzione totale, il montante stimato è di circa 480.000-520.000 &euro;.
       </p>
       <p>
-        Applicando il coefficiente di trasformazione a 67 anni (5,931%), la pensione lorda annua è di
-        circa 28.500-30.800 &euro;, corrispondenti a circa 2.190-2.370 &euro;/mese lordi su 13 mensilità.
+        Applicando il coefficiente di trasformazione a 67 anni (5,608%), la pensione lorda annua è di
+        circa 26.900-29.200 &euro;, corrispondenti a circa 2.070-2.245 &euro;/mese lordi su 13 mensilità.
         Al netto dell'IRPEF e delle addizionali, la pensione netta mensile si aggira sui 1.680-1.820 &euro;.
       </p>
       <p>
@@ -377,8 +377,8 @@ const faqs = [
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Coefficiente a 67 anni</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,931%</td>
-            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Decreto MEF 20/11/2023</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">5,608%</td>
+            <td class="px-4 py-3 text-gray-700 dark:text-gray-300">Decreto 20/11/2024</td>
           </tr>
           <tr>
             <td class="px-4 py-3 text-gray-700 dark:text-gray-300">età pensione vecchiaia</td>
@@ -461,7 +461,7 @@ const faqs = [
           I coefficienti di trasformazione convertono il montante contributivo accumulato in una
           rendita annua. Sono calcolati dal MEF in base all'aspettativa di vita e vengono aggiornati
           ogni due anni. più alta è l'età al pensionamento, più alto è il coefficiente: a 57
-          anni è il 4,270%, a 67 anni il 5,931%, a 71 anni il 6,938%. Questo perché chi va in
+          anni è il 4,204%, a 67 anni il 5,608%, a 71 anni il 6,510%. Questo perché chi va in
           pensione più tardi percepirà la rendita per meno anni, quindi ogni rata è più alta.
           I coefficienti tendono a diminuire nel tempo con l'aumento dell'aspettativa di vita.
         </p>

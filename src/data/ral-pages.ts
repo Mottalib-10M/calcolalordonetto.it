@@ -123,7 +123,7 @@ export function buildFaqs(ral: number, result: RisultatoStipendio, best: RegionR
     });
     faqs.push({
       question: `Esiste un tetto contributivo INPS per RAL ${ralF} euro?`,
-      answer: `Si, per il 2026 il massimale contributivo INPS e di circa 119.650 euro. Oltre questa soglia non si versano ulteriori contributi previdenziali INPS. Con una RAL di ${ralF} euro, ${ral > 119_650 ? 'la parte eccedente non e soggetta a contributi INPS dipendente' : 'l\'intera RAL e soggetta a contributi INPS'}. Il massimale riguarda solo chi ha iniziato a versare dopo il 1996 ed e fissato ogni anno dall'INPS: oltre quella soglia i contributi pensionistici non si versano piu. Per le RAL sotto il massimale, l'aliquota si applica invece sull'intero imponibile.`,
+      answer: `Si, per il 2026 il massimale contributivo INPS e di circa 122.295 euro. Oltre questa soglia non si versano ulteriori contributi previdenziali INPS. Con una RAL di ${ralF} euro, ${ral > 119_650 ? 'la parte eccedente non e soggetta a contributi INPS dipendente' : 'l\'intera RAL e soggetta a contributi INPS'}. Il massimale riguarda solo chi ha iniziato a versare dopo il 1996 ed e fissato ogni anno dall'INPS: oltre quella soglia i contributi pensionistici non si versano piu. Per le RAL sotto il massimale, l'aliquota si applica invece sull'intero imponibile.`,
     });
   }
 
