@@ -23,7 +23,7 @@ export default function Buonuscita({ lang = 'it' }: { lang?: Lang }) {
     if (anni) setAnniServizio(parseInt(anni, 10) || 5);
     const ral = params.get('ral');
     if (ral) setRalUltimoAnno(parseInt(ral, 10) || 35_000);
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -34,7 +34,7 @@ export default function Buonuscita({ lang = 'it' }: { lang?: Lang }) {
     url.searchParams.set('importo', String(importoLordo));
     url.searchParams.set('anni', String(anniServizio));
     url.searchParams.set('ral', String(ralUltimoAnno));
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [importoLordo, anniServizio, ralUltimoAnno]);
 
   const risultato = useMemo(() => {

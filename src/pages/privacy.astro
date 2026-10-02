@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config';
 
-const title = 'Privacy Policy: Nessun Dato Personale Raccolto nel Sito';
-const description = "Informativa privacy GDPR: nessun dato personale, nessun cookie di profilazione. Tutti i calcoli dello stipendio netto avvengono nel tuo browser, lato client.";
-const lastUpdated = '15 maggio 2026';
+const title = 'Privacy Policy: Quali Dati Tratta il Sito';
+const description = "Informativa privacy: i calcoli avvengono nel tuo browser. Quali strumenti di analisi utilizziamo (Microsoft Clarity, Google Analytics), i loro cookie e i tuoi diritti.";
+const lastUpdated = '2 ottobre 2026';
 ---
 
 <Layout title={title} description={description}>
@@ -46,19 +46,18 @@ const lastUpdated = '15 maggio 2026';
 
       <h2>3. Tipologie di Dati Trattati (o Non Trattati)</h2>
       <p>
-        <strong>Il Sito non raccoglie, memorizza o trasmette dati personali degli utenti.</strong>
+        <strong>I dati inseriti nei calcolatori non vengono raccolti, memorizzati o trasmessi.</strong> La visita al Sito viene invece misurata dagli strumenti di analisi descritti alla sezione 5.
       </p>
       <p>
         Il calcolatore dello stipendio netto funziona interamente lato client (nel browser dell'utente). I dati inseriti nel calcolatore (RAL, regione, situazione familiare, numero di mensilità, eventuali detrazioni e ogni altro parametro richiesto) non vengono mai trasmessi ai nostri server né a terze parti. Tutti i calcoli avvengono localmente nel dispositivo dell'utente e non lasciano il browser in alcun modo.
       </p>
       <p>
-        Per chiarezza, si specifica che il Sito non raccoglie né tratta le seguenti categorie di dati:
+        Per chiarezza, si specifica che il Sito stesso non raccoglie né tratta le seguenti categorie di dati:
       </p>
       <ul>
         <li><strong>Dati identificativi:</strong> nome, cognome, codice fiscale, indirizzo</li>
         <li><strong>Dati di contatto:</strong> indirizzo email, numero di telefono (salvo quelli eventualmente comunicati volontariamente tramite la pagina contatti)</li>
         <li><strong>Dati finanziari:</strong> informazioni bancarie, dati della carta di credito, importi retributivi specifici dell'utente</li>
-        <li><strong>Dati di navigazione identificativi:</strong> indirizzo IP, cookie di tracciamento, identificativi univoci del dispositivo</li>
         <li><strong>Dati sensibili o categorie particolari:</strong> dati relativi alla salute, all'orientamento politico, alle convinzioni religiose o ad altre categorie di cui all'art. 9 del GDPR</li>
       </ul>
       <p>
@@ -67,7 +66,7 @@ const lastUpdated = '15 maggio 2026';
       <ul>
         <li>Form di registrazione o login</li>
         <li>Newsletter o raccolta di indirizzi email</li>
-        <li>Tracciamento degli utenti tramite cookie di profilazione</li>
+        <li>Cookie pubblicitari o di profilazione pubblicitaria</li>
         <li>Condivisione di dati con piattaforme pubblicitarie</li>
         <li>Sistemi di commento o forum che richiedano la raccolta di dati personali</li>
       </ul>
@@ -80,45 +79,34 @@ const lastUpdated = '15 maggio 2026';
         Questo significa che i dati inseriti dall'utente nel calcolatore (importo della RAL, regione di residenza, numero di figli a carico, tipo di contratto e ogni altro parametro) non transitano mai attraverso la rete Internet e non raggiungono i server del Sito. Una volta che la pagina è stata caricata nel browser, il calcolatore funziona in modo completamente autonomo e indipendente dalla connessione di rete.
       </p>
       <p>
-        L'utente può verificare autonomamente questo comportamento tramite gli strumenti di sviluppo del proprio browser, controllando che non vengano effettuate richieste HTTP durante l'utilizzo del calcolatore.
+        L'utente può verificare autonomamente questo comportamento tramite gli strumenti di sviluppo del proprio browser, controllando che i valori inseriti non compaiano in alcuna richiesta HTTP durante l'utilizzo del calcolatore.
       </p>
 
-      <h2>5. Dati di Navigazione e Analisi: Plausible Analytics</h2>
+      <h2>5. Dati di Navigazione e Analisi: Microsoft Clarity e Google Analytics</h2>
       <p>
-        Il Sito utilizza <strong><a href="https://plausible.io" target="_blank" rel="noopener noreferrer">Plausible Analytics</a></strong>, un servizio di analisi del traffico web che:
-      </p>
-      <ul>
-        <li><strong>Non utilizza cookie</strong> di alcun tipo</li>
-        <li><strong>Non raccoglie dati personali</strong> identificativi</li>
-        <li><strong>Non traccia gli utenti</strong> tra sessioni o siti diversi</li>
-        <li><strong>Non utilizza fingerprinting</strong> o altre tecniche di identificazione persistente</li>
-        <li>È conforme al GDPR senza necessità di consenso (come confermato dalle autorità di protezione dati di Francia, Italia, Svezia e altre nazioni UE)</li>
-        <li>I dati sono ospitati su server nell'Unione Europea</li>
-      </ul>
-      <p>
-        Plausible raccoglie esclusivamente dati aggregati e anonimi quali: pagine visitate, sorgente del traffico (referrer), paese di provenienza, tipo di dispositivo e browser. Questi dati non consentono in alcun modo l'identificazione dell'utente. Plausible non crea profili individuali, non assegna identificativi univoci agli utenti e non consente il tracciamento tra sessioni diverse.
+        Per capire come viene utilizzato il Sito, vengono caricati due strumenti di analisi all'apertura di ogni pagina.
       </p>
       <p>
-        Per maggiori informazioni sulla conformità di Plausible Analytics al GDPR, si rimanda alla documentazione ufficiale: <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer">https://plausible.io/data-policy</a>.
+        <strong>Microsoft Clarity</strong> (Microsoft Corporation) registra il modo in cui le pagine vengono utilizzate: clic, scorrimento, pagine visualizzate e relativo indirizzo, sotto forma di sessioni e mappe di calore. Il contenuto dei campi di inserimento viene mascherato nel browser prima di qualsiasi invio. Maggiori informazioni: <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com/privacystatement</a>.
+      </p>
+      <p>
+        <strong>Google Analytics 4</strong> (Google Ireland Limited) riceve le pagine visualizzate, la provenienza della visita, il tipo di dispositivo e una posizione approssimativa ricavata dall'indirizzo IP. Maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+      </p>
+      <p>
+        Se si apre una pagina tramite un link di condivisione che contiene valori nell'indirizzo, tali valori fanno parte dell'indirizzo della pagina registrato da questi strumenti.
       </p>
 
       <h2>6. Cookie e Tecnologie di Memorizzazione Locale</h2>
       <p>
-        Il Sito <strong>non utilizza cookie di profilazione o di tracciamento</strong>. Per maggiori dettagli, si rimanda alla nostra <a href="/cookie-policy/">Cookie Policy</a>.
+        Microsoft Clarity e Google Analytics installano cookie analitici all'apertura della pagina, senza un cookie banner preventivo: <code>_clck</code> e <code>_clsk</code> per Clarity, <code>_ga</code> e <code>_ga_8HELRY4QDG</code> per Google Analytics. Il Sito <strong>non utilizza cookie pubblicitari</strong>. Per maggiori dettagli, e per sapere come rifiutarli, si rimanda alla nostra <a href="/cookie-policy/">Cookie Policy</a>.
       </p>
       <p>
-        Le preferenze dell'utente (come la modalità scura/chiara dell'interfaccia) sono memorizzate nel <code>localStorage</code> del browser, che non è un cookie e non viene mai trasmesso ai nostri server. Il <code>localStorage</code> è uno strumento di memorizzazione locale previsto dallo standard HTML5 che resta confinato nel dispositivo dell'utente e può essere cancellato in qualsiasi momento tramite le impostazioni del browser.
+        Le preferenze dell'utente (come la modalità scura/chiara dell'interfaccia) sono memorizzate nel <code>localStorage</code> del browser, che non è un cookie e non viene mai trasmesso ai nostri server.
       </p>
 
       <h2>7. Base Giuridica del Trattamento</h2>
       <p>
-        Non effettuando alcun trattamento di dati personali identificativi, non è necessario individuare una base giuridica specifica ai sensi dell'art. 6 del GDPR.
-      </p>
-      <p>
-        Per quanto riguarda i dati statistici anonimi raccolti da Plausible Analytics, la base giuridica applicabile è il legittimo interesse del titolare (art. 6, paragrafo 1, lettera f, del GDPR), consistente nella necessità di comprendere le modalità di utilizzo del Sito al fine di migliorarne i contenuti e le funzionalità. Tale trattamento, essendo limitato a dati anonimi e aggregati, non pregiudica i diritti e le libertà fondamentali degli utenti.
-      </p>
-      <p>
-        Qualora in futuro venissero introdotte funzionalità che richiedano il trattamento di dati personali, la presente informativa sarà aggiornata e sarà individuata la base giuridica appropriata tra quelle previste dall'art. 6 del GDPR: consenso dell'interessato (lettera a), esecuzione di un contratto (lettera b), obbligo legale (lettera c), legittimo interesse (lettera f) o altra base applicabile.
+        Per i dati statistici raccolti dagli strumenti di analisi, il titolare si fonda sul proprio legittimo interesse (art. 6, paragrafo 1, lettera f, del GDPR) a comprendere le modalità di utilizzo del Sito per migliorarne i contenuti. L'utente può opporsi scrivendo al titolare tramite la pagina contatti.
       </p>
 
       <h2>8. Servizi di Terze Parti</h2>
@@ -126,30 +114,22 @@ const lastUpdated = '15 maggio 2026';
         Il Sito si avvale dei seguenti servizi di terze parti:
       </p>
       <ul>
-        <li><strong>Plausible Analytics</strong> (Plausible Insights OUe, Estonia): servizio di web analytics senza cookie, conforme al GDPR. I dati raccolti sono esclusivamente anonimi e aggregati. I server sono ubicati nell'Unione Europea.</li>
-        <li><strong>Servizio di hosting:</strong> il Sito è ospitato su infrastruttura con server nell'Unione Europea. Il servizio di hosting può raccogliere log tecnici (indirizzo IP, data e ora della richiesta, pagina richiesta) per finalità di sicurezza e manutenzione, nel rispetto del GDPR.</li>
+        <li><strong>Microsoft Clarity</strong> (Microsoft Corporation): analisi dell'utilizzo delle pagine, con cookie.</li>
+        <li><strong>Google Analytics 4</strong> (Google Ireland Limited): misurazione del traffico, con cookie.</li>
+        <li><strong>Servizio di hosting:</strong> il servizio di hosting può raccogliere log tecnici (indirizzo IP, data e ora della richiesta, pagina richiesta) per finalità di sicurezza e manutenzione.</li>
       </ul>
       <p>
-        Il Sito non integra servizi di terze parti che effettuino profilazione dell'utente. Non sono presenti pulsanti di social media, widget pubblicitari, servizi di remarketing o altri strumenti che consentano il tracciamento dell'utente da parte di soggetti terzi.
+        Non sono presenti pulsanti di social media, widget pubblicitari o servizi di remarketing.
       </p>
 
       <h2>9. Trasferimento di Dati Extra-UE</h2>
       <p>
-        Non vengono trasferiti dati personali al di fuori dell'Unione Europea o dello Spazio Economico Europeo. Tutti i servizi di terze parti utilizzati dal Sito operano con server ubicati nell'Unione Europea.
-      </p>
-      <p>
-        Qualora in futuro fosse necessario avvalersi di servizi con server al di fuori dell'UE, il titolare si impegnerà a garantire che il trasferimento avvenga nel rispetto del Capo V del GDPR (artt. 44-49), utilizzando gli strumenti giuridici previsti dalla normativa, quali decisioni di adeguatezza della Commissione Europea, clausole contrattuali tipo o altre garanzie appropriate.
+        I dati raccolti da Microsoft Clarity e Google Analytics possono essere trattati su server situati negli Stati Uniti. Microsoft e Google si avvalgono del Data Privacy Framework UE-USA e delle clausole contrattuali standard.
       </p>
 
       <h2>10. Periodo di Conservazione dei Dati</h2>
       <p>
-        Non conservando dati personali degli utenti, non si applica alcun periodo di conservazione specifico.
-      </p>
-      <p>
-        I dati statistici aggregati di Plausible Analytics vengono conservati per la durata necessaria all'analisi del traffico del Sito. Trattandosi di dati anonimi e non riconducibili a singoli utenti, non rientrano nell'ambito di applicazione delle disposizioni del GDPR relative alla conservazione dei dati personali.
-      </p>
-      <p>
-        I log tecnici del servizio di hosting, ove presenti, vengono conservati per un periodo limitato e strettamente necessario alle finalità di sicurezza e manutenzione, nel rispetto del principio di limitazione della conservazione di cui all'art. 5, paragrafo 1, lettera e, del GDPR.
+        I dati inseriti nei calcolatori non vengono conservati. Clarity conserva le registrazioni delle sessioni per trenta giorni e i dati aggregati per un massimo di tredici mesi; Google Analytics conserva i dati degli eventi per la durata impostata nell'account, al massimo quattordici mesi. I log tecnici del servizio di hosting, ove presenti, vengono conservati per un periodo limitato e strettamente necessario alle finalità di sicurezza e manutenzione.
       </p>
 
       <h2>11. Diritti dell'Interessato</h2>
@@ -166,7 +146,7 @@ const lastUpdated = '15 maggio 2026';
         <li><strong>Revoca del consenso</strong> (art. 7): revocare in qualsiasi momento il consenso prestato, senza che ciò pregiudichi la liceità del trattamento effettuato prima della revoca</li>
       </ul>
       <p>
-        poiché il Sito non raccoglie dati personali, tali diritti sono attualmente non applicabili in pratica. Tuttavia, per qualsiasi richiesta, chiarimento o esercizio dei diritti sopra elencati, l'utente può contattarci tramite la <a href="/contatti/">pagina contatti</a>. Il titolare si impegna a rispondere a tali richieste entro 30 giorni, come previsto dall'art. 12 del GDPR.
+        Tali diritti valgono anche per i dati raccolti dagli strumenti di analisi. Per qualsiasi richiesta, chiarimento o esercizio dei diritti sopra elencati, l'utente può contattarci tramite la <a href="/contatti/">pagina contatti</a>. Il titolare si impegna a rispondere a tali richieste entro 30 giorni, come previsto dall'art. 12 del GDPR.
       </p>
 
       <h2>12. Dati dei Minori</h2>

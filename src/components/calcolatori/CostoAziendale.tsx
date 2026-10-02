@@ -30,7 +30,7 @@ export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
     const inail = params.get('inail');
     if (inail) setAliquotaINAIL(parseFloat(inail) || 0.4);
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -45,7 +45,7 @@ export default function CostoAziendale({ lang = 'it' }: { lang?: Lang }) {
     else url.searchParams.delete('mensilita');
     if (aliquotaINAIL !== 0.4) url.searchParams.set('inail', String(aliquotaINAIL));
     else url.searchParams.delete('inail');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ral, regione, mensilita, aliquotaINAIL]);
 
   const risultato = useMemo(() => {

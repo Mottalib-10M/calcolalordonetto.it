@@ -31,7 +31,7 @@ export default function Quattordicesima({ lang = 'it' }: { lang?: Lang }) {
     if (r) setRal(parseInt(r, 10) || 30_000);
     const m = params.get('mesi');
     if (m) setMesiLavorati(Math.min(12, Math.max(1, parseInt(m, 10) || 12)));
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -42,7 +42,7 @@ export default function Quattordicesima({ lang = 'it' }: { lang?: Lang }) {
     url.searchParams.set('ral', String(ral));
     if (mesiLavorati !== 12) url.searchParams.set('mesi', String(mesiLavorati));
     else url.searchParams.delete('mesi');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ral, mesiLavorati]);
 
   const risultato = useMemo(() => {

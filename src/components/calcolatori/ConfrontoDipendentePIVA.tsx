@@ -53,7 +53,7 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
     if (params.get('startup') === '1') setPrimiCinqueAnni(true);
     const reg = params.get('regione');
     if (reg) setRegione(reg);
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -67,7 +67,7 @@ export default function ConfrontoDipendentePIVA({ lang = 'it' }: Props) {
     url.searchParams.set('regione', regione);
     if (primiCinqueAnni) url.searchParams.set('startup', '1');
     else url.searchParams.delete('startup');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ral, fatturato, coefficienteIndex, primiCinqueAnni, regione]);
 
   const COEFFICIENTI = lang === 'en' ? COEFFICIENTI_EN : COEFFICIENTI_IT;

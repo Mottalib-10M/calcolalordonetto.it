@@ -24,7 +24,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
     if (reg) setRegione(reg.toUpperCase());
     const pct = params.get('esenzione');
     if (pct) setPercentualeEsenzione(parseInt(pct, 10) || 50);
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -36,7 +36,7 @@ export default function RegimeImpatriati({ lang = 'it' }: Props) {
     url.searchParams.set('regione', regione);
     if (percentualeEsenzione !== 50) url.searchParams.set('esenzione', String(percentualeEsenzione));
     else url.searchParams.delete('esenzione');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ral, regione, percentualeEsenzione]);
 
   const risultato = useMemo(() => {

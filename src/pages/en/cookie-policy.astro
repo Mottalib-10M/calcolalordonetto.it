@@ -2,9 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
 
-const title = 'Cookie Policy: No Tracking or Profiling Cookies Used';
-const description = "Cookie notice: this site uses no profiling, tracking, or third-party cookies. Cookie-free analytics via Plausible. Fully compliant with GDPR and Italian DPA.";
-const lastUpdated = '15 May 2026';
+const title = 'Cookie Policy: Which Cookies This Website Uses';
+const description = "Cookie notice: analytics cookies from Microsoft Clarity and Google Analytics, no advertising cookies. Which cookies this site sets, how long, and how to refuse them.";
+const lastUpdated = '2 October 2026';
 ---
 
 <Layout title={title} description={description} lang="en">
@@ -63,62 +63,37 @@ const lastUpdated = '15 May 2026';
 
       <h3>3.1 Profiling Cookies</h3>
       <p>
-        <strong>The Website does not use profiling cookies.</strong> No cookies are installed to create user profiles, monitor browsing behaviour, analyse consumption habits or display personalised advertising. No data is shared with advertising or remarketing platforms.
+        <strong>The Website does not use advertising profiling cookies.</strong> No cookies are set to show personalised advertising, and no data is shared with advertising or remarketing platforms.
       </p>
 
       <h3>3.2 Technical Cookies</h3>
       <p>
-        The Website currently <strong>does not use technical cookies</strong>. User preferences, such as the display mode setting (light/dark), are stored using the browser's <code>localStorage</code> mechanism, which is not a cookie and has different technical characteristics (as described in the dedicated section below).
+        The Website currently <strong>does not use technical cookies</strong>. User preferences, such as the display mode (light/dark), are stored using the browser's <code>localStorage</code> mechanism, which is not a cookie (as described in the dedicated section).
       </p>
 
-      <h3>3.3 Analytical Cookies</h3>
+      <h3>3.3 Third-Party Analytical Cookies</h3>
       <p>
-        The Website uses <strong>Plausible Analytics</strong>, a web analytics service that <strong>does not use cookies of any kind</strong>. Unlike other traffic analysis tools such as Google Analytics, Plausible was designed from the ground up to work without cookies and without collecting personal data.
-      </p>
-
-      <h3>3.4 Third-Party Cookies</h3>
-      <p>
-        The Website currently <strong>does not integrate third-party services</strong> that install cookies. The following are not present:
+        The Website uses two traffic measurement tools, <strong>Microsoft Clarity</strong> and <strong>Google Analytics 4</strong>, which set third-party analytical cookies. Both load when a page opens, with no prior cookie banner.
       </p>
       <ul>
-        <li>Social media buttons (Facebook, Twitter/X, LinkedIn, Instagram, etc.)</li>
-        <li>External comment widgets (Disqus, etc.)</li>
-        <li>Advertising services (Google Ads, Meta Ads, etc.)</li>
-        <li>Analytics tools that use cookies (Google Analytics, Adobe Analytics, etc.)</li>
-        <li>Embedded content from external platforms (YouTube, Vimeo, Google Maps, etc.)</li>
-        <li>Remarketing or retargeting services</li>
-        <li>A/B testing tools that use cookies</li>
+        <li><strong>Microsoft Clarity:</strong> <code>_clck</code> (one year) and <code>_clsk</code> (one day); Microsoft may also set <code>MUID</code> and <code>CLID</code> on its own domains.</li>
+        <li><strong>Google Analytics 4:</strong> <code>_ga</code> and <code>_ga_8HELRY4QDG</code> (two years).</li>
       </ul>
 
-      <h2>4. Plausible Analytics: What It Does and Does Not Do</h2>
+      <h3>3.4 Other Third-Party Services</h3>
       <p>
-        For maximum transparency, we describe the characteristics of Plausible Analytics, the only analytics service used by the Website.
+        Apart from Microsoft Clarity and Google Analytics, the Website does not integrate third-party services that set cookies. There are no social media buttons, external comment widgets, advertising services, embedded content from external platforms, or remarketing services.
+      </p>
+
+      <h2>4. Analytics Tools: What They Record</h2>
+      <p>
+        <strong>Microsoft Clarity</strong> (Microsoft Corporation) records how pages are used: clicks, scrolling, pages viewed and their address, as sessions and heatmaps. The content of input fields is masked in the browser before anything is sent. More information: <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com/privacystatement</a>.
       </p>
       <p>
-        <strong>What Plausible Analytics does:</strong>
+        <strong>Google Analytics 4</strong> (Google Ireland Limited) receives the pages viewed, the referral source, the device type and an approximate location derived from the IP address. More information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
       </p>
-      <ul>
-        <li>Collects aggregated statistical data on Website traffic (number of visits, most viewed pages, traffic sources)</li>
-        <li>Detects the user's country of origin in aggregate form, without recording the IP address</li>
-        <li>Detects the device type (desktop, mobile, tablet) and browser used</li>
-        <li>Hosts all data on servers within the European Union</li>
-        <li>Respects the browser's "Do Not Track" signal</li>
-      </ul>
       <p>
-        <strong>What Plausible Analytics does not do:</strong>
-      </p>
-      <ul>
-        <li>Does not install cookies on the user's device</li>
-        <li>Does not use fingerprinting or other persistent identification techniques</li>
-        <li>Does not collect or store the user's IP address</li>
-        <li>Does not track users across different sessions or websites</li>
-        <li>Does not create individual user profiles</li>
-        <li>Does not share data with advertising platforms, social media or other third parties</li>
-        <li>Does not assign unique identifiers to users</li>
-        <li>Does not collect personal data of any kind</li>
-      </ul>
-      <p>
-        In accordance with the Data Protection Authority's guidelines and the guidance of CNIL (French data protection authority), the Swedish DPA and other European authorities, Plausible Analytics does not require user consent as it does not perform profiling and the data collected is exclusively anonymous and aggregated.
+        Data collected by both tools may be processed on servers located in the United States. Clarity keeps session recordings for thirty days and aggregated data for no more than thirteen months; Google Analytics keeps event data for the period set in the account, fourteen months at most.
       </p>
 
       <h2>5. Use of localStorage</h2>
@@ -137,20 +112,14 @@ const lastUpdated = '15 May 2026';
         Therefore, <code>localStorage</code> does not fall within the definition of cookies under current legislation and does not require user consent for its use, as it is comparable to a storage mechanism strictly necessary for the functioning of the requested service.
       </p>
 
-      <h2>6. Need for a Cookie Banner</h2>
+      <h2>6. Cookie Banner</h2>
       <p>
-        Since the Website does not use profiling cookies, analytical cookies with tracking or third-party cookies, <strong>a cookie banner is not currently required</strong> under the Data Protection Authority's guidelines of 10 June 2021. User consent for cookie installation is therefore not requested, as none are installed.
-      </p>
-      <p>
-        The Data Protection Authority, in its guidelines, has clarified that a cookie consent banner is mandatory only when the website uses profiling cookies or non-anonymised third-party analytical cookies. As neither of these conditions applies to this Website, the banner obligation does not apply.
-      </p>
-      <p>
-        Should services requiring the use of profiling or third-party cookies be integrated in the future, this Cookie Policy will be updated and a consent mechanism (cookie banner) will be implemented in compliance with the Data Protection Authority's provisions, with the following features: presentation on first access, the ability to accept or reject individual cookie categories, recording of expressed preferences and the ability to change choices at any time.
+        The Website currently shows no cookie banner: the analytical cookies listed above are set when a page opens. You can refuse them by blocking third-party cookies, or the domains <code>clarity.ms</code> and <code>googletagmanager.com</code>, in your browser settings. The calculators work without these cookies.
       </p>
 
       <h2>7. How to Manage Cookies in Your Browser</h2>
       <p>
-        Although the Website does not use cookies, users can manage their cookie preferences at any time through their browser settings. Below are instructions for the main browsers.
+        Users can manage their cookie preferences at any time through their browser settings. Below are instructions for the main browsers.
       </p>
 
       <h3>7.1 Google Chrome</h3>
@@ -174,7 +143,7 @@ const lastUpdated = '15 May 2026';
       </p>
 
       <p>
-        Please note that disabling cookies in your browser may affect the functioning of other websites you visit, but it does not affect the functioning of this Website, which does not use cookies. To clear data stored in <code>localStorage</code>, you can use your browser's "Clear browsing data" function, selecting the option related to site data.
+        Please note that disabling cookies in your browser may affect the functioning of other websites you visit, but it does not affect the functioning of this Website, whose calculators need no cookies. To clear data stored in <code>localStorage</code>, you can use your browser's "Clear browsing data" function, selecting the option related to site data.
       </p>
 
       <h2>8. Legal References</h2>

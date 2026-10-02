@@ -52,7 +52,7 @@ export default function Forfettari({ lang = 'it' }: Props) {
       if (idx >= 0) setCoefficienteIndex(idx);
     }
     if (params.get('startup') === '1') setPrimiCinqueAnni(true);
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -64,7 +64,7 @@ export default function Forfettari({ lang = 'it' }: Props) {
     url.searchParams.set('coeff', String(COEFFICIENTI[coefficienteIndex].value));
     if (primiCinqueAnni) url.searchParams.set('startup', '1');
     else url.searchParams.delete('startup');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ricavi, coefficienteIndex, primiCinqueAnni]);
 
   const COEFFICIENTI = lang === 'en' ? COEFFICIENTI_EN : COEFFICIENTI_IT;

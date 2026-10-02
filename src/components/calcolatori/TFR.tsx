@@ -61,7 +61,7 @@ export default function TFR({ lang = 'it' }: { lang?: Lang }) {
     if (a) setAnni(Math.max(1, parseInt(a, 10) || 5));
     const t = params.get('tasso');
     if (t) setTassoRivalutazione(parseFloat(t) || 3);
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -73,7 +73,7 @@ export default function TFR({ lang = 'it' }: { lang?: Lang }) {
     url.searchParams.set('anni', String(anni));
     if (tassoRivalutazione !== 3) url.searchParams.set('tasso', String(tassoRivalutazione));
     else url.searchParams.delete('tasso');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ral, anni, tassoRivalutazione]);
 
   const risultato = useMemo(() => {

@@ -31,7 +31,7 @@ export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
       const t = params.get('tariffa');
       if (t) setTariffa(parseFloat(t) || 15);
     }
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -52,7 +52,7 @@ export default function PagaOraria({ lang = 'it' }: { lang?: Lang }) {
     else url.searchParams.delete('ore');
     if (settimaneAnno !== 52) url.searchParams.set('settimane', String(settimaneAnno));
     else url.searchParams.delete('settimane');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ral, oreSettimanali, settimaneAnno, modalita, tariffa]);
 
   const risultato = useMemo(() => {

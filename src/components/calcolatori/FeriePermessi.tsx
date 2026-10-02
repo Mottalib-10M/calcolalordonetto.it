@@ -30,7 +30,7 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
     if (os) setOreSettimanali(parseInt(os, 10) || 40);
     const m = params.get('mensilita');
     if (m && [12, 13, 14].includes(Number(m))) setMensilita(Number(m) as 12 | 13 | 14);
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 
@@ -47,7 +47,7 @@ export default function FeriePermessi({ lang = 'it' }: { lang?: Lang }) {
     else url.searchParams.delete('ore');
     if (mensilita !== 13) url.searchParams.set('mensilita', String(mensilita));
     else url.searchParams.delete('mensilita');
-    window.history.replaceState({}, '', url.toString());
+    History.prototype.replaceState.call(window.history, {}, '', url.toString());
   }, [ral, giorniFerie, orePermessi, oreSettimanali, mensilita]);
 
   const risultato = useMemo(() => {

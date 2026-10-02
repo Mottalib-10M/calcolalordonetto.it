@@ -49,7 +49,7 @@ export default function StipendioNetto({ lang = 'it' }: Props) {
       const c = comuniBySlug.get(params.comune);
       if (c) setAliquotaComunale(c.aliquota);
     }
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
     setTimeout(() => { isInitialMount.current = false; }, 0);
   }, []);
 

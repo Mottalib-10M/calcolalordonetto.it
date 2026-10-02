@@ -75,5 +75,5 @@ export function pushState(params: CalcoloParams): void {
   if (typeof window === 'undefined') return;
   const url = new URL(window.location.href);
   url.search = encodeState(params).replace(/^\?/, '');
-  window.history.replaceState({}, '', url.toString());
+  History.prototype.replaceState.call(window.history, {}, '', url.toString());
 }

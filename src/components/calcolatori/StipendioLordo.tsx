@@ -25,7 +25,7 @@ export default function StipendioLordo({ lang = 'it' }: { lang?: Lang }) {
       const mv = parseInt(m, 10);
       if (mv === 12 || mv === 13 || mv === 14) setMensilita(mv);
     }
-    if (window.location.search) window.history.replaceState({}, '', window.location.pathname);
+    if (window.location.search) History.prototype.replaceState.call(window.history, {}, '', window.location.pathname);
   }, []);
 
   // Sync URL
@@ -37,7 +37,7 @@ export default function StipendioLordo({ lang = 'it' }: { lang?: Lang }) {
       url.searchParams.set('regione', r);
       if (m !== 13) url.searchParams.set('mensilita', String(m));
       else url.searchParams.delete('mensilita');
-      window.history.replaceState({}, '', url.toString());
+      History.prototype.replaceState.call(window.history, {}, '', url.toString());
     },
     [],
   );
