@@ -13,8 +13,18 @@ ErrorDocument 404 /404.html
 # ── Force HTTPS ─────────────────────────────────────────────────────────────
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteCond %{HTTPS} off
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Une seule adresse par page : https://calcolalordonetto.it, en un seul saut.
+RewriteCond %{HTTP_HOST} ^www\. [NC,OR]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://calcolalordonetto.it%{REQUEST_URI} [L,R=301]
+# /dossier/index.html est la meme page que /dossier/
+RewriteCond %{THE_REQUEST} \s/+(?:[^?\s]*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://calcolalordonetto.it/$1 [L,R=301]
+# Barre oblique finale : redirection ecrite ici, sinon Apache renvoie vers
+# une adresse portant le port (https://calcolalordonetto.it:443/...)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ https://calcolalordonetto.it/$1/ [L,R=301]
 </IfModule>
 
 # ── Force trailing slashes (backup for Astro config) ────────────────────────
@@ -22,7 +32,7 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_URI} !/$
   RewriteCond %{REQUEST_URI} !\.
-  RewriteRule ^(.*)$ /$1/ [L,R=301]
+  RewriteRule ^(.*)$ https://calcolalordonetto.it/$1/ [L,R=301]
 </IfModule>
 
 # ── Compression ─────────────────────────────────────────────────────────────
