@@ -3,9 +3,9 @@ import FontiUfficiali from '../components/ui/FontiUfficiali.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config';
 
-const title = 'Cookie Policy: Clarity e Google Analytics, Durata e Rifiuto';
-const description = "Cookie analitici di Microsoft Clarity e Google Analytics, nessun cookie pubblicitario. Quali cookie installa il sito, quanto durano e come puoi rifiutarli.";
-const lastUpdated = '2 ottobre 2026';
+const title = 'Cookie Policy: nessun cookie, solo Clarity senza cookie';
+const description = "Cookie policy: il sito dello stipendio netto non installa cookie e non conserva la tua RAL. Solo una misura tecnica e anonima della stabilità con Clarity.";
+const lastUpdated = '6 ottobre 2026';
 ---
 
 <Layout title={title} description={description}>
@@ -26,157 +26,56 @@ const lastUpdated = '2 ottobre 2026';
 
       <h2>1. Cosa Sono i Cookie</h2>
       <p>
-        I cookie sono piccoli file di testo che i siti web memorizzano sul dispositivo dell'utente (computer, tablet, smartphone) durante la navigazione. Vengono utilizzati per diverse finalità: dalla memorizzazione delle preferenze dell'utente all'analisi del traffico, fino alla profilazione a scopi pubblicitari.
-      </p>
-      <p>
-        I cookie sono stati introdotti per migliorare l'esperienza di navigazione dell'utente, consentendo ai siti web di "ricordare" informazioni tra una pagina e l'altra o tra una visita e l'altra. Tecnicamente, un cookie viene inviato dal server del sito web al browser dell'utente, che lo memorizza e lo rinvia al server a ogni successiva richiesta HTTP alla medesima risorsa.
-      </p>
-      <p>
-        Il <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">Garante per la Protezione dei Dati Personali</a> ha emanato le <strong>Linee guida cookie e altri strumenti di tracciamento</strong> (Provvedimento del 10 giugno 2021, pubblicato sulla Gazzetta Ufficiale n. 163 del 9 luglio 2021), che disciplinano l'uso dei cookie e richiedono il consenso dell'utente per i cookie di profilazione.
+        Un cookie è un piccolo file che un sito salva sul computer o sullo smartphone per riconoscere il visitatore alla visita successiva. Le <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">Linee guida cookie del Garante per la Protezione dei Dati Personali</a> (Provvedimento del 10 giugno 2021) e l'art. 122 del D.Lgs. 196/2003 impongono di informare l'utente su quelli eventualmente utilizzati.
       </p>
 
-      <h2>2. Tipologie di Cookie</h2>
+      <h2>2. Nessun Cookie su Questo Sito</h2>
       <p>
-        La normativa italiana ed europea classifica i cookie in diverse categorie in base alla loro funzione e alla loro durata. Di seguito una panoramica delle principali tipologie:
+        <strong>{SITE.name} non installa alcun cookie</strong>: né tecnici, né di preferenza, né analitici, né di profilazione, né di terze parti. Il Sito non scrive nulla nemmeno nel <code>localStorage</code> o nel <code>sessionStorage</code> del browser. Per questo non trovi alcun cookie banner: non c'è nulla da accettare o rifiutare.
+      </p>
+      <p>
+        I calcolatori di stipendio netto, IRPEF, TFR, tredicesima o mutuo lavorano dentro il tuo browser. La RAL, la regione, i figli a carico o le mensilità che inserisci non vengono inviati a nessun server e spariscono alla chiusura della scheda: sul tuo dispositivo non resta nulla e l'editore non registra alcun dato personale.
       </p>
 
-      <h3>2.1 Cookie Tecnici</h3>
+      <h2>3. Misura Tecnica e Anonima della Stabilità: Microsoft Clarity senza Cookie</h2>
       <p>
-        I cookie tecnici sono quelli necessari per il corretto funzionamento del sito web. Comprendono i cookie di navigazione, i cookie di sessione e i cookie funzionali. Questi cookie non richiedono il consenso dell'utente ai sensi dell'art. 122, comma 1, del D.Lgs. 196/2003, in quanto sono strettamente necessari all'erogazione del servizio richiesto dall'utente. Il Sito attualmente <strong>non utilizza cookie tecnici</strong>, in quanto le funzionalità offerte non ne richiedono l'impiego.
-      </p>
-
-      <h3>2.2 Cookie Analitici</h3>
-      <p>
-        I cookie analitici sono utilizzati per raccogliere informazioni sull'utilizzo del sito web da parte degli utenti, come il numero di visitatori, le pagine visitate e il tempo di permanenza. Se configurati in modo da non consentire l'identificazione dell'utente (ad esempio tramite mascheramento dell'indirizzo IP) e se sono utilizzati esclusivamente per finalità statistiche, possono essere equiparati ai cookie tecnici e non richiedono il consenso dell'utente, secondo le indicazioni del Garante.
-      </p>
-
-      <h3>2.3 Cookie di Profilazione</h3>
-      <p>
-        I cookie di profilazione sono quelli utilizzati per creare profili dell'utente e inviare messaggi pubblicitari personalizzati. Questi cookie richiedono sempre il consenso preventivo e informato dell'utente, ai sensi dell'art. 122 del D.Lgs. 196/2003 e dell'art. 7 del GDPR. <strong>Il Sito non utilizza cookie di profilazione di alcun tipo.</strong>
-      </p>
-
-      <h3>2.4 Cookie di Terze Parti</h3>
-      <p>
-        I cookie di terze parti sono quelli installati da domini diversi da quello del sito visitato. Tipicamente vengono installati da servizi integrati nel sito, quali pulsanti di social media, widget pubblicitari, servizi di analisi o contenuti incorporati. <strong>Il Sito non integra servizi di terze parti che installino cookie.</strong>
-      </p>
-
-      <h2>3. Cookie Utilizzati dal Sito</h2>
-
-      <h3>3.1 Cookie di Profilazione</h3>
-      <p>
-        <strong>Il Sito non utilizza cookie di profilazione pubblicitaria.</strong> Non vengono installati cookie finalizzati a mostrare pubblicità personalizzata e non vengono condivisi dati con piattaforme pubblicitarie o di remarketing.
-      </p>
-
-      <h3>3.2 Cookie Tecnici</h3>
-      <p>
-        Il Sito attualmente <strong>non utilizza cookie tecnici</strong>. Le preferenze dell'utente, come la scelta della modalità di visualizzazione (chiara/scura), vengono memorizzate tramite il meccanismo <code>localStorage</code> del browser, che non è un cookie e presenta caratteristiche tecniche differenti (come descritto nella sezione dedicata).
-      </p>
-
-      <h3>3.3 Cookie Analitici di Terze Parti</h3>
-      <p>
-        Il Sito utilizza due strumenti di misurazione del traffico, <strong>Microsoft Clarity</strong> e <strong>Google Analytics 4</strong>, che installano cookie analitici di terze parti. Entrambi vengono caricati all'apertura della pagina, senza un cookie banner preventivo.
+        Per individuare problemi tecnici (errori JavaScript, tempi di caricamento lunghi, clic che non producono effetti, difficoltà di scorrimento su mobile) usiamo <strong>Microsoft Clarity in modalità senza cookie</strong>. Prima che lo script venga caricato, la pagina comunica a Clarity che la memorizzazione è negata: non vengono creati i cookie <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> o <code>CLID</code>, ogni pagina vista riceve un identificativo nuovo e le visite non vengono collegate tra loro. Il testo delle pagine e quanto digiti nei campi sono mascherati nel browser prima di qualsiasi invio.
       </p>
       <ul>
-        <li><strong>Microsoft Clarity:</strong> <code>_clck</code> (un anno) e <code>_clsk</code> (un giorno); Microsoft può inoltre installare <code>MUID</code> e <code>CLID</code> sui propri domini.</li>
-        <li><strong>Google Analytics 4:</strong> <code>_ga</code> e <code>_ga_8HELRY4QDG</code> (due anni).</li>
+        <li><strong>Titolare di questa misura:</strong> Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublino 18, Irlanda (<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">informativa Microsoft</a>).</li>
+        <li><strong>Finalità:</strong> solo la stabilità e le prestazioni tecniche del Sito.</li>
+        <li><strong>Durata di conservazione presso Microsoft:</strong> un mese (30 giorni) per le registrazioni, tredici mesi al massimo per le statistiche aggregate.</li>
+        <li><strong>Base giuridica:</strong> legittimo interesse (art. 6, par. 1, lett. f, GDPR) ad avere calcolatori che funzionano.</li>
+        <li><strong>Opposizione:</strong> blocca il dominio <code>clarity.ms</code> nel browser o con un'estensione di blocco, oppure scrivici.</li>
       </ul>
-
-      <h3>3.4 Altri Servizi di Terze Parti</h3>
       <p>
-        Oltre a Microsoft Clarity e Google Analytics, il Sito non integra servizi di terze parti che installino cookie. Non sono presenti:
+        Non usiamo Google Analytics, pubblicità, pixel di social network né altri strumenti di tracciamento.
       </p>
+
+      <h2>4. Log Tecnici dell'Hosting</h2>
+      <p>
+        Come ogni server web, quello del nostro fornitore di hosting (OVH SAS, Roubaix, Francia) registra automaticamente indirizzo IP, data e pagina richiesta per finalità di sicurezza. Questi log non comportano alcun cookie.
+      </p>
+
+      <h2>5. Riferimenti Normativi</h2>
       <ul>
-        <li>Pulsanti di social media (Facebook, Twitter/X, LinkedIn, Instagram, ecc.)</li>
-        <li>Widget di commenti esterni (Disqus, ecc.)</li>
-        <li>Servizi pubblicitari (Google Ads, Meta Ads, ecc.)</li>
-        <li>Contenuti incorporati da piattaforme esterne (YouTube, Vimeo, Google Maps, ecc.)</li>
-        <li>Servizi di remarketing o retargeting</li>
-      </ul>
-
-      <h2>4. Strumenti di Analisi: Cosa Registrano</h2>
-      <p>
-        <strong>Microsoft Clarity</strong> (Microsoft Corporation) registra il modo in cui le pagine vengono utilizzate: clic, scorrimento, pagine visualizzate e relativo indirizzo, sotto forma di sessioni e mappe di calore. Il contenuto dei campi di inserimento viene mascherato nel browser prima di qualsiasi invio. Maggiori informazioni: <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com/privacystatement</a>.
-      </p>
-      <p>
-        <strong>Google Analytics 4</strong> (Google Ireland Limited) riceve le pagine visualizzate, la provenienza della visita, il tipo di dispositivo e una posizione approssimativa ricavata dall'indirizzo IP. Maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
-      </p>
-      <p>
-        I dati raccolti da entrambi gli strumenti possono essere trattati su server situati negli Stati Uniti. Clarity conserva le registrazioni delle sessioni per trenta giorni e i dati aggregati per un massimo di tredici mesi; Google Analytics conserva i dati degli eventi per la durata impostata nell'account, al massimo quattordici mesi.
-      </p>
-
-      <h2>5. Uso del localStorage</h2>
-      <p>
-        Il Sito utilizza il meccanismo <code>localStorage</code> del browser per memorizzare alcune preferenze dell'utente, come la scelta della modalità di visualizzazione (chiara/scura). Il <code>localStorage</code> è uno strumento di memorizzazione locale previsto dallo standard HTML5 che presenta le seguenti caratteristiche:
-      </p>
-      <ul>
-        <li>Non viene trasmesso automaticamente al server a ogni richiesta HTTP (a differenza dei cookie)</li>
-        <li>Rimane confinato nel browser dell'utente e non è accessibile da parte del server</li>
-        <li>Non può essere letto da siti web diversi da quello che lo ha creato</li>
-        <li>può essere cancellato dall'utente in qualsiasi momento tramite le impostazioni del browser</li>
-        <li>Non ha una data di scadenza automatica (a differenza dei cookie)</li>
-        <li>Non viene condiviso tra browser diversi sullo stesso dispositivo</li>
+        <li><strong>Regolamento (UE) 2016/679</strong> (GDPR)</li>
+        <li><strong>D.Lgs. 30 giugno 2003, n. 196</strong> (Codice Privacy), come modificato dal D.Lgs. 101/2018, in particolare l'art. 122</li>
+        <li><strong>Direttiva 2002/58/CE</strong> (Direttiva ePrivacy)</li>
+        <li><strong>Linee guida cookie e altri strumenti di tracciamento</strong> del Garante (Provvedimento del 10 giugno 2021, doc. web n. 9677876)</li>
       </ul>
       <p>
-        Pertanto, il <code>localStorage</code> non rientra nella definizione di cookie ai sensi della normativa vigente e non richiede il consenso dell'utente per il suo utilizzo, essendo assimilabile a un meccanismo di memorizzazione strettamente necessario al funzionamento del servizio richiesto.
+        Puoi proporre reclamo al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>).
       </p>
 
-      <h2>6. Cookie Banner</h2>
+      <h2>6. Aggiornamenti</h2>
       <p>
-        Il Sito attualmente non presenta un cookie banner: i cookie analitici sopra indicati vengono installati all'apertura della pagina. L'utente può rifiutarli bloccando i cookie di terze parti, oppure i domini <code>clarity.ms</code> e <code>googletagmanager.com</code>, nelle impostazioni del proprio browser. I calcolatori funzionano anche senza questi cookie.
+        Se un giorno il funzionamento del Sito cambiasse, questa pagina e la sua data verrebbero aggiornate prima dell'attivazione della modifica.
       </p>
 
-      <h2>7. Come Gestire i Cookie nel Browser</h2>
+      <h2>7. Contatti</h2>
       <p>
-        L'utente può in qualsiasi momento gestire le preferenze relative ai cookie tramite le impostazioni del proprio browser. Di seguito le indicazioni per i principali browser.
-      </p>
-
-      <h3>7.1 Google Chrome</h3>
-      <p>
-        Accedere al menu Impostazioni, selezionare "Privacy e sicurezza", quindi "Cookie e altri dati dei siti". Da questa sezione è possibile bloccare i cookie di terze parti, cancellare i cookie esistenti e gestire le eccezioni per singoli siti web. Guida completa: <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">support.google.com/chrome/answer/95647</a>.
-      </p>
-
-      <h3>7.2 Mozilla Firefox</h3>
-      <p>
-        Accedere al menu Impostazioni, selezionare "Privacy e sicurezza". Firefox offre una protezione antitracciamento avanzata con tre livelli (standard, restrittiva, personalizzata) che consente di bloccare cookie di tracciamento, fingerprinting e altri strumenti di sorveglianza. Guida completa: <a href="https://support.mozilla.org/it/kb/protezione-antitracciamento-avanzata-firefox-desktop" target="_blank" rel="noopener noreferrer">support.mozilla.org</a>.
-      </p>
-
-      <h3>7.3 Safari (Apple)</h3>
-      <p>
-        Accedere al menu Safari, selezionare "Preferenze", quindi "Privacy". Safari offre la funzione "Impedisci il tracciamento cross-site" e consente di bloccare tutti i cookie. È inoltre possibile visualizzare e rimuovere i cookie memorizzati per singoli siti web. Guida completa: <a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">support.apple.com</a>.
-      </p>
-
-      <h3>7.4 Microsoft Edge</h3>
-      <p>
-        Accedere al menu Impostazioni, selezionare "Cookie e autorizzazioni sito", quindi "Gestisci e elimina cookie e dati dei siti". Edge offre la possibilità di bloccare i cookie di terze parti e di gestire le eccezioni per singoli siti web. Guida completa: <a href="https://support.microsoft.com/it-it/microsoft-edge/eliminare-i-cookie-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">support.microsoft.com</a>.
-      </p>
-
-      <p>
-        Si precisa che la disabilitazione dei cookie nel browser potrebbe compromettere il funzionamento di altri siti web visitati dall'utente, ma non influisce sul funzionamento del presente Sito, i cui calcolatori non richiedono cookie. Per cancellare i dati memorizzati nel <code>localStorage</code>, l'utente può utilizzare la funzione "Cancella dati di navigazione" del proprio browser, selezionando l'opzione relativa ai dati dei siti web.
-      </p>
-
-      <h2>8. Riferimenti Normativi</h2>
-      <p>
-        La presente Cookie Policy è redatta in conformità alle seguenti disposizioni normative:
-      </p>
-      <ul>
-        <li><strong>Regolamento (UE) 2016/679</strong> (GDPR), in particolare gli artt. 5, 6, 7 relativi ai principi del trattamento, alla liceità e al consenso</li>
-        <li><strong>D.Lgs. 30 giugno 2003, n. 196</strong> (Codice Privacy), come modificato dal D.Lgs. 101/2018, in particolare l'art. 122 relativo alle informazioni raccolte nei riguardi del contraente o dell'utente</li>
-        <li><strong>Direttiva 2002/58/CE</strong> (Direttiva ePrivacy), che disciplina il trattamento dei dati personali e la tutela della vita privata nel settore delle comunicazioni elettroniche</li>
-        <li><strong>Linee guida cookie e altri strumenti di tracciamento</strong> del Garante per la Protezione dei Dati Personali (Provvedimento del 10 giugno 2021, pubblicato in Gazzetta Ufficiale n. 163 del 9 luglio 2021, doc. web n. 9677876)</li>
-        <li><strong>Provvedimento del Garante dell'8 maggio 2014</strong> (doc. web n. 3118884), recante "Individuazione delle modalità semplificate per l'informativa e l'acquisizione del consenso per l'uso dei cookie"</li>
-      </ul>
-
-      <h2>9. Aggiornamenti alla Cookie Policy</h2>
-      <p>
-        La presente Cookie Policy potrà essere aggiornata periodicamente per riflettere eventuali modifiche ai servizi utilizzati dal Sito, all'evoluzione normativa o alle indicazioni delle autorità di controllo. La data dell'ultimo aggiornamento è indicata in cima a questa pagina.
-      </p>
-      <p>
-        Si consiglia di consultare regolarmente questa sezione per verificare eventuali modifiche. L'utilizzo continuato del Sito dopo la pubblicazione di aggiornamenti alla presente Cookie Policy costituisce accettazione delle modifiche apportate.
-      </p>
-
-      <h2>10. Contatti</h2>
-      <p>
-        Per qualsiasi domanda, chiarimento o segnalazione relativa alla presente Cookie Policy, all'uso dei cookie o alle tecnologie di memorizzazione locale utilizzate dal Sito, l'utente può contattare il titolare tramite la <a href="/contatti/">pagina contatti</a> del Sito. Il titolare si impegna a fornire riscontro nel più breve tempo possibile.
+        Per qualsiasi domanda, chiarimento o segnalazione relativa alla presente Cookie Policy, o alla misura tecnica della stabilità, l'utente può contattare il titolare tramite la <a href="/contatti/">pagina contatti</a> del Sito. Il titolare si impegna a fornire riscontro nel più breve tempo possibile.
       </p>
 
       <hr />

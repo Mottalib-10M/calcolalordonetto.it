@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
 
 const title = 'Privacy Policy: What Data This Site Processes, Your Rights';
-const description = "Privacy notice: calculations run in your browser. Which analytics tools we use (Microsoft Clarity, Google Analytics), the cookies they set and your rights.";
-const lastUpdated = '2 October 2026';
+const description = "Privacy notice: the salary you enter stays in your browser, no cookies and no personal data recorded. Only cookieless Clarity checks the site's stability.";
+const lastUpdated = '6 October 2026';
 ---
 
 <Layout title={title} description={description} lang="en">
@@ -46,7 +46,7 @@ const lastUpdated = '2 October 2026';
 
       <h2>3. Types of Data Processed (or Not Processed)</h2>
       <p>
-        <strong>Data entered into the calculators is not collected, stored or transmitted.</strong> Visits to the website are, however, measured by the analytics tools described in section 5.
+        <strong>The publisher, Radif Partners, records no personal data about visitors.</strong> Data entered into the calculators is not collected, stored or transmitted, and the website sets no cookies.
       </p>
       <p>
         The net salary calculator operates entirely client-side (in the user's browser). Data entered into the calculator (RAL, region, family situation, number of monthly payments, any deductions and every other required parameter) is never transmitted to our servers or to third parties. All calculations take place locally on the user's device and never leave the browser.
@@ -66,7 +66,7 @@ const lastUpdated = '2 October 2026';
       <ul>
         <li>Registration or login forms</li>
         <li>Newsletters or email address collection</li>
-        <li>Advertising or ad-profiling cookies</li>
+        <li>Cookies of any kind, including advertising or profiling cookies</li>
         <li>Data sharing with advertising platforms</li>
         <li>Comment systems or forums requiring personal data collection</li>
       </ul>
@@ -82,54 +82,42 @@ const lastUpdated = '2 October 2026';
         Users can independently verify this behaviour using their browser's developer tools, checking that the values entered appear in no HTTP request during calculator use.
       </p>
 
-      <h2>5. Browsing Data and Analytics: Microsoft Clarity and Google Analytics</h2>
+      <h2>5. Anonymous Technical Stability Measurement</h2>
       <p>
-        To understand how the website is used, two analytics tools load when each page opens.
+        To find errors, slow pages, clicks that do nothing or scrolling issues, the website uses <strong>Microsoft Clarity without cookies</strong>. Before the script loads, the page signals to Clarity that storage is denied: no <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> or <code>CLID</code> cookie, a different identifier for every page view and no link between one visit and the next. Page content and the figures you type (gross salary, monthly payments, deductions) are masked in the browser before sending.
       </p>
+      <ul>
+        <li><strong>Controller for this measurement:</strong> Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Ireland (<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com/privacystatement</a>).</li>
+        <li><strong>Purpose:</strong> the technical stability of the website only.</li>
+        <li><strong>Objection:</strong> block the <code>clarity.ms</code> domain in your browser, or write to us.</li>
+      </ul>
       <p>
-        <strong>Microsoft Clarity</strong> (Microsoft Corporation) records how pages are used: clicks, scrolling, pages viewed and their address, as sessions and heatmaps. The content of input fields is masked in the browser before anything is sent. More information: <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com/privacystatement</a>.
-      </p>
-      <p>
-        <strong>Google Analytics 4</strong> (Google Ireland Limited) receives the pages viewed, the referral source, the device type and an approximate location derived from the IP address. More information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
-      </p>
-      <p>
-        If you open a page through a share link that carries values in its address, those values are part of the page address recorded by these tools.
+        No Google Analytics, advertising tools or other trackers are used.
       </p>
 
-      <h2>6. Cookies and Local Storage Technologies</h2>
+      <h2>6. Cookies and Local Storage</h2>
       <p>
-        Microsoft Clarity and Google Analytics set analytics cookies when a page opens, with no prior cookie banner: <code>_clck</code> and <code>_clsk</code> for Clarity, <code>_ga</code> and <code>_ga_8HELRY4QDG</code> for Google Analytics. The website <strong>does not use advertising cookies</strong>. For details, and to learn how to refuse them, see our <a href="/en/cookie-policy/">Cookie Policy</a>.
-      </p>
-      <p>
-        User preferences (such as dark/light mode) are stored in the browser's <code>localStorage</code>, which is not a cookie and is never transmitted to our servers.
+        The website <strong>sets no cookies</strong> and writes nothing to the browser's <code>localStorage</code> or <code>sessionStorage</code>, so there is no cookie banner: there is nothing to accept. Details in the <a href="/en/cookie-policy/">Cookie Policy</a>.
       </p>
 
       <h2>7. Legal Basis for Processing</h2>
       <p>
-        For the statistical data collected by the analytics tools, the controller relies on its legitimate interest (Article 6(1)(f) GDPR) in understanding how the website is used in order to improve its content. You may object by writing to the controller via the contact page.
+        The technical stability measurement relies on legitimate interest (Article 6(1)(f) GDPR) in keeping the calculators working. Replying to a message sent via the contact page relies on the user's own request.
       </p>
 
-      <h2>8. Third-Party Services</h2>
+      <h2>8. Hosting and Server Logs</h2>
       <p>
-        The website uses the following third-party services:
-      </p>
-      <ul>
-        <li><strong>Microsoft Clarity</strong> (Microsoft Corporation): analysis of how pages are used, with cookies.</li>
-        <li><strong>Google Analytics 4</strong> (Google Ireland Limited): traffic measurement, with cookies.</li>
-        <li><strong>Hosting service:</strong> the hosting service may collect technical logs (IP address, date and time of the request, page requested) for security and maintenance purposes.</li>
-      </ul>
-      <p>
-        There are no social media buttons, advertising widgets or remarketing services.
+        The website is hosted by OVH SAS, 2 rue Kellermann, 59100 Roubaix, France. Its servers automatically keep technical logs (IP address, date and time, page requested) for security and maintenance, for a limited period. There are no social media buttons, advertising widgets or remarketing services.
       </p>
 
       <h2>9. Transfer of Data Outside the EU</h2>
       <p>
-        Data collected by Microsoft Clarity and Google Analytics may be processed on servers located in the United States. Microsoft and Google rely on the EU-U.S. Data Privacy Framework and on standard contractual clauses.
+        Clarity's anonymous measurements may be processed on Microsoft servers in the United States, under the EU-U.S. Data Privacy Framework and standard contractual clauses.
       </p>
 
       <h2>10. Data Retention Period</h2>
       <p>
-        Data entered into the calculators is not retained. Clarity keeps session recordings for thirty days and aggregated data for no more than thirteen months; Google Analytics keeps event data for the period set in the account, fourteen months at most. Technical logs of the hosting service, where present, are kept for a limited period strictly necessary for security and maintenance.
+        Data entered into the calculators is not kept anywhere. Clarity keeps technical recordings for 30 days and aggregated data for at most 13 months. Messages received via the contact page are kept only as long as needed to reply.
       </p>
 
       <h2>11. Data Subject Rights</h2>
@@ -143,10 +131,9 @@ const lastUpdated = '2 October 2026';
         <li><strong>Restriction of processing</strong> (Art. 18): obtain restriction of processing in certain cases provided by law</li>
         <li><strong>Data portability</strong> (Art. 20): receive personal data in a structured, commonly used and machine-readable format, and transmit it to another controller</li>
         <li><strong>Objection</strong> (Art. 21): object to processing of personal data on grounds relating to their particular situation, and object to processing for direct marketing purposes</li>
-        <li><strong>Withdrawal of consent</strong> (Art. 7): withdraw consent at any time, without affecting the lawfulness of processing carried out before the withdrawal</li>
       </ul>
       <p>
-        These rights also apply to the data collected by the analytics tools. For any request, clarification or exercise of the rights listed above, users may contact us via the <a href="/en/contact/">contact page</a>. The controller undertakes to respond to such requests within 30 days, as required by Article 12 of the GDPR.
+        As the publisher keeps no personal data, in practice these rights only concern messages you have sent us. For any request, clarification or exercise of the rights listed above, users may contact us via the <a href="/en/contact/">contact page</a>. The controller undertakes to respond to such requests within 30 days, as required by Article 12 of the GDPR.
       </p>
 
       <h2>12. Children's Data</h2>
@@ -177,7 +164,7 @@ const lastUpdated = '2 October 2026';
         The controller reserves the right to modify this privacy notice at any time, publishing the updated version on the website. The date of the last update is shown at the top of this page. We recommend checking this page periodically for any updates.
       </p>
       <p>
-        In the event that new features requiring personal data processing are introduced, this notice will be updated before such features are activated and, where necessary, explicit user consent will be requested. In the event of substantial changes affecting user rights, the controller will endeavour to provide adequate communication of the changes made.
+        In the event that new features requiring personal data processing are introduced, this notice will be updated before such features are activated. In the event of substantial changes affecting user rights, the controller will endeavour to provide adequate communication of the changes made.
       </p>
 
       <hr />
