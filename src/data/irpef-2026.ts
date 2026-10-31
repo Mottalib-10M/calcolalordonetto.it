@@ -3,8 +3,13 @@
  *
  * Sources:
  * - TUIR (Testo Unico delle Imposte sui Redditi), D.P.R. 917/1986, Art. 11, 13
- * - Legge di Bilancio 2026 (L. 207/2025)
- * - D.Lgs. 216/2023 (riforma fiscale) reso strutturale
+ * - Legge di Bilancio 2026 (L. 30 dicembre 2025, n. 199, art. 1, c. 3: second bracket 35% → 33%)
+ * - Legge di Bilancio 2025 (L. 30 dicembre 2024, n. 207, art. 1, c. 2 and 4–6: brackets made
+ *   structural, cuneo fiscale)
+ * - D.L. 3/2020, art. 1 (trattamento integrativo)
+ * Texts read on normattiva.it (versions in force in 2026) on 2026-10-31. The new Testo unico
+ * delle imposte sui redditi (D.Lgs. 19 giugno 2026, n. 117) applies only from 1 January 2027
+ * (its art. 377), together with the repeals of its art. 376.
  *
  * All monetary values are in EUR. All rates are expressed as decimals (0.23 = 23%).
  */
@@ -71,7 +76,7 @@ export interface FasciaDetrazioneLavoroDipendente {
  *
  * Three-bracket system, confirmed by Legge di Bilancio 2026:
  * - Up to €28,000 → 23%
- * - €28,001–€50,000 → 33% (reduced from 35% by L. 207/2025)
+ * - €28,001–€50,000 → 33% (reduced from 35% by L. 199/2025, art. 1, c. 3)
  * - Above €50,000 → 43%
  *
  * @see TUIR Art. 11 as amended by Legge di Bilancio 2026
@@ -142,6 +147,15 @@ export const DETRAZIONE_LAVORO_DIP_2026 = {
   },
   /** Income threshold below which IRPEF is effectively zero (no-tax area). */
   noTaxArea: 8_500,
+  /**
+   * Art. 13, comma 1.1, TUIR: the credit is increased by €65 when reddito complessivo
+   * is above €25,000 and not above €35,000 (normattiva, testo vigente 2026, letto 2026-10-31).
+   */
+  maggiorazione: {
+    limiteInferiore: 25_000,
+    limiteSuperiore: 35_000,
+    importo: 65,
+  },
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -167,6 +181,11 @@ export const TRATTAMENTO_INTEGRATIVO_2026 = {
   sogliaCompleta: 15_000,
   /** Reduced benefit between €15,001 and this threshold. */
   sogliaParziale: 28_000,
+  /**
+   * Up to €15,000 the benefit is due only if IRPEF lorda exceeds the detrazione lavoro
+   * dipendente reduced by this amount (D.L. 3/2020, art. 1, comma 1).
+   */
+  riduzioneCapienza: 75,
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -176,8 +195,10 @@ export const TRATTAMENTO_INTEGRATIVO_2026 = {
 /**
  * Cuneo fiscale 2026, two-tier system replacing the old contributivo cuts.
  *
- * Tier 1, Somma esente (income ≤ €20,000):
- *   A tax-exempt sum proportional to income, varying by sub-band:
+ * Tier 1, Somma esente (reddito complessivo ≤ €20,000):
+ *   A sum that does not form part of taxable income, paid on top of the net salary
+ *   (it does NOT reduce the IRPEF base), proportional to the reddito di lavoro
+ *   dipendente, varying by sub-band:
  *   - Up to €8,500 → 7.1% of income
  *   - €8,501–€15,000 → 5.3% of income
  *   - €15,001–€20,000 → 4.8% of income
@@ -188,7 +209,7 @@ export const TRATTAMENTO_INTEGRATIVO_2026 = {
  *
  * Above €40,000: nothing.
  *
- * @see Legge di Bilancio 2026, Art. 1, commi relativi al cuneo fiscale
+ * @see L. 30 dicembre 2024, n. 207, art. 1, commi 4–6 (unchanged for 2026)
  */
 export const FASCE_CUNEO_FISCALE_2026: readonly FasciaCuneoFiscale[] = [
   // Tier 1, Somma esente
@@ -365,8 +386,18 @@ export const CONTRIBUTI_INPS_2026 = {
   aliquotaDipendente: 0.0919, // 9.19%
   /** Employee's INPS rate for apprentices (apprendisti). */
   aliquotaApprendista: 0.0569, // 5.69%
-  /** Annual ceiling for INPS contributions (massimale). */
-  massimaleAnnuo: 119_650,
+  /**
+   * Annual ceiling for INPS contributions (massimale, workers first insured after 1996).
+   * 2026: €122,295 (INPS circolare n. 6 del 30 gennaio 2026, as reported by ecnews.it,
+   * 2026-02-03; the INPS page could not be read automatically on 2026-10-31).
+   */
+  massimaleAnnuo: 122_295,
+  /**
+   * Additional 1% employee contribution on the part of the annual salary above the first
+   * pensionable band (art. 3-ter D.L. 384/1992). 2026 band: €56,224 (same circolare).
+   */
+  primaFasciaPensionabile: 56_224,
+  aliquotaAggiuntiva: 0.01,
 } as const;
 
 // ---------------------------------------------------------------------------

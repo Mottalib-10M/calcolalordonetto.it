@@ -21,21 +21,14 @@ const homeSchema = JSON.stringify([
       contactType: 'customer support',
       availableLanguage: ['Italian', 'English'],
     },
-    founder: {
-      '@type': 'Organization',
-      name: SITE.author.name,
-      jobTitle: 'Appassionato di finanza personale e fiscalità',
-      description: 'Appassionato di finanza personale e fiscalità, laureato MBA all\'Editore di calcolatori e guide pratiche. Specializzato nell\'analisi dei meccanismi retributivi e contributivi in Italia.',
-    },
+    founder: { '@type': 'Organization', name: SITE.author.name, url: SITE.author.url },
   },
   {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE.author.name,
-    jobTitle: 'Appassionato di finanza personale e fiscalità',
-    description: 'Appassionato di finanza personale e fiscalità, laureato MBA all\'Editore di calcolatori e guide pratiche. Specializzato nell\'analisi dei meccanismi retributivi e contributivi in Italia.',
+    description: `${SITE.author.titleIt}, specializzato nell'analisi dei meccanismi retributivi e contributivi in Italia.`,
     url: SITE.author.url,
-    worksFor: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },
   },
   {
     '@context': 'https://schema.org',
@@ -121,9 +114,9 @@ const faqs = [
 
       <h3>Il cuneo fiscale 2026: novità e impatto sul netto</h3>
       <p>
-        Dal 2026, il cuneo fiscale è stato riformato con un meccanismo a due livelli che
-        sostituisce la precedente riduzione contributiva. Per i redditi fino a 20.000 euro
-        prevede una somma esente dall'IRPEF, mentre per quelli tra 20.001 e 40.000 euro
+        Dal 2025 (legge 207/2024), e anche nel 2026, il cuneo fiscale funziona con un meccanismo
+        a due livelli che sostituisce la precedente riduzione contributiva. Per i redditi fino a
+        20.000 euro prevede una somma non tassata pagata in aggiunta al netto, mentre per quelli tra 20.001 e 40.000 euro
         una detrazione aggiuntiva fino a 1.000 euro annui. A differenza del vecchio sistema,
         i contributi previdenziali restano invariati, preservando la pensione futura.
       </p>

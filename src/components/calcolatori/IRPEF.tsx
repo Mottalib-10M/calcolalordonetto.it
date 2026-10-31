@@ -58,7 +58,8 @@ export default function IRPEF({ lang = 'it' }: { lang?: Lang }) {
   const contributiINPS = calcolaContributiINPS(reddito);
   const imponibileFiscale = reddito - contributiINPS;
   const cuneo = calcolaCuneoFiscale(imponibileFiscale);
-  const imponibilePerIRPEF = imponibileFiscale - cuneo.sommaEsente;
+  // La somma esente del cuneo fiscale non riduce l'imponibile: è pagata in aggiunta al netto
+  const imponibilePerIRPEF = imponibileFiscale;
 
   const { irpefLorda, dettaglioScaglioni } = calcolaIRPEF(imponibilePerIRPEF);
   const detrazioneLavDip = calcolaDetrazioneLavoroDipendente(imponibileFiscale);
@@ -74,6 +75,7 @@ export default function IRPEF({ lang = 'it' }: { lang?: Lang }) {
   const trattamentoIntegrativo = calcolaTrattamentoIntegrativo(
     imponibileFiscale,
     irpefLorda,
+    detrazioneLavDip,
     detrazioneLavDip,
   );
 
@@ -193,7 +195,7 @@ export default function IRPEF({ lang = 'it' }: { lang?: Lang }) {
                 <Row
                   label="Somma esente cuneo fiscale"
                   value={cuneo.sommaEsente}
-                  note="(riduce l'imponibile)"
+                  note="(non tassata, si aggiunge al netto)"
                   muted
                 />
               )}

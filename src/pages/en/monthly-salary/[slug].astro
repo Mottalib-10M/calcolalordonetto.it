@@ -45,7 +45,7 @@ const regionResults = regioni.map((r) => {
 
 // Detailed breakdown for default scenario
 const dettaglio = calcolaStipendio({ ral: ralDefault, regione: defaultRegione });
-const irpefDetail = calcolaIRPEF(dettaglio.imponibileFiscale - dettaglio.cuneoFiscaleSommaEsente);
+const irpefDetail = calcolaIRPEF(dettaglio.imponibileFiscale);
 
 // Format helpers
 const fmtCur = (v: number) => formatCurrency(v, 'en');
@@ -202,7 +202,7 @@ function buildFaqs() {
     });
     extra.push({
       question: `How much of the tax wedge falls on €${fmtCurRound(nettoTarget)} net per month?`,
-      answer: `The tax wedge (cuneo fiscale) is a set of measures introduced by the Italian government to increase net pay for employees with medium-low incomes. At your RAL of €${fmtCurRound(ralDefault)}, the cuneo fiscale includes both an exempt amount (reducing your taxable income by ${fmtCur(dettaglio.cuneoFiscaleSommaEsente)}) and an additional tax deduction (${fmtCur(dettaglio.cuneoFiscaleDetrazione)}). Together, these measures increase your annual net pay. The benefit is automatically applied by your employer.`,
+      answer: `The tax wedge (cuneo fiscale) is a set of measures introduced by the Italian government to increase net pay for employees with medium-low incomes. At your RAL of €${fmtCurRound(ralDefault)}, ${dettaglio.cuneoFiscaleSommaEsente > 0 ? `the cuneo fiscale is a tax-free sum of €${fmtCur(dettaglio.cuneoFiscaleSommaEsente)} a year, paid on top of your net salary (it does not reduce your taxable income).` : dettaglio.cuneoFiscaleDetrazione > 0 ? `the cuneo fiscale is an additional tax deduction of €${fmtCur(dettaglio.cuneoFiscaleDetrazione)} a year, subtracted from your gross IRPEF.` : `the cuneo fiscale no longer applies: it is reserved for incomes up to €40,000.`} Employees with an income up to €20,000 receive the tax-free sum; between €20,000 and €40,000 they receive the deduction instead. The benefit is automatically applied by your employer.`,
     });
   } else if (nettoTarget <= 1800) {
     // Middle range
@@ -440,12 +440,6 @@ const schemaString = JSON.stringify([
               <span class="text-gray-600 dark:text-gray-400">Taxable Income</span>
               <span class="font-medium text-gray-900 dark:text-white">{fmtCur(dettaglio.imponibileFiscale)} &euro;</span>
             </div>
-            {dettaglio.cuneoFiscaleSommaEsente > 0 && (
-              <div class="flex justify-between px-5 py-3">
-                <span class="text-gray-600 dark:text-gray-400">Tax Wedge (exempt amount)</span>
-                <span class="text-green-600 dark:text-green-400">-{fmtCur(dettaglio.cuneoFiscaleSommaEsente)} &euro;</span>
-              </div>
-            )}
             <div class="flex justify-between px-5 py-3">
               <span class="text-gray-600 dark:text-gray-400">Gross IRPEF</span>
               <span class="text-red-600 dark:text-red-400">-{fmtCur(dettaglio.irpefLorda)} &euro;</span>
@@ -476,6 +470,12 @@ const schemaString = JSON.stringify([
               <div class="flex justify-between px-5 py-3">
                 <span class="text-gray-600 dark:text-gray-400">Supplementary Allowance</span>
                 <span class="text-green-600 dark:text-green-400">+{fmtCur(dettaglio.trattamentoIntegrativo)} &euro;</span>
+              </div>
+            )}
+            {dettaglio.cuneoFiscaleSommaEsente > 0 && (
+              <div class="flex justify-between px-5 py-3">
+                <span class="text-gray-600 dark:text-gray-400">Tax Wedge (tax-free sum)</span>
+                <span class="text-green-600 dark:text-green-400">+{fmtCur(dettaglio.cuneoFiscaleSommaEsente)} &euro;</span>
               </div>
             )}
             <div class="flex justify-between px-5 py-4 bg-gray-900 dark:bg-gray-800">

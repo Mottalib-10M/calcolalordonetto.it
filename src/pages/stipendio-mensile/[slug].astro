@@ -44,7 +44,7 @@ const regionResults = regioni.map((r) => {
 
 // Detailed breakdown for default scenario
 const dettaglio = calcolaStipendio({ ral: ralDefault, regione: defaultRegione });
-const irpefDetail = calcolaIRPEF(dettaglio.imponibileFiscale - dettaglio.cuneoFiscaleSommaEsente);
+const irpefDetail = calcolaIRPEF(dettaglio.imponibileFiscale);
 
 // Format helpers
 const fmtCur = (v: number) => v.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -180,7 +180,7 @@ function buildFaqs() {
     },
     {
       question: `Come viene calcolato lo stipendio netto partendo da ${fmtCurRound(ralDefault)} euro di RAL?`,
-      answer: `Dalla RAL di ${fmtCurRound(ralDefault)} euro si sottraggono i contributi INPS (${fmtCur(dettaglio.contributiINPS)} euro, pari al 9,19%), ottenendo un imponibile fiscale di ${fmtCur(dettaglio.imponibileFiscale)} euro. Su questo si applica l'IRPEF per scaglioni (${fmtCur(dettaglio.irpefLorda)} euro di IRPEF lorda), poi si aggiungono le detrazioni per lavoro dipendente (${fmtCur(dettaglio.detrazioneLavoroDipendente)} euro)${dettaglio.cuneoFiscaleDetrazione > 0 ? ` e il cuneo fiscale (${fmtCur(dettaglio.cuneoFiscaleDetrazione)} euro)` : ''}. Infine si sottraggono le addizionali regionali e comunali, arrivando a un netto annuo di ${fmtCur(dettaglio.nettoAnnuo)} euro, ovvero ${fmtCur(dettaglio.nettoMensile)} euro al mese su 13 mensilita.`,
+      answer: `Dalla RAL di ${fmtCurRound(ralDefault)} euro si sottraggono i contributi INPS (${fmtCur(dettaglio.contributiINPS)} euro, pari al 9,19%), ottenendo un imponibile fiscale di ${fmtCur(dettaglio.imponibileFiscale)} euro. Su questo si applica l'IRPEF per scaglioni (${fmtCur(dettaglio.irpefLorda)} euro di IRPEF lorda), poi si aggiungono le detrazioni per lavoro dipendente (${fmtCur(dettaglio.detrazioneLavoroDipendente)} euro)${dettaglio.cuneoFiscaleDetrazione > 0 ? ` e il cuneo fiscale (${fmtCur(dettaglio.cuneoFiscaleDetrazione)} euro)` : ''}.${dettaglio.cuneoFiscaleSommaEsente > 0 ? ` La somma esente del cuneo fiscale (${fmtCur(dettaglio.cuneoFiscaleSommaEsente)} euro) non è tassata e si aggiunge al netto.` : ''}${dettaglio.trattamentoIntegrativo > 0 ? ` Spetta anche il trattamento integrativo (${fmtCur(dettaglio.trattamentoIntegrativo)} euro).` : ''} Infine si sottraggono le addizionali regionali e comunali, arrivando a un netto annuo di ${fmtCur(dettaglio.nettoAnnuo)} euro, ovvero ${fmtCur(dettaglio.nettoMensile)} euro al mese su 13 mensilita.`,
     },
   ];
 
@@ -462,12 +462,6 @@ const schemaString = JSON.stringify([
               <span class="text-gray-600 dark:text-gray-400">Imponibile Fiscale</span>
               <span class="font-medium text-gray-900 dark:text-white">{fmtCur(dettaglio.imponibileFiscale)} &euro;</span>
             </div>
-            {dettaglio.cuneoFiscaleSommaEsente > 0 && (
-              <div class="flex justify-between px-5 py-3">
-                <span class="text-gray-600 dark:text-gray-400">Cuneo Fiscale (somma esente)</span>
-                <span class="text-green-600 dark:text-green-400">-{fmtCur(dettaglio.cuneoFiscaleSommaEsente)} &euro;</span>
-              </div>
-            )}
             <div class="flex justify-between px-5 py-3">
               <span class="text-gray-600 dark:text-gray-400">IRPEF Lorda</span>
               <span class="text-red-600 dark:text-red-400">-{fmtCur(dettaglio.irpefLorda)} &euro;</span>
@@ -498,6 +492,12 @@ const schemaString = JSON.stringify([
               <div class="flex justify-between px-5 py-3">
                 <span class="text-gray-600 dark:text-gray-400">Trattamento Integrativo</span>
                 <span class="text-green-600 dark:text-green-400">+{fmtCur(dettaglio.trattamentoIntegrativo)} &euro;</span>
+              </div>
+            )}
+            {dettaglio.cuneoFiscaleSommaEsente > 0 && (
+              <div class="flex justify-between px-5 py-3">
+                <span class="text-gray-600 dark:text-gray-400">Cuneo Fiscale (somma esente, non tassata)</span>
+                <span class="text-green-600 dark:text-green-400">+{fmtCur(dettaglio.cuneoFiscaleSommaEsente)} &euro;</span>
               </div>
             )}
             <div class="flex justify-between px-5 py-4 bg-gray-900 dark:bg-gray-800">

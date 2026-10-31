@@ -28,21 +28,14 @@ const homeSchema = JSON.stringify([
       contactType: 'customer support',
       availableLanguage: ['Italian', 'English'],
     },
-    founder: {
-      '@type': 'Organization',
-      name: SITE.author.name,
-      jobTitle: 'Personal Finance and Taxation Enthusiast',
-      description: 'Personal finance and taxation enthusiast, Publisher of calculators and practical guides graduate.',
-    },
+    founder: { '@type': 'Organization', name: SITE.author.name, url: SITE.author.url },
   },
   {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE.author.name,
-    jobTitle: 'Personal Finance and Taxation Enthusiast',
-    description: 'Personal finance and taxation enthusiast, Publisher of calculators and practical guides graduate.',
+    description: `${SITE.author.title}, specialised in Italian salary calculation mechanisms and social contribution analysis.`,
     url: SITE.author.url,
-    worksFor: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/` },
   },
 ]);
 

@@ -12,6 +12,7 @@ export const SITE = {
   author: {
     name: 'Radif Partners',
     title: 'Publisher of calculators and practical guides',
+    titleIt: 'Editore di calcolatori e guide pratiche',
     url: 'https://calcolalordonetto.it/chi-siamo/',
     email: 'contact@calcolalordonetto.it',
   },

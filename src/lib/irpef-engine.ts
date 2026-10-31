@@ -197,44 +197,56 @@ export function calcolaDetrazioneLavoroDipendente(
   // Prorate by working days
   detrazione = detrazione * (giorniLavoro / 365);
 
+  // Art. 13, comma 1.1, TUIR: +65 € if reddito complessivo > 25,000 and ≤ 35,000.
+  // The text of comma 1.1 does not prorate it by the working period.
+  const m = d.maggiorazione;
+  if (reddito > m.limiteInferiore && reddito <= m.limiteSuperiore) {
+    detrazione += m.importo;
+  }
+
   return Math.max(0, Math.round(detrazione * 100) / 100);
 }
 
 // ─── Cuneo Fiscale ──────────────────────────────────────────────────
 
 /**
- * Calculate the cuneo fiscale benefit for 2026.
- * Returns both components: somma esente (exempt income) and detrazione.
+ * Calculate the cuneo fiscale benefit for 2026 (L. 207/2024, art. 1, commi 4–6).
+ *
+ * - Comma 4: reddito complessivo ≤ €20,000 → a sum that does NOT form part of taxable
+ *   income ("non concorre alla formazione del reddito"): it is paid on top of the net
+ *   salary, it does not reduce the IRPEF base. Rate by reddito di lavoro dipendente
+ *   (annualised, comma 5): 7.1% ≤ €8,500, 5.3% ≤ €15,000, 4.8% above.
+ * - Comma 6: reddito complessivo €20,000–€40,000 → ulteriore detrazione from IRPEF lorda,
+ *   €1,000 up to €32,000, then €1,000 × (40,000 − reddito) / 8,000, prorated by the
+ *   working period.
+ *
+ * @param reddito - Reddito complessivo (= reddito di lavoro dipendente here)
+ * @param giorniLavoro - Working days in the year (for proration of the detrazione)
  */
-export function calcolaCuneoFiscale(reddito: number): {
+export function calcolaCuneoFiscale(reddito: number, giorniLavoro: number = 365): {
   sommaEsente: number;
   detrazione: number;
 } {
-  if (reddito <= 0 || reddito > 40_000) {
+  const po = CUNEO_FISCALE_PHASE_OUT_2026;
+  if (reddito <= 0 || reddito > po.limiteSuperiore) {
     return { sommaEsente: 0, detrazione: 0 };
   }
 
-  // Tier 1: Somma esente (≤ €20,000)
-  if (reddito <= 8_500) {
-    return { sommaEsente: reddito * 0.071, detrazione: 0 };
-  }
-  if (reddito <= 15_000) {
-    return { sommaEsente: reddito * 0.053, detrazione: 0 };
-  }
-  if (reddito <= 20_000) {
-    return { sommaEsente: reddito * 0.048, detrazione: 0 };
+  // Tier 1: somma esente (comma 4), rate chosen on the income brought to a full year (comma 5)
+  const fasceSomma = FASCE_CUNEO_FISCALE_2026.filter((f) => f.tipo === 'somma_esente');
+  const sogliaSomma = fasceSomma[fasceSomma.length - 1].limiteSuperiore;
+  if (reddito <= sogliaSomma) {
+    const redditoAnnuo = giorniLavoro > 0 && giorniLavoro < 365 ? (reddito * 365) / giorniLavoro : reddito;
+    const fascia = fasceSomma.find((f) => redditoAnnuo <= f.limiteSuperiore) ?? fasceSomma[fasceSomma.length - 1];
+    return { sommaEsente: Math.round(reddito * fascia.percentualeOValore * 100) / 100, detrazione: 0 };
   }
 
-  // Tier 2: Detrazione (€20,001–€40,000)
-  if (reddito <= 32_000) {
-    return { sommaEsente: 0, detrazione: 1_000 };
-  }
-
-  // Phase-out (€32,001–€40,000)
-  const po = CUNEO_FISCALE_PHASE_OUT_2026;
-  const detrazione =
-    po.valoreBase *
-    ((po.limiteSuperiore - reddito) / po.denominatore);
+  // Tier 2: ulteriore detrazione (comma 6), €1,000 up to €32,000, then phase-out
+  let detrazione =
+    reddito <= po.limiteInferiore
+      ? po.valoreBase
+      : po.valoreBase * ((po.limiteSuperiore - reddito) / po.denominatore);
+  detrazione = detrazione * (giorniLavoro / 365);
 
   return { sommaEsente: 0, detrazione: Math.max(0, Math.round(detrazione * 100) / 100) };
 }
@@ -251,16 +263,17 @@ export function calcolaCuneoFiscale(reddito: number): {
 export function calcolaTrattamentoIntegrativo(
   reddito: number,
   irpefLorda: number,
-  totalDetrazioni: number
+  totalDetrazioni: number,
+  detrazioneLavoroDipendente: number = totalDetrazioni
 ): number {
   const t = TRATTAMENTO_INTEGRATIVO_2026;
 
   if (reddito <= 0) return 0;
 
   if (reddito <= t.sogliaCompleta) {
-    // Full amount for income ≤ €15,000
-    // But only if there's actual IRPEF to pay (the person must have tax liability)
-    if (irpefLorda <= 0) return 0;
+    // Full amount for income ≤ €15,000, only if IRPEF lorda exceeds the detrazione
+    // lavoro dipendente reduced by €75 (D.L. 3/2020, art. 1, comma 1, "incapienza")
+    if (irpefLorda <= detrazioneLavoroDipendente - t.riduzioneCapienza) return 0;
     return t.importoAnnuo;
   }
 
@@ -358,8 +371,12 @@ export function calcolaContributiINPS(
       ? CONTRIBUTI_INPS_2026.aliquotaApprendista
       : CONTRIBUTI_INPS_2026.aliquotaDipendente;
 
-  const imponibile = Math.min(ral, CONTRIBUTI_INPS_2026.massimaleAnnuo);
-  return Math.round(imponibile * aliquota * 100) / 100;
+  const c = CONTRIBUTI_INPS_2026;
+  const imponibile = Math.min(ral, c.massimaleAnnuo);
+  // Art. 3-ter D.L. 384/1992: +1% on the part above the first pensionable band
+  const aggiuntivo =
+    tipo === 'standard' ? Math.max(0, imponibile - c.primaFasciaPensionabile) * c.aliquotaAggiuntiva : 0;
+  return Math.round((imponibile * aliquota + aggiuntivo) * 100) / 100;
 }
 
 /**
@@ -441,14 +458,14 @@ export function aliquotaMarginale(imponibile: number): number {
  *
  * This is the central function that orchestrates all components:
  * 1. RAL → deduct INPS (9.19%) → imponibile fiscale
- * 2. Apply cuneo fiscale (somma esente reduces imponibile)
+ * 2. Cuneo fiscale: somma esente (≤ €20,000, added to the net) or detrazione (€20,000–40,000)
  * 3. Calculate IRPEF lorda on imponibile
  * 4. Apply detrazioni (lavoro dipendente, coniuge, figli)
  * 5. IRPEF netta = IRPEF lorda − detrazioni (min 0)
  * 6. Apply cuneo fiscale detrazione
  * 7. Calculate addizionali (regionale + comunale)
  * 8. Calculate trattamento integrativo
- * 9. Netto = RAL − INPS − IRPEF netta − addizionali + trattamento integrativo
+ * 9. Netto = RAL − INPS − IRPEF netta − addizionali + trattamento integrativo + somma esente
  */
 export function calcolaStipendio(input: InputStipendio): RisultatoStipendio {
   const {
@@ -469,9 +486,10 @@ export function calcolaStipendio(input: InputStipendio): RisultatoStipendio {
   // 2. Imponibile fiscale = RAL − INPS dipendente
   let imponibileFiscale = ral - contributiINPS;
 
-  // 3. Cuneo fiscale, somma esente (reduces the taxable base)
-  const cuneoFiscale = calcolaCuneoFiscale(imponibileFiscale);
-  const imponibilePerIRPEF = imponibileFiscale - cuneoFiscale.sommaEsente;
+  // 3. Cuneo fiscale (L. 207/2024): the somma esente does not form part of taxable income
+  //    and is added to the net; it does NOT reduce the IRPEF base.
+  const cuneoFiscale = calcolaCuneoFiscale(imponibileFiscale, giorniLavoro);
+  const imponibilePerIRPEF = imponibileFiscale;
 
   // 4. IRPEF lorda
   const { irpefLorda } = calcolaIRPEF(imponibilePerIRPEF);
@@ -510,12 +528,14 @@ export function calcolaStipendio(input: InputStipendio): RisultatoStipendio {
   const trattamentoIntegrativo = calcolaTrattamentoIntegrativo(
     imponibileFiscale,
     irpefLorda,
-    detrazioneLavoroDipendente + detrazioneConiuge + detrazioneFigli
+    detrazioneLavoroDipendente + detrazioneConiuge + detrazioneFigli,
+    detrazioneLavoroDipendente
   );
 
-  // 9. Netto annuo
+  // 9. Netto annuo (+ somma esente del cuneo fiscale, paid with the salary)
   const nettoAnnuo = Math.round(
-    (ral - contributiINPS - irpefNetta - totaleAddizionali + trattamentoIntegrativo) * 100
+    (ral - contributiINPS - irpefNetta - totaleAddizionali + trattamentoIntegrativo
+      + cuneoFiscale.sommaEsente) * 100
   ) / 100;
 
   // Monthly net (divided by mensilità)

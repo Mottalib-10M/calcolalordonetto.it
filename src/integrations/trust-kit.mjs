@@ -67,7 +67,7 @@ const dateLisible = (iso, lang) => {
 
 const AUTHOR = {
   name: 'Radif Partners',
-  jobTitle: 'Éditeur de calculateurs et de guides pratiques',
+  jobTitle: 'Editore di calcolatori e guide pratiche',
   knowsAbout: ['Personal finance', 'Payroll and income tax', 'Social security'],
 };
 

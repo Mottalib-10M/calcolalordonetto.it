@@ -54,7 +54,7 @@ const articleSchema = {
   author: {
     '@type': 'Organization',
     name: SITE.author.name,
-    jobTitle: SITE.author.title,
+    description: lang === 'en' ? SITE.author.title : SITE.author.titleIt,
     url: SITE.author.url,
   },
   publisher: {

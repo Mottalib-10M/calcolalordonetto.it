@@ -244,7 +244,7 @@ export default function StipendioNetto({ lang = 'it' }: Props) {
                 {t('stipendioNetto.annualPayslipDetail', lang)}
               </h3>
               <TabellaDettaglio
-                items={buildTabellaItems(risultato, lang)}
+                items={buildTabellaItems(risultato, lang, !comuneSlug)}
                 lang={lang}
               />
             </div>
@@ -293,7 +293,7 @@ export default function StipendioNetto({ lang = 'it' }: Props) {
 
 // ── Helper: build TabellaDettaglio items ───────────────────────────────────
 
-function buildTabellaItems(r: RisultatoStipendio, lang: Lang) {
+function buildTabellaItems(r: RisultatoStipendio, lang: Lang, comuneMedio = false) {
   const items: {
     label: string;
     value: number;
@@ -330,6 +330,22 @@ function buildTabellaItems(r: RisultatoStipendio, lang: Lang) {
     });
   }
 
+  items.push(
+    { label: t('stipendioNetto.netIrpef', lang), value: r.irpefNetta, tipo: 'negativo' },
+    { label: t('stipendioNetto.regionalSurcharge', lang), value: r.addizionaleRegionale, tipo: 'negativo' },
+    {
+      label: comuneMedio
+        ? t('stipendioNetto.municipalSurchargeAverage', lang).replace(
+            '{p}',
+            (ADDIZIONALE_COMUNALE_MEDIA * 100).toLocaleString(lang === 'en' ? 'en-GB' : 'it-IT'),
+          )
+        : t('stipendioNetto.municipalSurcharge', lang),
+      value: r.addizionaleComunale,
+      tipo: 'negativo',
+    },
+  );
+
+  // Cuneo fiscale ≤ 20.000 €: somma non tassata, pagata in busta paga in aggiunta al netto
   if (r.cuneoFiscaleSommaEsente > 0) {
     items.push({
       label: t('stipendioNetto.taxWedgeExempt', lang),
@@ -337,12 +353,6 @@ function buildTabellaItems(r: RisultatoStipendio, lang: Lang) {
       tipo: 'positivo',
     });
   }
-
-  items.push(
-    { label: t('stipendioNetto.netIrpef', lang), value: r.irpefNetta, tipo: 'negativo' },
-    { label: t('stipendioNetto.regionalSurcharge', lang), value: r.addizionaleRegionale, tipo: 'negativo' },
-    { label: t('stipendioNetto.municipalSurcharge', lang), value: r.addizionaleComunale, tipo: 'negativo' },
-  );
 
   if (r.trattamentoIntegrativo > 0) {
     items.push({
