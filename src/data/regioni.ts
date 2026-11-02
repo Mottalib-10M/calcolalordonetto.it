@@ -8,6 +8,7 @@
  * - ISO 3166-2:IT codes without the "IT-" prefix
  * - Addizionale is calculated PROGRESSIVELY per bracket (like IRPEF):
  *   each bracket's rate applies only to income within that bracket
+ * - A region may add special rules on top of the brackets (see `regole`)
  */
 
 // ---------------------------------------------------------------------------
@@ -32,6 +33,13 @@ export interface Regione {
   scaglioni: ScaglioneRegionale[];
   /** `true` for regions / provinces with special fiscal autonomy. */
   autonoma?: boolean;
+  /** Rules that do not fit a table of brackets. Income is compared in whole euros, as in the tax return. */
+  regole?: {
+    /** Taxable income up to `limite`: a single rate on all of it, the brackets do not apply. */
+    aliquotaUnicaFinoA?: { limite: number; aliquota: number };
+    /** Taxable income from `da` to `a` (both included): `importo` off the surcharge. */
+    detrazione?: { da: number; a: number; importo: number };
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -142,12 +150,18 @@ export const regioni: readonly Regione[] = [
     codice: 'LAZ',
     nome: 'Lazio',
     slug: 'lazio',
+    // Anno d'imposta 2026: L.R. Lazio 31 dicembre 2025, n. 20, art. 2, c. 2 e 3 (Regione Lazio,
+    // "Addizionale-regionale-2026.pdf"; Dipartimento delle Finanze, addregirpef.php?reg=08, pubbl. 22-01-2026)
     scaglioni: [
       { limiteSuperiore: 15_000, aliquota: 0.0173 },
-      { limiteSuperiore: 28_000, aliquota: 0.0273 },
-      { limiteSuperiore: 50_000, aliquota: 0.0293 },
+      { limiteSuperiore: 28_000, aliquota: 0.0333 },
+      { limiteSuperiore: 50_000, aliquota: 0.0333 },
       { limiteSuperiore: null, aliquota: 0.0333 },
     ],
+    regole: {
+      aliquotaUnicaFinoA: { limite: 28_000, aliquota: 0.0173 },
+      detrazione: { da: 28_001, a: 30_000, importo: 60 },
+    },
   },
   {
     codice: 'LOM',
@@ -274,7 +288,7 @@ export const regioniByCode: ReadonlyMap<string, Regione> = new Map(
  *
  * The tax is computed **progressively**: each bracket's rate applies only to
  * the portion of income that falls within that bracket, exactly like the
- * national IRPEF brackets.
+ * national IRPEF brackets. The region's `regole`, if any, are then applied.
  *
  * @param imponibile - Taxable income in EUR (must be >= 0).
  * @param codiceRegione - ISO 3166-2:IT region code without "IT-" prefix.
@@ -297,7 +311,13 @@ export function calcolaAddizionaleRegionale(
     return 0;
   }
 
-  const { scaglioni } = regione;
+  const { scaglioni, regole } = regione;
+  const redditoInEuro = Math.round(imponibile);
+
+  if (regole?.aliquotaUnicaFinoA && redditoInEuro <= regole.aliquotaUnicaFinoA.limite) {
+    return Math.round(imponibile * regole.aliquotaUnicaFinoA.aliquota * 100) / 100;
+  }
+
   let imposta = 0;
   let limiteInferiore = 0;
 
@@ -316,6 +336,10 @@ export function calcolaAddizionaleRegionale(
     }
 
     limiteInferiore = limiteSuperioreBracket;
+  }
+
+  if (regole?.detrazione && redditoInEuro >= regole.detrazione.da && redditoInEuro <= regole.detrazione.a) {
+    imposta = Math.max(0, imposta - regole.detrazione.importo);
   }
 
   return Math.round(imposta * 100) / 100;

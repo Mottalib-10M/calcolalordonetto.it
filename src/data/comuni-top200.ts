@@ -16,6 +16,11 @@ export interface Comune {
   provincia: string; // abbreviation: "RM", "MI", "NA" …
   regione: string; // region code matching regioni.ts
   aliquota: number; // addizionale comunale rate (e.g. 0.008 = 0.8 %)
+  /**
+   * Exemption threshold on taxable income, where it has been checked against the delibera.
+   * Up to it nothing is due; above it the rate applies to ALL income (not an allowance).
+   */
+  sogliaEsenzione?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -29,8 +34,9 @@ export const ADDIZIONALE_COMUNALE_MEDIA = 0.008; // 0.8 %
 // ---------------------------------------------------------------------------
 
 export const COMUNI: Comune[] = [
-  // 1
-  { nome: 'Roma', slug: 'roma', provincia: 'RM', regione: 'lazio', aliquota: 0.009 },
+  // 1: delibera A.C. 186 del 19-12-2024, dal 2025 (Dipartimento delle Finanze, H501; Roma Capitale, INF41403:
+  // "l'addizionale è dovuta per intero, senza che il limite di 14 mila Euro costituisca una franchigia")
+  { nome: 'Roma', slug: 'roma', provincia: 'RM', regione: 'lazio', aliquota: 0.009, sogliaEsenzione: 14_000 },
   // 2
   { nome: 'Milano', slug: 'milano', provincia: 'MI', regione: 'lombardia', aliquota: 0.008 },
   // 3

@@ -16,7 +16,7 @@ const breadcrumbs = [
 const faqs = [
   {
     question: 'Which Italian regions have the highest and lowest tax surcharges?',
-    answer: 'As of 2026, <strong>Lazio</strong> has the highest addizionale regionale at 3.33% (for incomes above approximately €50,000), while several regions such as <strong>Lombardia, Veneto, and Friuli-Venezia Giulia</strong> remain among the lowest, with base rates around 1.23%. Regions with special autonomy statutes (e.g., Trentino-Alto Adige, Valle d\'Aosta) may apply different rates. For the municipal surcharge, it varies city by city -- Milan charges 0.8%, Rome charges 0.9%, and some smaller municipalities charge 0%.',
+    answer: 'As of 2026, <strong>Lazio</strong> is among the highest: 3.33% on income beyond the first €15,000 once taxable income exceeds €28,000, and 1.73% on all income up to €28,000. Meanwhile several regions such as <strong>Lombardia, Veneto, and Friuli-Venezia Giulia</strong> remain among the lowest, with base rates around 1.23%. Regions with special autonomy statutes (e.g., Trentino-Alto Adige, Valle d\'Aosta) may apply different rates. For the municipal surcharge, it varies city by city -- Milan charges 0.8%, Rome charges 0.9% (nothing on taxable income up to €14,000), and some smaller municipalities charge 0%.',
   },
   {
     question: 'How are the regional and municipal surcharges calculated?',
@@ -210,11 +210,11 @@ const faqs = [
         </tr>
         <tr>
           <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Rome (Lazio)</td>
-          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">~2.73%</td>
-          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;868</td>
+          <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">~2.57%</td>
+          <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;818</td>
           <td class="py-3 px-4 text-center text-gray-900 dark:text-gray-100">0.9%</td>
           <td class="py-3 px-4 text-center tabular-nums text-gray-900 dark:text-gray-100">&euro;286</td>
-          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400"><strong>&euro;1,154</strong></td>
+          <td class="py-3 pl-4 text-right tabular-nums text-red-600 dark:text-red-400"><strong>&euro;1,104</strong></td>
         </tr>
         <tr>
           <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Turin (Piemonte)</td>
@@ -237,10 +237,10 @@ const faqs = [
   </div>
 
   <p>
-    The difference is striking. Luca would pay <strong>&euro;608 more per year</strong> in surcharges by living in Rome compared to Florence, that is roughly &euro;51 less per month in take-home pay, purely because of where he lives. Compared to Milan, Rome costs him an additional &euro;398 per year. Over a decade, the Rome-Florence gap alone amounts to more than &euro;6,000 in additional taxes.
+    The difference is striking. Luca would pay <strong>&euro;558 more per year</strong> in surcharges by living in Rome compared to Florence, that is roughly &euro;47 less per month in take-home pay, purely because of where he lives. Compared to Milan, Rome costs him an additional &euro;348 per year. Over a decade, the Rome-Florence gap alone amounts to more than &euro;5,500 in additional taxes.
   </p>
   <p>
-    These figures assume Lombardia applies its progressive regional rate (approximately 1.58% for this income level), Lazio its progressive scale (~2.73% at this bracket), Piemonte its intermediate rate (~2.13%), and Toscana its base rate (~1.42%). Municipal rates are as published for 2026 by each municipality. The exact amounts may vary slightly depending on how each region structures its progressive brackets (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate, Addizionali regionali e comunali</a>).
+    These figures assume Lombardia applies its progressive regional rate (approximately 1.58% for this income level), Lazio its 2026 rule (<a href="https://www.regione.lazio.it/sites/default/files/2026-01/Addizionale-regionale-2026.pdf" target="_blank" rel="noopener noreferrer">Regione Lazio</a>: above &euro;28,000 of taxable income, 1.73% on the first &euro;15,000 and 3.33% on the rest, about 2.57% overall), Piemonte its intermediate rate (~2.13%), and Toscana its base rate (~1.42%). Municipal rates are as published for 2026 by each municipality; Rome charges nothing on taxable income up to &euro;14,000 and, above it, 0.9% on all income, as the threshold is not an allowance (<a href="https://www.comune.roma.it/web/it/scheda-servizi.page?contentId=INF41403" target="_blank" rel="noopener noreferrer">Roma Capitale</a>). The exact amounts may vary slightly depending on how each region structures its progressive brackets (source: <a href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener noreferrer">Agenzia delle Entrate, Addizionali regionali e comunali</a>).
   </p>
   <p>
     To model these surcharges with your own salary and city, use our <a href="/en/">net salary calculator</a>, which includes regional and municipal surcharges in the computation.

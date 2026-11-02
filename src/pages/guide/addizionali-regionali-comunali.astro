@@ -15,7 +15,7 @@ const breadcrumbs = [
 const faqs = [
   {
     question: 'Le addizionali regionali e comunali si pagano anche sotto la no tax area?',
-    answer: 'Dipende dalla regione e dal comune di residenza. L\'IRPEF nazionale prevede una no tax area di 8.500 euro, ma le addizionali locali seguono regole proprie. Alcune regioni e comuni prevedono soglie di esenzione (ad esempio, il Lazio esenta i redditi fino a 12.000 euro dall\'addizionale regionale), mentre altre applicano l\'addizionale anche su redditi molto bassi. È quindi fondamentale verificare le delibere del proprio comune e della propria regione per sapere se si è soggetti al pagamento.',
+    answer: 'Dipende dalla regione e dal comune di residenza. L\'IRPEF nazionale prevede una no tax area di 8.500 euro, ma le addizionali locali seguono regole proprie. Alcune regioni e comuni prevedono soglie di esenzione (ad esempio, Roma esenta dall\'addizionale comunale i redditi imponibili fino a 14.000 euro), mentre altre applicano l\'addizionale anche su redditi molto bassi. È quindi fondamentale verificare le delibere del proprio comune e della propria regione per sapere se si è soggetti al pagamento.',
   },
   {
     question: 'Come vengono trattenute le addizionali in busta paga?',
@@ -135,7 +135,7 @@ const faqs = [
     </table>
   </div>
 
-  <h3>Lazio (progressiva, 2 scaglioni)</h3>
+  <h3>Lazio (anno d'imposta 2026)</h3>
 
   <div class="overflow-x-auto not-prose">
     <table class="w-full text-sm border-collapse">
@@ -147,17 +147,24 @@ const faqs = [
       </thead>
       <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
         <tr>
-          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Fino a 28.000 &euro;</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Imponibile fino a 28.000 &euro;: tutto il reddito</td>
           <td class="py-3 pl-4 text-center font-semibold text-brand">1,73%</td>
         </tr>
         <tr>
-          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Oltre 28.000 &euro;</td>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Imponibile oltre 28.000 &euro;: primi 15.000 &euro;</td>
+          <td class="py-3 pl-4 text-center font-semibold text-brand">1,73%</td>
+        </tr>
+        <tr>
+          <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Imponibile oltre 28.000 &euro;: parte oltre 15.000 &euro;</td>
           <td class="py-3 pl-4 text-center font-semibold text-brand">3,33%</td>
         </tr>
       </tbody>
     </table>
   </div>
 
+  <p>
+    Per un imponibile compreso tra 28.001 e 30.000 euro spetta inoltre una detrazione di 60 euro (L.R. 20/2025, art. 2, come riportata dalla <a href="https://www.regione.lazio.it/sites/default/files/2026-01/Addizionale-regionale-2026.pdf" target="_blank" rel="noopener noreferrer">Regione Lazio</a> e dal <a href="https://www1.finanze.gov.it/finanze2/dipartimentopolitichefiscali/fiscalitalocale/addregirpef/addregirpef.php?reg=08" target="_blank" rel="noopener noreferrer">Dipartimento delle Finanze</a>).
+  </p>
   <p>
     Il Lazio è storicamente una delle regioni con le addizionali più elevate d'Italia, a causa dei piani di rientro dal deficit sanitario che hanno imposto l'applicazione delle aliquote massime. Questo si traduce in un prelievo significativamente superiore rispetto alla media nazionale.
   </p>
@@ -298,7 +305,7 @@ const faqs = [
   </div>
 
   <p>
-    Roma applica l'aliquota massima consentita dalla legge (0,9%), il che, sommato alle aliquote regionali elevate del Lazio, rende la Capitale una delle città con il prelievo locale complessivo più alto d'Italia. All'estremo opposto, Firenze, con un sistema progressivo che parte dallo 0,2% per i redditi più bassi, è tra le grandi città con le addizionali comunali più contenute per chi ha un reddito medio.
+    Roma applica l'aliquota massima consentita dalla legge (0,9%), con esenzione per i redditi imponibili fino a 14.000 euro (<a href="https://www.comune.roma.it/web/it/scheda-servizi.page?contentId=INF41403" target="_blank" rel="noopener noreferrer">Roma Capitale</a>): oltre la soglia è dovuta su tutto il reddito. Questo, sommato alle aliquote regionali elevate del Lazio, rende la Capitale una delle città con il prelievo locale complessivo più alto d'Italia. All'estremo opposto, Firenze, con un sistema progressivo che parte dallo 0,2% per i redditi più bassi, è tra le grandi città con le addizionali comunali più contenute per chi ha un reddito medio.
   </p>
 
   <h2 id="esempio-pratico-confronto">Esempio Pratico di Confronto</h2>
@@ -324,23 +331,23 @@ const faqs = [
   <h3>Passo 2: addizionali per il residente nel Lazio (Roma)</h3>
 
   <p>
-    <strong>Addizionale regionale Lazio</strong> (progressiva per scaglioni su 31.783,50 &euro;):
+    <strong>Addizionale regionale Lazio</strong> (imponibile oltre 28.000 &euro;, quindi 1,73% sui primi 15.000 &euro; e 3,33% sul resto):
   </p>
   <ul>
-    <li>Sui primi 28.000 &euro; al 1,73%: 28.000 &times; 1,73% = 484,40 &euro;</li>
-    <li>Da 28.001 a 31.783,50 &euro; al 3,33%: 3.783,50 &times; 3,33% = 126,00 &euro;</li>
-    <li><strong>Totale addizionale regionale Lazio: ~610 &euro;</strong></li>
+    <li>Sui primi 15.000 &euro; all'1,73%: 15.000 &times; 1,73% = 259,50 &euro;</li>
+    <li>Da 15.001 a 31.783,50 &euro; al 3,33%: 16.783,50 &times; 3,33% = 558,89 &euro;</li>
+    <li><strong>Totale addizionale regionale Lazio: ~818 &euro;</strong></li>
   </ul>
 
   <p>
-    <strong>Addizionale comunale Roma</strong> (aliquota fissa 0,9%):
+    <strong>Addizionale comunale Roma</strong> (aliquota 0,9% su tutto il reddito, perché l'imponibile supera 14.000 &euro;):
   </p>
   <ul>
     <li>31.783,50 &times; 0,9% = <strong>~286 &euro;</strong></li>
   </ul>
 
   <p>
-    <strong>Totale addizionali Lazio + Roma: ~896 &euro;/anno</strong>
+    <strong>Totale addizionali Lazio + Roma: ~1.104 &euro;/anno</strong>
   </p>
 
   <h3>Passo 3: addizionali per il residente in Friuli Venezia Giulia (Udine)</h3>
@@ -379,7 +386,7 @@ const faqs = [
       <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
         <tr>
           <td class="py-3 pr-4 text-gray-900 dark:text-gray-100">Addizionale regionale</td>
-          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400">610 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400">818 &euro;</td>
           <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400">311 &euro;</td>
         </tr>
         <tr>
@@ -389,19 +396,19 @@ const faqs = [
         </tr>
         <tr class="border-t-2 border-gray-300 dark:border-gray-600">
           <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Totale addizionali</td>
-          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400 font-bold">896 &euro;</td>
+          <td class="py-3 px-4 text-right tabular-nums text-red-600 dark:text-red-400 font-bold">1.104 &euro;</td>
           <td class="py-3 pl-4 text-right tabular-nums text-green-600 dark:text-green-400 font-bold">518 &euro;</td>
         </tr>
         <tr>
           <td class="py-3 pr-4 text-gray-900 dark:text-white font-bold">Differenza annua</td>
-          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100" colspan="2"><strong>~378 &euro;/anno</strong> (circa 29 &euro;/mese)</td>
+          <td class="py-3 px-4 text-right tabular-nums text-gray-900 dark:text-gray-100" colspan="2"><strong>~586 &euro;/anno</strong> (circa 45 &euro;/mese)</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Il lavoratore residente a Roma paga <strong>circa 378 euro in più all'anno</strong> di addizionali rispetto al collega residente a Udine, a parità di RAL. Su base mensile (calcolando 13 mensilità), la differenza si traduce in circa <strong>29 euro al mese</strong> di netto in meno. Questa cifra, apparentemente contenuta, si accumula nel tempo: su 10 anni di carriera, la differenza supera i 3.700 euro.
+    Il lavoratore residente a Roma paga <strong>circa 586 euro in più all'anno</strong> di addizionali rispetto al collega residente a Udine, a parità di RAL. Su base mensile (calcolando 13 mensilità), la differenza si traduce in circa <strong>45 euro al mese</strong> di netto in meno. Questa cifra, apparentemente contenuta, si accumula nel tempo: su 10 anni di carriera, la differenza supera i 5.800 euro.
   </p>
   <p>
     Per verificare l'impatto delle addizionali sulla tua situazione specifica, utilizza il nostro <a href="/comparatore-regioni/">comparatore regionale</a>, che permette di confrontare il netto tra diverse regioni e comuni inserendo la tua RAL.
@@ -428,9 +435,9 @@ const faqs = [
     Diverse regioni e comuni prevedono soglie di esenzione al di sotto delle quali le addizionali non sono dovute. Queste soglie non coincidono con la no tax area nazionale dell'IRPEF (8.500 euro). Ecco alcuni esempi significativi:
   </p>
   <ul>
-    <li><strong>Lazio:</strong> esenzione per redditi complessivi fino a 12.000 euro. Superata la soglia, le aliquote si applicano sull'intero reddito (sistema a "soglia", non a scaglione di esenzione).</li>
+    <li><strong>Lazio:</strong> nessuna soglia di esenzione nel 2026, ma aliquota ridotta dell'1,73% su tutto il reddito fino a 28.000 euro e detrazione di 60 euro tra 28.001 e 30.000 euro di imponibile.</li>
     <li><strong>Lombardia:</strong> esenzione per redditi fino a 15.000 euro per i primi scaglioni agevolati.</li>
-    <li><strong>Roma:</strong> esenzione dall'addizionale comunale per redditi fino a 12.000 euro.</li>
+    <li><strong>Roma:</strong> esenzione dall'addizionale comunale per redditi imponibili fino a 14.000 euro, dal 2025 (delibera dell'Assemblea Capitolina n. 186/2024, <a href="https://www1.finanze.gov.it/finanze2/dipartimentopolitichefiscali/fiscalitalocale/nuova_addcomirpef/risultato.htm?anno=9999&amp;cc=H501&amp;cm=Roma&amp;lista=1&amp;pagina=sceltaregione.htm&amp;pr=&amp;r=2" target="_blank" rel="noopener noreferrer">Dipartimento delle Finanze</a>). Superata la soglia, lo 0,9% si applica sull'intero reddito: non è una franchigia.</li>
     <li><strong>Milano:</strong> esenzione per redditi fino a 21.000 euro per determinate categorie di contribuenti.</li>
   </ul>
   <p>

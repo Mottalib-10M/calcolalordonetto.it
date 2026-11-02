@@ -29,6 +29,8 @@ export interface InputStipendio {
   regione: string;
   /** Addizionale comunale rate as decimal (e.g. 0.008 = 0.8%) */
   aliquotaComunale?: number;
+  /** Exemption threshold of the chosen comune (Comune.sogliaEsenzione), if it has one */
+  sogliaEsenzioneComunale?: number;
   /** Number of pay periods: 12, 13 (default), or 14 */
   mensilita?: 12 | 13 | 14;
   /** Spouse dependent (coniuge a carico) */
@@ -393,12 +395,16 @@ export function calcolaContributiINPSDatore(ral: number): number {
 /**
  * Calculate municipal IRPEF surcharge.
  * Simple flat-rate calculation (comuni don't use progressive brackets).
+ * Up to the exemption threshold nothing is due; above it the rate applies to all
+ * income, the threshold is not an allowance. Income compared in whole euros.
  */
 export function calcolaAddizionaleComunale(
   imponibile: number,
-  aliquota: number = ADDIZIONALE_COMUNALE_MEDIA
+  aliquota: number = ADDIZIONALE_COMUNALE_MEDIA,
+  sogliaEsenzione: number = 0
 ): number {
   if (imponibile <= 0) return 0;
+  if (Math.round(imponibile) <= sogliaEsenzione) return 0;
   return Math.round(imponibile * aliquota * 100) / 100;
 }
 
@@ -472,6 +478,7 @@ export function calcolaStipendio(input: InputStipendio): RisultatoStipendio {
     ral,
     regione,
     aliquotaComunale = ADDIZIONALE_COMUNALE_MEDIA,
+    sogliaEsenzioneComunale = 0,
     mensilita = 13,
     coniugeACarico = false,
     figliACarico21plus = 0,
@@ -521,7 +528,7 @@ export function calcolaStipendio(input: InputStipendio): RisultatoStipendio {
 
   // 7. Addizionali (calculated on imponibile fiscale)
   const addizionaleRegionale = calcolaAddizionaleRegionale(imponibileFiscale, regione);
-  const addizionaleComunale = calcolaAddizionaleComunale(imponibileFiscale, aliquotaComunale);
+  const addizionaleComunale = calcolaAddizionaleComunale(imponibileFiscale, aliquotaComunale, sogliaEsenzioneComunale);
   const totaleAddizionali = addizionaleRegionale + addizionaleComunale;
 
   // 8. Trattamento integrativo
@@ -705,6 +712,7 @@ export interface InputImpatriati {
   regione: string;
   /** Other options from InputStipendio */
   aliquotaComunale?: number;
+  sogliaEsenzioneComunale?: number;
   mensilita?: 12 | 13 | 14;
   coniugeACarico?: boolean;
   figliACarico21plus?: number;
@@ -731,6 +739,7 @@ export function calcolaRegimeImpatriati(input: InputImpatriati): RisultatoImpatr
     percentualeEsenzione = 0.5,
     regione,
     aliquotaComunale,
+    sogliaEsenzioneComunale,
     mensilita,
     coniugeACarico,
     figliACarico21plus,
@@ -741,6 +750,7 @@ export function calcolaRegimeImpatriati(input: InputImpatriati): RisultatoImpatr
     ral,
     regione,
     aliquotaComunale,
+    sogliaEsenzioneComunale,
     mensilita,
     coniugeACarico,
     figliACarico21plus,
@@ -755,6 +765,7 @@ export function calcolaRegimeImpatriati(input: InputImpatriati): RisultatoImpatr
     ral: ralTassabile,
     regione,
     aliquotaComunale,
+    sogliaEsenzioneComunale,
     mensilita,
     coniugeACarico,
     figliACarico21plus,

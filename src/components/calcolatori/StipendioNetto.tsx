@@ -64,6 +64,7 @@ export default function StipendioNetto({ lang = 'it' }: Props) {
       ral,
       regione,
       aliquotaComunale,
+      sogliaEsenzioneComunale: comuniBySlug.get(comuneSlug)?.sogliaEsenzione,
       mensilita,
       coniugeACarico,
       figliACarico21plus: figliACarico,
