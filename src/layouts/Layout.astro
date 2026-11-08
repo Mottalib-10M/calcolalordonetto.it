@@ -5,6 +5,7 @@ import { SITE } from '../config';
 import type { Lang } from '../i18n/types';
 import { getAlternatePath } from '../i18n/routes';
 import { canonicalURL } from '../lib/seo';
+import { GA4_ID } from '../data/site-config';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 
@@ -96,9 +97,18 @@ const enPath = lang === 'en' ? currentPath : alternatePath;
     <!-- JSON-LD Schema -->
     {schema && <script type="application/ld+json" set:html={schema} />}
 
+    {/* GA4, régime 'none' (décision de l'éditeur du 2026-10-17, RECETTE §15.6) : Google Analytics 4
+         normal, avec cookies, SANS bandeau. Mesure d'audience accordée, publicité refusée ; cookies
+         _ga et _ga_<ID> limités à 390 jours et non prolongés ; adresse envoyée sans paramètres. */}
+    {GA4_ID && (<>
+      <script is:inline set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted'});`} />
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+      <script is:inline set:html={`gtag('js',new Date());gtag('config','${GA4_ID}',{anonymize_ip:true,page_location:location.origin+location.pathname,cookie_expires:33696000,cookie_update:false,allow_google_signals:false,allow_ad_personalization_signals:false});`} />
+    </>)}
+
     <!-- Microsoft Clarity in modalità senza cookie (RECETTE §15.6, 2026-10-06) : consentv2 « denied » messo in coda
          PRIMA dello script, quindi nessun cookie (_clck, _clsk, MUID, CLID), un identificativo per pagina vista ;
-         contenuto mascherato (data-clarity-mask). Nessun GA4. -->
+         contenuto mascherato (data-clarity-mask). -->
     {SITE.clarityProjectId && (
       <script is:inline set:html={`(function(){window.clarity=window.clarity||function(){(window.clarity.q=window.clarity.q||[]).push(arguments);};window.clarity('consentv2',{ad_Storage:'denied',analytics_Storage:'denied'});var s=document.createElement('script');s.async=true;s.src='https://www.clarity.ms/tag/${SITE.clarityProjectId}';document.head.appendChild(s);window.clarity('set','language','${lang}');window.clarity('set','page_type','${Astro.url.pathname.includes('/guida/') || Astro.url.pathname.includes('/guides/') ? 'guide' : 'calculator'}');})();`} />
     )}

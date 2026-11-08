@@ -2,10 +2,11 @@
 import FontiUfficiali from '../components/ui/FontiUfficiali.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config';
+import { GA4_ID } from '../data/site-config';
 
-const title = 'Cookie Policy: nessun cookie, solo Clarity senza cookie';
-const description = "Cookie policy: il sito dello stipendio netto non installa cookie e non conserva la tua RAL. Solo una misura tecnica e anonima della stabilità con Clarity.";
-const lastUpdated = '6 ottobre 2026';
+const title = 'Cookie Policy: solo Google Analytics, nessuna pubblicità';
+const description = "Cookie policy: solo i cookie di misurazione del pubblico di Google Analytics, 13 mesi al massimo, nessuna pubblicità. La RAL che inserisci non viene salvata.";
+const lastUpdated = '8 novembre 2026';
 ---
 
 <Layout title={title} description={description}>
@@ -26,20 +27,37 @@ const lastUpdated = '6 ottobre 2026';
 
       <h2>1. Cosa Sono i Cookie</h2>
       <p>
-        Un cookie è un piccolo file che un sito salva sul computer o sullo smartphone per riconoscere il visitatore alla visita successiva. Le <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">Linee guida cookie del Garante per la Protezione dei Dati Personali</a> (Provvedimento del 10 giugno 2021) e l'art. 122 del D.Lgs. 196/2003 impongono di informare l'utente su quelli eventualmente utilizzati.
+        Un cookie è un piccolo file che un sito salva sul computer o sullo smartphone per riconoscere il visitatore alla visita successiva. Le <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">Linee guida cookie del Garante per la Protezione dei Dati Personali</a> (Provvedimento del 10 giugno 2021) e l'art. 122 del D.Lgs. 196/2003 impongono di informare l'utente su quelli utilizzati: eccoli.
       </p>
 
-      <h2>2. Nessun Cookie su Questo Sito</h2>
+      <h2>2. Cookie di Google Analytics</h2>
       <p>
-        <strong>{SITE.name} non installa alcun cookie</strong>: né tecnici, né di preferenza, né analitici, né di profilazione, né di terze parti. Il Sito non scrive nulla nemmeno nel <code>localStorage</code> o nel <code>sessionStorage</code> del browser. Per questo non trovi alcun cookie banner: non c'è nulla da accettare o rifiutare.
+        <strong>{SITE.name} imposta soltanto i cookie di misurazione del pubblico di Google Analytics</strong>: nessun cookie pubblicitario, nessun cookie di profilazione, nessun cookie di social network.
       </p>
+      <table>
+        <thead><tr><th>Nome</th><th>Fornitore</th><th>Finalità</th><th>Durata</th></tr></thead>
+        <tbody>
+          <tr><td><code>_ga</code></td><td>Google Analytics</td><td>Distinguere i visitatori con un identificativo casuale</td><td>13 mesi al massimo (390 giorni)</td></tr>
+          <tr><td><code>_ga_{GA4_ID.replace('G-', '')}</code></td><td>Google Analytics</td><td>Conservare lo stato della visita in corso</td><td>13 mesi al massimo (390 giorni)</td></tr>
+        </tbody>
+      </table>
       <p>
-        I calcolatori di stipendio netto, IRPEF, TFR, tredicesima o mutuo lavorano dentro il tuo browser. La RAL, la regione, i figli a carico o le mensilità che inserisci non vengono inviati a nessun server e spariscono alla chiusura della scheda: sul tuo dispositivo non resta nulla e l'editore non registra alcun dato personale.
+        Queste durate non vengono prolungate a ogni visita; la durata predefinita di Google è di 2 anni e il Sito la riduce. Finalità: misurazione del pubblico (pagine viste, pagina di provenienza, dispositivo, paese approssimativo). L'indirizzo IP è anonimizzato: Google Analytics 4 non lo registra né lo conserva, e l'indirizzo della pagina che riceve è privo di parametri. Nessuna pubblicità: memorizzazione pubblicitaria, personalizzazione degli annunci e Google signals sono disattivati.
+      </p>
+      <ul>
+        <li><strong>Fornitore:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlanda, responsabile del trattamento (art. 28 GDPR).</li>
+        <li><strong>Trasferimento:</strong> i dati possono essere trasferiti a Google LLC negli Stati Uniti nell'ambito del Data Privacy Framework UE-USA e delle clausole contrattuali tipo della Commissione europea.</li>
+        <li><strong>Conservazione presso Google:</strong> 14 mesi.</li>
+        <li><strong>Base giuridica:</strong> legittimo interesse dell'editore a sapere come viene usato il Sito (art. 6, par. 1, lett. f, GDPR).</li>
+        <li><strong>Opposizione:</strong> blocca o cancella i cookie dalle impostazioni del browser, oppure installa il <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="nofollow noopener">componente aggiuntivo per la disattivazione di Google Analytics</a>. Il Sito e i calcolatori funzionano allo stesso modo.</li>
+      </ul>
+      <p>
+        I calcolatori di stipendio netto, IRPEF, TFR, tredicesima o mutuo lavorano dentro il tuo browser. La RAL, la regione, i figli a carico o le mensilità che inserisci non vengono inviati a nessun server, non vengono salvati sul dispositivo e spariscono alla chiusura della scheda.
       </p>
 
       <h2>3. Misura Tecnica e Anonima della Stabilità: Microsoft Clarity senza Cookie</h2>
       <p>
-        Per individuare problemi tecnici (errori JavaScript, tempi di caricamento lunghi, clic che non producono effetti, difficoltà di scorrimento su mobile) usiamo <strong>Microsoft Clarity in modalità senza cookie</strong>. Prima che lo script venga caricato, la pagina comunica a Clarity che la memorizzazione è negata: non vengono creati i cookie <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> o <code>CLID</code>, ogni pagina vista riceve un identificativo nuovo e le visite non vengono collegate tra loro. Il testo delle pagine e quanto digiti nei campi sono mascherati nel browser prima di qualsiasi invio.
+        Per individuare problemi tecnici (errori JavaScript, tempi di caricamento lunghi, clic che non producono effetti, difficoltà di scorrimento su mobile) usiamo <strong>Microsoft Clarity in modalità senza cookie</strong>. Prima che lo script venga caricato, la pagina comunica a Clarity che la memorizzazione è negata, quindi Clarity non crea i cookie <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> o <code>CLID</code>, ogni pagina vista riceve un identificativo nuovo e le visite non vengono collegate tra loro. Il testo delle pagine e quanto digiti nei campi sono mascherati nel browser prima di qualsiasi invio.
       </p>
       <ul>
         <li><strong>Titolare di questa misura:</strong> Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublino 18, Irlanda (<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">informativa Microsoft</a>).</li>
@@ -49,12 +67,12 @@ const lastUpdated = '6 ottobre 2026';
         <li><strong>Opposizione:</strong> blocca il dominio <code>clarity.ms</code> nel browser o con un'estensione di blocco, oppure scrivici.</li>
       </ul>
       <p>
-        Non usiamo Google Analytics, pubblicità, pixel di social network né altri strumenti di tracciamento.
+        Oltre a Google Analytics e Clarity, non usiamo pubblicità, pixel di social network né altri strumenti di tracciamento.
       </p>
 
       <h2>4. Log Tecnici dell'Hosting</h2>
       <p>
-        Come ogni server web, quello del nostro fornitore di hosting (OVH SAS, Roubaix, Francia) registra automaticamente indirizzo IP, data e pagina richiesta per finalità di sicurezza. Questi log non comportano alcun cookie.
+        Come ogni server web, quello del nostro fornitore di hosting (OVH SAS, Roubaix, Francia) registra automaticamente indirizzo IP, data e pagina richiesta per finalità di sicurezza.
       </p>
 
       <h2>5. Riferimenti Normativi</h2>
@@ -65,7 +83,7 @@ const lastUpdated = '6 ottobre 2026';
         <li><strong>Linee guida cookie e altri strumenti di tracciamento</strong> del Garante (Provvedimento del 10 giugno 2021, doc. web n. 9677876)</li>
       </ul>
       <p>
-        Puoi proporre reclamo al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>).
+        Puoi esercitare i diritti di accesso, rettifica, cancellazione e opposizione scrivendoci; per Google Analytics, l'opposizione più semplice è descritta al punto 2. Puoi anche proporre reclamo al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>).
       </p>
 
       <h2>6. Aggiornamenti</h2>
@@ -75,7 +93,7 @@ const lastUpdated = '6 ottobre 2026';
 
       <h2>7. Contatti</h2>
       <p>
-        Per qualsiasi domanda, chiarimento o segnalazione relativa alla presente Cookie Policy, o alla misura tecnica della stabilità, l'utente può contattare il titolare tramite la <a href="/contatti/">pagina contatti</a> del Sito. Il titolare si impegna a fornire riscontro nel più breve tempo possibile.
+        Per qualsiasi domanda, chiarimento o segnalazione relativa alla presente Cookie Policy, alla misurazione del pubblico o alla misura tecnica della stabilità, l'utente può contattare il titolare tramite la <a href="/contatti/">pagina contatti</a> del Sito. Il titolare si impegna a fornire riscontro nel più breve tempo possibile.
       </p>
 
       <hr />

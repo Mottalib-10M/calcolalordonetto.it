@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config';
+import { GA4_ID } from '../data/site-config';
 
 const title = 'Privacy Policy: Quali Dati Tratta il Sito e i Tuoi Diritti';
-const description = "Informativa privacy: la RAL che inserisci resta nel browser, nessun cookie e nessun dato personale registrato. Solo Clarity senza cookie misura la stabilità.";
-const lastUpdated = '6 ottobre 2026';
+const description = "Informativa privacy: la RAL che inserisci resta nel browser. Pubblico misurato con i cookie di Google Analytics, senza pubblicità; Clarity e i tuoi diritti.";
+const lastUpdated = '8 novembre 2026';
 ---
 
 <Layout title={title} description={description}>
@@ -46,7 +47,7 @@ const lastUpdated = '6 ottobre 2026';
 
       <h2>3. Tipologie di Dati Trattati (o Non Trattati)</h2>
       <p>
-        <strong>L'editore, Radif Partners, non registra alcun dato personale dei visitatori.</strong> I dati inseriti nei calcolatori non vengono raccolti, memorizzati né trasmessi, e il Sito non installa cookie.
+        <strong>I dati inseriti nei calcolatori non vengono raccolti, memorizzati né trasmessi.</strong> Gli unici cookie del Sito sono quelli di misurazione del pubblico di Google Analytics (punto 5), che non riguardano ciò che digiti.
       </p>
       <p>
         Il calcolatore dello stipendio netto funziona interamente lato client (nel browser dell'utente). I dati inseriti nel calcolatore (RAL, regione, situazione familiare, numero di mensilità, eventuali detrazioni e ogni altro parametro richiesto) non vengono mai trasmessi ai nostri server né a terze parti. Tutti i calcoli avvengono localmente nel dispositivo dell'utente e non lasciano il browser in alcun modo.
@@ -66,7 +67,7 @@ const lastUpdated = '6 ottobre 2026';
       <ul>
         <li>Form di registrazione o login</li>
         <li>Newsletter o raccolta di indirizzi email</li>
-        <li>Cookie di qualsiasi tipo, compresi quelli pubblicitari o di profilazione</li>
+        <li>Cookie pubblicitari o di profilazione</li>
         <li>Condivisione di dati con piattaforme pubblicitarie</li>
         <li>Sistemi di commento o forum che richiedano la raccolta di dati personali</li>
       </ul>
@@ -82,9 +83,24 @@ const lastUpdated = '6 ottobre 2026';
         L'utente può verificare autonomamente questo comportamento tramite gli strumenti di sviluppo del proprio browser, controllando che i valori inseriti non compaiano in alcuna richiesta HTTP durante l'utilizzo del calcolatore.
       </p>
 
-      <h2>5. Misura Tecnica e Anonima della Stabilità</h2>
+      <h2>5. Misurazione del Pubblico con Google Analytics</h2>
       <p>
-        Per scoprire errori, pagine lente, clic senza effetto o problemi di scorrimento, il Sito usa <strong>Microsoft Clarity senza cookie</strong>. Prima del caricamento dello script la pagina segnala a Clarity che la memorizzazione è negata: niente cookie <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> o <code>CLID</code>, un identificativo diverso per ogni pagina vista e nessun collegamento tra una visita e l'altra. Il contenuto delle pagine e le cifre che digiti (RAL, mensilità, detrazioni) sono mascherati nel browser prima dell'invio.
+        Il Sito usa <strong>Google Analytics 4</strong> per contare le visite e capire quali pagine sono utili: pagine viste, pagina di provenienza, durata della visita, tipo di dispositivo e di browser, paese e città approssimativi. Per farlo Google Analytics imposta due cookie sul dispositivo: <code>_ga</code>, che distingue i visitatori con un identificativo casuale, e <code>_ga_{GA4_ID.replace('G-', '')}</code>, che conserva lo stato della visita. La loro durata è fissata a 13 mesi al massimo (390 giorni) e non viene prolungata a ogni visita; la durata predefinita di Google è di 2 anni.
+      </p>
+      <p>
+        L'indirizzo IP è anonimizzato: Google Analytics 4 non lo registra né lo conserva, e lo usa solo al momento della raccolta per ricavare paese e città approssimativi. L'indirizzo della pagina inviato a Google Analytics è privo di parametri, quindi gli importi contenuti in un link di condivisione non sono inclusi. Il Sito non mostra pubblicità: memorizzazione pubblicitaria, dati utente pubblicitari, personalizzazione degli annunci e Google signals sono disattivati, e i dati di misurazione non sono condivisi con alcun inserzionista.
+      </p>
+      <ul>
+        <li><strong>Fornitore:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlanda, responsabile del trattamento (art. 28 GDPR).</li>
+        <li><strong>Finalità:</strong> misurazione del pubblico.</li>
+        <li><strong>Conservazione presso Google:</strong> 14 mesi, poi cancellazione.</li>
+        <li><strong>Base giuridica:</strong> legittimo interesse dell'editore a sapere come viene usato il Sito (art. 6, par. 1, lett. f, GDPR).</li>
+        <li><strong>Opposizione:</strong> blocca o cancella i cookie dalle impostazioni del browser, oppure installa il <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="nofollow noopener">componente aggiuntivo per la disattivazione di Google Analytics</a>. Il Sito funziona allo stesso modo.</li>
+      </ul>
+
+      <h2>6. Misura Tecnica della Stabilità con Microsoft Clarity</h2>
+      <p>
+        Per scoprire errori, pagine lente, clic senza effetto o problemi di scorrimento, il Sito usa <strong>Microsoft Clarity senza cookie</strong>. Prima del caricamento dello script la pagina segnala a Clarity che la memorizzazione è negata, quindi Clarity non imposta i cookie <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> o <code>CLID</code>, usa un identificativo diverso per ogni pagina vista e non collega una visita all'altra. Il contenuto delle pagine e le cifre che digiti (RAL, mensilità, detrazioni) sono mascherati nel browser prima dell'invio.
       </p>
       <ul>
         <li><strong>Titolare di questa misura:</strong> Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublino 18, Irlanda (<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com/privacystatement</a>).</li>
@@ -92,35 +108,35 @@ const lastUpdated = '6 ottobre 2026';
         <li><strong>Opposizione:</strong> bloccare il dominio <code>clarity.ms</code> nel browser oppure scriverci.</li>
       </ul>
       <p>
-        Non sono utilizzati Google Analytics, strumenti pubblicitari né altri traccianti.
+        Oltre a Google Analytics e Clarity, non sono utilizzati strumenti pubblicitari né altri traccianti.
       </p>
 
-      <h2>6. Cookie e Memorizzazione Locale</h2>
+      <h2>7. Cookie e Memorizzazione Locale</h2>
       <p>
-        Il Sito <strong>non installa alcun cookie</strong> e non scrive nulla nel <code>localStorage</code> o nel <code>sessionStorage</code> del browser: non c'è quindi alcun cookie banner, perché non c'è nulla da accettare. Dettagli nella <a href="/cookie-policy/">Cookie Policy</a>.
+        Gli unici cookie del Sito sono <code>_ga</code> e <code>_ga_{GA4_ID.replace('G-', '')}</code> di Google Analytics (13 mesi al massimo, nessuna pubblicità). I calcolatori non scrivono nulla nel <code>localStorage</code> o nel <code>sessionStorage</code> del browser. Dettagli nella <a href="/cookie-policy/">Cookie Policy</a>.
       </p>
 
-      <h2>7. Base Giuridica del Trattamento</h2>
+      <h2>8. Base Giuridica del Trattamento</h2>
       <p>
-        La misura tecnica della stabilità si fonda sul legittimo interesse (art. 6, paragrafo 1, lettera f, del GDPR) a mantenere calcolatori funzionanti. La risposta a un messaggio inviato tramite la pagina contatti si fonda sulla richiesta dell'utente stesso.
+        La misurazione del pubblico e la misura tecnica della stabilità si fondano sul legittimo interesse dell'editore (art. 6, paragrafo 1, lettera f, del GDPR) a sapere come viene usato il Sito e a mantenere calcolatori funzionanti; non viene chiesto alcun consenso e non viene mostrato alcun banner. La risposta a un messaggio inviato tramite la pagina contatti si fonda sulla richiesta dell'utente stesso.
       </p>
 
-      <h2>8. Hosting e Log Tecnici</h2>
+      <h2>9. Hosting e Log Tecnici</h2>
       <p>
         Il Sito è ospitato da OVH SAS, 2 rue Kellermann, 59100 Roubaix, Francia. I suoi server registrano automaticamente log tecnici (indirizzo IP, data e ora, pagina richiesta) per finalità di sicurezza e manutenzione, per un periodo limitato. Non sono presenti pulsanti di social media, widget pubblicitari o servizi di remarketing.
       </p>
 
-      <h2>9. Trasferimento di Dati Extra-UE</h2>
+      <h2>10. Trasferimento di Dati Extra-UE</h2>
       <p>
-        Le misure anonime di Clarity possono essere trattate su server Microsoft situati negli Stati Uniti, nel quadro del Data Privacy Framework UE-USA e delle clausole contrattuali standard.
+        I dati di Google Analytics possono essere trasferiti a Google LLC e le misure di Clarity trattate su server Microsoft, in entrambi i casi negli Stati Uniti, nel quadro del Data Privacy Framework UE-USA e delle clausole contrattuali standard.
       </p>
 
-      <h2>10. Periodo di Conservazione dei Dati</h2>
+      <h2>11. Periodo di Conservazione dei Dati</h2>
       <p>
-        I dati inseriti nei calcolatori non vengono conservati da nessuna parte. Clarity conserva le registrazioni tecniche per 30 giorni e i dati aggregati per un massimo di 13 mesi. I messaggi ricevuti tramite la pagina contatti sono conservati solo il tempo necessario a rispondere.
+        I dati inseriti nei calcolatori non vengono conservati da nessuna parte. Google Analytics conserva i dati a livello di visita e di identificativo per 14 mesi, poi li cancella. Clarity conserva le registrazioni tecniche per 30 giorni e i dati aggregati per un massimo di 13 mesi. I messaggi ricevuti tramite la pagina contatti sono conservati solo il tempo necessario a rispondere.
       </p>
 
-      <h2>11. Diritti dell'Interessato</h2>
+      <h2>12. Diritti dell'Interessato</h2>
       <p>
         Ai sensi degli articoli 15-22 del Regolamento (UE) 2016/679 (GDPR), ogni utente ha il diritto di:
       </p>
@@ -133,18 +149,18 @@ const lastUpdated = '6 ottobre 2026';
         <li><strong>Opposizione</strong> (art. 21): opporsi al trattamento dei propri dati personali per motivi connessi alla propria situazione particolare, nonché opporsi al trattamento per finalità di marketing diretto</li>
       </ul>
       <p>
-        Poiché l'editore non conserva dati personali, in pratica tali diritti riguardano solo i messaggi che ci hai inviato. Per qualsiasi richiesta, chiarimento o esercizio dei diritti sopra elencati, l'utente può contattarci tramite la <a href="/contatti/">pagina contatti</a>. Il titolare si impegna a rispondere a tali richieste entro 30 giorni, come previsto dall'art. 12 del GDPR.
+        Tali diritti riguardano i dati di misurazione del pubblico (Google Analytics) e i messaggi che ci hai inviato; per Google Analytics, l'opposizione più semplice è descritta al punto 5. Per qualsiasi richiesta, chiarimento o esercizio dei diritti sopra elencati, l'utente può contattarci tramite la <a href="/contatti/">pagina contatti</a>. Il titolare si impegna a rispondere a tali richieste entro 30 giorni, come previsto dall'art. 12 del GDPR.
       </p>
 
-      <h2>12. Dati dei Minori</h2>
+      <h2>13. Dati dei Minori</h2>
       <p>
-        Il Sito non è rivolto a minori di anni 16 e non raccoglie consapevolmente dati personali di minori. Non essendo prevista alcuna forma di registrazione o raccolta di dati personali, non si pone la necessità di verificare l'età dell'utente ai sensi dell'art. 8 del GDPR.
+        Il Sito non è rivolto a minori di anni 16 e non raccoglie consapevolmente dati personali di minori. Non essendo prevista alcuna forma di registrazione, non si pone la necessità di verificare l'età dell'utente ai sensi dell'art. 8 del GDPR.
       </p>
       <p>
         Qualora in futuro il Sito dovesse introdurre funzionalità che comportino la raccolta di dati personali, saranno implementate misure adeguate per garantire la protezione dei dati dei minori, nel rispetto dell'art. 8 del GDPR e dell'art. 2-quinquies del D.Lgs. 196/2003.
       </p>
 
-      <h2>13. Reclamo all'autorità di Controllo</h2>
+      <h2>14. Reclamo all'autorità di Controllo</h2>
       <p>
         Ogni utente ha il diritto di proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong>, autorità di controllo italiana ai sensi dell'art. 77 del GDPR e degli artt. 140-bis e seguenti del D.Lgs. 196/2003:
       </p>
@@ -159,7 +175,7 @@ const lastUpdated = '6 ottobre 2026';
         L'utente ha altresi' il diritto di proporre reclamo a qualsiasi altra autorità di controllo dello Stato membro dell'Unione Europea in cui risiede abitualmente, lavora o in cui si è verificata la presunta violazione, ai sensi dell'art. 77, paragrafo 1, del GDPR.
       </p>
 
-      <h2>14. Modifiche all'Informativa</h2>
+      <h2>15. Modifiche all'Informativa</h2>
       <p>
         Il titolare si riserva il diritto di modificare la presente informativa in qualsiasi momento, dandone comunicazione tramite pubblicazione della versione aggiornata sul Sito. La data dell'ultimo aggiornamento è riportata in cima alla presente pagina. Si consiglia di consultare periodicamente questa pagina per verificare eventuali aggiornamenti.
       </p>

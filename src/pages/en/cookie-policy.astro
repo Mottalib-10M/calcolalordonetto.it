@@ -1,10 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { SITE } from '../../config';
+import { GA4_ID } from '../../data/site-config';
 
-const title = 'Cookie Policy: No Cookies, Only Cookieless Clarity';
-const description = "Cookie policy: this Italian net salary site sets no cookies and keeps nothing you type. Only an anonymous technical stability check with cookieless Clarity.";
-const lastUpdated = '6 October 2026';
+const title = 'Cookie Policy: Google Analytics Only, No Advertising';
+const description = "Cookie policy: Google Analytics audience cookies only, 13 months at most, no advertising. Our Italian net salary calculators keep nothing you type in them.";
+const lastUpdated = 'November 8, 2026';
 ---
 
 <Layout title={title} description={description} lang="en">
@@ -25,20 +26,37 @@ const lastUpdated = '6 October 2026';
 
       <h2>1. What Are Cookies</h2>
       <p>
-        A cookie is a small file a website stores on a computer or phone in order to recognise the visitor next time. The cookie guidelines of the <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">Garante per la Protezione dei Dati Personali</a> (Italian Data Protection Authority, measure of 10 June 2021) and Article 122 of Legislative Decree 196/2003 require sites to disclose any they use.
+        A cookie is a small file a website stores on a computer or phone in order to recognise the visitor next time. The cookie guidelines of the <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">Garante per la Protezione dei Dati Personali</a> (Italian Data Protection Authority, measure of 10 June 2021) and Article 122 of Legislative Decree 196/2003 require sites to disclose the ones they use: these are ours.
       </p>
 
-      <h2>2. This Website Sets No Cookies</h2>
+      <h2>2. Google Analytics Cookies</h2>
       <p>
-        <strong>{SITE.name} sets no cookies at all</strong>: no technical, preference, analytics, profiling or third-party cookies. Nothing is written to your browser's <code>localStorage</code> or <code>sessionStorage</code> either. That is why there is no cookie banner: there is nothing to accept or decline.
+        <strong>{SITE.name} sets Google Analytics audience measurement cookies and those alone</strong>: no advertising cookie, no profiling cookie, no social media cookie.
       </p>
+      <table>
+        <thead><tr><th>Name</th><th>Provider</th><th>Purpose</th><th>Lifetime</th></tr></thead>
+        <tbody>
+          <tr><td><code>_ga</code></td><td>Google Analytics</td><td>Tell visitors apart with a random identifier</td><td>13 months at most (390 days)</td></tr>
+          <tr><td><code>_ga_{GA4_ID.replace('G-', '')}</code></td><td>Google Analytics</td><td>Keep the state of the current visit</td><td>13 months at most (390 days)</td></tr>
+        </tbody>
+      </table>
       <p>
-        The Italian net salary, IRPEF, TFR, thirteenth-month and mortgage calculators work inside your browser. The gross annual salary (RAL), region, dependent children or number of monthly payments you enter never reach a server and are discarded when you close the tab; nothing remains on your device and the publisher records no personal data.
+        These lifetimes are not extended on each visit; Google's default is 2 years and the Website shortens it. Purpose: audience measurement (pages viewed, referrer, device, approximate country). The IP address is anonymised: Google Analytics 4 neither logs nor stores it, and the page address it receives carries no parameters. No advertising and no ad sharing: ad storage, ad personalisation and Google signals are switched off.
+      </p>
+      <ul>
+        <li><strong>Provider:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, acting as processor (Article 28 GDPR).</li>
+        <li><strong>Transfer:</strong> data may be transferred to Google LLC in the United States under the EU–U.S. Data Privacy Framework and the European Commission's standard contractual clauses.</li>
+        <li><strong>Retention at Google:</strong> 14 months.</li>
+        <li><strong>Legal basis:</strong> the publisher's legitimate interest in knowing how its Website is used (Article 6(1)(f) GDPR).</li>
+        <li><strong>Objecting:</strong> block or delete cookies in your browser settings, or install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="nofollow noopener">Google Analytics opt-out browser add-on</a>. The Website and its calculators work the same way.</li>
+      </ul>
+      <p>
+        The Italian net salary, IRPEF, TFR, thirteenth-month and mortgage calculators work inside your browser. The gross annual salary (RAL), region, dependent children or number of monthly payments you enter never reach a server, are not saved on your device and are discarded when you close the tab.
       </p>
 
       <h2>3. Anonymous Stability Measurement: Microsoft Clarity Without Cookies</h2>
       <p>
-        To spot technical problems (JavaScript errors, slow loading, clicks with no effect, scrolling trouble on mobile) we use <strong>Microsoft Clarity in cookieless mode</strong>. Before the script loads, the page tells Clarity that storage is denied: the cookies <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> and <code>CLID</code> are never created, each page view gets a fresh identifier and visits are not linked to one another. Page text and whatever you type in the fields are masked in your browser before anything is sent.
+        To spot technical problems (JavaScript errors, slow loading, clicks with no effect, scrolling trouble on mobile) we use <strong>Microsoft Clarity in cookieless mode</strong>. Before the script loads, the page tells Clarity that storage is denied, so Clarity never creates the cookies <code>_clck</code>, <code>_clsk</code>, <code>MUID</code> and <code>CLID</code>, each page view gets a fresh identifier and visits are not linked to one another. Page text and whatever you type in the fields are masked in your browser before anything is sent.
       </p>
       <ul>
         <li><strong>Controller for this measurement:</strong> Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Ireland (<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft privacy statement</a>).</li>
@@ -48,12 +66,12 @@ const lastUpdated = '6 October 2026';
         <li><strong>Objection:</strong> block the <code>clarity.ms</code> domain in your browser or with a blocking extension, or write to us.</li>
       </ul>
       <p>
-        We do not use Google Analytics, advertising, social-media pixels or any other tracking tool.
+        Apart from Google Analytics and Clarity, we use no advertising, no social-media pixels and no other tracking tool.
       </p>
 
       <h2>4. Hosting Logs</h2>
       <p>
-        Like any web server, the one run by our host (OVH SAS, Roubaix, France) automatically logs IP address, date and requested page for security purposes. These logs involve no cookie.
+        Like any web server, the one run by our host (OVH SAS, Roubaix, France) automatically logs IP address, date and requested page for security purposes.
       </p>
 
       <h2>5. Legal References</h2>
@@ -64,7 +82,7 @@ const lastUpdated = '6 October 2026';
         <li><strong>Cookie and other tracking tool guidelines</strong> of the Garante (measure of 10 June 2021, doc. web No. 9677876)</li>
       </ul>
       <p>
-        You may lodge a complaint with the Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>).
+        You may exercise your rights of access, rectification, erasure and objection by writing to us; for Google Analytics, the simplest objection is described in section 2. You may also lodge a complaint with the Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>).
       </p>
 
       <h2>6. Updates</h2>
@@ -74,7 +92,7 @@ const lastUpdated = '6 October 2026';
 
       <h2>7. Contact</h2>
       <p>
-        For any question, clarification or report relating to this Cookie Policy or the technical stability measurement, users may contact the owner via the <a href="/en/contact/">contact page</a> of the Website. The owner undertakes to respond as quickly as possible.
+        For any question, clarification or report relating to this Cookie Policy, audience measurement or the technical stability measurement, users may contact the owner via the <a href="/en/contact/">contact page</a> of the Website. The owner undertakes to respond as quickly as possible.
       </p>
 
       <hr />
